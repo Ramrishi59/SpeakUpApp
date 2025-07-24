@@ -33,10 +33,15 @@ h1 {
 
 #wordImage {
     max-width: 100%;
-    height: auto;
+    width: 100%; /* Ensure it tries to fill the width */
+    height: 200px; /* Set a fixed height for consistency */
+    object-fit: contain; /* This scales the image to fit within the 200px height/100% width, maintaining its aspect ratio */
     border-radius: 8px;
     margin-bottom: 15px;
     cursor: pointer; /* To indicate it's clickable */
+    background-color: #ffffff; /* Optional: A background for the image area if the image doesn't fill it */
+    padding: 10px; /* Optional: Some padding around the image inside its fixed frame */
+    box-sizing: border-box; /* Ensures padding is included in the total width/height */
 }
 
 #wordText {
