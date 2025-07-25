@@ -16,21 +16,16 @@ body {
     text-align: center;
     max-width: 400px;
     width: 90%;
+    position: relative; /* ADDED THIS LINE FOR STAR POSITIONING */
 }
 
-h1 {
+h1 { /* This is the correct start of the h1 rule */
     color: #333;
-    margin-bottom: 20px;
-}
+    margin-bottom: 80px; /* ADJUSTED THIS MARGIN to give more space for the star display */
+} /* This is the correct end of the h1 rule */
 
-.card {
-    border: 2px solid #a0e0ff;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #e6f7ff;
-}
 
+/* Updated CSS for Image consistency */
 #wordImage {
     max-width: 100%;
     width: 100%; /* Ensure it tries to fill the width */
@@ -39,8 +34,8 @@ h1 {
     border-radius: 8px;
     margin-bottom: 15px;
     cursor: pointer; /* To indicate it's clickable */
-    background-color: #ffffff; /* Optional: A background for the image area if the image doesn't fill it */
-    padding: 10px; /* Optional: Some padding around the image inside its fixed frame */
+    background-color: #ffffff; /* A background for the image area if the image doesn't fill it */
+    padding: 10px; /* Some padding around the image inside its fixed frame */
     box-sizing: border-box; /* Ensures padding is included in the total width/height */
 }
 
@@ -65,4 +60,58 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+/* NEW CSS for Score Display */
+.score-display {
+    position: absolute; /* Allows positioning relative to the container */
+    top: 15px; /* Adjusted top position slightly */
+    right: 15px; /* Adjusted right position slightly */
+    display: flex;
+    align-items: center;
+    background-color: #ffe082; /* Light yellow background */
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Ensure it stays on top of other elements */
+}
+
+.star-icon {
+    width: 35px;  /* Slightly increased size of the star icon */
+    height: 35px; /* Ensure height matches width */
+    margin-right: 10px; /* More space between star and number */
+    flex-shrink: 0; /* Prevents the image from shrinking */
+}
+
+#starCount {
+    font-size: 1.8em; /* Slightly larger font for visibility */
+    font-weight: bold;
+    color: #e65100; /* Darker orange color */
+    /* Optional: Add a subtle shadow for better readability on lighter backgrounds */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* NEW CSS for Navigation Arrows (THESE WERE MISSING!) */
+.navigation-buttons {
+    display: flex; /* Use flexbox to put arrows side-by-side */
+    justify-content: space-between; /* Space them out */
+    align-items: center;
+    width: 100%; /* Take full width of its parent */
+    max-width: 300px; /* Limit overall width for smaller screens */
+    margin: 20px auto 0 auto; /* Center it below the card and add top margin */
+}
+
+.nav-arrow {
+    width: 50px; /* Size of the arrow image */
+    height: 50px;
+    cursor: pointer; /* To indicate it's clickable */
+    transition: transform 0.2s ease; /* Smooth hover effect */
+    background-color: #007bff; /* Background color for arrows */
+    border-radius: 50%; /* Makes them circular */
+    padding: 5px; /* Padding inside the circle */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.nav-arrow:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
 }
