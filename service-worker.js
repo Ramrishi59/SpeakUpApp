@@ -5,13 +5,13 @@ const urlsToCache = [
   './style.css',
   './script.js',
   './manifest.json',
-  './images/icon-192x192.png',
-  './images/icon-512x512.png',
+  './Images/icon.png',
+  './Images/icon-512x512.png',
   // Add all your 13 image and audio paths here
-  './images/apple.png',
-  './audio/apple.mp3',
-  './images/ball.png',
-  './audio/ball.mp3',
+  './Images/apple.png',
+  './Audio/apple.mp3',
+  './Images/ball.png',
+  './Audio/ball.mp3',
   // ... continue for all 13 words
 ];
 
