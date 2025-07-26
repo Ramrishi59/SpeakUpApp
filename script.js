@@ -1,6 +1,6 @@
 // Define your list of words, their images, and their audio files
 const words = [
-    { text: "a book", image: "images/a book.png", audio: "audio/a book.mp3" },
+    { text: "a book", image: "Images/a book.png", audio: "Audio/a book.mp3" },
     { text: "a pencil", image: "images/a pencil.png", audio: "audio/a pencil.mp3" },
     { text: "a pen", image: "images/a pen.png", audio: "audio/a pen.mp3" },
     { text: "a crayon", image: "images/a crayon.png", audio: "audio/a crayon.mp3" },
@@ -8,7 +8,7 @@ const words = [
     { text: "a bag", image: "images/a bag.png", audio: "audio/a bag.mp3" },
     { text: "a table", image: "images/a table.png", audio: "audio/a table.mp3" },
     { text: "a chair", image: "images/a chair.png", audio: "audio/a chair.mp3" },
-    { text: "an apple", image: "images/an apple.png", audio: "audio/an apple.mp3" },
+    { text: "an apple", image: "Images/an apple.png", audio: "Audio/an apple.mp3" },
     { text: "an orange", image: "images/an orange.png", audio: "audio/an orange.mp3" },
     { text: "an egg", image: "images/an egg.png", audio: "audio/an egg.mp3" },
     { text: "an eraser", image: "images/an eraser.png", audio: "audio/an eraser.mp3" },
