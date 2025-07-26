@@ -15,91 +15,108 @@ const words = [
     { text: "an elephant", image: "Images/an elephant.png", audio: "Audio/an elephant.mp3" }
 ];
 
-// Audio files for encouragement and sound effects
+// Audio files for encouragement and sound effects (ensure these files exist in Audio/ folder)
 const encouragementAudios = [
     "Audio/great_job.mp3",
     "Audio/excellent.mp3",
     "Audio/you_got_it.mp3"
-    // Add paths to all your encouragement audios here if you have more
 ];
 const chimeAudio = "Audio/chime.mp3"; // Path to your chime sound
 
 let currentWordIndex = 0;
 let starsCollected = 0; // To keep track of stars
 
-// Get references to HTML elements
-const wordImage = document.getElementById('wordImage');
-const wordText = document.getElementById('wordText');
-const speakButton = document.getElementById('speakButton');
-const nextButton = document.getElementById('nextButton');
-const prevButton = document.getElementById('prevButton'); // Reference to the previous button
-const starCountDisplay = document.getElementById('starCount');
+// THIS IS THE CRUCIAL CHANGE: EVERYTHING BELOW THIS LINE RUNS ONLY AFTER HTML IS LOADED
+document.addEventListener('DOMContentLoaded', () => {
 
-// Function to load the current word's data into the display
-function loadWord() {
-    const word = words[currentWordIndex];
-    wordImage.src = word.image;
-    wordImage.alt = word.text;
-    wordText.textContent = word.text;
-}
+    // Get references to HTML elements (NOW INSIDE DOMContentLoaded)
+    const wordImage = document.getElementById('wordImage');
+    const wordText = document.getElementById('wordText');
+    const speakButton = document.getElementById('speakButton');
+    const nextButton = document.getElementById('nextButton');
+    const prevButton = document.getElementById('prevButton'); // Reference to the previous button
+    const starCountDisplay = document.getElementById('starCount');
 
-// Generic function to play any specific audio file by its path
-function playSingleAudio(audioPath) {
-    if (!audioPath) return; // Prevent error if path is undefined
-    const audio = new Audio(audioPath);
-    audio.play();
-}
+    // --- Start of helper functions (can be outside or inside, but it's fine here) ---
 
-// Function to play a random encouragement audio (now only used at lesson completion)
-function playEncouragement() {
-    const randomIndex = Math.floor(Math.random() * encouragementAudios.length);
-    playSingleAudio(encouragementAudios[randomIndex]);
-}
-
-// Event handler for when the word/button is interacted with (now only plays word audio)
-function handleWordInteraction() {
-    const wordAudio = new Audio(words[currentWordIndex].audio);
-    wordAudio.play();
-}
-
-// Add event listeners
-speakButton.addEventListener('click', handleWordInteraction);
-wordImage.addEventListener('click', handleWordInteraction);
-
-// Event listener for the NEXT arrow
-nextButton.addEventListener('click', () => {
-    const nextIndex = (currentWordIndex + 1); // Calculate what the NEXT index WILL be
-
-    // Check for lesson completion BEFORE updating currentWordIndex and loading the new word
-    if (nextIndex === words.length) { // If the NEXT index will be the very end of the array (meaning a full cycle completed)
-        // Trigger lesson complete actions
-        starsCollected++; // Give one final star for completing the cycle
-        starCountDisplay.textContent = starsCollected; // Update the display
-
-        playEncouragement(); // Play encouragement first
-        playSingleAudio(chimeAudio); // Play chime immediately after encouragement starts
-
-        // Optional: Reset stars after a short delay for a new lesson cycle to begin visually
-        // setTimeout(() => {
-        //     starsCollected = 0;
-        //     starCountDisplay.textContent = starsCollected;
-        // }, 3000); // Reset after 3 seconds, adjust as needed
+    // Function to load the current word's data into the display
+    function loadWord() {
+        const word = words[currentWordIndex];
+        if (wordImage) { // Check if element exists before setting properties
+            wordImage.src = word.image;
+            wordImage.alt = word.text;
+        }
+        if (wordText) { // Check if element exists before setting properties
+            wordText.textContent = word.text;
+        }
     }
 
-    // Now update the currentWordIndex and load the word for the NEXT cycle
-    currentWordIndex = nextIndex % words.length; // Use modulo to wrap around
-    loadWord(); // Load the new word
-});
+    // Generic function to play any specific audio file by its path
+    function playSingleAudio(audioPath) {
+        if (!audioPath) return; // Prevent error if path is undefined
+        const audio = new Audio(audioPath);
+        audio.play().catch(e => console.error("Audio playback failed:", e)); // Add error handling
+    }
 
-// Event listener for the PREVIOUS arrow
-prevButton.addEventListener('click', () => {
-    // Move backward in the array, handles wrapping to the end
-    currentWordIndex = (currentWordIndex - 1 + words.length) % words.length;
-    loadWord(); // Load the new word
-    // No encouragement for backward navigation
-});
+    // Function to play a random encouragement audio (now only used at lesson completion)
+    function playEncouragement() {
+        const randomIndex = Math.floor(Math.random() * encouragementAudios.length);
+        playSingleAudio(encouragementAudios[randomIndex]);
+    }
 
-// Load the very first word when the script loads, ensuring HTML elements are ready
-document.addEventListener('DOMContentLoaded', loadWord);
+    // Event handler for when the word/button is interacted with (now only plays word audio)
+    function handleWordInteraction() {
+        if (words[currentWordIndex] && words[currentWordIndex].audio) {
+            playSingleAudio(words[currentWordIndex].audio);
+        }
+    }
 
-console.log("script.js loaded and all interactions set up!");
+    // --- End of helper functions ---
+
+
+    // Add event listeners (NOW INSIDE DOMContentLoaded, after elements are gotten)
+    if (speakButton) { // Added null check for safety
+        speakButton.addEventListener('click', handleWordInteraction);
+    }
+    if (wordImage) { // Added null check for safety
+        wordImage.addEventListener('click', handleWordInteraction);
+    }
+
+    // Event listener for the NEXT arrow
+    if (nextButton) { // Added null check for safety
+        nextButton.addEventListener('click', () => {
+            const nextIndex = (currentWordIndex + 1); // Calculate what the NEXT index WILL be
+
+            // Check for lesson completion BEFORE updating currentWordIndex and loading the new word
+            if (nextIndex === words.length) { // If the NEXT index will be the very end of the array (meaning a full cycle completed)
+                // Trigger lesson complete actions
+                starsCollected++; // Give one final star for completing the cycle
+                if (starCountDisplay) { // Check if element exists before updating
+                    starCountDisplay.textContent = starsCollected; // Update the display
+                }
+
+                playEncouragement(); // Play encouragement first
+                playSingleAudio(chimeAudio); // Play chime immediately after encouragement starts
+            }
+
+            // Now update the currentWordIndex and load the word for the NEXT cycle
+            currentWordIndex = nextIndex % words.length; // Use modulo to wrap around
+            loadWord(); // Load the new word
+        });
+    }
+
+    // Event listener for the PREVIOUS arrow
+    if (prevButton) { // Added null check for safety
+        prevButton.addEventListener('click', () => {
+            // Move backward in the array, handles wrapping to the end
+            currentWordIndex = (currentWordIndex - 1 + words.length) % words.length;
+            loadWord(); // Load the new word
+            // No encouragement for backward navigation
+        });
+    }
+
+    // Load the very first word when the script loads, ensuring HTML elements are ready
+    loadWord(); // Call loadWord here, as DOMContentLoaded guarantees elements are present.
+
+    console.log("script.js loaded and all interactions set up!");
+}); // End of DOMContentLoaded listener
