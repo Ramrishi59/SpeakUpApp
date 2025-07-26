@@ -1,28 +1,28 @@
 // Define your list of words, their images, and their audio files
 const words = [
     { text: "a book", image: "Images/a book.png", audio: "Audio/a book.mp3" },
-    { text: "a pencil", image: "images/a pencil.png", audio: "audio/a pencil.mp3" },
-    { text: "a pen", image: "images/a pen.png", audio: "audio/a pen.mp3" },
-    { text: "a crayon", image: "images/a crayon.png", audio: "audio/a crayon.mp3" },
-    { text: "a ruler", image: "images/a ruler.png", audio: "audio/a ruler.mp3" },
-    { text: "a bag", image: "images/a bag.png", audio: "audio/a bag.mp3" },
-    { text: "a table", image: "images/a table.png", audio: "audio/a table.mp3" },
-    { text: "a chair", image: "images/a chair.png", audio: "audio/a chair.mp3" },
+    { text: "a pencil", image: "Images/a pencil.png", audio: "Audio/a pencil.mp3" },
+    { text: "a pen", image: "Images/a pen.png", audio: "Audio/a pen.mp3" },
+    { text: "a crayon", image: "Images/a crayon.png", audio: "Audio/a crayon.mp3" },
+    { text: "a ruler", image: "Images/a ruler.png", audio: "Audio/a ruler.mp3" },
+    { text: "a bag", image: "Images/a bag.png", audio: "Audio/a bag.mp3" },
+    { text: "a table", image: "Images/a table.png", audio: "Audio/a table.mp3" },
+    { text: "a chair", image: "Images/a chair.png", audio: "Audio/a chair.mp3" },
     { text: "an apple", image: "Images/an apple.png", audio: "Audio/an apple.mp3" },
-    { text: "an orange", image: "images/an orange.png", audio: "audio/an orange.mp3" },
-    { text: "an egg", image: "images/an egg.png", audio: "audio/an egg.mp3" },
-    { text: "an eraser", image: "images/an eraser.png", audio: "audio/an eraser.mp3" },
-    { text: "an elephant", image: "images/an elephant.png", audio: "audio/an elephant.mp3" }
+    { text: "an orange", image: "Images/an orange.png", audio: "Audio/an orange.mp3" },
+    { text: "an egg", image: "Images/an egg.png", audio: "Audio/an egg.mp3" },
+    { text: "an eraser", image: "Images/an eraser.png", audio: "Audio/an eraser.mp3" },
+    { text: "an elephant", image: "Images/an elephant.png", audio: "Audio/an elephant.mp3" }
 ];
 
 // Audio files for encouragement and sound effects
 const encouragementAudios = [
-    "audio/great_job.mp3",
-    "audio/excellent.mp3",
-    "audio/you_got_it.mp3"
+    "Audio/great_job.mp3",
+    "Audio/excellent.mp3",
+    "Audio/you_got_it.mp3"
     // Add paths to all your encouragement audios here if you have more
 ];
-const chimeAudio = "audio/chime.mp3"; // Path to your chime sound
+const chimeAudio = "Audio/chime.mp3"; // Path to your chime sound
 
 let currentWordIndex = 0;
 let starsCollected = 0; // To keep track of stars
