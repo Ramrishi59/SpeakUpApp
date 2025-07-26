@@ -116,3 +116,11 @@ button:hover {
 .nav-arrow:hover {
     transform: scale(1.1); /* Slightly enlarge on hover */
 }
+
+/* NEW CSS for Disabled Navigation Arrows */
+.nav-arrow.disabled {
+    opacity: 0.5; /* Make it semi-transparent */
+    filter: grayscale(100%); /* Turn it black and white */
+    cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+    pointer-events: none; /* Crucial: Prevents any click events on the element */
+}

@@ -78,25 +78,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event listener for the NEXT button (UPDATED LOGIC)
-    if (nextButton) {
-        nextButton.addEventListener('click', () => {
-            console.log("Next button clicked. currentWordIndex:", currentWordIndex);
-            if (currentWordIndex < words.length - 1) { // If not on the last word
-                currentWordIndex++;
-                loadWord();
-                // Ensure next button is enabled if it was disabled
-                nextButton.disabled = false;
-            } else {
-                // We are on the last word, and Next is clicked
-                console.log("Reached the last word, playing excellent audio and disabling Next button.");
-                playSingleAudio("Audio/excellent.mp3"); // Play excellent audio directly
+// Event listener for the NEXT button (UPDATED LOGIC for image buttons)
+if (nextButton) {
+    nextButton.addEventListener('click', () => {
+        console.log("Next button clicked. currentWordIndex:", currentWordIndex);
+        if (currentWordIndex < words.length - 1) { // If not on the last word
+            currentWordIndex++;
+            loadWord();
+            // Ensure next button is enabled if it was disabled from a previous completion
+            nextButton.classList.remove('disabled'); // Remove the disabled style
+        } else {
+            // We are on the last word, and Next is clicked
+            console.log("Reached the last word, playing excellent audio and then disabling Next button.");
+
+            // Play excellent audio
+            const excellentAudio = new Audio("Audio/excellent.mp3");
+            excellentAudio.play().catch(e => console.error("Excellent audio playback failed:", e));
+
+            // ONLY disable the button AFTER the audio finishes
+            excellentAudio.onended = () => {
                 if (nextButton) {
-                    nextButton.disabled = true; // Disable the next button
+                    nextButton.classList.add('disabled'); // Add the disabled style
                 }
-                // Stars and chime are no longer here, as per your request
+                console.log("Excellent audio finished, Next button disabled.");
+            };
+        }
+    });
+}
+
+// Also, update the 'Previous' and 'Start Over' button listeners
+// to remove the 'disabled' class from the next button when they are clicked.
+if (previousButton) {
+    previousButton.addEventListener('click', () => {
+        console.log("Previous button clicked. currentWordIndex:", currentWordIndex);
+        if (currentWordIndex > 0) { // Only go back if not on the first word
+            currentWordIndex--;
+            loadWord();
+            // If the next button was disabled from a previous completion, re-enable it
+            if (nextButton) {
+                nextButton.classList.remove('disabled'); // Remove the disabled style
             }
-        });
-    }
+        }
+    });
+}
+
+if (startoverButton) {
+    startoverButton.addEventListener('click', () => {
+        currentWordIndex = 0;
+        loadWord();
+        // When starting over, ensure the next button is re-enabled
+        if (nextButton) {
+            nextButton.classList.remove('disabled'); // Remove the disabled style
+        }
+        console.log('Start Over button clicked, resetting to first word and re-enabling Next button.');
+    });
+}
 
     // Event listener for the PREVIOUS button (logic remains same, stops at first)
     if (previousButton) {
