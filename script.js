@@ -18,7 +18,7 @@ const words = [
 // Audio files for encouragement and sound effects (ensure these files exist in Audio/ folder)
 const encouragementAudios = [
     "Audio/great_job.mp3",
-    "Audio/excellent.mp3",
+    "Audio/excellent.mp3", // Only 'excellent' will be used for completion now
     "Audio/you_got_it.mp3"
 ];
 const chimeAudio = "Audio/chime.mp3"; // Path to your chime sound
@@ -29,42 +29,37 @@ let starsCollected = 0; // To keep track of stars
 // THIS IS THE CRUCIAL CHANGE: EVERYTHING BELOW THIS LINE RUNS ONLY AFTER HTML IS LOADED
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Get references to HTML elements (NOW INSIDE DOMContentLoaded)
+    // Get references to HTML elements
     const wordImage = document.getElementById('wordImage');
     const wordText = document.getElementById('wordText');
     const speakButton = document.getElementById('speakButton');
     const nextButton = document.getElementById('nextButton');
-    const prevButton = document.getElementById('prevButton'); // Reference to the previous button
+    const previousButton = document.getElementById('prevButton'); // Reference for previous button (id="prevButton")
+    const startoverButton = document.getElementById('startoverButton'); // Reference for start over button
     const starCountDisplay = document.getElementById('starCount');
 
-    // --- Start of helper functions (can be outside or inside, but it's fine here) ---
+    // --- Start of helper functions ---
 
     // Function to load the current word's data into the display
     function loadWord() {
         const word = words[currentWordIndex];
-        if (wordImage) { // Check if element exists before setting properties
+        if (wordImage) {
             wordImage.src = word.image;
             wordImage.alt = word.text;
         }
-        if (wordText) { // Check if element exists before setting properties
+        if (wordText) {
             wordText.textContent = word.text;
         }
     }
 
     // Generic function to play any specific audio file by its path
     function playSingleAudio(audioPath) {
-        if (!audioPath) return; // Prevent error if path is undefined
+        if (!audioPath) return;
         const audio = new Audio(audioPath);
-        audio.play().catch(e => console.error("Audio playback failed:", e)); // Add error handling
+        audio.play().catch(e => console.error("Audio playback failed:", e));
     }
 
-    // Function to play a random encouragement audio (now only used at lesson completion)
-    function playEncouragement() {
-        const randomIndex = Math.floor(Math.random() * encouragementAudios.length);
-        playSingleAudio(encouragementAudios[randomIndex]);
-    }
-
-    // Event handler for when the word/button is interacted with (now only plays word audio)
+    // Event handler for when the word/button is interacted with
     function handleWordInteraction() {
         if (words[currentWordIndex] && words[currentWordIndex].audio) {
             playSingleAudio(words[currentWordIndex].audio);
@@ -74,49 +69,65 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- End of helper functions ---
 
 
-    // Add event listeners (NOW INSIDE DOMContentLoaded, after elements are gotten)
-    if (speakButton) { // Added null check for safety
+    // Add event listeners
+    if (speakButton) {
         speakButton.addEventListener('click', handleWordInteraction);
     }
-    if (wordImage) { // Added null check for safety
+    if (wordImage) {
         wordImage.addEventListener('click', handleWordInteraction);
     }
 
-    // Event listener for the NEXT arrow
-    if (nextButton) { // Added null check for safety
+    // Event listener for the NEXT button (UPDATED LOGIC)
+    if (nextButton) {
         nextButton.addEventListener('click', () => {
-            const nextIndex = (currentWordIndex + 1); // Calculate what the NEXT index WILL be
-
-            // Check for lesson completion BEFORE updating currentWordIndex and loading the new word
-            if (nextIndex === words.length) { // If the NEXT index will be the very end of the array (meaning a full cycle completed)
-                // Trigger lesson complete actions
-                starsCollected++; // Give one final star for completing the cycle
-                if (starCountDisplay) { // Check if element exists before updating
-                    starCountDisplay.textContent = starsCollected; // Update the display
+            console.log("Next button clicked. currentWordIndex:", currentWordIndex);
+            if (currentWordIndex < words.length - 1) { // If not on the last word
+                currentWordIndex++;
+                loadWord();
+                // Ensure next button is enabled if it was disabled
+                nextButton.disabled = false;
+            } else {
+                // We are on the last word, and Next is clicked
+                console.log("Reached the last word, playing excellent audio and disabling Next button.");
+                playSingleAudio("Audio/excellent.mp3"); // Play excellent audio directly
+                if (nextButton) {
+                    nextButton.disabled = true; // Disable the next button
                 }
-
-                playEncouragement(); // Play encouragement first
-                playSingleAudio(chimeAudio); // Play chime immediately after encouragement starts
+                // Stars and chime are no longer here, as per your request
             }
-
-            // Now update the currentWordIndex and load the word for the NEXT cycle
-            currentWordIndex = nextIndex % words.length; // Use modulo to wrap around
-            loadWord(); // Load the new word
         });
     }
 
-    // Event listener for the PREVIOUS arrow
-    if (prevButton) { // Added null check for safety
-        prevButton.addEventListener('click', () => {
-            // Move backward in the array, handles wrapping to the end
-            currentWordIndex = (currentWordIndex - 1 + words.length) % words.length;
-            loadWord(); // Load the new word
-            // No encouragement for backward navigation
+    // Event listener for the PREVIOUS button (logic remains same, stops at first)
+    if (previousButton) {
+        previousButton.addEventListener('click', () => {
+            console.log("Previous button clicked. currentWordIndex:", currentWordIndex);
+            if (currentWordIndex > 0) { // Only go back if not on the first word
+                currentWordIndex--;
+                loadWord();
+                // If the next button was disabled from a previous completion, re-enable it
+                if (nextButton && nextButton.disabled) {
+                    nextButton.disabled = false;
+                }
+            }
+        });
+    }
+
+    // NEW: Event listener for the Start Over button (logic remains same)
+    if (startoverButton) {
+        startoverButton.addEventListener('click', () => {
+            currentWordIndex = 0;
+            loadWord();
+            // When starting over, ensure the next button is re-enabled
+            if (nextButton) {
+                nextButton.disabled = false;
+            }
+            console.log('Start Over button clicked, resetting to first word and re-enabling Next button.');
         });
     }
 
     // Load the very first word when the script loads, ensuring HTML elements are ready
-    loadWord(); // Call loadWord here, as DOMContentLoaded guarantees elements are present.
+    loadWord();
 
     console.log("script.js loaded and all interactions set up!");
 }); // End of DOMContentLoaded listener

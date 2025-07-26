@@ -9,13 +9,14 @@ body {
 }
 
 .container {
+    /* height: 90vh; */
     background-color: #ffffff;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400px;
-    width: 90%;
+    width: 90%; 
     position: relative; /* ADDED THIS LINE FOR STAR POSITIONING */
 }
 
@@ -65,8 +66,8 @@ button:hover {
 /* NEW CSS for Score Display */
 .score-display {
     position: absolute; /* Allows positioning relative to the container */
-    top: 15px; /* Adjusted top position slightly */
-    right: 15px; /* Adjusted right position slightly */
+    top: -55px; /* Adjusted top position slightly */
+    right: 2px; /* Adjusted right position slightly */
     display: flex;
     align-items: center;
     background-color: #ffe082; /* Light yellow background */
