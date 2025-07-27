@@ -1,16 +1,35 @@
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #E0FFFF; /* Light blue background */
+    background-color: #f0f8ff; /* Light blue background */
     margin: 0;
+    box-sizing: border-box; 
+}
+
+.card {
+    border: 2px solid #a0e0ff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #e6f7ff;
+
+    /* NEW CRITICAL PROPERTIES TO FIX MOVEMENT */
+    height: 350px; /* FIXED HEIGHT: Adjust this value as needed to comfortably fit your tallest content */
+    display: flex; /* Make it a flex container */
+    flex-direction: column; /* Stack its children (image, text, button) vertically */
+    align-items: center; /* Center children horizontally within the column */
+    justify-content: space-between; /* Distribute space evenly between image, text, and Hear Word button */
+    box-sizing: border-box; /* Ensures padding is included in the total height */
+    /* You might want to add overflow: hidden; if content might ever exceed the height */
 }
 
 .container {
     /* height: 90vh; */
     background-color: #ffffff;
+    background-image: url('Images/m.png');
+    background-size: 50% auto;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-blend-mode: multiply;
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -18,11 +37,12 @@ body {
     max-width: 400px;
     width: 90%; 
     position: relative; /* ADDED THIS LINE FOR STAR POSITIONING */
+    opacity: 0.9; /* Slightly transparent for a modern look */
 }
 
 h1 { /* This is the correct start of the h1 rule */
     color: #333;
-    margin-bottom: 80px; /* ADJUSTED THIS MARGIN to give more space for the star display */
+    margin-bottom: 40px; /* ADJUSTED THIS MARGIN to give more space for the star display */
 } /* This is the correct end of the h1 rule */
 
 
@@ -45,6 +65,10 @@ h1 { /* This is the correct start of the h1 rule */
     font-weight: bold;
     color: #007bff;
     margin-bottom: 15px;
+    /* NEW: Fix height to prevent shifts */
+    min-height: 3.5em; /* Enough space for 1-2 lines of text, adjust as needed */
+    line-height: 1.2; /* Controls spacing between lines if text wraps */
+    margin-bottom: 15px; /* Consistent spacing below text */
 }
 
 button {
@@ -57,8 +81,11 @@ button {
     font-size: 1.1em; /* Make text a bit larger */
     /* ADDED TRANSFORM AND BOX-SHADOW TO TRANSITION */
     transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease; /* Smooth transitions for hover/active states */
-    margin: 0 10px; /* Space between buttons */
+    margin: 30px; /* Space between buttons */
+    display: block;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Initial subtle shadow */
+    display: block; /* Ensure each button takes its own line for stacking */
+    width: fit-content; /* Make button only as wide as its content + padding */
 }
 
 button:hover {
@@ -74,17 +101,22 @@ button:active {
 }
 
 /* NEW CSS for Score Display */
+/* Styles for the Score Display - DEFINITIVE */
 .score-display {
-    position: absolute; /* Allows positioning relative to the container */
-    top: -55px; /* Adjusted top position slightly */
-    right: 2px; /* Adjusted right position slightly */
-    display: flex;
-    align-items: center;
-    background-color: #ffe082; /* Light yellow background */
+    position: absolute; /* Positions relative to the .container */
+    top: 0px;         /* Pull it UPWARDS. Adjust this value to move it higher or lower */
+    right: 15px;        /* Distance from the right edge of the container */
+    display: flex;      /* Use flexbox to align star and number horizontally */
+    align-items: center; /* Vertically center star and number */
+    background-color: #ffe082; /* Gold-like background for the score */
     padding: 8px 15px;
-    border-radius: 20px;
+    border-radius: 20px; /* Make it pill-shaped */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 10; /* Ensure it stays on top of other elements */
+    color: #333; /* Dark text for score */
+    /* Ensure it's always visible by default */
+    opacity: 1; 
+    visibility: visible;
 }
 
 .star-icon {
@@ -92,6 +124,9 @@ button:active {
     height: 35px; /* Ensure height matches width */
     margin-right: 10px; /* More space between star and number */
     flex-shrink: 0; /* Prevents the image from shrinking */
+    /* Ensure the image itself is not hidden or transparent */
+    opacity: 1;
+    display: block;
 }
 
 #starCount {
@@ -109,7 +144,7 @@ button:active {
     align-items: center;
     width: 100%; /* Take full width of its parent */
     max-width: 300px; /* Limit overall width for smaller screens */
-    margin: 20px auto 0 auto; /* Center it below the card and add top margin */
+    margin: 20px auto 15px auto; /* Center it below the card and add top margin */
 }
 
 .nav-arrow {
@@ -146,4 +181,32 @@ button:active {
 
     /* NEW: Prevent double-tap-to-zoom on iOS */
     touch-action: manipulation; 
+}
+
+/* General full-screen centering class - applied to all top-level screens */
+.full-screen-center {
+    display: flex; /* Make it a flex container to center its own content */
+    flex-direction: column;
+    align-items: center; /* Center horizontally within the column */
+    justify-content: center; /* Center vertically within the column */
+    min-height: 100vh; /* Ensures it takes full height */
+    width: 100%; /* Ensures it takes full width */
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #f0f8ff; /* Match your body background */
+
+    /* CRITICAL: Hide by default and stack on top using absolute positioning */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    opacity: 0; /* Initially invisible */
+    visibility: hidden; /* Also hides from screen readers and stops clicks */
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s; /* Smooth fade effect */
+}
+
+.full-screen-center.active {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s; /* Show immediately, fade in */
 }

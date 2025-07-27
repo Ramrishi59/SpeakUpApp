@@ -5,14 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SpeakUpApp - English Learning</title>
 
-    
+   
     <!-- <base href="/SpeakUpApp/">  -->
 
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <div class="container">
+    <div id="mainDashboardScreen" class="full-screen-center">
+        <h1>SpeakUpApp</h1>
+        <p>Your fun way to learn English!</p>
+        <div class="dashboard-options">
+            <button class="dashboard-button" data-screen="lessons">Lessons</button>
+            <button class="dashboard-button" data-screen="quiz">Quiz</button>
+            <button class="dashboard-button" data-screen="characters">Characters</button>
+            </div>
+    </div>
+
+    <div id="unitSelectionScreen" class="selection-screen full-screen-center">
+        <h2>Select a Lesson Unit</h2>
+        <div class="unit-list">
+            <button class="unit-button" data-unit-id="unit1">Unit 1: Hello</button>
+            <button class="unit-button" data-unit-id="unit2">Unit 2: a, an</button>
+            <button class="unit-button" data-unit-id="unit3">Unit 3: What is it?</button>
+            </div>
+        <button class="back-button" data-screen="mainDashboardScreen">Back to Home</button>
+    </div>
+
+    <div id="wordDisplayScreen" class="container full-screen-center">
         <div class="score-display">
             <img src="Images/star.png" alt="Star" class="star-icon"> 
             <span id="starCount">0</span>
@@ -30,9 +50,9 @@
             <img src="Images/arrow_left.png" alt="Previous Word" id="prevButton" class="nav-arrow"> 
             <img src="Images/arrow_right.png" alt="Next Word" id="nextButton" class="nav-arrow">
         </div>
-      
+
         <button id="startoverButton">Start Over</button>
-      
+        <button class="back-button" data-screen="unitSelectionScreen">Back to Lessons</button>
     </div>
     
     <script src="script.js"></script>
