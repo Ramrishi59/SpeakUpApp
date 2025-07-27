@@ -18,7 +18,7 @@ const words = [
 // Audio files for encouragement and sound effects (ensure these files exist in Audio/ folder)
 const encouragementAudios = [
     "Audio/great_job.mp3",
-    "Audio/excellent.mp3", // Only 'excellent' will be used for completion now
+    "Audio/excellent.mp3",
     "Audio/you_got_it.mp3"
 ];
 const chimeAudio = "Audio/chime.mp3"; // Path to your chime sound
@@ -29,7 +29,7 @@ let starsCollected = 0; // To keep track of stars
 // THIS IS THE CRUCIAL CHANGE: EVERYTHING BELOW THIS LINE RUNS ONLY AFTER HTML IS LOADED
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Get references to HTML elements
+    // Get references to HTML elements (NOW INSIDE DOMContentLoaded)
     const wordImage = document.getElementById('wordImage');
     const wordText = document.getElementById('wordText');
     const speakButton = document.getElementById('speakButton');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- End of helper functions ---
 
 
-    // Add event listeners
+    // Add event listeners (NOW INSIDE DOMContentLoaded)
     if (speakButton) {
         speakButton.addEventListener('click', handleWordInteraction);
     }
@@ -77,77 +77,78 @@ document.addEventListener('DOMContentLoaded', () => {
         wordImage.addEventListener('click', handleWordInteraction);
     }
 
-// Event listener for the NEXT button (UPDATED LOGIC: Prevent rapid clicks)
-if (nextButton) {
-    nextButton.addEventListener('click', () => {
-        // Immediately disable the button to prevent rapid clicks
-        nextButton.classList.add('disabled'); // Apply the disabled style right away
-        console.log("Next button clicked. currentWordIndex:", currentWordIndex);
-        console.log("words.length:", words.length);
+    // Event listener for the NEXT button
+    if (nextButton) {
+        nextButton.addEventListener('click', () => {
+            // Immediately disable the button to prevent rapid clicks
+            nextButton.classList.add('disabled'); 
+            console.log("Next button clicked. currentWordIndex:", currentWordIndex);
+            console.log("words.length:", words.length);
 
-        if (currentWordIndex < words.length - 1) { // If not on the last word
-            console.log("Moving to next word.");
-            currentWordIndex++;
-            loadWord();
-            // Re-enable the button AFTER the new word has loaded (or a brief moment)
-            // Using a short timeout to ensure visual update, then re-enable
-            setTimeout(() => {
-                nextButton.classList.remove('disabled'); // Re-enable for the next click
-            }, 100); // Small delay (100ms) to ensure stability
-        } else {
-            // We are on the last word, and Next is clicked
-            console.log("Reached the last word, playing excellent audio and then disabling Next button.");
-
-            starsCollected++;
-            if (starCountDisplay) {
-                starCountDisplay.textContent = starsCollected;
-                console.log("Stars after increment (display updated):", starsCollected);
+            if (currentWordIndex < words.length - 1) { // If not on the last word
+                console.log("Moving to next word.");
+                currentWordIndex++;
+                loadWord();
+                // Re-enable the button AFTER the new word has loaded (or a brief moment)
+                setTimeout(() => { 
+                    nextButton.classList.remove('disabled');
+                }, 100); 
             } else {
-                console.log("Error: starCountDisplay element not found!");
-            }
+                // We are on the last word, and Next is clicked
+                console.log("Reached the last word, playing excellent audio and then disabling Next button.");
 
-            // Play excellent audio
-            const excellentAudio = new Audio("Audio/excellent.mp3");
-            excellentAudio.play().catch(e => console.error("Excellent audio playback failed:", e));
-
-            // ONLY disable the button AFTER the audio finishes, and KEEP it disabled
-            excellentAudio.onended = () => {
-                if (nextButton) {
-                    nextButton.classList.add('disabled'); // Keep disabled after completion
+                starsCollected++; 
+                if (starCountDisplay) {
+                    starCountDisplay.textContent = starsCollected;
+                    console.log("Stars after increment (display updated):", starsCollected);
+                } else {
+                    console.log("Error: starCountDisplay element not found!");
                 }
-                console.log("Excellent audio finished, Next button now permanently disabled for this cycle.");
-            };
-        }
-    });
-}
 
-// IMPORTANT: Also ensure 'previousButton' and 'startoverButton' remove the 'disabled' class from 'nextButton'
-if (previousButton) {
-    previousButton.addEventListener('click', () => {
-        console.log("Previous button clicked. currentWordIndex:", currentWordIndex);
-        if (currentWordIndex > 0) {
-            currentWordIndex--;
+                // Play excellent audio
+                const excellentAudio = new Audio("Audio/excellent.mp3");
+                excellentAudio.play().catch(e => console.error("Excellent audio playback failed:", e));
+                
+                // ONLY disable the button AFTER the audio finishes, and KEEP it disabled
+                excellentAudio.onended = () => {
+                    if (nextButton) {
+                        nextButton.classList.add('disabled'); // Keep disabled after completion
+                    }
+                    console.log("Excellent audio finished, Next button now permanently disabled for this cycle.");
+                };
+            }
+        });
+    }
+
+    // Event listener for the PREVIOUS button
+    if (previousButton) {
+        previousButton.addEventListener('click', () => {
+            console.log("Previous button clicked. currentWordIndex:", currentWordIndex);
+            if (currentWordIndex > 0) { // Only go back if not on the first word
+                currentWordIndex--;
+                loadWord();
+                // Ensure next button is re-enabled when going back
+                if (nextButton) {
+                    nextButton.classList.remove('disabled');
+                }
+            }
+        });
+    }
+
+    // Event listener for the Start Over button
+    if (startoverButton) {
+        startoverButton.addEventListener('click', () => {
+            currentWordIndex = 0;
             loadWord();
-            // Ensure next button is re-enabled when going back
+            // When starting over, ensure the next button is re-enabled
             if (nextButton) {
                 nextButton.classList.remove('disabled');
             }
-        }
-    });
-}
+            console.log('Start Over button clicked, resetting to first word and re-enabling Next button.');
+        });
+    }
 
-if (startoverButton) {
-    startoverButton.addEventListener('click', () => {
-        currentWordIndex = 0;
-        loadWord();
-        // When starting over, ensure the next button is re-enabled
-        if (nextButton) {
-            nextButton.classList.remove('disabled');
-        }
-        console.log('Start Over button clicked, resetting to first word and re-enabling Next button.');
-    });
-}
-    loadWord();
+    loadWord(); // Load the first word when the script initializes
 
     console.log("script.js loaded and all interactions set up!");
 }); // End of DOMContentLoaded listener
