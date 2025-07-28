@@ -5,7 +5,7 @@ const lessons = {
         name: "Unit 1: Hello",
         description: "Learn greetings and character names.",
         words: [
-            // Example: Based on Speak Up 1 Full Text Unit 1 [cite: 69-70]
+            // Example: Based on Speak Up 1 Full Text Unit 1
             // You'll need images and audio for these (e.g., Images/hi.png, Audio/hi.mp3)
             // { text: "Hi", image: "Images/hi.png", audio: "Audio/hi.mp3" },
             // { text: "Hello", image: "Images/hello.png", audio: "Audio/hello.mp3" },
@@ -18,7 +18,7 @@ const lessons = {
         name: "Unit 2: a, an",
         description: "Learn about indefinite articles with common objects.",
         words: [
-            { text: "a book", image: "Images/a book.png", audio: "Audio/a book.mp3" },
+            { text: "a book", image: "Images/a book.png", audio: "Audio/a book.mpax" },
             { text: "a pencil", image: "Images/a pencil.png", audio: "Audio/a pencil.mp3" },
             { text: "a pen", image: "Images/a pen.png", audio: "Audio/a pen.mp3" },
             { text: "a crayon", image: "Images/a crayon.png", audio: "Audio/a crayon.mp3" },
@@ -39,7 +39,7 @@ const lessons = {
         name: "Unit 3: What is it?",
         description: "Ask and answer questions about objects.",
         words: [
-            // Example: Based on Speak Up 1 Full Text Unit 3 [cite: 72, 73]
+            // Example: Based on Speak Up 1 Full Text Unit 3
             // { text: "What is this?", image: "Images/question_mark.png", audio: "Audio/what_is_this.mp3" },
             // { text: "It is a pencil.", image: "Images/it_is_a_pencil.png", audio: "Audio/it_is_a_pencil.mp3" },
             // { text: "It is an ice cream.", image: "Images/it_is_an_ice_cream.png", audio: "Audio/it_is_an_ice_cream.mp3" }
@@ -64,19 +64,25 @@ const encouragementAudios = [
 ];
 const chimeAudio = "Audio/chime.mp3"; // Path to your chime sound
 
+// Helper function to get a URL parameter - MOVED TO TOP FOR CLARITY
+function getUnitIdFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('unitId'); // Gets the value of the 'unitId' parameter
+}
+
 // THIS IS THE CRUCIAL CHANGE: EVERYTHING BELOW THIS LINE RUNS ONLY AFTER HTML IS LOADED
 document.addEventListener('DOMContentLoaded', () => {
 
     // Get references to HTML elements (NOW INSIDE DOMContentLoaded)
     // Screen Elements
-    const mainDashboardScreen = document.getElementById('mainDashboardScreen'); // NEW
+    const mainDashboardScreen = document.getElementById('mainDashboardScreen'); 
     const unitSelectionScreen = document.getElementById('unitSelectionScreen'); 
     const wordDisplayScreen = document.getElementById('wordDisplayScreen');   
 
     // Word Display Elements
     const wordImage = document.getElementById('wordImage');
     const wordText = document.getElementById('wordText');
-    const speakButton = document.getElementById('speakButton');
+    // const speakButton = document.getElementById('speakButton'); // This button is commented out in HTML
     const nextButton = document.getElementById('nextButton');
     const previousButton = document.getElementById('prevButton'); // Reference for previous button (id="prevButton")
     const startoverButton = document.getElementById('startoverButton'); // Reference for start over button
@@ -92,11 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to show a specific screen and hide others
     function showScreen(screenId) {
         // Hide all screens first (add new screens here as you create them)
-        mainDashboardScreen.classList.remove('active');
-        unitSelectionScreen.classList.remove('active');
-        wordDisplayScreen.classList.remove('active');
-        // Example: if you had a quiz screen: quizScreen.classList.remove('active');
-
+        // Ensure these IDs actually exist in your old-index.html
+        if (mainDashboardScreen) mainDashboardScreen.classList.remove('active');
+        if (unitSelectionScreen) unitSelectionScreen.classList.remove('active');
+        if (wordDisplayScreen) wordDisplayScreen.classList.remove('active');
+        
         // Show the requested screen
         const targetScreen = document.getElementById(screenId);
         if (targetScreen) {
@@ -155,58 +161,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Add event listeners (NOW INSIDE DOMContentLoaded)
-    if (speakButton) {
-        speakButton.addEventListener('click', handleWordInteraction);
-    }
+    // The speakButton is commented out in your old-index.html, so this won't activate
+    // if (speakButton) {
+    //     speakButton.addEventListener('click', handleWordInteraction);
+    // }
     if (wordImage) {
         wordImage.addEventListener('click', handleWordInteraction);
     }
 
     // Event listener for the NEXT button
- // Event listener for the NEXT button (UPDATED LOGIC: Add star increment)
     if (nextButton) {
-    nextButton.addEventListener('click', () => {
-        // Immediately disable the button to prevent rapid clicks
-        nextButton.classList.add('disabled'); 
-        console.log("Next button clicked. currentWordIndex:", currentWordIndex);
-        console.log("activeWords.length:", activeWords.length); 
+        nextButton.addEventListener('click', () => {
+            // Immediately disable the button to prevent rapid clicks
+            nextButton.classList.add('disabled'); 
+            console.log("Next button clicked. currentWordIndex:", currentWordIndex);
+            console.log("activeWords.length:", activeWords.length); 
 
-        if (currentWordIndex < activeWords.length - 1) { // If not on the last word
-            console.log("Moving to next word.");
-            currentWordIndex++;
-            loadWord();
-            // Re-enable the button AFTER the new word has loaded (or a brief moment)
-            setTimeout(() => { 
-                nextButton.classList.remove('disabled');
-            }, 100); 
-        } else {
-            // We are on the last word, and Next is clicked
-            console.log("Reached the last word, playing excellent audio and then disabling Next button.");
-
-            // === ADD THESE LINES BACK FOR STAR INCREMENT ===
-            starsCollected++; 
-            if (starCountDisplay) {
-                starCountDisplay.textContent = starsCollected;
-                console.log("Stars after increment (display updated):", starsCollected);
+            if (currentWordIndex < activeWords.length - 1) { // If not on the last word
+                console.log("Moving to next word.");
+                currentWordIndex++;
+                loadWord();
+                // Re-enable the button AFTER the new word has loaded (or a brief moment)
+                setTimeout(() => { 
+                    nextButton.classList.remove('disabled');
+                }, 100); 
             } else {
-                console.log("Error: starCountDisplay element not found!");
-            }
-            // ===============================================
+                // We are on the last word, and Next is clicked
+                console.log("Reached the last word, playing excellent audio and then disabling Next button.");
 
-            // Play excellent audio
-            const excellentAudio = new Audio("Audio/excellent.mp3");
-            excellentAudio.play().catch(e => console.error("Excellent audio playback failed:", e));
-
-            // ONLY disable the button AFTER the audio finishes, and KEEP it disabled
-            excellentAudio.onended = () => {
-                if (nextButton) {
-                    nextButton.classList.add('disabled'); // Keep disabled after completion
+                starsCollected++; 
+                if (starCountDisplay) {
+                    starCountDisplay.textContent = starsCollected;
+                    console.log("Stars after increment (display updated):", starsCollected);
+                } else {
+                    console.log("Error: starCountDisplay element not found!");
                 }
-                console.log("Excellent audio finished, Next button now permanently disabled for this cycle.");
-            };
-        }
-    });
-}
+                
+                // Play excellent audio
+                const excellentAudio = new Audio("Audio/excellent.mp3");
+                excellentAudio.play().catch(e => console.error("Excellent audio playback failed:", e));
+
+                // ONLY disable the button AFTER the audio finishes, and KEEP it disabled
+                excellentAudio.onended = () => {
+                    if (nextButton) {
+                        nextButton.classList.add('disabled'); // Keep disabled after completion
+                    }
+                    console.log("Excellent audio finished, Next button now permanently disabled for this cycle.");
+                };
+            }
+        });
+    }
 
     // Event listener for the PREVIOUS button
     if (previousButton) {
@@ -236,45 +240,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Add event listeners for Dashboard Buttons
+    // Add event listeners for Dashboard Buttons - THESE ARE ON old-index.html but won't be used now
+    // as navigation will come from the NEW index.html
     dashboardButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const targetScreenId = button.dataset.screen; // e.g., 'lessons', 'quiz', 'characters'
+            const targetScreenId = button.dataset.screen; 
             if (targetScreenId === 'lessons') {
-                showScreen('unitSelectionScreen'); // Go to unit selection
+                showScreen('unitSelectionScreen'); 
             } else {
-                alert(`The "${button.textContent}" section is not implemented yet!`); // User feedback
+                alert(`The "${button.textContent}" section is not implemented yet!`); 
             }
         });
     });
 
-    // Add event listeners for Unit Selection Buttons
+    // Add event listeners for Unit Selection Buttons - THESE ARE ON old-index.html but won't be used now
+    // as navigation will come from the NEW index.html
     unitButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const unitId = button.dataset.unitId; // Get the unit ID from the data-unit-id attribute
+            const unitId = button.dataset.unitId; 
             if (lessons[unitId]) {
-                loadUnit(unitId); // Load the selected unit
-                showScreen('wordDisplayScreen'); // Show the word display after loading unit
+                loadUnit(unitId); 
+                showScreen('wordDisplayScreen'); 
             } else {
                 console.error(`Unit "${unitId}" not found in lessons data or not yet populated.`);
-                alert(`Unit "${lessons[unitId].name}" is not ready yet!`); // User feedback
+                alert(`Unit "${lessons[unitId].name}" is not ready yet!`); 
             }
         });
     });
 
     // Add event listeners for all Back Buttons
+    // These are still relevant as they navigate within the old-index.html structure
+    // Add event listeners for all Back Buttons
     backButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetScreenId = button.dataset.screen; // e.g., 'mainDashboardScreen', 'unitSelectionScreen'
+    button.addEventListener('click', () => {
+        const targetScreenId = button.dataset.screen; 
+
+        // If the button is meant to go back to the main dashboard OR unit selection (which is now replaced by new dashboard)
+        if (targetScreenId === 'mainDashboardScreen' || targetScreenId === 'unitSelectionScreen') {
+            // Redirect to the new dashboard (index.html)
+            window.location.href = 'index.html'; 
+        } else {
+            // For any other internal screen transitions within old-index.html (if they exist)
             showScreen(targetScreenId);
-            // Optionally, reset current word index or other state if going back
-            currentWordIndex = 0;
-            if (nextButton) nextButton.classList.remove('disabled'); // Re-enable next button when navigating back
-        });
+        }
+
+        // Optionally, reset current word index or other state if going back
+        currentWordIndex = 0;
+        if (nextButton) nextButton.classList.remove('disabled'); 
     });
+});
 
-    // Initial app state: Show the Main Dashboard Screen
-    showScreen('mainDashboardScreen'); 
+    // >>>>> THIS IS THE CRUCIAL PART FOR INITIAL LOADING <<<<<
+    // Initial app state: Determine which screen to show based on URL or default
+    const initialUnitId = getUnitIdFromUrl(); // Use the helper function defined above
 
-    console.log("script.js loaded and all interactions set up!");
+    if (initialUnitId && lessons[initialUnitId]) {
+        // If a unit ID is found in the URL and it's a valid lesson, load it
+        loadUnit(initialUnitId);
+        showScreen('wordDisplayScreen'); // Ensure this screen is activated
+    } else {
+        // This 'else' block means 'old-index.html' was opened directly WITHOUT a unitId parameter,
+        // which shouldn't happen if navigation always comes from the new dashboard.
+        // We'll redirect to the new dashboard in this case for a seamless experience.
+        console.warn("old-index.html loaded without a specific unitId. Redirecting to new dashboard.");
+        window.location.href = 'index.html'; // Redirect to the main dashboard
+    }
+
+    console.log("old-script.js loaded and all interactions set up!");
 }); // End of DOMContentLoaded listener
