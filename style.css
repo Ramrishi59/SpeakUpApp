@@ -22,22 +22,32 @@ body {
     /* You might want to add overflow: hidden; if content might ever exceed the height */
 }
 
+/* Main App Container */
 .container {
-    /* height: 90vh; */
     background-color: #ffffff;
     background-image: url('Images/m.png');
-    background-size: 50% auto;
     background-repeat: no-repeat;
-    background-position: center bottom;
-    background-blend-mode: multiply;
+    /* ADJUSTED BACKGROUND POSITION AND SIZE */
+    background-position: center calc(100% - 80px); /* Moves Manku up from bottom, centered horizontally */
+    background-size: 100px auto; /* Adjust Manku's size, e.g., 100px wide */
+
+    background-blend-mode: multiply; /* Keeps him subtle by blending with background */
+
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400px;
     width: 90%; 
-    position: relative; /* ADDED THIS LINE FOR STAR POSITIONING */
+    position: relative; 
     opacity: 0.9; /* Slightly transparent for a modern look */
+
+    height: 550px; /* Consistent fixed height for the container */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: space-between; 
+    box-sizing: border-box; 
 }
 
 h1 { /* This is the correct start of the h1 rule */
