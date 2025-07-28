@@ -1,280 +1,120 @@
-// Define your lessons, organized by unit
-const lessons = {
-    // Unit 1: Hello (example - you'd add words/phrases here as you prepare assets)
-    unit1: {
-        name: "Unit 1: Hello",
-        description: "Learn greetings and character names.",
-        words: [
-            // Example: Based on Speak Up 1 Full Text Unit 1 [cite: 69-70]
-            // You'll need images and audio for these (e.g., Images/hi.png, Audio/hi.mp3)
-            // { text: "Hi", image: "Images/hi.png", audio: "Audio/hi.mp3" },
-            // { text: "Hello", image: "Images/hello.png", audio: "Audio/hello.mp3" },
-            // { text: "My name is Thomas.", image: "Images/thomas.png", audio: "Audio/my_name_is_thomas.mp3" }
-        ]
+// Define the lesson data that will be displayed on the dashboard
+// This is distinct from the detailed 'lessons' object in old-script.js
+const dashboardLessons = [
+    {
+        id: 'unit2', // Corresponds to the unit ID in old-script.js
+        title: 'A / An',
+        description: 'Learn A and An. Just watch, listen and repeat',
+        thumbnail: 'Images/a_an_thumbnail.jpg' // You'll need to create this image
     },
-    
-    // Unit 2: a, an (Your existing 13 words go here)
-    unit2: {
-        name: "Unit 2: a, an",
-        description: "Learn about indefinite articles with common objects.",
-        words: [
-            { text: "a book", image: "Images/a book.png", audio: "Audio/a book.mp3" },
-            { text: "a pencil", image: "Images/a pencil.png", audio: "Audio/a pencil.mp3" },
-            { text: "a pen", image: "Images/a pen.png", audio: "Audio/a pen.mp3" },
-            { text: "a crayon", image: "Images/a crayon.png", audio: "Audio/a crayon.mp3" },
-            { text: "a ruler", image: "Images/a ruler.png", audio: "Audio/a ruler.mp3" },
-            { text: "a bag", image: "Images/a bag.png", audio: "Audio/a bag.mp3" },
-            { text: "a table", image: "Images/a table.png", audio: "Audio/a table.mp3" },
-            { text: "a chair", image: "Images/a chair.png", audio: "Audio/a chair.mp3" },
-            { text: "an apple", image: "Images/an apple.png", audio: "Audio/an apple.mp3" },
-            { text: "an orange", image: "Images/an orange.png", audio: "Audio/an orange.mp3" },
-            { text: "an egg", image: "Images/an egg.png", audio: "Audio/an egg.mp3" },
-            { text: "an eraser", image: "Images/an eraser.png", audio: "Audio/an eraser.mp3" },
-            { text: "an elephant", image: "Images/an elephant.png", audio: "Audio/an elephant.mp3" }
-        ]
+    {
+        id: 'science-experiment',
+        title: 'Science Experiment',
+        description: 'Conduct experiments to learn about the physical properties of matter, including density and buoyancy',
+        thumbnail: 'Images/a_an_thumbnail.jpg' // Placeholder thumbnail
     },
-
-    // Unit 3: What is it? (You'll fill this as you prepare assets)
-    unit3: {
-        name: "Unit 3: What is it?",
-        description: "Ask and answer questions about objects.",
-        words: [
-            // Example: Based on Speak Up 1 Full Text Unit 3 [cite: 72, 73]
-            // { text: "What is this?", image: "Images/question_mark.png", audio: "Audio/what_is_this.mp3" },
-            // { text: "It is a pencil.", image: "Images/it_is_a_pencil.png", audio: "Audio/it_is_a_pencil.mp3" },
-            // { text: "It is an ice cream.", image: "Images/it_is_an_ice_cream.png", audio: "Audio/it_is_an_ice_cream.mp3" }
-        ]
+    {
+        id: 'programming-basics',
+        title: 'Programming Basics',
+        description: 'Learn the basics of computer programming, including data structures and algorithms',
+        thumbnail: 'Images/a_an_thumbnail.jpg' // Placeholder thumbnail
+    },
+    {
+        id: 'environmental-conservation',
+        title: 'Environmental Conservation',
+        description: 'Understand the importance of protecting the environment and ways to make a positive impact',
+        thumbnail: 'Images/a_an_thumbnail.jpg' // Placeholder thumbnail
+    },
+    {
+        id: 'history-of-art',
+        title: 'History of Art',
+        description: 'Discover the history of art movements, styles, and famous artists across the world',
+        thumbnail: 'Images/a_an_thumbnail.jpg' // Placeholder thumbnail
     }
-    // ... Add more units here (unit4, unit5, etc.) as you prepare their content
-};
-
-// This will hold the words for the currently active lesson
-let activeWords = []; 
-// And this will track the currently selected lesson ID
-let currentLessonId = null;
-
-let currentWordIndex = 0;
-let starsCollected = 0; // To keep track of stars
-
-// Audio files for encouragement and sound effects (ensure these files exist in Audio/ folder)
-const encouragementAudios = [
-    "Audio/great_job.mp3",
-    "Audio/excellent.mp3",
-    "Audio/you_got_it.mp3"
 ];
-const chimeAudio = "Audio/chime.mp3"; // Path to your chime sound
 
-// THIS IS THE CRUCIAL CHANGE: EVERYTHING BELOW THIS LINE RUNS ONLY AFTER HTML IS LOADED
 document.addEventListener('DOMContentLoaded', () => {
+    const lessonsList = document.querySelector('.lessons-list');
+    const searchInput = document.querySelector('.search-input');
+    const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
 
-    // Get references to HTML elements (NOW INSIDE DOMContentLoaded)
-    // Screen Elements
-    const mainDashboardScreen = document.getElementById('mainDashboardScreen'); // NEW
-    const unitSelectionScreen = document.getElementById('unitSelectionScreen'); 
-    const wordDisplayScreen = document.getElementById('wordDisplayScreen');   
+    // Function to render lesson cards
+    function renderLessonCards(lessonsToRender) {
+        lessonsList.innerHTML = ''; // Clear existing cards
+        lessonsToRender.forEach(lesson => {
+            const lessonCard = document.createElement('div');
+            lessonCard.classList.add('lesson-card');
+            lessonCard.dataset.lessonId = lesson.id; // Store the ID for later use
 
-    // Word Display Elements
-    const wordImage = document.getElementById('wordImage');
-    const wordText = document.getElementById('wordText');
-    const speakButton = document.getElementById('speakButton');
-    const nextButton = document.getElementById('nextButton');
-    const previousButton = document.getElementById('prevButton'); // Reference for previous button (id="prevButton")
-    const startoverButton = document.getElementById('startoverButton'); // Reference for start over button
-    const starCountDisplay = document.getElementById('starCount');
-
-    // Button Collections (for event delegation)
-    const unitButtons = document.querySelectorAll('.unit-button');           
-    const dashboardButtons = document.querySelectorAll('.dashboard-button'); 
-    const backButtons = document.querySelectorAll('.back-button');           
-
-    // --- Start of helper functions ---
-
-    // Function to show a specific screen and hide others
-    function showScreen(screenId) {
-        // Hide all screens first (add new screens here as you create them)
-        mainDashboardScreen.classList.remove('active');
-        unitSelectionScreen.classList.remove('active');
-        wordDisplayScreen.classList.remove('active');
-        // Example: if you had a quiz screen: quizScreen.classList.remove('active');
-
-        // Show the requested screen
-        const targetScreen = document.getElementById(screenId);
-        if (targetScreen) {
-            targetScreen.classList.add('active'); // Add 'active' class to show
-        }
+            lessonCard.innerHTML = `
+                <img src="${lesson.thumbnail}" alt="${lesson.title}" class="lesson-thumbnail">
+                <div class="lesson-info">
+                    <h3>${lesson.title}</h3>
+                    <p>${lesson.description}</p>
+                </div>
+                <span class="forward-arrow">></span>
+            `;
+            lessonsList.appendChild(lessonCard);
+        });
     }
 
-    // Function to load the current word's data into the display
-    function loadWord() {
-        if (activeWords.length === 0) { // Handle case if a unit has no words yet
-            console.warn("No words in the active lesson.");
-            if (wordImage) wordImage.src = ""; // Clear image
-            if (wordText) wordText.textContent = "Select a unit!"; // Display message
-            return;
-        }
-        const word = activeWords[currentWordIndex];
-        if (wordImage) {
-            wordImage.src = word.image;
-            wordImage.alt = word.text;
-        }
-        if (wordText) {
-            wordText.textContent = word.text;
-        }
+    // Initial render of all lessons
+    renderLessonCards(dashboardLessons);
+
+    // Event Listener for Search Input
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredLessons = dashboardLessons.filter(lesson =>
+                lesson.title.toLowerCase().includes(searchTerm) ||
+                lesson.description.toLowerCase().includes(searchTerm)
+            );
+            renderLessonCards(filteredLessons);
+        });
     }
 
-    // Generic function to play any specific audio file by its path
-    function playSingleAudio(audioPath) {
-        if (!audioPath) return;
-        const audio = new Audio(audioPath);
-        audio.play().catch(e => console.error("Audio playback failed:", e));
-    }
+    // Event Listener for Lesson Card Clicks
+    // Using event delegation on the parent container
+    if (lessonsList) {
+        lessonsList.addEventListener('click', (e) => {
+            const clickedCard = e.target.closest('.lesson-card');
+            if (clickedCard) {
+                const lessonId = clickedCard.dataset.lessonId;
+                console.log(`Clicked on lesson: ${lessonId}`);
 
-    // Event handler for when the word/button is interacted with
-    function handleWordInteraction() {
-        if (activeWords[currentWordIndex] && activeWords[currentWordIndex].audio) {
-            playSingleAudio(activeWords[currentWordIndex].audio);
-        }
-    }
-
-    // Function to load a specific unit
-    function loadUnit(unitId) {
-        currentLessonId = unitId; // Store the active lesson ID
-        activeWords = lessons[unitId].words; // Set activeWords to the selected unit's words
-        currentWordIndex = 0; // Reset word index for the new unit
-        starsCollected = 0; // Reset stars for new unit (if starting a new lesson)
-        if (starCountDisplay) starCountDisplay.textContent = starsCollected; // Update display
-        
-        loadWord(); // Load the first word of the new unit
-        
-        // Ensure next button is enabled for a new lesson
-        if (nextButton) nextButton.classList.remove('disabled');
-        console.log(`Loaded unit: ${lessons[unitId].name}`);
-    }
-
-    // --- End of helper functions ---
-
-
-    // Add event listeners (NOW INSIDE DOMContentLoaded)
-    if (speakButton) {
-        speakButton.addEventListener('click', handleWordInteraction);
-    }
-    if (wordImage) {
-        wordImage.addEventListener('click', handleWordInteraction);
-    }
-
-    // Event listener for the NEXT button
- // Event listener for the NEXT button (UPDATED LOGIC: Add star increment)
-    if (nextButton) {
-    nextButton.addEventListener('click', () => {
-        // Immediately disable the button to prevent rapid clicks
-        nextButton.classList.add('disabled'); 
-        console.log("Next button clicked. currentWordIndex:", currentWordIndex);
-        console.log("activeWords.length:", activeWords.length); 
-
-        if (currentWordIndex < activeWords.length - 1) { // If not on the last word
-            console.log("Moving to next word.");
-            currentWordIndex++;
-            loadWord();
-            // Re-enable the button AFTER the new word has loaded (or a brief moment)
-            setTimeout(() => { 
-                nextButton.classList.remove('disabled');
-            }, 100); 
-        } else {
-            // We are on the last word, and Next is clicked
-            console.log("Reached the last word, playing excellent audio and then disabling Next button.");
-
-            // === ADD THESE LINES BACK FOR STAR INCREMENT ===
-            starsCollected++; 
-            if (starCountDisplay) {
-                starCountDisplay.textContent = starsCollected;
-                console.log("Stars after increment (display updated):", starsCollected);
-            } else {
-                console.log("Error: starCountDisplay element not found!");
-            }
-            // ===============================================
-
-            // Play excellent audio
-            const excellentAudio = new Audio("Audio/excellent.mp3");
-            excellentAudio.play().catch(e => console.error("Excellent audio playback failed:", e));
-
-            // ONLY disable the button AFTER the audio finishes, and KEEP it disabled
-            excellentAudio.onended = () => {
-                if (nextButton) {
-                    nextButton.classList.add('disabled'); // Keep disabled after completion
-                }
-                console.log("Excellent audio finished, Next button now permanently disabled for this cycle.");
-            };
-        }
-    });
-}
-
-    // Event listener for the PREVIOUS button
-    if (previousButton) {
-        previousButton.addEventListener('click', () => {
-            console.log("Previous button clicked. currentWordIndex:", currentWordIndex);
-            if (currentWordIndex > 0) { // Only go back if not on the first word
-                currentWordIndex--;
-                loadWord();
-                // Ensure next button is re-enabled when going back
-                if (nextButton) {
-                    nextButton.classList.remove('disabled');
+                // === CRITICAL INTEGRATION POINT ===
+                // For now, we'll only navigate to 'A / An' (unit2) which uses your old-index.html
+                // For other lessons, we'll show an alert.
+                if (lessonId === 'unit2') {
+                    // Redirect to the old-index.html (now word-display-screen.html)
+                    // and pass the unitId as a URL parameter
+                    window.location.href = `old-index.html?unitId=${lessonId}`;
+                } else {
+                    alert(`The "${dashboardLessons.find(l => l.id === lessonId)?.title}" lesson is not yet ready!`);
                 }
             }
         });
     }
 
-    // Event listener for the Start Over button
-    if (startoverButton) {
-        startoverButton.addEventListener('click', () => {
-            currentWordIndex = 0;
-            loadWord();
-            // When starting over, ensure the next button is re-enabled
-            if (nextButton) {
-                nextButton.classList.remove('disabled');
-            }
-            console.log('Start Over button clicked, resetting to first word and re-enabling Next button.');
+    // Event Listeners for Bottom Navigation Buttons
+    if (navButtons) {
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove 'active' from all buttons
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                // Add 'active' to the clicked button
+                button.classList.add('active');
+
+                const target = button.dataset.navTarget;
+                if (target === 'lessons') {
+                    // Do nothing, already on lessons screen
+                    console.log("Already on Lessons screen.");
+                } else {
+                    alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
+                }
+            });
         });
     }
 
-    // Add event listeners for Dashboard Buttons
-    dashboardButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetScreenId = button.dataset.screen; // e.g., 'lessons', 'quiz', 'characters'
-            if (targetScreenId === 'lessons') {
-                showScreen('unitSelectionScreen'); // Go to unit selection
-            } else {
-                alert(`The "${button.textContent}" section is not implemented yet!`); // User feedback
-            }
-        });
-    });
-
-    // Add event listeners for Unit Selection Buttons
-    unitButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const unitId = button.dataset.unitId; // Get the unit ID from the data-unit-id attribute
-            if (lessons[unitId]) {
-                loadUnit(unitId); // Load the selected unit
-                showScreen('wordDisplayScreen'); // Show the word display after loading unit
-            } else {
-                console.error(`Unit "${unitId}" not found in lessons data or not yet populated.`);
-                alert(`Unit "${lessons[unitId].name}" is not ready yet!`); // User feedback
-            }
-        });
-    });
-
-    // Add event listeners for all Back Buttons
-    backButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetScreenId = button.dataset.screen; // e.g., 'mainDashboardScreen', 'unitSelectionScreen'
-            showScreen(targetScreenId);
-            // Optionally, reset current word index or other state if going back
-            currentWordIndex = 0;
-            if (nextButton) nextButton.classList.remove('disabled'); // Re-enable next button when navigating back
-        });
-    });
-
-    // Initial app state: Show the Main Dashboard Screen
-    showScreen('mainDashboardScreen'); 
-
-    console.log("script.js loaded and all interactions set up!");
-}); // End of DOMContentLoaded listener
+    console.log("New dashboard script.js loaded!");
+});
