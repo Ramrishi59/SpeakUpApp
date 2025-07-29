@@ -18,7 +18,7 @@ const lessons = {
         name: "Unit 2: a, an",
         description: "Learn about indefinite articles with common objects.",
         words: [
-            { text: "a book", image: "Images/a book.png", audio: "Audio/a book.mpax" },
+            { text: "a book", image: "Images/a book.png", audio: "Audio/a book.mp3" },
             { text: "a pencil", image: "Images/a pencil.png", audio: "Audio/a pencil.mp3" },
             { text: "a pen", image: "Images/a pen.png", audio: "Audio/a pen.mp3" },
             { text: "a crayon", image: "Images/a crayon.png", audio: "Audio/a crayon.mp3" },
@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Get references to HTML elements (NOW INSIDE DOMContentLoaded)
     // Screen Elements
-    const mainDashboardScreen = document.getElementById('mainDashboardScreen'); 
     const unitSelectionScreen = document.getElementById('unitSelectionScreen'); 
     const wordDisplayScreen = document.getElementById('wordDisplayScreen');   
 
@@ -99,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function showScreen(screenId) {
         // Hide all screens first (add new screens here as you create them)
         // Ensure these IDs actually exist in your old-index.html
-        if (mainDashboardScreen) mainDashboardScreen.classList.remove('active');
         if (unitSelectionScreen) unitSelectionScreen.classList.remove('active');
         if (wordDisplayScreen) wordDisplayScreen.classList.remove('active');
         
@@ -200,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Play excellent audio
                 const excellentAudio = new Audio("Audio/excellent.mp3");
                 excellentAudio.play().catch(e => console.error("Excellent audio playback failed:", e));
+                playSingleAudio(chimeAudio)
 
                 // ONLY disable the button AFTER the audio finishes, and KEEP it disabled
                 excellentAudio.onended = () => {
@@ -239,34 +238,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Start Over button clicked, resetting to first word and re-enabling Next button.');
         });
     }
-
-    // Add event listeners for Dashboard Buttons - THESE ARE ON old-index.html but won't be used now
-    // as navigation will come from the NEW index.html
-    dashboardButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetScreenId = button.dataset.screen; 
-            if (targetScreenId === 'lessons') {
-                showScreen('unitSelectionScreen'); 
-            } else {
-                alert(`The "${button.textContent}" section is not implemented yet!`); 
-            }
-        });
-    });
-
-    // Add event listeners for Unit Selection Buttons - THESE ARE ON old-index.html but won't be used now
-    // as navigation will come from the NEW index.html
-    unitButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const unitId = button.dataset.unitId; 
-            if (lessons[unitId]) {
-                loadUnit(unitId); 
-                showScreen('wordDisplayScreen'); 
-            } else {
-                console.error(`Unit "${unitId}" not found in lessons data or not yet populated.`);
-                alert(`Unit "${lessons[unitId].name}" is not ready yet!`); 
-            }
-        });
-    });
 
     // Add event listeners for all Back Buttons
     // These are still relevant as they navigate within the old-index.html structure

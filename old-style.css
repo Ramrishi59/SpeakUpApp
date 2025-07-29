@@ -114,7 +114,7 @@ button:active {
 /* Styles for the Score Display - DEFINITIVE */
 .score-display {
     position: absolute; /* Positions relative to the .container */
-    top: 0px;         /* Pull it UPWARDS. Adjust this value to move it higher or lower */
+    top: 6px;         /* Pull it UPWARDS. Adjust this value to move it higher or lower */
     right: 15px;        /* Distance from the right edge of the container */
     display: flex;      /* Use flexbox to align star and number horizontally */
     align-items: center; /* Vertically center star and number */

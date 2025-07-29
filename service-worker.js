@@ -6,6 +6,9 @@ const urlsToCache = [
   './script.js',
   './manifest.json',
   './Images/icon.png', // Corrected to single icon.png
+  './old-index.html',
+  './old-script.js',
+  './old-style.css',
 
   // All 13 words, images, and audios (ensure these paths are EXACT!)
   './Images/a book.png',
@@ -47,6 +50,8 @@ const urlsToCache = [
 
   // Star Icon (if you have this file)
   './Images/star.png',
+    // Manku Image
+  './Images/m.png'
 
 ];
 
