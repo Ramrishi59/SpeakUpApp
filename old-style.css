@@ -3,56 +3,42 @@ body {
     background-color: #f0f8ff; /* Light blue background */
     margin: 0;
     box-sizing: border-box; 
+    overflow: hidden;
 }
 
 .card {
     border: 2px solid #a0e0ff;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #e6f7ff;
-
-    /* NEW CRITICAL PROPERTIES TO FIX MOVEMENT */
-    height: 350px; /* FIXED HEIGHT: Adjust this value as needed to comfortably fit your tallest content */
-    display: flex; /* Make it a flex container */
-    flex-direction: column; /* Stack its children (image, text, button) vertically */
-    align-items: center; /* Center children horizontally within the column */
-    justify-content: space-between; /* Distribute space evenly between image, text, and Hear Word button */
-    box-sizing: border-box; /* Ensures padding is included in the total height */
-    /* You might want to add overflow: hidden; if content might ever exceed the height */
+    border-radius: 12px; /* Slightly more rounded */
+    padding: 0px; /* Increased padding */
+    margin-bottom: 10px; /* More space below card */
+    background-color: #f0f8ff; /* Lighter blue for card background */
+    width: 100%; /* Make card fill container width */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 /* Main App Container */
 .container {
     background-color: #ffffff;
-    background-image: url('Images/m.png');
-    background-repeat: no-repeat;
-    /* ADJUSTED BACKGROUND POSITION AND SIZE */
-    background-position: center calc(100% - 80px); /* Moves Manku up from bottom, centered horizontally */
-    background-size: 100px auto; /* Adjust Manku's size, e.g., 100px wide */
-
-    background-blend-mode: multiply; /* Keeps him subtle by blending with background */
-
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400px;
-    width: 90%; 
-    position: relative; 
-    opacity: 0.9; /* Slightly transparent for a modern look */
-
-    height: 550px; /* Consistent fixed height for the container */
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: space-between; 
-    box-sizing: border-box; 
+    width: 90%;
+    position: relative;
+    opacity: 0.9;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
 }
+
 
 h1 { /* This is the correct start of the h1 rule */
     color: #333;
-    margin-bottom: 40px; /* ADJUSTED THIS MARGIN to give more space for the star display */
+    margin-bottom: 0px; /* ADJUSTED THIS MARGIN to give more space for the star display */
 } /* This is the correct end of the h1 rule */
 
 
@@ -109,6 +95,9 @@ button:active {
     transform: translateY(0); /* Return to original position */
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); /* Smaller shadow when pressed */
 }
+
+
+
 
 /* NEW CSS for Score Display */
 /* Styles for the Score Display - DEFINITIVE */
@@ -195,28 +184,41 @@ button:active {
 
 /* General full-screen centering class - applied to all top-level screens */
 .full-screen-center {
-    display: flex; /* Make it a flex container to center its own content */
+    display: flex;
     flex-direction: column;
-    align-items: center; /* Center horizontally within the column */
-    justify-content: center; /* Center vertically within the column */
-    min-height: 100vh; /* Ensures it takes full height */
-    width: 100%; /* Ensures it takes full width */
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    width: 100%;
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
-    background-color: #f0f8ff; /* Match your body background */
+    background-color: #f0f8ff;
 
-    /* CRITICAL: Hide by default and stack on top using absolute positioning */
-    position: absolute; 
-    top: 0;
+    position: absolute;
+    top: 60px; /* 👈 Shift whole screen downward */
     left: 0;
-    opacity: 0; /* Initially invisible */
-    visibility: hidden; /* Also hides from screen readers and stops clicks */
-    transition: opacity 0.5s ease, visibility 0s linear 0.5s; /* Smooth fade effect */
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s;
 }
+
 
 .full-screen-center.active {
     opacity: 1;
     visibility: visible;
     transition-delay: 0s; /* Show immediately, fade in */
 }
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* 👈 cleaner, tighter spacing between buttons */
+    margin-top: 10px;
+}
+.action-buttons button {
+    margin: 5px 0; /* Top and bottom spacing only 5px */
+  }
+  

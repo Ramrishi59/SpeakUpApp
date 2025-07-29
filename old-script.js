@@ -157,12 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- End of helper functions ---
 
-
-    // Add event listeners (NOW INSIDE DOMContentLoaded)
-    // The speakButton is commented out in your old-index.html, so this won't activate
-    // if (speakButton) {
-    //     speakButton.addEventListener('click', handleWordInteraction);
-    // }
     if (wordImage) {
         wordImage.addEventListener('click', handleWordInteraction);
     }
