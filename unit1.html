@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SpeakUp – Unit 1: My Family</title>
+  <link rel="stylesheet" href="style-unit1.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="menu-icon">☰</div>
+    <div class="header-title">Unit 1: My Family</div>
+    <div class="notification-icon">🔔</div>
+   </header>
+      
+  <div class="lesson-container">
+    <div id="screen-container"></div>
+    <div class="navigation">
+      <button id="prevButton">⟵ Back</button>
+      <button id="nextButton">Next ⟶</button>
+    </div>
+  </div>
+  <footer class="bottom-nav">
+    <div class="nav-button" onclick="goToDashboard()">🏠</div>
+    <div class="nav-button" data-nav-target="progress">📊</div>
+    <div class="nav-button" data-nav-target="settings">⚙️</div>
+  </footer>  
+
+  <script src="script-unit1.js"></script>
+  <script>
+    function goToDashboard() {
+      window.location.href = "index.html"; // or whatever your dashboard filename is
+    }
+  </script>
+  
+</body>
+</html>

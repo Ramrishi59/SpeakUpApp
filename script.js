@@ -6,10 +6,10 @@ const dashboardLessons = [
         thumbnail: 'Images/a_an_thumbnail.jpg' // You'll need to create this image
     },
     {
-        id: 'science-experiment',
-        title: 'Science Experiment',
-        description: 'Conduct experiments to learn about the physical properties of matter, including density and buoyancy',
-        thumbnail: 'Images/a_an_thumbnail.jpg' // Placeholder thumbnail
+        id: 'unit1',
+        title: 'My Family',
+        description: 'Learn about family with Manku!',
+        thumbnail: 'Images/familydash.jpg' // Placeholder thumbnail
     },
     {
         id: 'programming-basics',
@@ -87,9 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Redirect to the old-index.html (now word-display-screen.html)
                     // and pass the unitId as a URL parameter
                     window.location.href = `old-index.html?unitId=${lessonId}`;
-                } else {
-                    alert(`The "${dashboardLessons.find(l => l.id === lessonId)?.title}" lesson is not yet ready!`);
-                }
+                } 
+                if (lessonId === 'unit1') {
+                    window.location.href = `unit1.html`;
+                  }
+                  
             }
         });
     }

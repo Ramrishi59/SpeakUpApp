@@ -1,0 +1,137 @@
+/* General Page Style */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #fffbe7, #e6f7ff);
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Top App Header */
+  .app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #4caf50;
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-bottom: 2px solid #388e3c;
+  }
+  
+  .menu-icon,
+  .notification-icon {
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+  
+  /* Main Lesson Area */
+  .lesson-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  /* Lesson Image */
+  .lesson-image {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Lesson Text */
+  .lesson-text {
+    font-size: 1.5rem;
+    margin: 10px 0 20px;
+    color: #333;
+  }
+  
+  /* Navigation Buttons */
+  .navigation {
+    margin-top: 20px;
+  }
+  
+  .navigation button {
+    background: #4caf50;
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .navigation button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Matching Game Cards */
+  .match-card {
+    display: inline-block;
+    margin: 15px;
+    text-align: center;
+  }
+  
+  .match-image {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #ddd;
+    border-radius: 12px;
+    cursor: pointer;
+    object-fit: cover;
+  }
+  
+  .match-label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  /* Microphone Prompt */
+  .mic-prompt {
+    font-size: 1.2rem;
+    margin: 12px 0;
+    color: #444;
+  }
+  
+  /* Roleplay Block */
+  .roleplay-block {
+    margin: 15px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border-left: 5px solid #4caf50;
+    text-align: left;
+  }
+  
+  /* Bottom Nav Bar */
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    background: #f1f1f1;
+    border-top: 1px solid #ccc;
+    padding: 12px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .nav-button {
+    font-size: 1.4rem;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .nav-button.active {
+    color: #4caf50;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,83 @@
+{
+    "unitId": "unit1",
+    "title": "My Family",
+    "screens": [
+      {
+        "type": "intro",
+        "image": "Images/family_intro.jpg",
+        "text": "Hi, everyone! Look at this lovely family. Do you know who they are?",
+        "audio": "Audio/unit1/screen1.mp3"
+      },
+      {
+        "type": "word",
+        "image": "Images/mom.jpg",
+        "text": "This is my Mom. She loves to cook!",
+        "word": "Mom",
+        "audio": "Audio/unit1/mom.mp3"
+      },
+      {
+        "type": "word",
+        "image": "Images/dad.jpg",
+        "text": "And this is my Dad. He tells funny stories.",
+        "word": "Dad",
+        "audio": "Audio/unit1/dad.mp3"
+      },
+      {
+        "type": "word",
+        "image": "Images/brother.jpg",
+        "text": "Meet my Brother. He loves to play football.",
+        "word": "Brother",
+        "audio": "Audio/unit1/brother.mp3"
+      },
+      {
+        "type": "word",
+        "image": "Images/sister.jpg",
+        "text": "And this is my Sister. She loves to read books.",
+        "word": "Sister",
+        "audio": "Audio/unit1/sister.mp3"
+      },
+      {
+        "type": "match",
+        "image": "Images/family-match.jpg",
+        "text": "Now, let's play a game! Match the picture to the word.",
+        "instruction": "ചിത്രവും വാക്കും യോജിപ്പിക്കുക.",
+        "options": [
+          { "label": "Mom", "image": "Images/mom.jpg" },
+          { "label": "Dad", "image": "Images/dad.jpg" },
+          { "label": "Brother", "image": "Images/brother.jpg" },
+          { "label": "Sister", "image": "Images/sister.jpg" }
+        ],
+        "audioCorrect": "Audio/unit1/correct.mp3",
+        "audioWrong": "Audio/unit1/wrong.mp3"
+      },
+      {
+        "type": "mic",
+        "image": "Images/hi.jpg",
+        "text": "Every morning, we say 'Hi!' to our family. Can you say 'Hi'?",
+        "prompts": ["Hi, Mom!", "Hi, Dad!"],
+        "audio": "Audio/unit1/hi.mp3"
+      },
+      {
+        "type": "roleplay",
+        "image": "Images/roleplay.jpg",
+        "text": "Let's pretend! I'll be the child, you be the Mom/Dad.",
+        "dialogues": [
+          {
+            "child": "Hi, Mom!",
+            "userPrompt": "Now you say: 'Hi, my dear!'"
+          },
+          {
+            "child": "Hi, Dad!",
+            "userPrompt": "Now you say: 'How are you?'"
+          }
+        ],
+        "audio": "Audio/unit1/roleplay.mp3"
+      },
+      {
+        "type": "drawing",
+        "image": "Images/draw.jpg",
+        "text": "You did so well! Now, can you draw your family? Or maybe take a picture with them and upload it here!"
+      }
+    ]
+  }
+  
