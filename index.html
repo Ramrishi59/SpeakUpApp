@@ -61,5 +61,23 @@
         });
       }
     </script>
+
+<!-- 📚 Word Display Screen -->
+<div id="wordDisplayScreen" class="full-screen-center" style="display: none;">
+  <h2>Learn English Words!</h2>
+  <div class="card">
+    <img id="wordImage" src="" alt="Word Image" class="interactive-element" />
+    <p>Click on the image to hear the word</p>
+    <p id="wordText"></p>
+  </div>
+  <div class="navigation-buttons">
+    <img src="images/arrow_left.png" alt="Previous Word" id="prevButton" class="nav-arrow" />
+    <img src="images/arrow_right.png" alt="Next Word" id="nextButton" class="nav-arrow" />
+  </div>
+  <div class="action-buttons">
+    <button id="startoverButton">Start Over</button>
+    <button class="back-button" data-screen="unitSelectionScreen">Back to Lessons</button>
+  </div>
+</div>
 </body>
 </html>

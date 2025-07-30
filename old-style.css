@@ -1,224 +1,197 @@
+/* Base Page Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* Light blue background */
-    margin: 0;
-    box-sizing: border-box; 
-    overflow: hidden;
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  margin: 0;
+  box-sizing: border-box;
+  /* overflow: hidden; */
 }
 
-.card {
-    border: 2px solid #a0e0ff;
-    border-radius: 12px; /* Slightly more rounded */
-    padding: 0px; /* Increased padding */
-    margin-bottom: 10px; /* More space below card */
-    background-color: #f0f8ff; /* Lighter blue for card background */
-    width: 100%; /* Make card fill container width */
-    box-sizing: border-box; /* Include padding in width */
+/* Main Lesson Screen Layout */
+.full-screen-center {
+  position: absolute;
+  top: 60px; /* Space for header or score */
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f0f8ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-/* Main App Container */
-.container {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    position: relative;
-    opacity: 0.9;
-    height: 550px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
+.full-screen-center.active {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
-
-h1 { /* This is the correct start of the h1 rule */
-    color: #333;
-    margin-bottom: 0px; /* ADJUSTED THIS MARGIN to give more space for the star display */
-} /* This is the correct end of the h1 rule */
-
-
-/* Updated CSS for Image consistency */
+/* Image Styling */
 #wordImage {
-    max-width: 100%;
-    width: 100%; /* Ensure it tries to fill the width */
-    height: 200px; /* Set a fixed height for consistency */
-    object-fit: contain; /* This scales the image to fit within the 200px height/100% width, maintaining its aspect ratio */
-    border-radius: 8px;
-    margin-bottom: 15px;
-    cursor: pointer; /* To indicate it's clickable */
-    background-color: #ffffff; /* A background for the image area if the image doesn't fill it */
-    padding: 10px; /* Some padding around the image inside its fixed frame */
-    box-sizing: border-box; /* Ensures padding is included in the total width/height */
+  max-width: 100%;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background-color: #ffffff;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
+/* Word Text Styling */
 #wordText {
-    font-size: 2em;
-    font-weight: bold;
-    color: #007bff;
-    margin-bottom: 15px;
-    /* NEW: Fix height to prevent shifts */
-    min-height: 3.5em; /* Enough space for 1-2 lines of text, adjust as needed */
-    line-height: 1.2; /* Controls spacing between lines if text wraps */
-    margin-bottom: 15px; /* Consistent spacing below text */
+  font-size: 2em;
+  font-weight: bold;
+  color: #007bff;
+  min-height: 3.5em;
+  line-height: 1.2;
+  margin-bottom: 15px;
 }
 
-button {
-    background-color: #4CAF50; /* A pleasant green, like Duolingo */
-    color: white; /* White text for contrast */
-    padding: 12px 25px; /* Ample padding for a good click target */
-    border: none; /* Remove default button border */
-    border-radius: 8px; /* Slightly rounded corners */
-    cursor: pointer; /* Indicates it's clickable */
-    font-size: 1.1em; /* Make text a bit larger */
-    /* ADDED TRANSFORM AND BOX-SHADOW TO TRANSITION */
-    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease; /* Smooth transitions for hover/active states */
-    margin: 30px; /* Space between buttons */
-    display: block;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Initial subtle shadow */
-    display: block; /* Ensure each button takes its own line for stacking */
-    width: fit-content; /* Make button only as wide as its content + padding */
-}
-
-button:hover {
-    background-color: #45a049; /* Slightly darker green on hover */
-    transform: translateY(-2px); /* Subtle lift effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* A little shadow for depth */
-}
-
-button:active {
-    background-color: #3d8c41; /* Even darker green when clicked */
-    transform: translateY(0); /* Return to original position */
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15); /* Smaller shadow when pressed */
-}
-
-
-
-
-/* NEW CSS for Score Display */
-/* Styles for the Score Display - DEFINITIVE */
-.score-display {
-    position: absolute; /* Positions relative to the .container */
-    top: 6px;         /* Pull it UPWARDS. Adjust this value to move it higher or lower */
-    right: 15px;        /* Distance from the right edge of the container */
-    display: flex;      /* Use flexbox to align star and number horizontally */
-    align-items: center; /* Vertically center star and number */
-    background-color: #ffe082; /* Gold-like background for the score */
-    padding: 8px 15px;
-    border-radius: 20px; /* Make it pill-shaped */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 10; /* Ensure it stays on top of other elements */
-    color: #333; /* Dark text for score */
-    /* Ensure it's always visible by default */
-    opacity: 1; 
-    visibility: visible;
-}
-
-.star-icon {
-    width: 35px;  /* Slightly increased size of the star icon */
-    height: 35px; /* Ensure height matches width */
-    margin-right: 10px; /* More space between star and number */
-    flex-shrink: 0; /* Prevents the image from shrinking */
-    /* Ensure the image itself is not hidden or transparent */
-    opacity: 1;
-    display: block;
-}
-
-#starCount {
-    font-size: 1.8em; /* Slightly larger font for visibility */
-    font-weight: bold;
-    color: #e65100; /* Darker orange color */
-    /* Optional: Add a subtle shadow for better readability on lighter backgrounds */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-/* NEW CSS for Navigation Arrows (THESE WERE MISSING!) */
+/* Navigation Buttons (Prev/Next) */
 .navigation-buttons {
-    display: flex; /* Use flexbox to put arrows side-by-side */
-    justify-content: space-between; /* Space them out */
-    align-items: center;
-    width: 100%; /* Take full width of its parent */
-    max-width: 300px; /* Limit overall width for smaller screens */
-    margin: 20px auto 15px auto; /* Center it below the card and add top margin */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto 15px auto;
+  gap: 30px;
 }
 
 .nav-arrow {
-    width: 50px; /* Size of the arrow image */
-    height: 50px;
-    cursor: pointer; /* To indicate it's clickable */
-    transition: transform 0.2s ease; /* Smooth hover effect */
-    background-color: #007bff; /* Background color for arrows */
-    border-radius: 50%; /* Makes them circular */
-    padding: 5px; /* Padding inside the circle */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background-color: #007bff;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  touch-action: manipulation;
 }
 
 .nav-arrow:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
+  transform: scale(1.1);
 }
 
-/* NEW CSS for Disabled Navigation Arrows */
 .nav-arrow.disabled {
-    opacity: 0.5; /* Make it semi-transparent */
-    filter: grayscale(100%); /* Turn it black and white */
-    cursor: not-allowed; /* Change cursor to indicate it's not clickable */
-    pointer-events: none; /* Crucial: Prevents any click events on the element */
-}
-.nav-arrow {
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    background-color: #007bff;
-    border-radius: 50%;
-    padding: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-
-    /* NEW: Prevent double-tap-to-zoom on iOS */
-    touch-action: manipulation; 
+  opacity: 0.5;
+  filter: grayscale(100%);
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
-/* General full-screen centering class - applied to all top-level screens */
-.full-screen-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    background-color: #f0f8ff;
-
-    position: absolute;
-    top: 60px; /* 👈 Shift whole screen downward */
-    left: 0;
-
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0s linear 0.5s;
-}
-
-
-.full-screen-center.active {
-    opacity: 1;
-    visibility: visible;
-    transition-delay: 0s; /* Show immediately, fade in */
-}
-
+/* Action Buttons */
 .action-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px; /* 👈 cleaner, tighter spacing between buttons */
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
 }
+
 .action-buttons button {
-    margin: 5px 0; /* Top and bottom spacing only 5px */
-  }
-  
+  margin: 5px 0;
+}
+
+/* Button Styling */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.3s ease;
+  margin: 10px auto;
+  display: block;
+  width: fit-content;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  background-color: #3d8c41;
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* Score Display Box */
+.score-display {
+  position: absolute;
+  top: 6px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  background-color: #ffe082;
+  padding: 8px 15px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-weight: bold;
+  z-index: 1000;
+  opacity: 1;
+  visibility: visible;
+}
+
+.star-icon {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  display: block;
+  opacity: 1;
+}
+
+#starCount {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #e65100;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Layout (Optional for lesson content blocks) */
+.card {
+  border: 2px solid #a0e0ff;
+  border-radius: 12px;
+  padding: 0px;
+  margin-bottom: 10px;
+  background-color: #f0f8ff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Container (for outer box style in centered layout) */
+/* .container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  opacity: 0.95;
+  min-height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} */

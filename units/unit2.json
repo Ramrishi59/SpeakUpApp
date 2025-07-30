@@ -1,0 +1,21 @@
+{
+  "id": "unit2",
+  "name": "Unit 2: a, an",
+  "description": "Learn about indefinite articles with common objects.",
+  "thumbnail": "Images/a_an_thumbnail.png",
+  "words": [
+    { "text": "a book", "image": "Images/a_book.png", "audio": "Audio/a_book.mp3" },
+    { "text": "a pencil", "image": "Images/a_pencil.png", "audio": "Audio/a_pencil.mp3" },
+    { "text": "a pen", "image": "Images/a_pen.png", "audio": "Audio/a_pen.mp3" },
+    { "text": "a crayon", "image": "Images/a_crayon.png", "audio": "Audio/a_crayon.mp3" },
+    { "text": "a ruler", "image": "Images/a_ruler.png", "audio": "Audio/a_ruler.mp3" },
+    { "text": "a bag", "image": "Images/a_bag.png", "audio": "Audio/a_bag.mp3" },
+    { "text": "a table", "image": "Images/a_table.png", "audio": "Audio/a_table.mp3" },
+    { "text": "a chair", "image": "Images/a_chair.png", "audio": "Audio/a_chair.mp3" },
+    { "text": "an apple", "image": "Images/an_apple.png", "audio": "Audio/an_apple.mp3" },
+    { "text": "an orange", "image": "Images/an_orange.png", "audio": "Audio/an_orange.mp3" },
+    { "text": "an egg", "image": "Images/an_egg.png", "audio": "Audio/an_egg.mp3" },
+    { "text": "an eraser", "image": "Images/an_eraser.png", "audio": "Audio/an_eraser.mp3" },
+    { "text": "an elephant", "image": "Images/an_elephant.png", "audio": "Audio/an_elephant.mp3" }
+  ]
+}
