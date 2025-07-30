@@ -1,5 +1,3 @@
-// Define the lesson data that will be displayed on the dashboard
-// This is distinct from the detailed 'lessons' object in old-script.js
 const dashboardLessons = [
     {
         id: 'unit2', // Corresponds to the unit ID in old-script.js
@@ -118,62 +116,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("New dashboard script.js loaded!");
 });
-let currentWordIndex = 0;
-let lessonData = [];
 
-function loadUnit(unitId) {
-  fetch(`units/unit${unitId}.json`)
-    .then(response => response.json())
-    .then(data => {
-      lessonData = data;
-      currentWordIndex = 0;
-      showScreen('wordDisplayScreen');
-      startLesson();
-    })
-    .catch(err => console.error('Failed to load unit:', err));
-}
-
-function startLesson() {
-  if (!lessonData.length) return;
-  const wordObj = lessonData[currentWordIndex];
-  document.getElementById('wordText').textContent = wordObj.word;
-  document.getElementById('wordImage').src = wordObj.image;
-  new Audio(wordObj.audio).play();
-}
-
-function showScreen(screenId) {
-  document.querySelectorAll('.full-screen-center').forEach(div => {
-    div.style.display = 'none';
-  });
-  document.getElementById(screenId).style.display = 'flex';
-}
-
-document.querySelectorAll('.unit-button').forEach(button => {
-  button.addEventListener('click', () => {
-    const unitId = button.dataset.unit;
-    loadUnit(unitId);
-  });
-});
-
-document.getElementById('nextButton').addEventListener('click', () => {
-  if (currentWordIndex < lessonData.length - 1) {
-    currentWordIndex++;
-    startLesson();
-  }
-});
-
-document.getElementById('prevButton').addEventListener('click', () => {
-  if (currentWordIndex > 0) {
-    currentWordIndex--;
-    startLesson();
-  }
-});
-
-document.getElementById('startoverButton').addEventListener('click', () => {
-  currentWordIndex = 0;
-  startLesson();
-});
-
-document.querySelector('.back-button').addEventListener('click', () => {
-  showScreen('unitSelectionScreen');
-});
