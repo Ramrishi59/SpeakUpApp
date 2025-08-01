@@ -46,7 +46,11 @@ body {
     max-width: 800px;
     margin: auto;
     text-align: center;
+    overflow-y: auto;     /* <— this allows scrolling if needed */
+    max-height: calc(100vh - 120px); /* leave space for header and nav bar */
+    box-sizing: border-box;
   }
+  
   
   /* Lesson Image */
   .lesson-image {
@@ -240,5 +244,12 @@ body {
     box-sizing: border-box;
   }
   
+  .recording-status {
+    display: block;
+    margin: 8px 0;
+    color: red;
+    font-weight: bold;
+    font-size: 1rem;
+  }
   
   

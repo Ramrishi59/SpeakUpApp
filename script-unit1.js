@@ -198,43 +198,48 @@ function renderMicScreen(screen) {
     playBtn.onclick = () => new Audio(`Audio/mic_sample_${index + 1}.mp3`).play();
     promptBox.appendChild(playBtn);
 
-    // Recorder
-    let recorder;
-    let audioBlob;
-    const recordBtn = document.createElement("button");
-    const playMyBtn = document.createElement("button");
-    playMyBtn.textContent = "🔁 Play My Voice";
-    playMyBtn.disabled = true;
+    let audioBlob = null;
+    let recordingIndicator = document.createElement("span");
+    recordingIndicator.className = "recording-status";
+    promptBox.appendChild(recordingIndicator);
 
+    // Record Button
+    const recordBtn = document.createElement("button");
     recordBtn.textContent = "🎙️ Record";
     recordBtn.onclick = async () => {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      recorder = new MediaRecorder(stream);
+      const recorder = new MediaRecorder(stream);
       const chunks = [];
+
+      recordingIndicator.textContent = "🔴 Recording…";
       recorder.ondataavailable = e => chunks.push(e.data);
       recorder.onstop = () => {
         audioBlob = new Blob(chunks, { type: "audio/webm" });
         playMyBtn.disabled = false;
+        recordingIndicator.textContent = "";
       };
-      recorder.start();
-      setTimeout(() => {
-        recorder.stop();
-      }, 3000); // Record 3 seconds
-    };
 
+      recorder.start();
+      setTimeout(() => recorder.stop(), 3000);
+    };
+    promptBox.appendChild(recordBtn);
+
+    // Play My Voice
+    const playMyBtn = document.createElement("button");
+    playMyBtn.textContent = "🔁 Play My Voice";
+    playMyBtn.disabled = true;
     playMyBtn.onclick = () => {
       if (audioBlob) {
         const audioURL = URL.createObjectURL(audioBlob);
-        const tempAudio = new Audio(audioURL);
-        tempAudio.play();
+        new Audio(audioURL).play();
       }
     };
-
-    promptBox.appendChild(recordBtn);
     promptBox.appendChild(playMyBtn);
+
     screenContainer.appendChild(promptBox);
   });
 }
+
 
 
 function renderUpload() {
