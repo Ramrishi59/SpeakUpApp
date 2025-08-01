@@ -55,11 +55,6 @@ const screens = [
         { mine: "Hi, Dad!", yours: "How are you?" }
       ]
     },
-    {
-      id: "screen9",
-      type: "upload",
-      text: "You did so well! Now, can you draw your family? Or maybe take a picture and upload it here!"
-    }
   ];
   
   let currentIndex = 0;
@@ -115,24 +110,61 @@ const screens = [
     instructions.textContent = screen.text;
     screenContainer.appendChild(instructions);
   
-    screen.items.forEach(item => {
+    const matchWrapper = document.createElement("div");
+    matchWrapper.className = "match-wrapper";
+    screenContainer.appendChild(matchWrapper);
+  
+    // Render image cards
+    screen.items.forEach((item, index) => {
       const card = document.createElement("div");
-      card.className = "match-card";
+      card.className = "drop-zone";
+      card.dataset.label = item.label;
   
       const img = document.createElement("img");
       img.src = item.image;
       img.className = "match-image";
-      img.onclick = () => new Audio(item.audio).play();
   
-      const label = document.createElement("p");
-      label.textContent = item.label;
-      label.className = "match-label";
+      const dropArea = document.createElement("div");
+      dropArea.className = "drop-area";
+      dropArea.textContent = "Drop here";
+      dropArea.ondragover = e => e.preventDefault();
+      dropArea.ondrop = e => {
+        const draggedLabel = e.dataTransfer.getData("text/plain");
+        if (draggedLabel === card.dataset.label) {
+          dropArea.textContent = draggedLabel;
+          dropArea.style.background = "#d4edda";
+          dropArea.style.borderColor = "#28a745";
+          new Audio(item.audio).play();
+        } else {
+          dropArea.textContent = "❌ Try again";
+          dropArea.style.background = "#f8d7da";
+          dropArea.style.borderColor = "#dc3545";
+        }
+      };
   
       card.appendChild(img);
-      card.appendChild(label);
-      screenContainer.appendChild(card);
+      card.appendChild(dropArea);
+      matchWrapper.appendChild(card);
     });
-  }
+  
+    // Render draggable labels
+    const labelBox = document.createElement("div");
+    labelBox.className = "label-box";
+    screen.items
+      .sort(() => Math.random() - 0.5)
+      .forEach(item => {
+        const label = document.createElement("div");
+        label.className = "draggable-label";
+        label.textContent = item.label;
+        label.draggable = true;
+        label.ondragstart = e => {
+          e.dataTransfer.setData("text/plain", item.label);
+        };
+        labelBox.appendChild(label);
+      });
+  
+    screenContainer.appendChild(labelBox);
+  }  
   
   function renderMicScreen(screen) {
     const instructions = document.createElement("p");
@@ -147,18 +179,63 @@ const screens = [
     });
   }
   
-  function renderRolePlay(screen) {
+  function renderMicScreen(screen) {
     const instructions = document.createElement("p");
     instructions.textContent = screen.text;
     screenContainer.appendChild(instructions);
   
-    screen.roleLines.forEach(line => {
-      const block = document.createElement("div");
-      block.className = "roleplay-block";
-      block.innerHTML = `<p>👦 Me: "${line.mine}"</p><p>🧑 You: "${line.yours}"</p>`;
-      screenContainer.appendChild(block);
+    screen.prompts.forEach((prompt, index) => {
+      const promptBox = document.createElement("div");
+      promptBox.className = "mic-prompt-box";
+  
+      const label = document.createElement("p");
+      label.innerHTML = `<strong>${prompt}</strong>`;
+      promptBox.appendChild(label);
+  
+      // Play Sample Button
+      const playBtn = document.createElement("button");
+      playBtn.textContent = "▶️ Play Sample";
+      playBtn.onclick = () => new Audio(`Audio/mic_sample_${index + 1}.mp3`).play();
+      promptBox.appendChild(playBtn);
+  
+      // Recorder
+      let recorder;
+      let audioBlob;
+      const recordBtn = document.createElement("button");
+      const playMyBtn = document.createElement("button");
+      playMyBtn.textContent = "🔁 Play My Voice";
+      playMyBtn.disabled = true;
+  
+      recordBtn.textContent = "🎙️ Record";
+      recordBtn.onclick = async () => {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        recorder = new MediaRecorder(stream);
+        const chunks = [];
+        recorder.ondataavailable = e => chunks.push(e.data);
+        recorder.onstop = () => {
+          audioBlob = new Blob(chunks, { type: "audio/webm" });
+          playMyBtn.disabled = false;
+        };
+        recorder.start();
+        setTimeout(() => {
+          recorder.stop();
+        }, 3000); // Record 3 seconds
+      };
+  
+      playMyBtn.onclick = () => {
+        if (audioBlob) {
+          const audioURL = URL.createObjectURL(audioBlob);
+          const tempAudio = new Audio(audioURL);
+          tempAudio.play();
+        }
+      };
+  
+      promptBox.appendChild(recordBtn);
+      promptBox.appendChild(playMyBtn);
+      screenContainer.appendChild(promptBox);
     });
   }
+  
   
   function renderUpload() {
     const msg = document.createElement("p");

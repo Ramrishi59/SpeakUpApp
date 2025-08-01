@@ -160,6 +160,73 @@ body {
     color: #4caf50;
     font-weight: bold;
   }
+  .match-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .drop-zone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .drop-area {
+    width: 120px;
+    height: 40px;
+    border: 2px dashed #999;
+    border-radius: 6px;
+    margin-top: 10px;
+    padding: 6px;
+    background: #f1f1f1;
+    font-weight: bold;
+    color: #555;
+    transition: 0.3s ease;
+  }
+  
+  .label-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .draggable-label {
+    background: #ffcc00;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: grab;
+  }
+
+  .mic-prompt-box {
+    margin: 15px 0;
+    padding: 10px;
+    background: #fff3cd;
+    border-left: 5px solid #ffa500;
+    border-radius: 10px;
+    text-align: left;
+  }
+  
+  .mic-prompt-box button {
+    margin-right: 10px;
+    margin-top: 5px;
+    padding: 6px 10px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .mic-prompt-box button:disabled {
+    background: #ccc;
+  }
   
   
   
