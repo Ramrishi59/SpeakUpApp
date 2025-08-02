@@ -220,7 +220,7 @@ function renderMicScreen(screen) {
       };
 
       recorder.start();
-      setTimeout(() => recorder.stop(), 3000);
+      setTimeout(() => recorder.stop(), 10000);
     };
     promptBox.appendChild(recordBtn);
 
