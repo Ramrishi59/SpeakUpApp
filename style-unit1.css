@@ -239,14 +239,12 @@ html,body {
   }
   
   .lesson-container {
+    flex: 1;
+    overflow-y: auto;
     padding: 20px;
-    max-width: 800px;
-    margin: auto;
     text-align: center;
-    overflow-y: auto;     /* <— this allows scrolling if needed */
-    max-height: calc(100vh - 120px); /* leave space for header and nav bar */
-    box-sizing: border-box;
   }
+  
   
   .recording-status {
     display: block;
@@ -255,5 +253,12 @@ html,body {
     font-weight: bold;
     font-size: 1rem;
   }
+
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
   
   
