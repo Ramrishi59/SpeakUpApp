@@ -12,16 +12,16 @@ const dashboardLessons = [
         thumbnail: 'Images/familydash.jpg' // Placeholder thumbnail
     },
     {
-        id: 'programming-basics',
-        title: 'Programming Basics',
-        description: 'Learn the basics of computer programming, including data structures and algorithms',
-        thumbnail: 'Images/a_an_thumbnail.jpg' // Placeholder thumbnail
+        id: 'unit2-toys',
+        title: 'My Favourite Toys ', 
+        description: 'Learn about toys with Manku!',
+        thumbnail: 'Images/toysdash.png' // Placeholder thumbnail
     },
     {
-        id: 'environmental-conservation',
-        title: 'Environmental Conservation',
-        description: 'Understand the importance of protecting the environment and ways to make a positive impact',
-        thumbnail: 'Images/a_an_thumbnail.jpg' // Placeholder thumbnail
+        id: 'unit3',
+        title: 'My Happy Day',
+        description: ' Learn simple daily activities (eat, play, sleep), use "I eat," "I play," "I sleep," and relate to time of day.',
+        thumbnail: 'Images/happyday.png' // Placeholder thumbnail
     },
     {
         id: 'history-of-art',
@@ -83,15 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 // === CRITICAL INTEGRATION POINT ===
                 // For now, we'll only navigate to 'A / An' (unit2) which uses your old-index.html
                 // For other lessons, we'll show an alert.
-                if (lessonId === 'unit2') {
+                if (lessonId === 'unit2-toys') {
                     // Redirect to the old-index.html (now word-display-screen.html)
                     // and pass the unitId as a URL parameter
-                    window.location.href = `old-index.html?unitId=${lessonId}`;
+                    // window.location.href = `old-index.html?unitId=${lessonId}`;
+                    window.location.href = `unit2.html`;
                 } 
                 if (lessonId === 'unit1') {
                     window.location.href = `unit1.html`;
                   }
-                  
             }
         });
     }
