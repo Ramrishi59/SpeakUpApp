@@ -262,3 +262,43 @@ html, body {
     color: #004b99;
   }
   
+  .toy-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .toy-card {
+    background: #fffbe7;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 150px;
+  }
+  
+  .toy-image {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .mic-control button {
+    margin-top: 8px;
+    display: block;
+    width: 100%;
+    padding: 6px 0;
+    border: none;
+    background: #4caf50;
+    color: white;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .mic-control button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+  

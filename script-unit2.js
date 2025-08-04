@@ -39,10 +39,10 @@ const screens = [
       type: "mic",
       text: "What is this? Click on the toy and say its name! (ഇത് എന്താണ്? കളിപ്പാട്ടത്തിൽ ക്ലിക്ക് ചെയ്ത് പേര് പറയുക.)",
       toys: [
-        { name: "ball", image: "Images/ball.jpg", expected: "It's a ball." },
+        { name: "ball", image: "Images/ball.png", expected: "It's a ball." },
         { name: "car", image: "Images/car.jpg", expected: "It's a car." },
-        { name: "doll", image: "Images/doll.jpg", expected: "It's a doll." },
-        { name: "robot", image: "Images/robot.jpg", expected: "It's a robot." }
+        { name: "doll", image: "Images/doll.png", expected: "It's a doll." },
+        { name: "robot", image: "Images/robot.png", expected: "It's a robot." }
       ]
     },
     {
@@ -79,27 +79,31 @@ const screens = [
       screenContainer.appendChild(img);
     }
   
-    const textPara = document.createElement("p");
-    textPara.className = "lesson-text";
-  
-    if (screen.highlightWord) {
-      const word = screen.highlightWord;
-      const wordAudio = `Audio/${word}_word.mp3`;
-      const regex = new RegExp(`\\b${word}\\b`);
-      const modifiedText = screen.text.replace(
-        regex,
-        `<span class="highlight-word" data-audio="${wordAudio}">${word}</span>`
-      );
-      textPara.innerHTML = modifiedText;
-      textPara.querySelectorAll(".highlight-word").forEach(span => {
-        span.style.cursor = "pointer";
-        span.onclick = () => new Audio(span.dataset.audio).play();
-      });
-    } else {
-      textPara.textContent = screen.text;
-    }
-  
-    screenContainer.appendChild(textPara);
+// Only render text if it's NOT a special mic screen with toys
+if (!(screen.type === "mic" && screen.toys)) {
+  const textPara = document.createElement("p");
+  textPara.className = "lesson-text";
+
+  if (screen.highlightWord) {
+    const word = screen.highlightWord;
+    const wordAudio = `Audio/${word}_word.mp3`;
+    const regex = new RegExp(`\\b${word}\\b`);
+    const modifiedText = screen.text.replace(
+      regex,
+      `<span class="highlight-word" data-audio="${wordAudio}">${word}</span>`
+    );
+    textPara.innerHTML = modifiedText;
+    textPara.querySelectorAll(".highlight-word").forEach(span => {
+      span.style.cursor = "pointer";
+      span.onclick = () => new Audio(span.dataset.audio).play();
+    });
+  } else {
+    textPara.textContent = screen.text;
+  }
+
+  screenContainer.appendChild(textPara);
+}
+
   
     if (screen.audio) {
       const audio = new Audio(screen.audio);
@@ -109,6 +113,75 @@ const screens = [
   
     prevButton.disabled = currentIndex === 0;
     nextButton.disabled = currentIndex === screens.length - 1;
+
+    if (screen.type === "mic" && screen.toys) {
+      const instruction = document.createElement("p");
+      instruction.className = "lesson-text";
+      instruction.textContent = screen.text;
+      screenContainer.appendChild(instruction);
+    
+      const toyGrid = document.createElement("div");
+      toyGrid.className = "toy-grid";
+    
+      screen.toys.forEach((toy, index) => {
+        const toyCard = document.createElement("div");
+        toyCard.className = "toy-card";
+    
+        const img = document.createElement("img");
+        img.src = toy.image;
+        img.className = "toy-image";
+    
+        const micArea = document.createElement("div");
+        micArea.className = "mic-control";
+    
+        const askBtn = document.createElement("button");
+        askBtn.textContent = "❓ What is this?";
+        askBtn.onclick = () => {
+          new Audio("Audio/what_is_this.mp3").play(); // You’ll need to add this audio
+        };
+    
+        const recordBtn = document.createElement("button");
+        recordBtn.textContent = "🎙️ Record";
+        const playBtn = document.createElement("button");
+        playBtn.textContent = "▶️ Play";
+        playBtn.disabled = true;
+    
+        let audioBlob = null;
+    
+        recordBtn.onclick = async () => {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          const recorder = new MediaRecorder(stream);
+          const chunks = [];
+    
+          recorder.ondataavailable = e => chunks.push(e.data);
+          recorder.onstop = () => {
+            audioBlob = new Blob(chunks, { type: "audio/webm" });
+            playBtn.disabled = false;
+          };
+    
+          recorder.start();
+          setTimeout(() => recorder.stop(), 5000);
+        };
+    
+        playBtn.onclick = () => {
+          if (audioBlob) {
+            const url = URL.createObjectURL(audioBlob);
+            new Audio(url).play();
+          }
+        };
+    
+        micArea.appendChild(askBtn);
+        micArea.appendChild(recordBtn);
+        micArea.appendChild(playBtn);
+    
+        toyCard.appendChild(img);
+        toyCard.appendChild(micArea);
+        toyGrid.appendChild(toyCard);
+      });
+    
+      screenContainer.appendChild(toyGrid);
+    }
+    
   }
   
   nextButton.onclick = () => {
