@@ -146,7 +146,7 @@ h1, h2, .highlight-word {
   font-size: 50px;
   color: var(--accent-color);
   font-family: var(--font-heading);
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 0;
   letter-spacing: 0;
   margin-top: 0.2rem;
@@ -180,8 +180,9 @@ h1, h2, .highlight-word {
 }
 
 .action-buttons button {
-  background-color: var(--button-color);
-  color: white;
+  /* background-color: var(--button-color); */
+  background-color: #4cafa4;
+  color: rgb(255, 254, 253);
   padding: 12px 25px;
   border: none;
   border-radius: 10px;
