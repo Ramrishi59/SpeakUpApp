@@ -47,8 +47,24 @@ body {
 .star-icon {
   width: 30px;
   height: 30px;
-  margin-right: 10px;
+  margin-right: 0px;
 }
+
+.score-display {
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  background-color: #ffe082;
+  padding: 8px 15px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-weight: bold;
+  z-index: 1000;
+}
+
 
 .container.full-screen-center {
   display: flex;
