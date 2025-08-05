@@ -72,6 +72,23 @@ document.addEventListener('DOMContentLoaded', async () => {
         wordImage.src = word.image;
         wordImage.alt = word.text;
         wordText.textContent = word.text;
+
+        if (previousButton) {
+            if (currentWordIndex === 0) {
+                previousButton.classList.add('disabled');
+            } else {
+                previousButton.classList.remove('disabled');
+            }
+        }
+
+        if (nextButton) {
+            if (currentWordIndex === activeWords.length - 1) {
+                nextButton.classList.add('disabled');
+            } else {
+                nextButton.classList.remove('disabled');
+            }
+        }
+    
         console.log("Image src is:", wordImage.src);
         console.log("Image visible?", getComputedStyle(wordImage).display);
         console.log("Text content is:", wordText.textContent);
@@ -125,10 +142,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 playSingleAudio(chimeAudio); // <--- Moved here    
                 const excellentAudio = new Audio("Audio/excellent.mp3");
                 excellentAudio.play().catch(e => console.error("Audio playback failed:", e));
-    
-    
-                // The `excellentAudio.onended` block needs to be adapted if you're not using excellentAudio.
-                // For now, let's just make sure the button is disabled at the end.
                 setTimeout(() => nextButton.classList.add('disabled'), 100); // Re-enable for safety or just keep it disabled
             }
         });
