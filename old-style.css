@@ -70,7 +70,13 @@ body {
   max-width: 600px;
   width: 100%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+  flex-grow: 1;              /* ✅ Fills vertical space */
+  display: flex;             /* ✅ Allows internal spacing */
+  flex-direction: column;
+  justify-content: space-between;  /* ✅ Push title up, buttons down */
 }
+
 
 .lesson-title {
   font-size: 2rem;
