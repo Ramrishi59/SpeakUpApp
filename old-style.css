@@ -60,6 +60,7 @@ body {
   height: calc(100vh - 60px); /* Adjust for fixed header */
   box-sizing: border-box;
   overflow-y: auto;
+  padding-bottom: 80px; /* Enough space for Home nav */
 }
 
 .word-display {
