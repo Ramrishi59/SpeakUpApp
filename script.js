@@ -80,13 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const lessonId = clickedCard.dataset.lessonId;
                 console.log(`Clicked on lesson: ${lessonId}`);
 
-                // === CRITICAL INTEGRATION POINT ===
-                // For now, we'll only navigate to 'A / An' (unit2) which uses your old-index.html
-                // For other lessons, we'll show an alert.
+                if (lessonId === 'unit2') {
+                    window.location.href = `old-index.html?unitId=${lessonId}`;
+                }
+                
                 if (lessonId === 'unit2-toys') {
-                    // Redirect to the old-index.html (now word-display-screen.html)
-                    // and pass the unitId as a URL parameter
-                    // window.location.href = `old-index.html?unitId=${lessonId}`;
                     window.location.href = `unit2.html`;
                 } 
                 if (lessonId === 'unit1') {

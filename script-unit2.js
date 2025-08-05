@@ -79,30 +79,30 @@ const screens = [
       screenContainer.appendChild(img);
     }
   
-// Only render text if it's NOT a special mic screen with toys
-if (!(screen.type === "mic" && screen.toys)) {
-  const textPara = document.createElement("p");
-  textPara.className = "lesson-text";
+    // Only render text if it's NOT a special mic screen with toys
+    if (!(screen.type === "mic" && screen.toys)) {
+      const textPara = document.createElement("p");
+      textPara.className = "lesson-text";
 
-  if (screen.highlightWord) {
-    const word = screen.highlightWord;
-    const wordAudio = `Audio/${word}_word.mp3`;
-    const regex = new RegExp(`\\b${word}\\b`);
-    const modifiedText = screen.text.replace(
-      regex,
-      `<span class="highlight-word" data-audio="${wordAudio}">${word}</span>`
-    );
-    textPara.innerHTML = modifiedText;
-    textPara.querySelectorAll(".highlight-word").forEach(span => {
-      span.style.cursor = "pointer";
-      span.onclick = () => new Audio(span.dataset.audio).play();
-    });
-  } else {
-    textPara.textContent = screen.text;
-  }
+      if (screen.highlightWord) {
+        const word = screen.highlightWord;
+        const wordAudio = `Audio/${word}_word.mp3`;
+        const regex = new RegExp(`\\b${word}\\b`);
+        const modifiedText = screen.text.replace(
+          regex,
+          `<span class="highlight-word" data-audio="${wordAudio}">${word}</span>`
+        );
+        textPara.innerHTML = modifiedText;
+        textPara.querySelectorAll(".highlight-word").forEach(span => {
+          span.style.cursor = "pointer";
+          span.onclick = () => new Audio(span.dataset.audio).play();
+        });
+      } else {
+        textPara.textContent = screen.text;
+      }
 
-  screenContainer.appendChild(textPara);
-}
+      screenContainer.appendChild(textPara);
+    }
 
   
     if (screen.audio) {
@@ -181,6 +181,38 @@ if (!(screen.type === "mic" && screen.toys)) {
     
       screenContainer.appendChild(toyGrid);
     }
+    if (screen.type === "sentence-builder") {
+      const sentenceBox = document.createElement("div");
+      sentenceBox.className = "sentence-box";
+      sentenceBox.innerHTML = `<span>I like my new </span><span id="drop-target" class="drop-target">______</span>.`;
+    
+      const optionsBox = document.createElement("div");
+      optionsBox.className = "sentence-options";
+    
+      screen.options.forEach(option => {
+        const word = document.createElement("div");
+        word.className = "draggable-word";
+        word.textContent = option;
+        word.draggable = true;
+        word.ondragstart = e => {
+          e.dataTransfer.setData("text/plain", option);
+        };
+        optionsBox.appendChild(word);
+      });
+    
+      const dropTarget = sentenceBox.querySelector("#drop-target");
+      dropTarget.ondragover = e => e.preventDefault();
+      dropTarget.ondrop = e => {
+        const droppedWord = e.dataTransfer.getData("text/plain");
+        dropTarget.textContent = droppedWord;
+        const audio = new Audio(`${screen.audioPrefix}${droppedWord}.mp3`);
+        audio.play();
+      };
+    
+      screenContainer.appendChild(sentenceBox);
+      screenContainer.appendChild(optionsBox);
+    }
+    
     
   }
   

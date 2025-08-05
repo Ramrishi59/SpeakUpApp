@@ -3,6 +3,9 @@ let currentLessonId = null;
 let currentWordIndex = 0;
 let starsCollected = 0; 
 
+const unitId = getUnitIdFromUrl();
+
+
 const encouragementAudios = [
     "Audio/great_job.mp3",
     "Audio/excellent.mp3",
@@ -157,19 +160,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     });
 
-    const initialUnitId = getUnitIdFromUrl();
-    if (initialUnitId) {
-        const unitData = await fetchUnitData(initialUnitId); 
-        if (unitData) {
-            loadUnit(unitData);
-            showScreen('wordDisplayScreen'); // ✅ KEY FIX: show screen after loading
-        } else {
-            console.error("No unit data found or fetch failed.");
-        }
+    const unitId = "unit2";
+    const unitData = await fetchUnitData(unitId); 
+    if (unitData) {
+        loadUnit(unitData);
+        showScreen('wordDisplayScreen');
     } else {
-        console.warn("No unitId in URL. Redirecting to dashboard.");
-        window.location.href = 'index.html';
+        console.error("No unit data found or fetch failed.");
+        alert("Could not load the lesson.");
+        window.location.href = "index.html";
     }
 
-    console.log("✅ old-script.js loaded successfully");
+    console.log("✅ a-an.js loaded successfully");
 });
