@@ -9,15 +9,30 @@
   --bg-color: #fefae0;
   --button-color: #4CAF50;
   --nav-bg: #ffffff;
+  --font-heading: 'Baloo 2', cursive;
+  --font-body: 'Comic Neue', sans-serif;
 }
 
 body {
-  font-family: 'Baloo 2', cursive;
   background-color: var(--bg-color);
   margin: 0;
   padding: 0;
   color: var(--text-color);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.4px;
+  color: #333;
+  background-color: var(--bg-color);
+  font-weight: bold;
 }
+
+h1, h2, .highlight-word {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: #D47B00; /* playful orange-gold */
+}
+
 
 .app-header {
   background-color: var(--primary-color);
@@ -102,8 +117,13 @@ body {
 
 .lesson-title {
   font-size: 2rem;
+  font-family: 'Baloo 2', cursive;
+  font-weight: 700;
   margin-bottom: 1rem;
   color: var(--accent-color);
+  font-weight: bold !important;
+  position: relative;
+  top: -30px;
 }
 
 #wordImage {
@@ -115,23 +135,33 @@ body {
 
 
 .hint-text {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+  font-size: 25px;
+  margin-bottom: 0.3rem;
   color: #777;
+  position: relative;
+  top: -20px; /* Move this up – adjust as needed */
 }
 
 .word-text {
-  font-size: 2rem;
+  font-size: 50px;
   color: var(--accent-color);
+  font-family: var(--font-heading);
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 0;
+  letter-spacing: 0;
+  margin-top: 0.2rem;
+  position: relative;
+  top: -30px; /* Move this up – adjust as needed */
 }
+
 
 .navigation-buttons {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin: 10px auto;
+  margin: 0 auto 10px auto; /* less space on top, keep bottom margin */
+  position: relative;
+  top: -20px; /* move up by 20px – adjust as needed */
 }
 
 .nav-arrow {
@@ -159,6 +189,9 @@ body {
   cursor: pointer;
   margin-top: 10px;
   transition: background-color 0.3s ease;
+  position: relative;
+  top: -20px; /* Move this up – adjust as needed */
+  font-family: var(--font-body);
 }
 
 .action-buttons button:hover {
