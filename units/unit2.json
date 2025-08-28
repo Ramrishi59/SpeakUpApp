@@ -41,6 +41,10 @@
     { "text": "an ant", "image": "Images/Unit1/an_ant.png", "audio": "Audio/a_chair.mp3" },
     { "text": "an eagle", "image": "Images/Unit1/an_eagle.png", "audio": "Audio/a_chair.mp3" },
     { "text": "an octopus", "image": "Images/Unit1/an_octopus.png", "audio": "Audio/a_chair.mp3" },
-    { "text": "an aligator", "image": "Images/Unit1/an_aligator.png", "audio": "Audio/a_chair.mp3" }
+    { "text": "an aligator", "image": "Images/Unit1/an_aligator.png", "audio": "Audio/a_chair.mp3" },
+
+    { "text": "Great! You practised A and An with many words.", "audio": "Audio/Unit1/u1_c1_outro_01.mp3" },
+    { "text": "Now, let’s play and practise.", "audio": "Audio/Unit1/u1_c1_outro_02.mp3" }
+
   ]
 }
