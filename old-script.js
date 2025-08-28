@@ -2,6 +2,9 @@ let activeWords = [];
 let currentLessonId = null;
 let currentWordIndex = 0;
 let starsCollected = 0; 
+let currentAudio = null;
+let isPlaying = false;
+
 
 const unitId = getUnitIdFromUrl();
 
@@ -66,61 +69,81 @@ document.addEventListener('DOMContentLoaded', async () => {
           return;
         }
       
+        // always stop any currently playing audio before rendering new content
+        stopAudio();
+      
         const word = activeWords[currentWordIndex];
-        const hint = document.querySelector('.hint-text'); // "Click on the image to hear the word"
+        const hint = document.querySelector('.hint-text');
       
-        console.log("✅ Loading word:", word);
-      
-        // --- TEXT ---
+        // TEXT
         if (wordText) wordText.textContent = word.text || "";
       
-        // --- IMAGE / HINT VISIBILITY ---
+        // IMAGE + HINT
         if (word && word.image) {
-          // We have an image (normal word screen)
           wordImage.style.display = "block";
           wordImage.src = word.image;
           wordImage.alt = word.text || "";
-          if (hint) hint.style.display = "block";     // show hint for word screens
+          if (hint) hint.style.display = "block";
         } else {
-          // No image (intro/outro or narration screen)
           wordImage.style.display = "none";
-          if (hint) hint.style.display = "none";      // hide hint for intro/outro
+          if (hint) hint.style.display = "none";
         }
       
-        // --- AUTOPLAY AUDIO (so intros/outros are heard) ---
+        // AUTOPLAY using the shared player (no stacking)
         if (word.audio) {
-          try {
-            const a = new Audio(word.audio);
-            a.play().catch(e => console.warn("Audio autoplay was blocked by the browser:", e));
-          } catch (e) {
-            console.error("Audio playback failed:", e);
-          }
+          playAudio(word.audio);
         }
       
-        // --- NAV BUTTON STATES ---
+        // NAV BUTTON STATES
         if (previousButton) {
           previousButton.classList.toggle('disabled', currentWordIndex === 0);
         }
         if (nextButton) {
           nextButton.classList.toggle('disabled', currentWordIndex === activeWords.length - 1);
         }
-      
-        console.log("Image src is:", wordImage.style.display === "none" ? "(hidden)" : wordImage.src);
-        console.log("Image visible?", getComputedStyle(wordImage).display);
-        console.log("Text content is:", wordText.textContent);
       }
+      
+
+      function stopAudio() {
+        if (currentAudio) {
+          currentAudio.onended = null;
+          try { currentAudio.pause(); } catch {}
+          try { currentAudio.currentTime = 0; } catch {}
+          currentAudio.src = ""; // release
+        }
+        isPlaying = false;
+      }
+      
+      function playAudio(src, onEnded = null) {
+        stopAudio(); // ensure nothing else is playing
+        if (!src) return;
+        currentAudio = new Audio(src);
+        nextButton?.classList.add('disabled'); // lock while playing
+        currentAudio.onended = () => {
+          isPlaying = false;
+          nextButton?.classList.remove('disabled'); // unlock
+          if (typeof onEnded === "function") onEnded();
+        };
+        currentAudio.play()
+          .then(() => { isPlaying = true; })
+          .catch(e => {
+            console.warn("Audio autoplay blocked or failed:", e);
+            isPlaying = false;
+          });
+      }
+      
       
     
 
-    function playSingleAudio(audioPath) {
-        if (!audioPath) return;
-        const audio = new Audio(audioPath);
-        audio.play().catch(e => console.error("Audio playback failed:", e));
-    }
+    // function playSingleAudio(audioPath) {
+    //     if (!audioPath) return;
+    //     const audio = new Audio(audioPath);
+    //     audio.play().catch(e => console.error("Audio playback failed:", e));
+    // }
 
     function handleWordInteraction() {
         if (activeWords[currentWordIndex]?.audio) {
-            playSingleAudio(activeWords[currentWordIndex].audio);
+            playAudio(activeWords[currentWordIndex].audio);
         }
     }
 
@@ -134,6 +157,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadWord(); 
         if (nextButton) nextButton.classList.remove('disabled');
         console.log(`Loaded unit: ${unitData.name}`); 
+        if (word.audio) {
+            playAudio(word.audio);
+          }
         
     }
 
@@ -142,11 +168,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (nextButton) {
         nextButton.addEventListener('click', () => {
             nextButton.classList.add('disabled');
+
+            stopAudio(); // Stop any current audio when moving to the next word
     
             if (currentWordIndex < activeWords.length - 1) {
                 currentWordIndex++;
                 loadWord();
-                // Removed playSingleAudio(chimeAudio) from here
+                
                 setTimeout(() => nextButton.classList.remove('disabled'), 100);
             } else {
                 // This is the LAST word
@@ -155,7 +183,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     starCountDisplay.textContent = starsCollected;
                 }
                 // Now chimeAudio plays ONLY on the last word
-                playSingleAudio(chimeAudio); // <--- Moved here    
+                playAudio(chimeAudio); // <--- Moved here    
                 const excellentAudio = new Audio("Audio/excellent.mp3");
                 excellentAudio.play().catch(e => console.error("Audio playback failed:", e));
                 setTimeout(() => nextButton.classList.add('disabled'), 100); // Re-enable for safety or just keep it disabled
@@ -165,6 +193,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (previousButton) {
         previousButton.addEventListener('click', () => {
+            stopAudio(); // Stop any current audio when moving to the previous word
             if (currentWordIndex > 0) {
                 currentWordIndex--;
                 loadWord();
@@ -175,6 +204,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     if (startoverButton) {
         startoverButton.addEventListener('click', () => {
+            stopAudio(); // Stop any current audio when starting over
             currentWordIndex = 0;
             loadWord();
             nextButton?.classList.remove('disabled');
