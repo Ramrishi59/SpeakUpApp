@@ -58,42 +58,58 @@ document.addEventListener('DOMContentLoaded', async () => {
       
     
 
-    function loadWord() {
+      function loadWord() {
         if (activeWords.length === 0) {
-            console.warn("❌ No words in the active lesson.");
-            wordImage.src = "";
-            wordText.textContent = "Select a unit!";
-            return;
+          console.warn("❌ No words in the active lesson.");
+          if (wordImage) wordImage.src = "";
+          if (wordText)  wordText.textContent = "Select a unit!";
+          return;
         }
-    
+      
         const word = activeWords[currentWordIndex];
+        const hint = document.querySelector('.hint-text'); // "Click on the image to hear the word"
+      
         console.log("✅ Loading word:", word);
-    
-        wordImage.src = word.image;
-        wordImage.alt = word.text;
-        wordText.textContent = word.text;
-
+      
+        // --- TEXT ---
+        if (wordText) wordText.textContent = word.text || "";
+      
+        // --- IMAGE / HINT VISIBILITY ---
+        if (word && word.image) {
+          // We have an image (normal word screen)
+          wordImage.style.display = "block";
+          wordImage.src = word.image;
+          wordImage.alt = word.text || "";
+          if (hint) hint.style.display = "block";     // show hint for word screens
+        } else {
+          // No image (intro/outro or narration screen)
+          wordImage.style.display = "none";
+          if (hint) hint.style.display = "none";      // hide hint for intro/outro
+        }
+      
+        // --- AUTOPLAY AUDIO (so intros/outros are heard) ---
+        if (word.audio) {
+          try {
+            const a = new Audio(word.audio);
+            a.play().catch(e => console.warn("Audio autoplay was blocked by the browser:", e));
+          } catch (e) {
+            console.error("Audio playback failed:", e);
+          }
+        }
+      
+        // --- NAV BUTTON STATES ---
         if (previousButton) {
-            if (currentWordIndex === 0) {
-                previousButton.classList.add('disabled');
-            } else {
-                previousButton.classList.remove('disabled');
-            }
+          previousButton.classList.toggle('disabled', currentWordIndex === 0);
         }
-
         if (nextButton) {
-            if (currentWordIndex === activeWords.length - 1) {
-                nextButton.classList.add('disabled');
-            } else {
-                nextButton.classList.remove('disabled');
-            }
+          nextButton.classList.toggle('disabled', currentWordIndex === activeWords.length - 1);
         }
-    
-        console.log("Image src is:", wordImage.src);
+      
+        console.log("Image src is:", wordImage.style.display === "none" ? "(hidden)" : wordImage.src);
         console.log("Image visible?", getComputedStyle(wordImage).display);
         console.log("Text content is:", wordText.textContent);
-
-    }
+      }
+      
     
 
     function playSingleAudio(audioPath) {

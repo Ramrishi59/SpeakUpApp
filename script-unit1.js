@@ -1,31 +1,31 @@
 const screens = [
   {
     id: "screen1",
-    image: "Images/family.jpg",
+    image: "Images/Unit1/family.jpg",
     text: "Hi, everyone! Look at this lovely family. Do you know who they are?",
     audio: "Audio/01_hi_family.mp3",
   },
   {
     id: "screen2",
-    image: "Images/mom.jpg",
+    image: "Images/Unit1/mom.jpg",
     text: "This is my Mom. She loves to cook!",
     audio: "Audio/02_mom.mp3",
   },
   {
     id: "screen3",
-    image: "Images/dad.jpg",
+    image: "Images/Unit1/dad.jpg",
     text: "And this is my Dad. He tells funny stories.",
     audio: "Audio/03_dad.mp3",
   },
   {
     id: "screen4",
-    image: "Images/brother.jpg",
+    image: "Images/Unit1/brother.jpg",
     text: "Meet my Brother. He loves to play football.",
     audio: "Audio/04_brother.mp3",
   },
   {
     id: "screen5",
-    image: "Images/sister.png",
+    image: "Images/Unit1/sister.png",
     text: "And this is my Sister. She loves to read books.",
     audio: "Audio/05_sister.mp3",
   },
