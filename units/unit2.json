@@ -8,7 +8,7 @@
     { "text": "Hello! Welcome to Speak Up.", "audio": "Audio/Unit1/u1_c1_intro_01.mp3" },
     { "text": "Today, let’s learn and practise A and An.", "audio": "Audio/Unit1/u1_c1_intro_02.mp3" },
     { "text": "Are you ready?", "audio": "Audio/Unit1/u1_c1_intro_03.mp3" },
-    { "text": "Look, listen, and repeat.", "audio": "Audio/Unit1/u1_c1_instr_01.mp3" },
+    { "text": "Look, listen, and repeat.", "audio": "Audio/Unit1/inst1.mp3" },
     
     { "text": "a book", "image": "Images/Unit1/a_book.png", "audio": "Audio/a_book.mp3" },
     { "text": "a pencil", "image": "Images/Unit1/a_pencil.png", "audio": "Audio/a_pencil.mp3" },
