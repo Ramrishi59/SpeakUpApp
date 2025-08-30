@@ -39,7 +39,7 @@ const dashboardLessons = [
     // -------- Routing (centralised) --------
     const ROUTES = {
       // point Unit 2 to the new trial page
-      'unit2': (id) => `trial.html?unitId=${id}`,
+      'unit2': (id) => `Trial.html?unitId=${id}`,
   
       // existing pages (unchanged)
       'unit2-toys': () => 'unit2.html',
