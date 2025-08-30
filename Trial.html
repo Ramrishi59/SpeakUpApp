@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!-- <title>Speak Up – Lesson</title> -->
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Note: filename is case-sensitive on many servers -->
+  <link rel="stylesheet" href="Trial.css?v=1" />
+</head>
+<body>
+
+
+  <main>
+    <!-- INTRO / OUTRO screens -->
+    <section class="intro-screen" id="introScreen" style="display:none;">
+        <div class="intro-text" id="introText">Hello! Welcome to Speak Up.</div>
+      
+        <div class="intro-video-wrap">
+          <video
+            id="introVideo"
+            class="intro-video"
+            playsinline
+            webkit-playsinline
+            preload="metadata"
+            muted
+          ></video>
+      
+          <button id="introPlayOverlay" class="video-overlay" aria-label="Play">▶</button>
+
+          <!-- Bottom controls row: Skip + Unmute side-by-side -->
+          <div class="intro-bottom-controls">
+            <button id="skipIntro" class="skip-overlay" aria-label="Skip">Skip ❯❯</button>
+            <button id="unmuteIntro" class="unmute-overlay" aria-label="Sound on">🔊 Sound On</button>
+          </div>
+
+        </div>
+      
+        <div class="nav-row">
+          <button id="nextButtonIntro" class="nav-btn next">
+            NEXT <span class="chevrons">❯❯</span>
+          </button>
+        </div>
+      </section>
+      
+
+    <!-- WORD / IMAGE slides -->
+    <section class="word-display has-image" id="wordDisplay" style="display:none;">
+      <h1 id="lessonText"></h1>
+
+      <!-- Big word -->
+      <div class="word-block">
+        <div id="wordText">a pencil</div>
+      </div>
+
+      <!-- Image -->
+      <figure class="image-wrap">
+        <img id="wordImage" alt="Lesson image" src="Images/pencil.png" />
+      </figure>
+
+      <!-- Nav row -->
+      <div class="nav-row">
+        <button id="prevButton" class="nav-btn prev" aria-label="Previous">
+          <span class="chevrons">❮❮</span> PREV
+        </button>
+        <button id="nextButton" class="nav-btn next" aria-label="Next">
+          NEXT <span class="chevrons">❯❯</span>
+        </button>
+      </div>
+
+      <!-- Secondary actions -->
+      <div class="secondary-row">
+        <a id="homeButton" class="secondary-btn home" href="index.html">
+          <span class="icon">🏠</span> Home
+        </a>
+        <button id="startoverButton" class="secondary-btn startover">
+          <span class="icon">↻</span> Start Over
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="Trial.js" defer></script>
+</body>
+</html>

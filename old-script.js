@@ -39,6 +39,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     const wordDisplayScreen = document.getElementById('wordDisplayScreen');   
     const wordImage = document.getElementById('wordImage');
     const wordText = document.getElementById('wordText');
+    const lessonText = document.getElementById('lessonText');   // NEW: intro/outro text
+    const navRow      = document.querySelector('.navigation-buttons'); // optional, if you need it
+    
+    // Ranges for intro (top) and outro (bottom) blocks without image
+    let introEnd = -1;
+    let outroStart = Infinity;
+    
+
     const nextButton = document.getElementById('nextButton');
     const previousButton = document.getElementById('prevButton'); 
     const startoverButton = document.getElementById('startoverButton'); 
@@ -58,6 +66,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           console.warn(`Screen not found: ${screenId}`);
         }
       }
+
+      
       
     
 
@@ -74,19 +84,23 @@ document.addEventListener('DOMContentLoaded', async () => {
       
         const word = activeWords[currentWordIndex];
         const hint = document.querySelector('.hint-text');
+        const cardEl = document.querySelector('.word-display'); // 🔑 target card
       
         // TEXT
         if (wordText) wordText.textContent = word.text || "";
       
         // IMAGE + HINT
-        if (word && word.image) {
+        if (word && word.image && word.image.trim() !== "") {
           wordImage.style.display = "block";
           wordImage.src = word.image;
           wordImage.alt = word.text || "";
           if (hint) hint.style.display = "block";
+          cardEl?.classList.add("has-image");     // ✅ word screens
         } else {
+          wordImage.removeAttribute("src");
           wordImage.style.display = "none";
           if (hint) hint.style.display = "none";
+          cardEl?.classList.remove("has-image");  // ✅ intro/outro
         }
       
         // AUTOPLAY using the shared player (no stacking)
@@ -102,6 +116,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           nextButton.classList.toggle('disabled', currentWordIndex === activeWords.length - 1);
         }
       }
+      
       
 
       function stopAudio() {
@@ -157,11 +172,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         loadWord(); 
         if (nextButton) nextButton.classList.remove('disabled');
         console.log(`Loaded unit: ${unitData.name}`); 
-        if (word.audio) {
-            playAudio(word.audio);
-          }
-        
-    }
+      }
+      
 
     if (wordImage) wordImage.addEventListener('click', handleWordInteraction);
 

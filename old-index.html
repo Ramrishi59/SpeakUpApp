@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SpeakUpApp - English Learning</title>
-  <link rel="stylesheet" href="old-style.css">
+  <link rel="stylesheet" href="canvastyle.css">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Comic+Neue&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
 </head>
@@ -22,29 +22,29 @@
 
   <div id="wordDisplayScreen" class="container full-screen-center">
     <div class="container word-display">
-      <h1 class="lesson-title">Learn English Words!</h1>
-      <img id="wordImage" src="" alt="" class="interactive-element word-image"> 
-      <p class="hint-text">Click on the image to hear the word</p>
+      <h1 class="lesson-title">Let's Learn A / An!</h1>
+      <p id="lessonText" class="lesson-text"></p>
+
+   <!-- fixed-size stage so every image looks the same size -->
+    <div class="image-stage">
+      <img id="wordImage" src="" alt="" class="interactive-element word-image">
+    </div>
+
+      <!-- <p class="hint-text">Click on the image to hear the word</p> -->
       <p id="wordText" class="word-text"></p> 
 
+
       <div class="navigation-buttons">
-        <img src="Images/Unit1/arrow_left.png" alt="Previous Word" id="prevButton" class="nav-arrow"> 
-        <img src="Images/Unit1/arrow_right.png" alt="Next Word" id="nextButton" class="nav-arrow">
+        <button id="prevButton" class="nav-btn">Prev</button>
+        <button id="nextButton" class="nav-btn">Next</button>
       </div>
+      
 
       <div class="action-buttons">
         <button id="startoverButton">Start Over</button>
       </div>
     </div>
-    <nav class="bottom-nav">
-      <button class="nav-button active" onclick="window.location.href='index.html'">
-        <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 9.75L12 4l9 5.75v9.25a.75.75 0 0 1-.75.75H3.75A.75.75 0 0 1 3 19V9.75z"/>
-          <path d="M9 22V12h6v10"/>
-        </svg>
-        <span>Home</span>
-      </button>
-    </nav>
+
   </div>
 
   <script src="old-script.js"></script>

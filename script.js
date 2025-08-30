@@ -1,119 +1,122 @@
 const dashboardLessons = [
     {
-        id: 'unit2', // Corresponds to the unit ID in old-script.js
-        title: 'A / An',
-        description: 'Learn A and An. Just watch, listen and repeat',
-        thumbnail: 'Images/a_an_thumbnail.jpg' // You'll need to create this image
+      id: 'unit2', // new trial page
+      title: 'A / An',
+      description: 'Learn A and An. Just watch, listen and repeat',
+      thumbnail: 'Images/Unit1/a_an_thumbnail.jpg'
     },
     {
-        id: 'unit1',
-        title: 'My Family',
-        description: 'Learn about family with Manku!',
-        thumbnail: 'Images/familydash.jpg' // Placeholder thumbnail
+      id: 'unit1',
+      title: 'My Family',
+      description: 'Learn about family with Manku!',
+      thumbnail: 'Images/Unit1/familydash.jpg'
     },
     {
-        id: 'unit2-toys',
-        title: 'My Favourite Toys ', 
-        description: 'Learn about toys with Manku!',
-        thumbnail: 'Images/toysdash.png' // Placeholder thumbnail
+      id: 'unit2-toys',
+      title: 'My Favourite Toys',
+      description: 'Learn about toys with Manku!',
+      thumbnail: 'Images/Unit1/toysdash.png'
     },
     {
-        id: 'unit3',
-        title: 'My Happy Day',
-        description: ' Learn simple daily activities (eat, play, sleep), use "I eat," "I play," "I sleep," and relate to time of day.',
-        thumbnail: 'Images/happyday.png' // Placeholder thumbnail
+      id: 'unit3',
+      title: 'My Happy Day',
+      description: 'Learn simple daily activities (eat, play, sleep), use "I eat," "I play," "I sleep," and relate to time of day.',
+      thumbnail: 'Images/Unit1/happyday.png'
     },
     {
-        id: 'history-of-art',
-        title: 'History of Art',
-        description: 'Discover the history of art movements, styles, and famous artists across the world',
-        thumbnail: 'Images/a_an_thumbnail.jpg' // Placeholder thumbnail
+      id: 'history-of-art',
+      title: 'History of Art',
+      description: 'Discover the history of art movements, styles, and famous artists across the world',
+      thumbnail: 'Images/Unit1/a_an_thumbnail.jpg'
     }
-];
-
-document.addEventListener('DOMContentLoaded', () => {
+  ];
+  
+  document.addEventListener('DOMContentLoaded', () => {
     const lessonsList = document.querySelector('.lessons-list');
     const searchInput = document.querySelector('.search-input');
     const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
-
-    // Function to render lesson cards
+  
+    // -------- Routing (centralised) --------
+    const ROUTES = {
+      // point Unit 2 to the new trial page
+      'unit2': (id) => `trial.html?unitId=${id}`,
+  
+      // existing pages (unchanged)
+      'unit2-toys': () => 'unit2.html',
+      'unit1':      () => 'unit1.html',
+  
+      // default fallback: old index with query (works for future JSON units)
+      '__default': (id) => `old-index.html?unitId=${id}`
+    };
+  
+    function navigateToLesson(id) {
+      const build = ROUTES[id] || ROUTES['__default'];
+      window.location.href = build(id);
+    }
+  
+    // -------- Render cards --------
     function renderLessonCards(lessonsToRender) {
-        lessonsList.innerHTML = ''; // Clear existing cards
-        lessonsToRender.forEach(lesson => {
-            const lessonCard = document.createElement('div');
-            lessonCard.classList.add('lesson-card');
-            lessonCard.dataset.lessonId = lesson.id; // Store the ID for later use
-
-            lessonCard.innerHTML = `
-                <img src="${lesson.thumbnail}" alt="${lesson.title}" class="lesson-thumbnail">
-                <div class="lesson-info">
-                    <h3>${lesson.title}</h3>
-                    <p>${lesson.description}</p>
-                </div>
-                <span class="forward-arrow">></span>
-            `;
-            lessonsList.appendChild(lessonCard);
+      if (!lessonsList) return;
+      lessonsList.innerHTML = '';
+      lessonsToRender.forEach(lesson => {
+        const card = document.createElement('div');
+        card.classList.add('lesson-card');
+        card.dataset.lessonId = lesson.id;
+        card.tabIndex = 0; // keyboard focusable
+  
+        card.innerHTML = `
+          <img src="${lesson.thumbnail}" alt="${lesson.title}" class="lesson-thumbnail" loading="lazy">
+          <div class="lesson-info">
+            <h3>${lesson.title}</h3>
+            <p>${lesson.description}</p>
+          </div>
+          <span class="forward-arrow">›</span>
+        `;
+  
+        // click
+        card.addEventListener('click', () => navigateToLesson(lesson.id));
+        // keyboard Enter/Space
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            navigateToLesson(lesson.id);
+          }
         });
+  
+        lessonsList.appendChild(card);
+      });
     }
-
-    // Initial render of all lessons
+  
+    // initial render
     renderLessonCards(dashboardLessons);
-
-    // Event Listener for Search Input
+  
+    // -------- Search --------
     if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filteredLessons = dashboardLessons.filter(lesson =>
-                lesson.title.toLowerCase().includes(searchTerm) ||
-                lesson.description.toLowerCase().includes(searchTerm)
-            );
-            renderLessonCards(filteredLessons);
-        });
+      searchInput.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        const filtered = dashboardLessons.filter(lesson =>
+          lesson.title.toLowerCase().includes(q) ||
+          lesson.description.toLowerCase().includes(q)
+        );
+        renderLessonCards(filtered);
+      });
     }
-
-    // Event Listener for Lesson Card Clicks
-    // Using event delegation on the parent container
-    if (lessonsList) {
-        lessonsList.addEventListener('click', (e) => {
-            const clickedCard = e.target.closest('.lesson-card');
-            if (clickedCard) {
-                const lessonId = clickedCard.dataset.lessonId;
-                console.log(`Clicked on lesson: ${lessonId}`);
-
-                if (lessonId === 'unit2') {
-                    window.location.href = `old-index.html?unitId=${lessonId}`;
-                }
-                
-                if (lessonId === 'unit2-toys') {
-                    window.location.href = `unit2.html`;
-                } 
-                if (lessonId === 'unit1') {
-                    window.location.href = `unit1.html`;
-                  }
-            }
-        });
-    }
-
-    // Event Listeners for Bottom Navigation Buttons
+  
+    // -------- Bottom nav --------
     if (navButtons) {
-        navButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove 'active' from all buttons
-                navButtons.forEach(btn => btn.classList.remove('active'));
-                // Add 'active' to the clicked button
-                button.classList.add('active');
-
-                const target = button.dataset.navTarget;
-                if (target === 'lessons') {
-                    // Do nothing, already on lessons screen
-                    console.log("Already on Lessons screen.");
-                } else {
-                    alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
-                }
-            });
+      navButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          navButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+  
+          const target = btn.dataset.navTarget;
+          if (target !== 'lessons') {
+            alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
+          }
         });
+      });
     }
-
-    console.log("New dashboard script.js loaded!");
-});
-
+  
+    console.log("Dashboard ready.");
+  });
+  

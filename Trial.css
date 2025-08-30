@@ -1,0 +1,327 @@
+
+   :root{
+    --sky1:#bde7ff;
+    --sky2:#9dd8ff;
+    --text:#333;
+    --accent-red:#ff6f61;
+    --accent-orange:#ffb300;
+    --accent-green:#1fb573;
+    --salmon:#ff7f61;
+    --white:#fff;
+  
+    --font-heading:'Baloo 2',cursive;
+    --font-body:'Comic Neue',sans-serif;
+  
+    --card-radius:20px;
+    --shadow:0 6px 18px rgba(0,0,0,.12);
+  
+    /* sizing */
+    --max-content: 960px;
+    --image-max-h: 40svh; /* cap so no vertical scroll on phones */
+  }
+  
+  /* Base */
+  *{box-sizing:border-box}
+  html,body{
+    height:100%;
+    margin:0;
+    /* background: radial-gradient(1200px 900px at 20% 10%, var(--sky1), var(--sky2)); */
+    background-image: url(Images/Unit1/Background.webp);
+    background-size: cover;
+    background-attachment: fixed;
+    color:var(--text);
+    font-family:var(--font-body);
+  }
+  
+  /* Sticky header */
+  /* .app-header{
+    position:sticky; top:0; z-index:5;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 16px;
+    background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.55));
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid rgba(0,0,0,.06);
+  }
+  .app-header .brand{
+    font-family:var(--font-heading);
+    font-weight:700;
+    letter-spacing:.5px;
+  } */
+  .score-bubble{
+    font-weight:700;
+    background:var(--white);
+    padding:6px 12px;
+    border-radius:999px;
+    box-shadow:var(--shadow);
+  }
+  
+
+  
+  /* Main lesson area */
+  .word-display{
+    min-height: calc(100svh - 56px); /* subtract approx header */
+    max-width:var(--max-content);
+    margin:0 auto;
+    padding: clamp(16px, 3svh, 32px) 16px 20px;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    gap: clamp(10px, 1.8svh, 18px);
+  }
+  
+  /* Title */
+  #lessonText{
+    margin: 12px 0 0;
+    font-family:var(--font-heading);
+    font-size: clamp(22px, 3.4svh, 38px);
+    line-height:1.1;
+    text-align:center;
+    color: var(--salmon);
+    text-shadow:
+      0 0 0 rgb(236, 226, 226),
+      1px 1px 0 rgb(236, 226, 226),
+      -1px -1px 0 rgb(236, 226, 226),
+      2px 2px 0 rgba(0,0,0,.08);
+    -webkit-text-stroke: 0px transparent; /* safe for browsers that might show stroke */
+  }
+  
+  /* Big word block */
+  .word-block{
+    display:flex; align-items:center; justify-content:center;
+    width:100%;
+  }
+  #wordText{
+    font-family:var(--font-heading);
+    font-weight:700;
+    font-size: clamp(30px, 4.8svh, 52px);
+    color: var(--accent-red);
+    text-shadow:
+      0 0 0 rgb(245, 242, 242),
+      1.2px 1.2px 0 rgb(245, 242, 242),
+      -1.2px -1.2px 0 rgb(245, 242, 242),
+      2px 2px 0 rgba(0,0,0,.1);
+    padding: 4px 10px;
+    border-radius: 12px;
+    padding-top: 40px;
+  }
+  
+  /* Image area */
+  .image-wrap{
+    margin:0;
+    width:min(520px, 86%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  #wordImage{
+    width:100%; height:auto; max-height:var(--image-max-h);
+    object-fit:contain;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
+    border-radius:16px; /* if PNG has transparent bg it won’t show */
+  }
+  
+  /* Navigation row */
+  .nav-row{
+    margin-top:auto; /* pushes nav to the bottom without absolute positioning */
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:18px;
+    align-items:center;
+  }
+  .nav-btn{
+    border:0; outline:0;
+    font-family:var(--font-heading);
+    font-weight:800;
+    font-size: clamp(16px, 2.2svh, 22px);
+    padding: 14px 18px;
+    border-radius: 18px;
+    color:var(--white);
+    box-shadow: var(--shadow);
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    cursor:pointer;
+  }
+  .nav-btn .chevrons{font-weight:900}
+  .nav-btn.prev{ background: linear-gradient(#ffcd4d, #ffa909);}
+  .nav-btn.next{ background: linear-gradient(#2cd18c, #19a66a);}
+  
+  /* Secondary actions */
+  .secondary-row{
+    margin-top:14px;
+    width:100%;
+    display:flex; align-items:center; justify-content:center;
+    gap:24px; flex-wrap:wrap;
+  }
+  .secondary-btn{
+    border:0; outline:0; text-decoration:none;
+    font-family:var(--font-body);
+    font-weight:700;
+    font-size: clamp(16px, 2svh, 20px);
+    color:var(--white);
+    background: var(--salmon);
+    padding: 12px 18px;
+    border-radius: 16px;
+    display:inline-flex; align-items:center; gap:10px;
+    box-shadow: var(--shadow);
+    cursor:pointer;
+  }
+  .secondary-btn .icon{font-size:1.2em}
+  .secondary-btn.home{ background: linear-gradient(#ff8d73,#ff6f54);}
+  .secondary-btn.startover{ background: linear-gradient(#ff8d73,#ff6f54);}
+  
+ 
+  
+  /* Responsive tweaks */
+  @media (min-width: 760px){
+    .nav-row{ gap:24px }
+    .secondary-row{ gap:28px }
+  }
+  
+/* Special layout when screen is intro/outro */
+.intro-screen {
+  min-height: calc(100svh - 56px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding: 20px;
+}
+
+.intro-screen #lessonText { display:none; } /* hide title */
+.intro-screen #wordImage { display:none; }  /* no image */
+.intro-screen #wordText {
+  font-size: clamp(22px,3.2svh,34px);
+  line-height:1.4;
+}
+
+/* Height of sticky header (match your header’s actual height) */
+:root { --header-h: 56px; }
+
+/* Intro/Outro: always full-height + centered */
+.intro-screen{
+  min-height: calc(100svh - var(--header-h));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   /* vertical centering */
+  text-align: center;
+  gap: 16px;
+  padding: 20px 16px;
+}
+
+/* Big, readable intro text */
+.intro-text{
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(22px, 3.2svh, 34px);
+  line-height: 1.4;
+  color: #ed2e2e;
+  text-shadow:
+    0 0 0 rgb(252, 250, 250),
+    1px 1px 0 rgb(252, 250, 250),
+    -1px -1px 0 rgb(252, 250, 250),
+    2px 2px 0 rgba(0,0,0,.08);
+}
+
+/* Keep NEXT button nicely placed on intro */
+.intro-screen .nav-row{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin-top: 16px;
+}
+
+/* Intro video layout */
+.intro-video-wrap{
+  position: relative;
+  width: min(680px, 92%);
+  margin: 0 auto;
+  display: none;               /* hidden by default; JS shows when item.video exists */
+}
+
+.intro-video{
+  width: 100%;
+  height: auto;
+  max-height: 56svh;
+  border-radius: 16px;
+  box-shadow: 0 10px 18px rgba(0,0,0,.18);
+  background: rgba(0,0,0,.2);
+}
+
+/* Play overlay for iOS/Chrome autoplay restrictions */
+.video-overlay{
+  position: absolute;
+  inset: 0;
+  display: none;               /* JS shows if autoplay fails */
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(28px, 5svh, 40px);
+  border: none;
+  border-radius: 16px;
+  color: #fff;
+  background: rgba(0,0,0,.35);
+  cursor: pointer;
+  backdrop-filter: blur(1px);
+}
+/* Full-viewport splash mode */
+body.video-active { overflow: hidden; }
+.video-active .app-header { display:none; } /* hide header during intro video */
+
+.intro-screen.video-fullscreen{
+  position:fixed; inset:0; z-index:10;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:0; margin:0;
+}
+
+.intro-screen.video-fullscreen .intro-video-wrap{
+  display:block; width:100vw; height:100svh;
+}
+
+.intro-screen.video-fullscreen .intro-video{
+  width:100vw; height:100svh; max-height:none; border-radius:0;
+  object-fit:cover; background:#000;
+}
+
+/* Overlays */
+.video-overlay{
+  position:absolute; inset:0;
+  display:none; align-items:center; justify-content:center;
+  font-size:clamp(28px,5svh,40px);
+  border:none; border-radius:0;
+  color:#fff; background:rgba(0,0,0,.35); cursor:pointer;
+}
+
+/* Default: if not wrapped, keep centered absolute */
+.skip-overlay{
+  position:absolute; left:50%; transform:translateX(-50%);
+  bottom: max(16px, env(safe-area-inset-bottom));
+  padding:12px 18px; border:0; border-radius:18px;
+  font-family: var(--font-heading); font-weight:800;
+  color:#fff; background: linear-gradient(#2cd18c,#19a66a);
+  box-shadow: 0 6px 18px rgba(0,0,0,.18); cursor:pointer;
+}
+
+/* hide the standard intro NEXT row when in splash mode */
+.intro-screen.video-fullscreen .nav-row{ display:none; }
+
+/* Small Sound On pill */
+.unmute-overlay{
+  position:fixed; left:16px;
+  top: max(16px, env(safe-area-inset-top));
+  padding:10px 14px; border:0; border-radius:18px;
+  font-family: var(--font-heading); font-weight:800;
+  color:#333; background: linear-gradient(#ffcd4d,#ffa909);
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  cursor:pointer; display:none;
+}
+
+/* New: bottom control row groups Skip + Unmute side-by-side */
+.intro-bottom-controls{
+  position:absolute; left:50%; transform:translateX(-50%);
+  bottom: max(16px, env(safe-area-inset-bottom));
+  display:flex; align-items:center; justify-content:center;
+  gap:12px;
+}
+.intro-bottom-controls .skip-overlay,
+.intro-bottom-controls .unmute-overlay{
+  position: static; left:auto; bottom:auto; transform:none;
+}
+.intro-bottom-controls .unmute-overlay{ display:none; } /* JS can show when muted */
