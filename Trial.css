@@ -8,9 +8,26 @@
     --accent-green:#1fb573;
     --salmon:#ff7f61;
     --white:#fff;
+
+    :root{
+      /* ... keep your colors ... */
+      --font-heading: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      --font-body:    'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    
+    /* Base */
+    html,body{
+      /* ... keep your background styles ... */
+      font-family: var(--font-body);
+    }
+    
+    /* You already use var(--font-heading) on #wordText, .intro-text, etc.
+       That will automatically switch to Fredoka now. */
+    
   
-    --font-heading:'Baloo 2',cursive;
-    --font-body:'Comic Neue',sans-serif;
+    /* Use Fredoka as primary face */
+    --font-heading:'Fredoka','Baloo 2','Comic Neue',sans-serif;
+    --font-body:'Fredoka','Comic Neue','Baloo 2',sans-serif;
   
     --card-radius:20px;
     --shadow:0 6px 18px rgba(0,0,0,.12);
@@ -18,6 +35,10 @@
     /* sizing */
     --max-content: 960px;
     --image-max-h: 40svh; /* cap so no vertical scroll on phones */
+
+    --video-fit: cover;                 /* default */
+    --video-position: center center;    /* default */
+    --video-vh: 100svh;   
   }
   
   /* Base */
@@ -128,7 +149,8 @@
   .nav-btn{
     border:0; outline:0;
     font-family:var(--font-heading);
-    font-weight:800;
+    /* Fredoka max weight is 700; avoid 800 to prevent fallback */
+    font-weight:700;
     font-size: clamp(16px, 2.2svh, 22px);
     padding: 14px 18px;
     border-radius: 18px;
@@ -275,9 +297,18 @@ body.video-active { overflow: hidden; }
   display:block; width:100vw; height:100svh;
 }
 
-.intro-screen.video-fullscreen .intro-video{
+/* .intro-screen.video-fullscreen .intro-video{
   width:100vw; height:100svh; max-height:none; border-radius:0;
   object-fit:cover; background:#000;
+} */
+
+.intro-screen.video-fullscreen .intro-video{
+  width: 100vw;
+  height: 100svh;
+  max-height: none;
+  border-radius: 0;
+  object-fit: contain; /* <-- letterboxes, no crop */
+  background: #000;
 }
 
 /* Overlays */
@@ -294,7 +325,7 @@ body.video-active { overflow: hidden; }
   position:absolute; left:50%; transform:translateX(-50%);
   bottom: max(16px, env(safe-area-inset-bottom));
   padding:12px 18px; border:0; border-radius:18px;
-  font-family: var(--font-heading); font-weight:800;
+  font-family: var(--font-heading); font-weight:700;
   color:#fff; background: linear-gradient(#2cd18c,#19a66a);
   box-shadow: 0 6px 18px rgba(0,0,0,.18); cursor:pointer;
 }
@@ -307,7 +338,7 @@ body.video-active { overflow: hidden; }
   position:fixed; left:16px;
   top: max(16px, env(safe-area-inset-top));
   padding:10px 14px; border:0; border-radius:18px;
-  font-family: var(--font-heading); font-weight:800;
+  font-family: var(--font-heading); font-weight:700;
   color:#333; background: linear-gradient(#ffcd4d,#ffa909);
   box-shadow: 0 6px 18px rgba(0,0,0,.18);
   cursor:pointer; display:none;

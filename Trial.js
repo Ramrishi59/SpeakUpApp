@@ -90,7 +90,7 @@ async function render(i) {
   els.introScreen.style.display = "flex";
 
   if (item.video) {
-    // ===== VIDEO SPLASH (auto-play muted, with Sound On + Skip) =====
+    // ===== VIDEO SPLASH (no autoplay; explicit Play button) =====
     enterVideoMode();
     if (els.introWrap) els.introWrap.style.display = "block";
     els.introText.style.display = "none";
@@ -98,23 +98,16 @@ async function render(i) {
     if (item.poster) els.introVideo.setAttribute("poster", item.poster);
     els.introVideo.setAttribute("playsinline", "");
     els.introVideo.setAttribute("webkit-playsinline", "");
-    els.introVideo.setAttribute("autoplay", "");
+    els.introVideo.removeAttribute("autoplay");
 
-    // Try autoplay muted first (required by browsers)
-    els.introVideo.muted = true;
-    els.introVideo.setAttribute("muted", ""); // iOS requires the attribute present
+    // Do NOT autoplay. Load the source and show the big Play overlay.
+    els.introVideo.muted = false;
+    els.introVideo.removeAttribute("muted");
     els.introVideo.src = item.video;
+    els.introVideo.load();
 
-    try {
-      await els.introVideo.play();
-      // Autoplay worked (muted). Hide big ▶, show "Sound On" pill.
-      if (els.playOverlay) els.playOverlay.style.display = "none";
-      if (els.unmuteIntro) els.unmuteIntro.style.display = "inline-flex";
-    } catch (e) {
-      // Autoplay blocked -> show big ▶ (tap starts WITH sound)
-      if (els.playOverlay) els.playOverlay.style.display = "flex";
-      if (els.unmuteIntro) els.unmuteIntro.style.display = "none";
-    }
+    if (els.playOverlay) els.playOverlay.style.display = "flex";  // show ▶
+    if (els.unmuteIntro) els.unmuteIntro.style.display = "none";  // not needed when we start with sound
 
     els.introVideo.onended = () => showNext();
 
