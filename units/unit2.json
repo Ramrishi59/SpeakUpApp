@@ -8,9 +8,6 @@
 
     { "video": "Video/Unit1/intro.mp4", "poster": "Images/Unit2/intro_poster.jpg" },
 
-    { "text": "a book",   "image": "Images/Unit1/a_book.png",   "audio": "Audio/Unit1/u1_c1_item_01_a_book.mp3" },
-    { "text": "a pencil", "image": "Images/Unit1/a_pencil.png", "audio": "Audio/Unit1/u1_c1_item_02_a_pencil.mp3" },
-    
     { "text": "a book", "image": "Images/Unit1/a_book.png", "audio": "Audio/Unit1/u1_c1_item_01_a_book.mp3" },
     { "text": "a pencil", "image": "Images/Unit1/a_pencil.png", "audio": "Audio/Unit1/u1_c1_item_02_a_pencil.mp3" },
     { "text": "a pen", "image": "Images/Unit1/a_pen.png", "audio": "Audio/Unit1/u1_c1_item_03_a_pen.mp3" },
