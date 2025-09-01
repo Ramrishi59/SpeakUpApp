@@ -196,6 +196,7 @@
   .secondary-btn.startover{ 
     background: linear-gradient(#ff8d73,#ff6f54);
     font-size: 20px;
+    padding: 12px 16px;
   }
   .secondary-btn.startover .icon{ font-size: 40px; }
   
