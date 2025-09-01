@@ -2,6 +2,12 @@
 let screens = [];
 let currentIndex = 0;
 
+let userInteracted = false;
+['click','touchstart','keydown'].forEach(evt => {
+  window.addEventListener(evt, () => { userInteracted = true; }, { passive:true });
+});
+
+
 const audio = new Audio();
 audio.preload = "auto";
 
@@ -38,6 +44,7 @@ async function loadUnit(id) {
 function stopAudio() {
   audio.pause();
   audio.currentTime = 0;
+  audio.onended = null;
 }
 function stopVideo() {
   if (!els.introVideo) return;
@@ -90,7 +97,9 @@ async function render(i) {
   els.introScreen.style.display = "flex";
 
   if (item.video) {
-    // ===== VIDEO SPLASH (no autoplay; explicit Play button) =====
+    // Detect: last slide => treat as OUTRO
+    const isOutro = (i === screens.length - 1);
+
     enterVideoMode();
     if (els.introWrap) els.introWrap.style.display = "block";
     els.introText.style.display = "none";
@@ -98,35 +107,66 @@ async function render(i) {
     if (item.poster) els.introVideo.setAttribute("poster", item.poster);
     els.introVideo.setAttribute("playsinline", "");
     els.introVideo.setAttribute("webkit-playsinline", "");
-    els.introVideo.removeAttribute("autoplay");
-
-    // Do NOT autoplay. Load the source and show the big Play overlay.
-    els.introVideo.muted = false;
-    els.introVideo.removeAttribute("muted");
     els.introVideo.src = item.video;
     els.introVideo.load();
 
-    if (els.playOverlay) els.playOverlay.style.display = "flex";  // show ▶
-    if (els.unmuteIntro) els.unmuteIntro.style.display = "none";  // not needed when we start with sound
+    // Hide the standard "NEXT" row while in full video splash
+    if (els.introNext) els.introNext.style.display = "none";
+
+    if (isOutro) {
+      // OUTRO: play and return to dashboard on end
+      els.introVideo.setAttribute("autoplay", "");
+      els.introVideo.setAttribute("muted", "");
+      els.introVideo.muted = true;
+
+      // Hide overlays/controls on outro
+      if (els.playOverlay) { els.playOverlay.style.display = "none"; els.playOverlay.onclick = null; }
+      if (els.unmuteIntro) els.unmuteIntro.style.display = "none";
+      if (els.skipIntro)   els.skipIntro.style.display   = "none";
+      const bottom = document.querySelector(".intro-bottom-controls");
+      if (bottom) bottom.style.display = "none";
+
+      const tryUnmute = () => {
+        if (!userInteracted) return;
+        try {
+          els.introVideo.muted = false;
+          els.introVideo.removeAttribute('muted');
+          els.introVideo.volume = 1.0;
+        } catch {}
+      };
+      els.introVideo.addEventListener('playing', () => setTimeout(tryUnmute, 60), { once:true });
+
+      els.introVideo.onended = () => {
+        stopAudio(); stopVideo(); exitVideoMode();
+        location.href = 'index.html';
+      };
+      return; // don't run intro behavior below
+    }
+
+    // INTRO: show Play overlay; start with sound on tap
+    els.introVideo.removeAttribute("autoplay");
+    els.introVideo.removeAttribute("muted");
+    els.introVideo.muted = false;
+
+    if (els.playOverlay) els.playOverlay.style.display = "flex";
+    if (els.unmuteIntro) els.unmuteIntro.style.display = "none";
 
     els.introVideo.onended = () => showNext();
 
     if (els.playOverlay) {
       els.playOverlay.onclick = async () => {
+        userInteracted = true;
         try {
-          els.introVideo.muted = false; // start with sound after user gesture
+          els.introVideo.muted = false;
           await els.introVideo.play();
           els.playOverlay.style.display = "none";
           if (els.unmuteIntro) els.unmuteIntro.style.display = "none";
-        } catch (err) {
-          // ignore
-        }
+        } catch (err) { /* ignore */ }
       };
     }
 
     if (els.unmuteIntro) {
       els.unmuteIntro.onclick = () => {
-        // User gesture -> unmute while playing
         els.introVideo.muted = false;
         els.unmuteIntro.style.display = "none";
       };
@@ -136,10 +176,9 @@ async function render(i) {
       els.skipIntro.onclick = () => showNext();
     }
 
-    // Hide the standard "NEXT" row while in full video splash
-    if (els.introNext) els.introNext.style.display = "none";
     return;
   }
+  
 
   // ===== TEXT INTRO / OUTRO (no video) =====
   if (els.introWrap) els.introWrap.style.display = "none";
@@ -149,6 +188,12 @@ async function render(i) {
   if (item.audio) {
     audio.src = item.audio;
     audio.play().catch(() => {});
+    // If this is the last (outro) item, navigate back when audio finishes
+    audio.onended = () => {
+      if (i === screens.length - 1) {
+        location.href = 'index.html';
+      }
+    };
   }
 }
 
@@ -165,6 +210,9 @@ function showNext() {
   if (currentIndex < screens.length - 1) {
     currentIndex++;
     render(currentIndex);
+  } else {
+    // At the end of the lesson (after outro)
+    location.href = 'index.html';
   }
 }
 function startOver() {
