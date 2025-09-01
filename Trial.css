@@ -47,7 +47,7 @@
     height:100%;
     margin:0;
     /* background: radial-gradient(1200px 900px at 20% 10%, var(--sky1), var(--sky2)); */
-    background-image: url(Images/Unit1/Fredoka.webp);
+    background-image: url(Images/Unit1/Background.webp);
     background-size: cover;
     background-attachment: fixed;
     color:var(--text);
@@ -135,6 +135,7 @@
     object-fit:contain;
     filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
     border-radius:16px; /* if PNG has transparent bg it won’t show */
+    padding-bottom: 60px;
   }
   
   /* Navigation row */
@@ -170,7 +171,7 @@
     display:flex; align-items:center; justify-content:center;
     gap:24px; flex-wrap:wrap;
   }
-  .secondary-btn{
+.secondary-btn{
     border:0; outline:0; text-decoration:none;
     font-family:var(--font-body);
     font-weight:700;
@@ -182,10 +183,16 @@
     display:inline-flex; align-items:center; gap:10px;
     box-shadow: var(--shadow);
     cursor:pointer;
-  }
-  .secondary-btn .icon{font-size:1.2em}
-  .secondary-btn.home{ background: linear-gradient(#ff8d73,#ff6f54);}
-  .secondary-btn.startover{ background: linear-gradient(#ff8d73,#ff6f54);}
+}
+.secondary-btn .icon{font-size:1.2em}
+.secondary-btn.home{ 
+  background: linear-gradient(#ff8d73,#ff6f54);
+  /* Make Home slightly larger for easier tap */
+  font-size: clamp(18px, 2.3svh, 22px);
+  padding: 14px 22px;
+}
+.secondary-btn.home .icon{ font-size: 1.5em; }
+.secondary-btn.startover{ background: linear-gradient(#ff8d73,#ff6f54);}
   
  
   
