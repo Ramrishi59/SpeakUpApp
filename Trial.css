@@ -86,6 +86,7 @@
     padding: clamp(16px, 3svh, 32px) 16px 20px;
     display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
     gap: clamp(10px, 1.8svh, 18px);
+    padding-bottom: calc(16px + env(safe-area-inset-bottom)); /* iPhone home bar */
   }
   
   /* Title */
@@ -125,20 +126,47 @@
   }
   
   /* Image area */
-  .image-wrap{
+  /* .image-wrap{
     margin:0;
     width:min(520px, 86%);
     display:flex; align-items:center; justify-content:center;
+  } */
+
+  /* replace your current .image-wrap block with this */
+  .image-wrap{
+    width: min(520px, 86%);
+    margin: 0 auto;
+
+    /* lock in a stable area so layout doesn't shift */
+    height: clamp(220px, 40svh, 420px);
+    flex: 0 0 auto;             /* don't let flex stretch/shrink this box */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;           /* prevent any overflow jitter */
   }
-  #wordImage{
+
+  /* #wordImage{
     width:100%; height:auto; max-height:var(--image-max-h);
     object-fit:contain;
     filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
-    border-radius:16px; /* if PNG has transparent bg it won’t show */
-    /* Push image further toward the visual center */
+    border-radius:16px; 
     margin-top: clamp(34px, 11svh, 80px);
   }
-  
+   */
+
+   /* replace your current #wordImage block with this */
+  #wordImage{
+    width: 100%;
+    height: 100%;               /* fill the fixed image-wrap height */
+    object-fit: contain;        /* no cropping */
+    display: block;             /* remove baseline gap that can nudge layout on iOS */
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
+    border-radius: 16px;
+  }
+
+
   /* Navigation row */
   .nav-row{
     margin-top:auto; /* pushes nav to the bottom without absolute positioning */
@@ -160,6 +188,8 @@
     box-shadow: var(--shadow);
     display:flex; align-items:center; justify-content:center; gap:10px;
     cursor:pointer;
+    min-height: 52px;
+    white-space: nowrap;
   }
   .nav-btn .chevrons{font-weight:900}
   .nav-btn.prev{ background: linear-gradient(#ffcd4d, #ffa909);}
