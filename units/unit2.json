@@ -8,7 +8,7 @@
 
     { 
     "video": "Video/Unit1/intro.mp4", 
-    "poster": "Images/Unit2/intro_poster.jpg",
+    "poster": "Images/Unit1/intro.webp",
     "fit": "contain",
     "position": "center top", 
     "vh": 70,   

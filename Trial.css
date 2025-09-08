@@ -249,6 +249,35 @@
   padding: 20px;
 }
 
+#introPlayOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;                 /* hidden by JS until needed */
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+#introPlayOverlay::before {
+  content: "";
+  display: block;
+  width: 90px;                      /* adjust size as you like */
+  height: 90px;
+  background-image: url("Images/Unit1/playbutton.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+/* Hide iOS Safari’s native poster play button */
+.intro-video::-webkit-media-controls-start-playback-button{
+  display: none !important;
+}
+
+
 .intro-screen #lessonText { display:none; } /* hide title */
 .intro-screen #wordImage { display:none; }  /* no image */
 .intro-screen #wordText {
