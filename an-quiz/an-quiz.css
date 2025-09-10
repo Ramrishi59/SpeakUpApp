@@ -1,0 +1,270 @@
+:root{
+    --bg: #eaf6ff;
+    --text: #2b2b2b;
+    --card-max: 780px;
+    --wrap-h: clamp(20px, 40svh, 420px);
+    --radius: 22px;
+    --shadow: 0 8px 24px rgba(0,0,0,0.08);
+    --gold: #f6c33b;
+    --green: #36b24a;
+    --blue: #3aa6ff;
+    --pink: #ff6fb5;
+  
+    /* added to mirror Trial.css */
+    --white: #fff;
+    --salmon: #ff7f61;
+  }
+  
+  /* iPhone safe area */
+  @supports(padding:max(0px)) {
+    body { padding-bottom: max(0px, env(safe-area-inset-bottom)); }
+  }
+  
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  
+  body {
+    font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg) url('Images/Background.webp') center / cover no-repeat fixed;
+  }
+  
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; gap: 12px;
+  }
+  .title { font-weight: 700; font-size: clamp(20px, 2.4vw, 28px); }
+  .stars {
+    font-weight: 700; background: #fff; padding: 6px 12px;
+    border-radius: 999px; box-shadow: var(--shadow);
+  }
+  
+  #app { display: grid; place-items: center; padding: 16px; }
+
+
+  .word-display {
+    min-height: calc(100svh - 56px); /* fill screen minus header */
+    max-width: 960px;
+    margin: 0 auto;
+  
+    /* shorthand: top / right-left / bottom */
+    padding: clamp(6px, 1svh, 12px) 16px calc(16px + env(safe-area-inset-bottom));
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(10px, 1.8svh, 18px);
+    
+  }
+  
+  
+  
+  .image-wrap {
+    width: 100%; height: var(--wrap-h);
+    display: grid; place-items: center; overflow: hidden;
+    border-radius: 0; background: transparent;
+    margin-top: clamp(-28px, -3svh, -12px);
+  }
+  #wordImage { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; }
+  
+  .word-text {
+    text-align: center; font-weight: 700; font-size: clamp(22px, 4.2vw, 36px);
+  }
+  
+  /* ----- Choices (kept) ----- */
+  .choices {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: clamp(10px, 2.6vw, 18px); margin-top: 5px;
+  }
+  
+  /* Balloon buttons (text style — OK to ignore if using images) */
+  .balloon {
+    border: none; color: #fff; font-weight: 700;
+    font-size: clamp(22px, 4vw, 34px);
+    padding: clamp(14px, 2.5vh, 18px) 0;
+    border-radius: 999px; box-shadow: 0 6px 0 rgba(0,0,0,0.08);
+  }
+  .balloon-a { background: linear-gradient(180deg, var(--blue), #1877f2); }
+  .balloon-an { background: linear-gradient(180deg, var(--pink), #ff4ca4); }
+  .balloon:disabled { opacity: 0.6; }
+  
+  /* Image-balloon variant (if you use webp balloons) */
+  .balloon-img {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+  .balloon-img img {
+    width: clamp(120px, 28vw, 180px);
+    height: auto;
+    transition: transform 0.15s ease, filter 0.15s ease;
+    display: block;
+  }
+  .balloon-img:active img { transform: scale(0.95); }
+  .balloon-img.correct img {
+    filter: brightness(1.2) drop-shadow(0 0 12px rgba(255,255,255,0.8));
+  }
+  .balloon-img.incorrect img { animation: shake 300ms ease both; }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-3px); }
+  }
+  
+  .feedback {
+    min-height: 28px; text-align: center;
+    font-weight: 600; font-size: clamp(32px, 2.4vw, 18px);
+  }
+  
+  /* ===== NAV & SECONDARY BUTTONS — Trial.css aligned ===== */
+  
+  /* Prev/Next row pinned to bottom of card */
+  .nav-row {
+    margin-top: auto; /* pins it to bottom of .word-display */
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: center;
+    margin-bottom: clamp(34px, 4svh, 50px); /* lift row up a bit */
+  }
+  
+  /* Style the two main nav buttons like Trial.css */
+  .nav-row .btn{
+    border: 0; outline: 0;
+    font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-weight: 700;                 /* Fredoka max is 700 */
+    font-size: clamp(16px, 2.2svh, 22px);
+    padding: 14px 18px;
+    border-radius: 18px;
+    color: var(--white);
+    box-shadow: var(--shadow);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    min-height: 52px;
+    white-space: nowrap;
+  }
+  
+  /* Use your existing classes to colour them */
+  .primary { background: linear-gradient(#ffcd4d, #ffa909); }
+  .secondary { background: linear-gradient(#ffcd4d, #ffa909)}
+  
+  /* Secondary actions (Home + Start Over) centred below */
+  .secondary-row{
+    margin-top: 14px;
+    width: 100%;
+    display: flex; align-items: center; justify-content: center;
+    gap: 24px; flex-wrap: wrap;
+    margin-bottom: clamp(24px, 3svh, 40px);
+    margin-top: 12px; 
+  }
+  
+  /* Make these match Trial.css “pill” feel */
+  .secondary-row .btn{
+    border: 0; outline: 0; text-decoration: none;
+    font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-weight: 700;
+    font-size: clamp(16px, 2svh, 20px);
+    color: var(--white);
+    background: var(--salmon);
+    padding: 12px 18px;
+    border-radius: 16px;
+    display: inline-flex; align-items: center; gap: 10px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    margin-bottom: 90px;
+  }
+  
+  /* Home bigger for easier tap (as in Trial.css) */
+  .home {
+    background: linear-gradient(#ff8d73,#ff6f54);
+    font-size: 25px;
+    padding: 18px 26px;
+  }
+  
+  /* Start Over slightly smaller */
+  .danger {
+    background: linear-gradient(#ff8d73,#ff6f54);
+    font-size: 20px;
+    padding: 12px 16px;
+  }
+  
+  /* Utility */
+.hidden { display: none !important; }
+
+/* Full-screen intro */
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  background: #bfe9ff;               /* fallback sky */
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.intro-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                  /* fills screen */
+  object-position: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Play button (themed but light) */
+.play-btn {
+  position: relative;
+  z-index: 1;
+  width: 96px;
+  height: 96px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: pulse 1.6s infinite ease-in-out;
+}
+
+/* Triangle ▶ using CSS (keeps it asset-light).
+   If you want your own image, comment this and put <img> inside the button. */
+.play-btn::before {
+  content: "";
+  display: block;
+  width: 0; height: 0;
+  margin-left: 6px;                   /* slight horizontal centering of triangle */
+  border-left: 24px solid #ff7a00;    /* triangle color */
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+  margin: auto;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0;
+}
+
+.play-btn:hover { transform: scale(1.05); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
+.play-btn:active { transform: scale(0.98); }
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.08); }
+}
+
+/* Fade-out when leaving intro */
+.intro-screen.fade-out {
+  animation: introFade 320ms ease forwards;
+}
+@keyframes introFade {
+  to { opacity: 0; visibility: hidden; }
+}

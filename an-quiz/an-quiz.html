@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Speak Up — A / An Tap Game</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="an-quiz.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">A / An</div>
+    <div class="stars"><span id="starCount">0</span> ⭐</div>
+  </header>
+
+  <!-- Intro overlay (full-screen) -->
+  <section id="practiceIntro" class="intro-screen" aria-label="Practice intro" role="dialog" aria-modal="true">
+    <!-- Make sure this path is correct relative to this HTML file -->
+    <img class="intro-image" src="Images/introquiz.webp" alt="Welcome to Practice Time!">
+    <button id="introPlayBtn" class="play-btn" aria-label="Play welcome audio"></button>
+  </section>
+
+  <!-- QUIZ (hidden until intro ends) -->
+  <main id="app" class="hidden">
+    <section class="word-display">
+      <div class="image-wrap">
+        <img id="wordImage" alt="">
+      </div>
+
+      <!-- Either keep this, OR guard it in JS -->
+      <div class="word-text" id="wordText"></div>
+
+      <div class="choices" role="group" aria-label="Choose A or An">
+        <button id="btnA" class="balloon-img" data-choice="A" aria-label="Choose A">
+          <img src="Images/a-balloon.webp" alt="A balloon">
+        </button>
+        <button id="btnAn" class="balloon-img" data-choice="An" aria-label="Choose An">
+          <img src="Images/an-balloon.webp" alt="An balloon">
+        </button>
+      </div>
+
+      <div class="feedback" id="feedback"></div>
+
+      <div class="nav-row">
+        <button id="prevBtn" class="btn secondary">Prev</button>
+        <button id="nextBtn" class="btn primary">Next</button>
+      </div>
+
+      <div class="secondary-row">
+        <a class="btn home" href="../index.html"><span class="icon">🏠</span> Home</a>
+        <button id="resetBtn" class="btn danger">Start Over</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="an-quiz.js" defer></script>
+</body>
+</html>

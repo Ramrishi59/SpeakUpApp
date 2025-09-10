@@ -12,6 +12,12 @@ const dashboardLessons = [
       thumbnail: 'Images/Unit1/familydash.jpg'
     },
     {
+      id: 'unit1-practice',
+      title: 'Pracrice Session',
+      description: 'Practice',
+      thumbnail: 'Images/Unit1/familydash.jpg'
+    },
+    {
       id: 'unit2-toys',
       title: 'My Favourite Toys',
       description: 'Learn about toys with Manku!',
@@ -44,6 +50,7 @@ const dashboardLessons = [
       // existing pages (unchanged)
       'unit2-toys': () => 'unit2.html',
       'unit1':      () => 'unit1.html',
+      'unit1-practice': () => 'an-quiz/an-quiz.html',
   
       // default fallback: old index with query (works for future JSON units)
       '__default': (id) => `old-index.html?unitId=${id}`
