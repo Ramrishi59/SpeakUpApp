@@ -15,7 +15,7 @@ const dashboardLessons = [
       id: 'unit1-practice',
       title: 'Pracrice Session',
       description: 'Practice',
-      thumbnail: 'Images/Unit1/familydash.jpg'
+      thumbnail: 'an-quiz/Images/introquiz.webp'
     },
     {
       id: 'unit2-toys',
