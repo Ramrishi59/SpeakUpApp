@@ -13,6 +13,8 @@
     /* added to mirror Trial.css */
     --white: #fff;
     --salmon: #ff7f61;
+
+    --topbar-h: 56px; /* height of the top bar */
   }
   
   /* iPhone safe area */
@@ -21,31 +23,42 @@
   }
   
   * { box-sizing: border-box; }
-  html, body { height: 100%; margin: 0; }
+  html, body { height: 100%; margin: 0; overflow: hidden; }
   
   body {
     font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     color: var(--text);
-    background: var(--bg) url('Images/Background.webp') center / cover no-repeat fixed;
+    background: var(--bg) url('Images/b.webp') center / cover no-repeat fixed;
+    background-attachment: scroll;
   }
   
   .topbar {
+    /* display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px; gap: 12px; */
+    height: var(--topbar-h);
+    padding: 0 18px;                            /* keep horizontal padding only */
     display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 18px; gap: 12px;
   }
+
   .title { font-weight: 700; font-size: clamp(20px, 2.4vw, 28px); }
   .stars {
     font-weight: 700; background: #fff; padding: 6px 12px;
     border-radius: 999px; box-shadow: var(--shadow);
   }
   
-  #app { display: grid; place-items: center; padding: 16px; }
+  /* #app { display: grid; place-items: center; padding: 16px; } */
 
+  #app {
+    height: calc(100svh - var(--topbar-h));
+    padding: 0;                                 /* no extra outer padding */
+    display: grid; place-items: center;
+  }
 
   .word-display {
-    min-height: calc(100svh - 56px); /* fill screen minus header */
+    min-height: 100%; overflow: hidden;
     max-width: 960px;
     margin: 0 auto;
+    overflow: hidden;
   
     /* shorthand: top / right-left / bottom */
     padding: clamp(6px, 1svh, 12px) 16px calc(16px + env(safe-area-inset-bottom));
@@ -58,18 +71,26 @@
     
   }
   
-  
-  
-  .image-wrap {
-    width: 100%; height: var(--wrap-h);
-    display: grid; place-items: center; overflow: hidden;
-    border-radius: 0; background: transparent;
-    margin-top: clamp(-28px, -3svh, -12px);
-  }
-  #wordImage { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; }
+.image-wrap {
+  /* replace your current image-wrap block */
+  width: 100%;
+  height: var(--wrap-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+  margin-top: 0;                /* ← remove the negative lift */
+}
+
+#wordImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  margin: auto;        /* ensures centring */
+  display: block;
+}
+
   
   .word-text {
     text-align: center; font-weight: 700; font-size: clamp(22px, 4.2vw, 36px);
@@ -135,7 +156,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 18px;
     align-items: center;
-    margin-bottom: clamp(34px, 4svh, 50px); /* lift row up a bit */
+    margin-bottom: clamp(10px, 1.6svh, 16px);; /* lift row up a bit */
   }
   
   /* Style the two main nav buttons like Trial.css */
@@ -160,11 +181,12 @@
   
   /* Secondary actions (Home + Start Over) centred below */
   .secondary-row{
-    margin-top: 14px;
+    margin-top: 12px;
     width: 100%;
     display: flex; align-items: center; justify-content: center;
     gap: 24px; flex-wrap: wrap;
-    margin-bottom: clamp(24px, 3svh, 40px);
+    margin-bottom: env(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
     margin-top: 12px; 
   }
   
@@ -181,7 +203,7 @@
     display: inline-flex; align-items: center; gap: 10px;
     box-shadow: var(--shadow);
     cursor: pointer;
-    margin-bottom: 90px;
+    margin-bottom: 0;
   }
   
   /* Home bigger for easier tap (as in Trial.css) */

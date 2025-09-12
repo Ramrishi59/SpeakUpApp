@@ -6,7 +6,7 @@ const ITEMS = [
     { noun: "umbrella", correct: "An", image: "Images/an_umbrella.png", audio: "Audio/u1_c1_item_23_an_umbrella.mp3" },
   ];
   
-  const TRY_AGAIN = "Audio/AnQuiz/try_again.mp3";
+  const TRY_AGAIN = "Audio/not-correct.mp3";
   
   // Elements
   const imgEl = document.getElementById("wordImage");
@@ -102,7 +102,7 @@ const ITEMS = [
   
     if (isCorrect) {
       answeredThisItem = true;
-      setFeedback(`${item.correct} ${item.noun}. Great!`);
+      setFeedback(`${item.correct} ${item.noun}`);
       imageWrap.classList.add("correct-sparkle");
       (choice === "A" ? btnA : btnAn).classList.add("correct");
   
