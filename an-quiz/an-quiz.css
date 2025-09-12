@@ -213,7 +213,7 @@
 }
 
 .intro-image {
-  position: absolute;
+  position: absolute; z-index: 0;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -223,34 +223,24 @@
   user-select: none;
 }
 
-/* Play button (themed but light) */
+
 .play-btn {
-  position: relative;
-  z-index: 1;
-  width: 96px;
-  height: 96px;
   border: none;
-  border-radius: 50%;
+  background: none;
+  padding: 0;
   cursor: pointer;
-  background: rgba(255,255,255,0.9);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  animation: pulse 1.6s infinite ease-in-out;
+  position: relative; z-index: 2;
+}
+.play-btn img {
+  width: 250px;    /* or whatever size */
+  height: auto;
+  display: block;
+  animation: pulse 1.8s infinite ease-in-out;
+  padding-top: 180px;
 }
 
-/* Triangle ▶ using CSS (keeps it asset-light).
-   If you want your own image, comment this and put <img> inside the button. */
 .play-btn::before {
-  content: "";
-  display: block;
-  width: 0; height: 0;
-  margin-left: 6px;                   /* slight horizontal centering of triangle */
-  border-left: 24px solid #ff7a00;    /* triangle color */
-  border-top: 16px solid transparent;
-  border-bottom: 16px solid transparent;
-  margin: auto;
-  position: absolute;
-  top: 0; bottom: 0; left: 0; right: 0;
+  content: none !important;
 }
 
 .play-btn:hover { transform: scale(1.05); box-shadow: 0 12px 28px rgba(0,0,0,0.18); }
@@ -267,4 +257,65 @@
 }
 @keyframes introFade {
   to { opacity: 0; visibility: hidden; }
+}
+
+/* Clouds layer sits on top of the intro image, below the Play button */
+.clouds {
+  position: absolute; z-index: 1;
+  inset: 0;
+  pointer-events: none;   /* taps go through */
+  overflow: hidden;
+  z-index: 0;             /* Play button should have z-index: 1 */
+}
+
+.cloud {
+  position: absolute;
+  left: -40vw;            /* start off-screen on the left */
+  width: 60vw;            /* responsive size; each cloud overrides this */
+  height:30vw;
+  background: url('Images/cloud.png') center / contain no-repeat;
+  opacity: 0.7;
+  will-change: transform; /* hint for smooth GPU animation */
+  animation: cloud-drift var(--dur, 10s) linear infinite;
+}
+
+/* Three variations using the SAME image (size, speed, opacity, flip) */
+.cloud1 {
+  top: 30%;
+  width: 45vw; height: 18vw;
+  --dur: 40s;             /* far = slower */
+  opacity: 0.9;
+}
+
+.cloud2 {
+  top: 45%;
+  width: 65vw; height: 22vw;
+  --dur: 60s;
+  opacity: 0.7;
+  transform: scaleX(-1);  /* simple mirror so it looks different */
+}
+
+.cloud3 {
+  top: 20%;
+  width: 75vw; height: 26vw;
+  --dur: 80s;             /* near = a bit faster */
+  opacity: 0.8;
+}
+
+.cloud5 {
+  top: 400%;
+  width: 75vw; height: 26vw;
+  --dur: 80s;             /* near = a bit faster */
+  opacity: 0.8;
+}
+
+/* Calm horizontal drift */
+@keyframes cloud-drift {
+  from { transform: translateX(0); }
+  to   { transform: translateX(140vw); } /* go fully across + some padding */
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cloud { animation: none; }
 }
