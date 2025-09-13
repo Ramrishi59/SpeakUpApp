@@ -341,3 +341,40 @@
 @media (prefers-reduced-motion: reduce) {
   .cloud { animation: none; }
 }
+
+.stars-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;                       /* spacing between stars */
+  padding: 10px 14px;
+  min-height: 40px;
+}
+
+.stars-row img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.star {
+  width: 28px;           /* tweak 24–36px as you like */
+  height: 28px;
+  object-fit: contain;
+  display: block;
+  transform: translateZ(0); /* hint for GPU */
+}
+
+@keyframes starPopGlow {
+  0%   { transform: scale(0.2) rotate(-10deg); filter: drop-shadow(0 0 0 rgba(255,200,0,0)); opacity: 0; }
+  60%  { transform: scale(1.25) rotate(0deg);  filter: drop-shadow(0 0 18px rgba(255,200,0,0.9)); opacity: 1; }
+  100% { transform: scale(1)    rotate(0deg);  filter: drop-shadow(0 0 0 rgba(255,200,0,0)); }
+}
+.star--pop {
+  animation: starPopGlow 520ms ease-out both;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .star--pop { animation: none; }
+}
+
