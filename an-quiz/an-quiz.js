@@ -87,6 +87,51 @@ function renderItem(i) {
   prevBtn.disabled = (i === 0);
 }
 
+// ===== Confetti setup =====
+const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+const confettiCanvas = document.getElementById('confettiCanvas');
+
+// Create a confetti instance that reuses a single canvas
+const confettiShot = (window.confetti && confettiCanvas)
+  ? confetti.create(confettiCanvas, { resize: true, useWorker: true })
+  : null;
+
+// Small throttle so multiple taps don’t stack explosions
+let lastConfettiAt = 0;
+function canFireConfetti() {
+  const now = performance.now();
+  if (now - lastConfettiAt < 500) return false;
+  lastConfettiAt = now;
+  return true;
+}
+
+// Heavy top-to-bottom confetti rain for a short duration
+function rainConfetti(durationMs = 800) {
+  if (!confettiShot || prefersReducedMotion) return;
+
+  const end = performance.now() + durationMs;
+
+  (function frame() {
+    // 2–4 particles per frame from random x positions at y slightly above the viewport
+    confettiShot({
+      particleCount: 8,
+      startVelocity: 20,   // initial speed (higher = faster fall)
+      spread: 120,          // horizontal spread of each mini-burst
+      ticks: 400,          // lifetime; higher = stays longer before vanishing
+      gravity: 1.4,        // how fast it falls; 1.0–1.3 feels like rain
+      scalar: 0.9,         // piece size; bump to 1.0 for bigger pieces
+      origin: { x: Math.random(), y: -0.05 },
+      colors: ['#FFD700', '#FF4500', '#1E90FF', '#32CD32', '#FF69B4', '#FFFFFF']
+    });
+
+    if (performance.now() < end) {
+      requestAnimationFrame(frame);
+    }
+  })();
+}
+
+
+
 function handleChoice(choice) {
   if (answeredThisItem) return;
   const item = ITEMS[index];
@@ -100,6 +145,9 @@ function handleChoice(choice) {
 
     totalCorrect += 1;
     addStar(); // ⭐
+    // Heavy confetti rain on each correct; make it a bit longer every 5th star
+    const rainMs = (totalCorrect % 5 === 0) ? 1600 : 1100;
+    rainConfetti(rainMs);
 
     // Play the phrase and advance when it ends (with safety fallback)
     const a = playSound(item.audio);
@@ -221,3 +269,5 @@ function addStar() {
   }, { once: true });
   starsContainer.appendChild(star);
 }
+
+
