@@ -26,7 +26,7 @@ const imageWrap  = document.querySelector(".image-wrap");
 // Outro
 const outroEl = document.getElementById('practiceOutro');
 const outroBtn = document.getElementById('outroMenuBtn');
-const outroAudio = new Audio('Audio/outro.mp3'); // <-- add this file
+const outroAudio = new Audio('Audio/outroquiz.mp3'); // <-- add this file
 outroAudio.preload = 'auto';
 
 
