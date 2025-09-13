@@ -23,6 +23,13 @@ const nextBtn    = document.getElementById("nextBtn");
 const resetBtn   = document.getElementById("resetBtn");
 const imageWrap  = document.querySelector(".image-wrap");
 
+// Outro
+const outroEl = document.getElementById('practiceOutro');
+const outroBtn = document.getElementById('outroMenuBtn');
+const outroAudio = new Audio('Audio/outro.mp3'); // <-- add this file
+outroAudio.preload = 'auto';
+
+
 // ★ Stars row
 const starsContainer = document.getElementById("starsContainer");
 
@@ -179,13 +186,16 @@ function prev() {
 
 function next() {
   clearAutoAdvance();
+
   if (index < ITEMS.length - 1) {
     index += 1;
+    renderItem(index);
   } else {
-    index = 0; // wrap (or keep at last if you prefer)
+    // Last item completed → outro
+    showOutro();
   }
-  renderItem(index);
 }
+
 
 function resetAll() {
   clearAutoAdvance();
@@ -274,4 +284,21 @@ function addStar() {
   starsContainer.appendChild(star);
 }
 
+function showOutro() {
+  // Clean up any in-flight timers/audio
+  clearAutoAdvance();
+  stopAudio();
+
+  // Optional: big celebratory confetti once
+  if (typeof rainConfetti === 'function') {
+    rainConfetti(1600); // your heavy rain helper
+  } else if (typeof popConfetti === 'function') {
+    popConfetti({ big: true });
+  }
+
+  // Reveal overlay and play line once
+  outroEl.classList.remove('hidden');
+  outroAudio.currentTime = 0;
+  outroAudio.play().catch(() => { /* okay if blocked */ });
+}
 
