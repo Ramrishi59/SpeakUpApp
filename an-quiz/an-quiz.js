@@ -2,8 +2,12 @@
 
 const ITEMS = [
   { noun: "orange",   correct: "An", image: "Images/an_orange.png",   audio: "Audio/u1_c1_item_21_an_orange.mp3" },
-  { noun: "elephant", correct: "An", image: "Images/an_elephant.png", audio: "Audio/u1_c1_item_25_an_elephant.mp3" },
+  { noun: "pencil", correct: "A", image: "Images/a_pencil.png", audio: "Audio/u1_c1_item_25_a_pencil.mp3" },
   { noun: "umbrella", correct: "An", image: "Images/an_umbrella.png", audio: "Audio/u1_c1_item_23_an_umbrella.mp3" },
+  { noun: "apple", correct: "An", image: "Images/an_apple.png", audio: "Audio/u1_c1_item_23_an_apple.mp3" },
+  { noun: "book", correct: "A", image: "Images/a_book.png", audio: "Audio/u1_c1_item_23_a_book.mp3" },
+  { noun: "egg", correct: "An", image: "Images/an_egg.png", audio: "Audio/u1_c1_item_23_an_egg.mp3" },
+  { noun: "chair", correct: "A", image: "Images/a_chair.png", audio: "Audio/u1_c1_item_23_an_chair.mp3" },
 ];
 
 const TRY_AGAIN = "Audio/not-correct.mp3";
