@@ -433,3 +433,31 @@
 @media (prefers-reduced-motion: reduce) {
   /* your confetti is already gated; no extra needed here */
 }
+
+/* Outro button (same pill style as Home) */
+#outroMenuBtn {
+  text-decoration: none;            /* remove underline */
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 700;
+  font-size: clamp(18px, 2.6vw, 22px);
+  color: #fff;
+  filter: drop-shadow(0 0 6px #ffd84a);
+
+  background: linear-gradient(#ffcd4d, #f5a208); /* warm gold gradient */
+  padding: 14px 26px;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* subtle animation on press */
+#outroMenuBtn:hover { 
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+#outroMenuBtn:active { transform: scale(0.96); }
