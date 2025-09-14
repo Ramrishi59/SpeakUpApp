@@ -117,7 +117,7 @@ function canFireConfetti() {
 }
 
 // Heavy top-to-bottom confetti rain for a short duration
-function rainConfetti(durationMs = 800) {
+function rainConfetti(durationMs = 600) {
   if (!confettiShot || prefersReducedMotion) return;
 
   const end = performance.now() + durationMs;
@@ -126,10 +126,10 @@ function rainConfetti(durationMs = 800) {
     // 2–4 particles per frame from random x positions at y slightly above the viewport
     confettiShot({
       particleCount: 8,
-      startVelocity: 20,   // initial speed (higher = faster fall)
+      startVelocity: 25,   // initial speed (higher = faster fall)
       spread: 120,          // horizontal spread of each mini-burst
-      ticks: 400,          // lifetime; higher = stays longer before vanishing
-      gravity: 1.4,        // how fast it falls; 1.0–1.3 feels like rain
+      ticks: 150,          // lifetime; higher = stays longer before vanishing
+      gravity: 2.8,        // how fast it falls; 1.0–1.3 feels like rain
       scalar: 0.9,         // piece size; bump to 1.0 for bigger pieces
       origin: { x: Math.random(), y: -0.05 },
       colors: ['#FFD700', '#FF4500', '#1E90FF', '#32CD32', '#FF69B4', '#FFFFFF']
