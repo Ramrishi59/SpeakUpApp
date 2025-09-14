@@ -399,24 +399,20 @@
 
 .outro-card {
   width: min(92vw, 540px);
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
-  padding: 24px 22px;
-  text-align: center;
-}
+  min-height: 300px;
+  /* swap in the card art */
+  background: url('Images/outro-card.png') center/contain no-repeat;
+  background-color: transparent;
 
-.outro-title {
-  font-weight: 700;
-  font-size: clamp(22px, 5vw, 32px);
-  margin-bottom: 6px;
+  /* content layout */
+  padding: 120px 28px 32px; /* top padding pushes text into the blank area */
+  text-align: center;
+  border-radius: 0;          /* the image has its own rounded edges */
+  box-shadow: none;          /* image includes shadow */
 }
-.outro-sub {
-  font-weight: 600;
-  font-size: clamp(16px, 3.6vw, 18px);
-  color: #333;
-  margin-bottom: 16px;
-}
+.outro-title { margin-bottom: 6px; }
+.outro-sub   { margin-bottom: 16px; }
+
 
 .outro-stars {
   display: flex; justify-content: center; gap: 10px;
