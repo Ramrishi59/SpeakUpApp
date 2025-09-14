@@ -15,6 +15,9 @@
     --salmon: #ff7f61;
 
     --topbar-h: 56px; /* height of the top bar */
+    --balloon-min: 140px;   /* was 120px */
+    --balloon-ideal: 34vw;  /* was 28vw */
+    --balloon-max: 220px;   /* was 180px */
   }
   
   /* iPhone safe area */
@@ -87,7 +90,8 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  margin: auto;        /* ensures centring */
+  /* margin: auto;         */
+  margin-top: 70px;
   display: block;
 }
 
@@ -106,7 +110,7 @@
   .balloon {
     border: none; color: #fff; font-weight: 700;
     font-size: clamp(22px, 4vw, 34px);
-    padding: clamp(14px, 2.5vh, 18px) 0;
+    padding: clamp(24px, 2.5vh, 18px) 0;
     border-radius: 999px; box-shadow: 0 6px 0 rgba(0,0,0,0.08);
   }
   .balloon-a { background: linear-gradient(180deg, var(--blue), #1877f2); }
@@ -122,17 +126,20 @@
     display: grid;
     place-items: center;
   }
-  .balloon-img img {
-    width: clamp(120px, 28vw, 180px);
+  .balloon-img img{
+    width: clamp(var(--balloon-min), var(--balloon-ideal), var(--balloon-max));
     height: auto;
-    transition: transform 0.15s ease, filter 0.15s ease;
-    display: block;
   }
   .balloon-img:active img { transform: scale(0.95); }
   .balloon-img.correct img {
     filter: brightness(2.5) drop-shadow(0 0 12px rgba(255,255,255,0.8));
   }
   .balloon-img.incorrect img { animation: shake 300ms ease both; }
+
+  .choices{
+    gap: clamp(16px, 3vw, 28px);
+    justify-items: center;
+  }
   
   @keyframes shake {
     0%, 100% { transform: translateX(0); }
@@ -195,15 +202,16 @@
     border: 0; outline: 0; text-decoration: none;
     font-family: 'Fredoka', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     font-weight: 700;
-    font-size: clamp(16px, 2svh, 20px);
+    font-size: clamp(20px, 5svh, 20px);
     color: var(--white);
     background: var(--salmon);
-    padding: 12px 18px;
+    padding: 32px 38px;
     border-radius: 16px;
     display: inline-flex; align-items: center; gap: 10px;
     box-shadow: var(--shadow);
     cursor: pointer;
-    margin-bottom: 0;
+    margin-bottom: 30px;
+    
   }
   
   /* Home bigger for easier tap (as in Trial.css) */
@@ -484,5 +492,28 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 #outroMenuBtn:active { transform: scale(0.96); }
+
+.nav-row { display: none !important; }
+
+/* .topbar{ display:none; }
+:root{ --topbar-h: 0px; }      */
+
+/* remove any display:none you may have set */
+.topbar{ display:flex; align-items:center; justify-content:space-between; }
+:root{ --topbar-h: 56px; }
+
+
+.pill {
+  margin: 0 auto;              /* center it in topbar */
+  margin-top: 10px;
+  background: yellowgreen;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 22px;             /* larger text */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
 
 

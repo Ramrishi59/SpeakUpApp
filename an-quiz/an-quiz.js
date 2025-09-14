@@ -29,6 +29,7 @@ const btnAn      = document.getElementById("btnAn");
 const prevBtn    = document.getElementById("prevBtn");
 const nextBtn    = document.getElementById("nextBtn");
 const resetBtn   = document.getElementById("resetBtn");
+
 const imageWrap  = document.querySelector(".image-wrap");
 
 // Outro
@@ -40,6 +41,7 @@ outroAudio.preload = 'auto';
 
 // ★ Stars row
 const starsContainer = document.getElementById("starsContainer");
+const progressPill = document.getElementById('progressPill');
 
 // State
 let index = 0;
@@ -104,6 +106,8 @@ function renderItem(i) {
   if (textEl) textEl.textContent = item.noun;
 
   prevBtn.disabled = (i === 0);
+
+  if (progressPill) progressPill.textContent = `${i + 1}/${ITEMS.length}`;
 }
 
 // ===== Confetti setup =====
