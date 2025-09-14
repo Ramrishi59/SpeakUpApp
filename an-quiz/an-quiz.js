@@ -7,7 +7,15 @@ const ITEMS = [
   { noun: "apple", correct: "An", image: "Images/an_apple.png", audio: "Audio/u1_c1_item_20_an_apple.mp3" },
   { noun: "book", correct: "A", image: "Images/a_book.png", audio: "Audio/u1_c1_item_01_a_book.mp3" },
   { noun: "egg", correct: "An", image: "Images/an_egg.png", audio: "Audio/u1_c1_item_22_an_egg.mp3" },
-  { noun: "chair", correct: "A", image: "Images/a_chair.png", audio: "Audio/u1_c1_item_08_a_chair.mp3" },
+  { noun: "dolphin", correct: "A", image: "Images/a_dolphin.png", audio: "Audio/u1_c1_item_17_a_dolphin.mp3" },
+  { noun: "ant", correct: "An", image: "Images/an_ant.png", audio: "Audio/u1_c1_item_28_an_ant.mp3" },
+  { noun: "envelope", correct: "An", image: "Images/an_envelope.png", audio: "Audio/u1_c1_item_27_an_envelope.mp3" },
+  { noun: "toothbrush", correct: "A", image: "Images/a_toothbrush.png", audio: "Audio/u1_c1_item_14_a_toothbrush.mp3" },
+  { noun: "horse", correct: "A", image: "Images/a_horse.png", audio: "Audio/u1_c1_item_18_a_horse.mp3" },
+  { noun: "backpack", correct: "A", image: "Images/a_backpack.png", audio: "Audio/u1_c1_item_06_a_backpack.mp3" },
+  { noun: "ship", correct: "A", image: "Images/a_ship.png", audio: "Audio/u1_c1_item_12_a_ship.mp3" },
+  { noun: "eagle", correct: "An", image: "Images/an_eagle.png", audio: "Audio/u1_c1_item_29_an_eagle.mp3" },
+  { noun: "pen", correct: "A", image: "Images/a_pen.png", audio: "Audio/u1_c1_item_03_a_pen.mp3" },
 ];
 
 const TRY_AGAIN = "Audio/not-correct.mp3";
