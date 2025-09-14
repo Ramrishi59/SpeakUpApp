@@ -228,6 +228,11 @@ const appEl     = document.getElementById('app');
 const introAudio = new Audio('Audio/intro.mp3'); // ensure this path exists
 introAudio.preload = 'auto';
 
+// How-to instruction (plays once after intro)
+const howtoAudio = new Audio('Audio/introinst.mp3'); // <-- add your file
+howtoAudio.preload = 'auto';
+
+
 let introStarted = false;
 let introFinished = false;
 let introFallbackTimer = null;
@@ -236,14 +241,47 @@ function showQuiz() {
   appEl.classList.remove('hidden');
 }
 
+function playHowtoThenEnable() {
+  // Lock taps during the instruction
+  btnA.disabled = true;
+  btnAn.disabled = true;
+  prevBtn.disabled = true;
+  nextBtn.disabled = true;
+
+  // Optional hint on screen
+  // setFeedback("Listen: Look at the picture. Choose A or An.");
+
+  howtoAudio.currentTime = 0;
+  const p = howtoAudio.play();
+
+  // Unlock when audio finishes
+  const unlock = () => {
+    btnA.disabled = false;
+    btnAn.disabled = false;
+    prevBtn.disabled = (index === 0);
+    nextBtn.disabled = false;
+    setFeedback("");
+    howtoAudio.removeEventListener('ended', unlock);
+  };
+  howtoAudio.addEventListener('ended', unlock, { once: true });
+
+  // Fallback if autoplay is blocked
+  if (p && typeof p.catch === 'function') {
+    p.catch(() => setTimeout(unlock, 2000));
+  }
+}
+
+
 function endIntro() {
   if (introFinished) return;
   introFinished = true;
   try { introAudio.pause(); introAudio.currentTime = 0; } catch {}
   if (introFallbackTimer) clearTimeout(introFallbackTimer);
   introEl?.remove();
-  showQuiz();
+  showQuiz();                 // reveal the quiz UI that you already rendered
+  playHowtoThenEnable();      // <<— play the one-time “how to play” audio
 }
+
 
 function armFallback(ms = 2800) {
   if (introFallbackTimer) clearTimeout(introFallbackTimer);
