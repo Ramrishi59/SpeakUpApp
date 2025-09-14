@@ -461,15 +461,15 @@
   font-weight: 700;
   font-size: clamp(18px, 2.6vw, 22px);
   color: #fff;
-  filter: drop-shadow(0 0 6px #ffd84a);
+  /* filter: drop-shadow(0 0 6px #ffd84a); */
 
   justify-self: end;
-  transform: translateX(-34px);   /* − = move left from the edge; adjust value */
+  transform: translateX(-44px);   /* − = move left from the edge; adjust value */
 
-  background: linear-gradient(#ff4ca4, #a154ff); /* warm gold gradient */
-  padding: 14px 36px;
+  background: rgb(143, 117, 116);/* warm gold gradient */
+  padding: 10px 26px;
   margin-bottom: 20px;
-  border-radius: 999px;
+  border-radius: 200px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
