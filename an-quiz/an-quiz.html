@@ -12,41 +12,30 @@
   <header class="topbar">
     <div id="progressPill" class="pill">1/7</div>
   </header>
-  
 
   <!-- Intro overlay (full-screen) -->
   <section id="practiceIntro" class="intro-screen" aria-label="Practice intro" role="dialog" aria-modal="true">
-    <!-- Make sure this path is correct relative to this HTML file -->
     <img class="intro-image" src="Images/introquiz.webp" alt="Welcome to Practice Time!">
     <button id="introPlayBtn" class="play-btn" aria-label="Play welcome audio">
       <img src="Images/start-button.png" alt="Play button">
     </button>
 
-
-      <!-- Subtle drifting clouds (reuse one image) -->
-      <div class="clouds" aria-hidden="true">
-        <span class="cloud cloud1"></span>
-        <span class="cloud cloud2"></span>
-        <span class="cloud cloud3"></span>
-       
-        <span class="cloud cloud5"></span>
-      </div>
-
+    <div class="clouds" aria-hidden="true">
+      <span class="cloud cloud1"></span>
+      <span class="cloud cloud2"></span>
+      <span class="cloud cloud3"></span>
+      <span class="cloud cloud5"></span>
+    </div>
   </section>
 
   <!-- QUIZ (hidden until intro ends) -->
   <main id="app" class="hidden">
-    
     <section class="word-display">
       <div class="image-wrap">
         <img id="wordImage" alt="">
       </div>
 
-      <!-- Either keep this, OR guard it in JS -->
-      <!-- <div class="word-text" id="wordText"></div> -->
-
       <div class="feedback" id="feedback"></div>
-
 
       <div class="choices" role="group" aria-label="Choose A or An">
         <button id="btnA" class="balloon-img" data-choice="A" aria-label="Choose A">
@@ -56,6 +45,8 @@
           <img src="Images/an-balloon.webp" alt="An balloon">
         </button>
       </div>
+
+      <!-- Keep these present (we hide them in CSS) to avoid JS null errors -->
       <div class="nav-row">
         <button id="prevBtn" class="btn secondary">Prev</button>
         <button id="nextBtn" class="btn primary">Next</button>
@@ -68,24 +59,20 @@
     </section>
 
     <!-- Outro overlay -->
-<section id="practiceOutro" class="outro-screen hidden" aria-label="Practice complete" role="dialog" aria-modal="true">
-  <div class="outro-card">
-    <div class="outro-textbox"> 
-      <a class="btn home" id="outroMenuBtn" href="../index.html">
-        <span class="icon" aria-hidden="true">🏠</span> Go to Menu
-      </a>      
-    </div>
-  </div>
-</section>
+    <section id="practiceOutro" class="outro-screen hidden" aria-label="Practice complete" role="dialog" aria-modal="true">
+      <div class="outro-card">
+        <div class="outro-textbox">
+          <a class="btn home" id="outroMenuBtn" href="../index.html">
+            <span class="icon" aria-hidden="true">🏠</span> Go to Menu
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-</main>
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="an-quiz.js" defer></script>
 
-<script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script src="an-quiz.js" defer></script>
-
-<canvas id="confettiCanvas" class="confetti-layer"></canvas>
-
-
-
+  <canvas id="confettiCanvas" class="confetti-layer"></canvas>
 </body>
 </html>
