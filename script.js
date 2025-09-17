@@ -6,20 +6,20 @@ const dashboardLessons = [
       thumbnail: 'Images/Unit1/anthumbnail.png'
     },
     {
+      id: 'u',
+      title: 'Pracrice Session- Unit 1',
+      description: 'Practice',
+      thumbnail: 'an-quiz/Images/introquiz.webp'
+    },
+    {
       id: 'unit2',
       title: 'And',
       description: 'Learn And. Just watch, listen and repeat',
       thumbnail: 'Images/Unit2/andthumbnail.webp'
     },
     {
-      id: 'u',
-      title: 'Pracrice Session',
-      description: 'Practice',
-      thumbnail: 'an-quiz/Images/introquiz.webp'
-    },
-    {
       id: 'un',
-      title: 'My Favourite Toys',
+      title: 'Pracrice Session- Unit 2',
       description: 'Learn about toys with Manku!',
       thumbnail: 'Images/Unit1/toysdash.png'
     },
