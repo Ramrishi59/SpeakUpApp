@@ -41,6 +41,7 @@ async function loadUnit(id) {
   if (!r.ok) throw new Error(id);
   return r.json();
 }
+
 function stopAudio() {
   audio.pause();
   audio.currentTime = 0;
@@ -232,6 +233,13 @@ els.start?.addEventListener("click", startOver);
 /* Init */
 (async function () {
   const unit = await loadUnit(getUnitIdFromUrl());
+
+  // NEW: set the unit title from JSON
+  const titleEl = document.getElementById("unitTitle");
+  if (titleEl && unit.name) {
+    titleEl.textContent = unit.name;
+  }
+
   screens = Array.isArray(unit?.words) ? unit.words : [];
   currentIndex = 0;
   render(currentIndex);

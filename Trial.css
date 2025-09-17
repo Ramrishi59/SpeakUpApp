@@ -47,27 +47,27 @@
     height:100%;
     margin:0;
     /* background: radial-gradient(1200px 900px at 20% 10%, var(--sky1), var(--sky2)); */
-    background-image: url(Images/Unit1/Background.webp);
+    background-image: url(Images/Unit1/Background_1.webp);
     background-size: cover;
     background-attachment: fixed;
     color:var(--text);
     font-family:var(--font-body);
   }
   
-  /* Sticky header */
-  /* .app-header{
-    position:sticky; top:0; z-index:5;
-    display:flex; align-items:center; justify-content:space-between;
-    padding:10px 16px;
-    background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.55));
-    backdrop-filter: blur(6px);
-    border-bottom:1px solid rgba(0,0,0,.06);
+  .unit-title {
+    /* margin: 30px 40px;  */
+    /* margin: 30px; */
+    /* padding-top: 20px; */
+    transform: translateY(20px);
+    margin-left: 10px;
+    text-align: left;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(28px, 2.6svh, 26px);
+    /* margin: 12px 0; */
+    color: #ed2e2e;
   }
-  .app-header .brand{
-    font-family:var(--font-heading);
-    font-weight:700;
-    letter-spacing:.5px;
-  } */
+  
   .score-bubble{
     font-weight:700;
     background:var(--white);
