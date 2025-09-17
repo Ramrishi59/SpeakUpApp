@@ -4,8 +4,7 @@
   "description": "Join words with AND.",
   "thumbnail": "Images/Unit2/and_thumbnail.jpg",
   "words": [
-    { "text": "Welcome to Unit Two.", "audio": "Audio/Unit2/intro_01.mp3" },
-    { "text": "We use the word AND to join two or more things.", "audio": "Audio/Unit2/intro_02.mp3" },
+    { "text": "Hello. Let us learn And", "audio": "Audio/Unit2/intro.mp3" },
 
     { "text": "a book and a pen",                       "image": "Images/Unit2/a_book_and_a_pen.png",                 "audio": "Audio/Unit2/a_book_and_a_pen.mp3" },
     { "text": "a pen and a pencil",                     "image": "Images/Unit2/a_pen_and_a_pencil.png",               "audio": "Audio/Unit2/a_pen_and_a_pencil.mp3" },
