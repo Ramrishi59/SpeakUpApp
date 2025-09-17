@@ -1,3 +1,5 @@
+// <!-- No MORE IN USE -->
+
 let activeWords = []; 
 let currentLessonId = null;
 let currentWordIndex = 0;

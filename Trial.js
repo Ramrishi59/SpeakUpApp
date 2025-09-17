@@ -32,10 +32,10 @@ const els = {
   start:        document.getElementById("startoverButton"),
 };
 
-function getUnitIdFromUrl() {
-  const p = new URLSearchParams(location.search);
-  return p.get("unitId") || "unit2";
-}
+  function getUnitIdFromUrl() {
+    const p = new URLSearchParams(location.search);
+    return p.get("unitId") || "unit1";
+  }
 async function loadUnit(id) {
   const r = await fetch(`units/${id}.json`, { cache: "no-store" });
   if (!r.ok) throw new Error(id);

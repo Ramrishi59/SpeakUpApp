@@ -1,30 +1,30 @@
 const dashboardLessons = [
     {
-      id: 'unit2', // new trial page
+      id: 'unit1', // new trial page
       title: 'A / An',
       description: 'Learn A and An. Just watch, listen and repeat',
-      thumbnail: 'Images/Unit1/a_an_thumbnail.jpg'
+      thumbnail: 'Images/Unit1/anthumbnail.png'
     },
     {
-      id: 'unit1',
-      title: 'My Family',
-      description: 'Learn about family with Manku!',
-      thumbnail: 'Images/Unit1/familydash.jpg'
+      id: 'unit2',
+      title: 'And',
+      description: 'Learn And. Just watch, listen and repeat',
+      thumbnail: 'Images/Unit2/andthumbnail.webp'
     },
     {
-      id: 'unit1-practice',
+      id: 'u',
       title: 'Pracrice Session',
       description: 'Practice',
       thumbnail: 'an-quiz/Images/introquiz.webp'
     },
     {
-      id: 'unit2-toys',
+      id: 'un',
       title: 'My Favourite Toys',
       description: 'Learn about toys with Manku!',
       thumbnail: 'Images/Unit1/toysdash.png'
     },
     {
-      id: 'unit3',
+      id: 'unit',
       title: 'My Happy Day',
       description: 'Learn simple daily activities (eat, play, sleep), use "I eat," "I play," "I sleep," and relate to time of day.',
       thumbnail: 'Images/Unit1/happyday.png'
@@ -44,17 +44,14 @@ const dashboardLessons = [
   
     // -------- Routing (centralised) --------
     const ROUTES = {
-      // point Unit 2 to the new trial page
-      'unit2': (id) => `Trial.html?unitId=${id}`,
-  
-      // existing pages (unchanged)
-      'unit2-toys': () => 'unit2.html',
-      'unit1':      () => 'unit1.html',
-      'unit1-practice': () => 'an-quiz/an-quiz.html',
-  
-      // default fallback: old index with query (works for future JSON units)
+      // Both cards (unit1 + unit2) point to the same file for now
+      'unit1': (id) => `Trial.html?unitId=unit1`,
+      'unit2': (id) => `Trial.html?unitId=unit2`,  // 👈 force unit2 card to also load unit1.json
+    
+      // default fallback
       '__default': (id) => `old-index.html?unitId=${id}`
     };
+    
   
     function navigateToLesson(id) {
       const build = ROUTES[id] || ROUTES['__default'];

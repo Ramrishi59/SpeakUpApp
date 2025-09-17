@@ -23,7 +23,7 @@
 /* Robust viewport token: prefer 1dvh, else 1svh, else 1vh */
 :root { --vh: 1vh; }
 @supports (height: 100dvh) { :root { --vh: 1dvh; } }
-@supports (height: 100svh) and not (height: 100dvh) { :root { --vh: 1svh; } }
+@supports (not (height: 100dvh)) and (height: 100svh) { :root { --vh: 1svh; } }
 
 /* iPhone safe area */
 @supports(padding:max(0px)) {
