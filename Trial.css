@@ -55,10 +55,8 @@
   }
   
   .unit-title {
-    /* margin: 30px 40px;  */
-    /* margin: 30px; */
-    /* padding-top: 20px; */
-    transform: translateY(20px);
+
+    transform: translateY(20px); /* adjust as needed to move header */
     margin-left: 10px;
     text-align: left;
     font-family: var(--font-heading);

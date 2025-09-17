@@ -6,7 +6,7 @@ const dashboardLessons = [
       thumbnail: 'Images/Unit1/anthumbnail.png'
     },
     {
-      id: 'u',
+      id: 'unit1-practice',
       title: 'Pracrice Session- Unit 1',
       description: 'Practice',
       thumbnail: 'an-quiz/Images/introquiz.webp'
@@ -48,6 +48,9 @@ const dashboardLessons = [
       'unit1': (id) => `Trial.html?unitId=unit1`,
       'unit2': (id) => `Trial.html?unitId=unit2`,  // 👈 force unit2 card to also load unit1.json
     
+       // Practice sessions → point to their folders
+      'unit1-practice': () => 'an-quiz/an-quiz.html',
+
       // default fallback
       '__default': (id) => `old-index.html?unitId=${id}`
     };
