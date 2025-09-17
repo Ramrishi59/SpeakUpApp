@@ -111,7 +111,7 @@
   #wordText{
     font-family:var(--font-heading);
     font-weight:700;
-    /* font-size: clamp(30px, 4.8svh, 52px); */
+    font-size: clamp(28px, 4.8svh, 38px);
     /* font-size: clamp(24px, 4svh, 42px); */
     word-break: keep-all;
     color: var(--accent-red);
