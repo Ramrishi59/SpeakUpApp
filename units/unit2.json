@@ -1,33 +1,32 @@
 {
-    "id": "unit2",
-    "name": "Unit 2: and",
-    "description": "Join words with AND.",
-    "thumbnail": "Images/Unit2/and_thumbnail.jpg",
-    "words": [
-      { "text": "Welcome to Unit Two.", "audio": "Audio/Unit2/intro_01.mp3" },
-      { "text": "We use the word AND to join two or more things.", "audio": "Audio/Unit2/intro_02.mp3" },
-  
-      { "text": "a book and a pen",                       "image": "Images/Unit2/a_book_and_a_pen.png",                 "audio": "Audio/Unit2/a_book_and_a_pen.mp3" },
-      { "text": "a pen and a pencil",                     "image": "Images/Unit2/a_pen_and_a_pencil.png",               "audio": "Audio/Unit2/a_pen_and_a_pencil.mp3" },
-      { "text": "a ruler and a compass",                  "image": "Images/Unit2/a_ruler_and_a_compass.png",            "audio": "Audio/Unit2/a_ruler_and_a_compass.mp3" },
-      { "text": "a backpack and a lunchbox",              "image": "Images/Unit2/a_backpack_and_a_lunchbox.png",        "audio": "Audio/Unit2/a_backpack_and_a_lunchbox.mp3" },
-      { "text": "an apple and an orange",                 "image": "Images/Unit2/an_apple_and_an_orange.png",             "audio": "Audio/Unit2/an_apple_and_an_orange.mp3" },
-      { "text": "an apple, an orange and a banana",       "image": "Images/Unit2/an_apple_an_orange_and_a_banana.png",      "audio": "Audio/Unit2/u2_06_phrase.mp3" },
-      { "text": "a table and a chair",                    "image": "Images/Unit2/a_table_and_a_chair.png",              "audio": "Audio/Unit2/a_table_and_a_chair.mp3" },
-      { "text": "a table, a chair and a lamp",            "image": "Images/Unit2/a_table_a_chair_and_a_lamp.png",         "audio": "Audio/Unit2/a_table_a_chair_and_a_lamp.mp3" },
-      { "text": "a torch and a battery",                  "image": "Images/Unit2/a_torch_and_a_battery.png",            "audio": "Audio/Unit2/a_torch_and_a_battery.mp3" },
-      { "text": "a fork and a spoon",                     "image": "Images/Unit2/a_fork_and_a_spoon.png",               "audio": "Audio/Unit2/a_fork_and_a_spoon.mp3" },
-      { "text": "an umbrella and a raincoat",             "image": "Images/Unit2/an_umbrella_and_a_raincoat.png",        "audio": "Audio/Unit2/an_umbrella_and_a_raincoat.mp3" },
-      { "text": "an elephant and a monkey",               "image": "Images/Unit2/an_elephant_and_a_monkey.png",          "audio": "Audio/Unit2/an_elephant_and_a_monkey.mp3" },
-      { "text": "a horse and a jockey",                   "image": "Images/Unit2/a_horse_and_a_jockey.png",             "audio": "Audio/Unit2/a_horse_and_a_jockey.mp3" },
-      { "text": "a ship and a boat",                      "image": "Images/Unit2/a_ship_and_a_boat.png",                "audio": "Audio/Unit2/a_ship_and_a_boat.mp3" },
-      { "text": "a helicopter and an aeroplane",          "image": "Images/Unit2/a_helicopter_and_an_aeroplane.png",     "audio": "Audio/Unit2/a_helicopter_and_an_aeroplane.mp3" },
-      { "text": "a book, a crayon and an eraser",         "image": "Images/Unit2/a_book_a_crayon_and_an_eraser.png",       "audio": "Audio/Unit2/a_book_a_crayon_and_an_eraser.mp3" },
-      { "text": "a snake and a frog",                     "image": "Images/Unit2/a_snake_and_a_frog.png",               "audio": "Audio/Unit2/a_snake_and_a_frog.mp3" },
-      { "text": "a pig, a duck and a hen",                "image": "Images/Unit2/a_pig_a_duck_and_a_hen.png",             "audio": "Audio/Unit2/a_pig_a_duck_and_a_hen.mp3" },
-  
-      { "text": "Well done! You joined words with AND.",  "audio": "Audio/Unit2/outro_01.mp3" },
-      { "text": "Keep practising!",                       "audio": "Audio/Unit2/outro_02.mp3" }
-    ]
-  }
-  
+  "id": "unit2",
+  "name": "Unit 2: and",
+  "description": "Join words with AND.",
+  "thumbnail": "Images/Unit2/and_thumbnail.jpg",
+  "words": [
+    { "text": "Welcome to Unit Two.", "audio": "Audio/Unit2/intro_01.mp3" },
+    { "text": "We use the word AND to join two or more things.", "audio": "Audio/Unit2/intro_02.mp3" },
+
+    { "text": "a book and a pen",                       "image": "Images/Unit2/a_book_and_a_pen.png",                 "audio": "Audio/Unit2/a_book_and_a_pen.mp3" },
+    { "text": "a pen and a pencil",                     "image": "Images/Unit2/a_pen_and_a_pencil.png",               "audio": "Audio/Unit2/a_pen_and_a_pencil.mp3" },
+    { "text": "a ruler and a compass",                  "image": "Images/Unit2/a_ruler_and_a_compass.png",            "audio": "Audio/Unit2/a_ruler_and_a_compass.mp3" },
+    { "text": "a backpack and a lunchbox",              "image": "Images/Unit2/a_backpack_and_a_lunchbox.png",        "audio": "Audio/Unit2/a_backpack_and_a_lunchbox.mp3" },
+    { "text": "an apple and a banana",                 "image": "Images/Unit2/an_apple_and_an_orange.png",             "audio": "Audio/Unit2/an_apple_and_a_banana.mp3" },
+    { "text": "an apple, an orange and a banana",       "image": "Images/Unit2/an_apple_an_orange_and_a_banana.png",      "audio": "Audio/Unit2/an_apple_and_an_orange and_a_banana.mp3" },
+    { "text": "a table and a chair",                    "image": "Images/Unit2/a_table_and_a_chair.png",              "audio": "Audio/Unit2/a_table_and_a_chair.mp3" },
+    { "text": "a table, a chair and a lamp",            "image": "Images/Unit2/a_table_a_chair_and_a_lamp.png",         "audio": "Audio/Unit2/a_table_a_chair_and_a_lamp.mp3" },
+    { "text": "a torch and a battery",                  "image": "Images/Unit2/a_torch_and_a_battery.png",            "audio": "Audio/Unit2/a_torch_and_a_battery.mp3" },
+    { "text": "a fork and a spoon",                     "image": "Images/Unit2/a_fork_and_a_spoon.png",               "audio": "Audio/Unit2/a_fork_and_a_spoon.mp3" },
+    { "text": "an umbrella and a raincoat",             "image": "Images/Unit2/an_umbrella_and_a_raincoat.png",        "audio": "Audio/Unit2/an_umbrella_and_a_raincoat.mp3" },
+    { "text": "an elephant and a monkey",               "image": "Images/Unit2/an_elephant_and_a_monkey.png",          "audio": "Audio/Unit2/an_elephant_and_a_monkey.mp3" },
+    { "text": "a horse and a jockey",                   "image": "Images/Unit2/a_horse_and_a_jockey.png",             "audio": "Audio/Unit2/a_horse_and_a_jockey.mp3" },
+    { "text": "a ship and a boat",                      "image": "Images/Unit2/a_ship_and_a_boat.png",                "audio": "Audio/Unit2/a_ship_and_a_boat.mp3" },
+    { "text": "a helicopter and an aeroplane",          "image": "Images/Unit2/a_helicopter_and_an_aeroplane.png",     "audio": "Audio/Unit2/a_helicopter_and_an_aeroplane.mp3" },
+    { "text": "a book, a crayon and an eraser",         "image": "Images/Unit2/a_book_a_crayon_and_an_eraser.png",       "audio": "Audio/Unit2/a_book_a_crayon_and_an_eraser.mp3" },
+    { "text": "a snake and a frog",                     "image": "Images/Unit2/a_snake_and_a_frog.png",               "audio": "Audio/Unit2/a_snake_and_a_frog.mp3" },
+    { "text": "a pig, a duck and a hen",                "image": "Images/Unit2/a_pig_a_duck_and_a_hen.png",             "audio": "Audio/Unit2/a_pig_a_duck_and_a_hen.mp3" },
+
+    { "text": "Well done! You joined words with AND.",  "audio": "Audio/Unit2/outro_01.mp3" },
+    { "text": "Keep practising!",                       "audio": "Audio/Unit2/outro_02.mp3" }
+  ]
+}

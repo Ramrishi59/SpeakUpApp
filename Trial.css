@@ -240,14 +240,24 @@
   
 /* Special layout when screen is intro/outro */
 .intro-screen {
-  min-height: calc(100svh - 56px);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding: 20px;
+  min-height: 100svh;            /* full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;   /* don’t force center, let elephants take space */
+  text-align: center;
+  padding: 20px 16px;
 }
+
+.intro-screen .nav-row {
+  margin-top: auto;              /* this forces it to bottom */
+  padding-bottom: 32px;          /* safe spacing */
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
 
 #introPlayOverlay {
   position: absolute;
@@ -428,3 +438,50 @@ body.video-active { overflow: hidden; }
   position: static; left:auto; bottom:auto; transform:none;
 }
 .intro-bottom-controls .unmute-overlay{ display:none; } /* JS can show when muted */
+
+/* ===== Unit 2 intro: elephants + AND ===== */
+#elephantIntro {
+  position: relative;
+  width: min(900px, 92vw);
+  height: clamp(240px, 42svh, 420px);
+  margin: 0 auto;
+  overflow: hidden;
+  display: none;               /* JS will toggle to block */
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  margin-bottom: auto; /* adjust to taste */
+}
+
+#elephantIntro img {
+  position: absolute;
+  bottom: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  max-height: 50%;
+  will-change: transform, opacity;
+}
+
+/* Start positions (off-canvas) */
+#elephantLeft  { left: -40%; transform: translateX(0); }
+#elephantRight { right: -40%; transform: translateX(0); }
+
+/* Target positions when active */
+#elephantIntro.active #elephantLeft  { left: 6%;  transition: left 1200ms ease-out; }
+#elephantIntro.active #elephantRight { right: 6%; transition: right 1200ms ease-out; }
+
+/* AND word: centered + pop-in */
+#andWord {
+  left: 50%;
+  bottom: 42%;
+  transform: translate(-50%, 40%) scale(0.6);
+  opacity: 0;
+  transition: transform 300ms ease-out, opacity 300ms ease-out;
+}
+
+#elephantIntro.show-and #andWord {
+  opacity: 1;
+  /* transform: translate(-50%, 0) scale(1);
+  transition: transform 600ms ease-out, opacity 300ms ease-out; */
+  transform: translate(-50%, -80%) scale(1.5);
+}
