@@ -111,7 +111,9 @@
   #wordText{
     font-family:var(--font-heading);
     font-weight:700;
-    font-size: clamp(30px, 4.8svh, 52px);
+    /* font-size: clamp(30px, 4.8svh, 52px); */
+    /* font-size: clamp(24px, 4svh, 42px); */
+    word-break: keep-all;
     color: var(--accent-red);
     text-shadow:
       0 0 0 rgb(245, 242, 242),
@@ -121,6 +123,11 @@
     padding: 4px 10px;
     border-radius: 12px;
     padding-top: 85px;
+
+    max-width: 90%;          /* let it stretch across */
+    text-align: center;
+    white-space: normal;     /* wrapping allowed */
+    line-height: 1.2;        /* tighten line spacing */
   }
   
   /* Image area */

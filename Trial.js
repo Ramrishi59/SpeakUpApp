@@ -82,7 +82,8 @@ async function render(i) {
     stopVideo();
     els.wordScreen.style.display = "flex";
     // els.title.textContent = "Let’s Learn A / An";
-    els.word.textContent = item.text || "";
+    // Prevent orphan last word (replace last space with non-breaking space)
+    els.word.innerHTML = (item.text || "").replace(/ (?!.* )/, "&nbsp;");
     els.image.src = item.image;
     els.image.alt = item.text || "Lesson image";
     els.prev.style.display = i === 0 ? "none" : "";
@@ -93,6 +94,11 @@ async function render(i) {
     }
     return;
   }
+
+  if (item.text.length > 15) {
+    els.word.style.fontSize = "clamp(32px, 3svh, 34px)";
+  }
+  
 
   // INTRO / OUTRO
   els.introScreen.style.display = "flex";
