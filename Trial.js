@@ -66,6 +66,39 @@ function exitVideoMode() {
   els.introScreen.classList.remove("video-fullscreen");
 }
 
+function showIntroBounce(selector, text, { wordDelay = 100, reset = true } = {}) {
+  const el = typeof selector === 'string' ? document.querySelector(selector) : selector;
+  if (!el) return;
+  if (reset) el.innerHTML = '';
+
+  const words = String(text || '').trim().split(/\s+/);
+  words.forEach((w, i) => {
+    const span = document.createElement('span');
+    span.className = 'intro-word';
+    span.textContent = (i === words.length - 1) ? w : (w + ' ');
+    span.style.animationDelay = `${i * wordDelay}ms`;
+    el.appendChild(span);
+  });
+}
+
+function lockIntroWords(container, opts = {}) {
+  const spans = container.querySelectorAll('.intro-word');
+  if (!spans.length) return;
+
+  const wordDelay = opts.wordDelay ?? 100; // must match your showIntroBounce delay
+  const duration  = opts.duration  ?? 700; // ms, must match CSS .7s
+  const total = (spans.length - 1) * wordDelay + duration + 80;
+
+  setTimeout(() => {
+    spans.forEach(s => {
+      s.style.opacity = '1';
+      s.style.transform = 'none';
+      s.style.animation = 'none';
+    });
+  }, total);
+}
+
+
 /* Core render */
 async function render(i) {
   const item = screens[i];
@@ -184,7 +217,9 @@ async function render(i) {
   // ===== TEXT INTRO / OUTRO (no video) =====
   if (els.introWrap) els.introWrap.style.display = "none";
   els.introText.style.display = "";
-  els.introText.textContent = item.text || "";
+  showIntroBounce(els.introText, item.text || "", { wordDelay: 120, reset: true });
+  lockIntroWords(els.introText, { wordDelay: 120, duration: 700 });
+  // els.introText.textContent = item.text || "";
   if (els.introNext) els.introNext.style.display = i === screens.length - 1 ? "none" : "";
   if (item.audio) {
     audio.src = item.audio;
@@ -244,3 +279,4 @@ els.start?.addEventListener("click", startOver);
   currentIndex = 0;
   render(currentIndex);
 })();
+
