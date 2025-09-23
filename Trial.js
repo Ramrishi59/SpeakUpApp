@@ -21,6 +21,9 @@ const els = {
   playOverlay:  document.getElementById("introPlayOverlay"),
   skipIntro:    document.getElementById("skipIntro"),
   unmuteIntro:  document.getElementById("unmuteIntro"),
+  introOutroActions: document.getElementById("introOutroActions"),
+  startoverIntro:    document.getElementById("startoverIntro"),
+
 
   // Word slides
   wordScreen:   document.getElementById("wordDisplay"),
@@ -97,7 +100,6 @@ function lockIntroWords(container, opts = {}) {
     });
   }, total);
 }
-
 
 
 /* Core render */
@@ -218,20 +220,20 @@ async function render(i) {
   // ===== TEXT INTRO / OUTRO (no video) =====
   if (els.introWrap) els.introWrap.style.display = "none";
   els.introText.style.display = "";
-  showIntroBounce(els.introText, item.text || "", { wordDelay: 120, reset: true });
+  showIntroBounce(els.introText, item.text || "", { wordDelay: 80, reset: true });
   lockIntroWords(els.introText, { wordDelay: 120, duration: 700 });
   // els.introText.textContent = item.text || "";
-  if (els.introNext) els.introNext.style.display = i === screens.length - 1 ? "none" : "";
-  if (item.audio) {
-    audio.src = item.audio;
-    audio.play().catch(() => {});
-    // If this is the last (outro) item, navigate back when audio finishes
-    audio.onended = () => {
-      if (i === screens.length - 1) {
-        location.href = 'index.html';
-      }
-    };
-  }
+  const isOutro = (i === screens.length - 1);
+
+  if (els.introNext) els.introNext.style.display = isOutro ? "none" : "";
+  if (els.introOutroActions) els.introOutroActions.style.display = isOutro ? "" : "none";
+  
+  // Mark the intro screen so CSS can style differently on outro
+  if (isOutro) {
+    els.introScreen.classList.add('outro');
+  } else {
+    els.introScreen.classList.remove('outro');
+  }  
 }
 
 /* Nav */
@@ -265,6 +267,8 @@ els.prev?.addEventListener("click", showPrev);
 els.next?.addEventListener("click", showNext);
 els.introNext?.addEventListener("click", showNext);
 els.start?.addEventListener("click", startOver);
+els.startoverIntro?.addEventListener("click", startOver);
+
 
 /* Init */
 (async function () {

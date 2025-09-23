@@ -170,7 +170,7 @@ html,body{
     /* Fredoka max weight is 700; avoid 800 to prevent fallback */
     font-weight:700;
     font-size: clamp(16px, 2.2svh, 22px);
-    padding: 14px 18px;
+    padding: 24px 28px;
     border-radius: 18px;
     color:var(--white);
     box-shadow: var(--shadow);
@@ -460,6 +460,12 @@ body.video-active { overflow: hidden; }
 }
 
 
+
+/* Make Home button pop more when it's the only option (outro) */
+.intro-screen.outro .secondary-btn.home {
+  transform: scale(1.1);
+  background: linear-gradient(#2cd18c, #19a66a); /* green instead of salmon */
+}
 
 
 
