@@ -18,10 +18,10 @@ const dashboardLessons = [
       thumbnail: 'Images/Unit2/andthumbnail.webp'
     },
     {
-      id: 'un',
-      title: 'Pracrice Session- Unit 2',
-      description: 'Learn about toys with Manku!',
-      thumbnail: 'Images/Unit1/toysdash.png'
+      id: 'unit3',
+      title: 'This and That',
+      description: 'Learn about This and That. Just watch, listen and repeat',
+      thumbnail: 'Images/Unit3/This_That.webp'
     },
     {
       id: 'unit',
@@ -47,7 +47,7 @@ const dashboardLessons = [
       // Both cards (unit1 + unit2) point to the same file for now
       'unit1': (id) => `Trial.html?unitId=unit1`,
       'unit2': (id) => `Trial.html?unitId=unit2`,  // 👈 force unit2 card to also load unit1.json
-    
+      'unit3': (id) => `Trial.html?unitId=unit3`,
        // Practice sessions → point to their folders
       'unit1-practice': () => 'an-quiz/an-quiz.html',
 
