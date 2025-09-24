@@ -245,8 +245,20 @@ async function render(i) {
   // ===== TEXT INTRO / OUTRO (no video) =====
   if (els.introWrap) els.introWrap.style.display = "none";
   els.introText.style.display = "";
-  showIntroBounce(els.introText, item.text || "", { wordDelay: 80, reset: true });
-  lockIntroWords(els.introText, { wordDelay: 120, duration: 700 });
+  // Kick off audio first for snappier sync
+  if (item.audio) {
+    try {
+      audio.pause();
+      audio.muted = false;   // make sure it isn't muted from any video
+      audio.currentTime = 0;
+      audio.src = item.audio;  // starts the network request immediately
+      audio.play().catch(()=>{}); // if iOS blocks, it’ll still start once they interact
+    } catch {}
+  }
+
+
+  showIntroBounce(els.introText, item.text || "", { wordDelay: 50, reset: true });
+  lockIntroWords(els.introText, { wordDelay: 50, duration: 500 });
   // els.introText.textContent = item.text || "";
   const isOutro = (i === screens.length - 1);
 
