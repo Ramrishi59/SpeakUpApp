@@ -25,6 +25,6 @@
     { "text": "a snake and a frog",                     "image": "Images/Unit2/a_snake_and_a_frog.png",               "audio": "Audio/Unit2/a_snake_and_a_frog.mp3" },
     { "text": "a pig, a duck and a hen",                "image": "Images/Unit2/a_pig_a_duck_and_a_hen.png",             "audio": "Audio/Unit2/a_pig_a_duck_and_a_hen.mp3" },
 
-    { "text": "Well done! You joined words with AND. Keep practising!",  "audio": "Audio/Unit2/Unit_2_And_Outo.mp3" }
+    { "text": "Well done! You joined words with AND. Keep practising!",  "audio": "Audio/Unit2/Outroand.mp3" }
   ]
 }

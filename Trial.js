@@ -102,6 +102,31 @@ function lockIntroWords(container, opts = {}) {
 }
 
 
+// One-time gesture to start intro audio without hijacking the Start button
+let introAudioGestureHandler = null;
+function armIntroAudioGestureOnce() {
+  if (introAudioGestureHandler) return;
+
+  introAudioGestureHandler = (e) => {
+    // If they tapped the Start/Next button, don't play (we're about to navigate)
+    const startBtn = els.introNext;
+    const tappedStart = startBtn && (e.target === startBtn || (e.target.closest && e.target.closest('#nextButtonIntro')));
+    if (!tappedStart) {
+      audio.play().catch(() => {});
+    }
+    document.removeEventListener('pointerdown', introAudioGestureHandler, true);
+    document.removeEventListener('touchend',   introAudioGestureHandler, true);
+    document.removeEventListener('click',      introAudioGestureHandler, true);
+    introAudioGestureHandler = null;
+  };
+
+  // Capture phase so we run before the Start button's click handler
+  document.addEventListener('pointerdown', introAudioGestureHandler, true);
+  document.addEventListener('touchend',   introAudioGestureHandler, true);
+  document.addEventListener('click',      introAudioGestureHandler, true);
+}
+
+
 /* Core render */
 async function render(i) {
   const item = screens[i];
@@ -224,6 +249,30 @@ async function render(i) {
   lockIntroWords(els.introText, { wordDelay: 120, duration: 700 });
   // els.introText.textContent = item.text || "";
   const isOutro = (i === screens.length - 1);
+
+  // --- Play audio for text intro/outro without breaking Start button UX ---
+if (item.audio) {
+  try {
+    audio.pause();
+    audio.muted = false;   // ensure not muted from any video intro
+    audio.currentTime = 0;
+    audio.src = item.audio;
+
+    const isIntroText = (i === 0);
+
+    if (isIntroText) {
+      // Try immediate autoplay (may be blocked on iOS)
+      audio.play().catch(() => {});
+      // If blocked, arm a one-time gesture that ignores taps on the Start button
+      armIntroAudioGestureOnce();
+    } else {
+      // Outro can autoplay safely after prior gestures
+      audio.play().catch(() => {});
+    }
+  } catch { /* no-op */ }
+}
+
+  
 
   if (els.introNext) els.introNext.style.display = isOutro ? "none" : "";
   if (els.introOutroActions) els.introOutroActions.style.display = isOutro ? "" : "none";
