@@ -22,6 +22,10 @@
   --video-vh:100svh;
 
   --header-h:56px;
+
+  --img-cap: 40svh; 
+  --img-scale: 1;     /* default: no scale */
+  --img-nudge: 0svh;  /* default: no vertical shift */
 }
 
 /* Base should be OUTSIDE :root */
@@ -113,20 +117,12 @@ html,body{
     line-height: 1.2;        /* tighten line spacing */
   }
   
-  /* Image area */
-  /* .image-wrap{
-    margin:0;
-    width:min(520px, 86%);
-    display:flex; align-items:center; justify-content:center;
-  } */
-
-  /* replace your current .image-wrap block with this */
   .image-wrap{
     width: min(520px, 86%);
     margin: 0 auto;
 
-    /* lock in a stable area so layout doesn't shift */
-    height: clamp(220px, 40svh, 420px);
+    /* lock in a stable area so layout doesn't shift */ 
+    height: clamp(220px, var(--img-cap), 460px);
     flex: 0 0 auto;             /* don't let flex stretch/shrink this box */
 
     display: flex;
@@ -135,14 +131,6 @@ html,body{
     overflow: hidden;           /* prevent any overflow jitter */
   }
 
-  /* #wordImage{
-    width:100%; height:auto; max-height:var(--image-max-h);
-    object-fit:contain;
-    filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
-    border-radius:16px; 
-    margin-top: clamp(34px, 11svh, 80px);
-  }
-   */
 
    /* replace your current #wordImage block with this */
   #wordImage{
@@ -152,6 +140,9 @@ html,body{
     display: block;             /* remove baseline gap that can nudge layout on iOS */
     filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
     border-radius: 16px;
+    transform: translateY(var(--img-nudge)) scale(var(--img-scale));
+    transform-origin: center;                /* stays centred */
+    will-change: transform;
   }
 
 
@@ -467,5 +458,34 @@ body.video-active { overflow: hidden; }
   background: linear-gradient(#2cd18c, #19a66a); /* green instead of salmon */
 }
 
+#wordDisplay .image-wrap img{
+  height: 100%;
+  max-height: var(--img-cap);
+  width: 100%;
+  object-fit: contain;
+}
+
+/* 👇 Later in the file (overrides section is ideal) */
+/* body.unit-unit3 { --img-cap: 56svh; } */
 
 
+
+/* Make only Unit 3 look bigger, without reflow */
+body.unit-unit3{
+  --img-scale: 1.82;    /* tweak 1.10–1.30 to taste */
+  --img-nudge: 0.9svh; /* lift it a bit so it doesn’t encroach the nav */
+}
+
+/* If the scaled image gets clipped, let it overflow just for Unit 3 */
+/* body.unit-unit3 .image-wrap{ overflow: visible; } */
+
+/* prevent any vertical scroll on the slide */
+body.unit-unit3 .word-display{
+  overflow: hidden;                /* NEW: clip anything that spills */
+}
+
+/* clip the scaled image inside its box */
+body.unit-unit3 .image-wrap{
+  overflow: hidden;                /* NEW: clip filter/scale bleed */
+  contain: paint;                  /* confine painting to this box */
+}

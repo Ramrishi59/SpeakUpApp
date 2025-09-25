@@ -12,17 +12,17 @@
       { "text": "This is a dog.",        "image": "Images/Unit3/u3_03_dog.png",        "audio": "Audio/Unit3/this_dog.mp3" },
       { "text": "That’s a duck.",        "image": "Images/Unit3/u3_04_duck.png",       "audio": "Audio/Unit3/that_duck.mp3" },
   
-      { "text": "This is a bee.",        "image": "Images/Unit3/this_bee.png",        "audio": "Audio/Unit3/this_bee.mp3" },
-      { "text": "That’s a bird.",        "image": "Images/Unit3/that_bird.png",       "audio": "Audio/Unit3/that_bird.mp3" },
+      { "text": "This is a bee.",        "image": "Images/Unit3/u3_05_bee.png",        "audio": "Audio/Unit3/this_bee.mp3" },
+      { "text": "That’s a bird.",        "image": "Images/Unit3/u3_06_bird.png",       "audio": "Audio/Unit3/that_bird.mp3" },
   
-      { "text": "This is a frog.",       "image": "Images/Unit3/this_frog.png",       "audio": "Audio/Unit3/this_frog.mp3" },
-      { "text": "That’s a snake.",       "image": "Images/Unit3/that_snake.png",      "audio": "Audio/Unit3/that_snake.mp3" },
+      { "text": "This is a frog.",       "image": "Images/Unit3/u3_07_frog.png",       "audio": "Audio/Unit3/this_frog.mp3" },
+      { "text": "That’s a snake.",       "image": "Images/Unit3/u3_08_snake.png",      "audio": "Audio/Unit3/that_snake.mp3" },
   
-      { "text": "This is a tortoise.",   "image": "Images/Unit3/this_tortoise.png",   "audio": "Audio/Unit3/this_tortoise.mp3" },
-      { "text": "That’s a tiger.",       "image": "Images/Unit3/that_tiger.png",      "audio": "Audio/Unit3/that_tiger.mp3" },
+      { "text": "This is a tortoise.",   "image": "Images/Unit3/u3_09_tortoise.png",   "audio": "Audio/Unit3/this_tortoise.mp3" },
+      { "text": "That’s a tiger.",       "image": "Images/Unit3/u3_10_tiger.png",      "audio": "Audio/Unit3/that_tiger.mp3" },
   
-      { "text": "This is a butterfly.",  "image": "Images/Unit3/this_butterfly.png",  "audio": "Audio/Unit3/this_butterfly.mp3" },
-      { "text": "That’s an owl.",        "image": "Images/Unit3/that_owl.png",        "audio": "Audio/Unit3/that_owl.mp3" },
+      { "text": "This is a butterfly.",  "image": "Images/Unit3/u3_11_butterfly.png",  "audio": "Audio/Unit3/this_butterfly.mp3" },
+      { "text": "That’s an owl.",        "image": "Images/Unit3/u3_12_owl.png",        "audio": "Audio/Unit3/that_owl.mp3" },
   
       { "text": "Well done! You learned This and That. Keep practising!", "audio": "Audio/Unit3/outro.mp3" }
     ]

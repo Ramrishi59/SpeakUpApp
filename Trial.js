@@ -334,6 +334,8 @@ els.startoverIntro?.addEventListener("click", startOver);
 /* Init */
 (async function () {
   const unit = await loadUnit(getUnitIdFromUrl());
+  document.body.classList.add(`unit-${unit.id}`); // e.g., unit-unit3
+
 
   // NEW: set the unit title from JSON
   const titleEl = document.getElementById("unitTitle");
