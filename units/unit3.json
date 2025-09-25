@@ -24,7 +24,7 @@
       { "text": "This is a butterfly.",  "image": "Images/Unit3/u3_11_butterfly.png",  "audio": "Audio/Unit3/this_butterfly.mp3" },
       { "text": "That’s an owl.",        "image": "Images/Unit3/u3_12_owl.png",        "audio": "Audio/Unit3/that_owl.mp3" },
   
-      { "text": "Well done! You learned This and That. Keep practising!", "audio": "Audio/Unit3/outro.mp3" }
+      { "text": "Well done! You learned This and That. Keep practising!", "audio": "Audio/Unit3/u3_13_outro.mp3" }
     ]
   }
   
