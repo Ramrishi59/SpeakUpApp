@@ -1,4 +1,10 @@
-/* Keep ONLY variables here */
+/* =========================================================
+   Speak Up — Trial.css  (clean, consolidated)
+   ========================================================= */
+
+/* ------------------------------
+   Vars
+------------------------------ */
 :root{
   --sky1:#bde7ff;
   --sky2:#9dd8ff;
@@ -15,21 +21,25 @@
   --card-radius:20px;
   --shadow:0 6px 18px rgba(0,0,0,.12);
   --max-content:960px;
-  --image-max-h:40svh;
-
-  --video-fit:cover;
-  --video-position:center center;
-  --video-vh:100svh;
 
   --header-h:56px;
 
-  --img-cap: 40svh; 
-  --img-scale: 1;     /* default: no scale */
-  --img-nudge: 0svh;  /* default: no vertical shift */
+  /* Slide image/text sizing */
+  --img-cap: 40svh;        /* image box height cap */
+  --img-scale: 1;
+  --img-nudge: 0svh;
+
+  /* Buttons */
+  --btn-h: 60px;
+  --btn-font: 20px;
+  --btn-pad-x: 22px;
+  --btn-gap: 18px;
 }
 
-/* Base should be OUTSIDE :root */
-*{box-sizing:border-box}
+/* ------------------------------
+   Base
+------------------------------ */
+*{ box-sizing:border-box; }
 html,body{
   height:100%;
   margin:0;
@@ -40,448 +50,348 @@ html,body{
   background-attachment:fixed;
 }
 
-  
-  .unit-title {
-
-    transform: translateY(20px); /* adjust as needed to move header */
-    margin-left: 10px;
-    text-align: left;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: clamp(28px, 2.6svh, 26px);
-    /* margin: 12px 0; */
-    color: #ed2e2e;
-  }
-  
-  .score-bubble{
-    font-weight:700;
-    background:var(--white);
-    padding:6px 12px;
-    border-radius:999px;
-    box-shadow:var(--shadow);
-  }
-  
-
-  
-  /* Main lesson area */
-  .word-display{
-    min-height: calc(100svh - 56px); /* subtract approx header */
-    max-width:var(--max-content);
-    margin:0 auto;
-    padding: clamp(16px, 3svh, 32px) 16px 20px;
-    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-    gap: clamp(10px, 1.8svh, 18px);
-    padding-bottom: calc(16px + env(safe-area-inset-bottom)); /* iPhone home bar */
-  }
-  
-  /* Title */
-  #lessonText{
-    margin: 12px 0 0;
-    font-family:var(--font-heading);
-    font-size: clamp(22px, 3.4svh, 38px);
-    line-height:1.1;
-    text-align:center;
-    color: var(--salmon);
-    text-shadow:
-      0 0 0 rgb(236, 226, 226),
-      1px 1px 0 rgb(236, 226, 226),
-      -1px -1px 0 rgb(236, 226, 226),
-      2px 2px 0 rgba(0,0,0,.08);
-    -webkit-text-stroke: 0px transparent; /* safe for browsers that might show stroke */
-  }
-  
-  /* Big word block */
-  .word-block{
-    display:flex; align-items:center; justify-content:center;
-    width:100%;
-  }
-  #wordText{
-    font-family:var(--font-heading);
-    font-weight:700;
-    font-size: clamp(28px, 4.8svh, 38px);
-    /* font-size: clamp(24px, 4svh, 42px); */
-    word-break: keep-all;
-    color: var(--accent-red);
-    text-shadow:
-      0 0 0 rgb(245, 242, 242),
-      1.2px 1.2px 0 rgb(245, 242, 242),
-      -1.2px -1.2px 0 rgb(245, 242, 242),
-      2px 2px 0 rgba(0,0,0,.1);
-    padding: 4px 10px;
-    border-radius: 12px;
-    padding-top: 85px;
-
-    max-width: 90%;          /* let it stretch across */
-    text-align: center;
-    white-space: normal;     /* wrapping allowed */
-    line-height: 1.2;        /* tighten line spacing */
-  }
-  
-  .image-wrap{
-    width: min(520px, 86%);
-    margin: 0 auto;
-
-    /* lock in a stable area so layout doesn't shift */ 
-    height: clamp(220px, var(--img-cap), 460px);
-    flex: 0 0 auto;             /* don't let flex stretch/shrink this box */
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;           /* prevent any overflow jitter */
-  }
-
-
-   /* replace your current #wordImage block with this */
-  #wordImage{
-    width: 100%;
-    height: 100%;               /* fill the fixed image-wrap height */
-    object-fit: contain;        /* no cropping */
-    display: block;             /* remove baseline gap that can nudge layout on iOS */
-    filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
-    border-radius: 16px;
-    transform: translateY(var(--img-nudge)) scale(var(--img-scale));
-    transform-origin: center;                /* stays centred */
-    will-change: transform;
-  }
-
-
-  /* Navigation row */
-  .nav-row{
-    margin-top:auto; /* pushes nav to the bottom without absolute positioning */
-    width:100%;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap:18px;
-    align-items:center;
-  }
-  .nav-btn{
-    border:0; outline:0;
-    font-family:var(--font-heading);
-    /* Fredoka max weight is 700; avoid 800 to prevent fallback */
-    font-weight:700;
-    font-size: clamp(16px, 2.2svh, 22px);
-    padding: 24px 28px;
-    border-radius: 18px;
-    color:var(--white);
-    box-shadow: var(--shadow);
-    display:flex; align-items:center; justify-content:center; gap:10px;
-    cursor:pointer;
-    min-height: 52px;
-    white-space: nowrap;
-  }
-  .nav-btn .chevrons{font-weight:900}
-  .nav-btn.prev{ background: linear-gradient(#ffcd4d, #ffa909);}
-  .nav-btn.next{ background: linear-gradient(#ffcd4d, #ffa909);}
-  
-  /* Secondary actions */
-  .secondary-row{
-    margin-top:14px;
-    width:100%;
-    display:flex; align-items:center; justify-content:center;
-    gap:24px; flex-wrap:wrap;
-  }
-  .secondary-btn{
-    border:0; outline:0; text-decoration:none;
-    font-family:var(--font-body);
-    font-weight:700;
-    font-size: clamp(16px, 2svh, 20px);
-    color:var(--white);
-    background: var(--salmon);
-    padding: 12px 18px;
-    border-radius: 16px;
-    display:inline-flex; align-items:center; gap:10px;
-    box-shadow: var(--shadow);
-    cursor:pointer;
-  }
-  .secondary-btn .icon{font-size:1.2em}
-  .secondary-btn.home{ 
-    background: linear-gradient(#ff8d73,#ff6f54);
-    /* Larger size for easier tap */
-    font-size: 25px;
-    padding: 18px 34px;
-  }
-  .secondary-btn.home .icon{ font-size: 1.2em; }
-  .secondary-btn.startover{ 
-    background: linear-gradient(#ff8d73,#ff6f54);
-    font-size: 20px;
-    padding: 14xpx 20 px;
-  }
-  .secondary-btn.startover .icon{ font-size: 40px; }
-  
- 
-  
-  /* Responsive tweaks */
-  @media (min-width: 760px){
-    .nav-row{ gap:24px }
-    .secondary-row{ gap:28px }
-  }
-  
-/* Special layout when screen is intro/outro */
-.intro-screen {
-  min-height: 100svh;            /* full viewport height */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;   /* don’t force center, let elephants take space */
-  text-align: center;
-  padding: 20px 16px;
+/* ------------------------------
+   Header
+------------------------------ */
+.unit-title{
+  transform: translateY(20px);
+  margin-left: 10px;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(28px, 2.6svh, 26px);
+  color:#ed2e2e;
 }
 
-.intro-screen .nav-row {
-  margin-top: auto;              /* this forces it to bottom */
-  padding-bottom: 32px;          /* safe spacing */
-  width: 100%;
+.score-bubble{
+  font-weight:700;
+  background:var(--white);
+  padding:6px 12px;
+  border-radius:999px;
+  box-shadow:var(--shadow);
+}
+
+/* ------------------------------
+   WORD / IMAGE SLIDE (Grid)
+   Layout: title → image → word → nav → secondary
+------------------------------ */
+.word-display{
+  min-height: calc(100svh - var(--header-h));
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: clamp(16px, 3svh, 32px) 16px calc(16px + env(safe-area-inset-bottom));
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-areas:
+    "title"
+    "image"
+    "word"
+    "nav"
+    "secondary";
+  grid-template-rows:
+    auto
+    minmax(220px, var(--img-cap))
+    minmax(90px, 18svh)
+    auto
+    auto;
+  row-gap: clamp(10px, 1.8svh, 18px);
   justify-items: center;
 }
 
-
-#introPlayOverlay {
-  position: absolute;
-  inset: 0;
-  display: flex;                 /* hidden by JS until needed */
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-#introPlayOverlay::before {
-  content: "";
-  display: block;
-  width: 90px;                      /* adjust size as you like */
-  height: 90px;
-  background-image: url("Images/Unit1/playbutton.webp");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-/* Hide iOS Safari’s native poster play button */
-.intro-video::-webkit-media-controls-start-playback-button{
-  display: none !important;
-}
-
-
-.intro-screen #lessonText { display:none; } /* hide title */
-.intro-screen #wordImage { display:none; }  /* no image */
-.intro-screen #wordText {
-  font-size: clamp(22px,3.2svh,34px);
-  line-height:1.4;
-}
-
-/* Height of sticky header (match your header’s actual height) */
-:root { --header-h: 56px; }
-
-/* Intro/Outro: always full-height + centered */
-.intro-screen{
-  min-height: calc(100svh - var(--header-h));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;   /* vertical centering */
-  text-align: center;
-  gap: 16px;
-  padding: 20px 16px;
-}
-
-/* Big, readable intro text */
-.intro-text{
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(30px, 4.8svh, 40px);
-  line-height: 1.4;
-  color: #ed2e2e;
+/* Title row */
+#lessonText{
+  grid-area: title;
+  margin: 12px 0 0;
+  font-family:var(--font-heading);
+  font-size: clamp(22px, 3.4svh, 38px);
+  line-height:1.1;
+  text-align:center;
+  color: var(--salmon);
   text-shadow:
-    0 0 0 rgb(252, 250, 250),
-    1px 1px 0 rgb(252, 250, 250),
-    -1px -1px 0 rgb(252, 250, 250),
+    0 0 0 rgb(236,226,226),
+    1px 1px 0 rgb(236,226,226),
+    -1px -1px 0 rgb(236,226,226),
     2px 2px 0 rgba(0,0,0,.08);
 }
 
-/* Keep NEXT button nicely placed on intro */
+/* Image row */
+.image-wrap{
+  grid-area: image;
+  width: min(520px, 86%);
+  height: clamp(220px, var(--img-cap), 460px);
+  margin: 0 auto;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+#wordImage{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
+  border-radius:16px;
+  transform: translateY(var(--img-nudge)) scale(var(--img-scale));
+  transform-origin:center;
+  will-change: transform;
+}
+
+/* Word row */
+.word-block{
+  grid-area: word;
+  display:flex; align-items:center; justify-content:center;
+  width:100%;
+  padding: 0 12px; /* breathing room */
+}
+#wordText{
+  font-family:var(--font-heading);
+  font-weight:700;
+  font-size: clamp(28px, 4.8svh, 38px);
+  color: var(--accent-red);
+  text-shadow:
+    0 0 0 rgb(245,242,242),
+    1.2px 1.2px 0 rgb(245,242,242),
+    -1.2px -1.2px 0 rgb(245,242,242),
+    2px 2px 0 rgba(0,0,0,.1);
+  padding:4px 10px;
+  border-radius:12px;
+  max-width:90%;
+  text-align:center;
+  white-space:normal;
+  line-height:1.2;
+  /* no padding-top shove */
+}
+
+/* Nav row (Prev/Next) */
+.nav-row{
+  grid-area: nav;
+  width:100%;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--btn-gap);
+  align-items:stretch;
+  justify-items:stretch;
+  margin:0;
+}
+.nav-btn{
+  border:0; outline:0;
+  font-family:var(--font-heading);
+  font-weight:700;
+  font-size: var(--btn-font);
+  height: var(--btn-h);
+  padding: 0 var(--btn-pad-x);
+  border-radius: 18px;
+  color:var(--white);
+  box-shadow: var(--shadow);
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  cursor:pointer;
+  white-space: nowrap;
+}
+.nav-btn .chevrons{ font-weight:900; }
+.nav-btn.prev{ background: linear-gradient(#ffcd4d, #ffa909); }
+.nav-btn.next{ background: linear-gradient(#ffcd4d, #ffa909); }
+
+/* Secondary row (Home / Start Over) */
+.secondary-row{
+  grid-area: secondary;
+  width:100%;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--btn-gap);
+  align-items:stretch;
+  justify-items:stretch;
+  margin:0;
+}
+.secondary-btn{
+  border:0; outline:0; text-decoration:none;
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size: var(--btn-font);
+  color:var(--white);
+  background: linear-gradient(#ff8d73,#ff6f54);
+  height: var(--btn-h);
+  padding: 0 var(--btn-pad-x);
+  border-radius:16px;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  box-shadow: var(--shadow);
+  cursor:pointer;
+  white-space: nowrap;
+}
+.secondary-btn .icon{ font-size:1.2em; }
+
+/* ------------------------------
+   INTRO / OUTRO screens
+------------------------------ */
+.intro-screen{
+  min-height: calc(100svh - var(--header-h));
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  text-align:center; gap:16px;
+  padding: 20px 16px;
+}
+.intro-screen #lessonText { display:none; } /* hide title on intro */
+.intro-screen #wordImage { display:none; }  /* no image on intro */
+.intro-screen #wordText{
+  font-size: clamp(22px,3.2svh,34px);
+  line-height:1.4;
+}
+/* intro NEXT placement: single col */
 .intro-screen .nav-row{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  margin-top: 16px;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr;
+  justify-items:center;
+  margin-top:16px;
+  padding-bottom:32px;
 }
 
 /* Intro video layout */
 .intro-video-wrap{
-  position: relative;
-  width: min(680px, 92%);
-  margin: 0 auto;
-  display: none;               /* hidden by default; JS shows when item.video exists */
+  position:relative;
+  width:min(680px, 92%);
+  margin:0 auto;
+  display:none; /* JS shows if item.video exists */
 }
-
 .intro-video{
-  width: 100%;
-  height: auto;
-  max-height: 56svh;
-  border-radius: 16px;
+  width:100%;
+  height:auto;
+  max-height:56svh;
+  border-radius:16px;
   box-shadow: 0 10px 18px rgba(0,0,0,.18);
   background: rgba(0,0,0,.2);
 }
+#introPlayOverlay{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  z-index:2; border:none; background:none; cursor:pointer; padding:0;
+}
+#introPlayOverlay::before{
+  content:"";
+  display:block;
+  width:90px; height:90px;
+  background-image:url("Images/Unit1/playbutton.webp");
+  background-size:contain; background-repeat:no-repeat; background-position:center;
+}
+.intro-video::-webkit-media-controls-start-playback-button{ display:none !important; }
 
-/* Play overlay for iOS/Chrome autoplay restrictions */
 .video-overlay{
-  position: absolute;
-  inset: 0;
-  display: none;               /* JS shows if autoplay fails */
-  align-items: center;
-  justify-content: center;
-  font-size: clamp(28px, 5svh, 40px);
-  border: none;
-  border-radius: 16px;
-  color: #fff;
-  background: rgba(0,0,0,.35);
-  cursor: pointer;
+  position:absolute; inset:0; display:none;
+  align-items:center; justify-content:center;
+  font-size:clamp(28px,5svh,40px);
+  border:none; border-radius:16px;
+  color:#fff; background:rgba(0,0,0,.35); cursor:pointer;
   backdrop-filter: blur(1px);
 }
+
 /* Full-viewport splash mode */
-body.video-active { overflow: hidden; }
-.video-active .app-header { display:none; } /* hide header during intro video */
+body.video-active { overflow:hidden; }
+.video-active .app-header { display:none; }
 
 .intro-screen.video-fullscreen{
   position:fixed; inset:0; z-index:10;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   padding:0; margin:0;
 }
-
 .intro-screen.video-fullscreen .intro-video-wrap{
   display:block; width:100vw; height:100svh;
 }
-
-
 .intro-screen.video-fullscreen .intro-video{
-  width: 100vw;
-  height: 100svh;
-  max-height: none;
-  border-radius: 0;
-  object-fit: contain; /* <-- letterboxes, no crop */
-  background: #000;
+  width:100vw; height:100svh; max-height:none; border-radius:0;
+  object-fit:contain; background:#000;
 }
+.intro-screen.video-fullscreen .nav-row{ display:none; }
 
-/* Overlays */
-.video-overlay{
-  position:absolute; inset:0;
-  display:none; align-items:center; justify-content:center;
-  font-size:clamp(28px,5svh,40px);
-  border:none; border-radius:0;
-  color:#fff; background:rgba(0,0,0,.35); cursor:pointer;
-}
-
-/* Default: if not wrapped, keep centered absolute */
 .skip-overlay{
   position:absolute; left:50%; transform:translateX(-50%);
-  bottom: max(16px, env(safe-area-inset-bottom));
+  bottom:max(16px, env(safe-area-inset-bottom));
   padding:12px 18px; border:0; border-radius:18px;
   font-family: var(--font-heading); font-weight:700;
   color:#fff; background: linear-gradient(#2cd18c,#19a66a);
   box-shadow: 0 6px 18px rgba(0,0,0,.18); cursor:pointer;
 }
-
-/* hide the standard intro NEXT row when in splash mode */
-.intro-screen.video-fullscreen .nav-row{ display:none; }
-
-/* Small Sound On pill */
 .unmute-overlay{
   position:fixed; left:16px;
-  top: max(16px, env(safe-area-inset-top));
+  top:max(16px, env(safe-area-inset-top));
   padding:10px 14px; border:0; border-radius:18px;
   font-family: var(--font-heading); font-weight:700;
   color:#333; background: linear-gradient(#ffcd4d,#ffa909);
   box-shadow: 0 6px 18px rgba(0,0,0,.18);
   cursor:pointer; display:none;
 }
-
-/* New: bottom control row groups Skip + Unmute side-by-side */
 .intro-bottom-controls{
   position:absolute; left:50%; transform:translateX(-50%);
-  bottom: max(16px, env(safe-area-inset-bottom));
-  display:flex; align-items:center; justify-content:center;
-  gap:12px;
+  bottom:max(16px, env(safe-area-inset-bottom));
+  display:flex; align-items:center; justify-content:center; gap:12px;
 }
 .intro-bottom-controls .skip-overlay,
 .intro-bottom-controls .unmute-overlay{
-  position: static; left:auto; bottom:auto; transform:none;
-}
-.intro-bottom-controls .unmute-overlay{ display:none; } /* JS can show when muted */
-
-/* ===== Bounce intro effect (reusable) ===== */
-.intro-text { /* you already have a base; these are safe */
-  position: relative;
+  position: static; transform:none;
 }
 
-/* Each word pops in */
+/* Intro text bounce (optional, safe) */
+/* .intro-text{ position:relative; font-family:var(--font-heading); font-weight:700; } */
+
+.intro-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(34px, 6svh, 52px); /* bigger than current 30–40px */
+  line-height: 1.3;
+  text-align: center;
+}
+
+
 .intro-word{
-  display:inline-block;
-  opacity:0;
+  display:inline-block; opacity:0;
   transform: translateY(12px) scale(.94);
-  animation: intro-bounce .7s cubic-bezier(.2,.9,.25,1.4) forwards; /* keep final frame */
-  animation-fill-mode: both; /* extra-safe: keeps initial + final states */
-  margin-right: 0.4em;   /* adjust spacing */
+  animation: intro-bounce .7s cubic-bezier(.2,.9,.25,1.4) forwards;
+  margin-right: .4em;
 }
-
-
-/* Friendly bounce */
 @keyframes intro-bounce{
-  0%   { opacity:0; transform: translateY(16px) scale(0.92); }
-  60%  { opacity:1; transform: translateY(-6px) scale(1.08); }
-  80%  { transform: translateY(2px)  scale(0.98); }
-  100% { transform: translateY(0)    scale(1); }
+  0%{ opacity:0; transform: translateY(16px) scale(.92); }
+  60%{ opacity:1; transform: translateY(-6px) scale(1.08); }
+  80%{ transform: translateY(2px) scale(.98); }
+  100%{ transform: translateY(0) scale(1); }
 }
-
-/* Optional soft candy colours per word */
-.intro-word:nth-child(5n+1){ color:#e65a6b; }
-.intro-word:nth-child(5n+2){ color:#f2a83b; }
-.intro-word:nth-child(5n+3){ color:#1fb573; }
-.intro-word:nth-child(5n+4){ color:#3aa7f2; }
-.intro-word:nth-child(5n+5){ color:#8f67ff; }
-
-/* Respect reduced-motion */
 @media (prefers-reduced-motion: reduce){
   .intro-word{ animation:none !important; opacity:1 !important; transform:none !important; }
 }
 
-
-
-/* Make Home button pop more when it's the only option (outro) */
-.intro-screen.outro .secondary-btn.home {
+/* Outro emphasis for Home button */
+.intro-screen.outro .secondary-btn.home{
   transform: scale(1.1);
-  background: linear-gradient(#2cd18c, #19a66a); /* green instead of salmon */
+  background: linear-gradient(#2cd18c, #19a66a);
 }
 
-#wordDisplay .image-wrap img{
-  height: 100%;
-  max-height: var(--img-cap);
-  width: 100%;
-  object-fit: contain;
-}
-
-
-/* Make only Unit 3 look bigger, without reflow */
+/* ------------------------------
+   Unit-specific tweak (optional)
+------------------------------ */
 body.unit-unit3{
-  --img-scale: 1.82;    /* tweak 1.10–1.30 to taste */
-  --img-nudge: 0.9svh; /* lift it a bit so it doesn’t encroach the nav */
+  --img-scale: 1.82;
+  --img-nudge: 0.9svh;
+}
+body.unit-unit3 .word-display{ overflow:hidden; }
+body.unit-unit3 .image-wrap{ overflow:hidden; contain:paint; }
+
+/* ------------------------------
+   Responsive tweaks
+------------------------------ */
+@media (max-width: 420px){
+  :root { --img-cap: 36svh; }  /* free a little vertical space on small phones */
+}
+@media (min-width: 760px){
+  .nav-row, .secondary-row{ gap:24px; }
 }
 
-/* If the scaled image gets clipped, let it overflow just for Unit 3 */
-/* body.unit-unit3 .image-wrap{ overflow: visible; } */
-
-/* prevent any vertical scroll on the slide */
-body.unit-unit3 .word-display{
-  overflow: hidden;                /* NEW: clip anything that spills */
+/* ------------------------------
+   Misc
+------------------------------ */
+#wordDisplay .image-wrap img{
+  height:100%;
+  max-height: var(--img-cap);
+  width:100%;
+  object-fit:contain;
 }
 
-/* clip the scaled image inside its box */
-body.unit-unit3 .image-wrap{
-  overflow: hidden;                /* NEW: clip filter/scale bleed */
-  contain: paint;                  /* confine painting to this box */
-}
+.intro-word:nth-child(5n+1) { color:#e65a6b; } /* red/pink */
+.intro-word:nth-child(5n+2) { color:#f2a83b; } /* orange */
+.intro-word:nth-child(5n+3) { color:#1fb573; } /* green */
+.intro-word:nth-child(5n+4) { color:#3aa7f2; } /* blue */
+.intro-word:nth-child(5n+5) { color:#8f67ff; } /* purple */

@@ -141,7 +141,8 @@ async function render(i) {
   if (item.image) {
     // WORD SLIDE
     stopVideo();
-    els.wordScreen.style.display = "flex";
+    // els.wordScreen.style.display = "flex";
+    els.wordScreen.style.display = "grid";
     // els.title.textContent = "Let’s Learn A / An";
     els.word.innerHTML = (item.text || "").replace(/ (?!.* )/, "&nbsp;");
     els.image.src = item.image;
