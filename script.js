@@ -27,7 +27,7 @@ const dashboardLessons = [
       id: 'unit8',
       title: 'But',
       description: 'Learn simple daily activities (eat, play, sleep), use "I eat," "I play," "I sleep," and relate to time of day.',
-      thumbnail: 'Images/Unit1/happyday.png'
+      thumbnail: 'Images/Unit8/thumbnail.svg'
     },
     {
       id: 'history-of-art',
