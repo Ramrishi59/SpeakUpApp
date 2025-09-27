@@ -2,19 +2,38 @@
 
 // Default data (fallback)
 let ITEMS = [
-{ image: 'Images/Unit3/u3_01_cat.png', answer: 'This is a cat.', vo: 'Audio/Unit3/this_apple.mp3' },
-{ image: 'Images/Unit3/u3_02_kite.png', answer: 'This is a kite.', vo: 'Audio/Unit3/this_book.mp3' },
-{ image: 'Images/Unit3/that_car.webp', answer: 'That is a car.', vo: 'Audio/Unit3/that_car.mp3' },
-{ image: 'Images/Unit3/this_pen.webp', answer: 'This is a pen.', vo: 'Audio/Unit3/this_pen.mp3' },
-{ image: 'Images/Unit3/that_tree.webp', answer: 'That is a tree.', vo: 'Audio/Unit3/that_tree.mp3' },
-{ image: 'Images/Unit3/this_bag.webp', answer: 'This is a bag.', vo: 'Audio/Unit3/this_bag.mp3' },
-{ image: 'Images/Unit3/that_house.webp', answer: 'That is a house.', vo: 'Audio/Unit3/that_house.mp3' },
-{ image: 'Images/Unit3/this_egg.webp', answer: 'This is an egg.', vo: 'Audio/Unit3/this_egg.mp3' },
-{ image: 'Images/Unit3/that_bike.webp', answer: 'That is a bike.', vo: 'Audio/Unit3/that_bike.mp3' },
-{ image: 'Images/Unit3/this_phone.webp', answer: 'This is a phone.', vo: 'Audio/Unit3/this_phone.mp3' },
-{ image: 'Images/Unit3/that_boat.webp', answer: 'That is a boat.', vo: 'Audio/Unit3/that_boat.mp3' },
-{ image: 'Images/Unit3/this_cake.webp', answer: 'This is a cake.', vo: 'Audio/Unit3/this_cake.mp3' }
+{ image: 'Images/u3_01_cat.png', answer: 'This is a cat.', vo: 'Audio/Unit3/this_apple.mp3' },
+{ image: 'Images/u3_02_kite.png', answer: 'That is a kite.', vo: 'Audio/Unit3/this_book.mp3' },
+{ image: 'Images/u3_03_dog.png', answer: 'This is a dog.', vo: 'Audio/Unit3/that_car.mp3' },
+{ image: 'Images/u3_04_duck.png', answer: 'That is a duck.', vo: 'Audio/Unit3/this_pen.mp3' },
+{ image: 'Images/u3_05_bee.png', answer: 'This is a bee.', vo: 'Audio/Unit3/that_tree.mp3' },
+{ image: 'Images/u3_06_bird.png', answer: 'That is a bird.', vo: 'Audio/Unit3/this_bag.mp3' },
+{ image: 'Images/u3_07_frog.png', answer: 'That is a frog.', vo: 'Audio/Unit3/that_house.mp3' },
+{ image: 'Images/u3_08_snake.png', answer: 'That is an snake.', vo: 'Audio/Unit3/this_egg.mp3' },
+{ image: 'Images/u3_09_tortoise.png', answer: 'This is a tortoise.', vo: 'Audio/Unit3/that_bike.mp3' },
+{ image: 'Images/u3_10_tiger.png', answer: 'That is a tiger.', vo: 'Audio/Unit3/this_phone.mp3' },
+{ image: 'Images/u3_11_butterfly.png', answer: 'This is a butterfly.', vo: 'Audio/Unit3/that_boat.mp3' },
 ];
+
+const els = {
+    stage:        document.getElementById('stage'),
+    progress:     document.getElementById('progress'),
+    img:          document.getElementById('itemImage'),
+    prompt:       document.getElementById('prompt'),
+    answerText:   document.getElementById('answerText'),
+    btnAnswer:    document.getElementById('btnAnswer'),
+    btnNext:      document.getElementById('btnNext'),
+    btnRestart:   document.getElementById('btnRestart'),
+    overlay:      document.getElementById('overlay'),
+    overlayNext:  document.getElementById('overlayNext'),
+    bannerText:   document.getElementById('bannerText'),
+    confetti:     document.getElementById('confetti'),
+    outro:        document.getElementById('outro'),
+    outroHome:    document.getElementById('outroHome'),
+    outroRestart: document.getElementById('outroRestart'),
+    vo:           document.getElementById('vo'),
+  };
+  
 
 const CHECKPOINTS = new Set([3,6,9]);
 const LINES = {

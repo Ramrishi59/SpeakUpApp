@@ -30,8 +30,8 @@ const dashboardLessons = [
       thumbnail: 'Images/Unit8/thumbnail.svg'
     },
     {
-      id: 'history-of-art',
-      title: 'History of Art',
+      id: 'and-practice',
+      title: 'And Practice',
       description: 'Discover the history of art movements, styles, and famous artists across the world',
       thumbnail: 'Images/Unit1/a_an_thumbnail.jpg'
     }
@@ -51,6 +51,7 @@ const dashboardLessons = [
       'unit8': (id) => `Trial.html?unitId=unit8`,
        // Practice sessions → point to their folders
       'unit1-practice': () => 'an-quiz/an-quiz.html',
+      'and-practice': () => 'and-practice/and.html',
 
       // default fallback
       '__default': (id) => `old-index.html?unitId=${id}`
