@@ -1,0 +1,64 @@
+<!-- ==========================================
+Drop-in demo that you can wire to your PWA routes.
+========================================== -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Speak Up • Unit 3 Practice (This / That)</title>
+<link rel="stylesheet" href="and.css" />
+</head>
+<body>
+<main class="app">
+<section class="card stage" id="stage">
+<header class="titlebar">
+<h1>This / That • Practice</h1>
+<div class="progress" id="progress">1 / 12</div>
+</header>
+
+<div class="image-wrap">
+<div class="image-frame">
+<img id="itemImage" alt="Picture" src="Images/Unit3/this_apple.webp" />
+</div>
+</div>
+
+<div class="prompt" id="prompt">Say the sentence!</div>
+<div class="answer-text" id="answerText"></div>
+
+<div class="controls">
+<button id="btnAnswer" class="btn primary">Answer</button>
+<button id="btnNext" class="btn secondary" disabled>Next</button>
+<button id="btnRestart" class="btn ghost" title="Start Over">Start Over</button>
+</div>
+</section>
+
+<!-- Mascot Reward Overlay -->
+<div class="overlay" id="overlay" aria-hidden="true">
+<div class="reward">
+<img class="mascot" id="mascotImg" alt="Mascot" src="Images/Common/manku_cheer.webp" />
+<div class="banner" id="bannerText">Great job!</div>
+<button class="btn secondary" id="overlayNext">Next</button>
+</div>
+</div>
+
+<!-- Confetti container -->
+<div class="confetti" id="confetti"></div>
+
+<!-- Outro Screen -->
+<section class="card outro" id="outro">
+<img class="mascot" alt="Mascot" src="Images/Common/manku_cheer.webp" />
+<div class="big">Well done! You practised with <em>This</em> and <em>That</em>!</div>
+<div class="controls">
+<button class="btn secondary" id="outroHome">Home</button>
+<button class="btn ghost" id="outroRestart">Start Over</button>
+</div>
+</section>
+</main>
+
+<audio id="vo" preload="auto"></audio>
+<script src="and.js"></script>
+</body>
+</html>
