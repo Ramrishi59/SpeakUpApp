@@ -144,8 +144,8 @@ html,body{
 #wordText{
   font-family:var(--font-heading);
   font-weight:700;
-  font-size: clamp(28px, 4.8svh, 38px);
-  color: var(--accent-red);
+  font-size: clamp(28px, 4.8svh, 36px);
+  color: #000000cf;
   text-shadow:
     0 0 0 rgb(245,242,242),
     1.2px 1.2px 0 rgb(245,242,242),
