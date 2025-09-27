@@ -199,13 +199,13 @@ html,body{
     background: linear-gradient(#ff8d73,#ff6f54);
     /* Larger size for easier tap */
     font-size: 25px;
-    padding: 18px 36px;
+    padding: 18px 34px;
   }
   .secondary-btn.home .icon{ font-size: 1.2em; }
   .secondary-btn.startover{ 
     background: linear-gradient(#ff8d73,#ff6f54);
     font-size: 20px;
-    padding: 14px 20px;
+    padding: 14xpx 20 px;
   }
   .secondary-btn.startover .icon{ font-size: 40px; }
   
