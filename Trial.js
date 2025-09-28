@@ -285,8 +285,6 @@ if (item.audio) {
   } catch { /* no-op */ }
 }
 
-  
-
   if (els.introNext) els.introNext.style.display = isOutro ? "none" : "";
   if (els.introOutroActions) els.introOutroActions.style.display = isOutro ? "" : "none";
   
