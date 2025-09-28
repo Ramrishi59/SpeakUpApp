@@ -1,0 +1,23 @@
+{
+  "id": "unit5",
+  "name": "Unit 5: What is that?",
+  "description": "Learn to ask and answer with 'What is that?' using far objects (That’s …).",
+  "thumbnail": "Images/Unit5/thumbnail.jpg",
+  "words": [
+    { "text": "What is that?", "audio": "Audio/Unit5/u5_intro_01.mp3" },
+    { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit5/u5_intro_02.mp3" },
+
+    { "text": "That's a helicopter.", "image": "Images/Unit5/1.png",  "audio": "Audio/Unit5/u5_01.mp3" },
+    { "text": "That's a bridge.",     "image": "Images/Unit5/2.png",  "audio": "Audio/Unit5/u5_02.mp3" },
+    { "text": "That's a train.",      "image": "Images/Unit5/3.png",  "audio": "Audio/Unit5/u5_03.mp3" },
+    { "text": "That's a monkey.",     "image": "Images/Unit5/4.png",  "audio": "Audio/Unit5/u5_04.mp3" },
+    { "text": "That's a bear.",       "image": "Images/Unit5/5.png",  "audio": "Audio/Unit5/u5_05.mp3" },
+    { "text": "That's a mountain.",   "image": "Images/Unit5/6.png",  "audio": "Audio/Unit5/u5_06.mp3" },
+    { "text": "That's a snake.",      "image": "Images/Unit5/7.png",  "audio": "Audio/Unit5/u5_07.mp3" },
+    { "text": "That's a building.",   "image": "Images/Unit5/8.png",  "audio": "Audio/Unit5/u5_08.mp3" },
+    { "text": "That's a kangaroo.",   "image": "Images/Unit5/9.png",  "audio": "Audio/Unit5/u5_09.mp3" },
+    { "text": "That's a peacock.",    "image": "Images/Unit5/10.png", "audio": "Audio/Unit5/u5_10.mp3" },
+
+    { "text": "Fantastic! You learned to ask and answer \"What is that?\"", "audio": "Audio/Unit5/u5_outro_01.mp3" }
+  ]
+}
