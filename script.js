@@ -27,7 +27,7 @@ const dashboardLessons = [
       id: 'unit4',
       title: 'What is this?',
       description: 'What is this?',
-      thumbnail: 'Images/Unit4/This_That.webp'
+      thumbnail: 'Images/Unit4/thumbnail.jpg'
     },
     {
       id: 'unit8',
