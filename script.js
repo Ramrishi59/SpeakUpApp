@@ -24,6 +24,12 @@ const dashboardLessons = [
       thumbnail: 'Images/Unit3/This_That.webp'
     },
     {
+      id: 'unit4',
+      title: 'What is this?',
+      description: 'What is this?',
+      thumbnail: 'Images/Unit4/This_That.webp'
+    },
+    {
       id: 'unit8',
       title: 'But',
       description: 'Learn simple daily activities (eat, play, sleep), use "I eat," "I play," "I sleep," and relate to time of day.',
@@ -48,6 +54,7 @@ const dashboardLessons = [
       'unit1': (id) => `Trial.html?unitId=unit1`,
       'unit2': (id) => `Trial.html?unitId=unit2`,  // 👈 force unit2 card to also load unit1.json
       'unit3': (id) => `Trial.html?unitId=unit3`,
+      'unit4': (id) => `Trial.html?unitId=unit4`,
       'unit8': (id) => `Trial.html?unitId=unit8`,
        // Practice sessions → point to their folders
       'unit1-practice': () => 'an-quiz/an-quiz.html',
