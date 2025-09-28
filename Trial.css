@@ -145,7 +145,7 @@ html,body{
   font-family:var(--font-heading);
   font-weight:700;
   font-size: clamp(28px, 4.8svh, 36px);
-  color: #000000cf;
+  color: #000000ab;
   text-shadow:
     0 0 0 rgb(245,242,242),
     1.2px 1.2px 0 rgb(245,242,242),
