@@ -36,6 +36,12 @@ const dashboardLessons = [
       thumbnail: 'Images/Unit5/thumbnail.jpg'
     },
     {
+      id: 'unit6',
+      title: 'Is this a cat?',
+      description: 'Is this a cat?',
+      thumbnail: 'Images/Unit6/1.webp'
+    },
+    {
       id: 'unit8',
       title: 'But',
       description: 'Learn simple daily activities (eat, play, sleep), use "I eat," "I play," "I sleep," and relate to time of day.',
@@ -62,6 +68,7 @@ const dashboardLessons = [
       'unit3': (id) => `Trial.html?unitId=unit3`,
       'unit4': (id) => `Trial.html?unitId=unit4`,
       'unit5': (id) => `Trial.html?unitId=unit5`,
+      'unit6': (id) => `Trial.html?unitId=unit6`,
       'unit8': (id) => `Trial.html?unitId=unit8`,
        // Practice sessions → point to their folders
       'unit1-practice': () => 'an-quiz/an-quiz.html',
