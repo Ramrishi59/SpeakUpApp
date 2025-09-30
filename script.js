@@ -1,7 +1,7 @@
 const dashboardLessons = [
     {
       id: 'unit1', // new trial page
-      title: 'Unit1: A / An',
+      title: 'Unit 1: A / An',
       description: 'Learn A and An. Just watch, listen and repeat',
       thumbnail: 'Images/Unit1/anthumbnail.png'
     },
@@ -13,19 +13,19 @@ const dashboardLessons = [
     },
     {
       id: 'unit2',
-      title: 'Unit2: And',
+      title: 'Unit 2: And',
       description: 'Learn And. Just watch, listen and repeat',
       thumbnail: 'Images/Unit2/andthumbnail.webp'
     },
     {
       id: 'unit3',
-      title: 'Unit3: This and That',
+      title: 'Unit 3: This and That',
       description: 'Learn about This and That. Just watch, listen and repeat',
       thumbnail: 'Images/Unit3/This_That.webp'
     },
     {
       id: 'unit4',
-      title: 'Unit4: What is this?',
+      title: 'Unit 4: What is this?',
       description: 'What is this?',
       thumbnail: 'Images/Unit4/thumbnail.jpg'
     },
@@ -37,13 +37,13 @@ const dashboardLessons = [
     },
     {
       id: 'unit6',
-      title: 'Unit6: Is this a cat?',
+      title: 'Unit 6: Is this a cat?',
       description: 'Is this a cat?',
       thumbnail: 'Images/Unit6/1.webp'
     },
     {
       id: 'unit7',
-      title: 'Unit7: Is that a mountain?',
+      title: 'Unit 7: Is that a mountain?',
       description: 'Is that a mountain?',
       thumbnail: 'Images/Unit7/1.webp'
     },
@@ -67,7 +67,7 @@ const dashboardLessons = [
     },
     {
       id: 'unit20',
-      title: 'But',
+      title: 'Unit20: But',
       description: 'Learn simple daily activities (eat, play, sleep), use "I eat," "I play," "I sleep," and relate to time of day.',
       thumbnail: 'Images/Unit8/thumbnail.svg'
     },
