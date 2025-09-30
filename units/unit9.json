@@ -1,0 +1,23 @@
+{
+    "id": "unit9",
+    "name": "Unit 9: These are bananas",
+    "description": "Learn plural sentences with 'These are ...'.",
+    "thumbnail": "Images/Unit9/unit9_thumbnail.jpg",
+    "words": [
+      { "text": "These are bananas…", "audio": "Audio/Unit9/01_Intro_These_are_bananas.mp3" },
+  
+      { "text": "These are books.",         "image": "Images/Unit9/1.webp",  "audio": "Audio/Unit9/02_Chapter 1.mp3" },
+      { "text": "These are pencils.",       "image": "Images/Unit9/2.webp",  "audio": "Audio/Unit9/03_Chapter 1.mp3" },
+      { "text": "These are pens.",          "image": "Images/Unit9/3.webp",  "audio": "Audio/Unit9/04_Chapter 1.mp3" },
+      { "text": "These are rulers.",        "image": "Images/Unit9/4.webp",  "audio": "Audio/Unit9/05_Chapter 1.mp3" },
+      { "text": "These are erasers.",       "image": "Images/Unit9/5.webp",  "audio": "Audio/Unit9/06_Chapter 1.mp3" },
+      { "text": "These are backpacks.",     "image": "Images/Unit9/6.webp",  "audio": "Audio/Unit9/07_Chapter 1.mp3" },
+      { "text": "These are water bottles.", "image": "Images/Unit9/7.webp",  "audio": "Audio/Unit9/08_Chapter 1.mp3" },
+      { "text": "These are apples.",        "image": "Images/Unit9/8.webp",  "audio": "Audio/Unit9/09_Chapter 1.mp3" },
+      { "text": "These are oranges.",       "image": "Images/Unit9/9.webp",  "audio": "Audio/Unit9/10_Chapter 1.mp3" },
+      { "text": "These are bananas.",       "image": "Images/Unit9/10.webp", "audio": "Audio/Unit9/11_Chapter 1.mp3" },
+  
+      { "text": "Wonderful!", "audio": "Audio/Unit9/Outro.mp3" }
+    ]
+  }
+  

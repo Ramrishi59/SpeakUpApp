@@ -54,6 +54,12 @@ const dashboardLessons = [
       thumbnail: 'Images/Unit8/1.webp'
     },
     {
+      id: 'unit9',
+      title: 'Unit 9: These are bananas',
+      description: 'Vocabulary set: classroom objects, fruits, animals, and more (plurals).',
+      thumbnail: 'Images/Unit9/1.webp'
+    },
+    {
       id: 'unit20',
       title: 'But',
       description: 'Learn simple daily activities (eat, play, sleep), use "I eat," "I play," "I sleep," and relate to time of day.',
@@ -83,6 +89,8 @@ const dashboardLessons = [
       'unit6': (id) => `Trial.html?unitId=unit6`,
       'unit7': (id) => `Trial.html?unitId=unit7`,
       'unit8': (id) => `Trial.html?unitId=unit8`,
+      'unit9': (id) => `Trial.html?unitId=unit9`,
+      'unit10': (id) => `Trial.html?unitId=unit10`,
       'unit20': (id) => `Trial.html?unitId=unit20`,
        // Practice sessions → point to their folders
       'unit1-practice': () => 'an-quiz/an-quiz.html',
