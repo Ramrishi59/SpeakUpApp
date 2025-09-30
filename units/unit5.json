@@ -4,8 +4,7 @@
   "description": "Learn to ask and answer with 'What is that?' using far objects (That’s …).",
   "thumbnail": "Images/Unit5/thumbnail.jpg",
   "words": [
-    { "text": "What is that?", "audio": "Audio/Unit5/u5_intro_01.mp3" },
-    { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit5/u5_intro_02.mp3" },
+    { "text": "What is that? Look. Listen. Repeat.", "audio": "Audio/Unit5/u5_intro_01.mp3" },
 
     { "text": "That's a helicopter.", "image": "Images/Unit5/1.png",  "audio": "Audio/Unit5/u5_01.mp3" },
     { "text": "That's a bridge.",     "image": "Images/Unit5/2.png",  "audio": "Audio/Unit5/u5_02.mp3" },

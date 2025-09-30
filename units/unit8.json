@@ -5,6 +5,7 @@
     "thumbnail": "Images/Unit8/unit8_thumbnail.jpg",
     "words": [
       { "text": "Books and Pencils", "audio": "Audio/Unit8/Intro_Chapter 1.mp3" },
+      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit4/u4_intro_02.mp3" },
   
       { "text": "books",          "image": "Images/Unit8/1.webp",  "audio": "Audio/Unit8/02_Chapter 1.mp3" },
       { "text": "pencils",        "image": "Images/Unit8/2.webp",  "audio": "Audio/Unit8/03_Chapter 1.mp3" },

@@ -5,6 +5,7 @@
     "thumbnail": "Images/Unit10/unit10_thumbnail.jpg",
     "words": [
       { "text": "Those are butterflies.", "audio": "Audio/Unit10/intro.mp3" },
+      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit4/u4_intro_02.mp3" },
   
       { "text": "Those are ships.",      "image": "Images/Unit10/1.webp",  "audio": "Audio/Unit10/02_Chapter 1.mp3" },
       { "text": "Those are bees.",       "image": "Images/Unit10/2.webp",  "audio": "Audio/Unit10/03_Chapter 1.mp3" },

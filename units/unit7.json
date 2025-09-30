@@ -4,7 +4,8 @@
     "description": "Learn to ask and answer with 'Is that ...?'",
     "thumbnail": "Images/Unit7/unit7_thumbnail.jpg",
     "words": [
-      { "text": "Is that a mountain? Look. Listen. And Repeat.", "audio": "Audio/Unit7/01_Intro_1.mp3" },
+      { "text": "Is that a mountain?", "audio": "Audio/Unit7/01_Intro_1.mp3" },
+      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit4/u4_intro_02.mp3" },
   
       { "text": "Is that a building?", "image": "Images/Unit7/1.webp", "audio": "Audio/Unit7/02_Chapter1.mp3" },
       { "text": "No, it's not.", "image": "Images/Unit7/1.webp", "audio": "Audio/Unit7/noitsnot.mp3" },

@@ -5,6 +5,7 @@
     "thumbnail": "Images/unit8/thumbnail.svg",
     "words": [
         { "text": "Let’s learn how to use BUT!", "audio": "Audio/Unit8/u8_intro.mp3" },
+        { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit5/u5_intro_02.mp3" },
     
         { "text": "This is a pen but that's a pencil.",   "image": "Images/Unit8/u8_i01.webp.webp",        "audio": "Audio/Unit8/u8_i01.mp3" },
         { "text": "This is a cap but that's a hat.",        "image": "Images/Unit8/u8_i02.webp.webp",       "audio": "Audio/Unit8/u8_i02.mp3" },

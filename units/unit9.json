@@ -5,6 +5,7 @@
     "thumbnail": "Images/Unit9/unit9_thumbnail.jpg",
     "words": [
       { "text": "These are bananas…", "audio": "Audio/Unit9/01_Intro_These_are_bananas.mp3" },
+      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit4/u4_intro_02.mp3" },
   
       { "text": "These are books.",         "image": "Images/Unit9/1.webp",  "audio": "Audio/Unit9/02_Chapter 1.mp3" },
       { "text": "These are pencils.",       "image": "Images/Unit9/2.webp",  "audio": "Audio/Unit9/03_Chapter 1.mp3" },
