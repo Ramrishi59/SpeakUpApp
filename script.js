@@ -1,7 +1,7 @@
 const dashboardLessons = [
     {
       id: 'unit1', // new trial page
-      title: 'A / An',
+      title: 'Unit1: A / An',
       description: 'Learn A and An. Just watch, listen and repeat',
       thumbnail: 'Images/Unit1/anthumbnail.png'
     },
@@ -13,37 +13,37 @@ const dashboardLessons = [
     },
     {
       id: 'unit2',
-      title: 'And',
+      title: 'Unit2: And',
       description: 'Learn And. Just watch, listen and repeat',
       thumbnail: 'Images/Unit2/andthumbnail.webp'
     },
     {
       id: 'unit3',
-      title: 'This and That',
+      title: 'Unit3: This and That',
       description: 'Learn about This and That. Just watch, listen and repeat',
       thumbnail: 'Images/Unit3/This_That.webp'
     },
     {
       id: 'unit4',
-      title: 'What is this?',
+      title: 'Unit4: What is this?',
       description: 'What is this?',
       thumbnail: 'Images/Unit4/thumbnail.jpg'
     },
     {
       id: 'unit5',
-      title: 'What is that?',
+      title: 'Unit 5: What is that?',
       description: 'What is that?',
       thumbnail: 'Images/Unit5/thumbnail.jpg'
     },
     {
       id: 'unit6',
-      title: 'Is this a cat?',
+      title: 'Unit6: Is this a cat?',
       description: 'Is this a cat?',
       thumbnail: 'Images/Unit6/1.webp'
     },
     {
       id: 'unit7',
-      title: 'Is that a mountain?',
+      title: 'Unit7: Is that a mountain?',
       description: 'Is that a mountain?',
       thumbnail: 'Images/Unit7/1.webp'
     },
