@@ -4,7 +4,7 @@
     "description": "Learn to ask and answer 'Is this ...?' with Yes/No responses.",
     "thumbnail": "Images/Unit6/unit6_thumbnail.jpg",
     "words": [
-      { "text": "Unit 6, Is this a cat? Look. Listen. And Repeat.", "audio": "Audio/Unit6/U_6_intro.mp3" },
+      { "text": "Is this a cat? Look. Listen. And Repeat.", "audio": "Audio/Unit6/U_6_intro.mp3" },
   
       { "text": "Is this a pencil?",       "image": "Images/Unit6/1.webp",  "audio": "Audio/Unit6/1_pencil_1.mp3" },
       { "text": "Yes, it is.",            "image": "Images/Unit6/1.webp", "audio": "Audio/Unit6/2_pencil_2.mp3" },

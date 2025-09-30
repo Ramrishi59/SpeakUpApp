@@ -1,0 +1,47 @@
+{
+    "id": "unit7",
+    "name": "Unit 7: Is that a mountain?",
+    "description": "Learn to ask and answer with 'Is that ...?'",
+    "thumbnail": "Images/Unit7/unit7_thumbnail.jpg",
+    "words": [
+      { "text": "Is that a mountain? Look. Listen. And Repeat.", "audio": "Audio/Unit7/01_Intro_1.mp3" },
+  
+      { "text": "Is that a building?", "image": "Images/Unit7/1.webp", "audio": "Audio/Unit7/02_Chapter1.mp3" },
+      { "text": "No, it's not.", "image": "Images/Unit7/1.webp", "audio": "Audio/Unit7/noitsnot.mp3" },
+      { "text": "It's a bridge.", "image": "Images/Unit7/1.webp","audio": "Audio/Unit7/04_Chapter1.mp3" },
+  
+      { "text": "Is that a parrot?", "image": "Images/Unit7/2.webp", "audio": "Audio/Unit7/05_Chapter1.mp3" },
+      { "text": "No, it's not.", "image": "Images/Unit7/2.webp","audio": "Audio/Unit7/noitsnot.mp3" },
+      { "text": "It's a peacock.", "image": "Images/Unit7/2.webp","audio": "Audio/Unit7/07_Chapter1.mp3" },
+  
+      { "text": "Is that a bus?", "image": "Images/Unit7/3.webp", "audio": "Audio/Unit7/08_Chapter1.mp3" },
+      { "text": "No, it's not.","image": "Images/Unit7/3.webp", "audio": "Audio/Unit7/noitsnot.mp3" },
+      { "text": "It's a train.", "image": "Images/Unit7/3.webp","audio": "Audio/Unit7/10_Chapter1.mp3" },
+  
+      { "text": "Is that a mountain?", "image": "Images/Unit7/4.webp", "audio": "Audio/Unit7/11_Chapter1.mp3" },
+      { "text": "Yes, it is.", "image": "Images/Unit7/4.webp","audio": "Audio/Unit7/yesitis.mp3" },
+  
+      { "text": "Is that an aeroplane?", "image": "Images/Unit7/5.webp", "audio": "Audio/Unit7/13_Chapter1.mp3" },
+      { "text": "No, it's not.", "image": "Images/Unit7/5.webp","audio": "Audio/Unit7/noitsnot.mp3" },
+      { "text": "It's a helicopter.", "image": "Images/Unit7/5.webp","audio": "Audio/Unit7/15_Chapter1.mp3" },
+  
+      { "text": "Is that a monkey?", "image": "Images/Unit7/6.webp", "audio": "Audio/Unit7/16_Chapter1.mp3" },
+      { "text": "Yes, it is.","image": "Images/Unit7/6.webp",  "audio": "Audio/Unit7/yesitis.mp3" },
+  
+      { "text": "Is that a snake?", "image": "Images/Unit7/7.webp", "audio": "Audio/Unit7/18_Chapter1.mp3" },
+      { "text": "Yes, it is.", "image": "Images/Unit7/7.webp", "audio": "Audio/Unit7/yesitis.mp3" },
+  
+      { "text": "Is that a coconut tree?", "image": "Images/Unit7/8.webp", "audio": "Audio/Unit7/20_Chapter1.mp3" },
+      { "text": "Yes, it is.", "image": "Images/Unit7/8.webp","audio": "Audio/Unit7/yesitis.mp3" },
+  
+      { "text": "Is that a lion?", "image": "Images/Unit7/9.webp", "audio": "Audio/Unit7/22_Chapter1.mp3" },
+      { "text": "No, it's not.", "image": "Images/Unit7/9.webp","audio": "Audio/Unit7/noitsnot.mp3" },
+      { "text": "It's a bear.","image": "Images/Unit7/9.webp", "audio": "Audio/Unit7/24_Chapter1.mp3" },
+  
+      { "text": "Is that a kangaroo?", "image": "Images/Unit7/10.webp", "audio": "Audio/Unit7/25_Chapter1.mp3" },
+      { "text": "Yes, it is.", "image": "Images/Unit7/10.webp", "audio": "Audio/Unit7/yesitis.mp3" },
+  
+      { "text": "Great! Keep practising!", "audio": "Audio/Unit7/29_Chapter 1.mp3" }
+    ]
+  }
+  
