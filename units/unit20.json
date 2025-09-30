@@ -1,0 +1,24 @@
+{
+    "id": "unit20",
+    "name": "Unit 20: But",
+    "description": "Let’s learn how to use BUT! ",
+    "thumbnail": "Images/unit8/thumbnail.svg",
+    "words": [
+        { "text": "Let’s learn how to use BUT!", "audio": "Audio/Unit8/u8_intro.mp3" },
+    
+        { "text": "This is a pen but that's a pencil.",   "image": "Images/Unit8/u8_i01.webp.webp",        "audio": "Audio/Unit8/u8_i01.mp3" },
+        { "text": "This is a cap but that's a hat.",        "image": "Images/Unit8/u8_i02.webp.webp",       "audio": "Audio/Unit8/u8_i02.mp3" },
+    
+        { "text": "This is a mobile but that's a tablet",        "image": "Images/Unit8/u8_i03.webp",        "audio": "Audio/Unit8/u8_i03.mp3" },
+        { "text": "This is a hen but that’s a cock",        "image": "Images/Unit8/u8_i04.webp",       "audio": "Audio/Unit8/u8_i04.mp3" },
+    
+        { "text": "These are cricket balls but those are footballs",        "image": "Images/Unit8/u8_i05.webp",        "audio": "Audio/Unit8/u8_i05.mp3" },
+        { "text": "These are cashews but those are coconuts",        "image": "Images/Unit8/u8_i06.webp",       "audio": "Audio/Unit8/u8_i06.mp3" },
+    
+        { "text": "These are cups but those are saucers",       "image": "Images/Unit8/u8_i07.webp",       "audio": "Audio/Unit8/u8_i07.mp3" },
+        { "text": "These are buses but those are vans",       "image": "Images/Unit8/u8_i08.webp",      "audio": "Audio/Unit8/u8_i08.mp3" },
+    
+        { "text": "Great job!", "audio": "Audio/Unit8/u8_outro.mp3" }
+      ]
+  }
+  
