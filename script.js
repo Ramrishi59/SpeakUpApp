@@ -60,6 +60,12 @@ const dashboardLessons = [
       thumbnail: 'Images/Unit9/1.webp'
     },
     {
+      id: 'unit10',
+      title: 'Unit 10: Those are butterflies',
+      description: 'Vocabulary set: classroom objects, fruits, animals, and more (plurals).',
+      thumbnail: 'Images/Unit10/1.webp'
+    },
+    {
       id: 'unit20',
       title: 'But',
       description: 'Learn simple daily activities (eat, play, sleep), use "I eat," "I play," "I sleep," and relate to time of day.',
