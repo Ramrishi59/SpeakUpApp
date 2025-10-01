@@ -1,0 +1,43 @@
+{
+    "id": "unit11",
+    "name": "Unit 11: Are these apples?",
+    "description": "Learn to ask and answer plural questions with 'Are these ...?'",
+    "thumbnail": "Images/Unit11/unit11_thumbnail.jpg",
+    "words": [
+      { "text": "Are these apples?", "audio": "Audio/Unit11/Intro.mp3" },
+      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit11/Look_listen_repeat.mp3" },
+  
+      { "text": "Are these bananas?",   "image": "Images/Unit11/1.webp",  "audio": "Audio/Unit11/03_Chapter 1.mp3" },
+      { "text": "Yes, they are.",       "image": "Images/Unit11/1.webp","audio": "Audio/Unit11/04_Chapter 1.mp3" },
+  
+      { "text": "Are these books?",     "image": "Images/Unit11/2.webp",  "audio": "Audio/Unit11/05_Chapter 1.mp3" },
+      { "text": "Yes, they are.",       "image": "Images/Unit11/2.webp","audio": "Audio/Unit11/06_Chapter 1.mp3" },
+  
+      { "text": "Are these pencils?",   "image": "Images/Unit11/3.webp",  "audio": "Audio/Unit11/07_Chapter 1.mp3" },
+      { "text": "Yes, they are.",       "image": "Images/Unit11/3.webp","audio": "Audio/Unit11/08_Chapter 1.mp3" },
+  
+      { "text": "Are these pens?",      "image": "Images/Unit11/4.webp",  "audio": "Audio/Unit11/09_Chapter 1.mp3" },
+      { "text": "Yes, they are.",      "image": "Images/Unit11/4.webp", "audio": "Audio/Unit11/10_Chapter 1.mp3" },
+  
+      { "text": "Are these rulers?",    "image": "Images/Unit11/5.webp",  "audio": "Audio/Unit11/11_Chapter 1.mp3" },
+      { "text": "Yes, they are.",       "image": "Images/Unit11/5.webp","audio": "Audio/Unit11/12_Chapter 1.mp3" },
+  
+      { "text": "Are these erasers?",   "image": "Images/Unit11/6.webp",  "audio": "Audio/Unit11/13_Chapter 1.mp3" },
+      { "text": "Yes, they are.",      "image": "Images/Unit11/6.webp", "audio": "Audio/Unit11/14_Chapter 1.mp3" },
+  
+      { "text": "Are these backpacks?", "image": "Images/Unit11/7.webp",  "audio": "Audio/Unit11/15_Chapter 1.mp3" },
+      { "text": "Yes, they are.",       "image": "Images/Unit11/7.webp","audio": "Audio/Unit11/16_Chapter 1.mp3" },
+  
+      { "text": "Are these water bottles?", "image": "Images/Unit11/8.webp", "audio": "Audio/Unit11/17_Chapter 1.mp3" },
+      { "text": "Yes, they are.",          "image": "Images/Unit11/8.webp", "audio": "Audio/Unit11/18_Chapter 1.mp3" },
+  
+      { "text": "Are these apples?",    "image": "Images/Unit11/9.webp",  "audio": "Audio/Unit11/19_Chapter 1.mp3" },
+      { "text": "Yes, they are.",       "image": "Images/Unit11/9.webp","audio": "Audio/Unit11/20_Chapter 1.mp3" },
+  
+      { "text": "Are these oranges?",   "image": "Images/Unit11/10.webp", "audio": "Audio/Unit11/21_Chapter 1.mp3" },
+      { "text": "Yes, they are.",      "image": "Images/Unit11/10.webp", "audio": "Audio/Unit11/22_Chapter 1.mp3" },
+  
+      { "image": "Images/Unit11/Outro_fantastic_keep_practising.webp", "audio": "Audio/Unit11/outro.mp3" }
+    ]
+  }
+  
