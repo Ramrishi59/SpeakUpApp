@@ -37,7 +37,7 @@
       { "text": "Are these pencils?", "image": "Images/Unit12/10.webp",  "audio": "Audio/Unit12/20_Chapter 1.mp3" },
       { "text": "No, they are not. They are water bottles.", "image": "Images/Unit12/10.webp",  "audio": "Audio/Unit12/21_Chapter 1.mp3" },
   
-      { "text": "Well done!","image": "Images/Unit12/Outro_well_done.webp", "audio": "Audio/Unit12/outro.mp3" } 
+      { "image": "Images/Unit12/Outro_well_done.webp", "audio": "Audio/Unit12/outro.mp3" } 
     ]
   }
   

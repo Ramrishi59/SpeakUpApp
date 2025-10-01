@@ -1,0 +1,43 @@
+{
+    "id": "unit13",
+    "name": "Unit 13: Are they cars?",
+    "description": "Plural questions with 'Are they ...?' answered positively.",
+    "thumbnail": "Images/Unit13/unit13_thumbnail.jpg",
+    "words": [
+      { "text": "Are they cars?", "audio": "Audio/Unit13/Unit_13_intro.mp3" },
+      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit13/Look_listen_repeat.mp3" },
+  
+      { "text": "Are they birds?", "image": "Images/Unit13/1.webp", "audio": "Audio/Unit13/03_Chapter 1.mp3" },
+      { "text": "Yes, they are.", "image": "Images/Unit13/1.webp","audio": "Audio/Unit13/04_Chapter 1.mp3" },
+  
+      { "text": "Are they mugs?", "image": "Images/Unit13/2.webp", "audio": "Audio/Unit13/05_Chapter 1.mp3" },
+      { "text": "Yes, they are.", "image": "Images/Unit13/2.webp","audio": "Audio/Unit13/06_Chapter 1.mp3" },
+  
+      { "text": "Are they horses?", "image": "Images/Unit13/3.webp", "audio": "Audio/Unit13/07_Chapter 1.mp3" },
+      { "text": "Yes, they are.", "image": "Images/Unit13/3.webp","audio": "Audio/Unit13/08_Chapter 1.mp3" },
+  
+      { "text": "Are they bees?", "image": "Images/Unit13/4.webp", "audio": "Audio/Unit13/09_Chapter 1.mp3" },
+      { "text": "Yes, they are.", "image": "Images/Unit13/4.webp","audio": "Audio/Unit13/10_Chapter 1.mp3" },
+  
+      { "text": "Are they dolphins?", "image": "Images/Unit13/5.webp", "audio": "Audio/Unit13/11_Chapter 1.mp3" },
+      { "text": "Yes, they are.", "image": "Images/Unit13/5.webp", "audio": "Audio/Unit13/12_Chapter 1.mp3" },
+  
+      { "text": "Are they ships?", "image": "Images/Unit13/6.webp", "audio": "Audio/Unit13/13_Chapter 1.mp3" },
+      { "text": "Yes, they are.","image": "Images/Unit13/6.webp", "audio": "Audio/Unit13/14_Chapter 1.mp3" },
+  
+      { "text": "Are they stars?", "image": "Images/Unit13/7.webp", "audio": "Audio/Unit13/15_Chapter 1.mp3" },
+      { "text": "Yes, they are.","image": "Images/Unit13/7.webp", "audio": "Audio/Unit13/16_Chapter 1.mp3" },
+  
+      { "text": "Are they butterflies?", "image": "Images/Unit13/8.webp", "audio": "Audio/Unit13/17_Chapter 1.mp3" },
+      { "text": "Yes, they are.", "image": "Images/Unit13/8.webp","audio": "Audio/Unit13/18_Chapter 1.mp3" },
+  
+      { "text": "Are they umbrellas?", "image": "Images/Unit13/9.webp", "audio": "Audio/Unit13/19_Chapter 1.mp3" },
+      { "text": "Yes, they are.", "image": "Images/Unit13/9.webp","audio": "Audio/Unit13/20_Chapter 1.mp3" },
+  
+      { "text": "Are they cars?", "image": "Images/Unit13/10.webp", "audio": "Audio/Unit13/21_Chapter 1.mp3" },
+      { "text": "Yes, they are.", "image": "Images/Unit13/10.webp","audio": "Audio/Unit13/22_Chapter 1.mp3" },
+  
+      { "image": "Images/Unit13/Outro_wonderful.webp", "audio": "Audio/Unit13/Unit_13_Outro.mp3" }
+    ]
+  }
+  
