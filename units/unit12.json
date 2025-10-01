@@ -4,7 +4,7 @@
     "description": "Plural questions with 'Are these ...?' and corrective answers split into separate slides.",
     "thumbnail": "Images/Unit12/unit12_thumbnail.jpg",
     "words": [
-      { "text": "Are these water bottles?", "audio": "Audio/Unit12/intro.mp3" },
+      { "text": "Are these water bottles?", "audio": "Audio/Unit12/Intro.mp3" },
       { "text": "Look. Listen. Repeat.",    "audio": "Audio/Unit12/Look_listen_repeat.mp3" },
   
       { "text": "Are these pencils?", "image": "Images/Unit12/1.webp",  "audio": "Audio/Unit12/02_Chapter 1.mp3" },
