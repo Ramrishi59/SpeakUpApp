@@ -75,19 +75,19 @@ const dashboardLessons = [
       id: 'unit12',
       title: 'Unit 12: Are these water bottles?',
       description: 'Vocabulary set: classroom objects, fruits, animals, and more (plurals).',
-      thumbnail: 'Images/Unit11/1.webp'
+      thumbnail: 'Images/Unit12/1.webp'
     },
     {
       id: 'unit13',
       title: 'Unit 13: Are they cars?',
       description: 'Vocabulary set: classroom objects, fruits, animals, and more (plurals).',
-      thumbnail: 'Images/Unit11/1.webp'
+      thumbnail: 'Images/Unit13/1.webp'
     },
     {
       id: 'unit14',
       title: 'Unit 14: Are they…? Negative answers',
       description: 'Vocabulary set: classroom objects, fruits, animals, and more (plurals).',
-      thumbnail: 'Images/Unit11/1.webp'
+      thumbnail: 'Images/Unit14/1.webp'
     },
     {
       id: 'unit20',
