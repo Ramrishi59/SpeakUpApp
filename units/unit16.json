@@ -1,0 +1,30 @@
+{
+    "id": "unit16",
+    "name": "Unit 16: Is he a boy?",
+    "description": "Practice simple Yes/No questions with 'Is he/Is she'.",
+    "thumbnail": "Images/Unit16/unit16_thumbnail.jpg",
+    "words": [
+      { "text": "Is he a boy?", "audio": "Audio/Unit16/Unit_16_Intro.mp3" },
+      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit14/Look_listen_repeat.mp3" },
+  
+      { "text": "Is Thomas a boy?", "image": "Images/Unit16/1.webp", "audio": "Audio/Unit16/02_Chapter 1.mp3" },
+      { "text": "Yes, he is.", "image": "Images/Unit16/1.webp", "audio": "Audio/Unit16/03_Chapter 1.mp3" },
+  
+      { "text": "Is Saira a girl?", "image": "Images/Unit16/2.webp", "audio": "Audio/Unit16/04_Chapter 1.mp3" },
+      { "text": "Yes, she is.", "image": "Images/Unit16/2.webp", "audio": "Audio/Unit16/05_Chapter 1.mp3" },
+  
+      { "text": "Is she Reena?", "image": "Images/Unit16/3.webp", "audio": "Audio/Unit16/06_Chapter 1.mp3" },
+      { "text": "Yes, she is.", "image": "Images/Unit16/3.webp", "audio": "Audio/Unit16/07_Chapter 1.mp3" },
+  
+      { "text": "Is he Raju?", "image": "Images/Unit16/4.webp", "audio": "Audio/Unit16/08_Chapter 1.mp3" },
+      { "text": "Yes, he is.", "image": "Images/Unit16/4.webp", "audio": "Audio/Unit16/09_Chapter 1.mp3" },
+  
+      { "text": "Is she Reena?", "image": "Images/Unit16/5.webp", "audio": "Audio/Unit16/10_Chapter 1.mp3" },
+      { "text": "No, she is not. She is Saira.", "image": "Images/Unit16/5.webp", "audio": "Audio/Unit16/11_Chapter 1.mp3" },
+  
+      { "text": "Is he Raju?", "image": "Images/Unit16/6.webp", "audio": "Audio/Unit16/12_Chapter 1.mp3" },
+      { "text": "No, he is not. He is Thomas.", "image": "Images/Unit16/6.webp", "audio": "Audio/Unit16/13_Chapter 1.mp3" }
+  
+    ]
+  }
+  
