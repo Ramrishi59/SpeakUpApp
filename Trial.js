@@ -35,6 +35,35 @@ const els = {
   start:        document.getElementById("startoverButton"),
 };
 
+//// PASTE BELOW THIS LINE
+const SpeakUpOutro = (() => {
+  let $screen, $mascot, $placard, $audio;
+  function refs(){
+    $screen  = document.getElementById("outroScreen");
+    $mascot  = document.getElementById("outroMascot");
+    $placard = document.getElementById("outroPlacard");
+    $audio   = document.getElementById("outroAudio");
+  }
+  function hide(){
+    refs();
+    if ($screen){ $screen.hidden = true; $screen.classList.remove("is-playing"); }
+    if ($audio){ try{ $audio.pause(); $audio.currentTime = 0; }catch{} }
+  }
+  function render({ image, audio, text }){
+    refs();
+    if ($mascot && image) $mascot.src = image;
+    if ($placard) $placard.innerHTML = text || "";
+    if ($audio && audio) $audio.src = audio;
+    if ($screen){
+      $screen.hidden = false;
+      $screen.classList.remove("is-playing"); $screen.offsetWidth;
+      $screen.classList.add("is-playing");
+    }
+    try{ if ($audio){ $audio.currentTime = 0; $audio.play().catch(()=>{}); } }catch{}
+  }
+  return { render, hide };
+})();
+
   function getUnitIdFromUrl() {
     const p = new URLSearchParams(location.search);
     return p.get("unitId") || "unit1";

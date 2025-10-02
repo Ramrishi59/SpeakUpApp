@@ -1,0 +1,23 @@
+{
+    "id": "unit15",
+    "name": "Unit 15: I am a girl",
+    "description": "Practice simple sentences with 'I am', 'He is', and 'She is'.",
+    "thumbnail": "Images/Unit15/unit15_thumbnail.jpg",
+    "words": [
+      { "text": "I am a girl", "audio": "Audio/Unit15/Unit_15_Intro.mp3" },
+      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit14/Look_listen_repeat.mp3" },
+  
+      { "text": "I am Raju. I am a boy.", "image": "Images/Unit15/1.webp", "audio": "Audio/Unit15/02_Chapter 1.mp3" },
+      { "text": "I am Reena. I am a girl.", "image": "Images/Unit15/2.webp", "audio": "Audio/Unit15/03_Chapter 1.mp3" },
+      { "text": "I am Sabu. I am a man.", "image": "Images/Unit15/3.webp", "audio": "Audio/Unit15/04_Chapter 1.mp3" },
+      { "text": "I am Meera. I am a woman.", "image": "Images/Unit15/4.webp", "audio": "Audio/Unit15/05_Chapter 1.mp3" },
+  
+      { "text": "He is Raju. He is a boy.", "image": "Images/Unit15/5.webp", "audio": "Audio/Unit15/06_Chapter 1.mp3" },
+      { "text": "She is Reena. She is a girl.", "image": "Images/Unit15/6.webp", "audio": "Audio/Unit15/07_Chapter 1.mp3" },
+      { "text": "He is Sabu. He is a man.", "image": "Images/Unit15/7.webp", "audio": "Audio/Unit15/08_Chapter 1.mp3" },
+      { "text": "She is Meera. She is a woman.", "image": "Images/Unit15/8.webp", "audio": "Audio/Unit15/09_Chapter 1.mp3" }
+  
+
+    ]
+  }
+  
