@@ -1,0 +1,29 @@
+{
+    "id": "unit17",
+    "name": "Unit 17: You are a boy",
+    "description": "Practice plural and singular sentences with 'We are', 'You are', and 'They are'.",
+    "thumbnail": "Images/Unit17/unit17_thumbnail.jpg",
+    "words": [
+      { "text": "You are a boy", "audio": "Audio/Unit17/intro.mp3" },
+      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit17/Look_listen_repeat.mp3" },
+  
+      { "text": "We are boys.", "image": "Images/Unit17/1.webp", "audio": "Audio/Unit17/03_Chapter 1.mp3" },
+      { "text": "We are girls.", "image": "Images/Unit17/2.webp", "audio": "Audio/Unit17/04_Chapter 1.mp3" },
+  
+      { "text": "You are a boy.", "image": "Images/Unit17/3.webp", "audio": "Audio/Unit17/05_Chapter 1.mp3" },
+      { "text": "You are a girl.", "image": "Images/Unit17/4.webp", "audio": "Audio/Unit17/06_Chapter 1.mp3" },
+      { "text": "You are a man.", "image": "Images/Unit17/5.webp", "audio": "Audio/Unit17/07_Chapter 1.mp3" },
+      { "text": "You are men.", "image": "Images/Unit17/6.webp", "audio": "Audio/Unit17/08_Chapter 1.mp3" },
+      { "text": "You are a woman.", "image": "Images/Unit17/7.webp", "audio": "Audio/Unit17/09_Chapter 1.mp3" },
+      { "text": "You are women.", "image": "Images/Unit17/8.webp", "audio": "Audio/Unit17/10_Chapter 1.mp3" },
+  
+      { "text": "We are men.", "image": "Images/Unit17/9.webp", "audio": "Audio/Unit17/11_Chapter 1.mp3" },
+      { "text": "We are women.", "image": "Images/Unit17/10.webp", "audio": "Audio/Unit17/12_Chapter 1.mp3" },
+  
+      { "text": "They are boys.", "image": "Images/Unit17/11.webp", "audio": "Audio/Unit17/13_Chapter 1.mp3" },
+      { "text": "They are girls.", "image": "Images/Unit17/12.webp", "audio": "Audio/Unit17/14_Chapter 1.mp3" },
+      { "text": "They are men.", "image": "Images/Unit17/13.webp", "audio": "Audio/Unit17/15_Chapter 1.mp3" },
+      { "text": "They are women.", "image": "Images/Unit17/14.webp", "audio": "Audio/Unit17/16_Chapter 1.mp3" }
+    ]
+  }
+  

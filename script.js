@@ -97,7 +97,13 @@ const dashboardLessons = [
     },
     {
       id: 'unit16',
-      title: 'Unit 16: Is he a boy?',
+      title: 'Unit 16: You are a boy',
+      description: 'Vocabulary set: classroom objects, fruits, animals, and more (plurals).',
+      thumbnail: 'Images/Unit17/1.webp'
+    },
+    {
+      id: 'unit17',
+      title: 'Unit 17: Is he a boy?',
       description: 'Vocabulary set: classroom objects, fruits, animals, and more (plurals).',
       thumbnail: 'Images/Unit16/1.webp'
     },
@@ -139,6 +145,7 @@ const dashboardLessons = [
       'unit14': (id) => `Trial.html?unitId=unit14`,
       'unit15': (id) => `Trial.html?unitId=unit15`,
       'unit16': (id) => `Trial.html?unitId=unit16`,
+      'unit17': (id) => `Trial.html?unitId=unit17`,
       'unit20': (id) => `Trial.html?unitId=unit20`,
        // Practice sessions → point to their folders
       'unit1-practice': () => 'an-quiz/an-quiz.html',

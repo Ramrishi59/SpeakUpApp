@@ -49,17 +49,6 @@
             Next <span class="chevrons">❯❯</span>
           </button>
         </div>
-
-            <!-- Outro-only actions for intro/outro screens -->
-        <div class="secondary-row" id="introOutroActions" style="display:none;">
-          <a class="secondary-btn home" href="index.html">
-            <span class="icon">🏠</span> Home
-          </a>
-          <button class="secondary-btn startover" id="startoverIntro">
-            <span class="icon">↻</span> Start Over
-          </button>
-        </div>
-
       </section>
       
 
@@ -97,6 +86,26 @@
         </button>
       </div>
     </section>
+    <!-- IMAGE OUTRO screen -->
+<section class="outro" id="outroScreen" style="display:none">
+  <p class="message" id="outroMessage" style="display:none"></p>
+  <img class="mascot" id="outroMascot" alt="Mascot holding a board">
+  <!-- (optional) dedicated audio element; if omitted, shared `audio` object is used -->
+  <!-- <audio id="outroAudio" preload="auto"></audio> -->
+</section>
+
+
+    <!-- Global actions footer (used by both text outros and image outros) -->
+<div class="secondary-row footer-actions" id="lessonActions" style="display:none;">
+  <a class="secondary-btn home" href="index.html">
+    <span class="icon">🏠</span> Home
+  </a>
+  <button class="secondary-btn startover" id="startoverGlobal">
+    <span class="icon">↻</span> Start Over
+  </button>
+</div>
+
+    
   </main>
 
   <script src="Trial.js" defer></script>

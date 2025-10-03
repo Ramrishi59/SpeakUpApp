@@ -34,6 +34,10 @@
   --btn-font: 20px;
   --btn-pad-x: 22px;
   --btn-gap: 18px;
+
+  --fx-dur-short: 320ms;
+  --fx-dur: 800ms;
+  --fx-ease: cubic-bezier(.2,.8,.2,1);
 }
 
 /* ------------------------------
@@ -186,8 +190,10 @@ html,body{
   white-space: nowrap;
 }
 .nav-btn .chevrons{ font-weight:900; }
-.nav-btn.prev{ background: linear-gradient(#ffcd4d, #ffa909); }
-.nav-btn.next{ background: linear-gradient(#ffcd4d, #ffa909); }
+.nav-btn.prev,
+.nav-btn.next{
+  background: linear-gradient(#ffcd4d, #ffa909);
+}
 
 /* Secondary row (Home / Start Over) */
 .secondary-row{
@@ -227,8 +233,7 @@ html,body{
   text-align:center; gap:16px;
   padding: 20px 16px;
 }
-.intro-screen #lessonText { display:none; } /* hide title on intro */
-.intro-screen #wordImage { display:none; }  /* no image on intro */
+
 .intro-screen #wordText{
   font-size: clamp(22px,3.2svh,34px);
   line-height:1.4;
@@ -383,51 +388,102 @@ body.unit-unit3 .image-wrap{ overflow:hidden; contain:paint; }
 /* ------------------------------
    Misc
 ------------------------------ */
-#wordDisplay .image-wrap img{
-  height:100%;
-  max-height: var(--img-cap);
-  width:100%;
-  object-fit:contain;
+
+.intro-word{
+  color:#e65a6b;
+  text-shadow:
+    0 0 0 rgb(236,226,226),
+    1px 1px 0 rgb(236,226,226),
+   -1px -1px 0 rgb(236,226,226),
+    2px 2px 0 rgba(0,0,0,.08);
 }
 
-.intro-word:nth-child(5n+1) { 
-  color:#e65a6b; /* red/pink */
-  text-shadow: 
-    1px 1px 2px rgba(255,255,255,0.9),  /* soft white */
-   -1px -1px 2px rgba(255,255,255,0.9), 
-    2px 2px 3px rgba(0,0,0,0.1);        /* faint dark for depth */
+
+.outro .mascot, .outro .message { will-change: transform, opacity; }
+.outro .mascot { transform-origin: 80% 30%; } /* tweak if needed */
+
+/* Pop-in (once) */
+.fx-pop { animation: outroPopIn var(--fx-dur-short) var(--fx-ease) both; }
+@keyframes outroPopIn {
+  0% { transform: scale(.9); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
 }
 
-.intro-word:nth-child(5n+2) { 
-  color:#e65a6b; /* orange */
-  text-shadow:     
-  0 0 0 rgb(236,226,226),
-  1px 1px 0 rgb(236,226,226),
-  -1px -1px 0 rgb(236,226,226),
-  2px 2px 0 rgba(0,0,0,.08);
+/* Single wave tilt */
+.fx-wave-once { animation: outroWave 700ms ease-in-out both; }
+@keyframes outroWave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg) scale(1.005); }
+  50% { transform: rotate(6deg) scale(.998); }
+  100% { transform: rotate(0deg); }
 }
-.intro-word:nth-child(5n+3) { 
-  color:#e65a6b; /* green */
-  text-shadow:     
-  0 0 0 rgb(236,226,226),
-  1px 1px 0 rgb(236,226,226),
-  -1px -1px 0 rgb(236,226,226),
-  2px 2px 0 rgba(0,0,0,.08);
+
+/* Idle float (loop) */
+.fx-float { animation: outroFloat 3s ease-in-out .8s infinite alternate; }
+@keyframes outroFloat { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+
+/* Message cheer pop */
+.fx-cheer { animation: msgCheer var(--fx-dur-short) var(--fx-ease) both; }
+@keyframes msgCheer {
+  0% { transform: translateY(6px) scale(.98); opacity: 0; }
+  60% { transform: translateY(-2px) scale(1.04); opacity: 1; }
+  100% { transform: translateY(0) scale(1); }
 }
-.intro-word:nth-child(5n+4) { 
-  color:#e65a6b; /* blue */
-  text-shadow:     
-  0 0 0 rgb(236,226,226),
-  1px 1px 0 rgb(236,226,226),
-  -1px -1px 0 rgb(236,226,226),
-  2px 2px 0 rgba(0,0,0,.08);
+
+/* Text-only fallback pretties */
+.outro.no-mascot .message { text-align:center; font-weight:700; position:relative; overflow:hidden; }
+.outro.no-mascot .message.fx-shimmer::after {
+  content:""; position:absolute; inset:0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.4) 40%, transparent 80%);
+  transform: translateX(-120%); animation: shimmerSweep 900ms ease-out 120ms both;
 }
-.intro-word:nth-child(5n+5) { 
-  color:#e65a6b; /* purple */
-  text-shadow:     
-  0 0 0 rgb(236,226,226),
-  1px 1px 0 rgb(236,226,226),
-  -1px -1px 0 rgb(236,226,226),
-  2px 2px 0 rgba(0,0,0,.08);
+@keyframes shimmerSweep { to { transform: translateX(120%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-pop, .fx-wave-once, .fx-float, .fx-cheer { animation: none !important; transform: none !important; opacity: 1 !important; }
 }
+/* ===== Minimal, scoped outro layout (no duplication) ===== */
+body.outro-active #outroScreen{
+  display: grid !important;
+  place-items: center;
+  gap: clamp(8px, 1.8svh, 18px);
+  min-height: calc(100svh - var(--header-h));
+  padding: clamp(8px, 2svh, 20px);
+  text-align: center;
+}
+
+body.outro-active #outroScreen .message{
+  margin: 0;
+  max-width: 92vw;     /* keep text close to mascot */
+}
+
+body.outro-active #outroScreen .mascot{
+  max-height: 46svh;   /* cap so it never fills the screen */
+  max-width: 78vw;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  /* you already set transform-origin on .outro .mascot; that still applies */
+}
+
+/* Optional: landscape tighten */
+@media (orientation: landscape) and (max-height: 520px){
+  body.outro-active #outroScreen{ gap: 1.2svh; }
+  body.outro-active #outroScreen .mascot{ max-height: 38svh; }
+}
+
+.footer-actions{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 20;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--btn-gap);
+  width: min(680px, 92vw);
+}
+.footer-actions .secondary-btn{ width: 100%; justify-content: center; }
+@media (max-width: 360px){ .footer-actions{ grid-template-columns: 1fr; } }
 

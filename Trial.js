@@ -21,10 +21,11 @@ const els = {
   playOverlay:  document.getElementById("introPlayOverlay"),
   skipIntro:    document.getElementById("skipIntro"),
   unmuteIntro:  document.getElementById("unmuteIntro"),
-  introOutroActions: document.getElementById("introOutroActions"),
-  startoverIntro:    document.getElementById("startoverIntro"),
 
 
+  // Global footer actions (the new row you added)
+  lessonActions: document.getElementById("lessonActions"),
+  
   // Word slides
   wordScreen:   document.getElementById("wordDisplay"),
   title:        document.getElementById("lessonText"),
@@ -32,42 +33,116 @@ const els = {
   image:        document.getElementById("wordImage"),
   prev:         document.getElementById("prevButton"),
   next:         document.getElementById("nextButton"),
-  start:        document.getElementById("startoverButton"),
+
 };
 
 //// PASTE BELOW THIS LINE
+// === SpeakUpOutro: show/hide via style.display ===
 const SpeakUpOutro = (() => {
   let $screen, $mascot, $placard, $audio;
   function refs(){
     $screen  = document.getElementById("outroScreen");
     $mascot  = document.getElementById("outroMascot");
-    $placard = document.getElementById("outroPlacard");
-    $audio   = document.getElementById("outroAudio");
+    $placard = document.getElementById("outroMessage");  // <— matches your HTML
+    $audio   = document.getElementById("outroAudio");     // optional element
   }
   function hide(){
     refs();
-    if ($screen){ $screen.hidden = true; $screen.classList.remove("is-playing"); }
-    if ($audio){ try{ $audio.pause(); $audio.currentTime = 0; }catch{} }
-  }
-  function render({ image, audio, text }){
-    refs();
-    if ($mascot && image) $mascot.src = image;
-    if ($placard) $placard.innerHTML = text || "";
-    if ($audio && audio) $audio.src = audio;
     if ($screen){
-      $screen.hidden = false;
-      $screen.classList.remove("is-playing"); $screen.offsetWidth;
-      $screen.classList.add("is-playing");
+      $screen.style.display = "none";
+      $screen.classList.remove("is-playing");
     }
-    try{ if ($audio){ $audio.currentTime = 0; $audio.play().catch(()=>{}); } }catch{}
+    if ($audio){
+      try { $audio.pause(); $audio.currentTime = 0; } catch {}
+    }
+  }
+  function render({ image, audio: src, text }){
+    refs();
+    if (!$screen) return;
+
+    if ($mascot && image) { $mascot.src = image; $mascot.style.display = ""; }
+    if ($mascot && !image) { $mascot.removeAttribute("src"); $mascot.style.display = "none"; }
+    if ($placard) $placard.textContent = text || "";
+
+    // show
+    $screen.style.display = ""; // <— important
+    $screen.classList.remove("is-playing"); void $screen.offsetWidth; // reset animations
+    $screen.classList.add("is-playing");
+
+    // play audio via dedicated <audio> if present; else use shared `audio`
+    try {
+      if ($audio && src) {
+        $audio.src = src; $audio.currentTime = 0; $audio.play().catch(()=>{});
+      } else if (window.audio && src) {
+        window.audio.pause(); window.audio.muted = false; window.audio.currentTime = 0;
+        window.audio.src = src; window.audio.play().catch(()=>{});
+      }
+    } catch {}
   }
   return { render, hide };
 })();
 
-  function getUnitIdFromUrl() {
-    const p = new URLSearchParams(location.search);
-    return p.get("unitId") || "unit1";
+
+// === Easy Outro FX (pop -> wave -> float) + detection + wiring ===
+let stopOutroFX = null;
+
+function runEasyOutroFX(rootEl) {
+  const mascot  = rootEl?.querySelector('.mascot') || document.getElementById('outroMascot');
+  const message = rootEl?.querySelector('.message') || document.getElementById('outroMessage');
+  const timers  = [];
+
+  [mascot, message].forEach(el => el && el.classList.remove('fx-pop','fx-wave-once','fx-float','fx-cheer','fx-shimmer'));
+
+  if (message) message.classList.add('fx-cheer');
+  if (mascot) {
+    mascot.classList.add('fx-pop');
+    timers.push(setTimeout(() => mascot.classList.add('fx-wave-once'), 220));
+    timers.push(setTimeout(() => mascot.classList.add('fx-float'), 900));
   }
+
+  return () => {
+    timers.forEach(clearTimeout);
+    [mascot, message].forEach(el => el && el.classList.remove('fx-pop','fx-wave-once','fx-float','fx-cheer','fx-shimmer'));
+  };
+}
+
+// Heuristic: treat the **last** item with image+audio and **no text** as OUTRO
+function isOutroItem(item, index, list) {
+  const isLast = index === list.length - 1;
+  const hasImg = !!item?.image;
+  const hasAud = !!item?.audio;
+  const noText = !item?.text || item.text.trim() === "";
+  return isLast && hasImg && hasAud && noText;
+}
+
+// Show outro using your SpeakUpOutro module + run the easy FX
+function showOutroFromLegacyItem(item) {
+  SpeakUpOutro.render({ image: item.image || "", audio: item.audio || "", text: "" });
+  document.body.classList.add('outro-active');
+
+  // show global footer actions
+  if (els.lessonActions) els.lessonActions.style.display = "grid";
+
+  stopOutroFX?.();
+  stopOutroFX = runEasyOutroFX(document.getElementById('outroScreen'));
+}
+
+function leaveOutro() {
+  stopOutroFX?.(); stopOutroFX = null;
+  SpeakUpOutro.hide();
+  document.body.classList.remove('outro-active');
+
+  // hide global footer actions
+  if (els.lessonActions) els.lessonActions.style.display = "none";
+}
+
+
+
+
+function getUnitIdFromUrl() {
+  const p = new URLSearchParams(location.search);
+  return p.get("unitId") || "unit1";
+}
 async function loadUnit(id) {
   const r = await fetch(`units/${id}.json`, { cache: "no-store" });
   if (!r.ok) throw new Error(id);
@@ -167,8 +242,24 @@ async function render(i) {
   exitVideoMode();              // reset video mode unless we enable it again
   stopAudio();                  // never overlap audio with video
 
+  // Detect: is this the OUTRO (image+audio, no text, last item)?
+if (isOutroItem(item, i, screens)) {
+  // Hide normal sections
+  els.introScreen.style.display = "none";
+  els.wordScreen.style.display  = "none";
+  stopVideo();
+  stopAudio();
+
+  // Show outro screen with mascot + audio and run FX
+  showOutroFromLegacyItem(item);
+  return; // important: stop here
+}
+
+
   if (item.image) {
     // WORD SLIDE
+    leaveOutro(); // <— add this line to ensure outro is hidden/cleaned
+    if (els.lessonActions) els.lessonActions.style.display = "none";
     stopVideo();
     // els.wordScreen.style.display = "flex";
     els.wordScreen.style.display = "grid";
@@ -273,6 +364,7 @@ async function render(i) {
   
 
   // ===== TEXT INTRO / OUTRO (no video) =====
+  leaveOutro(); // <— add this line
   if (els.introWrap) els.introWrap.style.display = "none";
   els.introText.style.display = "";
   // Kick off audio first for snappier sync
@@ -355,8 +447,10 @@ function startOver() {
 els.prev?.addEventListener("click", showPrev);
 els.next?.addEventListener("click", showNext);
 els.introNext?.addEventListener("click", showNext);
-els.start?.addEventListener("click", startOver);
-els.startoverIntro?.addEventListener("click", startOver);
+
+// NEW: global footer row
+document.getElementById('startoverGlobal')?.addEventListener('click', startOver);
+
 
 
 /* Init */
