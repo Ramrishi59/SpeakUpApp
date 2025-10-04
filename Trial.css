@@ -30,7 +30,7 @@
   --img-nudge: 0svh;
 
   /* Buttons */
-  --btn-h: 60px;
+  --btn-h: 68px;
   --btn-font: 20px;
   --btn-pad-x: 22px;
   --btn-gap: 18px;
@@ -38,6 +38,8 @@
   --fx-dur-short: 320ms;
   --fx-dur: 800ms;
   --fx-ease: cubic-bezier(.2,.8,.2,1);
+
+  --nav-btn-h: 96px;     /* size of the round nav coins (tweak 88–104px) */
 }
 
 /* ------------------------------
@@ -175,25 +177,68 @@ html,body{
   justify-items:stretch;
   margin:0;
 }
+
+/* NAV BUTTON — single source of truth (round coin) */
 .nav-btn{
-  border:0; outline:0;
-  font-family:var(--font-heading);
-  font-weight:700;
-  font-size: var(--btn-font);
-  height: var(--btn-h);
-  padding: 0 var(--btn-pad-x);
-  border-radius: 18px;
-  color:var(--white);
-  box-shadow: var(--shadow);
-  display:flex; align-items:center; justify-content:center; gap:10px;
-  cursor:pointer;
-  white-space: nowrap;
+  width: var(--nav-btn-h);
+  height: var(--nav-btn-h);
+  min-width: 56px;           /* safety floor so they never collapse */
+  min-height: 56px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;                                              /* fallback shadow */
+  font-size: 0;                /* hides “PREV/NEXT” text; aria-label still read */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
-.nav-btn .chevrons{ font-weight:900; }
-.nav-btn.prev,
-.nav-btn.next{
-  background: linear-gradient(#ffcd4d, #ffa909);
+.nav-btn .chevrons{ display:none; }
+
+/* Coin artwork — if PNG loads, it sits on top of the fallback */
+.nav-btn::before{
+  content:"";
+  position:absolute; inset:0; margin:auto;
+  width:100%; height:100%;
+  background: center/100% no-repeat;
+  pointer-events:none;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,.22));
 }
+.nav-btn:active::before{ transform: scale(.96); }
+
+/* Hook in your files (check exact path + case) */
+.nav-btn.prev::before{ background-image:url("Images/Buttons/19.png"); }
+.nav-btn.next::before{ background-image:url("Images/Buttons/20.png"); }
+
+
+/* Optional tiny nudges if the PNG canvases aren’t perfectly centered */
+.nav-btn.prev::before{ background-position: 49% 50%; }
+.nav-btn.next::before{ background-position: 51% 50%; }
+
+/* 3) Center the pair neatly under the sentence */
+
+/* NAV ROW — two big coins centered under the sentence */
+.word-display .nav-row{
+  grid-template-columns: repeat(2, var(--nav-btn-h));
+  justify-content: center;
+  justify-items: center;
+  column-gap: clamp(28px, 8vw, calc(var(--nav-btn-h) * 0.6));
+}
+
+
+/* we no longer pin them to grid edges */
+.nav-btn.prev, .nav-btn.next{ justify-self: auto; }
+
+/* Bigger nav coins on lesson screens only */
+.word-display { --nav-btn-h: 98px; }           /* try 88–96px */
+@media (min-width: 420px){
+  .word-display { --nav-btn-h: 96px; }
+}
+
+
 
 /* Secondary row (Home / Start Over) */
 .secondary-row{
@@ -234,10 +279,7 @@ html,body{
   padding: 20px 16px;
 }
 
-.intro-screen #wordText{
-  font-size: clamp(22px,3.2svh,34px);
-  line-height:1.4;
-}
+
 /* intro NEXT placement: single col */
 .intro-screen .nav-row{
   width:100%;
@@ -288,7 +330,7 @@ html,body{
 
 /* Full-viewport splash mode */
 body.video-active { overflow:hidden; }
-.video-active .app-header { display:none; }
+.video-active .unit-header { display:none; }
 
 .intro-screen.video-fullscreen{
   position:fixed; inset:0; z-index:10;
@@ -359,11 +401,6 @@ body.video-active { overflow:hidden; }
   .intro-word{ animation:none !important; opacity:1 !important; transform:none !important; }
 }
 
-/* Outro emphasis for Home button */
-.intro-screen.outro .secondary-btn.home{
-  transform: scale(1.1);
-  background: linear-gradient(#2cd18c, #19a66a);
-}
 
 /* ------------------------------
    Unit-specific tweak (optional)
@@ -486,4 +523,17 @@ body.outro-active #outroScreen .mascot{
 }
 .footer-actions .secondary-btn{ width: 100%; justify-content: center; }
 @media (max-width: 360px){ .footer-actions{ grid-template-columns: 1fr; } }
+
+
+/* Text outro: intro screen has .outro, footer is a later sibling */
+.intro-screen.outro ~ #lessonActions .secondary-btn.home{
+  transform: scale(1.1);
+  background: linear-gradient(#2cd18c, #19a66a);
+}
+
+/* Mascot outro: body gets .outro-active */
+body.outro-active #lessonActions .secondary-btn.home{
+  transform: scale(1.1);
+  background: linear-gradient(#2cd18c, #19a66a);
+}
 
