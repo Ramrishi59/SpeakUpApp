@@ -210,8 +210,8 @@ html,body{
 .nav-btn:active::before{ transform: scale(.96); }
 
 /* Hook in your files (check exact path + case) */
-.nav-btn.prev::before{ background-image:url("Images/Buttons/19.png"); }
-.nav-btn.next::before{ background-image:url("Images/Buttons/20.png"); }
+.nav-btn.prev::before{ background-image:url("Images/buttons/19.png"); }
+.nav-btn.next::before{ background-image:url("Images/buttons/20.png"); }
 
 
 /* Optional tiny nudges if the PNG canvases aren’t perfectly centered */
