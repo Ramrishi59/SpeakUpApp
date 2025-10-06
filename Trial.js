@@ -36,7 +36,8 @@ const els = {
 function setFooterVisible(on) {
   const row = document.getElementById('lessonActions');
   if (row) row.style.display = on ? 'grid' : 'none';
-  document.body.classList.toggle('has-footer', !!on);
+  // one toggle to rule the bottom dock (footer + nav)
+  document.body.classList.toggle('has-dock', !!on);
 }
 
 

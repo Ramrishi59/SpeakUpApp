@@ -459,3 +459,66 @@ body.outro-active #outroScreen{
 .secondary-btn.startover > * {
   display: none !important;
 }
+
+/* ===========================
+   FIXED DOCK: Prev/Next + Footer
+   =========================== */
+
+/* Footer stays fixed (you already had this); keep as-is */
+.footer-actions{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 20;
+}
+
+/* Make footer coins a tight row */
+#lessonActions.footer-actions{
+  display: grid;
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--coin-size);
+  justify-content: center;
+  justify-items: center;
+  column-gap: var(--coin-gap);
+}
+
+/* NEW: when footer is visible, pin Prev/Next right above it */
+body.has-dock .nav-row{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(env(safe-area-inset-bottom) + 16px + var(--coin-size) + var(--btn-gap)); /* sits above footer */
+  z-index: 19;
+
+  /* same geometry as elsewhere, but forced here */
+  display: grid;
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--coin-size);
+  justify-content: center;
+  justify-items: center;
+  column-gap: var(--coin-gap);
+  width: auto;
+}
+
+/* Reserve space so content never hides behind the dock (no fake scroll) */
+body.has-dock .word-display,
+body.has-dock .intro-screen,
+body.has-dock #outroScreen{
+  padding-bottom: calc(
+    16px + var(--coin-size) * 2 + var(--btn-gap) + env(safe-area-inset-bottom)
+  );
+}
+
+/* Safety: kill any earlier 1fr/1fr layouts that could fight this */
+body.has-dock .word-display .nav-row,
+body.has-dock .intro-screen .nav-row{
+  grid-template-columns: none;
+}
+
+/* If you still had this accident somewhere, remove it entirely
+   (kept here as a no-op override just in case):
+   #wordImage { margin-top: 80px; }
+*/
