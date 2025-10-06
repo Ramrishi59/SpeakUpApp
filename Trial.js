@@ -35,10 +35,10 @@ const els = {
 /* ---------- unified footer visibility ---------- */
 function setFooterVisible(on) {
   const row = document.getElementById('lessonActions');
-  if (!row) return;
-  row.style.display = on ? 'grid' : 'none';
+  if (row) row.style.display = on ? 'grid' : 'none';
   document.body.classList.toggle('has-footer', !!on);
 }
+
 
 /* ---------- outro (image + audio) ---------- */
 const SpeakUpOutro = (() => {
@@ -197,6 +197,7 @@ async function render(i) {
   if (isMascotOutro) {
     stopVideo(); stopAudio();
     showOutroFromLegacyItem(item);
+    setFooterVisible(true);
     return;
   }
 
