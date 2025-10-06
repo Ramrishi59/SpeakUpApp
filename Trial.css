@@ -130,7 +130,7 @@ html,body{
   transform: translateY(var(--img-nudge)) scale(var(--img-scale));
   transform-origin:center;
   will-change: transform;
-  margin-top: 80px
+  /* margin-top: 60px */
 }
 
 /* Word row */
@@ -441,24 +441,21 @@ body.outro-active #outroScreen{
 @media (prefers-reduced-motion: reduce){
   .intro-word{ animation:none !important; opacity:1 !important; transform:none !important; }
 }
-/* --- iOS-safe: hide visible labels inside coin buttons --- */
+/* iOS-safe: hide visible labels inside coin buttons (Home/Start Over) */
 .secondary-btn.home,
 .secondary-btn.startover{
-  -webkit-appearance: none;
-  appearance: none;
-  /* keep the coin size/shape you already set */
-  width: var(--coin-size);
-  height: var(--coin-size);
-  border-radius: 50%;
-
-  /* robust label hiding */
-  text-indent: -9999px;   /* push far left */
-  white-space: nowrap;    /* prevent wrapping on iOS */
-  overflow: hidden;
-  font-size: 0;           /* collapse line box */
+  /* already sized as a coin elsewhere */
+  font-size: 0;              /* collapse any text line-box */
   line-height: 0;
+  white-space: nowrap;       /* prevent wrapping on iOS */
+  text-indent: 0;            /* don't rely on indent tricks */
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important; /* iOS */
+  text-shadow: none !important;
 }
 
-/* nuke any child content (emoji spans, etc.) just in case */
-.secondary-btn.home > * ,
-.secondary-btn.startover > * { display:none; }
+/* Nuke inner spans/emoji visually (icon is provided by ::before) */
+.secondary-btn.home > *,
+.secondary-btn.startover > * {
+  display: none !important;
+}
