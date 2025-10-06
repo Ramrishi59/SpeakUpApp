@@ -50,7 +50,11 @@
 ------------------------------ */
 *{ box-sizing:border-box; }
 html,body{
-  height:100%;
+  height:100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
+  touch-action: manipulation;
   margin:0;
   color:var(--text);
   font-family:var(--font-body);
@@ -58,6 +62,13 @@ html,body{
   background-size:cover;
   background-attachment:fixed;
 }
+
+/* Make <main> exactly the viewport minus header */
+main{
+  height: calc(100dvh - var(--header-h));
+  overflow: hidden;          /* no inner scroll either */
+}
+
 
 /* ------------------------------
    Header
@@ -130,8 +141,11 @@ html,body{
   transform: translateY(var(--img-nudge)) scale(var(--img-scale));
   transform-origin:center;
   will-change: transform;
-  /* margin-top: 60px */
+  
 }
+/* hard-stop any accidental inline margin that pushes the image down */
+#wordImage{ margin-top: 0 !important; }
+
 
 /* Word row */
 .word-block{
@@ -503,14 +517,7 @@ body.has-dock .nav-row{
   width: auto;
 }
 
-/* Reserve space so content never hides behind the dock (no fake scroll) */
-body.has-dock .word-display,
-body.has-dock .intro-screen,
-body.has-dock #outroScreen{
-  padding-bottom: calc(
-    16px + var(--coin-size) * 2 + var(--btn-gap) + env(safe-area-inset-bottom)
-  );
-}
+
 
 /* Safety: kill any earlier 1fr/1fr layouts that could fight this */
 body.has-dock .word-display .nav-row,
@@ -518,7 +525,41 @@ body.has-dock .intro-screen .nav-row{
   grid-template-columns: none;
 }
 
-/* If you still had this accident somewhere, remove it entirely
-   (kept here as a no-op override just in case):
-   #wordImage { margin-top: 80px; }
-*/
+
+.word-display,
+.intro-screen,
+#outroScreen{
+  height: 100%;
+  min-height: 0;             /* cancel earlier min-heights */
+}
+
+/* iOS: avoid 'fixed' background causing extra scroll area */
+@supports (-webkit-touch-callout: none) {
+  html, body{
+    background-attachment: scroll !important;
+  }
+}
+
+/* shrink the image area a bit when the fixed dock is visible */
+body.has-dock .image-wrap{
+  height: clamp(200px, 34svh, 420px);
+}
+
+/* a touch less vertical gap helps too */
+body.has-dock .word-display{
+  row-gap: clamp(8px, 1.6svh, 16px);
+}
+
+/* leave room equal to: footer coin + gap + nav coin + bottom padding */
+body.has-dock .word-display,
+body.has-dock .intro-screen,
+body.has-dock #outroScreen{
+  padding-bottom: calc(
+    var(--coin-size)        /* footer */
+    + var(--btn-gap)        /* gap */
+    + var(--coin-size)      /* nav */
+    + 24px                  /* breathing room */
+    + env(safe-area-inset-bottom)
+  );
+}
+
