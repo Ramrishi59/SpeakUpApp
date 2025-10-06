@@ -441,3 +441,24 @@ body.outro-active #outroScreen{
 @media (prefers-reduced-motion: reduce){
   .intro-word{ animation:none !important; opacity:1 !important; transform:none !important; }
 }
+/* --- iOS-safe: hide visible labels inside coin buttons --- */
+.secondary-btn.home,
+.secondary-btn.startover{
+  -webkit-appearance: none;
+  appearance: none;
+  /* keep the coin size/shape you already set */
+  width: var(--coin-size);
+  height: var(--coin-size);
+  border-radius: 50%;
+
+  /* robust label hiding */
+  text-indent: -9999px;   /* push far left */
+  white-space: nowrap;    /* prevent wrapping on iOS */
+  overflow: hidden;
+  font-size: 0;           /* collapse line box */
+  line-height: 0;
+}
+
+/* nuke any child content (emoji spans, etc.) just in case */
+.secondary-btn.home > * ,
+.secondary-btn.startover > * { display:none; }
