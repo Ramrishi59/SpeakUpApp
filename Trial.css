@@ -1,5 +1,5 @@
 /* =========================================================
-   Speak Up — Trial.css  (clean, consolidated)
+   Speak Up — Trial.css (clean, consolidated)
    ========================================================= */
 
 /* ------------------------------
@@ -21,15 +21,14 @@
   --card-radius:20px;
   --shadow:0 6px 18px rgba(0,0,0,.12);
   --max-content:960px;
-
   --header-h:56px;
 
   /* Slide image/text sizing */
-  --img-cap: 40svh;        /* image box height cap */
+  --img-cap: 40svh;
   --img-scale: 1;
   --img-nudge: 0svh;
 
-  /* Buttons */
+  /* Legacy button typography (kept for safety) */
   --btn-h: 68px;
   --btn-font: 20px;
   --btn-pad-x: 22px;
@@ -39,7 +38,11 @@
   --fx-dur: 800ms;
   --fx-ease: cubic-bezier(.2,.8,.2,1);
 
-  --nav-btn-h: 96px;     /* size of the round nav coins (tweak 88–104px) */
+  /* Coins: single source of truth */
+  --coin-size: 96px;
+  --coin-gap: clamp(28px, 8vw, calc(var(--coin-size) * 0.6));
+    /* space reserved when the footer is visible */
+    --footer-pad: calc(var(--coin-size) + 24px);
 }
 
 /* ------------------------------
@@ -69,17 +72,8 @@ html,body{
   color:#ed2e2e;
 }
 
-.score-bubble{
-  font-weight:700;
-  background:var(--white);
-  padding:6px 12px;
-  border-radius:999px;
-  box-shadow:var(--shadow);
-}
-
 /* ------------------------------
    WORD / IMAGE SLIDE (Grid)
-   Layout: title → image → word → nav → secondary
 ------------------------------ */
 .word-display{
   min-height: calc(100svh - var(--header-h));
@@ -91,13 +85,11 @@ html,body{
     "title"
     "image"
     "word"
-    "nav"
-    "secondary";
+    "nav";
   grid-template-rows:
     auto
     minmax(220px, var(--img-cap))
     minmax(90px, 18svh)
-    auto
     auto;
   row-gap: clamp(10px, 1.8svh, 18px);
   justify-items: center;
@@ -138,6 +130,7 @@ html,body{
   transform: translateY(var(--img-nudge)) scale(var(--img-scale));
   transform-origin:center;
   will-change: transform;
+  margin-top: 80px
 }
 
 /* Word row */
@@ -145,7 +138,7 @@ html,body{
   grid-area: word;
   display:flex; align-items:center; justify-content:center;
   width:100%;
-  padding: 0 12px; /* breathing room */
+  padding: 0 12px;
 }
 #wordText{
   font-family:var(--font-heading);
@@ -163,33 +156,31 @@ html,body{
   text-align:center;
   white-space:normal;
   line-height:1.2;
-  /* no padding-top shove */
 }
 
-/* Nav row (Prev/Next) */
+/* ------------------------------
+   NAV (Prev/Next coins)
+------------------------------ */
 .nav-row{
   grid-area: nav;
   width:100%;
   display:grid;
-  grid-template-columns: 1fr 1fr;
   gap: var(--btn-gap);
-  align-items:stretch;
-  justify-items:stretch;
   margin:0;
 }
 
-/* NAV BUTTON — single source of truth (round coin) */
+/* coin button */
 .nav-btn{
-  width: var(--nav-btn-h);
-  height: var(--nav-btn-h);
-  min-width: 56px;           /* safety floor so they never collapse */
+  width: var(--coin-size);
+  height: var(--coin-size);
+  min-width: 56px;
   min-height: 56px;
   border-radius: 50%;
   border: 0;
   padding: 0;
   background: transparent;
-  box-shadow: none;                                              /* fallback shadow */
-  font-size: 0;                /* hides “PREV/NEXT” text; aria-label still read */
+  box-shadow: none;
+  font-size: 0; /* hides text, keep aria-label */
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -198,7 +189,6 @@ html,body{
 }
 .nav-btn .chevrons{ display:none; }
 
-/* Coin artwork — if PNG loads, it sits on top of the fallback */
 .nav-btn::before{
   content:"";
   position:absolute; inset:0; margin:auto;
@@ -209,64 +199,22 @@ html,body{
 }
 .nav-btn:active::before{ transform: scale(.96); }
 
-/* Hook in your files (check exact path + case) */
+/* coin artwork (paths are case-sensitive!) */
 .nav-btn.prev::before{ background-image:url("Images/buttons/19.png"); }
 .nav-btn.next::before{ background-image:url("Images/buttons/20.png"); }
 
-
-/* Optional tiny nudges if the PNG canvases aren’t perfectly centered */
-.nav-btn.prev::before{ background-position: 49% 50%; }
-.nav-btn.next::before{ background-position: 51% 50%; }
-
-/* 3) Center the pair neatly under the sentence */
-
-/* NAV ROW — two big coins centered under the sentence */
+/* center the pair; 1 coin will auto-center when Prev is hidden */
 .word-display .nav-row{
-  grid-template-columns: repeat(2, var(--nav-btn-h));
+  display: grid;
+  grid-template-columns: none;      /* cancel any 1fr 1fr from base */
+  grid-auto-flow: column;
+  grid-auto-columns: var(--coin-size);
   justify-content: center;
   justify-items: center;
-  column-gap: clamp(28px, 8vw, calc(var(--nav-btn-h) * 0.6));
+  column-gap: var(--coin-gap);
+  margin-bottom: clamp(8px, 2.4svh, 24px);
 }
-
-
-/* we no longer pin them to grid edges */
 .nav-btn.prev, .nav-btn.next{ justify-self: auto; }
-
-/* Bigger nav coins on lesson screens only */
-.word-display { --nav-btn-h: 98px; }           /* try 88–96px */
-@media (min-width: 420px){
-  .word-display { --nav-btn-h: 96px; }
-}
-
-
-
-/* Secondary row (Home / Start Over) */
-.secondary-row{
-  grid-area: secondary;
-  width:100%;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--btn-gap);
-  align-items:stretch;
-  justify-items:stretch;
-  margin:0;
-}
-.secondary-btn{
-  border:0; outline:0; text-decoration:none;
-  font-family:var(--font-body);
-  font-weight:700;
-  font-size: var(--btn-font);
-  color:var(--white);
-  background: linear-gradient(#ff8d73,#ff6f54);
-  height: var(--btn-h);
-  padding: 0 var(--btn-pad-x);
-  border-radius:16px;
-  display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  box-shadow: var(--shadow);
-  cursor:pointer;
-  white-space: nowrap;
-}
-.secondary-btn .icon{ font-size:1.2em; }
 
 /* ------------------------------
    INTRO / OUTRO screens
@@ -278,9 +226,6 @@ html,body{
   text-align:center; gap:16px;
   padding: 20px 16px;
 }
-
-
-/* intro NEXT placement: single col */
 .intro-screen .nav-row{
   width:100%;
   display:grid;
@@ -290,12 +235,11 @@ html,body{
   padding-bottom:32px;
 }
 
-/* Intro video layout */
 .intro-video-wrap{
   position:relative;
   width:min(680px, 92%);
   margin:0 auto;
-  display:none; /* JS shows if item.video exists */
+  display:none;
 }
 .intro-video{
   width:100%;
@@ -319,16 +263,14 @@ html,body{
 }
 .intro-video::-webkit-media-controls-start-playback-button{ display:none !important; }
 
-.video-overlay{
-  position:absolute; inset:0; display:none;
-  align-items:center; justify-content:center;
-  font-size:clamp(28px,5svh,40px);
-  border:none; border-radius:16px;
-  color:#fff; background:rgba(0,0,0,.35); cursor:pointer;
-  backdrop-filter: blur(1px);
+.intro-bottom-controls{
+  position:absolute; left:50%; transform:translateX(-50%);
+  bottom:max(16px, env(safe-area-inset-bottom));
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  z-index: 3; /* above #introPlayOverlay (z-index:2) */
 }
 
-/* Full-viewport splash mode */
+
 body.video-active { overflow:hidden; }
 .video-active .unit-header { display:none; }
 
@@ -346,170 +288,9 @@ body.video-active { overflow:hidden; }
 }
 .intro-screen.video-fullscreen .nav-row{ display:none; }
 
-.skip-overlay{
-  position:absolute; left:50%; transform:translateX(-50%);
-  bottom:max(16px, env(safe-area-inset-bottom));
-  padding:12px 18px; border:0; border-radius:18px;
-  font-family: var(--font-heading); font-weight:700;
-  color:#fff; background: linear-gradient(#2cd18c,#19a66a);
-  box-shadow: 0 6px 18px rgba(0,0,0,.18); cursor:pointer;
-}
-.unmute-overlay{
-  position:fixed; left:16px;
-  top:max(16px, env(safe-area-inset-top));
-  padding:10px 14px; border:0; border-radius:18px;
-  font-family: var(--font-heading); font-weight:700;
-  color:#333; background: linear-gradient(#ffcd4d,#ffa909);
-  box-shadow: 0 6px 18px rgba(0,0,0,.18);
-  cursor:pointer; display:none;
-}
-.intro-bottom-controls{
-  position:absolute; left:50%; transform:translateX(-50%);
-  bottom:max(16px, env(safe-area-inset-bottom));
-  display:flex; align-items:center; justify-content:center; gap:12px;
-}
-.intro-bottom-controls .skip-overlay,
-.intro-bottom-controls .unmute-overlay{
-  position: static; transform:none;
-}
-
-/* Intro text bounce (optional, safe) */
-/* .intro-text{ position:relative; font-family:var(--font-heading); font-weight:700; } */
-
-.intro-text {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(34px, 6svh, 52px); /* bigger than current 30–40px */
-  line-height: 1.3;
-  text-align: center;
-}
-
-
-.intro-word{
-  display:inline-block; opacity:0;
-  transform: translateY(12px) scale(.94);
-  animation: intro-bounce .7s cubic-bezier(.2,.9,.25,1.4) forwards;
-  margin-right: .4em;
-}
-@keyframes intro-bounce{
-  0%{ opacity:0; transform: translateY(16px) scale(.92); }
-  60%{ opacity:1; transform: translateY(-6px) scale(1.08); }
-  80%{ transform: translateY(2px) scale(.98); }
-  100%{ transform: translateY(0) scale(1); }
-}
-@media (prefers-reduced-motion: reduce){
-  .intro-word{ animation:none !important; opacity:1 !important; transform:none !important; }
-}
-
-
 /* ------------------------------
-   Unit-specific tweak (optional)
+   GLOBAL FOOTER (coins)
 ------------------------------ */
-body.unit-unit3{
-  --img-scale: 1.82;
-  --img-nudge: 0.9svh;
-}
-body.unit-unit3 .word-display{ overflow:hidden; }
-body.unit-unit3 .image-wrap{ overflow:hidden; contain:paint; }
-
-/* ------------------------------
-   Responsive tweaks
------------------------------- */
-@media (max-width: 420px){
-  :root { --img-cap: 36svh; }  /* free a little vertical space on small phones */
-}
-@media (min-width: 760px){
-  .nav-row, .secondary-row{ gap:24px; }
-}
-
-/* ------------------------------
-   Misc
------------------------------- */
-
-.intro-word{
-  color:#e65a6b;
-  text-shadow:
-    0 0 0 rgb(236,226,226),
-    1px 1px 0 rgb(236,226,226),
-   -1px -1px 0 rgb(236,226,226),
-    2px 2px 0 rgba(0,0,0,.08);
-}
-
-
-.outro .mascot, .outro .message { will-change: transform, opacity; }
-.outro .mascot { transform-origin: 80% 30%; } /* tweak if needed */
-
-/* Pop-in (once) */
-.fx-pop { animation: outroPopIn var(--fx-dur-short) var(--fx-ease) both; }
-@keyframes outroPopIn {
-  0% { transform: scale(.9); opacity: 0; }
-  60% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); }
-}
-
-/* Single wave tilt */
-.fx-wave-once { animation: outroWave 700ms ease-in-out both; }
-@keyframes outroWave {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(-6deg) scale(1.005); }
-  50% { transform: rotate(6deg) scale(.998); }
-  100% { transform: rotate(0deg); }
-}
-
-/* Idle float (loop) */
-.fx-float { animation: outroFloat 3s ease-in-out .8s infinite alternate; }
-@keyframes outroFloat { from { transform: translateY(0); } to { transform: translateY(-6px); } }
-
-/* Message cheer pop */
-.fx-cheer { animation: msgCheer var(--fx-dur-short) var(--fx-ease) both; }
-@keyframes msgCheer {
-  0% { transform: translateY(6px) scale(.98); opacity: 0; }
-  60% { transform: translateY(-2px) scale(1.04); opacity: 1; }
-  100% { transform: translateY(0) scale(1); }
-}
-
-/* Text-only fallback pretties */
-.outro.no-mascot .message { text-align:center; font-weight:700; position:relative; overflow:hidden; }
-.outro.no-mascot .message.fx-shimmer::after {
-  content:""; position:absolute; inset:0;
-  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.4) 40%, transparent 80%);
-  transform: translateX(-120%); animation: shimmerSweep 900ms ease-out 120ms both;
-}
-@keyframes shimmerSweep { to { transform: translateX(120%); } }
-
-@media (prefers-reduced-motion: reduce) {
-  .fx-pop, .fx-wave-once, .fx-float, .fx-cheer { animation: none !important; transform: none !important; opacity: 1 !important; }
-}
-/* ===== Minimal, scoped outro layout (no duplication) ===== */
-body.outro-active #outroScreen{
-  display: grid !important;
-  place-items: center;
-  gap: clamp(8px, 1.8svh, 18px);
-  min-height: calc(100svh - var(--header-h));
-  padding: clamp(8px, 2svh, 20px);
-  text-align: center;
-}
-
-body.outro-active #outroScreen .message{
-  margin: 0;
-  max-width: 92vw;     /* keep text close to mascot */
-}
-
-body.outro-active #outroScreen .mascot{
-  max-height: 46svh;   /* cap so it never fills the screen */
-  max-width: 78vw;
-  height: auto;
-  width: auto;
-  object-fit: contain;
-  /* you already set transform-origin on .outro .mascot; that still applies */
-}
-
-/* Optional: landscape tighten */
-@media (orientation: landscape) and (max-height: 520px){
-  body.outro-active #outroScreen{ gap: 1.2svh; }
-  body.outro-active #outroScreen .mascot{ max-height: 38svh; }
-}
-
 .footer-actions{
   position: fixed;
   left: 50%;
@@ -517,23 +298,146 @@ body.outro-active #outroScreen .mascot{
   bottom: max(16px, env(safe-area-inset-bottom));
   z-index: 20;
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: var(--btn-gap);
-  width: min(680px, 92vw);
-}
-.footer-actions .secondary-btn{ width: 100%; justify-content: center; }
-@media (max-width: 360px){ .footer-actions{ grid-template-columns: 1fr; } }
-
-
-/* Text outro: intro screen has .outro, footer is a later sibling */
-.intro-screen.outro ~ #lessonActions .secondary-btn.home{
-  transform: scale(1.1);
-  background: linear-gradient(#2cd18c, #19a66a);
 }
 
-/* Mascot outro: body gets .outro-active */
-body.outro-active #lessonActions .secondary-btn.home{
-  transform: scale(1.1);
-  background: linear-gradient(#2cd18c, #19a66a);
+/* coinify the footer buttons (hide text, use images) */
+.secondary-btn{
+  border:0; outline:0; text-decoration:none;
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size: var(--btn-font);
+  color:var(--white);
+  background: transparent;
+  height: var(--coin-size);
+  width: var(--coin-size);
+  border-radius: 50%;
+  padding: 0;
+  display:inline-flex; align-items:center; justify-content:center;
+  box-shadow: none;
+  cursor:pointer;
+  white-space: nowrap;
+  text-indent: 200%;
+  overflow: hidden;
+  position: relative; /* <-- needed so ::before sits on the button */
+}
+.secondary-btn .icon{ display:none; }
+
+.secondary-btn.home::before,
+.secondary-btn.startover::before{
+  content:"";
+  position:absolute; inset:0; margin:auto;
+  width:100%; height:100%;
+  background: center/100% no-repeat;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,.22));
+  pointer-events:none;
+}
+.secondary-btn.home::before{     background-image: url("Images/buttons/home.png"); }
+.secondary-btn.startover::before{ background-image: url("Images/buttons/startover.png"); }
+
+#lessonActions.footer-actions{
+  display: grid;
+  grid-template-columns: none;      /* cancel 1fr 1fr */
+  grid-auto-flow: column;
+  grid-auto-columns: var(--coin-size);
+  justify-content: center;
+  justify-items: center;
+  column-gap: var(--coin-gap);
 }
 
+/* ------------------------------
+   Animations (outro)
+------------------------------ */
+.outro .mascot, .outro .message { will-change: transform, opacity; }
+.outro .mascot { transform-origin: 80% 30%; }
+.fx-pop { animation: outroPopIn var(--fx-dur-short) var(--fx-ease) both; }
+@keyframes outroPopIn {
+  0% { transform: scale(.9); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.fx-wave-once { animation: outroWave 700ms ease-in-out both; }
+@keyframes outroWave {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg) scale(1.005); }
+  50% { transform: rotate(6deg) scale(.998); }
+  100% { transform: rotate(0deg); }
+}
+.fx-float { animation: outroFloat 3s ease-in-out .8s infinite alternate; }
+@keyframes outroFloat { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+.fx-cheer { animation: msgCheer var(--fx-dur-short) var(--fx-ease) both; }
+@keyframes msgCheer {
+  0% { transform: translateY(6px) scale(.98); opacity: 0; }
+  60% { transform: translateY(-2px) scale(1.04); opacity: 1; }
+  100% { transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx-pop, .fx-wave-once, .fx-float, .fx-cheer { animation: none !important; transform: none !important; opacity: 1 !important; }
+}
+
+body.has-footer .word-display,
+body.has-footer .intro-screen,
+body.has-footer #outroScreen{
+  padding-bottom: calc(16px + var(--footer-pad) + env(safe-area-inset-bottom));
+}
+
+
+/* Mascot outro: layout + safe sizing */
+body.outro-active #outroScreen{
+  display: grid !important;
+  place-items: center;
+  place-content: center;
+  min-height: calc(100svh - var(--header-h));
+  padding: clamp(8px, 2svh, 20px);
+  text-align: center;
+}
+
+/* <- this is the missing bit */
+body.outro-active #outroScreen .mascot{
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(78vw, 560px);     /* clamp width */
+  max-height: min(46svh, 420px);   /* clamp height */
+  object-fit: contain;
+}
+
+/* Tighten in short landscape */
+@media (orientation: landscape) and (max-height: 520px){
+  body.outro-active #outroScreen .mascot{ max-height: 36svh; }
+}
+
+/* If the footer is shown on outro, leave room for it */
+body.outro-active{ --footer-pad: var(--coin-size); }
+body.outro-active #outroScreen{
+  padding-bottom: calc(16px + var(--footer-pad) + env(safe-area-inset-bottom));
+}
+
+
+/* Intro / Outro text bounce */
+.intro-text{
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(34px, 6svh, 52px);
+  line-height: 1.3;
+  text-align: center;
+}
+
+.intro-word{
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px) scale(.94);
+  animation: intro-bounce .7s cubic-bezier(.2,.9,.25,1.4) forwards;
+  margin-right: .4em;
+}
+
+@keyframes intro-bounce{
+  0%   { opacity:0; transform: translateY(16px) scale(.92); }
+  60%  { opacity:1; transform: translateY(-6px) scale(1.08); }
+  80%  { transform: translateY(2px)  scale(.98); }
+  100% { transform: translateY(0)    scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .intro-word{ animation:none !important; opacity:1 !important; transform:none !important; }
+}

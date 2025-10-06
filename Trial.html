@@ -3,14 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  
-  <!-- Fonts -->
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-
-
-  <!-- Note: filename is case-sensitive on many servers -->
-  <link rel="stylesheet" href="Trial.css?v=1" />
+  <!-- bump the version if the browser caches CSS -->
+  <link rel="stylesheet" href="Trial.css?v=3" />
 </head>
 <body>
 
@@ -19,54 +14,47 @@
   </header>
 
   <main>
-    <!-- INTRO / OUTRO screens -->
+    <!-- INTRO (text or video) -->
     <section class="intro-screen" id="introScreen" style="display:none;">
-      
-        <div class="intro-text" id="introText">Hello! Welcome to Speak Up.</div>
-      
-        <div class="intro-video-wrap">
-          <video
-            id="introVideo"
-            class="intro-video"
-            playsinline
-            webkit-playsinline
-            preload="metadata"
-            muted
-          ></video>
-      
-          <button id="introPlayOverlay" class="video-overlay" aria-label="Play"></button>
+      <div class="intro-text" id="introText">Hello! Welcome to Speak Up.</div>
 
-          <!-- Bottom controls row: Skip + Unmute side-by-side -->
-          <div class="intro-bottom-controls">
-            <button id="skipIntro" class="skip-overlay" aria-label="Skip">Skip ❯❯</button>
-            <button id="unmuteIntro" class="unmute-overlay" aria-label="Sound on">🔊 Sound On</button>
-          </div>
+      <div class="intro-video-wrap">
+        <video
+          id="introVideo"
+          class="intro-video"
+          playsinline
+          webkit-playsinline
+          preload="metadata"
+          muted
+        ></video>
+        <button id="introPlayOverlay" class="video-overlay" aria-label="Play"></button>
 
+        <div class="intro-bottom-controls">
+          <button id="skipIntro" class="skip-overlay" aria-label="Skip">Skip ❯❯</button>
+          <button id="unmuteIntro" class="unmute-overlay" aria-label="Sound on">🔊 Sound On</button>
         </div>
-      
-        <div class="nav-row">
-          <button id="nextButtonIntro" class="nav-btn next">
-            Next <span class="chevrons">❯❯</span>
-          </button>
-        </div>
-      </section>
-      
+      </div>
+
+      <div class="nav-row">
+        <button id="nextButtonIntro" class="nav-btn next" aria-label="Next">
+          Next <span class="chevrons">❯❯</span>
+        </button>
+      </div>
+    </section>
 
     <!-- WORD / IMAGE slides -->
     <section class="word-display has-image" id="wordDisplay" style="display:none;">
       <h1 id="lessonText"></h1>
 
-      <!-- Big word -->
       <div class="word-block">
         <div id="wordText">a pencil</div>
       </div>
 
-      <!-- Image -->
       <figure class="image-wrap">
         <img id="wordImage" alt="Lesson image" />
       </figure>
 
-      <!-- Nav row -->
+      <!-- Prev / Next coins -->
       <div class="nav-row">
         <button id="prevButton" class="nav-btn prev" aria-label="Previous">
           <span class="chevrons">❮❮</span> PREV
@@ -75,37 +63,25 @@
           NEXT <span class="chevrons">❯❯</span>
         </button>
       </div>
-
-      <!-- Secondary actions -->
-      <div class="secondary-row">
-        <a id="homeButton" class="secondary-btn home" href="index.html">
-          <span class="icon">🏠</span> Home
-        </a>
-        <button id="startoverButton" class="secondary-btn startover">
-          <span class="icon">↻</span> Start Over
-        </button>
-      </div>
+      <!-- (No per-slide Home/StartOver row here — global footer handles that) -->
     </section>
-    <!-- IMAGE OUTRO screen -->
-<section class="outro" id="outroScreen" style="display:none">
-  <p class="message" id="outroMessage" style="display:none"></p>
-  <img class="mascot" id="outroMascot" alt="Mascot holding a board">
-  <!-- (optional) dedicated audio element; if omitted, shared `audio` object is used -->
-  <!-- <audio id="outroAudio" preload="auto"></audio> -->
-</section>
 
+    <!-- MASCOT IMAGE OUTRO -->
+    <section class="outro" id="outroScreen" style="display:none">
+      <p class="message" id="outroMessage" style="display:none"></p>
+      <img class="mascot" id="outroMascot" alt="Mascot holding a board">
+      <!-- <audio id="outroAudio" preload="auto"></audio> -->
+    </section>
 
-    <!-- Global actions footer (used by both text outros and image outros) -->
-<div class="secondary-row footer-actions" id="lessonActions" style="display:none;">
-  <a class="secondary-btn home" href="index.html">
-    <span class="icon">🏠</span> Home
-  </a>
-  <button class="secondary-btn startover" id="startoverGlobal">
-    <span class="icon">↻</span> Start Over
-  </button>
-</div>
-
-    
+    <!-- GLOBAL FOOTER actions (only shown where JS allows) -->
+    <div class="secondary-row footer-actions" id="lessonActions" style="display:none;">
+      <a class="secondary-btn home" href="index.html" aria-label="Home">
+        <span class="icon">🏠</span> Home
+      </a>
+      <button class="secondary-btn startover" id="startoverGlobal" aria-label="Start Over">
+        <span class="icon">↻</span> Start Over
+      </button>
+    </div>
   </main>
 
   <script src="Trial.js" defer></script>
