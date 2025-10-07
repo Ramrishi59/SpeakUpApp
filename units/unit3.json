@@ -3,6 +3,13 @@
     "name": "Unit 3: This / That",
     "description": "Point and say: This is … / That’s …",
     "thumbnail": "Images/Unit3/This_That.webp",
+    "introImages": [
+      "Images/Unit3/u3_03_dog.png",
+      "Images/Unit3/u3_04_duck.png",
+      "Images/Unit3/u3_05_bee.png",
+      "Images/Unit3/u3_07_frog.png",
+      "Images/Unit3/u3_09_tortoise.png"
+    ],
     "words": [
       { "text": "Hello. Let us learn This and That", "audio": "Audio/Unit3/u3_00_intro.mp3" },
   

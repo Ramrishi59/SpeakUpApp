@@ -1,6 +1,11 @@
 let screens = [];
 let currentIndex = 0;
 
+let unitMeta = null;
+let introFloatTimers = [];
+let introFloats = [];
+
+
 let userInteracted = false;
 ['click','touchstart','keydown'].forEach(evt => {
   window.addEventListener(evt, () => { userInteracted = true; }, { passive:true });
@@ -117,6 +122,33 @@ function leaveOutro() {
   document.body.classList.remove('outro-active');
 }
 
+/* ---------- intro image chooser ---------- */
+function pickIntroImages(unit, max = 5){
+  const picked = [];
+  const seen = new Set();
+
+  // Priority 1: explicit introImages from JSON
+  if (Array.isArray(unit?.introImages) && unit.introImages.length){
+    for (const src of unit.introImages){
+      if (!seen.has(src)) { seen.add(src); picked.push(src); }
+      if (picked.length >= max) break;
+    }
+  }
+
+  // Priority 2: first unique slide images
+  if (picked.length < max && Array.isArray(unit?.words)){
+    for (const w of unit.words){
+      if (w?.image && !seen.has(w.image)){
+        seen.add(w.image); picked.push(w.image);
+        if (picked.length >= max) break;
+      }
+    }
+  }
+
+  return picked.slice(0, max);
+}
+
+
 /* ---------- media helpers ---------- */
 function stopAudio(){ audio.pause(); audio.currentTime = 0; audio.onended = null; }
 function stopVideo(){
@@ -158,6 +190,195 @@ function lockIntroWords(container) {
     });
   }, { once: true });
 }
+
+function startIntroFloat(images){
+  const layer = document.getElementById('introFloatLayer');
+  if (!layer || !images?.length) return;
+
+  stopIntroFloat(false); // clear any leftovers without fade
+
+  // random position helper (viewport)
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+  const spawnOne = (src, idx) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = "";
+    img.className = 'intro-float';
+    layer.appendChild(img);
+    introFloats.push(img);
+
+    // random start edge + drift vector
+    const startX = Math.random() * vw * 0.8 + vw * 0.1;    // 10%–90% width
+    const startY = Math.random() * vh * 0.3 + vh * 0.55;   // lower half drift up
+    const endX   = startX + (Math.random() * vw * 0.2 - vw * 0.1); // slight sideways
+    const endY   = startY - (Math.random() * vh * 0.18 + vh * 0.12);
+
+    // random gentle rotation/spin
+    const rot  = (Math.random() * 10 - 5).toFixed(1) + 'deg';
+    const spin = (Math.random() * 10 + 4).toFixed(1) + 'deg';
+
+    const durMs = Math.round(6000 + Math.random() * 2200); // 6–8.2s
+    const delay = Math.round(120 + Math.random() * 480);    // 0.12–0.6s stagger
+
+    img.style.left = `${startX}px`;
+    img.style.top  = `${startY}px`;
+
+    // custom props for keyframes
+    img.style.setProperty('--x0', '0px');
+    img.style.setProperty('--y0', '0px');
+    img.style.setProperty('--x1', `${endX - startX}px`);
+    img.style.setProperty('--y1', `${endY - startY}px`);
+    img.style.setProperty('--rot', rot);
+    img.style.setProperty('--spin', spin);
+
+    // enter after a slight delay
+    const t1 = setTimeout(() => {
+      img.classList.add('is-in');
+      img.style.animation = `intro-drift ${durMs}ms ease-in-out forwards`;
+      // auto fade-out near the end
+      const t2 = setTimeout(() => img.classList.add('is-out'), Math.max(0, durMs - 300));
+      introFloatTimers.push(t2);
+    }, delay);
+
+    // cleanup once drift ends
+    const t3 = setTimeout(() => { try { img.remove(); } catch {} }, delay + durMs + 500);
+    introFloatTimers.push(t1, t3);
+  };
+
+  // spawn each once
+  images.forEach((src, i) => spawnOne(src, i));
+}
+
+function stopIntroFloat(fadeOut = true){
+  introFloatTimers.forEach(clearTimeout);
+  introFloatTimers = [];
+  introFloats.forEach(el => {
+    if (!el) return;
+    if (fadeOut) el.classList.add('is-out');
+    setTimeout(() => { try { el.remove(); } catch {} }, fadeOut ? 320 : 0);
+  });
+  introFloats = [];
+}
+
+function fadeOutIntroAndRevealUI({ onDone } = {}){
+  // fade out text + floaters
+  const text = els.introText;
+  if (text){
+    text.style.transition = 'opacity 500ms ease';
+    text.style.opacity = '0';
+  }
+  stopIntroFloat(true);
+
+  // after fade, show footer + intro next
+  setTimeout(() => {
+    if (text){ text.style.opacity = ''; }  // reset for next time
+    setFooterVisible(true);
+    if (els.introNext){
+      els.introNext.style.display = '';
+      // soft fade-in for the button row (it sits inside .intro-screen .nav-row)
+      const row = els.introNext.closest('.nav-row');
+      if (row){
+        row.style.opacity = '0';
+        row.style.transition = 'opacity 300ms ease';
+        requestAnimationFrame(() => { row.style.opacity = '1'; });
+      }
+    }
+    if (typeof onDone === 'function') onDone();
+  }, 520);
+}
+
+/* ---------- intro floating visuals ---------- */
+function startIntroFloat(images){
+  const layer = document.getElementById('introFloatLayer');
+  if (!layer || !images?.length) return;
+
+  stopIntroFloat(false); // clear leftovers (no fade)
+
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+  const spawnOne = (src) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = "";
+    img.className = 'intro-float';
+    layer.appendChild(img);
+    introFloats.push(img);
+
+    const startX = Math.random() * vw * 0.8 + vw * 0.1;   // 10–90% width
+    const startY = Math.random() * vh * 0.3 + vh * 0.55;  // lower half drift up
+    const endX   = startX + (Math.random() * vw * 0.2 - vw * 0.1);
+    const endY   = startY - (Math.random() * vh * 0.18 + vh * 0.12);
+
+    const rot  = (Math.random() * 10 - 5).toFixed(1) + 'deg';
+    const spin = (Math.random() * 10 + 4).toFixed(1) + 'deg';
+
+    const durMs = Math.round(6000 + Math.random() * 2200); // 6–8.2s
+    const delay = Math.round(120 + Math.random() * 480);    // 0.12–0.6s
+
+    img.style.left = `${startX}px`;
+    img.style.top  = `${startY}px`;
+
+    img.style.setProperty('--x0', '0px');
+    img.style.setProperty('--y0', '0px');
+    img.style.setProperty('--x1', `${endX - startX}px`);
+    img.style.setProperty('--y1', `${endY - startY}px`);
+    img.style.setProperty('--rot', rot);
+    img.style.setProperty('--spin', spin);
+
+    const t1 = setTimeout(() => {
+      img.classList.add('is-in');
+      img.style.animation = `intro-drift ${durMs}ms ease-in-out forwards`;
+      const t2 = setTimeout(() => img.classList.add('is-out'), Math.max(0, durMs - 300));
+      introFloatTimers.push(t2);
+    }, delay);
+
+    const t3 = setTimeout(() => { try { img.remove(); } catch {} }, delay + durMs + 500);
+    introFloatTimers.push(t1, t3);
+  };
+
+  images.forEach(spawnOne);
+}
+
+function stopIntroFloat(fadeOut = true){
+  introFloatTimers.forEach(clearTimeout);
+  introFloatTimers = [];
+  introFloats.forEach(el => {
+    if (!el) return;
+    if (fadeOut) el.classList.add('is-out');
+    setTimeout(() => { try { el.remove(); } catch {} }, fadeOut ? 320 : 0);
+  });
+  introFloats = [];
+}
+
+/* ---------- fade out intro & reveal UI ---------- */
+function fadeOutIntroAndRevealUI({ onDone } = {}){
+  const text = els.introText;
+  if (text){
+    text.style.transition = 'opacity 500ms ease';
+    text.style.opacity = '0';
+  }
+  stopIntroFloat(true);
+
+  setTimeout(() => {
+    if (text){ text.style.opacity = ''; }  // reset
+    setFooterVisible(true);
+    if (els.introNext){
+      els.introNext.style.display = '';
+      const row = els.introNext.closest('.nav-row');
+      if (row){
+        row.style.opacity = '0';
+        row.style.transition = 'opacity 300ms ease';
+        requestAnimationFrame(() => { row.style.opacity = '1'; });
+      }
+    }
+    if (typeof onDone === 'function') onDone();
+  }, 520);
+}
+
+
 
 
 /* ---------- gesture for iOS ---------- */
@@ -265,22 +486,41 @@ async function render(i) {
     return;
   }
 
-  // TEXT intro / TEXT outro (no image, no video)
-  leaveOutro();
-  els.introScreen.style.display = "flex";
-  if (els.introWrap) els.introWrap.style.display = "none";
-  els.introText.style.display = "";
-  setFooterVisible(true); // always show on text intros
+// TEXT intro / TEXT outro (no image, no video)
+leaveOutro();
+els.introScreen.style.display = "flex";
+if (els.introWrap) els.introWrap.style.display = "none";
+els.introText.style.display = "";
 
-  if (item.audio) {
-    try { audio.pause(); audio.muted = false; audio.currentTime = 0; audio.src = item.audio; audio.play().catch(()=>{}); } catch {}
-  }
-  showIntroBounce(els.introText, item.text || "", { wordDelay: 50, reset: true });
-  lockIntroWords(els.introText, { wordDelay: 50, duration: 700 });
+// 1) hide footer + intro-next during the animated intro
+setFooterVisible(false);
+if (els.introNext) els.introNext.style.display = "none";
 
-  const isTextOutro = (i === screens.length - 1);
-  if (els.introNext) els.introNext.style.display = isTextOutro ? "none" : "";
-  els.introScreen.classList.toggle('outro', isTextOutro);
+// 2) animated text
+showIntroBounce(els.introText, item.text || "", { wordDelay: 50, reset: true });
+lockIntroWords(els.introText, { wordDelay: 50, duration: 700 });
+
+// 3) floating images
+const introPics = pickIntroImages(unitMeta || {}, 5);
+startIntroFloat(introPics);
+
+// 4) audio playback & end transition
+if (item.audio) {
+  try {
+    audio.pause(); audio.muted = false; audio.currentTime = 0;
+    audio.src = item.audio;
+    audio.play().catch(()=>{});
+    audio.onended = () => fadeOutIntroAndRevealUI();
+  } catch {}
+} else {
+  // fallback duration if no audio
+  setTimeout(() => fadeOutIntroAndRevealUI(), 8000);
+}
+
+// Keep your existing outro detection flag (no change to behaviour)
+const isTextOutro = (i === screens.length - 1);
+els.introScreen.classList.toggle('outro', isTextOutro);
+
 }
 
 /* ---------- nav ---------- */
@@ -308,6 +548,7 @@ async function loadUnit(id){ const r = await fetch(`units/${id}.json`, { cache: 
 
 (async function(){
   const unit = await loadUnit(getUnitIdFromUrl());
+  unitMeta = unit; // NEW: keep reference for introImages
   document.body.classList.add(`unit-${unit.id}`);
   const titleEl = document.getElementById("unitTitle");
   if (titleEl && unit.name) titleEl.textContent = unit.name;
