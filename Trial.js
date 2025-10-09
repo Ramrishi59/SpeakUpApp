@@ -195,6 +195,14 @@ function lockIntroWords(container) {
 /* ---------- intro floating visuals (robust) ---------- */
 
 /* ---------- robust intro audio play with watchdog ---------- */
+
+// HARD CAP: always end intro by X ms even if iOS blocks/bugs out
+const HARD_CAP_MS = 11000; // set a tad longer than your VO
+let hardCapTimer = setTimeout(() => {
+  // fallthrough: reveal UI even if audio never started/ended
+  fadeOutIntroAndRevealUI();
+}, HARD_CAP_MS);
+
 function playIntroAudio({ src, maxMs = 10000, onDone } = {}){
   // Cleanup previous listeners
   audio.onended = audio.onerror = audio.onstalled = null;
@@ -479,7 +487,10 @@ if (item.audio) {
   playIntroAudio({
     src: item.audio,
     maxMs: 10000,                 // 10s safety; adjust to your VO length
-    onDone: () => fadeOutIntroAndRevealUI()
+    onDone: () => {
+      clearTimeout(hardCapTimer);   // <- clear the hard cap
+      fadeOutIntroAndRevealUI();
+    }
   });
 } else {
   setTimeout(() => fadeOutIntroAndRevealUI(), 8000);
