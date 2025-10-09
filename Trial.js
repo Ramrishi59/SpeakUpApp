@@ -191,156 +191,125 @@ function lockIntroWords(container) {
   }, { once: true });
 }
 
-function startIntroFloat(images){
-  const layer = document.getElementById('introFloatLayer');
-  if (!layer || !images?.length) return;
+/* ---------- intro floating visuals ---------- */
+/* ---------- intro floating visuals (robust) ---------- */
 
-  stopIntroFloat(false); // clear any leftovers without fade
+/* ---------- robust intro audio play with watchdog ---------- */
+function playIntroAudio({ src, maxMs = 10000, onDone } = {}){
+  // Cleanup previous listeners
+  audio.onended = audio.onerror = audio.onstalled = null;
 
-  // random position helper (viewport)
-  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-
-  const spawnOne = (src, idx) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = "";
-    img.className = 'intro-float';
-    layer.appendChild(img);
-    introFloats.push(img);
-
-    // random start edge + drift vector
-    const startX = Math.random() * vw * 0.8 + vw * 0.1;    // 10%–90% width
-    const startY = Math.random() * vh * 0.3 + vh * 0.55;   // lower half drift up
-    const endX   = startX + (Math.random() * vw * 0.2 - vw * 0.1); // slight sideways
-    const endY   = startY - (Math.random() * vh * 0.18 + vh * 0.12);
-
-    // random gentle rotation/spin
-    const rot  = (Math.random() * 10 - 5).toFixed(1) + 'deg';
-    const spin = (Math.random() * 10 + 4).toFixed(1) + 'deg';
-
-    const durMs = Math.round(6000 + Math.random() * 2200); // 6–8.2s
-    const delay = Math.round(120 + Math.random() * 480);    // 0.12–0.6s stagger
-
-    img.style.left = `${startX}px`;
-    img.style.top  = `${startY}px`;
-
-    // custom props for keyframes
-    img.style.setProperty('--x0', '0px');
-    img.style.setProperty('--y0', '0px');
-    img.style.setProperty('--x1', `${endX - startX}px`);
-    img.style.setProperty('--y1', `${endY - startY}px`);
-    img.style.setProperty('--rot', rot);
-    img.style.setProperty('--spin', spin);
-
-    // enter after a slight delay
-    const t1 = setTimeout(() => {
-      img.classList.add('is-in');
-      img.style.animation = `intro-drift ${durMs}ms ease-in-out forwards`;
-      // auto fade-out near the end
-      const t2 = setTimeout(() => img.classList.add('is-out'), Math.max(0, durMs - 300));
-      introFloatTimers.push(t2);
-    }, delay);
-
-    // cleanup once drift ends
-    const t3 = setTimeout(() => { try { img.remove(); } catch {} }, delay + durMs + 500);
-    introFloatTimers.push(t1, t3);
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    clearTimeout(timer);
+    audio.onended = audio.onerror = audio.onstalled = null;
+    if (typeof onDone === 'function') onDone();
   };
 
-  // spawn each once
-  images.forEach((src, i) => spawnOne(src, i));
-}
+  // Safety timer: if nothing fires, proceed anyway
+  const timer = setTimeout(finish, maxMs);
 
-function stopIntroFloat(fadeOut = true){
-  introFloatTimers.forEach(clearTimeout);
-  introFloatTimers = [];
-  introFloats.forEach(el => {
-    if (!el) return;
-    if (fadeOut) el.classList.add('is-out');
-    setTimeout(() => { try { el.remove(); } catch {} }, fadeOut ? 320 : 0);
-  });
-  introFloats = [];
-}
+  try {
+    audio.pause();
+    audio.muted = false;
+    audio.currentTime = 0;
+    audio.src = src;
+    audio.load();
 
-function fadeOutIntroAndRevealUI({ onDone } = {}){
-  // fade out text + floaters
-  const text = els.introText;
-  if (text){
-    text.style.transition = 'opacity 500ms ease';
-    text.style.opacity = '0';
-  }
-  stopIntroFloat(true);
-
-  // after fade, show footer + intro next
-  setTimeout(() => {
-    if (text){ text.style.opacity = ''; }  // reset for next time
-    setFooterVisible(true);
-    if (els.introNext){
-      els.introNext.style.display = '';
-      // soft fade-in for the button row (it sits inside .intro-screen .nav-row)
-      const row = els.introNext.closest('.nav-row');
-      if (row){
-        row.style.opacity = '0';
-        row.style.transition = 'opacity 300ms ease';
-        requestAnimationFrame(() => { row.style.opacity = '1'; });
-      }
+    // iOS: if autoplay is blocked, fall back to timer above
+    const p = audio.play();
+    if (p && typeof p.then === 'function') {
+      p.then(() => {
+        audio.onended = finish;
+        audio.onerror = finish;
+        audio.onstalled = finish;
+      }).catch(() => {
+        // Autoplay blocked or error: just proceed via watchdog
+        // (we could also call finish() immediately if you prefer)
+      });
+    } else {
+      // Very old browsers
+      audio.onended = finish;
+      audio.onerror = finish;
+      audio.onstalled = finish;
     }
-    if (typeof onDone === 'function') onDone();
-  }, 520);
+  } catch {
+    // Any sync error: proceed via watchdog
+  }
 }
 
-/* ---------- intro floating visuals ---------- */
 function startIntroFloat(images){
   const layer = document.getElementById('introFloatLayer');
   if (!layer || !images?.length) return;
 
   stopIntroFloat(false); // clear leftovers (no fade)
 
-  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-  const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+  // Wait for layout so we get correct size (display has just been set)
+  requestAnimationFrame(() => {
+    // Sometimes one rAF isn’t enough if styles just changed—do a second pass.
+    requestAnimationFrame(() => {
+      let rect = layer.getBoundingClientRect();
+      let W = Math.max(1, rect.width);
+      let H = Math.max(1, rect.height);
 
-  const spawnOne = (src) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = "";
-    img.className = 'intro-float';
-    layer.appendChild(img);
-    introFloats.push(img);
+      // Fallback to viewport if height somehow reads 0 (older Safari quirks).
+      if (H < 10) {
+        W = Math.max(W, window.innerWidth || 0);
+        H = Math.max(H, (window.innerHeight || 0) - 56); // minus header approx
+      }
 
-    const startX = Math.random() * vw * 0.8 + vw * 0.1;   // 10–90% width
-    const startY = Math.random() * vh * 0.3 + vh * 0.55;  // lower half drift up
-    const endX   = startX + (Math.random() * vw * 0.2 - vw * 0.1);
-    const endY   = startY - (Math.random() * vh * 0.18 + vh * 0.12);
+      const spawnOne = (src) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = "";
+        img.className = 'intro-float';
+        layer.appendChild(img);
+        introFloats.push(img);
 
-    const rot  = (Math.random() * 10 - 5).toFixed(1) + 'deg';
-    const spin = (Math.random() * 10 + 4).toFixed(1) + 'deg';
+      // --- FALL from clearly above the layer (very visible) ---
+      const startX = Math.random() * W * 0.8 + W * 0.1;         // 10–90% width
+      const startY = - (H * 0.5 + 200 + Math.random() * 200);   // -50%H -200 to -50%H -400 (way above)
+      const endX   = startX + (Math.random() * W * 0.30 - W * 0.15); // ±15%W sway
+      const endY   = Math.min(H - 40, H * 0.95);                // land near the bottom
 
-    const durMs = Math.round(6000 + Math.random() * 2200); // 6–8.2s
-    const delay = Math.round(120 + Math.random() * 480);    // 0.12–0.6s
 
-    img.style.left = `${startX}px`;
-    img.style.top  = `${startY}px`;
+        // rotation / spin
+        const rot  = (Math.random() * 10 - 5).toFixed(1) + 'deg';
+        const spin = (Math.random() * 10 + 4).toFixed(1) + 'deg';
 
-    img.style.setProperty('--x0', '0px');
-    img.style.setProperty('--y0', '0px');
-    img.style.setProperty('--x1', `${endX - startX}px`);
-    img.style.setProperty('--y1', `${endY - startY}px`);
-    img.style.setProperty('--rot', rot);
-    img.style.setProperty('--spin', spin);
+        const durMs = Math.round(7000 + Math.random() * 3000); // 7–10s feels “snowy”
+        const delay = Math.round(120 + Math.random() * 480);   // 0.12–0.6s stagger
 
-    const t1 = setTimeout(() => {
-      img.classList.add('is-in');
-      img.style.animation = `intro-drift ${durMs}ms ease-in-out forwards`;
-      const t2 = setTimeout(() => img.classList.add('is-out'), Math.max(0, durMs - 300));
-      introFloatTimers.push(t2);
-    }, delay);
+        // Position anchor (absolute)
+        img.style.left = `${startX}px`;
+        img.style.top  = `${startY}px`;
 
-    const t3 = setTimeout(() => { try { img.remove(); } catch {} }, delay + durMs + 500);
-    introFloatTimers.push(t1, t3);
-  };
+        // Feed deltas to keyframes
+        img.style.setProperty('--x0', '0px');
+        img.style.setProperty('--y0', '0px');
+        img.style.setProperty('--x1', `${endX - startX}px`);
+        img.style.setProperty('--y1', `${endY - startY}px`);
+        img.style.setProperty('--rot', rot);
+        img.style.setProperty('--spin', spin);
 
-  images.forEach(spawnOne);
+        const t1 = setTimeout(() => {
+          img.classList.add('is-in');
+          img.style.animation = `intro-drift ${durMs}ms ease-in-out forwards`;
+          const t2 = setTimeout(() => img.classList.add('is-out'), Math.max(0, durMs - 300));
+          introFloatTimers.push(t2);
+        }, delay);
+
+        const t3 = setTimeout(() => { try { img.remove(); } catch {} }, delay + durMs + 500);
+        introFloatTimers.push(t1, t3);
+      };
+
+      images.forEach(spawnOne);
+    });
+  });
 }
+
 
 function stopIntroFloat(fadeOut = true){
   introFloatTimers.forEach(clearTimeout);
@@ -506,14 +475,13 @@ startIntroFloat(introPics);
 
 // 4) audio playback & end transition
 if (item.audio) {
-  try {
-    audio.pause(); audio.muted = false; audio.currentTime = 0;
-    audio.src = item.audio;
-    audio.play().catch(()=>{});
-    audio.onended = () => fadeOutIntroAndRevealUI();
-  } catch {}
+  armIntroAudioGestureOnce(); // ensure iOS will allow play after any tap
+  playIntroAudio({
+    src: item.audio,
+    maxMs: 10000,                 // 10s safety; adjust to your VO length
+    onDone: () => fadeOutIntroAndRevealUI()
+  });
 } else {
-  // fallback duration if no audio
   setTimeout(() => fadeOutIntroAndRevealUI(), 8000);
 }
 

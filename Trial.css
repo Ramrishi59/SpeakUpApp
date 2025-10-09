@@ -594,7 +594,7 @@ body.has-dock #outroScreen{
   /* Drift path (randomise via inline custom props) */
   @keyframes intro-drift {
     from { transform: translate3d(var(--x0,0), var(--y0,0), 0) scale(1) rotate(var(--rot, 0deg)); }
-    to   { transform: translate3d(var(--x1,0), var(--y1, -14svh), 0) scale(1.02) rotate(calc(var(--rot, 0deg) + var(--spin, 6deg))); }
+    to   { transform: translate3d(var(--x1,0), var(--y1, 14svh), 0) scale(1.02) rotate(calc(var(--rot, 0deg) + var(--spin, 6deg))); }
   }
   
   /* Fade helpers */
@@ -605,4 +605,5 @@ body.has-dock #outroScreen{
   @media (prefers-reduced-motion: reduce){
     .intro-float{ animation: none !important; transform: none !important; }
   }
+  
   
