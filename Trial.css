@@ -573,6 +573,25 @@ body.has-dock #outroScreen{
     overflow: hidden;
     z-index: 0;                /* behind the text */
   }
+
+  .intro-audio-overlay{
+    position:absolute;
+    left:50%; top:52%;
+    transform:translate(-50%,-50%);
+    padding:12px 18px;
+    font-family: var(--font-heading);
+    font-weight:700;
+    font-size: clamp(16px, 2.2svh, 18px);
+    color:#fff;
+    background: rgba(0,0,0,.55);
+    border:0; border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.18);
+    backdrop-filter: blur(3px);
+    cursor:pointer;
+    z-index: 5; /* above floaters/text */
+  }
+  .intro-audio-overlay[hidden]{ display:none; }
+  
   
   .intro-screen{
     position: relative;        /* create containing block for float layer */
