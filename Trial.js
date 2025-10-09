@@ -193,6 +193,17 @@ function lockIntroWords(container) {
   }, { once: true });
 }
 
+// ---------- image preloader (prevents late-paint floaters) ----------
+function preloadImages(srcs = []) {
+  srcs.forEach(src => {
+    const i = new Image();
+    i.decoding = "async";
+    i.loading = "eager";
+    i.src = src;
+  });
+}
+
+
 function showIntroAudioOverlay(show){
   if (!els.introStartAudio) return;
   els.introStartAudio.hidden = !show;
@@ -302,19 +313,26 @@ function startIntroFloat(images){
         layer.appendChild(img);
         introFloats.push(img);
 
-      // --- FALL from clearly above the layer (very visible) ---
-      const startX = Math.random() * W * 0.8 + W * 0.1;         // 10–90% width
-      const startY = - (H * 0.5 + 200 + Math.random() * 200);   // -50%H -200 to -50%H -400 (way above)
-      const endX   = startX + (Math.random() * W * 0.30 - W * 0.15); // ±15%W sway
-      const endY   = Math.min(H - 40, H * 0.95);                // land near the bottom
+        // --- FALL from above (center-biased, better framing) ---
+        let startX = W * (0.20 + Math.random() * 0.60); // 20–80%
+        const startY = - (H * 0.5 + 200 + Math.random() * 200);   // well above top
+        const sway   = (Math.random() * W * 0.30 - W * 0.15);
+        let endX     = startX + sway;
 
+        // clamp end position inside viewport
+        const minX   = W * 0.12, maxX = W * 0.88;
+        endX = Math.min(maxX, Math.max(minX, endX));
+
+        const endY   = Math.min(H - 40, H * 0.95);
 
         // rotation / spin
         const rot  = (Math.random() * 10 - 5).toFixed(1) + 'deg';
         const spin = (Math.random() * 10 + 4).toFixed(1) + 'deg';
 
-        const durMs = Math.round(7000 + Math.random() * 3000); // 7–10s feels “snowy”
-        const delay = Math.round(120 + Math.random() * 480);   // 0.12–0.6s stagger
+        // shorter, livelier duration
+        const durMs = Math.round(4000 + Math.random() * 1800); // 4–5.8s
+        const delay = Math.round(0 + Math.random() * 400);      // 0–0.4s
+
 
         // Position anchor (absolute)
         img.style.left = `${startX}px`;
@@ -340,6 +358,9 @@ function startIntroFloat(images){
       };
 
       images.forEach(spawnOne);
+      // second wave ~2s later to make it feel alive
+      setTimeout(() => images.forEach(spawnOne), 1800);
+
     });
   });
 }
@@ -503,8 +524,9 @@ if (els.introNext) els.introNext.style.display = "none";
 showIntroBounce(els.introText, item.text || "", { wordDelay: 50, reset: true });
 lockIntroWords(els.introText, { wordDelay: 50, duration: 700 });
 
-// 3) floating images
+// 3) floating images (preload first)
 const introPics = pickIntroImages(unitMeta || {}, 5);
+preloadImages(introPics);
 startIntroFloat(introPics);
 
 // 4) audio playback & end transition
