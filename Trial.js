@@ -193,31 +193,7 @@ function lockIntroWords(container) {
   }, { once: true });
 }
 
-/* ---------- intro floating visuals ---------- */
-/* ---------- intro floating visuals (robust) ---------- */
-
-/* ---------- robust intro audio play with watchdog ---------- */
-
-// HARD CAP: always end intro by X ms even if iOS blocks/bugs out
-const HARD_CAP_MS = 11000; // set a tad longer than your VO
-let hardCapTimer = setTimeout(() => {
-  // fallthrough: reveal UI even if audio never started/ended
-  fadeOutIntroAndRevealUI();
-}, HARD_CAP_MS);
-
-function playIntroAudio({ src, maxMs = 10000, onDone } = {}){
-  // Cleanup previous listeners
-  audio.onended = audio.onerror = audio.onstalled = null;
-
-  let done = false;
-  const finish = () => {
-    if (done) return;
-    done = true;
-    clearTimeout(timer);
-    audio.onended = audio.onerror = audio.onstalled = null;
-    if (typeof onDone === 'function') onDone();
-  };
-  function showIntroAudioOverlay(show){
+function showIntroAudioOverlay(show){
   if (!els.introStartAudio) return;
   els.introStartAudio.hidden = !show;
 }
@@ -231,15 +207,14 @@ function attachIntroAudioOverlayOnce(src, onDone){
       audio.muted = false;
       audio.currentTime = 0;
       audio.src = src;
-      await audio.play();              // user gesture -> iOS will allow
+      await audio.play(); // user gesture -> allowed
       showIntroAudioOverlay(false);
-      // normal end path
+
       audio.onended = onDone;
       audio.onerror = onDone;
       audio.onstalled = onDone;
     } catch {
-      // Even if it fails, proceed via hard cap/watchdog you already set
-      showIntroAudioOverlay(false);
+      showIntroAudioOverlay(false); // hide anyway; hard-cap will still fire
     } finally {
       els.introStartAudio.removeEventListener('click', handler);
       els.introStartAudio.removeEventListener('touchend', handler);
@@ -249,6 +224,22 @@ function attachIntroAudioOverlayOnce(src, onDone){
   els.introStartAudio.addEventListener('click', handler, { once:true });
   els.introStartAudio.addEventListener('touchend', handler, { once:true, passive:true });
 }
+
+
+/* ---------- robust intro audio play with watchdog ---------- */
+
+function playIntroAudio({ src, maxMs = 10000, onDone } = {}){
+  // Cleanup previous listeners
+  audio.onended = audio.onerror = audio.onstalled = null;
+
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    clearTimeout(timer);
+    audio.onended = audio.onerror = audio.onstalled = null;
+    if (typeof onDone === 'function') onDone();
+  };
 
 
   // Safety timer: if nothing fires, proceed anyway
