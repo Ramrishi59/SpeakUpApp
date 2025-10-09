@@ -24,6 +24,8 @@ const els = {
   playOverlay:  document.getElementById("introPlayOverlay"),
   skipIntro:    document.getElementById("skipIntro"),
   unmuteIntro:  document.getElementById("unmuteIntro"),
+  introStartAudio: document.getElementById("introStartAudio"),
+
 
   // Global footer actions
   lessonActions: document.getElementById("lessonActions"),
@@ -215,6 +217,39 @@ function playIntroAudio({ src, maxMs = 10000, onDone } = {}){
     audio.onended = audio.onerror = audio.onstalled = null;
     if (typeof onDone === 'function') onDone();
   };
+  function showIntroAudioOverlay(show){
+  if (!els.introStartAudio) return;
+  els.introStartAudio.hidden = !show;
+}
+
+function attachIntroAudioOverlayOnce(src, onDone){
+  if (!els.introStartAudio) return;
+
+  const handler = async () => {
+    try {
+      audio.pause();
+      audio.muted = false;
+      audio.currentTime = 0;
+      audio.src = src;
+      await audio.play();              // user gesture -> iOS will allow
+      showIntroAudioOverlay(false);
+      // normal end path
+      audio.onended = onDone;
+      audio.onerror = onDone;
+      audio.onstalled = onDone;
+    } catch {
+      // Even if it fails, proceed via hard cap/watchdog you already set
+      showIntroAudioOverlay(false);
+    } finally {
+      els.introStartAudio.removeEventListener('click', handler);
+      els.introStartAudio.removeEventListener('touchend', handler);
+    }
+  };
+
+  els.introStartAudio.addEventListener('click', handler, { once:true });
+  els.introStartAudio.addEventListener('touchend', handler, { once:true, passive:true });
+}
+
 
   // Safety timer: if nothing fires, proceed anyway
   const timer = setTimeout(finish, maxMs);
@@ -483,18 +518,37 @@ startIntroFloat(introPics);
 
 // 4) audio playback & end transition
 if (item.audio) {
-  armIntroAudioGestureOnce(); // ensure iOS will allow play after any tap
+  // HARD CAP (from earlier message)
+  const HARD_CAP_MS = 11000;
+  let hardCapTimer = setTimeout(() => {
+    fadeOutIntroAndRevealUI();
+  }, HARD_CAP_MS);
+
+  // try autoplay first
   playIntroAudio({
     src: item.audio,
-    maxMs: 10000,                 // 10s safety; adjust to your VO length
+    maxMs: 10000, // watchdog
     onDone: () => {
-      clearTimeout(hardCapTimer);   // <- clear the hard cap
+      clearTimeout(hardCapTimer);
       fadeOutIntroAndRevealUI();
     }
   });
+
+  // after a short moment, if still paused, show the overlay and bind it
+  setTimeout(() => {
+    if (audio.paused) {
+      showIntroAudioOverlay(true);
+      attachIntroAudioOverlayOnce(item.audio, () => {
+        clearTimeout(hardCapTimer);
+        fadeOutIntroAndRevealUI();
+      });
+    }
+  }, 300); // 300–500ms is a good grace window
+
 } else {
   setTimeout(() => fadeOutIntroAndRevealUI(), 8000);
 }
+
 
 // Keep your existing outro detection flag (no change to behaviour)
 const isTextOutro = (i === screens.length - 1);
