@@ -624,10 +624,10 @@ body.has-dock #outroScreen{
     position: relative;        /* create containing block for float layer */
   }
   
-  .intro-float{
+  /* .intro-float{
     position: absolute;
     width: clamp(100px, 24svw, 200px);
-    /* size cap for mobile/desktop */
+
     aspect-ratio: 1/1;
     opacity: 0;
     transform: translate3d(0,0,0) scale(0.98) rotate(var(--rot, 0deg));
@@ -635,13 +635,47 @@ body.has-dock #outroScreen{
     filter: drop-shadow(0 6px 12px rgba(0,0,0,.16));
     transition: opacity 260ms ease;
     object-fit: contain;
+  } */
+
+  .intro-float{
+    position: absolute;
+    width: clamp(100px, 24svw, 200px);
+    aspect-ratio: 1/1;
+    opacity: 0;
+    /* BEFORE:
+    transform: translate3d(0,0,0) scale(0.98) rotate(var(--rot, 0deg));
+    */
+    transform: translate3d(0,0,0) rotate(var(--rot, 0deg)) scale(var(--scale, 1));
+    will-change: transform, opacity;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,.16));
+    transition: opacity 260ms ease;
+    object-fit: contain;
   }
   
-  /* Drift path (randomise via inline custom props) */
-  @keyframes intro-drift {
+
+  /* @keyframes intro-drift {
     from { transform: translate3d(var(--x0,0), var(--y0,0), 0) scale(1) rotate(var(--rot, 0deg)); }
     to   { transform: translate3d(var(--x1,0), var(--y1, 14svh), 0) scale(1.02) rotate(calc(var(--rot, 0deg) + var(--spin, 6deg))); }
+  } */
+
+  @keyframes intro-drift {
+    from {
+      /* start at the anchor (left/top you set in JS) */
+      transform:
+        translate3d(0, 0, 0)
+        rotate(var(--rot, 0deg))
+        scale(var(--scale, 1));
+    }
+    to {
+      /* move by the deltas you set from JS */
+      transform:
+        translate3d(var(--x1, 0px), var(--y1, 14svh), 0)
+        rotate(calc(var(--rot, 0deg) + var(--spin, 6deg)))
+        scale(var(--scale, 1));
+    }
   }
+  
+  
   
   /* Fade helpers */
   .intro-float.is-in   { opacity: 1; }
