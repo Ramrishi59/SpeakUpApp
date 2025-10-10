@@ -193,6 +193,31 @@ function lockIntroWords(container) {
   }, { once: true });
 }
 
+// --- float control + preloading ---
+let introFloatArmed = false;
+
+function armIntroFloats(images){
+  if (introFloatArmed) return;
+  introFloatArmed = true;
+  preloadImages(images);
+  startIntroFloat(images);
+}
+
+function disarmIntroFloats(){
+  introFloatArmed = false;
+  stopIntroFloat(true);
+}
+
+function preloadImages(srcs = []) {
+  srcs.forEach(src => {
+    const i = new Image();
+    i.decoding = "async";
+    i.loading = "eager";
+    i.src = src;
+  });
+}
+
+
 // ---------- image preloader (prevents late-paint floaters) ----------
 function preloadImages(srcs = []) {
   srcs.forEach(src => {
@@ -315,6 +340,9 @@ function startIntroFloat(images){
 
         // --- FALL from above (center-biased, better framing) ---
         let startX = W * (0.20 + Math.random() * 0.60); // 20–80%
+        const minStartX = W * 0.12, maxStartX = W * 0.88;
+        startX = Math.min(maxStartX, Math.max(minStartX, startX)); // <-- clamp start
+
         const startY = - (H * 0.5 + 200 + Math.random() * 200);   // well above top
         const sway   = (Math.random() * W * 0.30 - W * 0.15);
         let endX     = startX + sway;
@@ -524,43 +552,49 @@ if (els.introNext) els.introNext.style.display = "none";
 showIntroBounce(els.introText, item.text || "", { wordDelay: 50, reset: true });
 lockIntroWords(els.introText, { wordDelay: 50, duration: 700 });
 
-// 3) floating images (preload first)
+// 3) floating images – don't start until audio is permitted
 const introPics = pickIntroImages(unitMeta || {}, 5);
-preloadImages(introPics);
-startIntroFloat(introPics);
+disarmIntroFloats();        // make sure nothing is running
+preloadImages(introPics);   // warm cache either way
 
-// 4) audio playback & end transition
+// 4) audio playback & end transition (gated start for floats)
 if (item.audio) {
-  // HARD CAP (from earlier message)
   const HARD_CAP_MS = 11000;
   let hardCapTimer = setTimeout(() => {
     fadeOutIntroAndRevealUI();
   }, HARD_CAP_MS);
 
-  // try autoplay first
+  // Try autoplay first
   playIntroAudio({
     src: item.audio,
-    maxMs: 10000, // watchdog
+    maxMs: 10000,
     onDone: () => {
       clearTimeout(hardCapTimer);
       fadeOutIntroAndRevealUI();
     }
   });
 
-  // after a short moment, if still paused, show the overlay and bind it
+  // After a short grace, decide: autoplay worked or show overlay
   setTimeout(() => {
-    if (audio.paused) {
+    if (!audio.paused) {
+      // Autoplay OK → start floats now
+      armIntroFloats(introPics);
+    } else {
+      // Autoplay blocked → show button and start floats only after tap
       showIntroAudioOverlay(true);
       attachIntroAudioOverlayOnce(item.audio, () => {
-        clearTimeout(hardCapTimer);
+        armIntroFloats(introPics);
         fadeOutIntroAndRevealUI();
       });
     }
-  }, 300); // 300–500ms is a good grace window
+  }, 300);
 
 } else {
+  // No audio → start floats immediately and time out the intro
+  armIntroFloats(introPics);
   setTimeout(() => fadeOutIntroAndRevealUI(), 8000);
 }
+
 
 
 // Keep your existing outro detection flag (no change to behaviour)

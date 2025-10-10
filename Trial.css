@@ -576,22 +576,49 @@ body.has-dock #outroScreen{
 
   .intro-audio-overlay{
     position:absolute;
-    left:50%; top:52%;
-    transform:translate(-50%,-50%);
-    padding:12px 18px;
+    left:50%;
+    bottom: calc(env(safe-area-inset-bottom) + 110px);
+    transform: translateX(-50%);
+    padding: 14px 18px;
     font-family: var(--font-heading);
-    font-weight:700;
+    font-weight: 700;
     font-size: clamp(16px, 2.2svh, 18px);
-    color:#fff;
-    background: rgba(0,0,0,.55);
-    border:0; border-radius: 14px;
-    box-shadow: 0 6px 16px rgba(0,0,0,.18);
-    backdrop-filter: blur(3px);
-    cursor:pointer;
-    z-index: 5; /* above floaters/text */
+    color: #fff;
+    background: linear-gradient(180deg, rgba(25,25,25,.65), rgba(0,0,0,.55));
+    border: 0;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .intro-audio-overlay::before{
+    content: "🔊";
+    font-size: 1.1em;
+    line-height: 1;
+  }
+  .intro-audio-overlay:active{
+    transform: translateX(-50%) scale(.98);
+    box-shadow: 0 6px 14px rgba(0,0,0,.22);
   }
   .intro-audio-overlay[hidden]{ display:none; }
   
+  @media (hover:hover){
+    .intro-audio-overlay:hover{
+      background: linear-gradient(180deg, rgba(30,30,30,.72), rgba(0,0,0,.62));
+      box-shadow: 0 10px 22px rgba(0,0,0,.28);
+    }
+  }
+  /* Nudge a bit higher on very short screens */
+  @media (max-height: 640px){
+    .intro-audio-overlay{
+      bottom: calc(env(safe-area-inset-bottom) + 140px);
+    }
+  }
   
   .intro-screen{
     position: relative;        /* create containing block for float layer */
