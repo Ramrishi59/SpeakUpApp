@@ -11,6 +11,11 @@ let introFloats = [];
 
 let floatsStarted = false;     // gate so floats start once per intro
 let userInteracted = false;
+
+// Bouncer state + RAF handle
+let introFloatRAF = null;
+let introBouncers = [];
+
 ['click', 'touchstart', 'keydown'].forEach(evt => {
   window.addEventListener(evt, () => { userInteracted = true; }, { passive: true });
 });
@@ -198,108 +203,142 @@ function preloadImages(srcs = []) {
 }
 
 function startIntroFloat(images) {
-  const layer = document.getElementById('introFloatLayer');
-  if (!layer || !images?.length) return;
+  // Ensure a layer exists
+  let layer = document.getElementById('introFloatLayer');
+  if (!layer) {
+    layer = document.createElement('div');
+    layer.id = 'introFloatLayer';
+    layer.className = 'intro-float-layer';
+    (els.introScreen || document.body).appendChild(layer);
+  }
 
-  stopIntroFloat(false); // clear leftovers (no fade)
+  // Clear any previous floats/timers/raf
+  stopIntroFloat(false);
 
-  // Wait for layout so we get correct size (display has just been set)
+  // Pick images (fallbacks if needed)
+  let srcs = Array.isArray(images) ? images.slice() : [];
+  if (!srcs.length && unitMeta) {
+    try { srcs = pickIntroImages(unitMeta, 5); } catch {}
+  }
+  if (!srcs.length) {
+    const anyImg = document.querySelector('#wordImage, .word-display img, img');
+    if (anyImg?.src) srcs = [anyImg.src];
+    else srcs = ['Images/Unit1/1.webp']; // hard fallback
+  }
+  if (!srcs.length) return;
+  // console.log('[intro-bounce] start with', srcs.length, 'images', srcs);
+
+  // Measure after layout
   requestAnimationFrame(() => {
-    // Sometimes one rAF isn’t enough if styles just changed—do a second pass.
     requestAnimationFrame(() => {
-      let rect = layer.getBoundingClientRect();
+      const rect = layer.getBoundingClientRect();
       let W = Math.max(1, rect.width);
       let H = Math.max(1, rect.height);
-
-      // Fallback to viewport if height somehow reads 0 (older Safari quirks).
       if (H < 10) {
         W = Math.max(W, window.innerWidth || 0);
-        H = Math.max(H, (window.innerHeight || 0) - 56); // minus header approx
+        H = Math.max(H, (window.innerHeight || 0) - 56);
       }
 
-      const spawnOne = (src) => {
+      // Create bouncers (sizes use DISPLAYED size = base * scale)
+      introBouncers = srcs.map((src) => {
         const img = document.createElement('img');
         img.src = src;
         img.alt = "";
         img.className = 'intro-float';
+        img.style.position = 'absolute';
+        img.style.willChange = 'transform';
+        img.style.zIndex = '4';
         layer.appendChild(img);
         introFloats.push(img);
 
-        // --- FALL from above (center-biased, better framing) ---
-        let startX = W * (0.20 + Math.random() * 0.60); // 20–80%
-        const minStartX = W * 0.12, maxStartX = W * 0.88;
-        startX = Math.min(maxStartX, Math.max(minStartX, startX));
+        // Size and scale (smaller)
+        const baseW = Math.round(60 + Math.random() * 60);   // 60–120 px CSS width
+        const scale = 0.85 + Math.random() * 0.35;           // 0.85–1.20 visual scale
 
-        const startY = - (H * 0.5 + 200 + Math.random() * 200);   // well above top
-        const sway = (Math.random() * W * 0.30 - W * 0.15);
-        let endX = startX + sway;
+        img.style.width = baseW + 'px';
+        img.style.height = 'auto';
 
-        // clamp end position inside viewport
-        const minX = W * 0.12, maxX = W * 0.88;
-        endX = Math.min(maxX, Math.max(minX, endX));
+        const dispW = baseW * scale; // used for physics/bounce
+        const dispH = baseW * scale; // assume square-ish assets
 
-        const endY = Math.min(H - 40, H * 0.95);
+        // Start fully inside the layer using displayed size
+        let x = Math.random() * Math.max(1, W - dispW);
+        let y = Math.random() * Math.max(1, H - dispH);
 
-        // rotation / spin
-        const rot = (Math.random() * 10 - 5).toFixed(1) + 'deg';
-        const spin = (Math.random() * 10 + 4).toFixed(1) + 'deg';
+        // Make visible immediately
+        img.style.opacity = '1';
+        img.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
 
-        // shorter, livelier duration
-        const durMs = Math.round(6000 + Math.random() * 1800); // 4–5.8s
-        const delay = 0; // ✅ all staggering happens outside via setTimeout
+        // Velocity (px/s)
+        const speed = 80 + Math.random() * 80; // 80–160
+        const ang = Math.random() * Math.PI * 2;
+        const vx = Math.cos(ang) * speed;
+        const vy = Math.sin(ang) * speed;
 
-
-        // Position anchor (absolute)
-        img.style.left = `${startX}px`;
-        img.style.top = `${startY}px`;
-
-        // Feed deltas to keyframes
-        img.style.setProperty('--x0', '0px');
-        img.style.setProperty('--y0', '0px');
-        img.style.setProperty('--x1', `${endX - startX}px`);
-        img.style.setProperty('--y1', `${endY - startY}px`);
-        img.style.setProperty('--rot', rot);
-        img.style.setProperty('--spin', spin);
-
-        const t1 = setTimeout(() => {
-          img.classList.add('is-in');
-          img.style.animation = `intro-drift ${durMs}ms ease-in-out forwards`;
-          const t2 = setTimeout(() => img.classList.add('is-out'), Math.max(0, durMs - 300));
-          introFloatTimers.push(t2);
-        }, delay);
-
-        const t3 = setTimeout(() => { try { img.remove(); } catch { } }, delay + durMs + 500);
-        introFloatTimers.push(t1, t3);
-      };
-
-      // First wave — make first 2 appear instantly, others 120ms apart
-      images.forEach((src, idx) => {
-        const early = idx < 2 ? 0 : 120; // delay for later ones
-        setTimeout(() => spawnOne(src), early);
+        return { img, w: dispW, h: dispH, x, y, vx, vy, scale };
       });
 
-      // Optional second wave — sooner and lighter
-      setTimeout(() => {
-        images.forEach((src, idx) => {
-          const early = idx < 2 ? 0 : 120;
-          setTimeout(() => spawnOne(src), early);
-        });
-      }, 600);
+      // Animate (bounce on edges)
+      let last = performance.now();
+      const PAD = 1; // tiny inset so we never clip outside
 
+      const step = (now) => {
+        const dt = Math.min(0.05, (now - last) / 1000); // clamp dt to 50ms
+        last = now;
+
+        // Re-measure bounds in case of resize/orientation change
+        const r = layer.getBoundingClientRect();
+        W = Math.max(1, r.width);
+        H = Math.max(1, r.height);
+
+        for (const b of introBouncers) {
+          // Move
+          b.x += b.vx * dt;
+          b.y += b.vy * dt;
+
+          // Bounce horizontally
+          if (b.x <= PAD)               { b.x = PAD;                 b.vx =  Math.abs(b.vx); }
+          if (b.x + b.w >= W - PAD)     { b.x = Math.max(PAD, W - PAD - b.w); b.vx = -Math.abs(b.vx); }
+
+          // Bounce vertically
+          if (b.y <= PAD)               { b.y = PAD;                 b.vy =  Math.abs(b.vy); }
+          if (b.y + b.h >= H - PAD)     { b.y = Math.max(PAD, H - PAD - b.h); b.vy = -Math.abs(b.vy); }
+
+          // Gentle rotation based on velocity
+          const rotDeg = b.vx * 0.02;
+          b.img.style.transform = `translate3d(${b.x}px, ${b.y}px, 0) rotate(${rotDeg}deg) scale(${b.scale})`;
+        }
+
+        introFloatRAF = requestAnimationFrame(step);
+      };
+
+      introFloatRAF = requestAnimationFrame(step);
     });
   });
 }
 
+
 function stopIntroFloat(fadeOut = true) {
+  // stop timers
   introFloatTimers.forEach(clearTimeout);
   introFloatTimers = [];
+
+  // stop RAF
+  if (introFloatRAF) {
+    cancelAnimationFrame(introFloatRAF);
+    introFloatRAF = null;
+  }
+
+  // fade/remove sprites
   introFloats.forEach(el => {
     if (!el) return;
     if (fadeOut) el.classList.add('is-out');
     setTimeout(() => { try { el.remove(); } catch { } }, fadeOut ? 320 : 0);
   });
   introFloats = [];
+  introBouncers = [];
 }
+
 
 function armIntroFloats(images) {
   if (floatsStarted) return;

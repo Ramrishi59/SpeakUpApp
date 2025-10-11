@@ -571,7 +571,7 @@ body.has-dock #outroScreen{
     inset: 0;
     pointer-events: none;
     overflow: hidden;
-    z-index: 0;                /* behind the text */
+    z-index: 3;                /* behind the text */
   }
 
   .intro-audio-overlay{
@@ -623,29 +623,11 @@ body.has-dock #outroScreen{
   .intro-screen{
     position: relative;        /* create containing block for float layer */
   }
-  
-  /* .intro-float{
-    position: absolute;
-    width: clamp(100px, 24svw, 200px);
 
-    aspect-ratio: 1/1;
-    opacity: 0;
-    transform: translate3d(0,0,0) scale(0.98) rotate(var(--rot, 0deg));
-    will-change: transform, opacity;
-    filter: drop-shadow(0 6px 12px rgba(0,0,0,.16));
-    transition: opacity 260ms ease;
-    object-fit: contain;
-  } */
 
-  .intro-float{
+  .intro-float {
     position: absolute;
-    width: clamp(100px, 24svw, 200px);
-    aspect-ratio: 1/1;
     opacity: 0;
-    /* BEFORE:
-    transform: translate3d(0,0,0) scale(0.98) rotate(var(--rot, 0deg));
-    */
-    transform: translate3d(0,0,0) rotate(var(--rot, 0deg)) scale(var(--scale, 1));
     will-change: transform, opacity;
     filter: drop-shadow(0 6px 12px rgba(0,0,0,.16));
     transition: opacity 260ms ease;
