@@ -673,8 +673,7 @@ body.has-dock #outroScreen{
         rotate(calc(var(--rot, 0deg) + var(--spin, 6deg)))
         scale(var(--scale, 1));
     }
-  }
-  
+  }  
   
   
   /* Fade helpers */

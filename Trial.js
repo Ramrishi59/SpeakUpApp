@@ -245,8 +245,8 @@ function startIntroFloat(images){
         const spin = (Math.random() * 10 + 4).toFixed(1) + 'deg';
 
         // shorter, livelier duration
-        const durMs = Math.round(4000 + Math.random() * 1800); // 4–5.8s
-        const delay = Math.round(0 + Math.random() * 400);      // 0–0.4s
+        const durMs = Math.round(6000 + Math.random() * 1800); // 4–5.8s
+        const delay = Math.round(0 + Math.random() * 100);      // 0–0.4s
 
         // Position anchor (absolute)
         img.style.left = `${startX}px`;
