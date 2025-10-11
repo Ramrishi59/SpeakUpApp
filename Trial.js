@@ -20,26 +20,26 @@ audio.preload = "auto";
 
 const els = {
   // Intro / Outro
-  introScreen:    document.getElementById("introScreen"),
-  introText:      document.getElementById("introText"),
-  introNext:      document.getElementById("nextButtonIntro"),
-  introWrap:      document.querySelector(".intro-video-wrap"),
-  introVideo:     document.getElementById("introVideo"),
-  playOverlay:    document.getElementById("introPlayOverlay"),
-  skipIntro:      document.getElementById("skipIntro"),
-  unmuteIntro:    document.getElementById("unmuteIntro"),
-  introStartAudio:document.getElementById("introStartAudio"),
+  introScreen: document.getElementById("introScreen"),
+  introText: document.getElementById("introText"),
+  introNext: document.getElementById("nextButtonIntro"),
+  introWrap: document.querySelector(".intro-video-wrap"),
+  introVideo: document.getElementById("introVideo"),
+  playOverlay: document.getElementById("introPlayOverlay"),
+  skipIntro: document.getElementById("skipIntro"),
+  unmuteIntro: document.getElementById("unmuteIntro"),
+  introStartAudio: document.getElementById("introStartAudio"),
 
   // Global footer actions
-  lessonActions:  document.getElementById("lessonActions"),
+  lessonActions: document.getElementById("lessonActions"),
 
   // Word slides
-  wordScreen:     document.getElementById("wordDisplay"),
-  title:          document.getElementById("lessonText"),
-  word:           document.getElementById("wordText"),
-  image:          document.getElementById("wordImage"),
-  prev:           document.getElementById("prevButton"),
-  next:           document.getElementById("nextButton"),
+  wordScreen: document.getElementById("wordDisplay"),
+  title: document.getElementById("lessonText"),
+  word: document.getElementById("wordText"),
+  image: document.getElementById("wordImage"),
+  prev: document.getElementById("prevButton"),
+  next: document.getElementById("nextButton"),
 };
 
 /* ---------- unified footer visibility ---------- */
@@ -54,33 +54,33 @@ function setFooterVisible(on) {
 const SpeakUpOutro = (() => {
   let $screen, $mascot, $placard, $audio;
   function refs() {
-    $screen  = document.getElementById("outroScreen");
-    $mascot  = document.getElementById("outroMascot");
+    $screen = document.getElementById("outroScreen");
+    $mascot = document.getElementById("outroMascot");
     $placard = document.getElementById("outroMessage");
-    $audio   = document.getElementById("outroAudio");
+    $audio = document.getElementById("outroAudio");
   }
   function hide() {
     refs();
-    if ($screen){ $screen.style.display = "none"; $screen.classList.remove("is-playing"); }
-    if ($audio){ try{ $audio.pause(); $audio.currentTime = 0; }catch{} }
+    if ($screen) { $screen.style.display = "none"; $screen.classList.remove("is-playing"); }
+    if ($audio) { try { $audio.pause(); $audio.currentTime = 0; } catch { } }
   }
   function render({ image, audio: src, text }) {
     refs(); if (!$screen) return;
     if ($mascot && image) { $mascot.src = image; $mascot.style.display = ""; }
-    if ($mascot && !image){ $mascot.removeAttribute("src"); $mascot.style.display = "none"; }
+    if ($mascot && !image) { $mascot.removeAttribute("src"); $mascot.style.display = "none"; }
     if ($placard) $placard.textContent = text || "";
 
     $screen.style.display = "";
     $screen.classList.remove("is-playing"); void $screen.offsetWidth;
     $screen.classList.add("is-playing");
 
-    try{
-      if ($audio && src){ $audio.src = src; $audio.currentTime = 0; $audio.play().catch(()=>{}); }
-      else if (window.audio && src){
+    try {
+      if ($audio && src) { $audio.src = src; $audio.currentTime = 0; $audio.play().catch(() => { }); }
+      else if (window.audio && src) {
         window.audio.pause(); window.audio.muted = false; window.audio.currentTime = 0;
-        window.audio.src = src; window.audio.play().catch(()=>{});
+        window.audio.src = src; window.audio.play().catch(() => { });
       }
-    }catch{}
+    } catch { }
   }
   return { render, hide };
 })();
@@ -88,10 +88,10 @@ const SpeakUpOutro = (() => {
 /* ---------- simple FX ---------- */
 let stopOutroFX = null;
 function runEasyOutroFX(rootEl) {
-  const mascot  = rootEl?.querySelector('.mascot') || document.getElementById('outroMascot');
+  const mascot = rootEl?.querySelector('.mascot') || document.getElementById('outroMascot');
   const message = rootEl?.querySelector('.message') || document.getElementById('outroMessage');
-  const timers  = [];
-  [mascot, message].forEach(el => el && el.classList.remove('fx-pop','fx-wave-once','fx-float','fx-cheer','fx-shimmer'));
+  const timers = [];
+  [mascot, message].forEach(el => el && el.classList.remove('fx-pop', 'fx-wave-once', 'fx-float', 'fx-cheer', 'fx-shimmer'));
   if (message) message.classList.add('fx-cheer');
   if (mascot) {
     mascot.classList.add('fx-pop');
@@ -100,7 +100,7 @@ function runEasyOutroFX(rootEl) {
   }
   return () => {
     timers.forEach(clearTimeout);
-    [mascot, message].forEach(el => el && el.classList.remove('fx-pop','fx-wave-once','fx-float','fx-cheer','fx-shimmer'));
+    [mascot, message].forEach(el => el && el.classList.remove('fx-pop', 'fx-wave-once', 'fx-float', 'fx-cheer', 'fx-shimmer'));
   };
 }
 
@@ -126,22 +126,22 @@ function leaveOutro() {
 }
 
 /* ---------- intro image chooser ---------- */
-function pickIntroImages(unit, max = 5){
+function pickIntroImages(unit, max = 5) {
   const picked = [];
   const seen = new Set();
 
   // Priority 1: explicit introImages from JSON
-  if (Array.isArray(unit?.introImages) && unit.introImages.length){
-    for (const src of unit.introImages){
+  if (Array.isArray(unit?.introImages) && unit.introImages.length) {
+    for (const src of unit.introImages) {
       if (!seen.has(src)) { seen.add(src); picked.push(src); }
       if (picked.length >= max) break;
     }
   }
 
   // Priority 2: first unique slide images
-  if (picked.length < max && Array.isArray(unit?.words)){
-    for (const w of unit.words){
-      if (w?.image && !seen.has(w.image)){
+  if (picked.length < max && Array.isArray(unit?.words)) {
+    for (const w of unit.words) {
+      if (w?.image && !seen.has(w.image)) {
         seen.add(w.image); picked.push(w.image);
         if (picked.length >= max) break;
       }
@@ -152,8 +152,8 @@ function pickIntroImages(unit, max = 5){
 }
 
 /* ---------- media helpers ---------- */
-function stopAudio(){ audio.pause(); audio.currentTime = 0; audio.onended = null; }
-function stopVideo(){
+function stopAudio() { audio.pause(); audio.currentTime = 0; audio.onended = null; }
+function stopVideo() {
   if (!els.introVideo) return;
   els.introVideo.pause();
   els.introVideo.removeAttribute("src");
@@ -162,8 +162,8 @@ function stopVideo(){
   if (els.playOverlay) els.playOverlay.style.display = "none";
   if (els.unmuteIntro) els.unmuteIntro.style.display = "none";
 }
-function enterVideoMode(){ document.body.classList.add("video-active"); els.introScreen.classList.add("video-fullscreen"); }
-function exitVideoMode(){ document.body.classList.remove("video-active"); els.introScreen.classList.remove("video-fullscreen"); }
+function enterVideoMode() { document.body.classList.add("video-active"); els.introScreen.classList.add("video-fullscreen"); }
+function exitVideoMode() { document.body.classList.remove("video-active"); els.introScreen.classList.remove("video-fullscreen"); }
 
 /* ---------- intro text animation ---------- */
 function showIntroBounce(selector, text, { wordDelay = 100, reset = true } = {}) {
@@ -197,7 +197,7 @@ function preloadImages(srcs = []) {
   srcs.forEach(src => { const i = new Image(); i.decoding = "async"; i.loading = "eager"; i.src = src; });
 }
 
-function startIntroFloat(images){
+function startIntroFloat(images) {
   const layer = document.getElementById('introFloatLayer');
   if (!layer || !images?.length) return;
 
@@ -231,26 +231,27 @@ function startIntroFloat(images){
         startX = Math.min(maxStartX, Math.max(minStartX, startX));
 
         const startY = - (H * 0.5 + 200 + Math.random() * 200);   // well above top
-        const sway   = (Math.random() * W * 0.30 - W * 0.15);
-        let endX     = startX + sway;
+        const sway = (Math.random() * W * 0.30 - W * 0.15);
+        let endX = startX + sway;
 
         // clamp end position inside viewport
-        const minX   = W * 0.12, maxX = W * 0.88;
+        const minX = W * 0.12, maxX = W * 0.88;
         endX = Math.min(maxX, Math.max(minX, endX));
 
-        const endY   = Math.min(H - 40, H * 0.95);
+        const endY = Math.min(H - 40, H * 0.95);
 
         // rotation / spin
-        const rot  = (Math.random() * 10 - 5).toFixed(1) + 'deg';
+        const rot = (Math.random() * 10 - 5).toFixed(1) + 'deg';
         const spin = (Math.random() * 10 + 4).toFixed(1) + 'deg';
 
         // shorter, livelier duration
         const durMs = Math.round(6000 + Math.random() * 1800); // 4–5.8s
-        const delay = Math.round(0 + Math.random() * 100);      // 0–0.4s
+        const delay = 0; // ✅ all staggering happens outside via setTimeout
+
 
         // Position anchor (absolute)
         img.style.left = `${startX}px`;
-        img.style.top  = `${startY}px`;
+        img.style.top = `${startY}px`;
 
         // Feed deltas to keyframes
         img.style.setProperty('--x0', '0px');
@@ -267,24 +268,35 @@ function startIntroFloat(images){
           introFloatTimers.push(t2);
         }, delay);
 
-        const t3 = setTimeout(() => { try { img.remove(); } catch {} }, delay + durMs + 500);
+        const t3 = setTimeout(() => { try { img.remove(); } catch { } }, delay + durMs + 500);
         introFloatTimers.push(t1, t3);
       };
 
-      images.forEach(spawnOne);
-      // second wave ~2s later to make it feel alive
-      setTimeout(() => images.forEach(spawnOne), 1800);
+      // First wave — make first 2 appear instantly, others 120ms apart
+      images.forEach((src, idx) => {
+        const early = idx < 2 ? 0 : 120; // delay for later ones
+        setTimeout(() => spawnOne(src), early);
+      });
+
+      // Optional second wave — sooner and lighter
+      setTimeout(() => {
+        images.forEach((src, idx) => {
+          const early = idx < 2 ? 0 : 120;
+          setTimeout(() => spawnOne(src), early);
+        });
+      }, 600);
+
     });
   });
 }
 
-function stopIntroFloat(fadeOut = true){
+function stopIntroFloat(fadeOut = true) {
   introFloatTimers.forEach(clearTimeout);
   introFloatTimers = [];
   introFloats.forEach(el => {
     if (!el) return;
     if (fadeOut) el.classList.add('is-out');
-    setTimeout(() => { try { el.remove(); } catch {} }, fadeOut ? 320 : 0);
+    setTimeout(() => { try { el.remove(); } catch { } }, fadeOut ? 320 : 0);
   });
   introFloats = [];
 }
@@ -301,12 +313,12 @@ function disarmIntroFloats() {
 }
 
 /* ---------- "Tap to start" overlay helpers ---------- */
-function showIntroAudioOverlay(show){
+function showIntroAudioOverlay(show) {
   if (!els.introStartAudio) return;
   els.introStartAudio.hidden = !show;
 }
 
-function attachIntroAudioOverlayOnce(src, onDone){
+function attachIntroAudioOverlayOnce(src, onDone) {
   if (!els.introStartAudio) return;
 
   const handler = async () => {
@@ -321,8 +333,8 @@ function attachIntroAudioOverlayOnce(src, onDone){
       armIntroFloats(pics);
       showIntroAudioOverlay(false);
 
-      audio.onended   = onDone;
-      audio.onerror   = onDone;
+      audio.onended = onDone;
+      audio.onerror = onDone;
       audio.onstalled = onDone;
     } catch {
       showIntroAudioOverlay(false); // hide anyway; hard-cap will still fire
@@ -332,12 +344,12 @@ function attachIntroAudioOverlayOnce(src, onDone){
     }
   };
 
-  els.introStartAudio.addEventListener('click', handler, { once:true });
-  els.introStartAudio.addEventListener('touchend', handler, { once:true, passive:true });
+  els.introStartAudio.addEventListener('click', handler, { once: true });
+  els.introStartAudio.addEventListener('touchend', handler, { once: true, passive: true });
 }
 
 /* ---------- robust intro audio play with watchdog ---------- */
-function playIntroAudio({ src, maxMs = 10000, onDone } = {}){
+function playIntroAudio({ src, maxMs = 10000, onDone } = {}) {
   // Cleanup previous listeners
   audio.onended = audio.onerror = audio.onstalled = null;
 
@@ -360,6 +372,9 @@ function playIntroAudio({ src, maxMs = 10000, onDone } = {}){
     audio.src = src;
     audio.load();
 
+    // NEW: kick floats right away (guarded by floatsStarted so it won’t double-start)
+    armIntroFloats(pickIntroImages(unitMeta || {}, 5));
+
     const p = audio.play();
     if (p && typeof p.then === 'function') {
       p.then(() => {
@@ -367,8 +382,8 @@ function playIntroAudio({ src, maxMs = 10000, onDone } = {}){
         const pics = pickIntroImages(unitMeta || {}, 5);
         armIntroFloats(pics);
 
-        audio.onended   = finish;
-        audio.onerror   = finish;
+        audio.onended = finish;
+        audio.onerror = finish;
         audio.onstalled = finish;
       }).catch(() => {
         // Autoplay blocked; overlay path will handle the start
@@ -385,9 +400,9 @@ function playIntroAudio({ src, maxMs = 10000, onDone } = {}){
 }
 
 /* ---------- fade out intro & reveal UI ---------- */
-function fadeOutIntroAndRevealUI({ onDone } = {}){
+function fadeOutIntroAndRevealUI({ onDone } = {}) {
   const text = els.introText;
-  if (text){
+  if (text) {
     text.style.transition = 'opacity 500ms ease';
     text.style.opacity = '0';
   }
@@ -395,12 +410,12 @@ function fadeOutIntroAndRevealUI({ onDone } = {}){
   floatsStarted = false;
 
   setTimeout(() => {
-    if (text){ text.style.opacity = ''; }  // reset
+    if (text) { text.style.opacity = ''; }  // reset
     setFooterVisible(true);
-    if (els.introNext){
+    if (els.introNext) {
       els.introNext.style.display = '';
       const row = els.introNext.closest('.nav-row');
-      if (row){
+      if (row) {
         row.style.opacity = '0';
         row.style.transition = 'opacity 300ms ease';
         requestAnimationFrame(() => { row.style.opacity = '1'; });
@@ -417,15 +432,15 @@ function armIntroAudioGestureOnce() {
   introAudioGestureHandler = (e) => {
     const startBtn = els.introNext;
     const tappedStart = startBtn && (e.target === startBtn || (e.target.closest && e.target.closest('#nextButtonIntro')));
-    if (!tappedStart) { audio.play().catch(() => {}); }
+    if (!tappedStart) { audio.play().catch(() => { }); }
     document.removeEventListener('pointerdown', introAudioGestureHandler, true);
-    document.removeEventListener('touchend',   introAudioGestureHandler, true);
-    document.removeEventListener('click',      introAudioGestureHandler, true);
+    document.removeEventListener('touchend', introAudioGestureHandler, true);
+    document.removeEventListener('click', introAudioGestureHandler, true);
     introAudioGestureHandler = null;
   };
   document.addEventListener('pointerdown', introAudioGestureHandler, true);
-  document.addEventListener('touchend',   introAudioGestureHandler, true);
-  document.addEventListener('click',      introAudioGestureHandler, true);
+  document.addEventListener('touchend', introAudioGestureHandler, true);
+  document.addEventListener('click', introAudioGestureHandler, true);
 }
 
 /* ---------- core render ---------- */
@@ -435,7 +450,7 @@ async function render(i) {
 
   // reset screens/media
   els.introScreen.style.display = "none";
-  els.wordScreen.style.display  = "none";
+  els.wordScreen.style.display = "none";
   exitVideoMode();
   stopAudio();
   disarmIntroFloats();
@@ -462,7 +477,7 @@ async function render(i) {
     els.image.alt = item.text || "Lesson image";
     els.prev.style.display = i === 0 ? "none" : "";
     els.next.style.display = i === screens.length - 1 ? "none" : "";
-    if (item.audio) { audio.src = item.audio; audio.play().catch(() => {}); }
+    if (item.audio) { audio.src = item.audio; audio.play().catch(() => { }); }
     return;
   }
 
@@ -489,14 +504,14 @@ async function render(i) {
       els.introVideo.muted = true;
       if (els.playOverlay) { els.playOverlay.style.display = "none"; els.playOverlay.onclick = null; }
       if (els.unmuteIntro) els.unmuteIntro.style.display = "none";
-      if (els.skipIntro)   els.skipIntro.style.display   = "none";
+      if (els.skipIntro) els.skipIntro.style.display = "none";
       const bottom = document.querySelector(".intro-bottom-controls");
       if (bottom) bottom.style.display = "none";
       const tryUnmute = () => {
         if (!userInteracted) return;
-        try { els.introVideo.muted = false; els.introVideo.removeAttribute('muted'); els.introVideo.volume = 1.0; } catch {}
+        try { els.introVideo.muted = false; els.introVideo.removeAttribute('muted'); els.introVideo.volume = 1.0; } catch { }
       };
-      els.introVideo.addEventListener('playing', () => setTimeout(tryUnmute, 60), { once:true });
+      els.introVideo.addEventListener('playing', () => setTimeout(tryUnmute, 60), { once: true });
       els.introVideo.onended = () => { stopAudio(); stopVideo(); exitVideoMode(); location.href = 'index.html'; };
       return;
     }
@@ -508,11 +523,11 @@ async function render(i) {
     if (els.playOverlay) {
       els.playOverlay.onclick = async () => {
         userInteracted = true;
-        try { els.introVideo.muted = false; await els.introVideo.play(); els.playOverlay.style.display = "none"; if (els.unmuteIntro) els.unmuteIntro.style.display = "none"; } catch {}
+        try { els.introVideo.muted = false; await els.introVideo.play(); els.playOverlay.style.display = "none"; if (els.unmuteIntro) els.unmuteIntro.style.display = "none"; } catch { }
       };
     }
     if (els.unmuteIntro) els.unmuteIntro.onclick = () => { els.introVideo.muted = false; els.unmuteIntro.style.display = "none"; };
-    if (els.skipIntro)   els.skipIntro.onclick   = () => showNext();
+    if (els.skipIntro) els.skipIntro.onclick = () => showNext();
     return;
   }
 
@@ -578,13 +593,13 @@ async function render(i) {
 }
 
 /* ---------- nav ---------- */
-function showPrev(){ if (currentIndex > 0){ currentIndex--; render(currentIndex); } }
-function showNext(){
+function showPrev() { if (currentIndex > 0) { currentIndex--; render(currentIndex); } }
+function showNext() {
   stopVideo(); exitVideoMode();
-  if (currentIndex < screens.length - 1){ currentIndex++; render(currentIndex); }
+  if (currentIndex < screens.length - 1) { currentIndex++; render(currentIndex); }
   else { location.href = 'index.html'; }
 }
-function startOver(){
+function startOver() {
   currentIndex = 0;
   stopAudio(); stopVideo(); exitVideoMode();
   render(currentIndex);
@@ -597,10 +612,10 @@ els.introNext?.addEventListener("click", showNext);
 document.getElementById('startoverGlobal')?.addEventListener('click', startOver);
 
 /* ---------- boot ---------- */
-function getUnitIdFromUrl(){ const p = new URLSearchParams(location.search); return p.get("unitId") || "unit1"; }
-async function loadUnit(id){ const r = await fetch(`units/${id}.json`, { cache: "no-store" }); if (!r.ok) throw new Error(id); return r.json(); }
+function getUnitIdFromUrl() { const p = new URLSearchParams(location.search); return p.get("unitId") || "unit1"; }
+async function loadUnit(id) { const r = await fetch(`units/${id}.json`, { cache: "no-store" }); if (!r.ok) throw new Error(id); return r.json(); }
 
-(async function(){
+(async function () {
   const unit = await loadUnit(getUnitIdFromUrl());
   unitMeta = unit; // keep reference for introImages
   document.body.classList.add(`unit-${unit.id}`);
