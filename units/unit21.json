@@ -4,8 +4,8 @@
     "description": "Learn to talk about possession using his and hers with That’s and That … is.",
     "thumbnail": "Images/Unit21/unit21_thumbnail.webp",
     "words": [
-      { "text": "Hello. Let us learn 'his' and 'hers'.", "audio": "Audio/Unit21/intro.mp3" },
-      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/Unit21/intro2.mp3" },
+      { "text": "That lamp is hers.", "audio": "Audio/Unit21/intro.mp3" },
+      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/intro2/intro2.mp3" },
   
       { "text": "That's Raju.",              "image": "Images/Unit21/1.webp", "audio": "Audio/Unit21/03_Chapter 1.mp3" },
       { "text": "That's his bicycle.",       "image": "Images/Unit21/1.webp", "audio": "Audio/Unit21/04_Chapter 1.mp3" },
