@@ -1,25 +1,32 @@
 {
     "id": "unit20",
-    "name": "Unit 20: But",
-    "description": "Let’s learn how to use BUT! ",
-    "thumbnail": "Images/unit8/thumbnail.svg",
+    "name": "Unit 20: Her pinafore is yellow",
+    "description": "Practise possessives (his/her) with colours for clothes and objects.",
+    "thumbnail": "Images/Unit20/unit20_thumbnail.webp",
     "words": [
-        { "text": "Let’s learn how to use BUT!", "audio": "Audio/Unit8/u8_intro.mp3" },
-        { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit5/u5_intro_02.mp3" },
-    
-        { "text": "This is a pen but that's a pencil.",   "image": "Images/Unit8/u8_i01.webp.webp",        "audio": "Audio/Unit8/u8_i01.mp3" },
-        { "text": "This is a cap but that's a hat.",        "image": "Images/Unit8/u8_i02.webp.webp",       "audio": "Audio/Unit8/u8_i02.mp3" },
-    
-        { "text": "This is a mobile but that's a tablet",        "image": "Images/Unit8/u8_i03.webp",        "audio": "Audio/Unit8/u8_i03.mp3" },
-        { "text": "This is a hen but that’s a cock",        "image": "Images/Unit8/u8_i04.webp",       "audio": "Audio/Unit8/u8_i04.mp3" },
-    
-        { "text": "These are cricket balls but those are footballs",        "image": "Images/Unit8/u8_i05.webp",        "audio": "Audio/Unit8/u8_i05.mp3" },
-        { "text": "These are cashews but those are coconuts",        "image": "Images/Unit8/u8_i06.webp",       "audio": "Audio/Unit8/u8_i06.mp3" },
-    
-        { "text": "These are cups but those are saucers",       "image": "Images/Unit8/u8_i07.webp",       "audio": "Audio/Unit8/u8_i07.mp3" },
-        { "text": "These are buses but those are vans",       "image": "Images/Unit8/u8_i08.webp",      "audio": "Audio/Unit8/u8_i08.mp3" },
-    
-        { "text": "Great job!", "audio": "Audio/Unit8/u8_outro.mp3" }
-      ]
+      { "text": "Her pinafore is yellow.", "audio": "Audio/Unit20/intro.mp3" },
+      { "text": "Look. Listen. and Repeat.",           "audio": "Audio/intro2/intro2.mp3" },
+  
+      { "text": "He is Raju.",                 "image": "Images/Unit20/1.webp",  "audio": "Audio/Unit20/03_Chapter 1.mp3" },
+      { "text": "His T-shirt is yellow.",      "image": "Images/Unit20/2.webp",  "audio": "Audio/Unit20/04_Chapter 1.mp3" },
+      { "text": "His cap is green.",           "image": "Images/Unit20/3.webp",  "audio": "Audio/Unit20/05_Chapter 1.mp3" },
+      { "text": "His backpack is red.",        "image": "Images/Unit20/4.webp",  "audio": "Audio/Unit20/06_Chapter 1.mp3" },
+  
+      { "text": "Is his pen blue?",            "image": "Images/Unit20/5.webp",  "audio": "Audio/Unit20/07_Chapter 1.mp3" },
+      { "text": "Yes, it is.",                 "image": "Images/Unit20/6.webp",  "audio": "Audio/Unit20/08_Chapter 1.mp3" },
+  
+      { "text": "Is his mug green?",           "image": "Images/Unit20/7.webp",  "audio": "Audio/Unit20/09_Chapter 1.mp3" },
+      { "text": "No, it's not.",               "image": "Images/Unit20/8.webp",  "audio": "Audio/Unit20/10_Chapter 1.mp3" },
+      { "text": "It's yellow.",                "image": "Images/Unit20/9.webp",  "audio": "Audio/Unit20/11_Chapter 1.mp3" },
+  
+      { "text": "Are his books pink?",         "image": "Images/Unit20/10.webp", "audio": "Audio/Unit20/12_Chapter 1.mp3" },
+      { "text": "No, they are not.",           "image": "Images/Unit20/11.webp", "audio": "Audio/Unit20/13_Chapter 1.mp3" },
+      { "text": "They are blue and green.",    "image": "Images/Unit20/12.webp", "audio": "Audio/Unit20/14_Chapter 1.mp3" },
+  
+      { "text": "She is Reena.",               "image": "Images/Unit20/13.webp", "audio": "Audio/Unit20/15_Chapter 1.mp3" },
+      { "text": "Her T-shirt is blue.",        "image": "Images/Unit20/14.webp", "audio": "Audio/Unit20/16_Chapter 1.mp3" },
+      { "text": "Her pinafore is yellow.",     "image": "Images/Unit20/15.webp", "audio": "Audio/Unit20/17_Chapter 1.mp3" },
+      { "text": "Her shoes are pink.",         "image": "Images/Unit20/16.webp", "audio": "Audio/Unit20/18_Chapter 1.mp3" }
+    ]
   }
   
