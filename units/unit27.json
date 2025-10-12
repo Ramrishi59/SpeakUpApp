@@ -1,0 +1,31 @@
+{
+    "id": "unit27",
+    "name": "Unit 27: Where is the kite?",
+    "description": "Learn to ask and answer 'Where is...?' and 'Where are...?' using in, on, and under.",
+    "thumbnail": "Images/Unit27/1.webp",
+    "words": [
+      { "text": "Where is the kite", "audio": "Audio/Unit27/intro.mp3" },
+      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/intro2/intro2.mp3" },
+  
+      { "text": "Where is the kite?",           "image": "Images/Unit27/1.webp", "audio": "Audio/Unit27/03_Chapter 1.mp3" },
+      { "text": "The kite is in the tree.",     "image": "Images/Unit27/1.webp", "audio": "Audio/Unit27/04_Chapter 1.mp3" },
+  
+      { "text": "Where are the mangoes?",       "image": "Images/Unit27/2.webp", "audio": "Audio/Unit27/05_Chapter 1.mp3" },
+      { "text": "The mangoes are on the tree.", "image": "Images/Unit27/2.webp", "audio": "Audio/Unit27/06_Chapter 1.mp3" },
+  
+      { "text": "Where is the squirrel?",       "image": "Images/Unit27/3.webp", "audio": "Audio/Unit27/07_Chapter 1.mp3" },
+      { "text": "The squirrel is in the tree.", "image": "Images/Unit27/3.webp", "audio": "Audio/Unit27/08_Chapter 1.mp3" },
+  
+      { "text": "Where is the goat?",           "image": "Images/Unit27/4.webp", "audio": "Audio/Unit27/09_Chapter 1.mp3" },
+      { "text": "The goat is under the tree.",  "image": "Images/Unit27/4.webp", "audio": "Audio/Unit27/10_Chapter 1.mp3" },
+  
+      { "text": "Where is the chair?",          "image": "Images/Unit27/5.webp", "audio": "Audio/Unit27/11_Chapter 1.mp3" },
+      { "text": "The chair is under the tree.", "image": "Images/Unit27/5.webp", "audio": "Audio/Unit27/12_Chapter 1.mp3" },
+  
+      { "text": "Where are the birds?",         "image": "Images/Unit27/5.webp", "audio": "Audio/Unit27/13_Chapter 1.mp3" },
+      { "text": "The birds are on the chair.",  "image": "Images/Unit27/5.webp", "audio": "Audio/Unit27/14_Chapter 1.mp3" },
+  
+      { "text": "Well done! You learned to ask and answer 'Where is...?' and 'Where are...?'. Keep practising!", "audio": "Audio/Unit27/15_Chapter 1.mp3" }
+    ]
+  }
+  

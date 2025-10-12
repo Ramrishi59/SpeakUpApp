@@ -1,0 +1,26 @@
+{
+    "id": "unit22",
+    "name": "Unit 22: Our cat is white",
+    "description": "Learn to use possessive pronouns — ours and theirs — in simple sentences.",
+    "thumbnail": "Images/Unit22/unit22_thumbnail.webp",
+    "words": [
+      { "text": "Our cat is white.", "audio": "Audio/Unit22/intro.mp3" },
+      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/intro2/intro2.mp3" },
+  
+      { "text": "This is our cat.",         "image": "Images/Unit22/1.webp",  "audio": "Audio/Unit22/03_Chapter 1.mp3" },
+      { "text": "Our cat is white.",        "image": "Images/Unit22/2.webp",  "audio": "Audio/Unit22/04_Chapter 1.mp3" },
+      { "text": "White cat is ours.",       "image": "Images/Unit22/3.webp",  "audio": "Audio/Unit22/05_Chapter 1.mp3" },
+  
+      { "text": "That is their cat.",       "image": "Images/Unit22/4.webp",  "audio": "Audio/Unit22/06_Chapter 1.mp3" },
+      { "text": "Their cat is brown.",      "image": "Images/Unit22/5.webp",  "audio": "Audio/Unit22/07_Chapter 1.mp3" },
+  
+      { "text": "Ours is white.",           "image": "Images/Unit22/6.webp",  "audio": "Audio/Unit22/08_Chapter 1.mp3" },
+      { "text": "Theirs is brown.",         "image": "Images/Unit22/7.webp",  "audio": "Audio/Unit22/09_Chapter 1.mp3" },
+  
+      { "text": "This is ours.",            "image": "Images/Unit22/8.webp",  "audio": "Audio/Unit22/10_Chapter 1.mp3" },
+      { "text": "That is theirs.",          "image": "Images/Unit22/9.webp",  "audio": "Audio/Unit22/11_Chapter 1.mp3" },
+  
+      { "text": "Well done! You learned 'ours' and 'theirs'. Keep practising!", "audio": "Audio/Unit22/12_Chapter 1.mp3" }
+    ]
+  }
+  

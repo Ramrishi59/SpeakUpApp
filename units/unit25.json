@@ -1,0 +1,23 @@
+{
+    "id": "unit25",
+    "name": "Unit 25: Manku is on the box",
+    "description": "Learn prepositions of place — in, on, under — with simple examples.",
+    "thumbnail": "Images/Unit25/1.webp",
+    "words": [
+      { "text": "Manku is on the box", "audio": "Audio/Unit25/intro.mp3" },
+      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/intro2/intro2.mp3" },
+  
+      { "text": "Manku is in the box.",         "image": "Images/Unit25/1.webp", "audio": "Audio/Unit25/03_Chapter 1.mp3" },
+      { "text": "Manku is on the box.",         "image": "Images/Unit25/2.webp", "audio": "Audio/Unit25/04_Chapter 1.mp3" },
+      { "text": "Manku is under the box.",      "image": "Images/Unit25/3.webp", "audio": "Audio/Unit25/05_Chapter 1.mp3" },
+  
+      { "text": "The computer is on the table.", "image": "Images/Unit25/5.webp", "audio": "Audio/Unit25/06_Chapter 1.mp3" },
+      { "text": "The sandals are under the table.", "image": "Images/Unit25/6.webp", "audio": "Audio/Unit25/07_Chapter 1.mp3" },
+      { "text": "The camera is in the bag.",    "image": "Images/Unit25/7.webp", "audio": "Audio/Unit25/08_Chapter 1.mp3" },
+      { "text": "The magazine is under the chair.", "image": "Images/Unit25/8.webp", "audio": "Audio/Unit25/09_Chapter 1.mp3" },
+      { "text": "The pillows are on the bed.",  "image": "Images/Unit25/8.webp", "audio": "Audio/Unit25/10_Chapter 1.mp3" },
+  
+      { "text": "Well done! You learned 'in', 'on', and 'under'. Keep practising!", "audio": "Audio/Unit25/11_Chapter 1.mp3" }
+    ]
+  }
+  

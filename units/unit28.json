@@ -1,0 +1,34 @@
+{
+    "id": "unit28",
+    "name": "Unit 28: Where are the bottles?",
+    "description": "Practise questions and answers with 'in', 'on', and 'under' using objects around the table.",
+    "thumbnail": "Images/Unit28/1.webp",
+    "words": [
+      { "text": "Where are the bottles?", "audio": "Audio/Unit28/intro.mp3" },
+      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/intro2/intro2.mp3" },
+
+      { "text": "Is the ball on the table?",            "image": "Images/Unit28/1.webp", "audio": "Audio/Unit28/03_Chapter 1.mp3" },
+      { "text": "No, it's not. The ball is under the table.", "image": "Images/Unit28/1.webp", "audio": "Audio/Unit28/04_Chapter 1.mp3" },
+  
+      { "text": "Are the bananas under the basket?",    "image": "Images/Unit28/2.webp", "audio": "Audio/Unit28/05_Chapter 1.mp3" },
+      { "text": "No, they are not. The bananas are in the basket.", "image": "Images/Unit28/2.webp", "audio": "Audio/Unit28/06_Chapter 1.mp3" },
+  
+      { "text": "Are the bottles under the table?",     "image": "Images/Unit28/3.webp", "audio": "Audio/Unit28/07_Chapter 1.mp3" },
+      { "text": "Yes, they are.",                       "image": "Images/Unit28/3.webp", "audio": "Audio/Unit28/08_Chapter 1.mp3" },
+  
+      { "text": "Is the dust bin on the table?",        "image": "Images/Unit28/4.webp", "audio": "Audio/Unit28/09_Chapter 1.mp3" },
+      { "text": "No, it's not. The dust bin is under the table.", "image": "Images/Unit28/4.webp", "audio": "Audio/Unit28/10_Chapter 1.mp3" },
+  
+      { "text": "Is the cat under the dust bin?",       "image": "Images/Unit28/5.webp", "audio": "Audio/Unit28/11_Chapter 1.mp3" },
+      { "text": "No, it's not. The cat is in the dust bin.", "image": "Images/Unit28/5.webp", "audio": "Audio/Unit28/12_Chapter 1.mp3" },
+  
+      { "text": "Are the pineapples under the table?",  "image": "Images/Unit28/6.webp", "audio": "Audio/Unit28/13_Chapter 1.mp3" },
+      { "text": "No, they are not. The pineapples are on the table.", "image": "Images/Unit28/6.webp", "audio": "Audio/Unit28/14_Chapter 1.mp3" },
+  
+      { "text": "Is the basket on the table?",          "image": "Images/Unit28/7.webp", "audio": "Audio/Unit28/15_Chapter 1.mp3" },
+      { "text": "No, it's not. The basket is on the table.", "image": "Images/Unit28/7.webp", "audio": "Audio/Unit28/16_Chapter 1.mp3" },
+  
+      { "text": "Well done! You learned how to ask and answer using 'in', 'on', and 'under'. Keep practising!", "audio": "Audio/Unit28/17_Chapter 1.mp3" }
+    ]
+  }
+  

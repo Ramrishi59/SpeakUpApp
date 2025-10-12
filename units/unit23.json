@@ -1,0 +1,53 @@
+{
+    "id": "unit23",
+    "name": "Unit 23: I am a student",
+    "description": "Introduce yourself and talk about jobs using I am… / He is…",
+    "thumbnail": "Images/Unit23/unit23_thumbnail.webp",
+    "words": [
+      { "text": "I am a student", "audio": "Audio/Unit23/intro.mp3" },
+      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/intro2/intro2.mp3" },
+  
+      { "text": "Hi, I am Muneer.",     "image": "Images/Unit23/1.webp",  "audio": "Audio/Unit23/03_Chapter 1.mp3" },
+      { "text": "I am a doctor.",        "image": "Images/Unit23/1.webp",  "audio": "Audio/Unit23/04_Chapter 1.mp3" },
+  
+      { "text": "Hello, I am Praveen.",  "image": "Images/Unit23/2.webp",  "audio": "Audio/Unit23/05_Chapter 1.mp3" },
+      { "text": "I am an engineer.",     "image": "Images/Unit23/2.webp",  "audio": "Audio/Unit23/06_Chapter 1.mp3" },
+  
+      { "text": "Hi, I am Nelson.",      "image": "Images/Unit23/3.webp",  "audio": "Audio/Unit23/07_Chapter 1.mp3" },
+      { "text": "I am a truck driver.",  "image": "Images/Unit23/3.webp",  "audio": "Audio/Unit23/08_Chapter 1.mp3" },
+  
+      { "text": "Hi, I am Deepak.",      "image": "Images/Unit23/4.webp",  "audio": "Audio/Unit23/09_Chapter 1.mp3" },
+      { "text": "He is a police officer.","image": "Images/Unit23/4.webp",  "audio": "Audio/Unit23/10_Chapter 1.mp3" },
+  
+      { "text": "Hello, I am Lily.",     "image": "Images/Unit23/5.webp",  "audio": "Audio/Unit23/11_Chapter 1.mp3" },
+      { "text": "I am a nurse.",         "image": "Images/Unit23/5.webp",  "audio": "Audio/Unit23/12_Chapter 1.mp3" },
+  
+      { "text": "Hello, I am Dan.",      "image": "Images/Unit23/6.webp",  "audio": "Audio/Unit23/13_Chapter 1.mp3" },
+      { "text": "I am a pilot.",         "image": "Images/Unit23/6.webp",  "audio": "Audio/Unit23/14_Chapter 1.mp3" },
+  
+      { "text": "Hi, I am Sajith.",      "image": "Images/Unit23/7.webp",  "audio": "Audio/Unit23/15_Chapter 1.mp3" },
+      { "text": "I am a vet.",           "image": "Images/Unit23/7.webp",  "audio": "Audio/Unit23/16_Chapter 1.mp3" },
+  
+      { "text": "Hello, I am Narayan.",  "image": "Images/Unit23/8.webp",  "audio": "Audio/Unit23/17_Chapter 1.mp3" },
+      { "text": "I am a carpenter.",     "image": "Images/Unit23/8.webp",  "audio": "Audio/Unit23/18_Chapter 1.mp3" },
+  
+      { "text": "Hello, I am Jaya.",     "image": "Images/Unit23/9.webp",  "audio": "Audio/Unit23/19_Chapter 1.mp3" },
+      { "text": "I am a teacher.",       "image": "Images/Unit23/9.webp",  "audio": "Audio/Unit23/20_Chapter 1.mp3" },
+  
+      { "text": "Hi, I am David.",       "image": "Images/Unit23/10.webp", "audio": "Audio/Unit23/21_Chapter 1.mp3" },
+      { "text": "I am a mason.",         "image": "Images/Unit23/10.webp", "audio": "Audio/Unit23/22_Chapter 1.mp3" },
+  
+      { "text": "Hi, I am Jabbar.",      "image": "Images/Unit23/11.webp", "audio": "Audio/Unit23/23_Chapter 1.mp3" },
+      { "text": "I am a porter.",        "image": "Images/Unit23/11.webp", "audio": "Audio/Unit23/24_Chapter 1.mp3" },
+  
+      { "text": "Hello, I am Tony.",     "image": "Images/Unit23/12.webp", "audio": "Audio/Unit23/25_Chapter 1.mp3" },
+      { "text": "I am a mechanic.",      "image": "Images/Unit23/12.webp", "audio": "Audio/Unit23/26_Chapter 1.mp3" },
+  
+      { "text": "Hi, I am John.",        "image": "Images/Unit23/13.webp", "audio": "Audio/Unit23/27_Chapter 1.mp3" },
+      { "text": "I am a farmer.",        "image": "Images/Unit23/13.webp", "audio": "Audio/Unit23/28_Chapter 1.mp3" },
+  
+      { "text": "Hello, I am Raju.",     "image": "Images/Unit23/14.webp", "audio": "Audio/Unit23/29_Chapter 1.mp3" },
+      { "text": "I am a student.",       "image": "Images/Unit23/14.webp", "audio": "Audio/Unit23/30_Chapter 1.mp3" }
+    ]
+  }
+  
