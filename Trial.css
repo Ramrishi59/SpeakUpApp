@@ -141,10 +141,12 @@ main{
   transform: translateY(var(--img-nudge)) scale(var(--img-scale));
   transform-origin:center;
   will-change: transform;
-  
 }
 /* hard-stop any accidental inline margin that pushes the image down */
 #wordImage{ margin-top: 0 !important; }
+
+/* Nudge the word image down a tiny bit without changing layout/scroll */
+.word-display.has-image{ --img-nudge: 14px; }
 
 
 /* Word row */
