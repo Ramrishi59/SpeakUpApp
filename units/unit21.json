@@ -1,0 +1,27 @@
+{
+    "id": "unit21",
+    "name": "Unit 21: That lamp is hers",
+    "description": "Learn to talk about possession using his and hers with That’s and That … is.",
+    "thumbnail": "Images/Unit21/unit21_thumbnail.webp",
+    "words": [
+      { "text": "Hello. Let us learn 'his' and 'hers'.", "audio": "Audio/Unit21/intro.mp3" },
+      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/Unit21/intro2.mp3" },
+  
+      { "text": "That's Raju.",              "image": "Images/Unit21/1.webp", "audio": "Audio/Unit21/03_Chapter 1.mp3" },
+      { "text": "That's his bicycle.",       "image": "Images/Unit21/1.webp", "audio": "Audio/Unit21/04_Chapter 1.mp3" },
+      { "text": "That bicycle is his.",      "image": "Images/Unit21/1.webp", "audio": "Audio/Unit21/05_Chapter 1.mp3" },
+  
+      { "text": "That's Saira.",             "image": "Images/Unit21/2.webp", "audio": "Audio/Unit21/06_Chapter 1.mp3" },
+      { "text": "That's her lamp.",          "image": "Images/Unit21/2.webp", "audio": "Audio/Unit21/07_Chapter 1.mp3" },
+      { "text": "That lamp is hers.",        "image": "Images/Unit21/2.webp", "audio": "Audio/Unit21/08_Chapter 1.mp3" },
+  
+      { "text": "That's Thomas.",            "image": "Images/Unit21/3.webp", "audio": "Audio/Unit21/09_Chapter 1.mp3" },
+      { "text": "That's his backpack.",      "image": "Images/Unit21/3.webp", "audio": "Audio/Unit21/10_Chapter 1.mp3" },
+      { "text": "That backpack is his.",     "image": "Images/Unit21/3.webp", "audio": "Audio/Unit21/11_Chapter 1.mp3" },
+  
+      { "text": "That's Reena.",             "image": "Images/Unit21/4.webp", "audio": "Audio/Unit21/12_Chapter 1.mp3" },
+      { "text": "That's her umbrella.",      "image": "Images/Unit21/4.webp", "audio": "Audio/Unit21/13_Chapter 1.mp3" },
+      { "text": "That umbrella is hers.",    "image": "Images/Unit21/4.webp", "audio": "Audio/Unit21/14_Chapter 1.mp3" }
+    ]
+  }
+  

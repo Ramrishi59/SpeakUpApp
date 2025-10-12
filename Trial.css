@@ -146,7 +146,7 @@ main{
 #wordImage{ margin-top: 0 !important; }
 
 /* Nudge the word image down a tiny bit without changing layout/scroll */
-.word-display.has-image{ --img-nudge: 14px; }
+.word-display.has-image{ --img-nudge:4px; }
 
 
 /* Word row */
