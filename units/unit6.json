@@ -4,7 +4,8 @@
     "description": "Learn to ask and answer 'Is this ...?' with Yes/No responses.",
     "thumbnail": "Images/Unit6/unit6_thumbnail.jpg",
     "words": [
-      { "text": "Is this a cat? Look. Listen. Repeat. ", "audio": "Audio/Unit6/U_6_intro.mp3" },
+      { "image": "Images/Unit6/intro1.png", "audio": "Audio/Unit6/intro.mp3" },
+      { "image": "Images/Unit6/intro2.png", "audio": "Audio/intro2/intro2.mp3" },
   
       { "text": "Is this a pencil?",       "image": "Images/Unit6/1.webp",  "audio": "Audio/Unit6/1_pencil_1.mp3" },
       { "text": "Yes, it is.",            "image": "Images/Unit6/1.webp", "audio": "Audio/Unit6/2_pencil_2.mp3" },
@@ -35,7 +36,9 @@
       { "text": "Yes, it is.",            "image": "Images/Unit6/9.webp",  "audio": "Audio/Unit6/9_ruler_2.mp3" },
   
       { "text": "Is this a dog?",          "image": "Images/Unit6/10.webp", "audio": "Audio/Unit6/1-_dog_1.mp3" },
-      { "text": "Yes, it is.",            "image": "Images/Unit6/10.webp",  "audio": "Audio/Unit6/10_dog_2.mp3" }
+      { "text": "Yes, it is.",            "image": "Images/Unit6/10.webp",  "audio": "Audio/Unit6/10_dog_2.mp3" },
+
+      { "image": "Images/Unit6/outro.png", "audio": "Audio/Unit6/outro.mp3" }
     ]
   }
   

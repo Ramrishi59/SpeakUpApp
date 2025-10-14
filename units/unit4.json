@@ -4,7 +4,8 @@
     "description": "Point and say: This is … / That’s …",
     "thumbnail": "Images/Unit4/This_That.webp",
     "words": [
-      { "text": "Let us learn This and That", "audio": "Audio/Unit4/u3_00_intro.mp3" },
+      { "image": "Images/Unit4/intro1.png", "audio": "Audio/Unit4/intro1.mp3" },
+      { "image": "Images/Unit4/intro2.png", "audio": "Audio/intro2/intro2.mp3" },
   
       { "text": "This is a cat.",        "image": "Images/Unit4/u3_01_cat.png",        "audio": "Audio/Unit4/u3_01_cat.mp3" },
       { "text": "That’s a kite.",        "image": "Images/Unit4/u3_02_kite.png",       "audio": "Audio/Unit4/u3_02_kite.mp3" },
@@ -24,7 +25,7 @@
       { "text": "This is a butterfly.",  "image": "Images/Unit4/u3_11_butterfly.png",  "audio": "Audio/Unit4/u3_11_butterfly.mp3" },
       { "text": "That’s an owl.",        "image": "Images/Unit4/u3_12_owl.png",        "audio": "Audio/Unit4/u3_12_owl.mp3" },
   
-      { "text": "Well done! You learned This and That. Keep practising!", "audio": "Audio/Unit4/u3_13_outro.mp3" }
+      { "image": "Images/Unit4/outro.png", "audio": "Audio/Unit4/outro.mp3" }
     ]
   }
   

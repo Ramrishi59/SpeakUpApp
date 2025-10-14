@@ -4,7 +4,8 @@
   "description": "Learn to ask and answer with 'What is that?' using far objects (That’s …).",
   "thumbnail": "Images/Unit5/thumbnail.jpg",
   "words": [
-    { "text": "What is that? Look. Listen. Repeat.", "audio": "Audio/Unit5/u5_intro_01.mp3" },
+    { "image": "Images/Unit5/intro1.webp", "audio": "Audio/Unit5/intro.mp3" },
+    { "image": "Images/Unit5/intro2.webp", "audio": "Audio/intro2/intro2.mp3" },
 
     { "text": "That's a helicopter.", "image": "Images/Unit5/1.png",  "audio": "Audio/Unit5/u5_01.mp3" },
     { "text": "That's a bridge.",     "image": "Images/Unit5/2.png",  "audio": "Audio/Unit5/u5_02.mp3" },
@@ -17,6 +18,6 @@
     { "text": "That's a kangaroo.",   "image": "Images/Unit5/9.png",  "audio": "Audio/Unit5/u5_09.mp3" },
     { "text": "That's a peacock.",    "image": "Images/Unit5/10.png", "audio": "Audio/Unit5/u5_10.mp3" },
 
-    { "text": "Fantastic! You learned to ask and answer \"What is that?\"", "audio": "Audio/Unit5/u5_outro_01.mp3" }
+    { "image": "Images/Unit5/outro.webp", "audio": "Audio/Unit5/outro.mp3" }
   ]
 }
