@@ -66,10 +66,17 @@ const SpeakUpOutro = (() => {
     $screen.classList.add("is-playing");
 
     try{
-      if ($audio && src){ $audio.src = src; $audio.currentTime = 0; $audio.play().catch(()=>{}); }
-      else if (window.audio && src){
-        window.audio.pause(); window.audio.muted = false; window.audio.currentTime = 0;
-        window.audio.src = src; window.audio.play().catch(()=>{});
+      if ($audio && src){
+        $audio.src = src;
+        $audio.currentTime = 0;
+        $audio.play().catch(()=>{});
+      } else if (audio && src){
+        // Fallback to shared audio instance (global const), not window.audio
+        audio.pause();
+        audio.muted = false;
+        audio.currentTime = 0;
+        audio.src = src;
+        audio.play().catch(()=>{});
       }
     }catch{}
   }

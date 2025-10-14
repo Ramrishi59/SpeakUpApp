@@ -4,7 +4,8 @@
   "description": "Join words with AND.",
   "thumbnail": "Images/Unit2/and_thumbnail.jpg",
   "words": [
-    { "text": "Hello. Let us learn And", "audio": "Audio/Unit2/intro.mp3" },
+    { "image": "Images/Unit2/intro1.webp", "audio": "Audio/Unit2/intro.mp3" },
+    { "image": "Images/Unit2/intro2.webp", "audio": "Audio/Unit2/intro2.mp3" },
 
     { "text": "a book and a pen",                       "image": "Images/Unit2/a_book_and_a_pen.png",                 "audio": "Audio/Unit2/a_book_and_a_pen.mp3" },
     { "text": "a pen and a pencil",                     "image": "Images/Unit2/a_pen_and_a_pencil.png",               "audio": "Audio/Unit2/a_pen_and_a_pencil.mp3" },
@@ -25,6 +26,6 @@
     { "text": "a snake and a frog",                     "image": "Images/Unit2/a_snake_and_a_frog.png",               "audio": "Audio/Unit2/a_snake_and_a_frog.mp3" },
     { "text": "a pig, a duck and a hen",                "image": "Images/Unit2/a_pig_a_duck_and_a_hen.png",             "audio": "Audio/Unit2/a_pig_a_duck_and_a_hen.mp3" },
 
-    { "text": "Well done! You joined words with AND. Keep practising!",  "audio": "Audio/Unit2/Outroand.mp3" }
+    { "image": "Images/Unit2/outro.webp", "audio": "Audio/Unit2/outro.mp3" }
   ]
 }

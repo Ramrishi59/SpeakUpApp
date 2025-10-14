@@ -24,13 +24,13 @@
         "id": "unit3",
         "title": "Unit 3: What is this?",
         "description": "What is this?",
-        "thumbnail": "Images/Unit4/thumbnail.jpg"
+        "thumbnail": "Images/Unit3/thumbnail.jpg"
       },
       {
         "id": "unit4",
         "title": "Unit 4: This and That",
         "description": "Learn about This and That. Just watch, listen and repeat",
-        "thumbnail": "Images/Unit3/This_That.webp"
+        "thumbnail": "Images/Unit4/This_That.webp"
       },
       {
         "id": "unit5",
