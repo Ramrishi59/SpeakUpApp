@@ -9,7 +9,7 @@
       },
       {
         "id": "unit1-practice",
-        "title": "Pracrice Session- Unit 1",
+        "title": "Practice Session- Unit 1",
         "description": "Practice",
         "thumbnail": "an-quiz/Images/introquiz.webp",
         "route": "an-quiz/an-quiz.html"
@@ -22,15 +22,15 @@
       },
       {
         "id": "unit3",
-        "title": "Unit 3: This and That",
-        "description": "Learn about This and That. Just watch, listen and repeat",
-        "thumbnail": "Images/Unit3/This_That.webp"
+        "title": "Unit 3: What is this?",
+        "description": "What is this?",
+        "thumbnail": "Images/Unit4/thumbnail.jpg"
       },
       {
         "id": "unit4",
-        "title": "Unit 4: What is this?",
-        "description": "What is this?",
-        "thumbnail": "Images/Unit4/thumbnail.jpg"
+        "title": "Unit 4: This and That",
+        "description": "Learn about This and That. Just watch, listen and repeat",
+        "thumbnail": "Images/Unit3/This_That.webp"
       },
       {
         "id": "unit5",

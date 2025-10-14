@@ -1,37 +1,24 @@
 {
     "id": "unit3",
-    "name": "Unit 3: This / That",
-    "description": "Point and say: This is … / That’s …",
-    "thumbnail": "Images/Unit3/This_That.webp",
-    "introImages": [
-      "Images/Unit3/u3_03_dog.png",
-      "Images/Unit3/u3_04_duck.png",
-      "Images/Unit3/u3_05_bee.png",
-      "Images/Unit3/u3_07_frog.png",
-      "Images/Unit3/u3_09_tortoise.png"
-    ],
+    "name": "Unit 3: What is this?",
+    "description": "Learn simple sentences with 'What is this?'",
+    "thumbnail": "Images/Unit4/unit4_thumbnail.jpg",
     "words": [
-      { "text": "Hello. Let us learn This and That", "audio": "Audio/Unit3/u3_00_intro.mp3" },
+      { "text": "What is this?", "audio": "Audio/Unit4/u4_intro_01.mp3" },
+      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit4/u4_intro_02.mp3" },
   
-      { "text": "This is a cat.",        "image": "Images/Unit3/u3_01_cat.png",        "audio": "Audio/Unit3/u3_01_cat.mp3" },
-      { "text": "That’s a kite.",        "image": "Images/Unit3/u3_02_kite.png",       "audio": "Audio/Unit3/u3_02_kite.mp3" },
+      { "text": "It’s a pencil.",       "image": "Images/Unit4/1.png",  "audio": "Audio/Unit4/u4_01_pencil.mp3" },
+      { "text": "It’s an umbrella.",    "image": "Images/Unit4/2.png",  "audio": "Audio/Unit4/u4_02_umbrella.mp3" },
+      { "text": "It’s a cat.",          "image": "Images/Unit4/3.png",  "audio": "Audio/Unit4/u4_03_cat.mp3" },
+      { "text": "It’s an orange.",      "image": "Images/Unit4/4.png",  "audio": "Audio/Unit4/u4_04_orange.mp3" },
+      { "text": "It’s an egg.",         "image": "Images/Unit4/5.png",  "audio": "Audio/Unit4/u4_05_egg.mp3" },
+      { "text": "It’s a water bottle.", "image": "Images/Unit4/6.png",  "audio": "Audio/Unit4/u4_06_water_bottle.mp3" },
+      { "text": "It’s a teddy bear.",   "image": "Images/Unit4/7.png",  "audio": "Audio/Unit4/u4_07_teddy_bear.mp3" },
+      { "text": "It’s an eraser.",      "image": "Images/Unit4/8.png",  "audio": "Audio/Unit4/u4_08_eraser.mp3" },
+      { "text": "It’s a backpack.",     "image": "Images/Unit4/9.png",  "audio": "Audio/Unit4/u4_09_backpack.mp3" },
+      { "text": "It’s a ruler.",        "image": "Images/Unit4/10.png", "audio": "Audio/Unit4/u4_10_ruler.mp3" },
   
-      { "text": "This is a dog.",        "image": "Images/Unit3/u3_03_dog.png",        "audio": "Audio/Unit3/u3_03_dog.mp3" },
-      { "text": "That’s a duck.",        "image": "Images/Unit3/u3_04_duck.png",       "audio": "Audio/Unit3/u3_04_duck.mp3" },
-  
-      { "text": "This is a bee.",        "image": "Images/Unit3/u3_05_bee.png",        "audio": "Audio/Unit3/u3_05_bee.mp3" },
-      { "text": "That’s a bird.",        "image": "Images/Unit3/u3_06_bird.png",       "audio": "Audio/Unit3/u3_06_bird.mp3" },
-  
-      { "text": "This is a frog.",       "image": "Images/Unit3/u3_07_frog.png",       "audio": "Audio/Unit3/u3_07_frog.mp3" },
-      { "text": "That’s a snake.",       "image": "Images/Unit3/u3_08_snake.png",      "audio": "Audio/Unit3/u3_08_snake.mp3" },
-  
-      { "text": "This is a tortoise.",   "image": "Images/Unit3/u3_09_tortoise.png",   "audio": "Audio/Unit3/u3_09_tortoise.mp3" },
-      { "text": "That’s a tiger.",       "image": "Images/Unit3/u3_10_tiger.png",      "audio": "Audio/Unit3/u3_10_tiger.mp3" },
-  
-      { "text": "This is a butterfly.",  "image": "Images/Unit3/u3_11_butterfly.png",  "audio": "Audio/Unit3/u3_11_butterfly.mp3" },
-      { "text": "That’s an owl.",        "image": "Images/Unit3/u3_12_owl.png",        "audio": "Audio/Unit3/u3_12_owl.mp3" },
-  
-      { "text": "Well done! You learned This and That. Keep practising!", "audio": "Audio/Unit3/u3_13_outro.mp3" }
+      { "text": "Well done! Keep practising!", "audio": "Audio/Unit4/u4_outro_01.mp3" }
     ]
   }
   
