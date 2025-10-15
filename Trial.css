@@ -28,6 +28,9 @@
   --img-scale: 1;
   --img-nudge: 0svh;
   --img-shift: 12px;          /* visual downward shift for the image */
+  /* unified transform inputs so we can animate without clobbering */
+  --base-shift: calc(var(--img-nudge) + var(--img-shift));
+  --base-scale: var(--img-scale);
 
   /* Legacy button typography (kept for safety) */
   --btn-h: 68px;
@@ -148,8 +151,8 @@ main{
   filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
   border-radius:16px;
 
-  /* KEY: combine your tiny nudge + the new visual shift */
-  transform: translateY(calc(var(--img-nudge) + var(--img-shift))) scale(var(--img-scale));
+  /* KEY: combine tiny nudge + safe visual shift using unified vars */
+  transform: translateY(var(--base-shift)) scale(var(--base-scale));
   transform-origin:center;
   will-change: transform;
 }
@@ -159,6 +162,18 @@ main{
 
 /* Nudge the word image down a tiny bit without changing layout/scroll */
 .word-display.has-image{ --img-nudge:1px; }
+
+/* Tiny float animation for intro mascot images; respects reduced motion */
+body.intro-mascot #wordImage{
+  animation: mascotFloat 1.5s var(--fx-ease) infinite;
+}
+@keyframes mascotFloat{
+  0%,100% { transform: translateY(calc(var(--base-shift) - 2px)) scale(var(--base-scale)); }
+  50%     { transform: translateY(calc(var(--base-shift) + 4px))  scale(var(--base-scale)); }
+}
+@media (prefers-reduced-motion: reduce){
+  body.intro-mascot #wordImage{ animation: none !important; }
+}
 
 /* Word row */
 .word-block{
@@ -592,9 +607,10 @@ body.intro-mascot .image-wrap{
   padding-bottom: var(--intro-mascot-shift);
 }
 
-body.intro-mascot #wordImage{
-  /* bigger + lower, independent of normal slides */
-  transform: translateY(var(--intro-mascot-shift)) scale(var(--intro-mascot-scale));
+/* When in intro mascot mode, switch the unified vars for transform */
+body.intro-mascot{
+  --base-shift: var(--intro-mascot-shift);
+  --base-scale: var(--intro-mascot-scale);
 }
 
 /* Dock-aware: bias a tad more when the fixed footer is visible */
