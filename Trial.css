@@ -44,6 +44,10 @@
   --coin-gap: clamp(28px, 8vw, calc(var(--coin-size) * 0.6));
     /* space reserved when the footer is visible */
     --footer-pad: calc(var(--coin-size) + 24px);
+
+    --intro-mascot-cap: 52svh;    /* taller image track for intros */
+    --intro-mascot-scale: 1.14;   /* make the mascot bigger */
+    --intro-mascot-shift: 6svh;   /* push it lower on the page */
 }
 
 /* ------------------------------
@@ -570,4 +574,37 @@ body.has-dock #outroScreen{
     + 24px                  /* breathing room */
     + env(safe-area-inset-bottom)
   );
+}
+
+/* Only for intro mascot slides (auto-flagged in JS) */
+body.intro-mascot .word-display{
+  grid-template-rows:
+    auto
+    minmax(220px, calc(var(--intro-mascot-cap) + var(--intro-mascot-shift)))
+    minmax(90px, 18svh)
+    auto;
+}
+
+body.intro-mascot .image-wrap{
+  /* give the image room and prevent cropping */
+  height: clamp(220px, var(--intro-mascot-cap), 560px);
+  overflow: visible;
+  padding-bottom: var(--intro-mascot-shift);
+}
+
+body.intro-mascot #wordImage{
+  /* bigger + lower, independent of normal slides */
+  transform: translateY(var(--intro-mascot-shift)) scale(var(--intro-mascot-scale));
+}
+
+/* Dock-aware: bias a tad more when the fixed footer is visible */
+body.has-dock.intro-mascot{
+  --intro-mascot-cap: 48svh;
+  --intro-mascot-shift: 7svh;
+}
+
+/* (optional) per-unit tuning */
+body.unit-unit5.intro-mascot{
+  --intro-mascot-scale: 1.18;
+  --intro-mascot-shift: 7svh;
 }

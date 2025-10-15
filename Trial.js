@@ -1,4 +1,5 @@
 let screens = [];
+let firstTextIndex = 0;
 let currentIndex = 0;
 
 let userInteracted = false;
@@ -190,6 +191,10 @@ async function render(i) {
   const item = screens[i];
   if (!item) return;
 
+  // Mark intro mascot slides: image-only items before the first text/video
+  const isIntroMascot = !!(item?.image && !item?.text && !item?.video && i < firstTextIndex);
+  document.body.classList.toggle('intro-mascot', isIntroMascot);
+
   // reset screens/media
   els.introScreen.style.display = "none";
   els.wordScreen.style.display  = "none";
@@ -319,6 +324,11 @@ async function loadUnit(id){ const r = await fetch(`units/${id}.json`, { cache: 
   const titleEl = document.getElementById("unitTitle");
   if (titleEl && unit.name) titleEl.textContent = unit.name;
   screens = Array.isArray(unit?.words) ? unit.words : [];
+  // After loading screens, compute the first non-intro index
+  (function findFirstText(){
+    firstTextIndex = screens.findIndex(it => it?.text || it?.video);
+    if (firstTextIndex < 0) firstTextIndex = screens.length; // if all image-only
+  })();
   currentIndex = 0;
   render(currentIndex);
 })();
