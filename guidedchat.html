@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Let Us Speak</title>
+  <link rel="preload" as="fetch" href="" id="unitJsonPreload">
+  <link rel="stylesheet" href="guidedchat.css">
+  <!-- If you load a global app CSS, include it before guidedchat.css -->
+</head>
+<body>
+  <header class="gc-header">
+    <h1 id="gcTitle">Let Us Speak</h1>
+    <a class="gc-back" id="gcBack" href="./">← Back</a>
+  </header>
+
+  <main class="gc-main">
+    <div class="word-display has-image" id="gcDisplay">
+      <div id="gcImageWrap">
+        <img id="gcImage" alt="Guided Chat" />
+      </div>
+      <div id="gcText" class="gc-text"></div>
+
+      <div class="gc-controls">
+        <button id="gcStart" class="btn-primary">Start</button>
+        <button id="gcRepeat" class="btn-secondary" disabled>Repeat round</button>
+        <button id="gcNext" class="btn-secondary" disabled>Next</button>
+        <span id="gcMic" class="mic-pill hidden">🎤 Listening…</span>
+      </div>
+      <div id="gcRoundInfo" class="gc-round-info">Round 1</div>
+      <audio id="sharedAudio" preload="auto"></audio>
+    </div>
+  </main>
+
+  <footer class="gc-footer">
+    <small id="gcSupportNote"></small>
+  </footer>
+
+  <script src="guidedchat.js" defer></script>
+</body>
+</html>

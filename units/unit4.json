@@ -1,31 +1,46 @@
 {
-    "id": "unit4",
-    "name": "Unit 4: This / That",
-    "description": "Point and say: This is … / That’s …",
-    "thumbnail": "Images/Unit4/This_That.webp",
-    "words": [
-      { "image": "Images/Unit4/intro1.png", "audio": "Audio/Unit4/intro1.mp3" },
-      { "image": "Images/Unit4/intro2.png", "audio": "Audio/intro2/intro2.mp3" },
-  
-      { "text": "This is a cat.",        "image": "Images/Unit4/1.webp",        "audio": "Audio/Unit4/u3_01_cat.mp3" },
-      { "text": "That’s a kite.",        "image": "Images/Unit4/2.webp",       "audio": "Audio/Unit4/u3_02_kite.mp3" },
-  
-      { "text": "This is a dog.",        "image": "Images/Unit4/3.webp",        "audio": "Audio/Unit4/u3_03_dog.mp3" },
-      { "text": "That’s a duck.",        "image": "Images/Unit4/4.webp",       "audio": "Audio/Unit4/u3_04_duck.mp3" },
-  
-      { "text": "This is a bee.",        "image": "Images/Unit4/5.webp",        "audio": "Audio/Unit4/u3_05_bee.mp3" },
-      { "text": "That’s a bird.",        "image": "Images/Unit4/6.webp",       "audio": "Audio/Unit4/u3_06_bird.mp3" },
-  
-      { "text": "This is a frog.",       "image": "Images/Unit4/7.webp",       "audio": "Audio/Unit4/u3_07_frog.mp3" },
-      { "text": "That’s a snake.",       "image": "Images/Unit4/8.webp",      "audio": "Audio/Unit4/u3_08_snake.mp3" },
-  
-      { "text": "This is a tortoise.",   "image": "Images/Unit4/9.webp",   "audio": "Audio/Unit4/u3_09_tortoise.mp3" },
-      { "text": "That’s a tiger.",       "image": "Images/Unit4/10.webp",      "audio": "Audio/Unit4/u3_10_tiger.mp3" },
-  
-      { "text": "This is a butterfly.",  "image": "Images/Unit4/11.webp",  "audio": "Audio/Unit4/u3_11_butterfly.mp3" },
-      { "text": "That’s an owl.",        "image": "Images/Unit4/12.webp",        "audio": "Audio/Unit4/u3_12_owl.mp3" },
-  
-      { "image": "Images/Unit4/outro.png", "audio": "Audio/Unit4/outro.mp3" }
-    ]
+  "id": "unit4",
+  "name": "Unit 4: This / That",
+  "description": "Point and say: This is … / That’s …",
+  "thumbnail": "Images/Unit4/This_That.webp",
+
+  "words": [
+    { "image": "Images/Unit4/intro1.png", "audio": "Audio/Unit4/intro1.mp3" },
+    { "image": "Images/Unit4/intro2.png", "audio": "Audio/Unit4/intro2.mp3" },
+
+    { "text": "This is a cat.",        "image": "Images/Unit4/1.webp",  "audio": "Audio/Unit4/u3_01_cat.mp3" },
+    { "text": "That’s a kite.",        "image": "Images/Unit4/2.webp",  "audio": "Audio/Unit4/u3_02_kite.mp3" },
+
+    { "text": "This is a dog.",        "image": "Images/Unit4/3.webp",  "audio": "Audio/Unit4/u3_03_dog.mp3" },
+    { "text": "That’s a duck.",        "image": "Images/Unit4/4.webp",  "audio": "Audio/Unit4/u3_04_duck.mp3" },
+
+    { "text": "This is a bee.",        "image": "Images/Unit4/5.webp",  "audio": "Audio/Unit4/u3_05_bee.mp3" },
+    { "text": "That’s a bird.",        "image": "Images/Unit4/6.webp",  "audio": "Audio/Unit4/u3_06_bird.mp3" },
+
+    { "text": "This is a frog.",       "image": "Images/Unit4/7.webp",  "audio": "Audio/Unit4/u3_07_frog.mp3" },
+    { "text": "That’s a snake.",       "image": "Images/Unit4/8.webp",  "audio": "Audio/Unit4/u3_08_snake.mp3" },
+
+    { "text": "This is a tortoise.",   "image": "Images/Unit4/9.webp",  "audio": "Audio/Unit4/u3_09_tortoise.mp3" },
+    { "text": "That’s a tiger.",       "image": "Images/Unit4/10.webp", "audio": "Audio/Unit4/u3_10_tiger.mp3" },
+
+    { "text": "This is a butterfly.",  "image": "Images/Unit4/11.webp", "audio": "Audio/Unit4/u3_11_butterfly.mp3" },
+    { "text": "That’s an owl.",        "image": "Images/Unit4/12.webp", "audio": "Audio/Unit4/u3_12_owl.mp3" },
+
+    { "image": "Images/Unit4/outro.png", "audio": "Audio/Unit4/outro.mp3" }
+  ],
+
+  "guidedChat": {
+    "title": "Let Us Speak – This and That",
+    "introAudio": "Audio/LetUsSpeak/U4_LUS_01_Intro.mp3",
+    "rounds": [
+      { "prompt": "Audio/LetUsSpeak/U4_LUS_02_Prompt1.mp3", "correct": "Audio/LetUsSpeak/U4_LUS_03_Correct1.mp3", "retry": "Audio/LetUsSpeak/U4_LUS_04_Retry1.mp3", "keywordsAny": [["this","it’s","its"], ["cat","kitty"]] },
+      { "prompt": "Audio/LetUsSpeak/U4_LUS_05_Prompt2.mp3", "correct": "Audio/LetUsSpeak/U4_LUS_06_Correct2.mp3", "retry": "Audio/LetUsSpeak/U4_LUS_07_Retry2.mp3", "keywordsAny": [["that","that’s"], ["kite"]] },
+      { "prompt": "Audio/LetUsSpeak/U4_LUS_08_Prompt3.mp3", "correct": "Audio/LetUsSpeak/U4_LUS_09_Correct3.mp3", "retry": "Audio/LetUsSpeak/U4_LUS_04_Retry1.mp3", "keywordsAny": [["this","it’s","its"], ["dog","puppy"]] },
+      { "prompt": "Audio/LetUsSpeak/U4_LUS_10_Prompt4.mp3", "correct": "Audio/LetUsSpeak/U4_LUS_11_Correct4.mp3", "retry": "Audio/LetUsSpeak/U4_LUS_07_Retry2.mp3", "keywordsAny": [["that","that’s"], ["duck"]] },
+      { "prompt": "Audio/LetUsSpeak/U4_LUS_12_Prompt5.mp3", "correct": "Audio/LetUsSpeak/U4_LUS_15_PraiseFast.mp3", "retry": "Audio/LetUsSpeak/U4_LUS_04_Retry1.mp3", "keywordsAny": [["this","it’s","its"], ["frog"]] },
+      { "prompt": "Audio/LetUsSpeak/U4_LUS_13_Prompt6.mp3", "correct": "Audio/LetUsSpeak/U4_LUS_15_PraiseFast.mp3", "retry": "Audio/LetUsSpeak/U4_LUS_07_Retry2.mp3", "keywordsAny": [["that","that’s"], ["tiger"]] },
+      { "prompt": "Audio/LetUsSpeak/U4_LUS_14_Prompt7.mp3", "correct": "Audio/LetUsSpeak/U4_LUS_15_PraiseFast.mp3", "retry": "Audio/LetUsSpeak/U4_LUS_04_Retry1.mp3", "keywordsAny": [["this","it’s","its"], ["butterfly"]] }
+    ],
+    "outroAudio": "Audio/LetUsSpeak/U4_LUS_16_Outro.mp3"
   }
-  
+}
