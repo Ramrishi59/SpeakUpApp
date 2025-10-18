@@ -125,7 +125,7 @@
         </div>
       </div>
 
-  
+      <div class="prompt" id="prompt"></div>
       <div class="answer-text" id="answerText" aria-live="polite"></div>
 
       <div class="controls">
@@ -291,8 +291,8 @@
       phase = 'reveal';
       const it = ITEMS[idx];
       els.btnReveal.disabled = true;
-      // Show the prompt only now
-      
+      // Show the prompt container (no text)
+      els.prompt.textContent = '';
       els.prompt.classList.remove('hidden');
       els.answerText.textContent = it.answerText;
       els.answerText.classList.add('sparkle');
