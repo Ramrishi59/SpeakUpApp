@@ -125,7 +125,7 @@
         </div>
       </div>
 
-      <div class="prompt" id="prompt">Say it aloud…</div>
+  
       <div class="answer-text" id="answerText" aria-live="polite"></div>
 
       <div class="controls">
@@ -158,12 +158,12 @@
 
     // ----- Replace this array with your content, or load from JSON later -----
     let ITEMS = [
-      { image:"Images/2.webp", questionAudio:"Audio/02_Chapter 1.mp3", answerText:"",  reactionAudio:"Audio/02_Chapter 1.mp3" },
-      { image:"Images/3.webp", questionAudio:"Audio/03_Chapter 1.mp3",   answerText:"", reactionAudio:"Audio/03_Chapter 1.mp3" },
-      { image:"Images/4.webp", questionAudio:"Audio/04_Chapter 1.mp3",   answerText:"",  reactionAudio:"Audio/04_Chapter 1.mp3" },
-      { image:"Images/5.webp", questionAudio:"Audio/SD/u3/q_004.mp3",   answerText:"Yes, it is. A duck.", reactionAudio:"Audio/SD/u3/r_004.mp3" },
-      { image:"Images/6.webp", questionAudio:"Audio/SD/u3/q_005.mp3",   answerText:"Yes, it is. A bee.",  reactionAudio:"Audio/SD/u3/r_005.mp3" },
-      { image:"Images/7.webp", questionAudio:"Audio/SD/u3/q_006.mp3",   answerText:"Yes, it is. A snake.",reactionAudio:"Audio/SD/u3/r_006.mp3" }
+      { image:"Images/2.webp", answerText:"Those are Stars",  reactionAudio:"Audio/02_Chapter 1.mp3" },
+      { image:"Images/3.webp", answerText:"Those are Butterflies", reactionAudio:"Audio/03_Chapter 1.mp3" },
+      { image:"Images/4.webp", answerText:"These are Pencils",  reactionAudio:"Audio/04_Chapter 1.mp3" },
+      { image:"Images/5.webp", answerText:"These are Waterbottles", reactionAudio:"Audio/05_Chapter 1.mp3" },
+      { image:"Images/6.webp", answerText:"These are Apples",  reactionAudio:"Audio/06_Chapter 1.mp3" },
+      { image:"Images/7.webp", answerText:"These are Books.",reactionAudio:"Audio/07_Chapter 1.mp3" }
     ];
 
     const INTRO_SRC = "Audio/01_Chapter 1.mp3";
@@ -208,7 +208,6 @@
         if(Array.isArray(json?.items) && json.items.length){
           ITEMS = json.items.map(it => ({
             image: it.image,
-            questionAudio: it.questionAudio,
             answerText: it.answerText,
             reactionAudio: it.reactionAudio
           }));
@@ -260,16 +259,18 @@
       els.outro.classList.remove('show');
       els.answerText.textContent='';
       els.answerText.classList.remove('sparkle');
+      // Hide the prompt until user clicks Reveal
+      els.prompt.classList.add('hidden');
+      els.prompt.textContent = '';
       els.btnReveal.disabled = true;
     }
-
-    // Config: whether to auto-play the question audio on item load
-    const PLAY_QUESTION_ON_LOAD = false; // per Rishi's request: no auto-play until Reveal
 
     function renderItem(){
       const it = ITEMS[idx];
       updateProgress();
-      els.prompt.textContent = 'Say it aloud…';
+      // Keep prompt hidden until Reveal
+      els.prompt.classList.add('hidden');
+      els.prompt.textContent = '';
       els.answerText.textContent = '';
       els.answerText.classList.remove('sparkle');
       els.btnReveal.disabled = true;
@@ -281,12 +282,8 @@
         els.itemImage.classList.add('show');
       }));
 
-      // Do not auto-play question. Enable Reveal after image fade for smoothness.
-      if (PLAY_QUESTION_ON_LOAD && it.questionAudio){
-        playVO(it.questionAudio, { onend: () => { els.btnReveal.disabled = false; }});
-      } else {
-        setTimeout(() => { els.btnReveal.disabled = false; }, 900);
-      }
+      // Enable Reveal after image fade for smoothness (no question audio)
+      setTimeout(() => { els.btnReveal.disabled = false; }, 900);
     }
 
     function reveal(){
@@ -294,6 +291,9 @@
       phase = 'reveal';
       const it = ITEMS[idx];
       els.btnReveal.disabled = true;
+      // Show the prompt only now
+      
+      els.prompt.classList.remove('hidden');
       els.answerText.textContent = it.answerText;
       els.answerText.classList.add('sparkle');
 
@@ -334,8 +334,7 @@
       const it = ITEMS[nextIndex];
       // Image
       const img = new Image(); img.src = it.image;
-      // Audios
-      const a1 = new Audio(); a1.preload = 'auto'; a1.src = it.questionAudio;
+      // Audio (reaction only)
       const a2 = new Audio(); a2.preload = 'auto'; a2.src = it.reactionAudio;
     }
 
