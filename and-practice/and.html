@@ -1,387 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Speak & Discover — Answer Reveal (v1.0)</title>
-  <style>
-    /* =========================================================
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Speak & Discover — Answer Reveal (v1.0)</title>
+    <style>
+        /* =========================================================
        Speak & Discover — v1.0 (single-file)
        Layout: Intro → Question → Reveal/Reaction → Auto-Next → Outro
        Notes: No Next button; single Reveal tap per item; preloading enabled.
     ========================================================= */
 
-    :root{
-      --sky1:#bde7ff;
-      --sky2:#9dd8ff;
-      --ink:#1f2937;
-      --card:#ffffff;
-      --accent:#1ea7fd;    /* primary (Reveal/Start) */
-      --accent2:#10b981;   /* secondary (Home/Replay) */
-      --btn-h:56px;
-      --radius:24px;
-      --shadow:0 10px 30px rgba(0,0,0,.10);
-      --wrap:960px;
-      --pad:clamp(12px,2svh,20px);
-      --img-cap:40svh; /* keep room below for answer text */
-    }
+        :root {
+            --sky1: #10b981;
+            --sky2: #9dd8ff;
+            --ink: #1f2937;
+            --card: #3ca685;
+            --accent: #1ea7fd;
+            /* primary (Reveal/Start) */
+            --accent2: #10b981;
+            /* secondary (Home/Replay) */
+            --btn-h: 76px;
+            --radius: 24px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, .10);
+            --wrap: 960px;
+            --pad: clamp(12px, 2svh, 20px);
+            --img-cap: 40svh;
+            /* keep room below for answer text */
+        }
 
-    *{ box-sizing:border-box }
-    html,body{ height:100% }
-    body{
-      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      color:var(--ink);
-      background:linear-gradient(180deg,var(--sky1),var(--sky2));
-      display:flex; align-items:center; justify-content:center;
-    }
-    .app{ width:100%; max-width:var(--wrap); padding:var(--pad); }
+        * {
+            box-sizing: border-box
+        }
 
-    .card{ background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
-      padding:clamp(12px,2svh,24px); display:grid; gap:clamp(10px,1.8svh,18px); }
+        html,
+        body {
+            height: 100%
+        }
 
-    /* Intro */
-    .intro{ min-height:calc(100svh - 2*var(--pad)); display:grid; place-items:center; gap:18px; text-align:center; }
-    .intro .manku{ width:min(46svw,280px); height:auto; filter: drop-shadow(0 6px 20px rgba(0,0,0,.12)); }
-    .title{ font-weight:900; font-size:clamp(22px,3svh,32px); margin:0; }
-    .subtitle{ opacity:.85; font-weight:600; font-size:clamp(16px,2.2svh,18px); }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+            color: var(--ink);
+            background: linear-gradient(180deg, var(--sky1), var(--sky2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    /* Stage */
-    .stage{ min-height:calc(100svh - 2*var(--pad));
-      display:grid; grid-template-rows:auto minmax(40svh,1fr) auto auto; gap:clamp(8px,1.6svh,16px); }
+        .app {
+            width: 100%;
+            max-width: var(--wrap);
+            padding: var(--pad);
+        }
 
-    .titlebar{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
-    .titlebar h1{ margin:0; font-size:clamp(18px,2.4svh,22px); font-weight:800; }
-    .progress{ font-weight:700; opacity:.8; }
 
-    .image-wrap{ display:grid; place-items:center; }
-    .image-frame{ max-height:var(--img-cap); aspect-ratio:1/1; width:min(70svw,520px); border-radius:20px;
-      background:linear-gradient(180deg,#ffffff,#f6fbff); display:grid; place-items:center; overflow:hidden; border:1px solid #eef3f7; }
-    #itemImage{ max-width:100%; max-height:100%; object-fit:contain; display:block; opacity:0; transform:scale(1.02); transition:opacity .8s ease, transform .8s ease; }
-    #itemImage.show{ opacity:1; transform:scale(1); }
+        /* Intro */
+        .intro {
+            min-height: calc(100svh - 2*var(--pad));
+            display: grid;
+            place-items: center;
+            gap: 18px;
+            text-align: center;
+        }
 
-    .prompt{ text-align:center; font-size:clamp(16px,2.2svh,20px); font-weight:700; min-height:2.2em; display:grid; place-items:center; }
-    .answer-text{ text-align:center; font-size:clamp(20px,2.8svh,26px); font-weight:900; min-height:2.6em; position:relative; }
+        .intro .manku {
+            width: min(60svw, 340px);
+            height: auto;
+            filter: drop-shadow(0 6px 20px rgba(0, 0, 0, .12));
+        }
 
-    /* Sparkle behind answer text during reaction */
-    .answer-text.sparkle::before{ content:""; position:absolute; inset:-6px; z-index:-1;
-      background: radial-gradient(closest-side, rgba(255,255,255,.9), rgba(255,255,255,0) 70%),
-                  radial-gradient(closest-side, rgba(255,255,255,.7), rgba(255,255,255,0) 70%);
-      background-position: 20% 40%, 80% 60%;
-      background-size: 140px 140px, 120px 120px; background-repeat:no-repeat; filter:blur(1px);
-      animation: twinkle 2.2s ease-in-out infinite alternate; border-radius:16px; }
-    @keyframes twinkle{ to{ background-position: 30% 35%, 70% 65%; } }
+        .title {
+            font-weight: 900;
+            font-size: clamp(22px, 3svh, 32px);
+            margin: 0;
+        }
 
-    .controls{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
-    .btn{ appearance:none; border:0; border-radius:999px; padding:0 22px; height:var(--btn-h);
-      font-weight:900; font-size:16px; letter-spacing:.2px; cursor:pointer;
-      transition:transform .06s ease, box-shadow .2s ease, opacity .2s; box-shadow:0 6px 16px rgba(0,0,0,.08);
-      display:inline-flex; align-items:center; justify-content:center; }
-    .btn:active{ transform:translateY(1px); }
-    .btn.primary{ background:var(--accent); color:#fff; }
-    .btn.secondary{ background:var(--accent2); color:#fff; }
-    .btn.ghost{ background:#f1f5f9; }
-    .btn[disabled]{ opacity:.5; cursor:not-allowed; }
+        .subtitle {
+            opacity: .85;
+            font-weight: 600;
+            font-size: clamp(16px, 2.2svh, 18px);
+        }
 
-    /* Outro */
-    .outro{ display:none; text-align:center; min-height:calc(100svh - 2*var(--pad)); align-content:center; gap:18px; }
-    .outro.show{ display:grid; }
-    .outro .big{ font-size:clamp(22px,3svh,30px); font-weight:900; }
-    .outro .manku{ width:min(44svw,260px); }
+        /* Stage */
+        .stage {
+            min-height: calc(100svh - 2*var(--pad));
+            display: grid;
+            grid-template-rows: auto minmax(40svh, 1fr) auto auto;
+            gap: clamp(8px, 1.6svh, 16px);
+        }
 
-    /* Confetti (gentle, used for outro only) */
-    .confetti{ position:fixed; inset:0; pointer-events:none; z-index:25; overflow:hidden; }
-    .piece{ position:absolute; top:-10vh; width:10px; height:14px; border-radius:2px; opacity:.85; animation:fall linear forwards; }
-    @keyframes fall{ to{ transform:translateY(120vh) rotate(540deg); } }
+        .titlebar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
 
-    /* Visibility helpers */
-    .hidden{ display:none !important; }
-  </style>
+        .titlebar h1 {
+            margin: 0;
+            font-size: clamp(18px, 2.4svh, 22px);
+            font-weight: 800;
+        }
+
+        .progress {
+            font-weight: 700;
+            opacity: .8;
+        }
+
+        .image-wrap {
+            display: grid;
+            place-items: center;
+        }
+
+        .image-frame {
+            max-height: var(--img-cap);
+            aspect-ratio: 1/1;
+            width: min(70svw, 520px);
+            border-radius: 20px;
+            background: linear-gradient(180deg, #ffffff, #f6fbff);
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            border: 1px solid #eef3f7;
+        }
+
+        #itemImage {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+            opacity: 0;
+            transform: scale(1.02);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+
+        #itemImage.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .prompt {
+            text-align: center;
+            font-size: clamp(16px, 2.2svh, 20px);
+            font-weight: 700;
+            min-height: 2.2em;
+            display: grid;
+            place-items: center;
+        }
+
+        .answer-text {
+            text-align: center;
+            font-size: clamp(20px, 2.8svh, 26px);
+            font-weight: 900;
+            min-height: 2.6em;
+            position: relative;
+        }
+
+        /* Sparkle behind answer text during reaction */
+        .answer-text.sparkle::before {
+            content: "";
+            position: absolute;
+            inset: -6px;
+            z-index: -1;
+            background: radial-gradient(closest-side, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 70%),
+                radial-gradient(closest-side, rgba(255, 255, 255, .7), rgba(255, 255, 255, 0) 70%);
+            background-position: 20% 40%, 80% 60%;
+            background-size: 140px 140px, 120px 120px;
+            background-repeat: no-repeat;
+            filter: blur(1px);
+            animation: twinkle 2.2s ease-in-out infinite alternate;
+            border-radius: 16px;
+        }
+
+        @keyframes twinkle {
+            to {
+                background-position: 30% 35%, 70% 65%;
+            }
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            appearance: none;
+            border: 0;
+            border-radius: 999px;
+            padding: 0 30px;
+            height: var(--btn-h);
+            min-width: 160px;
+            font-weight: 900;
+            font-size: 16px;
+            letter-spacing: .2px;
+            cursor: pointer;
+            transition: transform .06s ease, box-shadow .2s ease, opacity .2s;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .btn.secondary {
+            background: var(--accent2);
+            color: #fff;
+        }
+
+        .btn.ghost {
+            background: #f1f5f9;
+        }
+
+        .btn[disabled] {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        /* Outro */
+        .outro {
+            display: none;
+            text-align: center;
+            min-height: calc(100svh - 2*var(--pad));
+            align-content: center;
+            gap: 18px;
+        }
+
+        .outro.show {
+            display: grid;
+        }
+
+        .outro .big {
+            font-size: clamp(22px, 3svh, 30px);
+            font-weight: 900;
+        }
+
+        .outro .manku {
+            width: min(44svw, 260px);
+        }
+
+        /* Confetti (gentle, used for outro only) */
+        .confetti {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 25;
+            overflow: hidden;
+        }
+
+        .piece {
+            position: absolute;
+            top: -10vh;
+            width: 10px;
+            height: 14px;
+            border-radius: 2px;
+            opacity: .85;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(120vh) rotate(540deg);
+            }
+        }
+
+        /* Visibility helpers */
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
+
 <body>
-  <main class="app">
+    <main class="app">
 
-    <!-- Intro Screen -->
-    <section class="card intro" id="intro">
-      <img class="manku" id="introManku" src="Images/1.webp" alt="Manku the monkey" />
-      <div>
-        <h1 class="title">Speak and Discover!</h1>
-        <div class="subtitle">Ask, Answer, and Check with Manku!</div>
-      </div>
-      <div class="controls">
-        <button id="btnStart" class="btn primary">Play</button>
-      </div>
-    </section>
+        <!-- Intro Screen -->
+        <section class="card intro" id="intro">
+            <img class="manku" id="introManku" src="Images/1.webp" alt="Manku the monkey" />
+            <div>
+                <h1 class="title">Speak and Discover!</h1>
+                <div class="subtitle">Ask, Answer, and Check with Manku!</div>
+            </div>
+            <div class="controls">
+                <button id="btnStart" class="btn primary">Play</button>
+            </div>
+        </section>
 
-    <!-- Question / Reveal Stage -->
-    <section class="card stage hidden" id="stage" aria-live="polite">
-      <header class="titlebar">
-        <h1>Speak and Discover!</h1>
-        <div class="progress" id="progress">1 / 1</div>
-      </header>
+        <!-- Question / Reveal Stage -->
+        <section class="card stage hidden" id="stage" aria-live="polite">
+            <header class="titlebar">
+                <h1>Speak and Discover!</h1>
+                <div class="progress" id="progress">1 / 1</div>
+            </header>
 
-      <div class="image-wrap">
-        <div class="image-frame">
-          <img id="itemImage" alt="Picture" />
-        </div>
-      </div>
+            <div class="image-wrap">
+                <div class="image-frame">
+                    <img id="itemImage" alt="Picture" />
+                </div>
+            </div>
 
-      <div class="prompt" id="prompt"></div>
-      <div class="answer-text" id="answerText" aria-live="polite"></div>
+            <div class="prompt" id="prompt"></div>
+            <div class="answer-text" id="answerText" aria-live="polite"></div>
 
-      <div class="controls">
-        <button id="btnReveal" class="btn primary" disabled>Reveal</button>
-      </div>
-    </section>
+            <div class="controls">
+                <button id="btnReveal" class="btn primary" disabled>Reveal</button>
+            </div>
+        </section>
 
-    <!-- Outro Screen -->
-    <section class="card outro" id="outro">
-      <img class="manku" alt="Manku" src="Images/12.webp" />
-      <div class="big">Great job! You finished them all!</div>
-      <div class="controls">
-        <button class="btn secondary" id="outroHome">Home</button>
-        <button class="btn ghost" id="outroReplay">Replay Activity</button>
-      </div>
-    </section>
+        <!-- Outro Screen -->
+        <section class="card outro" id="outro">
+            <img class="manku" alt="Manku" src="Images/12.webp" />
+            <div class="big">Great job! You finished them all!</div>
+            <div class="controls">
+                <button class="btn secondary" id="outroHome">Home</button>
+                <button class="btn ghost" id="outroReplay">Replay Activity</button>
+            </div>
+        </section>
 
-    <!-- Confetti container (outro only) -->
-    <div class="confetti" id="confetti"></div>
-  </main>
+        <!-- Confetti container (outro only) -->
+        <div class="confetti" id="confetti"></div>
+    </main>
 
-  <audio id="vo" preload="auto"></audio>
+    <audio id="vo" preload="auto"></audio>
 
-  <script>
-    // =========================================================
-    // Speak & Discover — v1.0 logic (single-file)
-    // State: 'intro' → 'question' → 'reveal'/'reaction' → auto-next → 'outro'
-    // No question autoplay; Reveal triggers reaction only.
-    // =========================================================
+    <script>
+        // =========================================================
+        // Speak & Discover — v1.0 logic (single-file)
+        // State: 'intro' → 'question' → 'reveal'/'reaction' → auto-next → 'outro'
+        // No question autoplay; Reveal triggers reaction only.
+        // =========================================================
 
-    // ----- Replace this array with your content, or load from JSON later -----
-    let ITEMS = [
-      { image:"Images/2.webp", answerText:"Those are Stars",  reactionAudio:"Audio/02_Chapter 1.mp3" },
-      { image:"Images/3.webp", answerText:"Those are Butterflies", reactionAudio:"Audio/03_Chapter 1.mp3" },
-      { image:"Images/4.webp", answerText:"These are Pencils",  reactionAudio:"Audio/04_Chapter 1.mp3" },
-      { image:"Images/5.webp", answerText:"These are Waterbottles", reactionAudio:"Audio/05_Chapter 1.mp3" },
-      { image:"Images/6.webp", answerText:"These are Apples",  reactionAudio:"Audio/06_Chapter 1.mp3" },
-      { image:"Images/7.webp", answerText:"Those are Books.",reactionAudio:"Audio/07_Chapter 1.mp3" },
-      { image:"Images/8.webp", answerText:"Those are Ships.",reactionAudio:"Audio/08_Chapter 1.mp3" },
-      { image:"Images/9.webp", answerText:"Those are Horses.",reactionAudio:"Audio/09_Chapter 1.mp3" },
-      { image:"Images/10.webp", answerText:"Those are Backpacks.",reactionAudio:"Audio/10_Chapter 1.mp3" },
-      { image:"Images/11.webp", answerText:"Those are Birds.",reactionAudio:"Audio/11_Chapter 1.mp3" }
-    ];
+        // ----- Replace this array with your content, or load from JSON later -----
+        let ITEMS = [
+            { image: "Images/2.webp", answerText: "Those are Stars", reactionAudio: "Audio/02_Chapter 1.mp3" },
+            { image: "Images/3.webp", answerText: "Those are Butterflies", reactionAudio: "Audio/03_Chapter 1.mp3" },
+            { image: "Images/4.webp", answerText: "These are Pencils", reactionAudio: "Audio/04_Chapter 1.mp3" },
+            { image: "Images/5.webp", answerText: "These are Waterbottles", reactionAudio: "Audio/05_Chapter 1.mp3" },
+            { image: "Images/6.webp", answerText: "These are Apples", reactionAudio: "Audio/06_Chapter 1.mp3" },
+            { image: "Images/7.webp", answerText: "Those are Books.", reactionAudio: "Audio/07_Chapter 1.mp3" },
+            { image: "Images/8.webp", answerText: "Those are Ships.", reactionAudio: "Audio/08_Chapter 1.mp3" },
+            { image: "Images/9.webp", answerText: "Those are Horses.", reactionAudio: "Audio/09_Chapter 1.mp3" },
+            { image: "Images/10.webp", answerText: "Those are Backpacks.", reactionAudio: "Audio/10_Chapter 1.mp3" },
+            { image: "Images/11.webp", answerText: "Those are Birds.", reactionAudio: "Audio/11_Chapter 1.mp3" }
+        ];
 
-    const INTRO_SRC = "Audio/01_Chapter 1.mp3";
-    const OUTRO_SRC = "Audio//12_Chapter 1.mp3";
+        const INTRO_SRC = "Audio/01_Chapter 1.mp3";
+        const OUTRO_SRC = "Audio//12_Chapter 1.mp3";
 
-    // DOM -----------------------------------------------------
-    const els = {
-      intro:       document.getElementById('intro'),
-      btnStart:    document.getElementById('btnStart'),
+        // DOM -----------------------------------------------------
+        const els = {
+            intro: document.getElementById('intro'),
+            btnStart: document.getElementById('btnStart'),
 
-      stage:       document.getElementById('stage'),
-      progress:    document.getElementById('progress'),
-      itemImage:   document.getElementById('itemImage'),
-      prompt:      document.getElementById('prompt'),
-      answerText:  document.getElementById('answerText'),
-      btnReveal:   document.getElementById('btnReveal'),
+            stage: document.getElementById('stage'),
+            progress: document.getElementById('progress'),
+            itemImage: document.getElementById('itemImage'),
+            prompt: document.getElementById('prompt'),
+            answerText: document.getElementById('answerText'),
+            btnReveal: document.getElementById('btnReveal'),
 
-      outro:       document.getElementById('outro'),
-      outroHome:   document.getElementById('outroHome'),
-      outroReplay: document.getElementById('outroReplay'),
+            outro: document.getElementById('outro'),
+            outroHome: document.getElementById('outroHome'),
+            outroReplay: document.getElementById('outroReplay'),
 
-      confetti:    document.getElementById('confetti'),
-      vo:          document.getElementById('vo')
-    };
+            confetti: document.getElementById('confetti'),
+            vo: document.getElementById('vo')
+        };
 
-    // State ---------------------------------------------------
-    let idx = 0;                 // current item index
-    let phase = 'intro';         // 'intro'|'question'|'reveal'|'reaction'|'outro'
-    let userInteracted = false;
-    let introHeard = false;      // becomes true after intro VO finishes once
+        // State ---------------------------------------------------
+        let idx = 0;                 // current item index
+        let phase = 'intro';         // 'intro'|'question'|'reveal'|'reaction'|'outro'
+        let userInteracted = false;
+        let introHeard = false;      // becomes true after intro VO finishes once
 
-    ['click','touchstart','keydown'].forEach(evt => {
-      window.addEventListener(evt, () => {
-        if (!userInteracted) userInteracted = true;
-      }, { passive:true });
-    });
+        ['click', 'touchstart', 'keydown'].forEach(evt => {
+            window.addEventListener(evt, () => {
+                if (!userInteracted) userInteracted = true;
+            }, { passive: true });
+        });
 
-    // Optional JSON load (non-fatal if missing)
-    fetch('units/speak_discover.json', { cache:'no-store' })
-      .then(r => r.ok ? r.json() : Promise.reject('no-json'))
-      .then(json => {
-        if(Array.isArray(json?.items) && json.items.length){
-          ITEMS = json.items.map(it => ({
-            image: it.image,
-            answerText: it.answerText,
-            reactionAudio: it.reactionAudio
-          }));
+        // Optional JSON load (non-fatal if missing)
+        fetch('units/speak_discover.json', { cache: 'no-store' })
+            .then(r => r.ok ? r.json() : Promise.reject('no-json'))
+            .then(json => {
+                if (Array.isArray(json?.items) && json.items.length) {
+                    ITEMS = json.items.map(it => ({
+                        image: it.image,
+                        answerText: it.answerText,
+                        reactionAudio: it.reactionAudio
+                    }));
+                }
+            })
+            .catch(() => { })
+            .finally(() => { boot(); });
+
+        function boot() {
+            wire();
+            showIntro();
         }
-      })
-      .catch(()=>{})
-      .finally(() => { boot(); });
 
-    function boot(){
-      wire();
-      showIntro();
-    }
+        // ---------------------- Audio helpers --------------------
+        function playVO(src, { onend } = {}) {
+            stopVO();
+            if (!src) { onend && onend(); return; }
+            els.vo.src = src; els.vo.currentTime = 0;
+            const ended = () => { els.vo.removeEventListener('ended', ended); onend && onend(); };
+            els.vo.addEventListener('ended', ended);
+            const p = els.vo.play();
+            if (p && typeof p.catch === 'function') {
+                p.catch(() => { onend && onend(); }); // if blocked, continue flow
+            }
+        }
+        function stopVO() { els.vo.pause(); try { els.vo.currentTime = 0; } catch (e) { } }
 
-    // ---------------------- Audio helpers --------------------
-    function playVO(src, {onend}={}){
-      stopVO();
-      if(!src){ onend && onend(); return; }
-      els.vo.src = src; els.vo.currentTime = 0;
-      const ended = () => { els.vo.removeEventListener('ended', ended); onend && onend(); };
-      els.vo.addEventListener('ended', ended);
-      const p = els.vo.play();
-      if(p && typeof p.catch === 'function'){
-        p.catch(()=>{ onend && onend(); }); // if blocked, continue flow
-      }
-    }
-    function stopVO(){ els.vo.pause(); try{ els.vo.currentTime = 0; }catch(e){} }
+        function updateProgress() { els.progress.textContent = `${idx + 1} / ${ITEMS.length}`; }
 
-    function updateProgress(){ els.progress.textContent = `${idx+1} / ${ITEMS.length}`; }
-
-    // ---------------------- Screens --------------------------
-    function showIntro(){
-      phase = 'intro';
-      els.intro.classList.remove('hidden');
-      els.stage.classList.add('hidden');
-      els.outro.classList.remove('show');
-      // Button shows immediately (phase 1 = Play)
-      els.btnStart.textContent = introHeard ? 'Start' : 'Play';
-      els.btnStart.classList.remove('hidden');
-    }
-
-    function startActivity(){
-      stopVO(); idx = 0; showStage(); renderItem();
-    }
-
-    function showStage(){
-      phase = 'question';
-      els.intro.classList.add('hidden');
-      els.stage.classList.remove('hidden');
-      els.outro.classList.remove('show');
-      els.answerText.textContent='';
-      els.answerText.classList.remove('sparkle');
-      // Hide the prompt until user clicks Reveal
-      els.prompt.classList.add('hidden');
-      els.prompt.textContent = '';
-      els.btnReveal.disabled = true;
-    }
-
-    function renderItem(){
-      const it = ITEMS[idx];
-      updateProgress();
-      // Keep prompt hidden until Reveal
-      els.prompt.classList.add('hidden');
-      els.prompt.textContent = '';
-      els.answerText.textContent = '';
-      els.answerText.classList.remove('sparkle');
-      els.btnReveal.disabled = true;
-
-      // Image fade-in
-      els.itemImage.classList.remove('show');
-      els.itemImage.src = it.image;
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        els.itemImage.classList.add('show');
-      }));
-
-      // Enable Reveal after image fade for smoothness (no question audio)
-      setTimeout(() => { els.btnReveal.disabled = false; }, 900);
-    }
-
-    function reveal(){
-      if(phase !== 'question') return;
-      phase = 'reveal';
-      const it = ITEMS[idx];
-      els.btnReveal.disabled = true;
-      // Show the prompt container (no text)
-      els.prompt.textContent = '';
-      els.prompt.classList.remove('hidden');
-      els.answerText.textContent = it.answerText;
-      els.answerText.classList.add('sparkle');
-
-      // Preload next assets while reaction plays
-      preloadNext(idx+1);
-
-      // Reaction (not the question)
-      playVO(it.reactionAudio, { onend: () => {
-        phase = 'reaction';
-        setTimeout(()=> advance(), 1000);
-      }});
-    }
-
-    function advance(){
-      stopVO();
-      idx++;
-      if(idx >= ITEMS.length){ showOutro(); }
-      else { phase = 'question'; renderItem(); }
-    }
-
-    function showOutro(){
-      phase = 'outro';
-      els.stage.classList.add('hidden');
-      els.outro.classList.add('show');
-      // Hide buttons until outro VO ends
-      els.outroHome.disabled = true; els.outroReplay.disabled = true;
-      spawnConfetti(110);
-      playVO(OUTRO_SRC, { onend: () => {
-        els.outroHome.disabled = false; els.outroReplay.disabled = false;
-      }});
-    }
-
-    function replayActivity(){ clearConfetti(); startActivity(); }
-
-    // ---------------------- Preloading -----------------------
-    function preloadNext(nextIndex){
-      if(nextIndex >= ITEMS.length) return;
-      const it = ITEMS[nextIndex];
-      // Image
-      const img = new Image(); img.src = it.image;
-      // Audio (reaction only)
-      const a2 = new Audio(); a2.preload = 'auto'; a2.src = it.reactionAudio;
-    }
-
-    // ---------------------- Confetti -------------------------
-    const COLORS = ['#ffd166','#06d6a0','#118ab2','#ef476f','#8338ec'];
-    function spawnConfetti(n){
-      clearConfetti();
-      const W = window.innerWidth;
-      for(let i=0;i<n;i++){
-        const d = document.createElement('div');
-        d.className = 'piece';
-        d.style.left = Math.random()*W + 'px';
-        d.style.background = COLORS[i % COLORS.length];
-        d.style.animationDuration = (5 + Math.random()*3)+'s';
-        d.style.transform = `translateY(-10vh) rotate(${Math.random()*360}deg)`;
-        els.confetti.appendChild(d);
-      }
-    }
-    function clearConfetti(){ els.confetti.innerHTML = ''; }
-
-    // ---------------------- Wiring ---------------------------
-    function wire(){
-      // Two-phase Start: Play intro VO → Start activity
-      els.btnStart.addEventListener('click', () => {
-        if (!introHeard) {
-          els.btnStart.classList.add('hidden');
-          playVO(INTRO_SRC, { onend: () => {
-            introHeard = true;
-            els.btnStart.textContent = 'Start';
+        // ---------------------- Screens --------------------------
+        function showIntro() {
+            phase = 'intro';
+            els.intro.classList.remove('hidden');
+            els.stage.classList.add('hidden');
+            els.outro.classList.remove('show');
+            // Button shows immediately (phase 1 = Play)
+            els.btnStart.textContent = introHeard ? 'Start' : 'Play';
             els.btnStart.classList.remove('hidden');
-          }});
-        } else {
-          startActivity();
         }
-      });
 
-      els.btnReveal.addEventListener('click', reveal);
-      els.outroReplay.addEventListener('click', replayActivity);
-      els.outroHome.addEventListener('click', () => { window.location.href = 'index.html'; });
+        function startActivity() {
+            stopVO(); idx = 0; showStage(); renderItem();
+        }
 
-      // Safety: stop audio on visibility change
-      document.addEventListener('visibilitychange', () => { if(document.hidden) stopVO(); });
-    }
-  </script>
+        function showStage() {
+            phase = 'question';
+            els.intro.classList.add('hidden');
+            els.stage.classList.remove('hidden');
+            els.outro.classList.remove('show');
+            els.answerText.textContent = '';
+            els.answerText.classList.remove('sparkle');
+            // Hide the prompt until user clicks Reveal
+            els.prompt.classList.add('hidden');
+            els.prompt.textContent = '';
+            els.btnReveal.disabled = true;
+        }
+
+        function renderItem() {
+            const it = ITEMS[idx];
+            updateProgress();
+            // Keep prompt hidden until Reveal
+            els.prompt.classList.add('hidden');
+            els.prompt.textContent = '';
+            els.answerText.textContent = '';
+            els.answerText.classList.remove('sparkle');
+            els.btnReveal.disabled = true;
+
+            // Image fade-in
+            els.itemImage.classList.remove('show');
+            els.itemImage.src = it.image;
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                els.itemImage.classList.add('show');
+            }));
+
+            // Enable Reveal after image fade for smoothness (no question audio)
+            setTimeout(() => { els.btnReveal.disabled = false; }, 900);
+        }
+
+        function reveal() {
+            if (phase !== 'question') return;
+            phase = 'reveal';
+            const it = ITEMS[idx];
+            els.btnReveal.disabled = true;
+            // Show the prompt container (no text)
+            els.prompt.textContent = '';
+            els.prompt.classList.remove('hidden');
+            els.answerText.textContent = it.answerText;
+            els.answerText.classList.add('sparkle');
+
+            // Preload next assets while reaction plays
+            preloadNext(idx + 1);
+
+            // Reaction (not the question)
+            playVO(it.reactionAudio, {
+                onend: () => {
+                    phase = 'reaction';
+                    setTimeout(() => advance(), 1000);
+                }
+            });
+        }
+
+        function advance() {
+            stopVO();
+            idx++;
+            if (idx >= ITEMS.length) { showOutro(); }
+            else { phase = 'question'; renderItem(); }
+        }
+
+        function showOutro() {
+            phase = 'outro';
+            els.stage.classList.add('hidden');
+            els.outro.classList.add('show');
+            // Hide buttons until outro VO ends
+            els.outroHome.disabled = true; els.outroReplay.disabled = true;
+            spawnConfetti(110);
+            playVO(OUTRO_SRC, {
+                onend: () => {
+                    els.outroHome.disabled = false; els.outroReplay.disabled = false;
+                }
+            });
+        }
+
+        function replayActivity() { clearConfetti(); startActivity(); }
+
+        // ---------------------- Preloading -----------------------
+        function preloadNext(nextIndex) {
+            if (nextIndex >= ITEMS.length) return;
+            const it = ITEMS[nextIndex];
+            // Image
+            const img = new Image(); img.src = it.image;
+            // Audio (reaction only)
+            const a2 = new Audio(); a2.preload = 'auto'; a2.src = it.reactionAudio;
+        }
+
+        // ---------------------- Confetti -------------------------
+        const COLORS = ['#ffd166', '#06d6a0', '#118ab2', '#ef476f', '#8338ec'];
+        function spawnConfetti(n) {
+            clearConfetti();
+            const W = window.innerWidth;
+            for (let i = 0; i < n; i++) {
+                const d = document.createElement('div');
+                d.className = 'piece';
+                d.style.left = Math.random() * W + 'px';
+                d.style.background = COLORS[i % COLORS.length];
+                d.style.animationDuration = (5 + Math.random() * 3) + 's';
+                d.style.transform = `translateY(-10vh) rotate(${Math.random() * 360}deg)`;
+                els.confetti.appendChild(d);
+            }
+        }
+        function clearConfetti() { els.confetti.innerHTML = ''; }
+
+        // ---------------------- Wiring ---------------------------
+        function wire() {
+            // Two-phase Start: Play intro VO → Start activity
+            els.btnStart.addEventListener('click', () => {
+                if (!introHeard) {
+                    els.btnStart.classList.add('hidden');
+                    playVO(INTRO_SRC, {
+                        onend: () => {
+                            introHeard = true;
+                            els.btnStart.textContent = 'Start';
+                            els.btnStart.classList.remove('hidden');
+                        }
+                    });
+                } else {
+                    startActivity();
+                }
+            });
+
+            els.btnReveal.addEventListener('click', reveal);
+            els.outroReplay.addEventListener('click', replayActivity);
+            els.outroHome.addEventListener('click', () => { window.location.href = 'index.html'; });
+
+            // Safety: stop audio on visibility change
+            document.addEventListener('visibilitychange', () => { if (document.hidden) stopVO(); });
+        }
+    </script>
 </body>
+
 </html>
