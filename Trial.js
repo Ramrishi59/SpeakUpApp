@@ -11,6 +11,11 @@ const audio = new Audio();
 audio.preload = "auto";
 
 const els = {
+
+  // Start Gate
+  startGate:     document.getElementById("startGate"),
+  startButton:  document.getElementById("startButton"),
+  gateTitle:     document.getElementById("gateTitle"),
   // Intro / Outro
   introScreen:  document.getElementById("introScreen"),
   introText:    document.getElementById("introText"),
@@ -167,6 +172,32 @@ function lockIntroWords(container) {
   }, { once: true });
 }
 
+/* ---------- Start Gate helpers ---------- */
+function showStartGate(unitName){
+  if (els.gateTitle && unitName) els.gateTitle.textContent = unitName;
+  if (els.startGate) els.startGate.style.display = "grid";
+  setFooterVisible(false);
+  // hide other screens just in case
+  if (els.introScreen) els.introScreen.style.display = "none";
+  if (els.wordScreen)  els.wordScreen.style.display  = "none";
+}
+
+async function dismissStartGateAndBegin(){
+  userInteracted = true; // key: tells our code that a gesture happened
+  // Optional: try to "prime" the HTMLAudio element in a gesture
+  try {
+    audio.muted = true;         // safest on iOS
+    audio.src = "";             // we don't actually need to play here
+    await audio.play().catch(()=>{});
+    audio.pause();
+    audio.currentTime = 0;
+    audio.muted = false;
+  } catch {}
+
+  if (els.startGate) els.startGate.style.display = "none";
+  render(currentIndex);
+}
+
 
 /* ---------- gesture for iOS ---------- */
 let introAudioGestureHandler = null;
@@ -321,14 +352,33 @@ async function loadUnit(id){ const r = await fetch(`units/${id}.json`, { cache: 
 (async function(){
   const unit = await loadUnit(getUnitIdFromUrl());
   document.body.classList.add(`unit-${unit.id}`);
+
   const titleEl = document.getElementById("unitTitle");
   if (titleEl && unit.name) titleEl.textContent = unit.name;
+
   screens = Array.isArray(unit?.words) ? unit.words : [];
-  // After loading screens, compute the first non-intro index
+
+  // find first non-intro index
   (function findFirstText(){
     firstTextIndex = screens.findIndex(it => it?.text || it?.video);
-    if (firstTextIndex < 0) firstTextIndex = screens.length; // if all image-only
+    if (firstTextIndex < 0) firstTextIndex = screens.length;
   })();
+
   currentIndex = 0;
-  render(currentIndex);
+
+  // ✅ For Unit 1 → hide gate completely and render immediately
+  if (unit.id === "unit1" || unit.id === 1) {
+    if (els.startGate) els.startGate.style.display = "none";  // force-hide overlay
+    render(currentIndex);
+    return;
+  }
+
+  // For all other units → normal Start Gate behaviour
+  if (els.startGate && !userInteracted) {
+    showStartGate(unit?.name || "Speak Up");
+    els.startButton?.addEventListener('click', dismissStartGateAndBegin, { once: true });
+  } else {
+    render(currentIndex);
+  }
 })();
+
