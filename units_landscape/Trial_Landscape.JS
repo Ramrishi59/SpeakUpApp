@@ -175,6 +175,7 @@ const UNIT_META = {
   // ---------- Flow ----------
   function startUnit() {
     if (!isLandscape()) return; // guard
+    userInteracted = true; // ✅ explicitly mark the gesture
     stopAudio();
     playIfAllowed(UNIT_META.introAudio);
     currentIndex = 0;
