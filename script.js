@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Special routes (only when a card needs a custom file)
   const ROUTE_OVERRIDES = {
     'unit1-practice': () => 'an-quiz/an-quiz.html',
-    'and-practice': () => 'and-practice/and.html'
+    'and-practice': () => 'and-practice/and.html',
+    'unit3-landscape': () => 'units_landscape/Trial_Landscape.html'
   };
 
 
@@ -28,6 +29,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       : `Trial.html?unitId=${card.id}`;
   }
 
+  function getRouteForCard(card) {
+    // 1. check manual overrides
+    if (ROUTE_OVERRIDES[card.id]) {
+      return ROUTE_OVERRIDES[card.id]();
+    }
+  
+    // 2. otherwise use default resolver
+    return resolveRoute(card);
+  }
+  
   // -------------------------------
 // Load dashboard lessons from manifest.json
 // -------------------------------
@@ -61,7 +72,8 @@ async function loadDashboardLessons() {
       console.warn('No card found for id:', id);
       return;
     }
-    window.location.href = resolveRoute(card);
+    // Use overrides when present, else default resolver
+    window.location.href = getRouteForCard(card);
   }
 
 

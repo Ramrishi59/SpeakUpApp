@@ -381,4 +381,3 @@ async function loadUnit(id){ const r = await fetch(`units/${id}.json`, { cache: 
     render(currentIndex);
   }
 })();
-
