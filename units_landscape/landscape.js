@@ -9,16 +9,50 @@
 const UNIT_META = {
     id: "unit3",
     title: "Unit 3 — This & That",
-    introAudio: "../assets/audio/intro_u4.mp3",
-    outroAudio: "../assets/audio/outro_u4.mp3",
+    // Fallback single-intro audio (kept for compatibility)
+    introAudio: "assets/audio/intro1.mp3",
+    // Multi-slide intro sequence (3 slides)
+    introSlides: [
+      { image: "assets/images/1.webp", audio: "assets/audio/intro1.mp3" },
+      { image: "assets/images/2.webp", audio: "assets/audio/intro2.mp3" },
+      { image: "assets/images/3.webp",     audio: "assets/audio/intro3.mp3" }
+    ],
+    outroAudio: "assets/audio/outro_u4.mp3",
     lessonText: "Look. Listen. Repeat.",
     items: [
-        { image: "./assets/images/1.webp", audio: "./assets/audio/u4_01_pencil.mp3" },
-        { image: "./assets/images/2.webp", audio: "./assets/audio/u4_02_umbrella.mp3" },
-        { image: "./assets/images/3.webp", audio: "./assets/audio/u4_03_cat.mp3" },
-        { image: "./assets/images/4.webp", audio: "./assets/audio/u4_04_orange.mp3" },
-        { image: "./assets/images/5.webp", audio: "./assets/audio/u4_05_egg.mp3" },
-        { image: "./assets/images/6.webp", audio: "./assets/audio/u4_06_water_bottle.mp3" }
+        { image: "./assets/images/4.webp", audio: "./assets/audio/04_Chapter 1.mp3" },
+        { image: "./assets/images/5.webp", audio: "./assets/audio/05_Chapter 1.mp3" },
+        { image: "./assets/images/6.webp", audio: "./assets/audio/06_Chapter 1.mp3"},
+        { image: "./assets/images/7.webp", audio: "./assets/audio/07_Chapter 1.mp3"},
+        { image: "./assets/images/8.webp", audio: "./assets/audio/08_Chapter 1.mp3" },
+        { image: "./assets/images/9.webp", audio: "./assets/audio/09_Chapter 1.mp3" },
+        { image: "./assets/images/10.webp", audio: "./assets/audio/10_Chapter 1.mp3" },
+        { image: "./assets/images/11.webp", audio: "./assets/audio/11_Chapter 1.mp3" },
+        { image: "./assets/images/12.webp", audio: "./assets/audio/12_Chapter 1.mp3"},
+        { image: "./assets/images/13.webp", audio: "./assets/audio/13_Chapter 1.mp3"},
+        { image: "./assets/images/14.webp", audio: "./assets/audio/14_Chapter 1.mp3"},
+        { image: "./assets/images/15.webp", audio: "./assets/audio/15_Chapter 1.mp3"},
+        { image: "./assets/images/16.webp", audio: "./assets/audio/16_Chapter 1.mp3" },
+        { image: "./assets/images/17.webp", audio: "./assets/audio/17_Chapter 1.mp3" },
+        { image: "./assets/images/18.webp", audio: "./assets/audio/18_Chapter 1.mp3" },
+        { image: "./assets/images/19.webp", audio: "./assets/audio/19_Chapter 1.mp3"},       
+        { image: "./assets/images/20.webp", audio: "./assets/audio/20_Chapter 1.mp3" },
+        { image: "./assets/images/21.webp", audio: "./assets/audio/21_Chapter 1.mp3"},
+        { image: "./assets/images/22.webp", audio: "./assets/audio/22_Chapter 1.mp3"},
+        { image: "./assets/images/23.webp", audio: "./assets/audio/23_Chapter 1.mp3"},
+        { image: "./assets/images/24.webp", audio: "./assets/audio/24_Chapter 1.mp3" },
+        { image: "./assets/images/25.webp", audio: "./assets/audio/25_Chapter 1.mp3"},
+        { image: "./assets/images/26.webp", audio: "./assets/audio/26_Chapter 1.mp3" },
+        { image: "./assets/images/27.webp", audio: "./assets/audio/27_Chapter 1.mp3"},
+        { image: "./assets/images/28.webp", audio: "./assets/audio/28_Chapter 1.mp3"},
+        { image: "./assets/images/29.webp", audio: "./assets/audio/29_Chapter 1.mp3" },
+        { image: "./assets/images/30.webp", audio: "./assets/audio/30_Chapter 1.mp3"},
+        { image: "./assets/images/31.webp", audio: "./assets/audio/31_Chapter 1.mp3" },
+        { image: "./assets/images/32.webp", audio: "./assets/audio/32_Chapter 1.mp3" },
+        { image: "./assets/images/33.webp", audio: "./assets/audio/33_Chapter 1.mp3" },
+        { image: "./assets/images/34.webp", audio: "./assets/audio/34_Chapter 1.mp3"},
+        { image: "./assets/images/35.webp", audio: "./assets/audio/35_Chapter 1.mp3" }
+
       ]
       
   };
@@ -27,6 +61,8 @@ const UNIT_META = {
   let currentIndex = 0;
   let userInteracted = false;
   let isMuted = false;
+  let introIndex = 0;
+  let introStarted = false;
   
   const audio = new Audio();
   audio.preload = "auto";
@@ -45,7 +81,8 @@ const UNIT_META = {
     outroScreen: document.getElementById("outroScreen"),
   
     playIntro:  document.getElementById("playIntro"),
-    introText:  document.getElementById("introText"),
+    introNext:  document.getElementById("introNext"),
+    introImage: document.getElementById("introImage"),
   
     wordImage:  document.getElementById("wordImage"),
   
@@ -92,7 +129,10 @@ const UNIT_META = {
     setProgress(0, UNIT_META.items.length);
   
     // Wire up controls
-    els.playIntro.addEventListener("click", startUnit);
+    els.playIntro.addEventListener("click", (e) => { e.stopPropagation(); startIntroSequence(); });
+    els.introNext && els.introNext.addEventListener("click", onIntroNext);
+    // Allow tapping anywhere on the intro screen to start/advance
+    els.introScreen.addEventListener('click', onIntroTap);
     els.prevButton.addEventListener("click", onPrev);
     els.nextButton.addEventListener("click", onNext);
     els.startOver.addEventListener("click", startOver);
@@ -114,11 +154,27 @@ const UNIT_META = {
   
   // ---------- Screen helpers ----------
   function showIntro() {
-    hideAll();
-    els.introScreen.hidden = false;
-    stopAudio();
-    setProgress(0, UNIT_META.items.length);
+  hideAll();
+  els.introScreen.hidden = false;
+  stopAudio();
+  setProgress(0, UNIT_META.items.length);
+  // reset intro state
+  introIndex = 0;
+  introStarted = false;
+  renderIntroSlide(introIndex, { showPlay: true });
+}
+
+function renderIntroSlide(i, { showPlay = false } = {}) {
+  const slides = UNIT_META.introSlides || [];
+  const slide = slides[i];
+  if (slide && els.introImage) {
+    els.introImage.src = slide.image;
+    els.introImage.alt = `Intro ${i + 1}`;
   }
+  // Keep Play visible; reveal Next after first Play
+  if (els.playIntro) els.playIntro.hidden = false;
+  if (els.introNext) els.introNext.hidden = showPlay;
+}
   
   function showWord(i) {
     hideAll();
@@ -174,14 +230,40 @@ const UNIT_META = {
   }
   
   // ---------- Flow ----------
-  function startUnit() {
-    if (!isLandscape()) return; // guard
-    userInteracted = true; // ✅ explicitly mark the gesture
+function startIntroSequence() {
+  if (!isLandscape()) return; // guard
+  userInteracted = true;
+  introStarted = true;
+  // show first intro slide (Play hidden, Next shown)
+  renderIntroSlide(introIndex, { showPlay: false });
+  const slide = (UNIT_META.introSlides || [])[introIndex];
+  stopAudio();
+  playIfAllowed(slide?.audio || UNIT_META.introAudio);
+}
+
+function onIntroNext() {
+  const slides = UNIT_META.introSlides || [];
+  introIndex++;
+  if (introIndex < slides.length) {
+    renderIntroSlide(introIndex, { showPlay: false });
     stopAudio();
-    playIfAllowed(UNIT_META.introAudio);
+    playIfAllowed(slides[introIndex]?.audio);
+  } else {
+    // Finished intros → start unit
     currentIndex = 0;
     showWord(currentIndex);
   }
+}
+
+function onIntroTap(e){
+  // Ignore taps on explicit controls (buttons already wired)
+  if (e.target === els.playIntro || e.target === els.introNext || (e.target.closest && e.target.closest('.intro-controls'))) return;
+  if (!introStarted) {
+    startIntroSequence();
+  } else {
+    onIntroNext();
+  }
+}
   
   function startOver() {
     currentIndex = 0;

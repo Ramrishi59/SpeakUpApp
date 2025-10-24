@@ -145,6 +145,10 @@
     height:auto;
     object-fit:contain;
   }
+  /* Make intro image bigger specifically */
+  .intro-mascot{
+    width: clamp(440px, 36vw, 520px);
+  }
   .intro-text,.outro-text{
     font-family:'Baloo 2';
     font-size:clamp(28px,3.0vw,56px);
