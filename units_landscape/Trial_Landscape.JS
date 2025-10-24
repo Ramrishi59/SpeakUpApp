@@ -9,17 +9,18 @@
 const UNIT_META = {
     id: "unit3",
     title: "Unit 3 — This & That",
-    introAudio: "assets/audio/intro1.mp3",
-    outroAudio: "./assets/audio/outro.mp3",
+    introAudio: "../assets/audio/intro_u4.mp3",
+    outroAudio: "../assets/audio/outro_u4.mp3",
     lessonText: "Look. Listen. Repeat.",
     items: [
-      { image: "assets/images/1.webp",        audio: "assets/audio/u4_01_pencil.mp3" },
-      { image: "assets/images/2.webp",        audio: "assets/audio/u4_02_umbrella.mp3" },
-      { image: "assets/images/3.webp",       audio: "assets/audio/u4_03_cat.mp3" },
-      { image: "assets/images/4.webp",   audio: "assets/audio/u4_04_orange.mp3" },
-      { image: "assets/images/5.webp",      audio: "assets/audio/u4_05_egg.mp3" },
-      { image: "assets/images/6.webp",      audio: "assets/audio/u4_06_water_bottle.mp3" },
-    ]
+        { image: "../assets/images/1.webp", audio: "../assets/audio/u4_01_pencil.mp3" },
+        { image: "../assets/images/2.webp", audio: "../assets/audio/u4_02_umbrella.mp3" },
+        { image: "../assets/images/3.webp", audio: "../assets/audio/u4_03_cat.mp3" },
+        { image: "../assets/images/4.webp", audio: "../assets/audio/u4_04_orange.mp3" },
+        { image: "../assets/images/5.webp", audio: "../assets/audio/u4_05_egg.mp3" },
+        { image: "../assets/images/6.webp", audio: "../assets/audio/u4_06_water_bottle.mp3" }
+      ]
+      
   };
   
   // ---------- State ----------
