@@ -48,9 +48,9 @@
     /* space reserved when the footer is visible */
     --footer-pad: calc(var(--coin-size) + 24px);
 
-    --intro-mascot-cap: 52svh;    /* taller image track for intros */
+    --intro-mascot-cap: 44svh;    /* slightly shorter to cut excess gap */
     --intro-mascot-scale: 1.14;   /* make the mascot bigger */
-    --intro-mascot-shift: 6svh;   /* push it lower on the page */
+    --intro-mascot-shift: 0svh;   /* minimal downward shift (sit higher) */
 }
 
 /* ------------------------------
@@ -166,8 +166,8 @@ main{
 /* Tiny float animation for intro mascot images; respects reduced motion */
 body.intro-mascot #wordImage{
   animation: mascotFloat 1.5s var(--fx-ease) infinite;
-  height: 120%;
-  width: 126%;
+  height: 115%;
+  width: 125%;
 }
 @keyframes mascotFloat{
   0%,100% { transform: translateY(calc(var(--base-shift) - 2px)) scale(var(--base-scale)); }
@@ -183,6 +183,10 @@ body.intro-mascot #wordImage{
   display:flex; align-items:center; justify-content:center;
   width:100%;
   padding: 0 12px;
+  /* Lift above any overlapping image edges and push down a touch */
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(24px, 9svh, 96px);
 }
 #wordText{
   font-family:var(--font-heading);
@@ -195,11 +199,17 @@ body.intro-mascot #wordImage{
     -1.2px -1.2px 0 rgb(245,242,242),
     2px 2px 0 rgba(0,0,0,.1);
   padding:4px 10px;
+
   border-radius:12px;
   max-width:90%;
   text-align:center;
   white-space:normal;
   line-height:1.2;
+}
+
+/* Extra breathing room on small phones */
+@media (max-width: 480px){
+  .word-block{ margin-top: clamp(32px, 12svh, 120px); }
 }
 
 /* ------------------------------
@@ -603,8 +613,9 @@ body.intro-mascot .word-display{
   grid-template-rows:
     auto
     minmax(220px, calc(var(--intro-mascot-cap) + var(--intro-mascot-shift)))
-    minmax(90px, 18svh)
+    minmax(40px, 10svh)
     auto;
+  row-gap: clamp(6px, 1.2svh, 12px);
 }
 
 body.intro-mascot .image-wrap{
@@ -620,16 +631,19 @@ body.intro-mascot{
   --base-scale: var(--intro-mascot-scale);
 }
 
+/* Remove any extra top margin on the (usually empty) lesson title */
+body.intro-mascot #lessonText{ margin-top: 0; }
+
 /* Dock-aware: bias a tad more when the fixed footer is visible */
 body.has-dock.intro-mascot{
-  --intro-mascot-cap: 48svh;
-  --intro-mascot-shift: 7svh;
+  --intro-mascot-cap: 42svh;
+  --intro-mascot-shift: 1svh;
 }
 
 /* (optional) per-unit tuning */
 body.unit-unit5.intro-mascot{
   --intro-mascot-scale: 1.18;
-  --intro-mascot-shift: 7svh;
+  --intro-mascot-shift: 1svh;
 }
 
 /* ===========================
