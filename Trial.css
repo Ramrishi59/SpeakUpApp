@@ -191,20 +191,24 @@ body.intro-mascot #wordImage{
 #wordText{
   font-family:var(--font-heading);
   font-weight:700;
-  font-size: clamp(28px, 4.8svh, 36px);
+  font-size: clamp(24px, 4.8svh, 36px);
   color: #000000ab;
   text-shadow:
     0 0 0 rgb(245,242,242),
     1.2px 1.2px 0 rgb(245,242,242),
     -1.2px -1.2px 0 rgb(245,242,242),
     2px 2px 0 rgba(0,0,0,.1);
-  padding:4px 10px;
+  padding:2px 10px;
 
   border-radius:12px;
   max-width:90%;
   text-align:center;
   white-space:normal;
   line-height:1.2;
+}
+/* Exception: make word text smaller on the last slide (often used as an outro) */
+body.last-slide #wordText{
+  font-size: clamp(20px, 3.4svh, 28px);
 }
 
 /* Extra breathing room on small phones */
@@ -493,10 +497,10 @@ body.outro-active #outroScreen{
 /* <- this is the missing bit */
 body.outro-active #outroScreen .mascot{
   display: block;
-  width: auto;
-  height: auto;
-  max-width: min(78vw, 560px);     /* clamp width */
-  max-height: min(46svh, 420px);   /* clamp height */
+  width: 125%;
+  height: 125%;
+  /* max-width: min(78vw, 560px);     
+  max-height: min(46svh, 420px);    */
   object-fit: contain;
 }
 
