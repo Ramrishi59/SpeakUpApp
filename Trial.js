@@ -12,10 +12,8 @@ audio.preload = "auto";
 
 const els = {
 
-  // Start Gate
-  startGate:     document.getElementById("startGate"),
-  startButton:  document.getElementById("startButton"),
-  gateTitle:     document.getElementById("gateTitle"),
+  // Intro Start button (replaces start gate)
+  introStartBtn: document.getElementById("introStartBtn"),
   // Intro / Outro
   introScreen:  document.getElementById("introScreen"),
   introText:    document.getElementById("introText"),
@@ -172,31 +170,7 @@ function lockIntroWords(container) {
   }, { once: true });
 }
 
-/* ---------- Start Gate helpers ---------- */
-function showStartGate(unitName){
-  if (els.gateTitle && unitName) els.gateTitle.textContent = unitName;
-  if (els.startGate) els.startGate.style.display = "grid";
-  setFooterVisible(false);
-  // hide other screens just in case
-  if (els.introScreen) els.introScreen.style.display = "none";
-  if (els.wordScreen)  els.wordScreen.style.display  = "none";
-}
-
-async function dismissStartGateAndBegin(){
-  userInteracted = true; // key: tells our code that a gesture happened
-  // Optional: try to "prime" the HTMLAudio element in a gesture
-  try {
-    audio.muted = true;         // safest on iOS
-    audio.src = "";             // we don't actually need to play here
-    await audio.play().catch(()=>{});
-    audio.pause();
-    audio.currentTime = 0;
-    audio.muted = false;
-  } catch {}
-
-  if (els.startGate) els.startGate.style.display = "none";
-  render(currentIndex);
-}
+// (Start Gate helpers removed — replaced with intro Start button)
 
 
 /* ---------- gesture for iOS ---------- */
@@ -254,7 +228,12 @@ async function render(i) {
     els.image.alt = item.text || "Lesson image";
     els.prev.style.display = i === 0 ? "none" : "";
     els.next.style.display = i === screens.length - 1 ? "none" : "";
-    if (item.audio) { audio.src = item.audio; audio.play().catch(() => {}); }
+    if (item.audio) {
+      audio.pause(); audio.currentTime = 0; audio.src = item.audio;
+      if (userInteracted) { audio.play().catch(() => {}); }
+    }
+    // Show Start button on image-only intro slides before the first text/video
+    showStartButton(!userInteracted && (!!item?.image && !item?.text && !item?.video && i < firstTextIndex));
     return;
   }
 
@@ -316,8 +295,13 @@ async function render(i) {
   setFooterVisible(true); // always show on text intros
 
   if (item.audio) {
-    try { audio.pause(); audio.muted = false; audio.currentTime = 0; audio.src = item.audio; audio.play().catch(()=>{}); } catch {}
+    try {
+      audio.pause(); audio.muted = false; audio.currentTime = 0; audio.src = item.audio;
+      if (userInteracted) { audio.play().catch(()=>{}); }
+    } catch {}
   }
+  // Show Start button (custom coin preferred) on text intros to prime audio
+  showStartButton(!userInteracted && item?.text && !item?.video);
   showIntroBounce(els.introText, item.text || "", { wordDelay: 50, reset: true });
   lockIntroWords(els.introText, { wordDelay: 50, duration: 700 });
 
@@ -344,6 +328,32 @@ els.prev?.addEventListener("click", showPrev);
 els.next?.addEventListener("click", showNext);
 els.introNext?.addEventListener("click", showNext);
 document.getElementById('startoverGlobal')?.addEventListener('click', startOver);
+// Unified Start button logic (custom coin preferred)
+function handleIntroStartClick(){
+  userInteracted = true;
+  try{
+    const item = screens[currentIndex];
+    if (item?.audio){ audio.pause(); audio.muted = false; audio.currentTime = 0; audio.src = item.audio; audio.play().catch(()=>{}); }
+  }catch{}
+  // hide both variants
+  const custom = document.getElementById('introStartCustom');
+  if (custom) custom.style.display = 'none';
+  if (els.introStartBtn) els.introStartBtn.style.display = 'none';
+}
+function showStartButton(show){
+  const custom = document.getElementById('introStartCustom');
+  const fallback = els.introStartBtn;
+  // hide both first
+  if (custom) custom.style.display = 'none';
+  if (fallback) fallback.style.display = 'none';
+  if (!show) return;
+  // prefer custom coin if present
+  if (custom) custom.style.display = '';
+  else if (fallback) fallback.style.display = '';
+}
+// Bind clicks for both variants
+els.introStartBtn?.addEventListener('click', handleIntroStartClick);
+document.getElementById('introStartCustom')?.addEventListener('click', handleIntroStartClick);
 
 /* ---------- boot ---------- */
 function getUnitIdFromUrl(){ const p = new URLSearchParams(location.search); return p.get("unitId") || "unit1"; }
@@ -366,18 +376,6 @@ async function loadUnit(id){ const r = await fetch(`units/${id}.json`, { cache: 
 
   currentIndex = 0;
 
-  // ✅ For Unit 1 → hide gate completely and render immediately
-  if (unit.id === "unit1" || unit.id === 1) {
-    if (els.startGate) els.startGate.style.display = "none";  // force-hide overlay
-    render(currentIndex);
-    return;
-  }
-
-  // For all other units → normal Start Gate behaviour
-  if (els.startGate && !userInteracted) {
-    showStartGate(unit?.name || "Speak Up");
-    els.startButton?.addEventListener('click', dismissStartGateAndBegin, { once: true });
-  } else {
-    render(currentIndex);
-  }
+  // Render immediately; intro Start button will prime audio if needed
+  render(currentIndex);
 })();
