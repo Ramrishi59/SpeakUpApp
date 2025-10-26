@@ -61,16 +61,7 @@
         <img id="wordImage" alt="Lesson image" />
       </figure>
 
-      <!-- Prev / Next coins -->
-      <div class="nav-row">
-        <button id="prevButton" class="nav-btn prev" aria-label="Previous">
-          <span class="chevrons">❮❮</span> PREV
-        </button>
-        <button id="nextButton" class="nav-btn next" aria-label="Next">
-          NEXT <span class="chevrons">❯❯</span>
-        </button>
-      </div>
-      <!-- (No per-slide Home/StartOver row here — global footer handles that) -->
+      <!-- (Prev/Next moved to global footer) -->
     </section>
 
     <!-- MASCOT IMAGE OUTRO -->
@@ -81,12 +72,18 @@
     </section>
 
     <!-- GLOBAL FOOTER actions (only shown where JS allows) -->
-    <div class="secondary-row footer-actions" id="lessonActions" style="display:none;">
+  <div class="secondary-row footer-actions" id="lessonActions" style="display:none;">
+      <button id="prevButton" class="nav-btn prev" aria-label="Previous">
+        <span class="chevrons">❮❮</span>
+      </button>
       <a class="secondary-btn home" href="index.html" aria-label="Home">
         <span class="icon">🏠</span> Home
       </a>
       <button class="secondary-btn startover" id="startoverGlobal" aria-label="Start Over">
         <span class="icon">↻</span> Start Over
+      </button>
+      <button id="nextButton" class="nav-btn next" aria-label="Next">
+        <span class="chevrons">❯❯</span>
       </button>
     </div>
   </main>
