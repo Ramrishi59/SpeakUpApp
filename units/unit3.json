@@ -3,13 +3,13 @@
   "name": "Unit 3: What is this?",
   "description": "Learn simple sentences with 'What is this?'",
   "words": [
-    { "image": "Images/Unit3/intro1.webp", "audio": "Audio/Unit3/intro1.mp3" },
-    { "image": "Images/Unit3/intro2.webp", "audio": "Audio/intro2/intro2.mp3" },
+    { "image": "Images/Unit3/intronew1.webp", "audio": "Audio/Unit3/intro1.mp3" },
+    { "image": "Images/Unit3/intronew2.webp", "audio": "Audio/intro2/intro2.mp3" },
   
 
-    { "text": "It’s a pencil.",       "image": "Images/Unit3/1.png",  "audio": "Audio/Unit3/u4_01_pencil.mp3" },
-    { "text": "It’s an umbrella.",    "image": "Images/Unit3/2.png",  "audio": "Audio/Unit3/u4_02_umbrella.mp3" },
-    { "text": "It’s a cat.",          "image": "Images/Unit3/3.png",  "audio": "Audio/Unit3/u4_03_cat.mp3" },
+    { "text": "It’s a pencil.",       "image": "Images/Unit3/101.webp",  "audio": "Audio/Unit3/u4_01_pencil.mp3" },
+    { "text": "It’s an umbrella.",    "image": "Images/Unit3/102.webp",  "audio": "Audio/Unit3/u4_02_umbrella.mp3" },
+    { "text": "It’s a cat.",          "image": "Images/Unit3/103.webp",  "audio": "Audio/Unit3/u4_03_cat.mp3" },
     { "text": "It’s an orange.",      "image": "Images/Unit3/4.png",  "audio": "Audio/Unit3/u4_04_orange.mp3" },
     { "text": "It’s an egg.",         "image": "Images/Unit3/5.png",  "audio": "Audio/Unit3/u4_05_egg.mp3" },
     { "text": "It’s a water bottle.", "image": "Images/Unit3/6.png",  "audio": "Audio/Unit3/u4_06_water_bottle.mp3" },

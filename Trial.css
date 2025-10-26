@@ -66,7 +66,7 @@ html,body{
   margin:0;
   color:var(--text);
   font-family:var(--font-body);
-  background-image:url(Images/Unit1/Background_1.webp);
+  background-image:url(Images/Unit1/plainbackground.webp);
   background-size:cover;
   background-attachment:fixed;
 }
@@ -144,8 +144,8 @@ main{
 }
 
 #wordImage{
-  width:100%;
-  height:100%;
+  width:150%;
+  height:150%;
   object-fit:contain;
   display:block;
   filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
@@ -166,6 +166,8 @@ main{
 /* Tiny float animation for intro mascot images; respects reduced motion */
 body.intro-mascot #wordImage{
   animation: mascotFloat 1.5s var(--fx-ease) infinite;
+  height: 120%;
+  width: 126%;
 }
 @keyframes mascotFloat{
   0%,100% { transform: translateY(calc(var(--base-shift) - 2px)) scale(var(--base-scale)); }
@@ -242,8 +244,8 @@ body.intro-mascot #wordImage{
 .nav-btn:active::before{ transform: scale(.96); }
 
 /* coin artwork (paths are case-sensitive!) */
-.nav-btn.prev::before{ background-image:url("Images/buttons/19.png"); }
-.nav-btn.next::before{ background-image:url("Images/buttons/20.png"); }
+.nav-btn.prev::before{ background-image:url("Images/buttons/24.png"); }
+.nav-btn.next::before{ background-image:url("Images/buttons/25.png"); }
 
 /* center the pair; 1 coin will auto-center when Prev is hidden */
 .word-display .nav-row{
@@ -374,8 +376,8 @@ body.video-active { overflow:hidden; }
   filter: drop-shadow(0 4px 6px rgba(0,0,0,.22));
   pointer-events:none;
 }
-.secondary-btn.home::before{     background-image: url("Images/buttons/home.png"); }
-.secondary-btn.startover::before{ background-image: url("Images/buttons/startover.png"); }
+.secondary-btn.home::before{     background-image: url("Images/buttons/27.png"); }
+.secondary-btn.startover::before{ background-image: url("Images/buttons/28.png"); }
 
 #lessonActions.footer-actions{
   display: grid;
