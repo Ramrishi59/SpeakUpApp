@@ -196,9 +196,6 @@ async function render(i) {
   const item = screens[i];
   if (!item) return;
 
-  // Mark last slide to allow CSS exceptions (e.g., smaller word text on outro/last)
-  document.body.classList.toggle('last-slide', i === screens.length - 1);
-
   // Mark intro mascot slides: image-only items before the first text/video
   const isIntroMascot = !!(item?.image && !item?.text && !item?.video && i < firstTextIndex);
   document.body.classList.toggle('intro-mascot', isIntroMascot);
