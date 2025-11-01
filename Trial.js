@@ -44,6 +44,14 @@ function setFooterVisible(on) {
   document.body.classList.toggle('has-dock', !!on);
 }
 
+function shouldHideNextOnFirstIntro(item, index) {
+  if (!item || index !== 0) return false;
+  if (item.video) return false;
+  if (firstTextIndex <= 1) return false;
+  const isImageOnlyIntro = !!item.image && !item.text;
+  return isImageOnlyIntro && index < firstTextIndex;
+}
+
 
 /* ---------- outro (image + audio) ---------- */
 const SpeakUpOutro = (() => {
@@ -227,7 +235,8 @@ async function render(i) {
     els.image.src = item.image;
     els.image.alt = item.text || "Lesson image";
     els.prev.style.display = i === 0 ? "none" : "";
-    els.next.style.display = i === screens.length - 1 ? "none" : "";
+    const hideNext = shouldHideNextOnFirstIntro(item, i);
+    els.next.style.display = (i === screens.length - 1 || hideNext) ? "none" : "";
     if (item.audio) {
       audio.pause(); audio.currentTime = 0; audio.src = item.audio;
       if (userInteracted) { audio.play().catch(() => {}); }
@@ -333,7 +342,19 @@ function handleIntroStartClick(){
   userInteracted = true;
   try{
     const item = screens[currentIndex];
-    if (item?.audio){ audio.pause(); audio.muted = false; audio.currentTime = 0; audio.src = item.audio; audio.play().catch(()=>{}); }
+    if (item?.audio){
+      stopAudio();
+      audio.muted = false;
+      audio.currentTime = 0;
+      audio.src = item.audio;
+      if (shouldHideNextOnFirstIntro(item, currentIndex)){
+        audio.onended = () => {
+          audio.onended = null;
+          showNext();
+        };
+      }
+      audio.play().catch(()=>{ audio.onended = null; });
+    }
   }catch{}
   // hide both variants
   const custom = document.getElementById('introStartCustom');
