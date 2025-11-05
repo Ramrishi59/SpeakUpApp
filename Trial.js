@@ -347,19 +347,55 @@ function handleIntroStartClick(){
       audio.muted = false;
       audio.currentTime = 0;
       audio.src = item.audio;
-      if (shouldHideNextOnFirstIntro(item, currentIndex)){
+      const autoAdvance = shouldHideNextOnFirstIntro(item, currentIndex);
+      if (autoAdvance){
         audio.onended = () => {
           audio.onended = null;
           showNext();
         };
+      } else {
+        audio.onended = null;
       }
-      audio.play().catch(()=>{ audio.onended = null; });
+      let retries = 0;
+      const attemptPlay = () => {
+        try {
+          const result = audio.play();
+          if (result && typeof result.then === "function") {
+            result.then(() => {
+              showStartButton(false);
+            }).catch((err) => {
+              if (retries < 3) {
+                retries += 1;
+                setTimeout(() => {
+                  if (audio.paused) attemptPlay();
+                }, 160);
+              } else {
+                showStartButton(true);
+              }
+            });
+          } else {
+            showStartButton(false);
+          }
+        } catch (err) {
+          showStartButton(true);
+        }
+      };
+      if (audio.readyState >= 2) {
+        attemptPlay();
+      } else {
+        const onReady = () => {
+          if (audio.paused) attemptPlay();
+        };
+        audio.addEventListener("canplaythrough", onReady, { once: true });
+        audio.addEventListener("loadeddata", onReady, { once: true });
+        attemptPlay();
+      }
+    } else {
+      showStartButton(false);
     }
-  }catch{}
-  // hide both variants
-  const custom = document.getElementById('introStartCustom');
-  if (custom) custom.style.display = 'none';
-  if (els.introStartBtn) els.introStartBtn.style.display = 'none';
+  }catch{
+    showStartButton(true);
+  }
 }
 function showStartButton(show){
   const custom = document.getElementById('introStartCustom');
