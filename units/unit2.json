@@ -1,31 +1,100 @@
 {
   "id": "unit2",
   "name": "Unit 2: And",
-  "description": "Join words with AND.",
+  "description": "Let's learn 'And'... Look, Listen and Repeat.",
   "thumbnail": "Images/Unit2/and_thumbnail.jpg",
   "words": [
-    { "image": "Images/Unit2/intro1.webp", "audio": "Audio/Unit2/intro.mp3" },
-    { "image": "Images/Unit2/intro2.webp", "audio": "Audio/Unit2/intro2.mp3" },
-
-    { "text": "a book and a pen",                       "image": "Images/Unit2/a_book_and_a_pen.png",                 "audio": "Audio/Unit2/a_book_and_a_pen.mp3" },
-    { "text": "a pen and a pencil",                     "image": "Images/Unit2/a_pen_and_a_pencil.png",               "audio": "Audio/Unit2/a_pen_and_a_pencil.mp3" },
-    { "text": "a ruler and a compass",                  "image": "Images/Unit2/a_ruler_and_a_compass.png",            "audio": "Audio/Unit2/a_ruler_and_a_compass.mp3" },
-    { "text": "a backpack and a lunchbox",              "image": "Images/Unit2/a_backpack_and_a_lunchbox.png",        "audio": "Audio/Unit2/a_backpack_and_a_lunchbox.mp3" },
-    { "text": "an apple and a banana",                 "image": "Images/Unit2/an_apple_and_an_orange.png",             "audio": "Audio/Unit2/an_apple_and_a_banana.mp3" },
-    { "text": "an apple, an orange and a banana",       "image": "Images/Unit2/an_apple_an_orange_and_a_banana.png",      "audio": "Audio/Unit2/an_apple_and_an_orange and_a_banana.mp3" },
-    { "text": "a table and a chair",                    "image": "Images/Unit2/a_table_and_a_chair.png",              "audio": "Audio/Unit2/a_table_and_a_chair.mp3" },
-    { "text": "a table, a chair and a lamp",            "image": "Images/Unit2/a_table_a_chair_and_a_lamp.png",         "audio": "Audio/Unit2/a_table_a_chair_and_a_lamp.mp3" },
-    { "text": "a torch and a battery",                  "image": "Images/Unit2/a_torch_and_a_battery.png",            "audio": "Audio/Unit2/a_torch_and_a_battery.mp3" },
-    { "text": "a fork and a spoon",                     "image": "Images/Unit2/a_fork_and_a_spoon.png",               "audio": "Audio/Unit2/a_fork_and_a_spoon.mp3" },
-    { "text": "an umbrella and a raincoat",             "image": "Images/Unit2/an_umbrella_and_a_raincoat.png",        "audio": "Audio/Unit2/an_umbrella_and_a_raincoat.mp3" },
-    { "text": "an elephant and a monkey",               "image": "Images/Unit2/an_elephant_and_a_monkey.png",          "audio": "Audio/Unit2/an_elephant_and_a_monkey.mp3" },
-    { "text": "a horse and a jockey",                   "image": "Images/Unit2/a_horse_and_a_jockey.png",             "audio": "Audio/Unit2/a_horse_and_a_jockey.mp3" },
-    { "text": "a ship and a boat",                      "image": "Images/Unit2/a_ship_and_a_boat.png",                "audio": "Audio/Unit2/a_ship_and_a_boat.mp3" },
-    { "text": "a helicopter and an aeroplane",          "image": "Images/Unit2/a_helicopter_and_an_aeroplane.png",     "audio": "Audio/Unit2/a_helicopter_and_an_aeroplane.mp3" },
-    { "text": "a book, a crayon and an eraser",         "image": "Images/Unit2/a_book_a_crayon_and_an_eraser.png",       "audio": "Audio/Unit2/a_book_a_crayon_and_an_eraser.mp3" },
-    { "text": "a snake and a frog",                     "image": "Images/Unit2/a_snake_and_a_frog.png",               "audio": "Audio/Unit2/a_snake_and_a_frog.mp3" },
-    { "text": "a pig, a duck and a hen",                "image": "Images/Unit2/a_pig_a_duck_and_a_hen.png",             "audio": "Audio/Unit2/a_pig_a_duck_and_a_hen.mp3" },
-
-    { "image": "Images/Unit2/outro.webp", "audio": "Audio/Unit2/outro.mp3" }
+    {
+      "image": "Images/Unit2/1.webp",
+      "audio": "Audio/Unit2/intro.mp3"
+    },
+    {
+      "image": "Images/Unit2/2.webp",
+      "audio": "Audio/Unit2/02_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit2/3.webp",
+      "audio": "Audio/Unit2/03_Chapter 1.mp3"
+    },
+    {
+      "text": "a book and a pen",
+      "image": "Images/Unit2/4.webp",
+      "audio": "Audio/Unit2/04_Chapter 1.mp3"
+    },
+    {
+      "text": "a pencil and a crayon",
+      "image": "Images/Unit2/5.webp",
+      "audio": "Audio/Unit2/05_Chapter 1.mp3"
+    },
+    {
+      "text": "an eraser and a ruler",
+      "image": "Images/Unit2/6.webp",
+      "audio": "Audio/Unit2/06_Chapter 1.mp3"
+    },
+    {
+      "text": "a table and a chair",
+      "image": "Images/Unit2/7.webp",
+      "audio": "Audio/Unit2/07_Chapter 1.mp3"
+    },
+    {
+      "text": "a backpack and a torch",
+      "image": "Images/Unit2/8.webp",
+      "audio": "Audio/Unit2/08_Chapter 1.mp3"
+    },
+    {
+      "text": "a leaf and an ant",
+      "image": "Images/Unit2/9.webp",
+      "audio": "Audio/Unit2/09_Chapter 1.mp3"
+    },
+    {
+      "text": "a ship and a boat",
+      "image": "Images/Unit2/10.webp",
+      "audio": "Audio/Unit2/10_Chapter 1.mp3"
+    },
+    {
+      "text": "a fly and an ant",
+      "image": "Images/Unit2/11.webp",
+      "audio": "Audio/Unit2/11_Chapter 1.mp3"
+    },
+    {
+      "text": "a dolphin and a shark",
+      "image": "Images/Unit2/12.webp",
+      "audio": "Audio/Unit2/12_Chapter 1.mp3"
+    },
+    {
+      "text": "an elephant and a horse",
+      "image": "Images/Unit2/13.webp",
+      "audio": "Audio/Unit2/13_Chapter 1.mp3"
+    },
+    {
+      "text": "an umbrella, an iron and a torch",
+      "image": "Images/Unit2/14.webp",
+      "audio": "Audio/Unit2/14_Chapter 1.mp3"
+    },
+    {
+      "text": "a book, an envelope and a pen",
+      "image": "Images/Unit2/15.webp",
+      "audio": "Audio/Unit2/15_Chapter 1.mp3"
+    },
+    {
+      "text": "an octopus, an eagle and a dolphin",
+      "image": "Images/Unit2/16.webp",
+      "audio": "Audio/Unit2/16_Chapter 1.mp3"
+    },
+    {
+      "text": "an apple, an orange and a mug",
+      "image": "Images/Unit2/17.webp",
+      "audio": "Audio/Unit2/17_Chapter 1.mp3"
+    },
+    {
+      "text": "a torch, a tooth brush and a mug",
+      "image": "Images/Unit2/18.webp",
+      "audio": "Audio/Unit2/18_Chapter 1.mp3"
+    },
+    {
+      "text": "Fantastic!",
+      "image": "Images/Unit2/19.webp",
+      "audio": "Audio/Unit2/19_Chapter 1.mp3"
+    }
   ]
 }

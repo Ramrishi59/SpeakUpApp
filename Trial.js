@@ -11,9 +11,6 @@ const audio = new Audio();
 audio.preload = "auto";
 
 const els = {
-
-  // Intro Start button (replaces start gate)
-  introStartBtn: document.getElementById("introStartBtn"),
   // Intro / Outro
   introScreen:  document.getElementById("introScreen"),
   introText:    document.getElementById("introText"),
@@ -43,15 +40,6 @@ function setFooterVisible(on) {
   // one toggle to rule the bottom dock (footer + nav)
   document.body.classList.toggle('has-dock', !!on);
 }
-
-function shouldHideNextOnFirstIntro(item, index) {
-  if (!item || index !== 0) return false;
-  if (item.video) return false;
-  if (firstTextIndex <= 1) return false;
-  const isImageOnlyIntro = !!item.image && !item.text;
-  return isImageOnlyIntro && index < firstTextIndex;
-}
-
 
 /* ---------- outro (image + audio) ---------- */
 const SpeakUpOutro = (() => {
@@ -181,24 +169,6 @@ function lockIntroWords(container) {
 // (Start Gate helpers removed — replaced with intro Start button)
 
 
-/* ---------- gesture for iOS ---------- */
-let introAudioGestureHandler = null;
-function armIntroAudioGestureOnce() {
-  if (introAudioGestureHandler) return;
-  introAudioGestureHandler = (e) => {
-    const startBtn = els.introNext;
-    const tappedStart = startBtn && (e.target === startBtn || (e.target.closest && e.target.closest('#nextButtonIntro')));
-    if (!tappedStart) { audio.play().catch(() => {}); }
-    document.removeEventListener('pointerdown', introAudioGestureHandler, true);
-    document.removeEventListener('touchend',   introAudioGestureHandler, true);
-    document.removeEventListener('click',      introAudioGestureHandler, true);
-    introAudioGestureHandler = null;
-  };
-  document.addEventListener('pointerdown', introAudioGestureHandler, true);
-  document.addEventListener('touchend',   introAudioGestureHandler, true);
-  document.addEventListener('click',      introAudioGestureHandler, true);
-}
-
 /* ---------- core render ---------- */
 async function render(i) {
   const item = screens[i];
@@ -235,14 +205,11 @@ async function render(i) {
     els.image.src = item.image;
     els.image.alt = item.text || "Lesson image";
     els.prev.style.display = i === 0 ? "none" : "";
-    const hideNext = shouldHideNextOnFirstIntro(item, i);
-    els.next.style.display = (i === screens.length - 1 || hideNext) ? "none" : "";
+    els.next.style.display = i === screens.length - 1 ? "none" : "";
     if (item.audio) {
       audio.pause(); audio.currentTime = 0; audio.src = item.audio;
       if (userInteracted) { audio.play().catch(() => {}); }
     }
-    // Show Start button on image-only intro slides before the first text/video
-    showStartButton(!userInteracted && (!!item?.image && !item?.text && !item?.video && i < firstTextIndex));
     return;
   }
 
@@ -309,8 +276,6 @@ async function render(i) {
       if (userInteracted) { audio.play().catch(()=>{}); }
     } catch {}
   }
-  // Show Start button (custom coin preferred) on text intros to prime audio
-  showStartButton(!userInteracted && item?.text && !item?.video);
   showIntroBounce(els.introText, item.text || "", { wordDelay: 50, reset: true });
   lockIntroWords(els.introText, { wordDelay: 50, duration: 700 });
 
@@ -337,81 +302,6 @@ els.prev?.addEventListener("click", showPrev);
 els.next?.addEventListener("click", showNext);
 els.introNext?.addEventListener("click", showNext);
 document.getElementById('startoverGlobal')?.addEventListener('click', startOver);
-// Unified Start button logic (custom coin preferred)
-function handleIntroStartClick(){
-  userInteracted = true;
-  try{
-    const item = screens[currentIndex];
-    if (item?.audio){
-      stopAudio();
-      audio.muted = false;
-      audio.currentTime = 0;
-      audio.src = item.audio;
-      const autoAdvance = shouldHideNextOnFirstIntro(item, currentIndex);
-      if (autoAdvance){
-        audio.onended = () => {
-          audio.onended = null;
-          showNext();
-        };
-      } else {
-        audio.onended = null;
-      }
-      let retries = 0;
-      const attemptPlay = () => {
-        try {
-          const result = audio.play();
-          if (result && typeof result.then === "function") {
-            result.then(() => {
-              showStartButton(false);
-            }).catch((err) => {
-              if (retries < 3) {
-                retries += 1;
-                setTimeout(() => {
-                  if (audio.paused) attemptPlay();
-                }, 160);
-              } else {
-                showStartButton(true);
-              }
-            });
-          } else {
-            showStartButton(false);
-          }
-        } catch (err) {
-          showStartButton(true);
-        }
-      };
-      if (audio.readyState >= 2) {
-        attemptPlay();
-      } else {
-        const onReady = () => {
-          if (audio.paused) attemptPlay();
-        };
-        audio.addEventListener("canplaythrough", onReady, { once: true });
-        audio.addEventListener("loadeddata", onReady, { once: true });
-        attemptPlay();
-      }
-    } else {
-      showStartButton(false);
-    }
-  }catch{
-    showStartButton(true);
-  }
-}
-function showStartButton(show){
-  const custom = document.getElementById('introStartCustom');
-  const fallback = els.introStartBtn;
-  // hide both first
-  if (custom) custom.style.display = 'none';
-  if (fallback) fallback.style.display = 'none';
-  if (!show) return;
-  // prefer custom coin if present
-  if (custom) custom.style.display = '';
-  else if (fallback) fallback.style.display = '';
-}
-// Bind clicks for both variants
-els.introStartBtn?.addEventListener('click', handleIntroStartClick);
-document.getElementById('introStartCustom')?.addEventListener('click', handleIntroStartClick);
-
 /* ---------- boot ---------- */
 function getUnitIdFromUrl(){ const p = new URLSearchParams(location.search); return p.get("unitId") || "unit1"; }
 async function loadUnit(id){ const r = await fetch(`units/${id}.json`, { cache: "no-store" }); if (!r.ok) throw new Error(id); return r.json(); }
@@ -433,6 +323,6 @@ async function loadUnit(id){ const r = await fetch(`units/${id}.json`, { cache: 
 
   currentIndex = 0;
 
-  // Render immediately; intro Start button will prime audio if needed
+  // Render immediately; user can navigate with footer controls
   render(currentIndex);
 })();

@@ -6,13 +6,19 @@
   "words": [
     
 
-    { 
-    "video": "Video/Unit1/intro.mp4", 
-    "poster": "Images/Unit1/intro.webp",
-    "fit": "contain",
-    "position": "center top", 
-    "vh": 70,   
-    "fullscreen": true
+    {
+      "image": "Images/Unit1/1.webp",
+      "audio": "Audio/Unit1/01_Chapter 1.mp3"
+    },
+
+    {
+      "image": "Images/Unit1/2.webp",
+      "audio": "Audio/Unit1/02_Chapter 1.mp3"
+    },
+
+    {
+      "image": "Images/Unit1/3.webp",
+      "audio": "Audio/Unit1/03_Chapter 1.mp3"
     },
 
     { "text": "a book", "image": "Images/Unit1/4.webp", "audio": "Audio/Unit1/04_Chapter 1.mp3" },
@@ -48,8 +54,8 @@
     { "text": "an alien", "image": "Images/Unit1/33.webp", "audio": "Audio/Unit1/33_Chapter 1.mp3" },
 
     {
-      "video": "Video/Unit1/outro.mp4",
-      "poster": "Images/Unit1/outro_poster.jpg"
+      "image": "Images/Unit1/34.webp",
+      "audio": "Audio/Unit1/34_Chapter 1.mp3"
     }
   ]
 }
