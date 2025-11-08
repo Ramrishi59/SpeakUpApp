@@ -9,6 +9,8 @@ let userInteracted = false;
 
 const audio = new Audio();
 audio.preload = "auto";
+const AUDIO_UNLOCK_EVENTS = ['pointerdown','touchstart','click','keydown'];
+let audioUnlockHandler = null;
 
 const els = {
   // Intro / Outro
@@ -125,7 +127,46 @@ function leaveOutro() {
 }
 
 /* ---------- media helpers ---------- */
-function stopAudio(){ audio.pause(); audio.currentTime = 0; audio.onended = null; }
+function clearAudioUnlock(){
+  if (!audioUnlockHandler) return;
+  AUDIO_UNLOCK_EVENTS.forEach(evt => document.removeEventListener(evt, audioUnlockHandler, true));
+  audioUnlockHandler = null;
+}
+function queueAudioUnlock(retryFn){
+  if (audioUnlockHandler) return;
+  audioUnlockHandler = () => {
+    userInteracted = true;
+    clearAudioUnlock();
+    retryFn();
+  };
+  AUDIO_UNLOCK_EVENTS.forEach(evt => document.addEventListener(evt, audioUnlockHandler, { once: true, capture: true }));
+}
+function playScreenAudio(src){
+  if (!src) return;
+  clearAudioUnlock();
+  audio.pause();
+  audio.currentTime = 0;
+  audio.onended = null;
+  audio.muted = false;
+  audio.src = src;
+  const attempt = () => {
+    try{
+      const promise = audio.play();
+      if (promise && typeof promise.catch === 'function'){
+        promise.catch(() => queueAudioUnlock(attempt));
+      }
+    }catch{
+      queueAudioUnlock(attempt);
+    }
+  };
+  attempt();
+}
+function stopAudio(){
+  clearAudioUnlock();
+  audio.pause();
+  audio.currentTime = 0;
+  audio.onended = null;
+}
 function stopVideo(){
   if (!els.introVideo) return;
   els.introVideo.pause();
@@ -206,10 +247,7 @@ async function render(i) {
     els.image.alt = item.text || "Lesson image";
     els.prev.style.display = i === 0 ? "none" : "";
     els.next.style.display = i === screens.length - 1 ? "none" : "";
-    if (item.audio) {
-      audio.pause(); audio.currentTime = 0; audio.src = item.audio;
-      if (userInteracted) { audio.play().catch(() => {}); }
-    }
+    if (item.audio) { playScreenAudio(item.audio); }
     return;
   }
 
@@ -270,12 +308,7 @@ async function render(i) {
   els.introText.style.display = "";
   setFooterVisible(true); // always show on text intros
 
-  if (item.audio) {
-    try {
-      audio.pause(); audio.muted = false; audio.currentTime = 0; audio.src = item.audio;
-      if (userInteracted) { audio.play().catch(()=>{}); }
-    } catch {}
-  }
+  if (item.audio) { playScreenAudio(item.audio); }
   showIntroBounce(els.introText, item.text || "", { wordDelay: 50, reset: true });
   lockIntroWords(els.introText, { wordDelay: 50, duration: 700 });
 
