@@ -1,24 +1,137 @@
 {
-    "id": "unit9",
-    "name": "Unit 9: These are bananas",
-    "description": "Learn plural sentences with 'These are ...'.",
-    "thumbnail": "Images/Unit9/unit9_thumbnail.jpg",
-    "words": [
-      { "text": "These are bananas…", "audio": "Audio/Unit9/01_Intro_These_are_bananas.mp3" },
-      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit4/u4_intro_02.mp3" },
-  
-      { "text": "These are books.",         "image": "Images/Unit9/1.webp",  "audio": "Audio/Unit9/02_Chapter 1.mp3" },
-      { "text": "These are pencils.",       "image": "Images/Unit9/2.webp",  "audio": "Audio/Unit9/03_Chapter 1.mp3" },
-      { "text": "These are pens.",          "image": "Images/Unit9/3.webp",  "audio": "Audio/Unit9/04_Chapter 1.mp3" },
-      { "text": "These are rulers.",        "image": "Images/Unit9/4.webp",  "audio": "Audio/Unit9/05_Chapter 1.mp3" },
-      { "text": "These are erasers.",       "image": "Images/Unit9/5.webp",  "audio": "Audio/Unit9/06_Chapter 1.mp3" },
-      { "text": "These are backpacks.",     "image": "Images/Unit9/6.webp",  "audio": "Audio/Unit9/07_Chapter 1.mp3" },
-      { "text": "These are water bottles.", "image": "Images/Unit9/7.webp",  "audio": "Audio/Unit9/08_Chapter 1.mp3" },
-      { "text": "These are apples.",        "image": "Images/Unit9/8.webp",  "audio": "Audio/Unit9/09_Chapter 1.mp3" },
-      { "text": "These are oranges.",       "image": "Images/Unit9/9.webp",  "audio": "Audio/Unit9/10_Chapter 1.mp3" },
-      { "text": "These are bananas.",       "image": "Images/Unit9/10.webp", "audio": "Audio/Unit9/11_Chapter 1.mp3" },
-  
-      { "text": "Wonderful!", "audio": "Audio/Unit9/Outro.mp3" }
-    ]
-  }
-  
+  "id": "unit9",
+  "name": "Unit 9: These are and Those are",
+  "description": "Learn how to use 'These are' and 'Those are' correctly.",
+  "thumbnail": "Images/Unit9/these_those_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit9/1.webp",
+      "audio": "Audio/Unit9/01_Chapter 1.mp3"
+    },
+    {
+
+      "image": "Images/Unit9/2.webp",
+      "audio": "Audio/Unit9/02_Chapter 1.mp3"
+    },
+    {
+      
+      "image": "Images/Unit9/3.webp",
+      "audio": "Audio/Unit9/03_Chapter 1.mp3"
+    },
+    {
+      "text": "These",
+      "image": "Images/Unit9/4.webp",
+      "audio": "Audio/Unit9/04_Chapter 1.mp3"
+    },
+    {
+      "text": "Those",
+      "image": "Images/Unit9/5.webp",
+      "audio": "Audio/Unit9/05_Chapter 1.mp3"
+    },
+    {
+      "text": "These are books",
+      "image": "Images/Unit9/6.webp",
+      "audio": "Audio/Unit9/06_Chapter 1.mp3"
+    },
+    {
+      "text": "Those are ships",
+      "image": "Images/Unit9/7.webp",
+      "audio": "Audio/Unit9/07_Chapter 1.mp3"
+    },
+    {
+      "text": "These are pencils",
+      "image": "Images/Unit9/8.webp",
+      "audio": "Audio/Unit9/08_Chapter 1.mp3"
+    },
+    {
+      "text": "Those are bees",
+      "image": "Images/Unit9/9.webp",
+      "audio": "Audio/Unit9/09_Chapter 1.mp3"
+    },
+    {
+      "text": "These are pens",
+      "image": "Images/Unit9/10.webp",
+      "audio": "Audio/Unit9/10_Chapter 1.mp3"
+    },
+    {
+      "text": "Those are dolphins",
+      "image": "Images/Unit9/11.webp",
+      "audio": "Audio/Unit9/11_Chapter 1.mp3"
+    },
+    {
+      "text": "These are rulers",
+      "image": "Images/Unit9/12.webp",
+      "audio": "Audio/Unit9/12_Chapter 1.mp3"
+    },
+    {
+      "text": "Those are horses",
+      "image": "Images/Unit9/13.webp",
+      "audio": "Audio/Unit9/13_Chapter 1.mp3"
+    },
+    {
+      "text": "These are erasers",
+      "image": "Images/Unit9/14.webp",
+      "audio": "Audio/Unit9/14_Chapter 1.mp3"
+    },
+    {
+      "text": "Those are mugs",
+      "image": "Images/Unit9/15.webp",
+      "audio": "Audio/Unit9/15_Chapter 1.mp3"
+    },
+    {
+      "text": "These are backpacks",
+      "image": "Images/Unit9/16.webp",
+      "audio": "Audio/Unit9/16_Chapter 1.mp3"
+    },
+    {
+      "text": "Those are umbrellas",
+      "image": "Images/Unit9/17.webp",
+      "audio": "Audio/Unit9/17_Chapter 1.mp3"
+    },
+    {
+      "text": "These are water bottles",
+      "image": "Images/Unit9/18.webp",
+      "audio": "Audio/Unit9/18_Chapter 1.mp3"
+    },
+    {
+      "text": "Those are cars",
+      "image": "Images/Unit9/19.webp",
+      "audio": "Audio/Unit9/19_Chapter 1.mp3"
+    },
+    {
+      "text": "These are apples",
+      "image": "Images/Unit9/20.webp",
+      "audio": "Audio/Unit9/20_Chapter 1.mp3"
+    },
+    {
+      "text": "Those are stars",
+      "image": "Images/Unit9/21.webp",
+      "audio": "Audio/Unit9/21_Chapter 1.mp3"
+    },
+    {
+      "text": "These are oranges",
+      "image": "Images/Unit9/22.webp",
+      "audio": "Audio/Unit9/22_Chapter 1.mp3"
+    },
+    {
+      "text": "Those are birds",
+      "image": "Images/Unit9/23.webp",
+      "audio": "Audio/Unit9/23_Chapter 1.mp3"
+    },
+    {
+      "text": "These are bananas",
+      "image": "Images/Unit9/24.webp",
+      "audio": "Audio/Unit9/24_Chapter 1.mp3"
+    },
+    {
+      "text": "Those are butterflies",
+      "image": "Images/Unit9/25.webp",
+      "audio": "Audio/Unit9/25_Chapter 1.mp3"
+    },
+    {
+   
+      "image": "Images/Unit9/26.webp",
+      "audio": "Audio/Unit9/26_Chapter 1.mp3"
+    }
+  ]
+}
