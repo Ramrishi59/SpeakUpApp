@@ -1,48 +1,179 @@
 {
-    "id": "unit7",
-    "name": "Unit 7: Is that a mountain?",
-    "description": "Learn to ask and answer with 'Is that ...?'",
-    "thumbnail": "Images/Unit7/unit7_thumbnail.jpg",
-    "words": [
-      { "text": "Is that a mountain?", "audio": "Audio/Unit7/01_Intro_1.mp3" },
-      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit4/u4_intro_02.mp3" },
-  
-      { "text": "Is that a building?", "image": "Images/Unit7/1.webp", "audio": "Audio/Unit7/02_Chapter1.mp3" },
-      { "text": "No, it's not.", "image": "Images/Unit7/1.webp", "audio": "Audio/Unit7/noitsnot.mp3" },
-      { "text": "It's a bridge.", "image": "Images/Unit7/1.webp","audio": "Audio/Unit7/04_Chapter1.mp3" },
-  
-      { "text": "Is that a parrot?", "image": "Images/Unit7/2.webp", "audio": "Audio/Unit7/05_Chapter1.mp3" },
-      { "text": "No, it's not.", "image": "Images/Unit7/2.webp","audio": "Audio/Unit7/noitsnot.mp3" },
-      { "text": "It's a peacock.", "image": "Images/Unit7/2.webp","audio": "Audio/Unit7/07_Chapter1.mp3" },
-  
-      { "text": "Is that a bus?", "image": "Images/Unit7/3.webp", "audio": "Audio/Unit7/08_Chapter1.mp3" },
-      { "text": "No, it's not.","image": "Images/Unit7/3.webp", "audio": "Audio/Unit7/noitsnot.mp3" },
-      { "text": "It's a train.", "image": "Images/Unit7/3.webp","audio": "Audio/Unit7/10_Chapter1.mp3" },
-  
-      { "text": "Is that a mountain?", "image": "Images/Unit7/4.webp", "audio": "Audio/Unit7/11_Chapter1.mp3" },
-      { "text": "Yes, it is.", "image": "Images/Unit7/4.webp","audio": "Audio/Unit7/yesitis.mp3" },
-  
-      { "text": "Is that an aeroplane?", "image": "Images/Unit7/5.webp", "audio": "Audio/Unit7/13_Chapter1.mp3" },
-      { "text": "No, it's not.", "image": "Images/Unit7/5.webp","audio": "Audio/Unit7/noitsnot.mp3" },
-      { "text": "It's a helicopter.", "image": "Images/Unit7/5.webp","audio": "Audio/Unit7/15_Chapter1.mp3" },
-  
-      { "text": "Is that a monkey?", "image": "Images/Unit7/6.webp", "audio": "Audio/Unit7/16_Chapter1.mp3" },
-      { "text": "Yes, it is.","image": "Images/Unit7/6.webp",  "audio": "Audio/Unit7/yesitis.mp3" },
-  
-      { "text": "Is that a snake?", "image": "Images/Unit7/7.webp", "audio": "Audio/Unit7/18_Chapter1.mp3" },
-      { "text": "Yes, it is.", "image": "Images/Unit7/7.webp", "audio": "Audio/Unit7/yesitis.mp3" },
-  
-      { "text": "Is that a coconut tree?", "image": "Images/Unit7/8.webp", "audio": "Audio/Unit7/20_Chapter1.mp3" },
-      { "text": "Yes, it is.", "image": "Images/Unit7/8.webp","audio": "Audio/Unit7/yesitis.mp3" },
-  
-      { "text": "Is that a lion?", "image": "Images/Unit7/9.webp", "audio": "Audio/Unit7/22_Chapter1.mp3" },
-      { "text": "No, it's not.", "image": "Images/Unit7/9.webp","audio": "Audio/Unit7/noitsnot.mp3" },
-      { "text": "It's a bear.","image": "Images/Unit7/9.webp", "audio": "Audio/Unit7/24_Chapter1.mp3" },
-  
-      { "text": "Is that a kangaroo?", "image": "Images/Unit7/10.webp", "audio": "Audio/Unit7/25_Chapter1.mp3" },
-      { "text": "Yes, it is.", "image": "Images/Unit7/10.webp", "audio": "Audio/Unit7/yesitis.mp3" },
-  
-      { "text": "Great! Keep practising!", "audio": "Audio/Unit7/29_Chapter 1.mp3" }
-    ]
-  }
-  
+  "id": "unit7",
+  "name": "Unit 7: Is that a zebra?",
+  "description": "Learn to ask and answer questions with 'Is that...?'",
+  "thumbnail": "Images/Unit7/is_that_a_zebra_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit7/1.webp",
+      "audio": "Audio/Unit7/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit7/2.webp",
+      "audio": "Audio/Unit7/02_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit7/3.webp",
+      "audio": "Audio/Unit7/03_Chapter 1.mp3"
+    },
+        {
+          "text": "fox",
+          "image": "Images/Unit7/4.webp",
+          "audio": "Audio/Unit7/04_Chapter 1.mp3"
+        },
+        {
+          "text": "giraffe",
+          "image": "Images/Unit7/5.webp",
+          "audio": "Audio/Unit7/05_Chapter 1.mp3"
+        },
+        {
+          "text": "zebra",
+          "image": "Images/Unit7/6.webp",
+          "audio": "Audio/Unit7/06_Chapter 1.mp3"
+        },
+        {
+          "text": "monkey",
+          "image": "Images/Unit7/7.webp",
+          "audio": "Audio/Unit7/07_Chapter 1.mp3"
+        },
+        {
+          "text": "parrot",
+          "image": "Images/Unit7/8.webp",
+          "audio": "Audio/Unit7/08_Chapter 1.mp3"
+        },
+        {
+          "text": "lion",
+          "image": "Images/Unit7/9.webp",
+          "audio": "Audio/Unit7/09_Chapter 1.mp3"
+        },
+        {
+          "text": "leopard",
+          "image": "Images/Unit7/10.webp",
+          "audio": "Audio/Unit7/10_Chapter 1.mp3"
+        },
+        {
+          "text": "buffalo",
+          "image": "Images/Unit7/11.webp",
+          "audio": "Audio/Unit7/11_Chapter 1.mp3"
+        },
+        {
+          "text": "wolf",
+          "image": "Images/Unit7/12.webp",
+          "audio": "Audio/Unit7/12_Chapter 1.mp3"
+        },
+    
+        {
+          "image": "Images/Unit7/13.webp",
+          "audio": "Audio/Unit7/13_Chapter 1.mp3"
+        },
+    
+        {
+
+          "image": "Images/Unit7/14.webp",
+          "audio": "Audio/Unit7/14_Chapter 1.mp3"
+        },
+        {
+          "text": "Is that a fox?",
+          "image": "Images/Unit7/15.webp",
+          "audio": "Audio/Unit7/15_Chapter 1.mp3"
+        },
+        {
+          "text": "Yes, it is.",
+          "image": "Images/Unit7/16.webp",
+          "audio": "Audio/Unit7/16_Chapter 1.mp3"
+        },
+    
+        {
+          "text": "Is that a zebra?",
+          "image": "Images/Unit7/17.webp",
+          "audio": "Audio/Unit7/17_Chapter 1.mp3"
+        },
+        {
+          "text": "No, it's not. It's a giraffe.",
+          "image": "Images/Unit7/18.webp",
+          "audio": "Audio/Unit7/18_Chapter 1.mp3"
+        },
+    
+        {
+          "text": "Is that a monkey?",
+          "image": "Images/Unit7/19.webp",
+          "audio": "Audio/Unit7/19_Chapter 1.mp3"
+        },
+        {
+          "text": "Yes, it is.",
+          "image": "Images/Unit7/20.webp",
+          "audio": "Audio/Unit7/20_Chapter 1.mp3"
+        },
+    
+        {
+          "text": "Is that a peacock?",
+          "image": "Images/Unit7/21.webp",
+          "audio": "Audio/Unit7/21_Chapter 1.mp3"
+        },
+        {
+          "text": "No, it's not. It's a parrot.",
+          "image": "Images/Unit7/22.webp",
+          "audio": "Audio/Unit7/22_Chapter 1.mp3"
+        },
+    
+        {
+          "text": "Is that a monkey?",
+          "image": "Images/Unit7/23.webp",
+          "audio": "Audio/Unit7/23_Chapter 1.mp3"
+        },
+        {
+          "text": "No, it's not. It's a lion.",
+          "image": "Images/Unit7/24.webp",
+          "audio": "Audio/Unit7/24_Chapter 1.mp3"
+        },
+    
+        {
+          "text": "Is that an elephant?",
+          "image": "Images/Unit7/25.webp",
+          "audio": "Audio/Unit7/25_Chapter 1.mp3"
+        },
+        {
+          "text": "No, it's not. It's a leopard.",
+          "image": "Images/Unit7/26.webp",
+          "audio": "Audio/Unit7/26_Chapter 1.mp3"
+        },
+    
+        {
+          "text": "Is that a dog?",
+          "image": "Images/Unit7/27.webp",
+          "audio": "Audio/Unit7/27_Chapter 1.mp3"
+        },
+        {
+          "text": "No, it's not. It's a buffalo.",
+          "image": "Images/Unit7/28.webp",
+          "audio": "Audio/Unit7/28_Chapter 1.mp3"
+        },
+    
+        {
+          "text": "Is that a zebra?",
+          "image": "Images/Unit7/29.webp",
+          "audio": "Audio/Unit7/29_Chapter 1.mp3"
+        },
+        {
+          "text": "Yes, it is.",
+          "image": "Images/Unit7/30.webp",
+          "audio": "Audio/Unit7/30_Chapter 1.mp3"
+        },
+    
+        {
+          "text": "Is that a kangaroo?",
+          "image": "Images/Unit7/31.webp",
+          "audio": "Audio/Unit7/31_Chapter 1.mp3"
+        },
+        {
+          "text": "No, it's not. It's a wolf.",
+          "image": "Images/Unit7/32.webp",
+          "audio": "Audio/Unit7/32_Chapter 1.mp3"
+        },
+    
+        {
+          "image": "Images/Unit7/33.webp",
+          "audio": "Audio/Unit7/33_Chapter 1.mp3"
+        }
+      ]
+    }
