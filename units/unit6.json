@@ -1,44 +1,195 @@
 {
-    "id": "unit6",
-    "name": "Unit 6: Is this a cat?",
-    "description": "Learn to ask and answer 'Is this ...?' with Yes/No responses.",
-    "thumbnail": "Images/Unit6/unit6_thumbnail.jpg",
-    "words": [
-      { "image": "Images/Unit6/intro1.png", "audio": "Audio/Unit6/intro.mp3" },
-      { "image": "Images/Unit6/intro2.png", "audio": "Audio/intro2/intro2.mp3" },
+  "id": "unit6",
+  "name": "Unit 6: Is this a globe?",
+  "description": "Learn to ask and answer questions with 'Is this...?'",
+  "thumbnail": "Images/Unit6/is_this_a_globe_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit6/1.webp",
+      "audio": "Audio/Unit6/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit6/2.webp",
+      "audio": "Audio/Unit6/02_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit6/3.webp",
+      "audio": "Audio/Unit6/03_Chapter 1.mp3"
+    },
+    {
+        "text": "Balloon",
+        "image": "Images/Unit6/4.webp",
+        "audio": "Audio/Unit6/04_Chapter 1.mp3"
+      },
+      {
+        "text": "raincoat",
+        "image": "Images/Unit6/5.webp",
+        "audio": "Audio/Unit6/05_Chapter 1.mp3"
+      },
+      {
+        "text": "umbrella",
+        "image": "Images/Unit6/6.webp",
+        "audio": "Audio/Unit6/06_Chapter 1.mp3"
+      },
+      {
+        "text": "eraser",
+        "image": "Images/Unit6/7.webp",
+        "audio": "Audio/Unit6/07_Chapter 1.mp3"
+      },
+      {
+        "text": "mango",
+        "image": "Images/Unit6/8.webp",
+        "audio": "Audio/Unit6/08_Chapter 1.mp3"
+      },
+      {
+        "text": "duster",
+        "image": "Images/Unit6/9.webp",
+        "audio": "Audio/Unit6/09_Chapter 1.mp3"
+      },
+      {
+        "text": "atlas",
+        "image": "Images/Unit6/10.webp",
+        "audio": "Audio/Unit6/10_Chapter 1.mp3"
+      },
+      {
+        "text": "top",
+        "image": "Images/Unit6/11.webp",
+        "audio": "Audio/Unit6/11_Chapter 1.mp3"
+      },
+      {
+        "text": "bat",
+        "image": "Images/Unit6/12.webp",
+        "audio": "Audio/Unit6/12_Chapter 1.mp3"
+      },
+      {
+        "text": "doll",
+        "image": "Images/Unit6/13.webp",
+        "audio": "Audio/Unit6/13_Chapter 1.mp3"
+      },
+      {
+        "text": "robot",
+        "image": "Images/Unit6/14.webp",
+        "audio": "Audio/Unit6/14_Chapter 1.mp3"
+      },
   
-      { "text": "Is this a pencil?",       "image": "Images/Unit6/1.webp",  "audio": "Audio/Unit6/1_pencil_1.mp3" },
-      { "text": "Yes, it is.",            "image": "Images/Unit6/1.webp", "audio": "Audio/Unit6/2_pencil_2.mp3" },
+      {
+        "image": "Images/Unit6/15.webp",
+        "audio": "Audio/Unit6/15_Chapter 1.mp3"
+      },
   
-      { "text": "Is this a raincoat?",           "image": "Images/Unit6/2.webp",  "audio": "Audio/Unit6/2_rain_1.mp3" },
-      { "text": "No, it's not. It's an umbrella.",   "image": "Images/Unit6/2.webp",      "audio": "Audio/Unit6/2_rain_2.mp3" },
+      {
+        "text": "Is this a balloon?",
+        "image": "Images/Unit6/17.webp",
+        "audio": "Audio/Unit6/17_Chapter 1.mp3"
+      },
+      {
+        "text": "Yes, it is.",
+        "image": "Images/Unit6/18.webp",
+        "audio": "Audio/Unit6/18_Chapter 1.mp3"
+      },
   
-      { "text": "Is this a cat?",          "image": "Images/Unit6/3.webp",  "audio": "Audio/Unit6/3_cat_1.mp3" },
-      { "text": "Yes, it is.",            "image": "Images/Unit6/3.webp",  "audio": "Audio/Unit6/3_cat_2.mp3" },
+      {
+        "text": "Is this a raincoat?",
+        "image": "Images/Unit6/19.webp",
+        "audio": "Audio/Unit6/19_Chapter 1.mp3"
+      },
+      {
+        "text": "No, it's not. It's an umbrella.",
+        "image": "Images/Unit6/20.webp",
+        "audio": "Audio/Unit6/20_Chapter 1.mp3"
+      },
   
-      { "text": "Is this a mango?",        "image": "Images/Unit6/4.webp",  "audio": "Audio/Unit6/4_mango_1.mp3" },
-      { "text": "No, it's not. It's an orange.",    "image": "Images/Unit6/4.webp",       "audio": "Audio/Unit6/4_mango_2.mp3" },
+      {
+        "text": "Is this a sharpener?",
+        "image": "Images/Unit6/21.webp",
+        "audio": "Audio/Unit6/21_Chapter 1.mp3"
+      },
+      {
+        "text": "Yes, it is.",
+        "image": "Images/Unit6/22.webp",
+        "audio": "Audio/Unit6/22_Chapter 1.mp3"
+      },
   
-      { "text": "Is this an egg?",         "image": "Images/Unit6/5.webp",  "audio": "Audio/Unit6/5_egg_1.mp3" },
-      { "text": "Yes, it is.",            "image": "Images/Unit6/5.webp",  "audio": "Audio/Unit6/5_egg_2.mp3" },
+      {
+        "text": "Is this an orange?",
+        "image": "Images/Unit6/23.webp",
+        "audio": "Audio/Unit6/23_Chapter 1.mp3"
+      },
+      {
+        "text": "No, it's not. It's a mango.",
+        "image": "Images/Unit6/24.webp",
+        "audio": "Audio/Unit6/24_Chapter 1.mp3"
+      },
   
-      { "text": "Is this a pen?",          "image": "Images/Unit6/6.webp",  "audio": "Audio/Unit6/6_pen_1.mp3" },
-      { "text": "No, it's not. It's a water bottle.",    "image": "Images/Unit6/6.webp",        "audio": "Audio/Unit6/6_pen_2.mp3" },
+      {
+        "text": "Is this a duster?",
+        "image": "Images/Unit6/25.webp",
+        "audio": "Audio/Unit6/25_Chapter 1.mp3"
+      },
+      {
+        "text": "Yes, it is.",
+        "image": "Images/Unit6/26.webp",
+        "audio": "Audio/Unit6/26_Chapter 1.mp3"
+      },
   
-      { "text": "Is this an eraser?",      "image": "Images/Unit6/7.webp",  "audio": "Audio/Unit6/7_eraser_1.mp3" },
-      { "text": "Yes, it is.",           "image": "Images/Unit6/7.webp",  "audio": "Audio/Unit6/7_eraser_2.mp3" },
+      {
+        "text": "Is this a globe?",
+        "image": "Images/Unit6/27.webp",
+        "audio": "Audio/Unit6/27_Chapter 1.mp3"
+      },
+      {
+        "text": "No, it's not. It's an atlas.",
+        "image": "Images/Unit6/28.webp",
+        "audio": "Audio/Unit6/28_Chapter 1.mp3"
+      },
   
-      { "text": "Is this a box?",          "image": "Images/Unit6/8.webp",  "audio": "Audio/Unit6/8_box_1.mp3" },
-      { "text": "No, it's not. It's a backpack.",       "image": "Images/Unit6/8.webp",     "audio": "Audio/Unit6/8_box_2.mp3" },
-
+      {
+        "text": "Is this a top?",
+        "image": "Images/Unit6/29.webp",
+        "audio": "Audio/Unit6/29_Chapter 1.mp3"
+      },
+      {
+        "text": "Yes, it is.",
+        "image": "Images/Unit6/30.webp",
+        "audio": "Audio/Unit6/30_Chapter 1.mp3"
+      },
   
-      { "text": "Is this a ruler?",        "image": "Images/Unit6/9.webp",  "audio": "Audio/Unit6/9_ruler_1.mp3" },
-      { "text": "Yes, it is.",            "image": "Images/Unit6/9.webp",  "audio": "Audio/Unit6/9_ruler_2.mp3" },
+      {
+        "text": "Is this a cricket ball?",
+        "image": "Images/Unit6/31.webp",
+        "audio": "Audio/Unit6/31_Chapter 1.mp3"
+      },
+      {
+        "text": "No, it's not. It's a cricket bat.",
+        "image": "Images/Unit6/32.webp",
+        "audio": "Audio/Unit6/32_Chapter 1.mp3"
+      },
   
-      { "text": "Is this a dog?",          "image": "Images/Unit6/10.webp", "audio": "Audio/Unit6/1-_dog_1.mp3" },
-      { "text": "Yes, it is.",            "image": "Images/Unit6/10.webp",  "audio": "Audio/Unit6/10_dog_2.mp3" },
-
-      { "image": "Images/Unit6/outro.png", "audio": "Audio/Unit6/outro.mp3" }
+      {
+        "text": "Is this a doll?",
+        "image": "Images/Unit6/33.webp",
+        "audio": "Audio/Unit6/33_Chapter 1.mp3"
+      },
+      {
+        "text": "Yes, it is.",
+        "image": "Images/Unit6/34.webp",
+        "audio": "Audio/Unit6/34_Chapter 1.mp3"
+      },
+  
+      {
+        "text": "Is this a robot?",
+        "image": "Images/Unit6/35.webp",
+        "audio": "Audio/Unit6/35_Chapter 1.mp3"
+      },
+      {
+        "text": "Yes, it is.",
+        "image": "Images/Unit6/36.webp",
+        "audio": "Audio/Unit6/36_Chapter 1.mp3"
+      },
+  
+      {
+        "image": "Images/Unit6/37.webp",
+        "audio": "Audio/Unit6/37_Chapter 1.mp3"
+      }
     ]
   }
-  
