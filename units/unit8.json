@@ -1,32 +1,115 @@
 {
-    "id": "unit8",
-    "name": "Unit 8: Books, Pencils",
-    "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
-    "thumbnail": "Images/Unit8/unit8_thumbnail.jpg",
-    "words": [
-      { "text": "Books and Pencils", "audio": "Audio/Unit8/Intro_Chapter 1.mp3" },
-      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit4/u4_intro_02.mp3" },
-  
-      { "text": "books",          "image": "Images/Unit8/1.webp",  "audio": "Audio/Unit8/02_Chapter 1.mp3" },
-      { "text": "pencils",        "image": "Images/Unit8/2.webp",  "audio": "Audio/Unit8/03_Chapter 1.mp3" },
-      { "text": "pens",           "image": "Images/Unit8/3.webp",  "audio": "Audio/Unit8/04_Chapter 1.mp3" },
-      { "text": "rulers",         "image": "Images/Unit8/4.webp",  "audio": "Audio/Unit8/05_Chapter 1.mp3" },
-      { "text": "erasers",        "image": "Images/Unit8/5.webp",  "audio": "Audio/Unit8/06_Chapter 1.mp3" },
-      { "text": "backpacks",      "image": "Images/Unit8/6.webp",  "audio": "Audio/Unit8/07_Chapter 1.mp3" },
-      { "text": "water bottles",  "image": "Images/Unit8/7.webp",  "audio": "Audio/Unit8/08_Chapter 1.mp3" },
-      { "text": "apples",         "image": "Images/Unit8/8.webp",  "audio": "Audio/Unit8/09_Chapter 1.mp3" },
-      { "text": "oranges",        "image": "Images/Unit8/9.webp",  "audio": "Audio/Unit8/10_Chapter 1.mp3" },
-      { "text": "bananas",        "image": "Images/Unit8/10.webp", "audio": "Audio/Unit8/11_Chapter 1.mp3" },
-      { "text": "ships",          "image": "Images/Unit8/11.webp", "audio": "Audio/Unit8/12_Chapter 1.mp3" },
-      { "text": "toothbrushes",   "image": "Images/Unit8/12.webp", "audio": "Audio/Unit8/13_Chapter 1.mp3" },
-      { "text": "bees",           "image": "Images/Unit8/13.webp", "audio": "Audio/Unit8/14_Chapter 1.mp3" },
-      { "text": "dolphins",       "image": "Images/Unit8/14.webp", "audio": "Audio/Unit8/15_Chapter 1.mp3" },
-      { "text": "horses",         "image": "Images/Unit8/15.webp", "audio": "Audio/Unit8/16_Chapter 1.mp3" },
-      { "text": "mugs",           "image": "Images/Unit8/16.webp", "audio": "Audio/Unit8/17_Chapter 1.mp3" },
-      { "text": "umbrellas",      "image": "Images/Unit8/17.webp", "audio": "Audio/Unit8/18_Chapter 1.mp3" },
-      { "text": "cars",           "image": "Images/Unit8/18.webp", "audio": "Audio/Unit8/19_Chapter 1.mp3" },
-  
-      { "text": "Well done!", "audio": "Audio/Unit8/Outro_Chapter 1.mp3" }
-    ]
-  }
-  
+  "id": "unit8",
+  "name": "Unit 8: Books and Pencils",
+  "description": "Let's learn some plurals. Look, Listen and Repeat.",
+  "thumbnail": "Images/Unit8/books_and_pencils_thumbnail.jpg",
+  "words": [
+    {
+
+      "image": "Images/Unit8/1.webp",
+      "audio": "Audio/Unit8/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit8/2.webp",
+      "audio": "Audio/Unit8/02_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit8/3.webp",
+      "audio": "Audio/Unit8/03_Chapter 1.mp3"
+    },
+    {
+      "text": "books",
+      "image": "Images/Unit8/4.webp",
+      "audio": "Audio/Unit8/04_Chapter 1.mp3"
+    },
+    {
+      "text": "pencils",
+      "image": "Images/Unit8/5.webp",
+      "audio": "Audio/Unit8/05_Chapter 1.mp3"
+    },
+    {
+      "text": "pens",
+      "image": "Images/Unit8/6.webp",
+      "audio": "Audio/Unit8/06_Chapter 1.mp3"
+    },
+    {
+      "text": "rulers",
+      "image": "Images/Unit8/7.webp",
+      "audio": "Audio/Unit8/07_Chapter 1.mp3"
+    },
+    {
+      "text": "erasers",
+      "image": "Images/Unit8/8.webp",
+      "audio": "Audio/Unit8/08_Chapter 1.mp3"
+    },
+    {
+      "text": "backpacks",
+      "image": "Images/Unit8/9.webp",
+      "audio": "Audio/Unit8/09_Chapter 1.mp3"
+    },
+    {
+      "text": "water bottles",
+      "image": "Images/Unit8/10.webp",
+      "audio": "Audio/Unit8/10_Chapter 1.mp3"
+    },
+    {
+      "text": "apples",
+      "image": "Images/Unit8/11.webp",
+      "audio": "Audio/Unit8/11_Chapter 1.mp3"
+    },
+    {
+      "text": "oranges",
+      "image": "Images/Unit8/12.webp",
+      "audio": "Audio/Unit8/12_Chapter 1.mp3"
+    },
+    {
+      "text": "bananas",
+      "image": "Images/Unit8/13.webp",
+      "audio": "Audio/Unit8/13_Chapter 1.mp3"
+    },
+    {
+      "text": "ships",
+      "image": "Images/Unit8/14.webp",
+      "audio": "Audio/Unit8/14_Chapter 1.mp3"
+    },
+    {
+      "text": "toothbrushes",
+      "image": "Images/Unit8/15.webp",
+      "audio": "Audio/Unit8/15_Chapter 1.mp3"
+    },
+    {
+      "text": "bees",
+      "image": "Images/Unit8/16.webp",
+      "audio": "Audio/Unit8/16_Chapter 1.mp3"
+    },
+    {
+      "text": "dolphins",
+      "image": "Images/Unit8/17.webp",
+      "audio": "Audio/Unit8/17_Chapter 1.mp3"
+    },
+    {
+      "text": "horses",
+      "image": "Images/Unit8/18.webp",
+      "audio": "Audio/Unit8/18_Chapter 1.mp3"
+    },
+    {
+      "text": "mugs",
+      "image": "Images/Unit8/19.webp",
+      "audio": "Audio/Unit8/19_Chapter 1.mp3"
+    },
+    {
+      "text": "umbrellas",
+      "image": "Images/Unit8/20.webp",
+      "audio": "Audio/Unit8/20_Chapter 1.mp3"
+    },
+    {
+      "text": "cars",
+      "image": "Images/Unit8/21.webp",
+      "audio": "Audio/Unit8/21_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit8/22.webp",
+      "audio": "Audio/Unit8/22_Chapter 1.mp3"
+    }
+  ]
+}
