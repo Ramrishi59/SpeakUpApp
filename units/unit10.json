@@ -1,24 +1,319 @@
 {
-    "id": "unit10",
-    "name": "Unit 10: Those are butterflies",
-    "description": "Learn plural sentences with 'Those are ...'.",
-    "thumbnail": "Images/Unit10/unit10_thumbnail.jpg",
-    "words": [
-      { "text": "Those are butterflies.", "audio": "Audio/Unit10/intro.mp3" },
-      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit4/u4_intro_02.mp3" },
-  
-      { "text": "Those are ships.",      "image": "Images/Unit10/1.webp",  "audio": "Audio/Unit10/02_Chapter 1.mp3" },
-      { "text": "Those are bees.",       "image": "Images/Unit10/2.webp",  "audio": "Audio/Unit10/03_Chapter 1.mp3" },
-      { "text": "Those are dolphins.",   "image": "Images/Unit10/3.webp",  "audio": "Audio/Unit10/04_Chapter 1.mp3" },
-      { "text": "Those are horses.",     "image": "Images/Unit10/4.webp",  "audio": "Audio/Unit10/05_Chapter 1.mp3" },
-      { "text": "Those are mugs.",       "image": "Images/Unit10/5.webp",  "audio": "Audio/Unit10/06_Chapter 1.mp3" },
-      { "text": "Those are umbrellas.",  "image": "Images/Unit10/6.webp",  "audio": "Audio/Unit10/07_Chapter 1.mp3" },
-      { "text": "Those are cars.",       "image": "Images/Unit10/7.webp",  "audio": "Audio/Unit10/08_Chapter 1.mp3" },
-      { "text": "Those are stars.",      "image": "Images/Unit10/8.webp",  "audio": "Audio/Unit10/09_Chapter 1.mp3" },
-      { "text": "Those are birds.",      "image": "Images/Unit10/9.webp",  "audio": "Audio/Unit10/10_Chapter 1.mp3" },
-      { "text": "Those are butterflies.", "image": "Images/Unit10/10.webp", "audio": "Audio/Unit10/11_Chapter 1.mp3" },
-  
-      { "text": "Well done!", "audio": "Audio/Unit10/outro.mp3" }
-    ]
-  }
-  
+  "id": "unit10",
+  "name": "Unit 10. Are these papayas?",
+  "description": "Let’s learn to ask and answer with 'Are they?'.",
+  "thumbnail": "Images/Unit10/are_they_cars_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit10/1.webp",
+      "audio": "Audio/Unit10/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit10/2.webp",
+      "audio": "Audio/Unit10/02_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit10/3.webp",
+      "audio": "Audio/Unit10/03_Chapter 1.mp3"
+    },
+
+    {
+      "text": "papaya",
+      "image": "Images/Unit10/4.webp",
+      "audio": "Audio/Unit10/04_Chapter 1.mp3"
+    },
+    {
+      "text": "pineapple",
+      "image": "Images/Unit10/5.webp",
+      "audio": "Audio/Unit10/05_Chapter 1.mp3"
+    },
+    {
+      "text": "grapes",
+      "image": "Images/Unit10/6.webp",
+      "audio": "Audio/Unit10/06_Chapter 1.mp3"
+    },
+    {
+      "text": "guava",
+      "image": "Images/Unit10/7.webp",
+      "audio": "Audio/Unit10/07_Chapter 1.mp3"
+    },
+    {
+      "text": "watermelon",
+      "image": "Images/Unit10/8.webp",
+      "audio": "Audio/Unit10/08_Chapter 1.mp3"
+    },
+    {
+      "text": "strawberry",
+      "image": "Images/Unit10/9.webp",
+      "audio": "Audio/Unit10/09_Chapter 1.mp3"
+    },
+    {
+      "text": "tomato",
+      "image": "Images/Unit10/10.webp",
+      "audio": "Audio/Unit10/10_Chapter 1.mp3"
+    },
+    {
+      "text": "onion",
+      "image": "Images/Unit10/11.webp",
+      "audio": "Audio/Unit10/11_Chapter 1.mp3"
+    },
+    {
+      "text": "cucumber",
+      "image": "Images/Unit10/12.webp",
+      "audio": "Audio/Unit10/12_Chapter 1.mp3"
+    },
+    {
+      "text": "cabbage",
+      "image": "Images/Unit10/13.webp",
+      "audio": "Audio/Unit10/13_Chapter 1.mp3"
+    },
+    {
+      "text": "cauliflower",
+      "image": "Images/Unit10/14.webp",
+      "audio": "Audio/Unit10/14_Chapter 1.mp3"
+    },
+    {
+      "text": "carrot",
+      "image": "Images/Unit10/15.webp",
+      "audio": "Audio/Unit10/15_Chapter 1.mp3"
+    },
+    {
+      "text": "beetroot",
+      "image": "Images/Unit10/16.webp",
+      "audio": "Audio/Unit10/16_Chapter 1.mp3"
+    },
+    {
+      "text": "pumpkin",
+      "image": "Images/Unit10/17.webp",
+      "audio": "Audio/Unit10/17_Chapter 1.mp3"
+    },
+    {
+      "text": "beans",
+      "image": "Images/Unit10/18.webp",
+      "audio": "Audio/Unit10/18_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit10/19.webp",
+      "audio": "Audio/Unit10/19_Chapter 1.mp3"
+    },
+
+    {
+      "image": "Images/Unit10/20.webp",
+      "audio": "Audio/Unit10/20_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these papayas?",
+      "image": "Images/Unit10/21.webp",
+      "audio": "Audio/Unit10/21_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/21.webp",
+      "audio": "Audio/Unit10/22_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these pineapples?",
+      "image": "Images/Unit10/23.webp",
+      "audio": "Audio/Unit10/23_Chapter 1.mp3"
+    },
+    {
+      "text": "No, they are not. They are watermelons.",
+      "image": "Images/Unit10/23.webp",
+      "audio": "Audio/Unit10/24_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these grapes?",
+      "image": "Images/Unit10/25.webp",
+      "audio": "Audio/Unit10/25_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/25.webp",
+      "audio": "Audio/Unit10/26_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these guavas?",
+      "image": "Images/Unit10/27.webp",
+      "audio": "Audio/Unit10/27_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/27.webp",
+      "audio": "Audio/Unit10/28_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these watermelons?",
+      "image": "Images/Unit10/29.webp",
+      "audio": "Audio/Unit10/29_Chapter 1.mp3"
+    },
+    {
+      "text": "No, they are not. They are papayas.",
+      "image": "Images/Unit10/29.webp",
+      "audio": "Audio/Unit10/30_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these strawberries?",
+      "image": "Images/Unit10/31.webp",
+      "audio": "Audio/Unit10/31_Chapter 1.mp3"
+    },
+    {
+      "text": "No, they are not. They are grapes.",
+      "image": "Images/Unit10/31.webp",
+      "audio": "Audio/Unit10/32_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these tomatoes?",
+      "image": "Images/Unit10/33.webp",
+      "audio": "Audio/Unit10/33_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/33.webp",
+      "audio": "Audio/Unit10/34_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these potatoes?",
+      "image": "Images/Unit10/35.webp",
+      "audio": "Audio/Unit10/35_Chapter 1.mp3"
+    },
+    {
+      "text": "No, they are not. They are onions.",
+      "image": "Images/Unit10/35.webp",
+      "audio": "Audio/Unit10/36_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these carrots?",
+      "image": "Images/Unit10/37.webp",
+      "audio": "Audio/Unit10/37_Chapter 1.mp3"
+    },
+    {
+      "text": "No, they are not. They are beans.",
+      "image": "Images/Unit10/37.webp",
+      "audio": "Audio/Unit10/38_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these cucumbers?",
+      "image": "Images/Unit10/39.webp",
+      "audio": "Audio/Unit10/39_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/39.webp",
+      "audio": "Audio/Unit10/40_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these papayas?",
+      "image": "Images/Unit10/41.webp",
+      "audio": "Audio/Unit10/41_Chapter 1.mp3"
+    },
+    {
+      "text": "No, they are not. They are pumpkins.",
+      "image": "Images/Unit10/41.webp",
+      "audio": "Audio/Unit10/42_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these pineapples?",
+      "image": "Images/Unit10/43.webp",
+      "audio": "Audio/Unit10/43_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/43.webp",
+      "audio": "Audio/Unit10/44_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these grapes?",
+      "image": "Images/Unit10/45.webp",
+      "audio": "Audio/Unit10/45_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/45.webp",
+      "audio": "Audio/Unit10/46_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these guavas?",
+      "image": "Images/Unit10/47.webp",
+      "audio": "Audio/Unit10/47_Chapter 1.mp3"
+    },
+    {
+      "text": "No, they are not. They are potatoes.",
+      "image": "Images/Unit10/47.webp",
+      "audio": "Audio/Unit10/48_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these carrots?",
+      "image": "Images/Unit10/49.webp",
+      "audio": "Audio/Unit10/49_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/49.webp",
+      "audio": "Audio/Unit10/50_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these strawberries?",
+      "image": "Images/Unit10/51.webp",
+      "audio": "Audio/Unit10/51_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/51.webp",
+      "audio": "Audio/Unit10/52_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these tomatoes?",
+      "image": "Images/Unit10/53.webp",
+      "audio": "Audio/Unit10/53_Chapter 1.mp3"
+    },
+    {
+      "text": "No, they are not. They are grapes.",
+      "image": "Images/Unit10/53.webp",
+      "audio": "Audio/Unit10/54_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these cauliflowers?",
+      "image": "Images/Unit10/55.webp",
+      "audio": "Audio/Unit10/55_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/55.webp",
+      "audio": "Audio/Unit10/56_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these cucumbers?",
+      "image": "Images/Unit10/57.webp",
+      "audio": "Audio/Unit10/57_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/57.webp",
+      "audio": "Audio/Unit10/58_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these beans?",
+      "image": "Images/Unit10/59.webp",
+      "audio": "Audio/Unit10/59_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/59.webp",
+      "audio": "Audio/Unit10/60_Chapter 1.mp3"
+    },
+    {
+      "text": "Are these potatoes?",
+      "image": "Images/Unit10/61.webp",
+      "audio": "Audio/Unit10/61_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, they are.",
+      "image": "Images/Unit10/61.webp",
+      "audio": "Audio/Unit10/62_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit10/63.webp",
+      "audio": "Audio/Unit10/63_Chapter 1.mp3"
+    }
+  ]
+}
