@@ -1,43 +1,110 @@
 {
-    "id": "unit13",
-    "name": "Unit 13: Are they cars?",
-    "description": "Plural questions with 'Are they ...?' answered positively.",
-    "thumbnail": "Images/Unit13/unit13_thumbnail.jpg",
-    "words": [
-      { "text": "Are they cars?", "audio": "Audio/Unit13/Unit_13_intro.mp3" },
-      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit13/Look_listen_repeat.mp3" },
-  
-      { "text": "Are they birds?", "image": "Images/Unit13/1.webp", "audio": "Audio/Unit13/03_Chapter 1.mp3" },
-      { "text": "Yes, they are.", "image": "Images/Unit13/1.webp","audio": "Audio/Unit13/04_Chapter 1.mp3" },
-  
-      { "text": "Are they mugs?", "image": "Images/Unit13/2.webp", "audio": "Audio/Unit13/05_Chapter 1.mp3" },
-      { "text": "Yes, they are.", "image": "Images/Unit13/2.webp","audio": "Audio/Unit13/06_Chapter 1.mp3" },
-  
-      { "text": "Are they horses?", "image": "Images/Unit13/3.webp", "audio": "Audio/Unit13/07_Chapter 1.mp3" },
-      { "text": "Yes, they are.", "image": "Images/Unit13/3.webp","audio": "Audio/Unit13/08_Chapter 1.mp3" },
-  
-      { "text": "Are they bees?", "image": "Images/Unit13/4.webp", "audio": "Audio/Unit13/09_Chapter 1.mp3" },
-      { "text": "Yes, they are.", "image": "Images/Unit13/4.webp","audio": "Audio/Unit13/10_Chapter 1.mp3" },
-  
-      { "text": "Are they dolphins?", "image": "Images/Unit13/5.webp", "audio": "Audio/Unit13/11_Chapter 1.mp3" },
-      { "text": "Yes, they are.", "image": "Images/Unit13/5.webp", "audio": "Audio/Unit13/12_Chapter 1.mp3" },
-  
-      { "text": "Are they ships?", "image": "Images/Unit13/6.webp", "audio": "Audio/Unit13/13_Chapter 1.mp3" },
-      { "text": "Yes, they are.","image": "Images/Unit13/6.webp", "audio": "Audio/Unit13/14_Chapter 1.mp3" },
-  
-      { "text": "Are they stars?", "image": "Images/Unit13/7.webp", "audio": "Audio/Unit13/15_Chapter 1.mp3" },
-      { "text": "Yes, they are.","image": "Images/Unit13/7.webp", "audio": "Audio/Unit13/16_Chapter 1.mp3" },
-  
-      { "text": "Are they butterflies?", "image": "Images/Unit13/8.webp", "audio": "Audio/Unit13/17_Chapter 1.mp3" },
-      { "text": "Yes, they are.", "image": "Images/Unit13/8.webp","audio": "Audio/Unit13/18_Chapter 1.mp3" },
-  
-      { "text": "Are they umbrellas?", "image": "Images/Unit13/9.webp", "audio": "Audio/Unit13/19_Chapter 1.mp3" },
-      { "text": "Yes, they are.", "image": "Images/Unit13/9.webp","audio": "Audio/Unit13/20_Chapter 1.mp3" },
-  
-      { "text": "Are they cars?", "image": "Images/Unit13/10.webp", "audio": "Audio/Unit13/21_Chapter 1.mp3" },
-      { "text": "Yes, they are.", "image": "Images/Unit13/10.webp","audio": "Audio/Unit13/22_Chapter 1.mp3" },
-  
-      { "image": "Images/Unit13/Outro_wonderful.webp", "audio": "Audio/Unit13/Unit_13_Outro.mp3" }
-    ]
-  }
-  
+  "id": "unit13",
+  "name": "Unit 13: You are a boy",
+  "description": "Learn to use 'you are', 'we are', and 'they are' in simple sentences.",
+  "thumbnail": "Images/Unit13/you_are_a_boy_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit13/1.webp",
+      "audio": "Audio/Unit13/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit13/2.webp",
+      "audio": "Audio/Unit13/02_Chapter 1.mp3"
+    },
+    {
+      "text": "We are boys.",
+      "image": "Images/Unit13/3.webp",
+      "audio": "Audio/Unit13/03_Chapter 1.mp3"
+    },
+    {
+      "text": "We are girls.",
+      "image": "Images/Unit13/4.webp",
+      "audio": "Audio/Unit13/04_Chapter 1.mp3"
+    },
+    {
+      "text": "You are a boy.",
+      "image": "Images/Unit13/5.webp",
+      "audio": "Audio/Unit13/05_Chapter 1.mp3"
+    },
+    {
+      "text": "You are a girl.",
+      "image": "Images/Unit13/6.webp",
+      "audio": "Audio/Unit13/06_Chapter 1.mp3"
+    },
+    {
+      "text": "You are a man.",
+      "image": "Images/Unit13/7.webp",
+      "audio": "Audio/Unit13/07_Chapter 1.mp3"
+    },
+    {
+      "text": "You are men.",
+      "image": "Images/Unit13/8.webp",
+      "audio": "Audio/Unit13/08_Chapter 1.mp3"
+    },
+    {
+      "text": "You are a woman.",
+      "image": "Images/Unit13/9.webp",
+      "audio": "Audio/Unit13/09_Chapter 1.mp3"
+    },
+    {
+      "text": "You are women.",
+      "image": "Images/Unit13/10.webp",
+      "audio": "Audio/Unit13/10_Chapter 1.mp3"
+    },
+    {
+      "text": "We are men.",
+      "image": "Images/Unit13/11.webp",
+      "audio": "Audio/Unit13/11_Chapter 1.mp3"
+    },
+    {
+      "text": "We are women.",
+      "image": "Images/Unit13/12.webp",
+      "audio": "Audio/Unit13/12_Chapter 1.mp3"
+    },
+    {
+      "text": "They are boys.",
+      "image": "Images/Unit13/13.webp",
+      "audio": "Audio/Unit13/13_Chapter 1.mp3"
+    },
+    {
+      "text": "They are girls.",
+      "image": "Images/Unit13/14.webp",
+      "audio": "Audio/Unit13/14_Chapter 1.mp3"
+    },
+    {
+      "text": "They are men.",
+      "image": "Images/Unit13/15.webp",
+      "audio": "Audio/Unit13/15_Chapter 1.mp3"
+    },
+    {
+      "text": "They are women.",
+      "image": "Images/Unit13/16.webp",
+      "audio": "Audio/Unit13/16_Chapter 1.mp3"
+    },
+    {
+      "text": "They are apples.",
+      "image": "Images/Unit13/17.webp",
+      "audio": "Audio/Unit13/17_Chapter 1.mp3"
+    },
+    {
+      "text": "They are butterflies.",
+      "image": "Images/Unit13/18.webp",
+      "audio": "Audio/Unit13/18_Chapter 1.mp3"
+    },
+    {
+      "text": "They are students.",
+      "image": "Images/Unit13/19.webp",
+      "audio": "Audio/Unit13/19_Chapter 1.mp3"
+    },
+    {
+      "text": "They are monkeys.",
+      "image": "Images/Unit13/20.webp",
+      "audio": "Audio/Unit13/20_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit13/21.webp",
+      "audio": "Audio/Unit13/21_Chapter 1.mp3"
+    }
+  ]
+}
