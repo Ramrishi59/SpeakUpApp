@@ -1,43 +1,181 @@
 {
-    "id": "unit12",
-    "name": "Unit 12: Are these water bottles?",
-    "description": "Plural questions with 'Are these ...?' and corrective answers split into separate slides.",
-    "thumbnail": "Images/Unit12/unit12_thumbnail.jpg",
-    "words": [
-      { "text": "Are these water bottles?", "audio": "Audio/Unit12/Intro.mp3" },
-      { "text": "Look. Listen. Repeat.",    "audio": "Audio/Unit12/Look_listen_repeat.mp3" },
-  
-      { "text": "Are these pencils?", "image": "Images/Unit12/1.webp",  "audio": "Audio/Unit12/02_Chapter 1.mp3" },
-      { "text": "No, they are not. They are books.", "image": "Images/Unit12/1.webp",  "audio": "Audio/Unit12/03_Chapter 1.mp3" },
-  
-      { "text": "Are these bananas?", "image": "Images/Unit12/2.webp",  "audio": "Audio/Unit12/04_Chapter 1.mp3" },
-      { "text": "No, they are not. They are oranges.", "image": "Images/Unit12/2.webp",  "audio": "Audio/Unit12/05_Chapter 1.mp3" },
-  
-      { "text": "Are these oranges?", "image": "Images/Unit12/3.webp",  "audio": "Audio/Unit12/06_Chapter 1.mp3" },
-      { "text": "No, they are not. They are apples.", "image": "Images/Unit12/3.webp",  "audio": "Audio/Unit12/07_Chapter 1.mp3" },
-  
-      { "text": "Are these pens?", "image": "Images/Unit12/4.webp",  "audio": "Audio/Unit12/08_Chapter 1.mp3" },
-      { "text": "No, they are not. They are backpacks.", "image": "Images/Unit12/4.webp",  "audio": "Audio/Unit12/09_Chapter 1.mp3" },
-  
-      { "text": "Are these rulers?", "image": "Images/Unit12/5.webp",  "audio": "Audio/Unit12/10_Chapter 1.mp3" },
-      { "text": "No, they are not. They are pens.", "image": "Images/Unit12/5.webp",  "audio": "Audio/Unit12/11_Chapter 1.mp3" },
-  
-      { "text": "Are these apples?", "image": "Images/Unit12/6.webp",  "audio": "Audio/Unit12/12_Chapter 1.mp3" },
-      { "text": "No, they are not. They are bananas.", "image": "Images/Unit12/6.webp",  "audio": "Audio/Unit12/13_Chapter 1.mp3" },
-  
-      { "text": "Are these backpacks?", "image": "Images/Unit12/7.webp",  "audio": "Audio/Unit12/14_Chapter 1.mp3" },
-      { "text": "No, they are not. They are rulers.", "image": "Images/Unit12/7.webp",  "audio": "Audio/Unit12/15_Chapter 1.mp3" },
-  
-      { "text": "Are these water bottles?", "image": "Images/Unit12/8.webp",  "audio": "Audio/Unit12/16_Chapter 1.mp3" },
-      { "text": "No, they are not. They are pencils.", "image": "Images/Unit12/8.webp",  "audio": "Audio/Unit12/17_Chapter 1.mp3" },
-  
-      { "text": "Are these rulers?", "image": "Images/Unit12/9.webp",  "audio": "Audio/Unit12/18_Chapter 1.mp3" },
-      { "text": "No, they are not. They are erasers.", "image": "Images/Unit12/9.webp",  "audio": "Audio/Unit12/19_Chapter 1.mp3" },
-  
-      { "text": "Are these pencils?", "image": "Images/Unit12/10.webp",  "audio": "Audio/Unit12/20_Chapter 1.mp3" },
-      { "text": "No, they are not. They are water bottles.", "image": "Images/Unit12/10.webp",  "audio": "Audio/Unit12/21_Chapter 1.mp3" },
-  
-      { "image": "Images/Unit12/Outro_well_done.webp", "audio": "Audio/Unit12/Outro.mp3" } 
-    ]
-  }
-  
+  "id": "unit12",
+  "name": "Unit 12: I am a girl",
+  "description": "Learn to say 'I am', 'He is', and 'She is' in simple sentences.",
+  "thumbnail": "Images/Unit12/i_am_a_girl_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit12/1.webp",
+      "audio": "Audio/Unit12/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit12/2.webp",
+      "audio": "Audio/Unit12/02_Chapter 1.mp3"
+    },
+
+    {
+      "text": "I am Raju.",
+      "image": "Images/Unit12/3.webp",
+      "audio": "Audio/Unit12/03_Chapter 1.mp3"
+    },
+    {
+      "text": "I am a boy.",
+      "image": "Images/Unit12/3.webp",
+      "audio": "Audio/Unit12/04_Chapter 1.mp3"
+    },
+
+    {
+      "text": "I am Reena.",
+      "image": "Images/Unit12/4.webp",
+      "audio": "Audio/Unit12/05_Chapter 1.mp3"
+    },
+    {
+      "text": "I am a girl.",
+      "image": "Images/Unit12/4.webp",
+      "audio": "Audio/Unit12/06_Chapter 1.mp3"
+    },
+
+    {
+      "text": "I am Jeethu.",
+      "image": "Images/Unit12/5.webp",
+      "audio": "Audio/Unit12/07_Chapter 1.mp3"
+    },
+    {
+      "text": "I am a man.",
+      "image": "Images/Unit12/5.webp",
+      "audio": "Audio/Unit12/08_Chapter 1.mp3"
+    },
+
+    {
+      "text": "I am Meera.",
+      "image": "Images/Unit12/6.webp",
+      "audio": "Audio/Unit12/09_Chapter 1.mp3"
+    },
+    {
+      "text": "I am a woman.",
+      "image": "Images/Unit12/6.webp",
+      "audio": "Audio/Unit12/10_Chapter 1.mp3"
+    },
+
+    {
+      "text": "I am Manku.",
+      "image": "Images/Unit12/7.webp",
+      "audio": "Audio/Unit12/11_Chapter 1.mp3"
+    },
+    {
+      "text": "I am a monkey.",
+      "image": "Images/Unit12/7.webp",
+      "audio": "Audio/Unit12/12_Chapter 1.mp3"
+    },
+
+    {
+      "text": "He is Raju.",
+      "image": "Images/Unit12/8.webp",
+      "audio": "Audio/Unit12/13_Chapter 1.mp3"
+    },
+    {
+      "text": "He is a boy.",
+      "image": "Images/Unit12/8.webp",
+      "audio": "Audio/Unit12/14_Chapter 1.mp3"
+    },
+
+    {
+      "text": "She is Reena.",
+      "image": "Images/Unit12/9.webp",
+      "audio": "Audio/Unit12/15_Chapter 1.mp3"
+    },
+    {
+      "text": "She is a girl.",
+      "image": "Images/Unit12/9.webp",
+      "audio": "Audio/Unit12/16_Chapter 1.mp3"
+    },
+
+    {
+      "text": "He is Nithin uncle.",
+      "image": "Images/Unit12/10.webp",
+      "audio": "Audio/Unit12/17_Chapter 1.mp3"
+    },
+    {
+      "text": "He is a man.",
+      "image": "Images/Unit12/10.webp",
+      "audio": "Audio/Unit12/18_Chapter 1.mp3"
+    },
+
+    {
+      "text": "She is Meera aunty.",
+      "image": "Images/Unit12/11.webp",
+      "audio": "Audio/Unit12/19_Chapter 1.mp3"
+    },
+    {
+      "text": "She is a woman.",
+      "image": "Images/Unit12/11.webp",
+      "audio": "Audio/Unit12/20_Chapter 1.mp3"
+    },
+
+    {
+      "text": "He is Thomas.",
+      "image": "Images/Unit12/12.webp",
+      "audio": "Audio/Unit12/21_Chapter 1.mp3"
+    },
+    {
+      "text": "Is he a boy?",
+      "image": "Images/Unit12/12.webp",
+      "audio": "Audio/Unit12/22_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, he is.",
+      "image": "Images/Unit12/12.webp",
+      "audio": "Audio/Unit12/23_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Is Saira a boy?",
+      "image": "Images/Unit12/13.webp",
+      "audio": "Audio/Unit12/24_Chapter 1.mp3"
+    },
+    {
+      "text": "No, she is a girl.",
+      "image": "Images/Unit12/13.webp",
+      "audio": "Audio/Unit12/25_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Is she Reena?",
+      "image": "Images/Unit12/14.webp",
+      "audio": "Audio/Unit12/26_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, she is.",
+      "image": "Images/Unit12/14.webp",
+      "audio": "Audio/Unit12/27_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Is he Thomas?",
+      "image": "Images/Unit12/15.webp",
+      "audio": "Audio/Unit12/28_Chapter 1.mp3"
+    },
+    {
+      "text": "No, he is Raju.",
+      "image": "Images/Unit12/15.webp",
+      "audio": "Audio/Unit12/29_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Is she Reena?",
+      "image": "Images/Unit12/16.webp",
+      "audio": "Audio/Unit12/30_Chapter 1.mp3"
+    },
+    {
+      "text": "No, she is Saira.",
+      "image": "Images/Unit12/16.webp",
+      "audio": "Audio/Unit12/31_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Great! See you in the next unit. Bye!",
+      "image": "Images/Unit12/17.webp",
+      "audio": "Audio/Unit12/32_Chapter 1.mp3"
+    }
+  ]
+}
