@@ -1,23 +1,126 @@
 {
-    "id": "unit15",
-    "name": "Unit 15: I am a girl",
-    "description": "Practice simple sentences with 'I am', 'He is', and 'She is'.",
-    "thumbnail": "Images/Unit15/unit15_thumbnail.jpg",
-    "words": [
-      { "text": "I am a girl", "audio": "Audio/Unit15/Unit_15_Intro.mp3" },
-      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit14/Look_listen_repeat.mp3" },
-  
-      { "text": "I am Raju. I am a boy.", "image": "Images/Unit15/1.webp", "audio": "Audio/Unit15/02_Chapter 1.mp3" },
-      { "text": "I am Reena. I am a girl.", "image": "Images/Unit15/2.webp", "audio": "Audio/Unit15/03_Chapter 1.mp3" },
-      { "text": "I am Sabu. I am a man.", "image": "Images/Unit15/3.webp", "audio": "Audio/Unit15/04_Chapter 1.mp3" },
-      { "text": "I am Meera. I am a woman.", "image": "Images/Unit15/4.webp", "audio": "Audio/Unit15/05_Chapter 1.mp3" },
-  
-      { "text": "He is Raju. He is a boy.", "image": "Images/Unit15/5.webp", "audio": "Audio/Unit15/06_Chapter 1.mp3" },
-      { "text": "She is Reena. She is a girl.", "image": "Images/Unit15/6.webp", "audio": "Audio/Unit15/07_Chapter 1.mp3" },
-      { "text": "He is Sabu. He is a man.", "image": "Images/Unit15/7.webp", "audio": "Audio/Unit15/08_Chapter 1.mp3" },
-      { "text": "She is Meera. She is a woman.", "image": "Images/Unit15/8.webp", "audio": "Audio/Unit15/09_Chapter 1.mp3" }
-  
+  "id": "unit15",
+  "name": "Unit 15",
+  "description": "Look, listen, and repeat the words.",
+  "thumbnail": "Images/Unit15/unit15_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit15/1.webp",
+      "audio": "Audio/Unit15/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/2.webp",
+      "audio": "Audio/Unit15/02_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/3.webp",
+      "audio": "Audio/Unit15/03_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/4.webp",
+      "audio": "Audio/Unit15/04_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/5.webp",
+      "audio": "Audio/Unit15/05_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/6.webp",
+      "audio": "Audio/Unit15/06_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/7.webp",
+      "audio": "Audio/Unit15/07_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/8.webp",
+      "audio": "Audio/Unit15/08_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/9.webp",
+      "audio": "Audio/Unit15/09_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/10.webp",
+      "audio": "Audio/Unit15/10_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/10.webp",
+      "audio": "Audio/Unit15/11_Chapter 1.mp3"
+    },
 
-    ]
-  }
-  
+    {
+      "image": "Images/Unit15/11.webp",
+      "audio": "Audio/Unit15/12_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/11.webp",
+      "audio": "Audio/Unit15/13_Chapter 1.mp3"
+    },
+
+    {
+      "image": "Images/Unit15/12.webp",
+      "audio": "Audio/Unit15/14_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/12.webp",
+      "audio": "Audio/Unit15/15_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/13.webp",
+      "audio": "Audio/Unit15/16_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/14.webp",
+      "audio": "Audio/Unit15/17_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/15.webp",
+      "audio": "Audio/Unit15/18_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/16.webp",
+      "audio": "Audio/Unit15/19_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/17.webp",
+      "audio": "Audio/Unit15/20_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/17.webp",
+      "audio": "Audio/Unit15/21_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/18.webp",
+      "audio": "Audio/Unit15/22_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/19.webp",
+      "audio": "Audio/Unit15/23_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/20.webp",
+      "audio": "Audio/Unit15/24_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/21.webp",
+      "audio": "Audio/Unit15/25_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/22.webp",
+      "audio": "Audio/Unit15/26_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/23.webp",
+      "audio": "Audio/Unit15/27_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/24.webp",
+      "audio": "Audio/Unit15/28_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit15/25.webp",
+      "audio": "Audio/Unit15/29_Chapter 1.mp3"
+    }
+  ]
+}
