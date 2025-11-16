@@ -1,30 +1,96 @@
 {
-    "id": "unit16",
-    "name": "Unit 16: Is he a boy?",
-    "description": "Practice simple Yes/No questions with 'Is he/Is she'.",
-    "thumbnail": "Images/Unit16/unit16_thumbnail.jpg",
-    "words": [
-      { "text": "Is he a boy?", "audio": "Audio/Unit16/Unit_16_Intro.mp3" },
-      { "text": "Look. Listen. Repeat.", "audio": "Audio/Unit14/Look_listen_repeat.mp3" },
-  
-      { "text": "Is Thomas a boy?", "image": "Images/Unit16/1.webp", "audio": "Audio/Unit16/02_Chapter 1.mp3" },
-      { "text": "Yes, he is.", "image": "Images/Unit16/1.webp", "audio": "Audio/Unit16/03_Chapter 1.mp3" },
-  
-      { "text": "Is Saira a girl?", "image": "Images/Unit16/2.webp", "audio": "Audio/Unit16/04_Chapter 1.mp3" },
-      { "text": "Yes, she is.", "image": "Images/Unit16/2.webp", "audio": "Audio/Unit16/05_Chapter 1.mp3" },
-  
-      { "text": "Is she Reena?", "image": "Images/Unit16/3.webp", "audio": "Audio/Unit16/06_Chapter 1.mp3" },
-      { "text": "Yes, she is.", "image": "Images/Unit16/3.webp", "audio": "Audio/Unit16/07_Chapter 1.mp3" },
-  
-      { "text": "Is he Raju?", "image": "Images/Unit16/4.webp", "audio": "Audio/Unit16/08_Chapter 1.mp3" },
-      { "text": "Yes, he is.", "image": "Images/Unit16/4.webp", "audio": "Audio/Unit16/09_Chapter 1.mp3" },
-  
-      { "text": "Is she Reena?", "image": "Images/Unit16/5.webp", "audio": "Audio/Unit16/10_Chapter 1.mp3" },
-      { "text": "No, she is not. She is Saira.", "image": "Images/Unit16/5.webp", "audio": "Audio/Unit16/11_Chapter 1.mp3" },
-  
-      { "text": "Is he Raju?", "image": "Images/Unit16/6.webp", "audio": "Audio/Unit16/12_Chapter 1.mp3" },
-      { "text": "No, he is not. He is Thomas.", "image": "Images/Unit16/6.webp", "audio": "Audio/Unit16/13_Chapter 1.mp3" }
-  
-    ]
-  }
-  
+  "id": "unit16",
+  "name": "Unit 16: Whose T-shirt is blue?",
+  "description": "Learn to ask and answer questions about colours and possessions.",
+  "thumbnail": "Images/Unit16/whose_tshirt_is_blue_thumbnail.jpg",
+  "words": [
+    {
+
+      "image": "Images/Unit16/1.webp",
+      "audio": "Audio/Unit16/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit16/2.webp",
+      "audio": "Audio/Unit16/02_Chapter 1.mp3"
+    },
+    {
+      "text": "They are Ammu and Anju.",
+      "image": "Images/Unit16/3.webp",
+      "audio": "Audio/Unit16/03_Chapter 1.mp3"
+    },
+    {
+      "text": "Whose T-shirt is red?",
+      "image": "Images/Unit16/4.webp",
+      "audio": "Audio/Unit16/04_Chapter 1.mp3"
+    },
+    {
+      "text": "Ammu's T-shirt is red.",
+      "image": "Images/Unit16/5.webp",
+      "audio": "Audio/Unit16/05_Chapter 1.mp3"
+    },
+    {
+      "text": "Whose T-shirt is blue?",
+      "image": "Images/Unit16/6.webp",
+      "audio": "Audio/Unit16/06_Chapter 1.mp3"
+    },
+    {
+      "text": "Anju's T-shirt is blue.",
+      "image": "Images/Unit16/7.webp",
+      "audio": "Audio/Unit16/07_Chapter 1.mp3"
+    },
+    {
+      "text": "Whose shoes are pink?",
+      "image": "Images/Unit16/8.webp",
+      "audio": "Audio/Unit16/08_Chapter 1.mp3"
+    },
+    {
+      "text": "Ammu's shoes are pink.",
+      "image": "Images/Unit16/9.webp",
+      "audio": "Audio/Unit16/09_Chapter 1.mp3"
+    },
+    {
+      "text": "What colour is Ammu's backpack?",
+      "image": "Images/Unit16/10.webp",
+      "audio": "Audio/Unit16/10_Chapter 1.mp3"
+    },
+    {
+      "text": "Ammu's backpack is purple.",
+      "image": "Images/Unit16/11.webp",
+      "audio": "Audio/Unit16/11_Chapter 1.mp3"
+    },
+    {
+      "text": "Is Ammu's bow yellow?",
+      "image": "Images/Unit16/12.webp",
+      "audio": "Audio/Unit16/12_Chapter 1.mp3"
+    },
+    {
+      "text": "No, Ammu's bow is red. It's red.",
+      "image": "Images/Unit16/13.webp",
+      "audio": "Audio/Unit16/13_Chapter 1.mp3"
+    },
+    {
+      "text": "Are Anju's shoes pink?",
+      "image": "Images/Unit16/14.webp",
+      "audio": "Audio/Unit16/14_Chapter 1.mp3"
+    },
+    {
+      "text": "No, Anju's shoes are blue.",
+      "image": "Images/Unit16/15.webp",
+      "audio": "Audio/Unit16/15_Chapter 1.mp3"
+    },
+    {
+      "text": "What colour is Anju's hairband?",
+      "image": "Images/Unit16/16.webp",
+      "audio": "Audio/Unit16/16_Chapter 1.mp3"
+    },
+    {
+      "text": "Anju's hairband is pink.",
+      "image": "Images/Unit16/17.webp",
+      "audio": "Audio/Unit16/17_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit16/18.webp",
+      "audio": "Audio/Unit16/18_Chapter1.mp3"
+    }
+  ]
+}
