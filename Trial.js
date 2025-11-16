@@ -216,7 +216,16 @@ async function render(i) {
   if (!item) return;
 
   // Mark intro mascot slides: image-only items before the first text/video
-  const isIntroMascot = !!(item?.image && !item?.text && !item?.video && i < firstTextIndex);
+  const hasTrueIntro = firstTextIndex < screens.length;
+  let isIntroMascot = false;
+  if (hasTrueIntro) {
+    isIntroMascot = !!(item?.image && !item?.text && !item?.video && i < firstTextIndex);
+  } else {
+    const isImageOnlyUnit = !!(item?.image && !item?.video);
+    const isOpeningPair = i <= 1;
+    const isFinalSlide = i === screens.length - 1;
+    isIntroMascot = isImageOnlyUnit && (isOpeningPair || isFinalSlide);
+  }
   document.body.classList.toggle('intro-mascot', isIntroMascot);
 
   // reset screens/media
