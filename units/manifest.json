@@ -2,6 +2,13 @@
     "version": 1,
     "cards": [
       {
+        "id": "activity",
+        "title": "activity",
+        "description": "activity",
+        "thumbnail": "Images/Unit1/1.webp",
+        "route": "activity2/activity.html"
+      },
+      {
         "id": "unit1",
         "title": "Unit 1: A / An",
         "description": "Learn A and An. Just watch, listen and repeat",

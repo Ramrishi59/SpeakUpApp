@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Speak Up — 3-Option Image Quiz</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --sky1:#bde7ff; --sky2:#9dd8ff; --ink:#223041; --white:#fff;
+      --accent:#ffb300; --success:#1fb573; --danger:#ff6f61;
+      --radius:20px; --shadow:0 8px 18px rgba(0,0,0,.12);
+      --max:1024px; --header-h:56px; --gap:14px;
+      --btn-h:64px; --btn-fs:20px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100dvh;margin:0;overscroll-behavior:none;background:linear-gradient(180deg,var(--sky1),var(--sky2));font-family:'Fredoka',system-ui,Arial,sans-serif;color:var(--ink)}
+
+    header.topbar{height:var(--header-h);display:flex;align-items:center;justify-content:center;padding:0 12px}
+    .pill{background:rgba(255,255,255,.8);backdrop-filter:blur(4px);padding:8px 14px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
+
+    main#app{height:calc(100dvh - var(--header-h));display:grid;place-items:center;padding:12px}
+
+    .card{width:100%;max-width:var(--max);display:grid;grid-template-areas:
+      "image" "question" "choices" "nav";row-gap:clamp(12px,2.4svh,22px);padding:clamp(12px,2.4svh,22px);background:rgba(255,255,255,.5);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+    .image-wrap{grid-area:image;display:flex;align-items:center;justify-content:center}
+    #itemImage{width:min(86%,720px);max-height:44svh;object-fit:contain;filter:drop-shadow(0 10px 20px rgba(0,0,0,.18));border-radius:12px;background:rgba(255,255,255,.25)}
+
+    .question{grid-area:question;text-align:center;font-weight:700;font-size:clamp(20px,3.2svh,28px)}
+
+    .choices{grid-area:choices;display:grid;gap:var(--gap)}
+    @media (min-width:720px){ .choices{grid-template-columns:1fr 1fr 1fr} }
+
+    .choice-btn{height:var(--btn-h);border-radius:14px;border:0;background:#fff;font-weight:700;font-size:var(--btn-fs);box-shadow:var(--shadow);cursor:pointer}
+    .choice-btn:active{transform:translateY(1px)}
+    .choice-btn.correct{outline:3px solid var(--success)}
+    .choice-btn.incorrect{outline:3px solid var(--danger)}
+    .choice-btn[disabled]{opacity:.7;cursor:not-allowed}
+
+    .feedback{min-height:1.6em;text-align:center;font-size:clamp(16px,2.4svh,20px)}
+    .feedback.good{color:var(--success)}
+    .feedback.bad{color:var(--danger)}
+
+    .nav-row{grid-area:nav;display:flex;gap:var(--gap);justify-content:center}
+    .btn{height:var(--btn-h);padding:0 18px;border-radius:12px;border:0;font-weight:700;font-size:var(--btn-fs);cursor:pointer;box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(180deg,#ffdf7a,var(--accent))}
+    .btn.secondary{background:#fff}
+    .btn.danger{background:linear-gradient(180deg,#ff9f8a,#ff6f61);color:#fff}
+    .hidden{display:none !important}
+
+    /* Confetti canvas */
+    .confetti-layer{position:fixed;inset:0;pointer-events:none;z-index:999}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div id="progressPill" class="pill">1/10</div>
+  </header>
+
+  <main id="app">
+    <section class="card" aria-live="polite">
+      <div class="image-wrap"><img id="itemImage" alt="" /></div>
+      <div id="question" class="question">What is shown?</div>
+
+      <div class="choices" role="group" aria-label="Answer choices">
+        <button id="c0" class="choice-btn">Choice 1</button>
+        <button id="c1" class="choice-btn">Choice 2</button>
+        <button id="c2" class="choice-btn">Choice 3</button>
+      </div>
+
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+
+      <div class="nav-row">
+        <button id="prevBtn" class="btn secondary">Prev</button>
+        <button id="nextBtn" class="btn primary" disabled>Next</button>
+        <button id="resetBtn" class="btn danger">Start Over</button>
+      </div>
+    </section>
+  </main>
+
+  <canvas id="confettiCanvas" class="confetti-layer"></canvas>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+  // ---------------------------
+  // Data
+  // ---------------------------
+  const ITEMS = [
+    {
+      image: "3.webp",
+      question: "Which article fits this word?",
+      choices: ["A book", "An book", "The book"],
+      correctIndex: 0,
+      audioCorrect: "Audio/u1_q1_correct.mp3",
+      audioWrong:   "Audio/not-correct.mp3"
+    },
+    {
+      image: "5.webp",
+      question: "Choose the correct phrase:",
+      choices: ["A apple", "An apple", "Some apple"],
+      correctIndex: 1
+    },
+    {
+      image: "6.webp",
+      question: "Best answer?",
+      choices: ["A pen", "An pen", "Pen is"],
+      correctIndex: 0
+    }
+  ];
+
+  // ---------------------------
+  // Elements
+  // ---------------------------
+  const imgEl = document.getElementById('itemImage');
+  const qEl   = document.getElementById('question');
+  const pill  = document.getElementById('progressPill');
+  const fbEl  = document.getElementById('feedback');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const choiceEls = [0,1,2].map(i => document.getElementById('c'+i));
+
+  // Confetti
+  const prefersReduced = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+  const confettiCanvas = document.getElementById('confettiCanvas');
+  const confettiShot = (window.confetti && confettiCanvas) ? confetti.create(confettiCanvas,{resize:true,useWorker:true}) : null;
+  let lastConfettiAt = 0;
+  function popConfetti(){
+    if(!confettiShot || prefersReduced) return;
+    const now = performance.now(); if(now - lastConfettiAt < 500) return; lastConfettiAt = now;
+    confettiShot({particleCount: 100, spread: 70, origin: {y: 0.3}});
+  }
+
+  // State
+  let idx = 0;
+  let answered = false;
+  let map = [0,1,2]; // shuffle mapping per item
+
+  function shuffle3(){
+    map = [0,1,2];
+    for(let i=map.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [map[i],map[j]]=[map[j],map[i]]; }
+  }
+
+  function setFeedback(msg, ok){
+    fbEl.textContent = msg || '';
+    fbEl.classList.toggle('good', !!ok);
+    fbEl.classList.toggle('bad',  !ok);
+  }
+
+  function render(i){
+    const it = ITEMS[i];
+    if(!it) return;
+    answered = false;
+    setFeedback('');
+    nextBtn.disabled = true;
+
+    // Image + question
+    imgEl.src = it.image; imgEl.alt = it.question || 'Question image';
+    qEl.textContent = it.question || '';
+    pill.textContent = `${i+1}/${ITEMS.length}`;
+
+    // Shuffle choices each render
+    shuffle3();
+
+    // Reset button states and assign labels
+    choiceEls.forEach((btn, slot) => {
+      btn.disabled = false;
+      btn.classList.remove('correct','incorrect');
+      const choiceIndex = map[slot]; // which original choice sits here
+      btn.textContent = it.choices[choiceIndex];
+      btn.setAttribute('data-choice-index', choiceIndex);
+    });
+
+    prevBtn.disabled = (i===0);
+  }
+
+  function playAudio(path){ if(!path) return; const a = new Audio(path); a.play().catch(()=>{}); }
+
+  function onChoose(slot){
+    if(answered) return;
+    const it = ITEMS[idx];
+    const chosenOriginalIndex = Number(choiceEls[slot].getAttribute('data-choice-index'));
+    const correct = (chosenOriginalIndex === it.correctIndex);
+
+    choiceEls.forEach(b => b.disabled = true);
+
+    if(correct){
+      setFeedback('Great!', true);
+      choiceEls[slot].classList.add('correct');
+      popConfetti();
+      playAudio(it.audioCorrect);
+      answered = true;
+      nextBtn.disabled = false;
+      // Auto-advance after short delay (optional)
+      setTimeout(()=>{ if(idx < ITEMS.length-1){ idx++; render(idx); } }, 1100);
+    } else {
+      setFeedback('Try again!', false);
+      choiceEls[slot].classList.add('incorrect');
+      playAudio(it.audioWrong || 'Audio/not-correct.mp3');
+      // Re-enable remaining wrong/untouched buttons after a beat
+      setTimeout(()=>{
+        choiceEls.forEach((b,s)=>{ if(s!==slot) b.disabled = false; });
+      }, 350);
+    }
+  }
+
+  // Wire up
+  choiceEls.forEach((btn, i)=> btn.addEventListener('click', ()=> onChoose(i)));
+  prevBtn.addEventListener('click', ()=>{ if(idx>0){ idx--; render(idx); }});
+  nextBtn.addEventListener('click', ()=>{ if(idx<ITEMS.length-1){ idx++; render(idx);} });
+  resetBtn.addEventListener('click', ()=>{ idx=0; render(idx); });
+
+  // Keyboard shortcuts: 1/2/3 for choices, arrows for nav
+  window.addEventListener('keydown', (e)=>{
+    if(e.key==='1') return onChoose(0);
+    if(e.key==='2') return onChoose(1);
+    if(e.key==='3') return onChoose(2);
+    if(e.key==='ArrowLeft') prevBtn.click();
+    if(e.key==='ArrowRight' && !nextBtn.disabled) nextBtn.click();
+  });
+
+  // Preload images
+  ITEMS.forEach(it=>{ const im = new Image(); im.src = it.image; });
+
+  // Boot
+  render(idx);
+  </script>
+</body>
+</html>
