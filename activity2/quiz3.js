@@ -25,12 +25,85 @@ const ITEMS = [
   },
   {
     image: "Images/4.webp",
-    choices: ["A pen", "An pen", "Pen is"],
-    correctIndex: 0,
+    choices: ["It’s mug", "It’s mug the", "It’s a mug"],
+    correctIndex: 2,
     audioQuestion: "Audio/06_Chapter 1.mp3",
     audioCorrect: "Audio/07_Chapter 1.mp3",
     audioWrong: "Audio/tryagain.mp3"
-  }
+  },
+  {
+    image: "Images/5.webp",
+    choices: ["It’s the tooth brush", "It’s a tooth brush", "It’s an tooth brush"],
+    correctIndex: 1,
+    audioQuestion: "Audio/08_Chapter 1.mp3",
+    audioCorrect: "Audio/09_Chapter 1.mp3",
+    audioWrong: "Audio/tryagain.mp3"
+  },
+  {
+    image: "Images/6.webp",
+    choices: ["It’s the umbrella", "A umbrella", "It’s an umbrella"],
+    correctIndex: 2,
+    audioQuestion: "Audio/10_Chapter 1.mp3",
+    audioCorrect: "Audio/11_Chapter 1.mp3",
+    audioWrong: "Audio/tryagain.mp3"
+  }, 
+  
+  {
+    image: "Images/7.webp",
+    choices: ["It’s egg the", "It’s an egg", "It’s the egg"],
+    correctIndex: 1,
+    audioQuestion: "Audio/12_Chapter 1.mp3",
+    audioCorrect: "Audio/13_Chapter 1.mp3",
+    audioWrong: "Audio/tryagain.mp3"
+  }, 
+  {
+    image: "Images/8.webp",
+    choices: ["It’s a orange", "The orange", " It’s an orange"],
+    correctIndex: 2,
+    audioQuestion: "Audio/14_Chapter 1.mp3",
+    audioCorrect: "Audio/15_Chapter 1.mp3",
+    audioWrong: "Audio/tryagain.mp3"
+  },
+  {
+    image: "Images/9.webp",
+    choices: ["It’s backpack", "The backpack", " It’s a backpack"],
+    correctIndex: 2,
+    audioQuestion: "Audio/16_Chapter 1.mp3",
+    audioCorrect: "Audio/17_Chapter 1.mp3",
+    audioWrong: "Audio/tryagain.mp3"
+  },
+  {
+    image: "Images/10.webp",
+    choices: ["It’s the eraser", "A eraser", "It’s an eraser"],
+    correctIndex: 2,
+    audioQuestion: "Audio/18_Chapter 1.mp3",
+    audioCorrect: "Audio/19_Chapter 1.mp3",
+    audioWrong: "Audio/tryagain.mp3"
+  },
+  {
+    image: "Images/11.webp",
+    choices: ["It’s an leaf", "It’s a leaf", "It’s the leaf"],
+    correctIndex: 1,
+    audioQuestion: "Audio/20_Chapter 1.mp3",
+    audioCorrect: "Audio/21_Chapter 1.mp3",
+    audioWrong: "Audio/tryagain.mp3"
+  },
+  {
+    image: "Images/12.webp",
+    choices: ["It’s a chair", "It’s the chair", "It’s an chair"],
+    correctIndex: 0,
+    audioQuestion: "Audio/22_Chapter 1.mp3",
+    audioCorrect: "Audio/23_Chapter 1.mp3",
+    audioWrong: "Audio/tryagain.mp3"
+  },
+  {
+    image: "Images/13.webp",
+    choices: ["A torch", "The torch", "It’s a torch"],
+    correctIndex: 2,
+    audioQuestion: "Audio/24_Chapter 1.mp3",
+    audioCorrect: "Audio/25_Chapter 1.mp3",
+    audioWrong: "Audio/tryagain.mp3"
+  },
 ];
 
 
@@ -115,7 +188,7 @@ function playAudio(path, onEnded) {
   try {
     sfx.pause();
     sfx.currentTime = 0;
-  } catch (e) {}
+  } catch (e) { }
 
   sfx.src = path;
   sfx.onended = () => {
@@ -194,21 +267,23 @@ function onChoose(slot) {
     // Lock buttons after correct answer
     choiceEls.forEach(b => { b.disabled = true; });
     popConfetti();
-    playAudio(it.audioCorrect);
-
-    answered = true;
-    // user can move on anytime
-    nextBtn.disabled = false;
-
-    // Optional: small auto-advance + show score on last one
-    setTimeout(() => {
+    const advanceAfterAudio = () => {
       if (idx < ITEMS.length - 1) {
         idx += 1;
         render(idx);
       } else {
         showResults();
       }
-    }, 900);
+    };
+    if (it.audioCorrect) {
+      playAudio(it.audioCorrect, advanceAfterAudio);
+    } else {
+      setTimeout(advanceAfterAudio, 900);
+    }
+
+    answered = true;
+    // user can move on anytime
+    nextBtn.disabled = false;
   } else {
     hadWrongAttempt = true;
     setFeedback("Try again!", false);
