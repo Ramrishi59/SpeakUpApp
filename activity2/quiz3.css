@@ -51,12 +51,13 @@
   }
   
   /* Layout */
-  main#app {
-    height: calc(100dvh - var(--header-h));
-    display: grid;
-    place-items: center;
-    padding: 12px;
-  }
+main#app {
+  height: calc(100dvh - var(--header-h));
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  overflow: hidden;
+}
   
   /* Main quiz card */
   .card {

@@ -5,7 +5,6 @@
 const ITEMS = [
   {
     image: "Images/2.webp",  // or "Images/3.webp" if that's your path
-    question: "Choose the correct sentence.",
     choices: [
       "It’s a book",   // ✅ correct
       "It’s the book",
@@ -18,7 +17,6 @@ const ITEMS = [
   },
   {
     image: "Images/3.webp",
-    question: "Choose the best answer:",
     choices: ["A apple", "An apple", "Some apple"],
     correctIndex: 1,
     audioQuestion: "Audio/04_Chapter 1.mp3",
@@ -27,7 +25,6 @@ const ITEMS = [
   },
   {
     image: "Images/4.webp",
-    question: "What should we say?",
     choices: ["A pen", "An pen", "Pen is"],
     correctIndex: 0,
     audioQuestion: "Audio/06_Chapter 1.mp3",
@@ -84,6 +81,7 @@ function popConfetti() {
 let idx = 0;          // current question index
 let answered = false; // whether current item has been answered
 let score = 0;        // total correct answers
+let hadWrongAttempt = false; // track if user already missed this question
 
 // mapping from visible buttons 0–2 to original choice indices
 let map = [0, 1, 2];
@@ -140,6 +138,7 @@ function render(i) {
   if (!it) return;
 
   answered = false;
+  hadWrongAttempt = false;
   setFeedback("");
   nextBtn.disabled = false;   // user can always move ahead
 
@@ -179,42 +178,45 @@ function onChoose(slot) {
   const it = ITEMS[idx];
   if (!it) return;
 
-  const chosenOriginalIndex = Number(
-    choiceEls[slot].getAttribute("data-choice-index")
-  );
+  const chosenOriginalIndex = Number(choiceEls[slot].getAttribute("data-choice-index"));
   const correct = (chosenOriginalIndex === it.correctIndex);
 
-  // Lock buttons after first pick
-  choiceEls.forEach(b => { b.disabled = true; });
-
-if (correct) {
-  score += 1; // tally correct
-  setFeedback("Great!", true);
-  choiceEls[slot].classList.add("correct");
-  popConfetti();
-  playAudio(it.audioCorrect);
-
-  answered = true;
-  // user can move on anytime
-  nextBtn.disabled = false;
-
-  // Optional: small auto-advance + show score on last one
-  setTimeout(() => {
-    if (idx < ITEMS.length - 1) {
-      idx += 1;
-      render(idx);
+  if (correct) {
+    const earnedPoint = !hadWrongAttempt;
+    if (earnedPoint) {
+      score += 1; // tally correct on first try only
+      setFeedback("Great!", true);
     } else {
-      showResults();
+      setFeedback("Correct! No point this round.", true);
     }
-  }, 900);
-}
 
-else {
-    setFeedback("Try again! You can go ahead.", false);
-    choiceEls[slot].classList.add("incorrect");
-    playAudio(it.audioWrong || "Audio/not-correct.mp3");
+    choiceEls[slot].classList.add("correct");
+    // Lock buttons after correct answer
+    choiceEls.forEach(b => { b.disabled = true; });
+    popConfetti();
+    playAudio(it.audioCorrect);
 
     answered = true;
+    // user can move on anytime
+    nextBtn.disabled = false;
+
+    // Optional: small auto-advance + show score on last one
+    setTimeout(() => {
+      if (idx < ITEMS.length - 1) {
+        idx += 1;
+        render(idx);
+      } else {
+        showResults();
+      }
+    }, 900);
+  } else {
+    hadWrongAttempt = true;
+    setFeedback("Try again!", false);
+    choiceEls[slot].classList.add("incorrect");
+    choiceEls[slot].disabled = true; // keep other options active
+    playAudio(it.audioWrong || "Audio/not-correct.mp3");
+
+    // Keep answered false so user can keep choosing
     nextBtn.disabled = false; // allow moving ahead even if wrong
   }
 }
@@ -295,4 +297,3 @@ ITEMS.forEach(it => {
 
 // Boot
 render(idx);
-
