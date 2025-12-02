@@ -43,21 +43,20 @@
   }
   
   .pill {
-    background: rgba(255, 255, 255, 0.85);
-    padding: 8px 14px;
+    background: rgba(249, 98, 98, 0.85);
+    padding: 10px 32px;
     border-radius: 999px;
-    font-weight: 700;
+    font-weight: 900;
     box-shadow: var(--shadow);
   }
   
   /* Layout */
-main#app {
-  height: calc(100dvh - var(--header-h));
-  display: grid;
-  place-items: center;
-  padding: 12px;
-  overflow: hidden;
-}
+  main#app {
+    height: calc(100dvh - var(--header-h));
+    display: grid;
+    place-items: center;
+    padding: 12px;
+  }
   
   /* Main quiz card */
   .card {
@@ -182,15 +181,15 @@ main#app {
   }
   
   .btn.primary {
-    background: linear-gradient(180deg, #ffdf7a, var(--accent));
+    background: #ffc439;
   }
   
   .btn.secondary {
-    background: #ffffff;
+    background: #ffc439;
   }
   
   .btn.danger {
-    background: linear-gradient(180deg, #ff9f8a, #ff6f61);
+    background: #0fa1db;
     color: #ffffff;
   }
   
@@ -252,6 +251,8 @@ main#app {
     align-items: center;
     text-align: center;
     padding: 2rem;
+    padding-top: 2px;
+    border-radius: 2px;
     box-sizing: border-box;
   }
   
