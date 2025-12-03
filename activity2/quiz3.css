@@ -43,7 +43,7 @@
   }
   
   .pill {
-    background: rgba(249, 98, 98, 0.85);
+    background: #ffc439;
     padding: 10px 32px;
     border-radius: 999px;
     font-weight: 900;
@@ -193,22 +193,22 @@
     color: #ffffff;
   }
   
-  /* Overlay (results) */
-  .overlay {
-    position: fixed;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    background: rgba(0, 0, 0, 0.35);
-    z-index: 50;
-  }
-  
-  .overlay-card {
-    width: min(90%, 720px);
-    background: #ffffff;
-    border-radius: var(--radius);
-    padding: 24px 20px 20px;
-    text-align: center;
+/* Overlay (results) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 50;
+}
+
+.overlay-card {
+  width: min(90%, 720px);
+  background: #ffffff;
+  border-radius: var(--radius);
+  padding: 24px 20px 20px;
+  text-align: center;
     box-shadow: var(--shadow);
   }
   

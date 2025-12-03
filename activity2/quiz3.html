@@ -34,6 +34,7 @@
 
       <div class="intro-actions">
         <button id="startBtn" class="btn primary">Let’s start!</button>
+        <button id="skipBtn" class="btn secondary">Skip Intro</button>
       </div>
     </section>
 
@@ -88,6 +89,7 @@
       const intro = document.getElementById("introScreen");
       const quizCard = document.getElementById("quizCard");
       const startBtn = document.getElementById("startBtn");
+      const skipBtn = document.getElementById("skipBtn");
       const progressPill = document.getElementById("progressPill");
       const introAudio = document.getElementById("introAudio");
 
@@ -133,6 +135,12 @@
         } else {
           goToQuiz();
         }
+      });
+
+      skipBtn?.addEventListener("click", () => {
+        startBtn.disabled = true;
+        skipBtn.disabled = true;
+        goToQuiz();
       });
     });
   </script>

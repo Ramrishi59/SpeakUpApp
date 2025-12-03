@@ -17,7 +17,7 @@ const ITEMS = [
   },
   {
     image: "Images/3.webp",
-    choices: ["A apple", "An apple", "Some apple"],
+    choices: ["It's a apple", "It's an apple", "It's some apple"],
     correctIndex: 1,
     audioQuestion: "Audio/04_Chapter 1.mp3",
     audioCorrect: "Audio/05_Chapter 1.mp3",
@@ -142,7 +142,7 @@ function popConfetti() {
   lastConfettiAt = now;
 
   confettiShot({
-    particleCount: 120,
+    particleCount: 200,
     spread: 70,
     origin: { y: 0.3 }
   });
@@ -256,12 +256,6 @@ function onChoose(slot) {
 
   if (correct) {
     const earnedPoint = !hadWrongAttempt;
-    if (earnedPoint) {
-      score += 1; // tally correct on first try only
-      setFeedback("Great!", true);
-    } else {
-      setFeedback("Correct! No point this round.", true);
-    }
 
     choiceEls[slot].classList.add("correct");
     // Lock buttons after correct answer
@@ -369,6 +363,3 @@ ITEMS.forEach(it => {
   const im = new Image();
   im.src = it.image;
 });
-
-// Boot
-render(idx);
