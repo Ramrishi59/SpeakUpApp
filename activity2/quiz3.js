@@ -114,6 +114,8 @@ const imgEl = document.getElementById("itemImage");
 const qEl = document.getElementById("question");
 const pill = document.getElementById("progressPill");
 const fbEl = document.getElementById("feedback");
+const progressFill = document.getElementById("progressFill");
+const progressStats = document.getElementById("progressStats");
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -142,9 +144,12 @@ function popConfetti() {
   lastConfettiAt = now;
 
   confettiShot({
-    particleCount: 200,
+    particleCount: 600,
     spread: 70,
-    origin: { y: 0.3 }
+    origin: {
+      x: Math.random() * 0.6 + 0.2, // spread spawns across 20%-80% width
+      y: 0.3
+    }
   });
 }
 
@@ -220,6 +225,7 @@ function render(i) {
   imgEl.alt = it.question || "Question image";
   qEl.textContent = it.question || "";
   pill.textContent = `${i + 1}/${ITEMS.length}`;
+  updateProgressUI();
 
   // shuffle choices for this render
   shuffle3();
@@ -243,6 +249,16 @@ function render(i) {
 
 }
 
+function updateProgressUI() {
+  const pct = Math.round(((idx) / ITEMS.length) * 100);
+  if (progressFill) {
+    progressFill.style.width = `${pct}%`;
+  }
+  if (progressStats) {
+    progressStats.textContent = `${score} correct so far`;
+  }
+}
+
 // =====================
 // CHOICE HANDLING
 // =====================
@@ -256,6 +272,13 @@ function onChoose(slot) {
 
   if (correct) {
     const earnedPoint = !hadWrongAttempt;
+    if (earnedPoint) {
+      score += 1;
+      setFeedback("Great!", true);
+    } else {
+      setFeedback("Correct! No point this round.", true);
+    }
+    updateProgressUI();
 
     choiceEls[slot].classList.add("correct");
     // Lock buttons after correct answer
