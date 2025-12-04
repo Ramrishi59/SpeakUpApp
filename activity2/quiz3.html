@@ -66,14 +66,16 @@
 
     <!-- RESULTS OVERLAY -->
     <section id="resultsOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="resultsTitle">
+      <div class="overlay-bg" aria-hidden="true">
+        <img src="Images/score.webp" alt="">
+      </div>
       <div class="overlay-card">
         <h2 id="resultsTitle">Great job!</h2>
         <p id="resultsText" class="results-text"></p>
-
-        <div class="nav-row overlay-nav">
-          <button id="reviewBtn" class="btn secondary">Review Answers</button>
-          <button id="restartBtn" class="btn primary">Go Home</button>
-        </div>
+      </div>
+      <div class="nav-row overlay-nav">
+        <button id="reviewBtn" class="btn secondary">Review Answers</button>
+        <button id="restartBtn" class="btn primary">Go Home</button>
       </div>
     </section>
   </main>
