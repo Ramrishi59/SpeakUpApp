@@ -299,12 +299,14 @@ function showResults() {
 
   resultsText.textContent = `You got ${score} out of ${total} correct (${pct}%).`;
   resultsOverlay.classList.remove("hidden");
+  document.body.classList.add("overlay-open");
   reviewBtn?.focus();
   popConfetti();
 }
 
 function hideResults() {
   resultsOverlay.classList.add("hidden");
+  document.body.classList.remove("overlay-open");
 }
 
 // =====================
