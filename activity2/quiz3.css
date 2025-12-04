@@ -59,10 +59,10 @@
   }
   
   /* Main quiz card */
-  .card {
-    width: 100%;
-    max-width: var(--max-width);
-    display: grid;
+.card {
+  width: 100%;
+  max-width: var(--max-width);
+  display: grid;
   grid-template-areas:
     "image"
     "question"
@@ -72,10 +72,11 @@
     "nav";
   row-gap: clamp(12px, 2.4svh, 22px);
   padding: clamp(12px, 2.4svh, 22px);
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-  }
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transform: translateY(-10px); /* nudge card upward */
+}
   
   /* Image */
   .image-wrap {
