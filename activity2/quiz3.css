@@ -169,29 +169,32 @@
     flex-wrap: wrap;
   }
   
-  .btn {
-    height: var(--btn-h);
-    padding: 0 18px;
-    border-radius: 12px;
-    border: none;
-    font-weight: 700;
-    font-size: var(--btn-fs);
-    cursor: pointer;
-    box-shadow: var(--shadow);
-  }
-  
-  .btn.primary {
-    background: #ffc439;
-  }
-  
-  .btn.secondary {
-    background: #ffc439;
-  }
-  
-  .btn.danger {
-    background: #0fa1db;
-    color: #ffffff;
-  }
+.btn {
+  height: var(--btn-h);
+  padding: 0 18px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: var(--btn-fs);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  -webkit-appearance: none;
+  appearance: none;
+  color: var(--ink);
+}
+
+.btn.primary {
+  background: #ffc439;
+}
+
+.btn.secondary {
+  background: #ffc439;
+}
+
+.btn.danger {
+  background: #0fa1db;
+  color: #ffffff;
+}
   
 /* Overlay (results) */
 .overlay {
