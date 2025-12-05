@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Speak Up — Fill the Blank Trial</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --sky1: #bde7ff;
+      --sky2: #9dd8ff;
+      --ink: #223041;
+      --white: #fff;
+
+      --success: #1fb573;
+      --danger: #ff6f61;
+      --shadow: 0 8px 18px rgba(0,0,0,.12);
+      --radius: 20px;
+      --btn-h: 62px;
+    }
+
+    body {
+      margin: 0;
+      height: 100dvh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, var(--sky1), var(--sky2));
+      font-family: 'Fredoka', sans-serif;
+      color: var(--ink);
+    }
+
+    .card {
+      width: min(96%, 900px);
+      background: rgba(255,255,255,0.6);
+      padding: 22px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: grid;
+      row-gap: 18px;
+      text-align: center;
+    }
+
+    .image-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .image-wrap img {
+      width: min(92%, 600px);
+      max-height: 38vh;
+      object-fit: contain;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.4);
+      box-shadow: var(--shadow);
+    }
+
+    .question-heading {
+      font-weight: 700;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+
+    .question-sentence {
+      font-weight: 600;
+      font-size: 22px;
+    }
+
+    .choices {
+      display: grid;
+      gap: 14px;
+    }
+
+    @media (min-width: 760px) {
+      .choices {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .choice-btn {
+      height: var(--btn-h);
+      border-radius: 14px;
+      border: none;
+      background: #fff;
+      font-size: 22px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: 0.1s ease;
+    }
+
+    .choice-btn.correct {
+      outline: 3px solid var(--success);
+    }
+
+    .choice-btn.incorrect {
+      outline: 3px solid var(--danger);
+    }
+
+    #feedback {
+      font-size: 20px;
+      min-height: 1.4em;
+    }
+
+    #feedback.good { color: var(--success); }
+    #feedback.bad { color: var(--danger); }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <div class="image-wrap">
+      <img id="itemImage" src="Images/3.webp" alt="Boat and ship">
+    </div>
+
+    <div id="question">
+      <div class="question-heading">Choose the correct word.</div>
+      <div class="question-sentence">___ boat and a ship.</div>
+    </div>
+
+    <div class="choices">
+      <button class="choice-btn" data-index="0">A</button>
+      <button class="choice-btn" data-index="1">An</button>
+      <button class="choice-btn" data-index="2">The</button>
+    </div>
+
+    <div id="feedback"></div>
+  </div>
+
+  <script>
+    const correctIndex = 0; // A
+    const buttons = document.querySelectorAll(".choice-btn");
+    const feedback = document.getElementById("feedback");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const chosen = Number(btn.dataset.index);
+
+        // lock
+        buttons.forEach(b => b.disabled = true);
+
+        if (chosen === correctIndex) {
+          btn.classList.add("correct");
+          feedback.textContent = "Great! A boat and a ship!";
+          feedback.classList.add("good");
+        } else {
+          btn.classList.add("incorrect");
+          buttons[correctIndex].classList.add("correct");
+          feedback.textContent = "We say: A boat and a ship.";
+          feedback.classList.add("bad");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

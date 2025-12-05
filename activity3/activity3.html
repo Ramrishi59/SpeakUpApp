@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>Speak Up — Activity 3: Fill the Blank</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Use the same CSS, just rename the file if you like -->
+  <link rel="stylesheet" href="activity3.css">
+</head>
+
+<body>
+  <header class="topbar">
+    <div id="progressPill" class="pill hidden">1/3</div>
+  </header>
+
+  <main id="app">
+
+    <!-- INTRO CARD -->
+    <section id="introScreen" class="card intro-card" aria-live="polite">
+      <div class="intro-image-wrap">
+        <img id="introImage" src="Images/1.webp" alt="Manku welcoming the learner" />
+      </div>
+
+      <audio id="introAudio" preload="auto">
+        <source src="Audio/01_Chapter 1.mp3" type="audio/mpeg" />
+      </audio>
+
+      <div class="intro-actions">
+        <button id="startBtn" class="btn primary">Let’s start!</button>
+        <button id="skipBtn" class="btn secondary">Skip Intro</button>
+      </div>
+    </section>
+
+    <!-- MAIN CARD -->
+    <section id="quizCard" class="card hidden" aria-live="polite">
+      <div class="image-wrap">
+        <img id="itemImage" alt="" />
+      </div>
+
+      <!-- ⬇⬇ FILL-THE-BLANK QUESTION AREA ⬇⬇ -->
+      <div id="question" class="question">
+        <div class="question-sentence">___ boat and a ship.</div>
+      </div>
+      <!-- ⬆⬆ JS will override this per slide ⬆⬆ -->
+
+      <div class="progress-wrap" aria-label="Progress">
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div id="progressStats" class="progress-stats">0 correct so far</div>
+      </div>
+
+      <div class="choices" role="group" aria-label="Answer choices">
+        <button id="c0" class="choice-btn">A</button>
+        <button id="c1" class="choice-btn">An</button>
+        <button id="c2" class="choice-btn">The</button>
+      </div>
+
+      <div id="feedback" class="feedback" aria-live="polite"></div>
+
+      <div class="nav-row">
+        <button id="prevBtn" class="btn secondary">Prev</button>
+        <button id="nextBtn" class="btn primary">Next</button>
+        <button id="resetBtn" class="btn danger">Start Over</button>
+      </div>
+    </section>
+
+    <!-- RESULTS OVERLAY -->
+    <section id="resultsOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="resultsTitle">
+      <div class="overlay-bg" aria-hidden="true">
+        <img src="Images/score.webp" alt="">
+      </div>
+      <div class="overlay-card">
+        <h2 id="resultsTitle">Great job!</h2>
+        <p id="resultsText" class="results-text"></p>
+      </div>
+      <div class="nav-row overlay-nav">
+        <button id="reviewBtn" class="btn secondary">Review Answers</button>
+        <button id="restartBtn" class="btn primary">Go Home</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Confetti canvas -->
+  <canvas id="confettiCanvas" class="confetti-layer"></canvas>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- INTRO → QUIZ GATEWAY (same as your old page) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const intro = document.getElementById("introScreen");
+      const quizCard = document.getElementById("quizCard");
+      const startBtn = document.getElementById("startBtn");
+      const skipBtn = document.getElementById("skipBtn");
+      const progressPill = document.getElementById("progressPill");
+      const introAudio = document.getElementById("introAudio");
+
+      if (!intro || !quizCard || !startBtn) return;
+
+      function goToQuiz() {
+        if (introAudio) {
+          introAudio.pause();
+          introAudio.currentTime = 0;
+        }
+        intro.classList.add("hidden");
+        quizCard.classList.remove("hidden");
+        if (progressPill) {
+          progressPill.classList.remove("hidden");
+        }
+
+        if (typeof render === "function") {
+          idx = 0;
+          score = 0;
+          render(idx);
+        }
+      }
+
+      startBtn.addEventListener("click", () => {
+        startBtn.disabled = true;
+
+        if (introAudio) {
+          introAudio.currentTime = 0;
+          introAudio.play()
+            .then(() => {
+              introAudio.addEventListener("ended", goToQuiz, { once: true });
+            })
+            .catch(() => {
+              goToQuiz();
+            });
+        } else {
+          goToQuiz();
+        }
+      });
+
+      skipBtn?.addEventListener("click", () => {
+        startBtn.disabled = true;
+        skipBtn.disabled = true;
+        goToQuiz();
+      });
+    });
+  </script>
+
+  <!-- Your existing JS logic, renamed for this activity -->
+  <script src="activity3.js" defer></script>
+</body>
+</html>

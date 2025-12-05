@@ -2,6 +2,13 @@
     "version": 1,
     "cards": [
       {
+        "id": "activity3",
+        "title": "activity3",
+        "description": "activity",
+        "thumbnail": "activity3/Images/1.webp",
+        "route": "activity3/activity3.html"
+      },
+      {
         "id": "activity",
         "title": "activity",
         "description": "activity",
