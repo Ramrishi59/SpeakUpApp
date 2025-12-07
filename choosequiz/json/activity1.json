@@ -1,0 +1,109 @@
+{
+  "intro": {
+    "image": "Images/activity1/1-2.webp",
+    "audio": "Audio/activity1/01_Chapter 1.mp3",
+    "alt": "Welcome to the quiz"
+  },
+  "items": [
+    {
+      "image": "Images/activity1/2.webp",
+      "choices": [
+        "It’s a book",
+        "It’s the book",
+        "It’s an book"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity1/02_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/03_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/3.webp",
+      "choices": ["It's a apple", "It's an apple", "It's some apple"],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity1/04_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/05_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/4.webp",
+      "choices": ["It’s mug", "It’s mug the", "It’s a mug"],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity1/06_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/07_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/ryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/5.webp",
+      "choices": ["It’s the tooth brush", "It’s a tooth brush", "It’s an tooth brush"],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity1/08_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/09_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/6.webp",
+      "choices": ["It’s the umbrella", "A umbrella", "It’s an umbrella"],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity1/10_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/11_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/7.webp",
+      "choices": ["It’s egg the", "It’s an egg", "It’s the egg"],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity1/12_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/13_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/8.webp",
+      "choices": ["It’s a orange", "The orange", " It’s an orange"],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity1/14_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/15_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/9.webp",
+      "choices": ["It’s backpack", "The backpack", " It’s a backpack"],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity1/16_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/17_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/10.webp",
+      "choices": ["It’s the eraser", "A eraser", "It’s an eraser"],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity1/18_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/19_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/11.webp",
+      "choices": ["It’s an leaf", "It’s a leaf", "It’s the leaf"],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity1/20_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/21_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/12.webp",
+      "choices": ["It’s a chair", "It’s the chair", "It’s an chair"],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity1/22_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/23_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity1/13.webp",
+      "choices": ["A torch", "The torch", "It’s a torch"],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity1/24_Chapter 1.mp3",
+      "audioCorrect": "Audio/activity1/25_Chapter 1.mp3",
+      "audioWrong": "Audio/activity1/tryagain.mp3"
+    }
+  ]
+}

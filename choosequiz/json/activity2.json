@@ -1,0 +1,110 @@
+{
+    "intro": {
+      "image": "Images/activity2/1.webp",
+      "audio": "Audio/activity2/01_Chapter 1.mp3",
+      "alt": "Welcome to the quiz"
+    },
+    "items": [
+      {
+        "image": "Images/activity2/2.webp",
+        "choices": [
+          "A boat a ship",
+          "A boat and a ship",
+          "An boat a ship"
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity2/02_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/3.webp",
+        "choices": ["A mug apple", "A mug and an apple", "A mug and apple"],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity2/04_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/4.webp",
+        "choices": ["It’s mug", "It’s mug the", "It’s a mug"],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity2/06_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/ryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/5.webp",
+        "choices": ["A torch an pen", "A torch and a pen", "torch and pen"],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity2/08_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/6.webp",
+        "choices": ["A book, a pencil and a pen", "A book and pencil and pen", "Book, pencil pen"],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity2/10_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/7.webp",
+        "choices": ["A orange and an egg", "An orange and an egg", "A orange a egg"],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity2/12_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/13_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/8.webp",
+        "choices": ["A crayon and ruler and eraser", "An crayon a ruler and an eraser", "A crayon, a ruler and an eraser"],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity2/14_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/15_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/9.webp",
+        "choices": ["It’s backpack", "The backpack", " It’s a backpack"],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity2/16_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/17_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/10.webp",
+        "choices": ["A leaf and a ant", "A leaf and an ant", "An leaf and an ant"],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity2/18_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/19_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/11.webp",
+        "choices": ["It’s an leaf", "It’s a leaf", "It’s the leaf"],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity2/20_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/21_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/12.webp",
+        "choices": ["A dolphin an shark", "A dolphin and a shark", "A dolphin a shark"],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity2/22_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/23_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity2/13.webp",
+        "choices": ["A torch", "The torch", "It’s a torch"],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity2/24_Chapter 1.mp3",
+        "audioCorrect": "Audio/activity2/25_Chapter 1.mp3",
+        "audioWrong": "Audio/activity2/tryagain.mp3"
+      }
+    ]
+  }
+  

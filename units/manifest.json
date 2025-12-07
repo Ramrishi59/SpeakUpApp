@@ -2,18 +2,25 @@
     "version": 1,
     "cards": [
       {
-        "id": "activity3",
-        "title": "activity3",
+        "id": "activity2",
+        "title": "Choose the correct option Quiz-2",
         "description": "activity",
-        "thumbnail": "activity3/Images/1.webp",
-        "route": "activity3/activity3.html"
+        "thumbnail": "choosequiz/Images/activity1/1-2.webp",
+        "route": "choosequiz/quiz3.html?activity=activity2"
+      },
+      {
+        "id": "activity3",
+        "title": "Fill in the blanks Quiz",
+        "description": "Fill in the blanks to get the right answer",
+        "thumbnail": "blankquiz/Images/1.webp",
+        "route": "blankquiz/activity3.html"
       },
       {
         "id": "activity",
-        "title": "activity",
+        "title": "Choose the correct option Quiz-1",
         "description": "activity",
-        "thumbnail": "Images/Unit1/1.webp",
-        "route": "activity2/quiz3.html"
+        "thumbnail": "choosequiz/Images/activity1/1-2.webp",
+        "route": "choosequiz/quiz3.html"
       },
       {
         "id": "unit1",
@@ -40,94 +47,88 @@
         "description": "What is this?",
         "thumbnail": "Images/Unit3/1.webp"
       },
-      {
-        "id": "unit3-landscape",
-        "title": "Unit 3: What is this? - Landscape",
-        "description": "What is this?",
-        "thumbnail": "Images/Unit3/thumbnail.jpg"
-      },
 
       {
         "id": "unit4",
-        "title": "Unit 4: This and That",
+        "title": "Unit 4: What's this?",
         "description": "Learn about This and That. Just watch, listen and repeat",
-        "thumbnail": "Images/Unit4/This_That.webp"
+        "thumbnail": "Images/Unit4/1.webp"
       },
       {
         "id": "unit5",
-        "title": "Unit 5: What is that?",
+        "title": "Unit 5: What's that?",
         "description": "What is that?",
-        "thumbnail": "Images/Unit5/thumbnail.jpg"
+        "thumbnail": "Images/Unit15/1.webp"
       },
       {
         "id": "unit6",
-        "title": "Unit 6: Is this a cat?",
-        "description": "Is this a cat?",
+        "title": "Unit 6: Is this a globe?",
+        "description": "Is this a globe?",
         "thumbnail": "Images/Unit6/1.webp"
       },
       {
         "id": "unit7",
-        "title": "Unit 7: Is that a mountain?",
-        "description": "Is that a mountain?",
+        "title": "Unit 7: Is that a Zebra?",
+        "description": "Is that a Zebra?",
         "thumbnail": "Images/Unit7/1.webp"
       },
       {
         "id": "unit8",
-        "title": "Unit 8: Books, Pencils\"",
+        "title": "Unit 8: Books, Pencils",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit8/1.webp"
       },
       {
         "id": "unit9",
-        "title": "Unit 9: These are bananas",
+        "title": "Unit 9: These are and Those are",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit9/1.webp"
       },
       {
         "id": "unit10",
-        "title": "Unit 10: Those are butterflies",
+        "title": "Unit 10: Are these Papayas?",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit10/1.webp"
       },
       {
         "id": "unit11",
-        "title": "Unit 11: Are these apples?",
+        "title": "Unit 11: Are they Cars?",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit11/1.webp"
       },
       {
         "id": "unit12",
-        "title": "Unit 12: Are these water bottles?",
+        "title": "Unit 12: I am a girl",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit12/1.webp"
       },
       {
         "id": "unit13",
-        "title": "Unit 13: Are they cars?",
+        "title": "Unit 13: You are a boy?",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit13/1.webp"
       },
       {
         "id": "unit14",
-        "title": "Unit 14: Are they…? Negative answers",
+        "title": "Unit 14: What Colour?",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit14/1.webp"
       },
       {
         "id": "unit15",
-        "title": "Unit 15: I am a girl",
+        "title": "Unit 15: My, Your, Our, Their, His, Her",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit15/1.webp"
       },
       {
         "id": "unit16",
-        "title": "Unit 16: You are a boy",
+        "title": "Unit 16: Whose T-shirt is blue?",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit17/1.webp"
       },
       {
         "id": "unit17",
-        "title": "Unit 17: Is he a boy?",
+        "title": "Unit 17: Mine, Yours, Our, Theirs, His, Her",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit16/1.webp"
       },
