@@ -4,6 +4,11 @@
     "audio": "Audio/activity1/01_Chapter 1.mp3",
     "alt": "Welcome to the quiz"
   },
+  "outro": {
+    "image": "Images/activity1/1-2.webp",
+    "audio": "Audio/activity1/25_Chapter 1.mp3",
+    "alt": "Great job!"
+  },
   "items": [
     {
       "image": "Images/activity1/2.webp",
