@@ -18,7 +18,6 @@
                 "That bird this."
             ],
             "correctIndex": 1,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/02_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -30,7 +29,6 @@
                 "This frog that."
             ],
             "correctIndex": 0,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/03_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -42,7 +40,6 @@
                 "This is the owl."
             ],
             "correctIndex": 0,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/04_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -54,7 +51,6 @@
                 "This butterfly that."
             ],
             "correctIndex": 1,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/05_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -66,7 +62,6 @@
                 "This cat is that."
             ],
             "correctIndex": 0,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/06_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -78,7 +73,6 @@
                 "This is a snake."
             ],
             "correctIndex": 1,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/08_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -90,7 +84,6 @@
                 "This is a dog."
             ],
             "correctIndex": 0,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/09_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -102,7 +95,6 @@
                 "This is a tortoise."
             ],
             "correctIndex": 2,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/10_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -114,7 +106,6 @@
                 "This is a tiger."
             ],
             "correctIndex": 0,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/11_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -126,7 +117,6 @@
                 "This is the bee."
             ],
             "correctIndex": 1,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/12_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -138,7 +128,6 @@
                 "This kite that."
             ],
             "correctIndex": 0,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/13_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
@@ -150,7 +139,6 @@
                 "That’s a duck."
             ],
             "correctIndex": 2,
-            "audioQuestion": "Audio/activity3/whatsthis.mp3",
             "audioCorrect": "Audio/activity3/14_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
         }

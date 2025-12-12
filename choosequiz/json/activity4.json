@@ -18,7 +18,6 @@
           "Yes, this balloon is."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/02_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -30,7 +29,6 @@
           "Yes, this is mango."
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/03_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -42,7 +40,6 @@
           "Yes, it's umbrella."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/04_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -54,7 +51,6 @@
           "That robot yes."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/05_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -66,7 +62,6 @@
           "Yes, this raincoat."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/06_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -78,7 +73,6 @@
           "Yes, it's duster."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/07_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -90,7 +84,6 @@
           "Yes, this atlas is."
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/08_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -102,7 +95,6 @@
           "Yes, this bat."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/09_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -114,7 +106,6 @@
           "Yes, it's the doll."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/10_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -126,7 +117,6 @@
           "Yes, it's the eraser."
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/11_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -138,7 +128,6 @@
           "Yes, this is top."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/12_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
@@ -150,7 +139,6 @@
           "Yes, this balloon is."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity4/chooseoption.mp3",
         "audioCorrect": "Audio/activity4/13_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       }

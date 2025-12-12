@@ -18,7 +18,6 @@
           "What this?"
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity5/choosequestion.mp3",
         "audioCorrect": "Audio/activity5/02_Chapter 1.mp3",
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
@@ -30,7 +29,6 @@
           "What that?"
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity5/choosequestion.mp3",
         "audioCorrect": "Audio/activity5/03_Chapter 1.mp3",
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
@@ -42,7 +40,6 @@
           "Is this a fox?"
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity5/choosequestion.mp3",
         "audioCorrect": "Audio/activity5/04_Chapter 1.mp3",
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
@@ -54,7 +51,6 @@
           "What's this?"
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity5/choosequestion.mp3",
         "audioCorrect": "Audio/activity5/05_Chapter 1.mp3",
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
@@ -66,7 +62,6 @@
           "That is a kangaroo?"
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity5/choosequestion.mp3",
         "audioCorrect": "Audio/activity5/06_Chapter 1.mp3",
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
@@ -78,7 +73,6 @@
           "Peacock is that?"
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity5/choosequestion.mp3",
         "audioCorrect": "Audio/activity5/07_Chapter 1.mp3",
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
@@ -90,7 +84,6 @@
           "Is a backpack that?"
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity5/choosequestion.mp3",
         "audioCorrect": "Audio/activity5/08_Chapter 1.mp3",
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
@@ -102,7 +95,6 @@
           "Is a lion that?"
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity5/choosequestion.mp3",
         "audioCorrect": "Audio/activity5/09_Chapter 1.mp3",
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
@@ -114,7 +106,6 @@
           "Is this a parrot?"
         ],
         "correctIndex": 2,
-        "audioQuestion": "Audio/activity5/choosequestion.mp3",
         "audioCorrect": "Audio/activity5/10_Chapter 1.mp3",
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
@@ -126,7 +117,6 @@
           "Is a buffalo that?"
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity5/choosequestion.mp3",
         "audioCorrect": "Audio/activity5/11_Chapter 1.mp3",
         "audioWrong": "Audio/activity5/tryagain.mp3"
       }
