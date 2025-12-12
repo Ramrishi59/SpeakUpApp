@@ -1,0 +1,317 @@
+{
+    "id": "unit18",
+    "name": "Unit 18: Jobs - Introductions",
+    "description": "Learn to introduce people and describe their jobs.",
+    "thumbnail": "Images/Unit18/jobs_thumbnail.jpg",
+    "words": [
+      {
+        "image": "Images/Unit18/1.webp",
+        "audio": "Audio/Unit18/01_Chapter 1.mp3",
+        "text": ""
+      },
+      {
+        "image": "Images/Unit18/2.webp",
+        "audio": "Audio/Unit18/02_Chapter 1.mp3",
+        "text": ""
+      },
+  
+      {
+        "image": "Images/Unit18/3.webp",
+        "audio": "Audio/Unit18/03_Chapter 1.mp3",
+        "text": "Hi, I'm Muneer."
+      },
+      {
+        "image": "Images/Unit18/3.webp",
+        "audio": "Audio/Unit18/04_Chapter 1.mp3",
+        "text": "I'm a doctor."
+      },
+      {
+        "image": "Images/Unit18/3.webp",
+        "audio": "Audio/Unit18/05_Chapter 1.mp3",
+        "text": "He is Muneer."
+      },
+      {
+        "image": "Images/Unit18/3.webp",
+        "audio": "Audio/Unit18/06_Chapter 1.mp3",
+        "text": "He is a doctor."
+      },
+  
+      {
+        "image": "Images/Unit18/4.webp",
+        "audio": "Audio/Unit18/07_Chapter 1.mp3",
+        "text": "Hello, I'm Praveen."
+      },
+      {
+        "image": "Images/Unit18/4.webp",
+        "audio": "Audio/Unit18/08_Chapter 1.mp3",
+        "text": "I'm an engineer."
+      },
+      {
+        "image": "Images/Unit18/4.webp",
+        "audio": "Audio/Unit18/09_Chapter 1.mp3",
+        "text": "He is Praveen."
+      },
+      {
+        "image": "Images/Unit18/4.webp",
+        "audio": "Audio/Unit18/10_Chapter 1.mp3",
+        "text": "He is an engineer."
+      },
+  
+      {
+        "image": "Images/Unit18/5.webp",
+        "audio": "Audio/Unit18/11_Chapter 1.mp3",
+        "text": "Hi, I'm Nelson."
+      },
+      {
+        "image": "Images/Unit18/5.webp",
+        "audio": "Audio/Unit18/12_Chapter 1.mp3",
+        "text": "I'm a truck driver."
+      },
+      {
+        "image": "Images/Unit18/5.webp",
+        "audio": "Audio/Unit18/13_Chapter 1.mp3",
+        "text": "He is Nelson."
+      },
+      {
+        "image": "Images/Unit18/5.webp",
+        "audio": "Audio/Unit18/14_Chapter 1.mp3",
+        "text": "He is a truck driver."
+      },
+  
+      {
+        "image": "Images/Unit18/6.webp",
+        "audio": "Audio/Unit18/15_Chapter 1.mp3",
+        "text": "Hi, I'm Deepak."
+      },
+      {
+        "image": "Images/Unit18/6.webp",
+        "audio": "Audio/Unit18/16_Chapter 1.mp3",
+        "text": "I'm a police officer."
+      },
+      {
+        "image": "Images/Unit18/6.webp",
+        "audio": "Audio/Unit18/17_Chapter 1.mp3",
+        "text": "He is Deepak."
+      },
+      {
+        "image": "Images/Unit18/6.webp",
+        "audio": "Audio/Unit18/18_Chapter 1.mp3",
+        "text": "He is a police officer."
+      },
+  
+      {
+        "image": "Images/Unit18/7.webp",
+        "audio": "Audio/Unit18/19_Chapter 1.mp3",
+        "text": "Hello, I'm Lily."
+      },
+      {
+        "image": "Images/Unit18/7.webp",
+        "audio": "Audio/Unit18/20_Chapter 1.mp3",
+        "text": "I'm a nurse."
+      },
+      {
+        "image": "Images/Unit18/7.webp",
+        "audio": "Audio/Unit18/21_Chapter 1.mp3",
+        "text": "He is Lily."
+      },
+      {
+        "image": "Images/Unit18/7.webp",
+        "audio": "Audio/Unit18/22_Chapter 1.mp3",
+        "text": "He is a nurse."
+      },
+  
+      {
+        "image": "Images/Unit18/8.webp",
+        "audio": "Audio/Unit18/23_Chapter 1.mp3",
+        "text": "Hello, I'm Dan."
+      },
+      {
+        "image": "Images/Unit18/8.webp",
+        "audio": "Audio/Unit18/24_Chapter 1.mp3",
+        "text": "I'm a pilot."
+      },
+      {
+        "image": "Images/Unit18/8.webp",
+        "audio": "Audio/Unit18/25_Chapter 1.mp3",
+        "text": "He is Dan."
+      },
+      {
+        "image": "Images/Unit18/8.webp",
+        "audio": "Audio/Unit18/26_Chapter 1.mp3",
+        "text": "He is a pilot."
+      },
+  
+      {
+        "image": "Images/Unit18/9.webp",
+        "audio": "Audio/Unit18/27_Chapter 1.mp3",
+        "text": "Hi, I'm Anitha."
+      },
+      {
+        "image": "Images/Unit18/9.webp",
+        "audio": "Audio/Unit18/28_Chapter 1.mp3",
+        "text": "I'm a vet."
+      },
+      {
+        "image": "Images/Unit18/9.webp",
+        "audio": "Audio/Unit18/29_Chapter 1.mp3",
+        "text": "She is Anitha."
+      },
+      {
+        "image": "Images/Unit18/9.webp",
+        "audio": "Audio/Unit18/30_Chapter 1.mp3",
+        "text": "She is a vet."
+      },
+  
+      {
+        "image": "Images/Unit18/10.webp",
+        "audio": "Audio/Unit18/31_Chapter 1.mp3",
+        "text": "Hello, I'm Gopal."
+      },
+      {
+        "image": "Images/Unit18/10.webp",
+        "audio": "Audio/Unit18/32_Chapter 1.mp3",
+        "text": "I'm a carpenter."
+      },
+      {
+        "image": "Images/Unit18/10.webp",
+        "audio": "Audio/Unit18/33_Chapter 1.mp3",
+        "text": "He is Gopal."
+      },
+      {
+        "image": "Images/Unit18/10.webp",
+        "audio": "Audio/Unit18/34_Chapter 1.mp3",
+        "text": "He is a carpenter."
+      },
+  
+      {
+        "image": "Images/Unit18/11.webp",
+        "audio": "Audio/Unit18/35_Chapter 1.mp3",
+        "text": "Hello, I'm Beena."
+      },
+      {
+        "image": "Images/Unit18/11.webp",
+        "audio": "Audio/Unit18/36_Chapter 1.mp3",
+        "text": "I'm a teacher."
+      },
+      {
+        "image": "Images/Unit18/11.webp",
+        "audio": "Audio/Unit18/37_Chapter 1.mp3",
+        "text": "She is Beena."
+      },
+      {
+        "image": "Images/Unit18/11.webp",
+        "audio": "Audio/Unit18/38_Chapter 1.mp3",
+        "text": "She is a teacher."
+      },
+  
+      {
+        "image": "Images/Unit18/12.webp",
+        "audio": "Audio/Unit18/39_Chapter 1.mp3",
+        "text": "Hi, I'm David."
+      },
+      {
+        "image": "Images/Unit18/12.webp",
+        "audio": "Audio/Unit18/40_Chapter 1.mp3",
+        "text": "I'm a mason."
+      },
+      {
+        "image": "Images/Unit18/12.webp",
+        "audio": "Audio/Unit18/41_Chapter 1.mp3",
+        "text": "He is David."
+      },
+      {
+        "image": "Images/Unit18/12.webp",
+        "audio": "Audio/Unit18/42_Chapter 1.mp3",
+        "text": "He is a mason."
+      },
+  
+      {
+        "image": "Images/Unit18/13.webp",
+        "audio": "Audio/Unit18/43_Chapter 1.mp3",
+        "text": "Hi, I'm Gokul."
+      },
+      {
+        "image": "Images/Unit18/13.webp",
+        "audio": "Audio/Unit18/44_Chapter 1.mp3",
+        "text": "I'm a porter."
+      },
+      {
+        "image": "Images/Unit18/13.webp",
+        "audio": "Audio/Unit18/45_Chapter 1.mp3",
+        "text": "He is Gokul."
+      },
+      {
+        "image": "Images/Unit18/13.webp",
+        "audio": "Audio/Unit18/46_Chapter 1.mp3",
+        "text": "He is a porter."
+      },
+  
+      {
+        "image": "Images/Unit18/14.webp",
+        "audio": "Audio/Unit18/47_Chapter 1.mp3",
+        "text": "Hello, I'm Tony."
+      },
+      {
+        "image": "Images/Unit18/14.webp",
+        "audio": "Audio/Unit18/48_Chapter 1.mp3",
+        "text": "I'm a mechanic."
+      },
+      {
+        "image": "Images/Unit18/14.webp",
+        "audio": "Audio/Unit18/49_Chapter 1.mp3",
+        "text": "He is Tony."
+      },
+      {
+        "image": "Images/Unit18/14.webp",
+        "audio": "Audio/Unit18/50_Chapter 1.mp3",
+        "text": "He is a mechanic."
+      },
+  
+      {
+        "image": "Images/Unit18/15.webp",
+        "audio": "Audio/Unit18/51_Chapter 1.mp3",
+        "text": "Hi, I'm Faizal."
+      },
+      {
+        "image": "Images/Unit18/15.webp",
+        "audio": "Audio/Unit18/52_Chapter 1.mp3",
+        "text": "I'm a farmer."
+      },
+      {
+        "image": "Images/Unit18/15.webp",
+        "audio": "Audio/Unit18/53_Chapter 1.mp3",
+        "text": "He is Faizal."
+      },
+      {
+        "image": "Images/Unit18/15.webp",
+        "audio": "Audio/Unit18/54_Chapter 1.mp3",
+        "text": "He is a farmer."
+      },
+  
+      {
+        "image": "Images/Unit18/16.webp",
+        "audio": "Audio/Unit18/55_Chapter 1.mp3",
+        "text": "Hello, I am Raju."
+      },
+      {
+        "image": "Images/Unit18/16.webp",
+        "audio": "Audio/Unit18/56_Chapter 1.mp3",
+        "text": "I'm a student."
+      },
+      {
+        "image": "Images/Unit18/16.webp",
+        "audio": "Audio/Unit18/57_Chapter 1.mp3",
+        "text": "He is Raju."
+      },
+      {
+        "image": "Images/Unit18/16.webp",
+        "audio": "Audio/Unit18/58_Chapter 1.mp3",
+        "text": "He is a student."
+      },
+      {
+        "image": "Images/Unit18/17.webp",
+        "audio": "Audio/Unit18/59_Chapter 1.mp3"
+      }
+    ]
+  }
+  

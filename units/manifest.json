@@ -30,18 +30,18 @@
         "route": "choosequiz/quiz3.html?activity=activity2"
       },
       {
-        "id": "activity3",
-        "title": "Fill in the blanks Quiz",
-        "description": "Fill in the blanks to get the right answer",
-        "thumbnail": "blankquiz/Images/1.webp",
-        "route": "blankquiz/activity3.html"
-      },
-      {
         "id": "activity",
         "title": "Choose the correct option Quiz-1",
         "description": "activity",
         "thumbnail": "choosequiz/Images/activity1/1-2.webp",
         "route": "choosequiz/quiz3.html"
+      },
+      {
+        "id": "activity3",
+        "title": "Fill in the blanks Quiz",
+        "description": "Fill in the blanks to get the right answer",
+        "thumbnail": "blankquiz/Images/1.webp",
+        "route": "blankquiz/activity3.html"
       },
       {
         "id": "unit1",
@@ -151,7 +151,13 @@
         "id": "unit17",
         "title": "Unit 17: Mine, Yours, Our, Theirs, His, Her",
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
-        "thumbnail": "Images/Unit16/1.webp"
+        "thumbnail": "Images/Unit17/1.webp"
+      },
+      {
+        "id": "unit18",
+        "title": "Unit 18: I'm a Student",
+        "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+        "thumbnail": "Images/Unit18/1.webp"
       },
       {
         "id": "unit19",
