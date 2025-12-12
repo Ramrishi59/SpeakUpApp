@@ -1,0 +1,135 @@
+{
+    "intro": {
+      "image": "Images/activity5/1.webp",
+      "audio": "Audio/activity5/01_Chapter 1.mp3",
+      "alt": "Manku explains the choose the correct question game"
+    },
+    "outro": {
+      "image": "Images/activity5/12.webp",
+      "audio": "Audio/activity5/12_Chapter 1.mp3",
+      "alt": "Manku says you learned the pattern perfectly"
+    },
+    "items": [
+      {
+        "image": "Images/activity5/2.webp",
+        "choices": [
+          "What's this?",
+          "What's that?",
+          "What this?"
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity5/choosequestion.mp3",
+        "audioCorrect": "Audio/activity5/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity5/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity5/3.webp",
+        "choices": [
+          "What's this?",
+          "What's that?",
+          "What that?"
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity5/choosequestion.mp3",
+        "audioCorrect": "Audio/activity5/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity5/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity5/4.webp",
+        "choices": [
+          "Is that a fox?",
+          "Is fox that?",
+          "Is this a fox?"
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity5/choosequestion.mp3",
+        "audioCorrect": "Audio/activity5/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity5/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity5/5.webp",
+        "choices": [
+          "What's that?",
+          "What that?",
+          "What's this?"
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity5/choosequestion.mp3",
+        "audioCorrect": "Audio/activity5/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity5/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity5/6.webp",
+        "choices": [
+          "Is that a kangaroo?",
+          "That a kangaroo is?",
+          "That is a kangaroo?"
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity5/choosequestion.mp3",
+        "audioCorrect": "Audio/activity5/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity5/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity5/7.webp",
+        "choices": [
+          "Is a peacock that?",
+          "Is that a peacock?",
+          "Peacock is that?"
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity5/choosequestion.mp3",
+        "audioCorrect": "Audio/activity5/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity5/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity5/8.webp",
+        "choices": [
+          "Is this backpack?",
+          "Is this a backpack?",
+          "Is a backpack that?"
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity5/choosequestion.mp3",
+        "audioCorrect": "Audio/activity5/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity5/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity5/9.webp",
+        "choices": [
+          "That a lion?",
+          "Is that a lion?",
+          "Is a lion that?"
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity5/choosequestion.mp3",
+        "audioCorrect": "Audio/activity5/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity5/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity5/10.webp",
+        "choices": [
+          "Parrot is this?",
+          "Is a parrot this?",
+          "Is this a parrot?"
+        ],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity5/choosequestion.mp3",
+        "audioCorrect": "Audio/activity5/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity5/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity5/11.webp",
+        "choices": [
+          "Buffalo is that?",
+          "Is that a buffalo?",
+          "Is a buffalo that?"
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity5/choosequestion.mp3",
+        "audioCorrect": "Audio/activity5/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity5/tryagain.mp3"
+      }
+    ]
+  }
+  
