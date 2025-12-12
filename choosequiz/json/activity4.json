@@ -1,0 +1,159 @@
+{
+    "intro": {
+      "image": "Images/activity4/1.webp",
+      "audio": "Audio/activity4/01_Chapter 1.mp3",
+      "alt": "Manku explains the yes or no pattern game"
+    },
+    "outro": {
+      "image": "Images/activity4/14.webp",
+      "audio": "Audio/activity4/14_Chapter 1.mp3",
+      "alt": "Manku says you learned the pattern perfectly"
+    },
+    "items": [
+      {
+        "image": "Images/activity4/2.webp",
+        "choices": [
+          "Yes, it's a balloon.",
+          "No, it's not a balloon.",
+          "Yes, this balloon is."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/3.webp",
+        "choices": [
+          "No, it's not a mango.",
+          "Yes, it's a mango.",
+          "Yes, this is mango."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/4.webp",
+        "choices": [
+          "Yes, that's an umbrella.",
+          "No, it's not a umbrella.",
+          "Yes, it's umbrella."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/5.webp",
+        "choices": [
+          "Yes, it's a robot.",
+          "No, it's not a robot.",
+          "That robot yes."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/6.webp",
+        "choices": [
+          "No, it's not a raincoat.",
+          "Yes, it's a raincoat.",
+          "Yes, this raincoat."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/7.webp",
+        "choices": [
+          "Yes, it's a duster.",
+          "No, it's not a duster.",
+          "Yes, it's duster."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/8.webp",
+        "choices": [
+          "Yes, it's an atlas.",
+          "No, it's not an atlas.",
+          "Yes, this atlas is."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/9.webp",
+        "choices": [
+          "Yes, that's a bat.",
+          "No, it's not a bat.",
+          "Yes, this bat."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/10.webp",
+        "choices": [
+          "No, it's not a doll.",
+          "Yes, it's a doll.",
+          "Yes, it's the doll."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/11.webp",
+        "choices": [
+          "No, it's not an eraser.",
+          "Yes, it's an eraser.",
+          "Yes, it's the eraser."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/12.webp",
+        "choices": [
+          "No, that's not a top.",
+          "Yes, that's a top.",
+          "Yes, this is top."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/12_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity4/13.webp",
+        "choices": [
+          "Yes, that's a balloon.",
+          "No, that's not a balloon.",
+          "Yes, this balloon is."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity4/chooseoption.mp3",
+        "audioCorrect": "Audio/activity4/13_Chapter 1.mp3",
+        "audioWrong": "Audio/activity4/tryagain.mp3"
+      }
+    ]
+  }
+  
