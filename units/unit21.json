@@ -1,27 +1,215 @@
 {
-    "id": "unit21",
-    "name": "Unit 21: That lamp is hers",
-    "description": "Learn to talk about possession using his and hers with That’s and That … is.",
-    "thumbnail": "Images/Unit21/unit21_thumbnail.webp",
-    "words": [
-      { "text": "That lamp is hers.", "audio": "Audio/Unit21/intro.mp3" },
-      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/intro2/intro2.mp3" },
-  
-      { "text": "That's Raju.",              "image": "Images/Unit21/1.webp", "audio": "Audio/Unit21/03_Chapter 1.mp3" },
-      { "text": "That's his bicycle.",       "image": "Images/Unit21/1.webp", "audio": "Audio/Unit21/04_Chapter 1.mp3" },
-      { "text": "That bicycle is his.",      "image": "Images/Unit21/1.webp", "audio": "Audio/Unit21/05_Chapter 1.mp3" },
-  
-      { "text": "That's Saira.",             "image": "Images/Unit21/2.webp", "audio": "Audio/Unit21/06_Chapter 1.mp3" },
-      { "text": "That's her lamp.",          "image": "Images/Unit21/2.webp", "audio": "Audio/Unit21/07_Chapter 1.mp3" },
-      { "text": "That lamp is hers.",        "image": "Images/Unit21/2.webp", "audio": "Audio/Unit21/08_Chapter 1.mp3" },
-  
-      { "text": "That's Thomas.",            "image": "Images/Unit21/3.webp", "audio": "Audio/Unit21/09_Chapter 1.mp3" },
-      { "text": "That's his backpack.",      "image": "Images/Unit21/3.webp", "audio": "Audio/Unit21/10_Chapter 1.mp3" },
-      { "text": "That backpack is his.",     "image": "Images/Unit21/3.webp", "audio": "Audio/Unit21/11_Chapter 1.mp3" },
-  
-      { "text": "That's Reena.",             "image": "Images/Unit21/4.webp", "audio": "Audio/Unit21/12_Chapter 1.mp3" },
-      { "text": "That's her umbrella.",      "image": "Images/Unit21/4.webp", "audio": "Audio/Unit21/13_Chapter 1.mp3" },
-      { "text": "That umbrella is hers.",    "image": "Images/Unit21/4.webp", "audio": "Audio/Unit21/14_Chapter 1.mp3" }
-    ]
-  }
-  
+  "id": "unit21",
+  "name": "Unit 21: Where is the kite?",
+  "description": "Learn to ask and answer questions using Where is...? and Where are...?",
+  "thumbnail": "Images/Unit21/unit21_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit21/1.webp",
+      "audio": "Audio/Unit21/01_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit21/2.webp",
+      "audio": "Audio/Unit21/02_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit21/3.webp",
+      "audio": "Audio/Unit21/03_Chapter 1.mp3",
+      "text": ""
+    },
+
+    {
+      "image": "Images/Unit21/4.webp",
+      "audio": "Audio/Unit21/04_Chapter 1.mp3",
+      "text": "Where is the kite?"
+    },
+    {
+      "image": "Images/Unit21/5.webp",
+      "audio": "Audio/Unit21/05_Chapter 1.mp3",
+      "text": "The kite is in the tree."
+    },
+
+    {
+      "image": "Images/Unit21/6.webp",
+      "audio": "Audio/Unit21/06_Chapter 1.mp3",
+      "text": "Where are the mangoes?"
+    },
+    {
+      "image": "Images/Unit21/7.webp",
+      "audio": "Audio/Unit21/07_Chapter 1.mp3",
+      "text": "The mangoes are on the tree."
+    },
+
+    {
+      "image": "Images/Unit21/8.webp",
+      "audio": "Audio/Unit21/08_Chapter 1.mp3",
+      "text": "Where is the squirrel?"
+    },
+    {
+      "image": "Images/Unit21/9.webp",
+      "audio": "Audio/Unit21/09_Chapter 1.mp3",
+      "text": "The squirrel is in the tree."
+    },
+
+    {
+      "image": "Images/Unit21/10.webp",
+      "audio": "Audio/Unit21/10_Chapter 1.mp3",
+      "text": "Where is the goat?"
+    },
+    {
+      "image": "Images/Unit21/11.webp",
+      "audio": "Audio/Unit21/11_Chapter 1.mp3",
+      "text": "The goat is under the tree."
+    },
+
+    {
+      "image": "Images/Unit21/12.webp",
+      "audio": "Audio/Unit21/12_Chapter 1.mp3",
+      "text": "Where are the table and the chair?"
+    },
+    {
+      "image": "Images/Unit21/13.webp",
+      "audio": "Audio/Unit21/13_Chapter 1.mp3",
+      "text": "The table and the chair are under the tree."
+    },
+
+    {
+      "image": "Images/Unit21/14.webp",
+      "audio": "Audio/Unit21/14_Chapter 1.mp3",
+      "text": "Where are the clothes?"
+    },
+    {
+      "image": "Images/Unit21/15.webp",
+      "audio": "Audio/Unit21/15_Chapter 1.mp3",
+      "text": "The clothes are in the laundry basket."
+    },
+
+    {
+      "image": "Images/Unit21/16.webp",
+      "audio": "Audio/Unit21/16_Chapter 1.mp3",
+      "text": "Where is the alarm clock?"
+    },
+    {
+      "image": "Images/Unit21/17.webp",
+      "audio": "Audio/Unit21/17_Chapter 1.mp3",
+      "text": "The alarm clock is on the fridge."
+    },
+
+    {
+      "image": "Images/Unit21/18.webp",
+      "audio": "Audio/Unit21/18_Chapter 1.mp3",
+      "text": "Where are the coconuts?"
+    },
+    {
+      "image": "Images/Unit21/19.webp",
+      "audio": "Audio/Unit21/19_Chapter 1.mp3",
+      "text": "The coconuts are in the basket."
+    },
+
+    {
+      "image": "Images/Unit21/20.webp",
+      "audio": "Audio/Unit21/20_Chapter 1.mp3",
+      "text": "Where is the basket?"
+    },
+    {
+      "image": "Images/Unit21/21.webp",
+      "audio": "Audio/Unit21/21_Chapter 1.mp3",
+      "text": "The basket is on the table."
+    },
+
+    {
+      "image": "Images/Unit21/22.webp",
+      "audio": "Audio/Unit21/22_Chapter 1.mp3",
+      "text": "Is the ball on the table?"
+    },
+    {
+      "image": "Images/Unit21/23.webp",
+      "audio": "Audio/Unit21/23_Chapter 1.mp3",
+      "text": "Yes, it is."
+    },
+    {
+      "image": "Images/Unit21/24.webp",
+      "audio": "Audio/Unit21/24_Chapter 1.mp3",
+      "text": "What colour is the ball?"
+    },
+    {
+      "image": "Images/Unit21/25.webp",
+      "audio": "Audio/Unit21/25_Chapter 1.mp3",
+      "text": "It's yellow."
+    },
+
+    {
+      "image": "Images/Unit21/26.webp",
+      "audio": "Audio/Unit21/26_Chapter 1.mp3",
+      "text": "Are the bananas under the basket?"
+    },
+    {
+      "image": "Images/Unit21/27.webp",
+      "audio": "Audio/Unit21/27_Chapter 1.mp3",
+      "text": "No, the bananas are in the basket."
+    },
+
+    {
+      "image": "Images/Unit21/28.webp",
+      "audio": "Audio/Unit21/28_Chapter 1.mp3",
+      "text": "Are the bottles under the table?"
+    },
+    {
+      "image": "Images/Unit21/29.webp",
+      "audio": "Audio/Unit21/29_Chapter 1.mp3",
+      "text": "Yes, they are."
+    },
+
+    {
+      "image": "Images/Unit21/30.webp",
+      "audio": "Audio/Unit21/30_Chapter 1.mp3",
+      "text": "Is the dust bin under the chair?"
+    },
+    {
+      "image": "Images/Unit21/31.webp",
+      "audio": "Audio/Unit21/31_Chapter 1.mp3",
+      "text": "No, the dust bin is on the chair."
+    },
+
+    {
+      "image": "Images/Unit21/32.webp",
+      "audio": "Audio/Unit21/32_Chapter 1.mp3",
+      "text": "Is the cat in the box?"
+    },
+    {
+      "image": "Images/Unit21/33.webp",
+      "audio": "Audio/Unit21/33_Chapter 1.mp3",
+      "text": "Yes, it is."
+    },
+
+    {
+      "image": "Images/Unit21/34.webp",
+      "audio": "Audio/Unit21/34_Chapter 1.mp3",
+      "text": "Are the pineapples under the table?"
+    },
+    {
+      "image": "Images/Unit21/35.webp",
+      "audio": "Audio/Unit21/35_Chapter 1.mp3",
+      "text": "No, the pineapples are on the table."
+    },
+
+    {
+      "image": "Images/Unit21/36.webp",
+      "audio": "Audio/Unit21/36_Chapter 1.mp3",
+      "text": "Is the backpack under the chair?"
+    },
+    {
+      "image": "Images/Unit21/37.webp",
+      "audio": "Audio/Unit21/37_Chapter 1.mp3",
+      "text": "No, the backpack is on the chair."
+    },
+
+    {
+      "image": "Images/Unit21/38.webp",
+      "audio": "Audio/Unit21/38_Chapter 1.mp3",
+      "text": ""
+    }
+  ]
+}
