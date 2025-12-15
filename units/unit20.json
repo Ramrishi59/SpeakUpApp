@@ -1,32 +1,109 @@
 {
-    "id": "unit20",
-    "name": "Unit 20: Her pinafore is yellow",
-    "description": "Practise possessives (his/her) with colours for clothes and objects.",
-    "thumbnail": "Images/Unit20/unit20_thumbnail.webp",
-    "words": [
-      { "text": "Her pinafore is yellow.", "audio": "Audio/Unit20/intro.mp3" },
-      { "text": "Look. Listen. and Repeat.",           "audio": "Audio/intro2/intro2.mp3" },
-  
-      { "text": "He is Raju.",                 "image": "Images/Unit20/1.webp",  "audio": "Audio/Unit20/03_Chapter 1.mp3" },
-      { "text": "His T-shirt is yellow.",      "image": "Images/Unit20/2.webp",  "audio": "Audio/Unit20/04_Chapter 1.mp3" },
-      { "text": "His cap is green.",           "image": "Images/Unit20/3.webp",  "audio": "Audio/Unit20/05_Chapter 1.mp3" },
-      { "text": "His backpack is red.",        "image": "Images/Unit20/4.webp",  "audio": "Audio/Unit20/06_Chapter 1.mp3" },
-  
-      { "text": "Is his pen blue?",            "image": "Images/Unit20/5.webp",  "audio": "Audio/Unit20/07_Chapter 1.mp3" },
-      { "text": "Yes, it is.",                 "image": "Images/Unit20/6.webp",  "audio": "Audio/Unit20/08_Chapter 1.mp3" },
-  
-      { "text": "Is his mug green?",           "image": "Images/Unit20/7.webp",  "audio": "Audio/Unit20/09_Chapter 1.mp3" },
-      { "text": "No, it's not.",               "image": "Images/Unit20/8.webp",  "audio": "Audio/Unit20/10_Chapter 1.mp3" },
-      { "text": "It's yellow.",                "image": "Images/Unit20/9.webp",  "audio": "Audio/Unit20/11_Chapter 1.mp3" },
-  
-      { "text": "Are his books pink?",         "image": "Images/Unit20/10.webp", "audio": "Audio/Unit20/12_Chapter 1.mp3" },
-      { "text": "No, they are not.",           "image": "Images/Unit20/11.webp", "audio": "Audio/Unit20/13_Chapter 1.mp3" },
-      { "text": "They are blue and green.",    "image": "Images/Unit20/12.webp", "audio": "Audio/Unit20/14_Chapter 1.mp3" },
-  
-      { "text": "She is Reena.",               "image": "Images/Unit20/13.webp", "audio": "Audio/Unit20/15_Chapter 1.mp3" },
-      { "text": "Her T-shirt is blue.",        "image": "Images/Unit20/14.webp", "audio": "Audio/Unit20/16_Chapter 1.mp3" },
-      { "text": "Her pinafore is yellow.",     "image": "Images/Unit20/15.webp", "audio": "Audio/Unit20/17_Chapter 1.mp3" },
-      { "text": "Her shoes are pink.",         "image": "Images/Unit20/16.webp", "audio": "Audio/Unit20/18_Chapter 1.mp3" }
-    ]
-  }
-  
+  "id": "unit20",
+  "name": "Unit 20: Here and There",
+  "description": "Learn to use here and there in simple sentences.",
+  "thumbnail": "Images/Unit20/unit20_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit20/1.webp",
+      "audio": "Audio/Unit20/01_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit20/2.webp",
+      "audio": "Audio/Unit20/02_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit20/3.webp",
+      "audio": "Audio/Unit20/03_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit20/4.webp",
+      "audio": "Audio/Unit20/04_Chapter 1.mp3",
+      "text": "Manku's cap is here. Raju's T\u2011Shirt is there."
+
+    },
+    {
+      "image": "Images/Unit20/5.webp",
+      "audio": "Audio/Unit20/05_Chapter 1.mp3",
+      "text": "The red water bottle is here. The white water bottle is there."
+    },
+    {
+      "image": "Images/Unit20/6.webp",
+      "audio": "Audio/Unit20/06_Chapter 1.mp3",
+      "text": "The apples are here. The bananas are there."
+    },
+    {
+      "image": "Images/Unit20/7.webp",
+      "audio": "Audio/Unit20/07_Chapter 1.mp3",
+      "text": "The black shoes are here. The pink shoes are there."
+    },
+    {
+      "image": "Images/Unit20/8.webp",
+      "audio": "Audio/Unit20/08_Chapter 1.mp3",
+      "text": "The white socks are here. The black socks are there."
+    },
+    {
+      "image": "Images/Unit20/9.webp",
+      "audio": "Audio/Unit20/09_Chapter 1.mp3",
+      "text": "The pencil is here. The notebook is there."
+    },
+    {
+      "image": "Images/Unit20/10.webp",
+      "audio": "Audio/Unit20/10_Chapter 1.mp3",
+      "text": "The pineapple is here. The mangoes are there."
+    },
+    {
+      "image": "Images/Unit20/11.webp",
+      "audio": "Audio/Unit20/11_Chapter 1.mp3",
+      "text": "Manku is here. Raju is there."
+    },
+    {
+      "image": "Images/Unit20/12.webp",
+      "audio": "Audio/Unit20/12_Chapter 1.mp3",
+      "text": "Where is Saira?"
+    },
+    {
+      "image": "Images/Unit20/13.webp",
+      "audio": "Audio/Unit20/13_Chapter 1.mp3",
+      "text": "She is here."
+    },
+    {
+      "image": "Images/Unit20/14.webp",
+      "audio": "Audio/Unit20/14_Chapter 1.mp3",
+      "text": "Where is John?"
+    },
+    {
+      "image": "Images/Unit20/15.webp",
+      "audio": "Audio/Unit20/15_Chapter 1.mp3",
+      "text": "He is there."
+    },
+    {
+      "image": "Images/Unit20/16.webp",
+      "audio": "Audio/Unit20/16_Chapter 1.mp3",
+      "text": "Where is Reena?"
+    },
+    {
+      "image": "Images/Unit20/17.webp",
+      "audio": "Audio/Unit20/17_Chapter 1.mp3",
+      "text": "She is here."
+    },
+    {
+      "image": "Images/Unit20/18.webp",
+      "audio": "Audio/Unit20/18_Chapter 1.mp3",
+      "text": "Where is Manku?"
+    },
+    {
+      "image": "Images/Unit20/19.webp",
+      "audio": "Audio/Unit20/19_Chapter 1.mp3",
+      "text": "He is there."
+    },
+    {
+      "image": "Images/Unit20/20.webp",
+      "audio": "Audio/Unit20/20_Chapter 1.mp3",
+      "text": ""
+    }
+  ]
+}
