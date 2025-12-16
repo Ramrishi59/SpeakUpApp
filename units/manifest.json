@@ -2,6 +2,13 @@
     "version": 1,
     "cards": [
       {
+        "id": "activity7",
+        "title": "Choose the correct option Quiz-7",
+        "description": "activity",
+        "thumbnail": "choosequiz/Images/activity7/1.webp",
+        "route": "choosequiz/quiz3.html?activity=activity7"
+      },
+      {
         "id": "activity6",
         "title": "Choose the correct option Quiz-6",
         "description": "activity",
