@@ -130,7 +130,7 @@ main#app {
   }
   
   #itemImage {
-    width: min(86%, 720px);
+    width: min(98%, 720px);
     max-height: 44svh;
     object-fit: contain;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,.18));
