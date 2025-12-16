@@ -1,0 +1,146 @@
+{
+    "intro": {
+      "image": "Images/activity6/1.webp",
+      "audio": "Audio/activity6/01_Chapter 1.mp3",
+      "alt": "Manku introduces the These and Those activity"
+    },
+  
+    "outro": {
+      "image": "Images/activity6/12.webp",
+      "audio": "Audio/activity6/12_Chapter 1.mp3",
+      "alt": "Manku says excellent work on These and Those"
+    },
+  
+    "items": [
+      {
+        "image": "Images/activity6/2.webp",
+        "choices": [
+          "These are books.",
+          "Those are books.",
+          "These books are."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity6/chooseoption.mp3",
+        "audioCorrect": "Audio/activity6/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity6/tryagain.mp3"
+      },
+  
+      {
+        "image": "Images/activity6/3.webp",
+        "choices": [
+          "These are ships.",
+          "Those are ships.",
+          "Those ships these."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity6/chooseoption.mp3",
+        "audioCorrect": "Audio/activity6/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity6/tryagain.mp3"
+      },
+  
+      {
+        "image": "Images/activity6/4.webp",
+        "choices": [
+          "Those are pencils.",
+          "This are pencils.",
+          "These are pencils."
+        ],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity6/chooseoption.mp3",
+        "audioCorrect": "Audio/activity6/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity6/tryagain.mp3"
+      },
+  
+      {
+        "image": "Images/activity6/5.webp",
+        "choices": [
+          "These are bees.",
+          "Those are bees.",
+          "Those bee are."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity6/chooseoption.mp3",
+        "audioCorrect": "Audio/activity6/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity6/tryagain.mp3"
+      },
+  
+      {
+        "image": "Images/activity6/6.webp",
+        "choices": [
+          "These are backpacks.",
+          "These backpacks are.",
+          "Those are backpacks."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity6/chooseoption.mp3",
+        "audioCorrect": "Audio/activity6/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity6/tryagain.mp3"
+      },
+  
+      {
+        "image": "Images/activity6/7.webp",
+        "choices": [
+          "These are cars.",
+          "This are cars.",
+          "Those are cars."
+        ],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity6/chooseoption.mp3",
+        "audioCorrect": "Audio/activity6/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity6/tryagain.mp3"
+      },
+  
+      {
+        "image": "Images/activity6/8.webp",
+        "choices": [
+          "These are apples.",
+          "These apple are.",
+          "Those are apples."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity6/chooseoption.mp3",
+        "audioCorrect": "Audio/activity6/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity6/tryagain.mp3"
+      },
+  
+      {
+        "image": "Images/activity6/9.webp",
+        "choices": [
+          "This are stars.",
+          "These are stars.",
+          "Those are stars."
+        ],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity6/chooseoption.mp3",
+        "audioCorrect": "Audio/activity6/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity6/tryagain.mp3"
+      },
+  
+      {
+        "image": "Images/activity6/10.webp",
+        "choices": [
+          "Those are oranges.",
+          "These are oranges.",
+          "These orange are."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity6/chooseoption.mp3",
+        "audioCorrect": "Audio/activity6/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity6/tryagain.mp3"
+      },
+  
+      {
+        "image": "Images/activity6/11.webp",
+        "choices": [
+          "Those are butterflies.",
+          "These are butterflies.",
+          "Those butterflies these."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity6/chooseoption.mp3",
+        "audioCorrect": "Audio/activity6/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity6/tryagain.mp3"
+      }
+    ]
+  }
+  
