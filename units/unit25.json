@@ -1,23 +1,121 @@
 {
-    "id": "unit25",
-    "name": "Unit 25: Manku is on the box",
-    "description": "Learn prepositions of place — in, on, under — with simple examples.",
-    "thumbnail": "Images/Unit25/1.webp",
-    "words": [
-      { "text": "Manku is on the box", "audio": "Audio/Unit25/intro.mp3" },
-      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/intro2/intro2.mp3" },
-  
-      { "text": "Manku is in the box.",         "image": "Images/Unit25/1.webp", "audio": "Audio/Unit25/03_Chapter 1.mp3" },
-      { "text": "Manku is on the box.",         "image": "Images/Unit25/2.webp", "audio": "Audio/Unit25/04_Chapter 1.mp3" },
-      { "text": "Manku is under the box.",      "image": "Images/Unit25/3.webp", "audio": "Audio/Unit25/05_Chapter 1.mp3" },
-  
-      { "text": "The computer is on the table.", "image": "Images/Unit25/5.webp", "audio": "Audio/Unit25/06_Chapter 1.mp3" },
-      { "text": "The sandals are under the table.", "image": "Images/Unit25/6.webp", "audio": "Audio/Unit25/07_Chapter 1.mp3" },
-      { "text": "The camera is in the bag.",    "image": "Images/Unit25/7.webp", "audio": "Audio/Unit25/08_Chapter 1.mp3" },
-      { "text": "The magazine is under the chair.", "image": "Images/Unit25/8.webp", "audio": "Audio/Unit25/09_Chapter 1.mp3" },
-      { "text": "The pillows are on the bed.",  "image": "Images/Unit25/8.webp", "audio": "Audio/Unit25/10_Chapter 1.mp3" },
-  
-      { "text": "Well done! You learned 'in', 'on', and 'under'. Keep practising!", "audio": "Audio/Unit25/11_Chapter 1.mp3" }
-    ]
-  }
-  
+  "id": "unit25",
+  "name": "Unit 25: There is an old man",
+  "description": "Learn how to use 'There is' and 'There are' with pictures.",
+  "thumbnail": "Images/Unit25/unit25_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit25/1.webp",
+      "audio": "Audio/Unit25/01_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit25/2.webp",
+      "audio": "Audio/Unit25/02_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit25/3.webp",
+      "audio": "Audio/Unit25/03_Chapter 1.mp3",
+      "text": ""
+    },
+
+    {
+      "image": "Images/Unit25/4.webp",
+      "audio": "Audio/Unit25/04_Chapter 1.mp3",
+      "text": "Look at the picture! There is a man."
+    },
+    {
+      "image": "Images/Unit25/5.webp",
+      "audio": "Audio/Unit25/05_Chapter 1.mp3",
+      "text": "There are dogs."
+    },
+    {
+      "image": "Images/Unit25/6.webp",
+      "audio": "Audio/Unit25/06_Chapter 1.mp3",
+      "text": "There is a bag."
+    },
+    {
+      "image": "Images/Unit25/7.webp",
+      "audio": "Audio/Unit25/07_Chapter 1.mp3",
+      "text": "There are plants."
+    },
+    {
+      "image": "Images/Unit25/8.webp",
+      "audio": "Audio/Unit25/08_Chapter 1.mp3",
+      "text": "There is a wall."
+    },
+    {
+      "image": "Images/Unit25/9.webp",
+      "audio": "Audio/Unit25/09_Chapter 1.mp3",
+      "text": "There is a boy."
+    },
+    {
+      "image": "Images/Unit25/10.webp",
+      "audio": "Audio/Unit25/10_Chapter 1.mp3",
+      "text": "There is a girl."
+    },
+    {
+      "image": "Images/Unit25/11.webp",
+      "audio": "Audio/Unit25/11_Chapter 1.mp3",
+      "text": "There are women."
+    },
+    {
+      "image": "Images/Unit25/12.webp",
+      "audio": "Audio/Unit25/12_Chapter 1.mp3",
+      "text": "There are computers."
+    },
+    {
+      "image": "Images/Unit25/13.webp",
+      "audio": "Audio/Unit25/13_Chapter 1.mp3",
+      "text": "There are mugs."
+    },
+    {
+      "image": "Images/Unit25/14.webp",
+      "audio": "Audio/Unit25/14_Chapter 1.mp3",
+      "text": "There are tables."
+    },
+    {
+      "image": "Images/Unit25/15.webp",
+      "audio": "Audio/Unit25/15_Chapter 1.mp3",
+      "text": "There is a sofa."
+    },
+    {
+      "image": "Images/Unit25/16.webp",
+      "audio": "Audio/Unit25/16_Chapter 1.mp3",
+      "text": "There are cats and dogs."
+    },
+    {
+      "image": "Images/Unit25/17.webp",
+      "audio": "Audio/Unit25/17_Chapter 1.mp3",
+      "text": "There is a basket."
+    },
+    {
+      "image": "Images/Unit25/18.webp",
+      "audio": "Audio/Unit25/18_Chapter 1.mp3",
+      "text": "There are apples and oranges."
+    },
+
+    {
+      "image": "Images/Unit25/19.webp",
+      "audio": "Audio/Unit25/19_Chapter 1.mp3",
+      "text": "There is a laptop."
+    },
+    {
+      "image": "Images/Unit25/20.webp",
+      "audio": "Audio/Unit25/20_Chapter 1.mp3",
+      "text": "There is a note pad."
+    },
+    {
+      "image": "Images/Unit25/21.webp",
+      "audio": "Audio/Unit25/21_Chapter 1.mp3",
+      "text": "There is a mobile phone."
+    },
+
+    {
+      "image": "Images/Unit25/22.webp",
+      "audio": "Audio/Unit25/22_Chapter 1.mp3",
+      "text": ""
+    }
+  ]
+}
