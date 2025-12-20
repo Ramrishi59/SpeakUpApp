@@ -1,0 +1,27 @@
+{
+    "intro": {
+      "image": "Images/activity1/intro.webp",
+      "audio": "Audio/activity1/01_intro.mp3",
+      "alt": "Manku saying hello"
+    },
+    "outro": {
+      "audio": "Audio/activity1/99_outro.mp3"
+    },
+    "items": [
+      {
+        "question": "Make the sentence.",
+        "words": ["This", "is", "a", "book"],
+        "audioQuestion": "Audio/activity1/q1.mp3",
+        "audioCorrect": "Audio/activity1/c1.mp3",
+        "audioWrong": "Audio/activity1/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Those", "are", "my", "pens"],
+        "audioQuestion": "Audio/activity1/q2.mp3",
+        "audioCorrect": "Audio/activity1/c2.mp3",
+        "audioWrong": "Audio/activity1/wrong.mp3"
+      }
+    ]
+  }
+  

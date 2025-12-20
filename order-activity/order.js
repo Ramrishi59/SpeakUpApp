@@ -1,0 +1,392 @@
+// =====================
+// DATA LOADING
+// =====================
+const params = new URLSearchParams(window.location.search);
+const activityId = params.get("activity") || "activity1";
+const DATA_URL = `json/${activityId}.json`;
+
+let ITEMS = [];
+let dataLoaded = false;
+let loadError = false;
+let introData = null;
+let outroData = null;
+
+const dataPromise = fetch(DATA_URL)
+  .then(res => res.json())
+  .then(json => {
+    if (Array.isArray(json)) {
+      ITEMS = json;
+    } else {
+      ITEMS = json?.items || [];
+      introData = json?.intro || null;
+      outroData = json?.outro || null;
+    }
+    dataLoaded = true;
+  })
+  .catch(() => {
+    dataLoaded = false;
+    loadError = true;
+    ITEMS = [];
+    console.error(`order4: failed to load ${DATA_URL}`);
+  });
+
+// =====================
+// ELEMENTS
+// =====================
+const qEl = document.getElementById("question");
+const pill = document.getElementById("progressPill");
+const fbEl = document.getElementById("feedback");
+const progressFill = document.getElementById("progressFill");
+const progressStats = document.getElementById("progressStats");
+const introImgEl = document.getElementById("introImage");
+const introAudioEl = document.getElementById("introAudio");
+
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+const wordBtns = [0, 1, 2, 3].map(i => document.getElementById("w" + i));
+const answerTextEl = document.getElementById("answerText");
+
+// Results overlay
+const resultsOverlay = document.getElementById("resultsOverlay");
+const resultsText = document.getElementById("resultsText");
+const restartBtn = document.getElementById("restartBtn");
+const reviewBtn = document.getElementById("reviewBtn");
+
+// Confetti
+const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+const confettiCanvas = document.getElementById("confettiCanvas");
+const confettiShot = (window.confetti && confettiCanvas)
+  ? window.confetti.create(confettiCanvas, { resize: true, useWorker: true })
+  : null;
+
+let lastConfettiAt = 0;
+function popConfetti() {
+  if (!confettiShot || prefersReduced) return;
+  const now = performance.now();
+  if (now - lastConfettiAt < 500) return;
+  lastConfettiAt = now;
+
+  confettiShot({
+    particleCount: 600,
+    spread: 70,
+    origin: {
+      x: Math.random() * 0.6 + 0.2,
+      y: 0.3
+    }
+  });
+}
+
+// =====================
+// STATE
+// =====================
+let idx = 0;
+let score = 0;
+let answered = false;
+let hadWrongAttempt = false;
+let pendingRenderIndex = null;
+
+// mapping from button slot 0–3 -> original word index (0–3)
+let map = [0, 1, 2, 3];
+// order of selected original indices
+let selectionIndices = [];
+
+// =====================
+// HELPERS
+// =====================
+function shuffle4() {
+  map = [0, 1, 2, 3];
+  for (let i = map.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [map[i], map[j]] = [map[j], map[i]];
+  }
+}
+
+function setFeedback(msg, ok) {
+  fbEl.textContent = msg || "";
+  fbEl.classList.toggle("good", !!ok);
+  fbEl.classList.toggle("bad", !ok && !!msg);
+}
+
+function updateAnswerText(words, indices) {
+  if (!words || indices.length === 0) {
+    answerTextEl.textContent = "";
+    return;
+  }
+  const parts = indices.map(i => words[i]);
+  answerTextEl.textContent = parts.join(" ");
+}
+
+const sfx = new Audio();
+function playAudio(path, onEnded) {
+  if (!path) {
+    if (typeof onEnded === "function") onEnded();
+    return;
+  }
+  try {
+    sfx.pause();
+    sfx.currentTime = 0;
+  } catch (e) {}
+
+  sfx.src = path;
+  sfx.onended = () => {
+    sfx.onended = null;
+    if (typeof onEnded === "function") onEnded();
+  };
+
+  sfx.play().catch(() => {
+    if (typeof onEnded === "function") onEnded();
+  });
+}
+
+function updateProgressUI() {
+  const total = ITEMS.length || 1;
+  const pct = Math.round((idx / total) * 100);
+  if (progressFill) progressFill.style.width = `${pct}%`;
+  if (progressStats) {
+    progressStats.textContent = `${score} correct so far`;
+  }
+}
+
+function resetWordUI(it) {
+  selectionIndices = [];
+  answered = false;
+  updateAnswerText(it?.words || [], selectionIndices);
+  wordBtns.forEach(btn => {
+    btn.disabled = false;
+    btn.classList.remove("selected", "correct", "incorrect");
+  });
+}
+
+// =====================
+// RENDER
+// =====================
+function render(i) {
+  if (!dataLoaded) {
+    pendingRenderIndex = i;
+    dataPromise.finally(() => {
+      if (pendingRenderIndex !== null && dataLoaded) {
+        const target = pendingRenderIndex;
+        pendingRenderIndex = null;
+        render(target);
+      }
+    });
+    qEl.textContent = loadError ? "Could not load activity." : "Loading...";
+    setFeedback(loadError ? "Could not load activity." : "Loading questions...", false);
+    wordBtns.forEach(btn => btn.disabled = true);
+    prevBtn.disabled = true;
+    nextBtn.disabled = true;
+    return;
+  }
+
+  const it = ITEMS[i];
+  if (!it) return;
+
+  hadWrongAttempt = false;
+  setFeedback("");
+  nextBtn.disabled = false;
+
+  qEl.textContent = it.question || "Tap the words in order to make the sentence.";
+  pill.textContent = `${i + 1}/${ITEMS.length}`;
+  updateProgressUI();
+
+  shuffle4();
+  resetWordUI(it);
+
+  const words = it.words || [];
+  for (let slot = 0; slot < 4; slot++) {
+    const btn = wordBtns[slot];
+    const wordIndex = map[slot];
+    const label = words[wordIndex] ?? "";
+    btn.textContent = label;
+    btn.setAttribute("data-word-index", wordIndex);
+    btn.disabled = !label;
+  }
+
+  prevBtn.disabled = (i === 0);
+
+  if (it.audioQuestion) {
+    playAudio(it.audioQuestion);
+  }
+}
+
+// =====================
+// WORD TAPS
+// =====================
+function handleWordTap(slot) {
+  const it = ITEMS[idx];
+  if (!it || answered) return;
+
+  const btn = wordBtns[slot];
+  if (!btn || btn.disabled) return;
+
+  const wordIndex = Number(btn.getAttribute("data-word-index"));
+  if (Number.isNaN(wordIndex)) return;
+
+  btn.disabled = true;
+  btn.classList.add("selected");
+
+  selectionIndices.push(wordIndex);
+  updateAnswerText(it.words || [], selectionIndices);
+  setFeedback("", false);
+
+  const totalWords = it.words?.length || 0;
+  if (selectionIndices.length < totalWords) return;
+
+  // Check order now
+  const isCorrect =
+    selectionIndices.length === totalWords &&
+    selectionIndices.every((originalIndex, pos) => originalIndex === pos);
+
+  if (isCorrect) {
+    const earnedPoint = !hadWrongAttempt;
+    if (earnedPoint) {
+      score += 1;
+      setFeedback("Great!", true);
+    } else {
+      setFeedback("Correct! No point this time.", true);
+    }
+    updateProgressUI();
+
+    wordBtns.forEach(b => {
+      b.classList.remove("selected", "incorrect");
+      b.classList.add("correct");
+      b.disabled = true;
+    });
+
+    answered = true;
+    popConfetti();
+
+    const advance = () => {
+      if (idx < ITEMS.length - 1) {
+        idx += 1;
+        render(idx);
+      } else {
+        showResults();
+      }
+    };
+
+    if (it.audioCorrect) {
+      playAudio(it.audioCorrect, advance);
+    } else {
+      setTimeout(advance, 900);
+    }
+
+  } else {
+    hadWrongAttempt = true;
+    setFeedback("Oops, try again!", false);
+
+    wordBtns.forEach(b => {
+      if (b.classList.contains("selected")) {
+        b.classList.add("incorrect");
+      }
+    });
+
+    const reset = () => resetWordUI(it);
+
+    playAudio(it.audioWrong || "Audio/not-correct.mp3", () => {
+      setTimeout(reset, 400);
+    });
+  }
+}
+
+// =====================
+// RESULTS
+// =====================
+function showResults() {
+  const total = ITEMS.length || 1;
+  const pct = Math.round((score / total) * 100);
+  resultsText.textContent = `You built ${score} out of ${total} sentences correctly (${pct}%).`;
+
+  const revealResults = () => {
+    resultsOverlay.classList.remove("hidden");
+    document.body.classList.add("overlay-open");
+    reviewBtn?.focus();
+    popConfetti();
+  };
+
+  if (outroData && outroData.audio) {
+    let revealed = false;
+    const finalize = () => {
+      if (revealed) return;
+      revealed = true;
+      revealResults();
+    };
+
+    const fallback = setTimeout(finalize, 3000);
+    playAudio(outroData.audio, () => {
+      clearTimeout(fallback);
+      finalize();
+    });
+    return;
+  }
+
+  revealResults();
+}
+
+function hideResults() {
+  resultsOverlay.classList.add("hidden");
+  document.body.classList.remove("overlay-open");
+}
+
+// =====================
+// EVENT WIRES
+// =====================
+wordBtns.forEach((btn, i) => {
+  btn.addEventListener("click", () => handleWordTap(i));
+});
+
+prevBtn.addEventListener("click", () => {
+  if (idx > 0) {
+    idx -= 1;
+    render(idx);
+  }
+});
+
+nextBtn.addEventListener("click", () => {
+  if (idx < ITEMS.length - 1) {
+    idx += 1;
+    render(idx);
+  } else {
+    showResults();
+  }
+});
+
+resetBtn.addEventListener("click", () => {
+  idx = 0;
+  score = 0;
+  hideResults();
+  if (ITEMS.length > 0) render(idx);
+});
+
+restartBtn?.addEventListener("click", () => {
+  window.location.href = "../index.html";
+});
+
+reviewBtn?.addEventListener("click", () => {
+  hideResults();
+});
+
+// Keyboard shortcuts: 1–4 for words, arrows for nav
+window.addEventListener("keydown", (e) => {
+  if (e.key === "1") return handleWordTap(0);
+  if (e.key === "2") return handleWordTap(1);
+  if (e.key === "3") return handleWordTap(2);
+  if (e.key === "4") return handleWordTap(3);
+  if (e.key === "ArrowLeft") prevBtn.click();
+  if (e.key === "ArrowRight") nextBtn.click();
+});
+
+// Intro media from JSON
+dataPromise.then(() => {
+  if (introData) {
+    if (introImgEl && introData.image) {
+      introImgEl.src = introData.image;
+      introImgEl.alt = introData.alt || "Welcome";
+    }
+    if (introAudioEl && introData.audio) {
+      introAudioEl.src = introData.audio;
+    }
+  }
+});
