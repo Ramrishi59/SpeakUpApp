@@ -286,8 +286,22 @@
             "id": "unit30",
             "title": "Unit 30: Where are the bottles?",
             "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
-            "thumbnail": "Images/Unit28/1.webp",
+            "thumbnail": "Images/Unit30/1.webp",
             "category": "units"
-        }
+        },
+        {
+          "id": "unit31",
+          "title": "Unit 31: Unit 31: What month is it?",
+          "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+          "thumbnail": "Images/Unit31/1.webp",
+          "category": "units"
+      },
+      {
+        "id": "unit30",
+        "title": "Unit 30: Where are the bottles?",
+        "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+        "thumbnail": "Images/Unit28/1.webp",
+        "category": "units"
+    }
     ]
 }
