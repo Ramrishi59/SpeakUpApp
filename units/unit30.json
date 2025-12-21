@@ -1,0 +1,134 @@
+{
+    "id": "unit30",
+    "name": "Unit 30: What's the weather like?",
+    "description": "Learn to talk about the weather using simple sentences.",
+    "thumbnail": "Images/Unit30/unit30_thumbnail.jpg",
+    "words": [
+      {
+        "image": "Images/Unit30/1.webp",
+        "audio": "Audio/Unit30/01_Chapter 1.mp3",
+        "text": ""
+      },
+      {
+        "image": "Images/Unit30/2.webp",
+        "audio": "Audio/Unit30/02_Chapter 1.mp3",
+        "text": ""
+      },
+      {
+        "image": "Images/Unit30/3.webp",
+        "audio": "Audio/Unit30/03_Chapter 1.mp3",
+        "text": ""
+      },
+  
+      {
+        "image": "Images/Unit30/4.webp",
+        "audio": "Audio/Unit30/04_Chapter 1.mp3",
+        "text": "What's the weather like?"
+      },
+      {
+        "image": "Images/Unit30/4.webp",
+        "audio": "Audio/Unit30/05_Chapter 1.mp3",
+        "text": "It's sunny."
+      },
+      {
+        "image": "Images/Unit30/4.webp",
+        "audio": "Audio/Unit30/06_Chapter 1.mp3",
+        "text": "The sun is shining."
+      },
+      {
+        "image": "Images/Unit30/4.webp",
+        "audio": "Audio/Unit30/07_Chapter 1.mp3",
+        "text": "It's hot. It's a hot day."
+      },
+      {
+        "image": "Images/Unit30/4.webp",
+        "audio": "Audio/Unit30/08_Chapter 1.mp3",
+        "text": "It's a hot and sunny day."
+      },
+  
+      {
+        "image": "Images/Unit30/9.webp",
+        "audio": "Audio/Unit30/09_Chapter 1.mp3",
+        "text": "What's the weather like?"
+      },
+      {
+        "image": "Images/Unit30/9.webp",
+        "audio": "Audio/Unit30/10_Chapter 1.mp3",
+        "text": "It's not sunny."
+      },
+      {
+        "image": "Images/Unit30/9.webp",
+        "audio": "Audio/Unit30/11_Chapter 1.mp3",
+        "text": "It's cloudy."
+      },
+  
+      {
+        "image": "Images/Unit30/12.webp",
+        "audio": "Audio/Unit30/12_Chapter 1.mp3",
+        "text": "What's the weather like?"
+      },
+      {
+        "image": "Images/Unit30/12.webp",
+        "audio": "Audio/Unit30/13_Chapter 1.mp3",
+        "text": "It's windy."
+      },
+      {
+        "image": "Images/Unit30/12.webp",
+        "audio": "Audio/Unit30/14_Chapter 1.mp3",
+        "text": "The wind is blowing."
+      },
+      {
+        "image": "Images/Unit30/12.webp",
+        "audio": "Audio/Unit30/15_Chapter 1.mp3",
+        "text": "It's a windy day."
+      },
+  
+      {
+        "image": "Images/Unit30/16.webp",
+        "audio": "Audio/Unit30/16_Chapter 1.mp3",
+        "text": "What's the weather like?"
+      },
+      {
+        "image": "Images/Unit30/16.webp",
+        "audio": "Audio/Unit30/17_Chapter 1.mp3",
+        "text": "It's raining."
+      },
+      {
+        "image": "Images/Unit30/16.webp",
+        "audio": "Audio/Unit30/18_Chapter 1.mp3",
+        "text": "It's a rainy day."
+      },
+      {
+        "image": "Images/Unit30/16.webp",
+        "audio": "Audio/Unit30/19_Chapter 1.mp3",
+        "text": "It's a wet day."
+      },
+  
+      {
+        "image": "Images/Unit30/20.webp",
+        "audio": "Audio/Unit30/20_Chapter 1.mp3",
+        "text": "sunny"
+      },
+      {
+        "image": "Images/Unit30/21.webp",
+        "audio": "Audio/Unit30/21_Chapter 1.mp3",
+        "text": "cloudy"
+      },
+      {
+        "image": "Images/Unit30/22.webp",
+        "audio": "Audio/Unit30/22_Chapter 1.mp3",
+        "text": "windy"
+      },
+      {
+        "image": "Images/Unit30/23.webp",
+        "audio": "Audio/Unit30/23_Chapter 1.mp3",
+        "text": "rainy"
+      },
+  
+      {
+        "image": "Images/Unit30/24.webp",
+        "audio": "Audio/Unit30/24_Chapter 1.mp3",
+        "text": ""
+      }
+    ]
+  }
