@@ -1,29 +1,207 @@
 {
-    "id": "unit27",
-    "name": "Unit 27: Where is the kite?",
-    "description": "Learn to ask and answer 'Where is...?' and 'Where are...?' using in, on, and under.",
-    "thumbnail": "Images/Unit27/1.webp",
-    "words": [
-      { "text": "Where is the kite", "audio": "Audio/Unit27/intro.mp3" },
-      { "text": "Look. Listen. and Repeat.",             "audio": "Audio/intro2/intro2.mp3" },
-  
-      { "text": "Where is the kite?",           "image": "Images/Unit27/1.webp", "audio": "Audio/Unit27/03_Chapter 1.mp3" },
-      { "text": "The kite is in the tree.",     "image": "Images/Unit27/1.webp", "audio": "Audio/Unit27/04_Chapter 1.mp3" },
-  
-      { "text": "Where are the mangoes?",       "image": "Images/Unit27/2.webp", "audio": "Audio/Unit27/05_Chapter 1.mp3" },
-      { "text": "The mangoes are on the tree.", "image": "Images/Unit27/2.webp", "audio": "Audio/Unit27/06_Chapter 1.mp3" },
-  
-      { "text": "Where is the squirrel?",       "image": "Images/Unit27/3.webp", "audio": "Audio/Unit27/07_Chapter 1.mp3" },
-      { "text": "The squirrel is in the tree.", "image": "Images/Unit27/3.webp", "audio": "Audio/Unit27/08_Chapter 1.mp3" },
-  
-      { "text": "Where is the goat?",           "image": "Images/Unit27/4.webp", "audio": "Audio/Unit27/09_Chapter 1.mp3" },
-      { "text": "The goat is under the tree.",  "image": "Images/Unit27/4.webp", "audio": "Audio/Unit27/10_Chapter 1.mp3" },
-  
-      { "text": "Where is the chair?",          "image": "Images/Unit27/5.webp", "audio": "Audio/Unit27/11_Chapter 1.mp3" },
-      { "text": "The chair is under the tree.", "image": "Images/Unit27/5.webp", "audio": "Audio/Unit27/12_Chapter 1.mp3" },
-  
-      { "text": "Where are the birds?",         "image": "Images/Unit27/5.webp", "audio": "Audio/Unit27/13_Chapter 1.mp3" },
-      { "text": "The birds are on the chair.",  "image": "Images/Unit27/5.webp", "audio": "Audio/Unit27/14_Chapter 1.mp3" }
-    ]
-  }
-  
+  "id": "unit27",
+  "name": "Unit 27: My home",
+  "description": "Learn vocabulary for the living room, kitchen, bedroom and bathroom.",
+  "thumbnail": "Images/Unit27/unit27_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit27/1.webp",
+      "audio": "Audio/Unit27/01_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit27/2.webp",
+      "audio": "Audio/Unit27/02_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit27/3.webp",
+      "audio": "Audio/Unit27/03_Chapter 1.mp3",
+      "text": ""
+    },
+
+    {
+      "image": "Images/Unit27/4.webp",
+      "audio": "Audio/Unit27/04_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit27/5.webp",
+      "audio": "Audio/Unit27/05_Chapter 1.mp3",
+      "text": "There is a television."
+    },
+    {
+      "image": "Images/Unit27/6.webp",
+      "audio": "Audio/Unit27/06_Chapter 1.mp3",
+      "text": "There are pictures."
+    },
+    {
+      "image": "Images/Unit27/7.webp",
+      "audio": "Audio/Unit27/07_Chapter 1.mp3",
+      "text": "There is a clock."
+    },
+    {
+      "image": "Images/Unit27/8.webp",
+      "audio": "Audio/Unit27/08_Chapter 1.mp3",
+      "text": "There is a calendar."
+    },
+    {
+      "image": "Images/Unit27/9.webp",
+      "audio": "Audio/Unit27/09_Chapter 1.mp3",
+      "text": "There is a ceiling fan."
+    },
+    {
+      "image": "Images/Unit27/10.webp",
+      "audio": "Audio/Unit27/10_Chapter 1.mp3",
+      "text": "There is a teapoy."
+    },
+    {
+      "image": "Images/Unit27/11.webp",
+      "audio": "Audio/Unit27/11_Chapter 1.mp3",
+      "text": "There is a sofa."
+    },
+    {
+      "image": "Images/Unit27/12.webp",
+      "audio": "Audio/Unit27/12_Chapter 1.mp3",
+      "text": "There is a vase."
+    },
+    {
+      "image": "Images/Unit27/13.webp",
+      "audio": "Audio/Unit27/13_Chapter 1.mp3",
+      "text": "There are flowers."
+    },
+
+    {
+      "image": "Images/Unit27/14.webp",
+      "audio": "Audio/Unit27/14_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit27/15.webp",
+      "audio": "Audio/Unit27/15_Chapter 1.mp3",
+      "text": "There is a rug."
+    },
+    {
+      "image": "Images/Unit27/16.webp",
+      "audio": "Audio/Unit27/16_Chapter 1.mp3",
+      "text": "There is a gas cylinder."
+    },
+    {
+      "image": "Images/Unit27/17.webp",
+      "audio": "Audio/Unit27/17_Chapter 1.mp3",
+      "text": "There is a gas stove."
+    },
+    {
+      "image": "Images/Unit27/18.webp",
+      "audio": "Audio/Unit27/18_Chapter 1.mp3",
+      "text": "There is a mixer-grinder."
+    },
+    {
+      "image": "Images/Unit27/19.webp",
+      "audio": "Audio/Unit27/19_Chapter 1.mp3",
+      "text": "There is a sauce pan."
+    },
+    {
+      "image": "Images/Unit27/20.webp",
+      "audio": "Audio/Unit27/20_Chapter 1.mp3",
+      "text": "There is a fridge."
+    },
+    {
+      "image": "Images/Unit27/21.webp",
+      "audio": "Audio/Unit27/21_Chapter 1.mp3",
+      "text": "There are fruits and vegetables."
+    },
+    {
+      "image": "Images/Unit27/22.webp",
+      "audio": "Audio/Unit27/22_Chapter 1.mp3",
+      "text": "There are bottles."
+    },
+    {
+      "image": "Images/Unit27/23.webp",
+      "audio": "Audio/Unit27/23_Chapter 1.mp3",
+      "text": "There are cabinets."
+    },
+
+    {
+      "image": "Images/Unit27/24.webp",
+      "audio": "Audio/Unit27/24_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit27/25.webp",
+      "audio": "Audio/Unit27/25_Chapter 1.mp3",
+      "text": "There is a bed."
+    },
+    {
+      "image": "Images/Unit27/26.webp",
+      "audio": "Audio/Unit27/26_Chapter 1.mp3",
+      "text": "There are pillows."
+    },
+    {
+      "image": "Images/Unit27/27.webp",
+      "audio": "Audio/Unit27/27_Chapter 1.mp3",
+      "text": "There is a computer."
+    },
+    {
+      "image": "Images/Unit27/28.webp",
+      "audio": "Audio/Unit27/28_Chapter 1.mp3",
+      "text": "There is a chair."
+    },
+    {
+      "image": "Images/Unit27/29.webp",
+      "audio": "Audio/Unit27/29_Chapter 1.mp3",
+      "text": "There is a picture."
+    },
+    {
+      "image": "Images/Unit27/30.webp",
+      "audio": "Audio/Unit27/30_Chapter 1.mp3",
+      "text": "There is a mirror."
+    },
+    {
+      "image": "Images/Unit27/31.webp",
+      "audio": "Audio/Unit27/31_Chapter 1.mp3",
+      "text": "There are window curtains."
+    },
+    {
+      "image": "Images/Unit27/32.webp",
+      "audio": "Audio/Unit27/32_Chapter 1.mp3",
+      "text": "There is a lamp."
+    },
+
+    {
+      "image": "Images/Unit27/33.webp",
+      "audio": "Audio/Unit27/33_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit27/34.webp",
+      "audio": "Audio/Unit27/34_Chapter 1.mp3",
+      "text": "There is a toilet (toilet bowl)."
+    },
+    {
+      "image": "Images/Unit27/35.webp",
+      "audio": "Audio/Unit27/35_Chapter 1.mp3",
+      "text": "There is a mirror."
+    },
+    {
+      "image": "Images/Unit27/36.webp",
+      "audio": "Audio/Unit27/36_Chapter 1.mp3",
+      "text": "There is a washbasin."
+    },
+    {
+      "image": "Images/Unit27/37.webp",
+      "audio": "Audio/Unit27/37_Chapter 1.mp3",
+      "text": "There is a bath towel."
+    },
+    {
+      "image": "Images/Unit27/38.webp",
+      "audio": "Audio/Unit27/38_Chapter 1.mp3",
+      "text": "There is a shower."
+    },
+    {
+      "image": "Images/Unit27/39.webp",
+      "audio": "Audio/Unit27/39_Chapter 1.mp3",
+      "text": ""
+    }
+  ]
+}
