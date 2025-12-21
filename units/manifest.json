@@ -302,6 +302,13 @@
         "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
         "thumbnail": "Images/Unit32/1.webp",
         "category": "units"
-    }
+    },
+    {
+      "id": "unit33",
+      "title": "Unit 33: What is today's date?",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "thumbnail": "Images/Unit33/1.webp",
+      "category": "units"
+  }
     ]
 }
