@@ -1,10 +1,20 @@
 let dashboardLessons = [];
+let categories = new Map(); // category -> { items: [], collectionCard }
+let rootCards = [];
+let currentCategory = null; // null = main view
 
 
 document.addEventListener('DOMContentLoaded', async () => {
   const lessonsList = document.querySelector('.lessons-list');
   const searchInput = document.querySelector('.search-input');
+  const searchLabel = document.querySelector('.search-label');
+  const optionsSection = document.querySelector('.options-section');
+  const backButton = document.createElement('button');
+  backButton.textContent = '‹ Back';
+  backButton.className = 'back-button hidden';
+  optionsSection?.appendChild(backButton);
   await loadDashboardLessons();
+  buildCategories();
 
   const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
 
@@ -64,6 +74,62 @@ async function loadDashboardLessons() {
   }
 }
 
+function deriveCategory(card) {
+  if (card.category) return card.category;
+  if (card.route && card.route.startsWith('choosequiz/')) return 'choose';
+  if (card.id && card.id.startsWith('unit')) return 'units';
+  if (card.id && card.id.includes('practice')) return 'practice';
+  return 'other';
+}
+
+function labelizeCategory(cat) {
+  if (cat === 'choose') return 'Choose Quiz';
+  if (cat === 'units') return 'Units';
+  if (cat === 'practice') return 'Practice';
+  return cat.charAt(0).toUpperCase() + cat.slice(1);
+}
+
+function buildCategories() {
+  categories = new Map();
+
+  dashboardLessons.forEach(card => {
+    const cat = deriveCategory(card);
+    if (!categories.has(cat)) {
+      categories.set(cat, { items: [], collectionCard: null });
+    }
+    categories.get(cat).items.push(card);
+  });
+
+  // Build collection cards with preferred ordering
+  const preferredOrder = ['choose', 'units'];
+  const otherCats = Array.from(categories.keys()).filter(c => !preferredOrder.includes(c) && c !== 'other');
+  const orderedCats = [...preferredOrder, ...otherCats];
+
+  rootCards = [];
+
+  // Add collections first
+  orderedCats.forEach(cat => {
+    const value = categories.get(cat);
+    if (!value || cat === 'other') return;
+    const collectionCard = {
+      id: `collection-${cat}`,
+      title: labelizeCategory(cat),
+      description: `Browse ${labelizeCategory(cat)}`,
+      thumbnail: value.items[0]?.thumbnail || 'Images/icon.png',
+      category: cat,
+      isCollection: true
+    };
+    value.collectionCard = collectionCard;
+    rootCards.push(collectionCard);
+  });
+
+  // Then append non-collection items (category 'other')
+  const otherCategory = categories.get('other');
+  if (otherCategory) {
+    rootCards.push(...otherCategory.items);
+  }
+}
+
 
   function navigateToLesson(id) {
     // find the full card so resolveRoute can honour overrides and future per-card routes
@@ -96,13 +162,22 @@ async function loadDashboardLessons() {
           <span class="forward-arrow">›</span>
         `;
 
+      const isCollection = lesson.isCollection;
+      const handleClick = () => {
+        if (isCollection && lesson.category) {
+          switchToCategoryView(lesson.category);
+        } else {
+          navigateToLesson(lesson.id);
+        }
+      };
+
       // click
-      card.addEventListener('click', () => navigateToLesson(lesson.id));
+      card.addEventListener('click', handleClick);
       // keyboard Enter/Space
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          navigateToLesson(lesson.id);
+          handleClick();
         }
       });
 
@@ -111,19 +186,45 @@ async function loadDashboardLessons() {
   }
 
   // initial render
-  renderLessonCards(dashboardLessons);
+  renderCurrentView();
 
   // -------- Search --------
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase().trim();
-      const filtered = dashboardLessons.filter(lesson =>
+      const activeList = currentCategory ? (categories.get(currentCategory)?.items || []) : rootCards;
+      const filtered = activeList.filter(lesson =>
         lesson.title.toLowerCase().includes(q) ||
         lesson.description.toLowerCase().includes(q)
       );
       renderLessonCards(filtered);
     });
   }
+
+  function renderCurrentView() {
+    const cardsToRender = currentCategory ? (categories.get(currentCategory)?.items || []) : rootCards;
+    renderLessonCards(cardsToRender);
+    if (searchLabel) {
+      searchLabel.textContent = currentCategory ? labelizeCategory(currentCategory) : 'Lessons';
+    }
+    if (backButton) {
+      backButton.classList.toggle('hidden', !currentCategory);
+    }
+  }
+
+  function switchToCategoryView(cat) {
+    currentCategory = cat;
+    if (searchInput) searchInput.value = '';
+    renderCurrentView();
+  }
+
+  function switchToMainView() {
+    currentCategory = null;
+    if (searchInput) searchInput.value = '';
+    renderCurrentView();
+  }
+
+  backButton?.addEventListener('click', switchToMainView);
 
   // -------- Bottom nav --------
   if (navButtons) {
