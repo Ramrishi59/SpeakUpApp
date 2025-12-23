@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const ROUTE_OVERRIDES = {
     'unit1-practice': () => 'an-quiz/an-quiz.html',
     'and-practice': () => 'and-practice/and.html',
-    'unit3-landscape': () => 'units_landscape/landscape.html'
   };
 
 
