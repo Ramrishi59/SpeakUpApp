@@ -1,0 +1,200 @@
+{
+    "id": "42",
+    "name": "I can't sing",
+    "description": "",
+    "thumbnail": "Images/Unit42/42.jpg",
+    "words": [
+        {
+            "image": "Images/Unit42/1.webp",
+            "audio": "Audio/Unit42/01_Chapter 1.mp3",
+            "text": ""
+        },
+        {
+            "image": "Images/Unit42/2.webp",
+            "audio": "Audio/Unit42/02_Chapter 1.mp3",
+            "text": ""
+        },
+
+        {
+            "image": "Images/Unit42/3.webp",
+            "audio": "Audio/Unit42/03_Chapter 1.mp3",
+            "text": ""
+        },
+        {
+            "image": "Images/Unit42/4.webp",
+            "audio": "Audio/Unit42/04_Chapter 1.mp3",
+            "text": "I can sing but I can't dance"
+        },
+        {
+            "image": "Images/Unit42/5.webp",
+            "audio": "Audio/Unit42/05_Chapter 1.mp3",
+            "text": "I can dance but I can't sing."
+        },
+        {
+            "image": "Images/Unit42/6.webp",
+            "audio": "Audio/Unit42/06_Chapter 1.mp3",
+            "text": "Can you paint, Jeena? ."
+        },
+        {
+            "image": "Images/Unit42/6.webp",
+            "audio": "Audio/Unit42/07_Chapter 1.mp3",
+            "text": "Yes, I can."
+        },
+        {
+            "image": "Images/Unit42/8.webp",
+            "audio": "Audio/Unit42/08_Chapter 1.mp3",
+            "text": "Can you climb, Pradeep? ."
+        },
+        {
+            "image": "Images/Unit42/8.webp",
+            "audio": "Audio/Unit42/09_Chapter 1.mp3",
+            "text": "No, I can't."
+        },
+        {
+            "image": "Images/Unit42/10.webp",
+            "audio": "Audio/Unit42/10_Chapter 1.mp3",
+            "text": "Can John drive? Can he drive? "
+        },
+        {
+            "image": "Images/Unit42/11.webp",
+            "audio": "Audio/Unit42/11_Chapter 1.mp3",
+            "text": "Yes, he can."
+        },
+        {
+            "image": "Images/Unit42/12.webp",
+            "audio": "Audio/Unit42/12_Chapter 1.mp3",
+            "text": "Can Mohan swim? Can he swim?"
+        },
+        {
+            "image": "Images/Unit42/13.webp",
+            "audio": "Audio/Unit42/13_Chapter 1.mp3",
+            "text": "No, he can't."
+        },
+        {
+            "image": "Images/Unit42/14.webp",
+            "audio": "Audio/Unit42/14_Chapter 1.mp3",
+            "text": "Can Rani ride a motorbike? Can she ride a motorbike?"
+        },
+        {
+            "image": "Images/Unit42/15.webp",
+            "audio": "Audio/Unit42/15_Chapter 1.mp3",
+            "text": "Yes, she can. Rani can ride a motorbike."
+        },
+        {
+            "image": "Images/Unit42/16.webp",
+            "audio": "Audio/Unit42/16_Chapter 1.mp3",
+            "text": "Can Najeeb and Mujeeb read?  Can they read? "
+        },
+        {
+            "image": "Images/Unit42/17.webp",
+            "audio": "Audio/Unit42/17_Chapter 1.mp3",
+            "text":""
+        },
+        {
+            "image": "Images/Unit42/18.webp",
+            "audio": "Audio/Unit42/18_Chapter 1.mp3",
+            "text": "Yes, they can. Najeeb and Mujeeb can read."
+        },
+        {
+            "image": "Images/Unit42/19.webp",
+            "audio": "Audio/Unit42/19_Chapter 1.mp3",
+            "text": "Can Mittu and Mottu run? Can they run?"
+        },
+        {
+            "image": "Images/Unit42/20.webp",
+            "audio": "Audio/Unit42/20_Chapter 1.mp3",
+            "text": "No, they can't. Mittu and Mottu can't run."
+        },
+        {
+            "image": "Images/Unit42/20.webp",
+            "audio": "Audio/Unit42/20_Chapter 1.mp3",
+            "text": "No, they can't. Mittu and Mottu can't run."
+          },
+          {
+            "image": "Images/Unit42/21.webp",
+            "audio": "Audio/Unit42/21_Chapter 1.mp3",
+            "text": "Can fish swim? Can they swim?"
+          },
+          {
+            "image": "Images/Unit42/22.webp",
+            "audio": "Audio/Unit42/22_Chapter 1.mp3",
+            "text": "Yes, they can. Fish can swim."
+          },
+          {
+            "image": "Images/Unit42/23.webp",
+            "audio": "Audio/Unit42/23_Chapter 1.mp3",
+            "text": "Can wolves sing? Can they sing?"
+          },
+          {
+            "image": "Images/Unit42/24.webp",
+            "audio": "Audio/Unit42/24_Chapter 1.mp3",
+            "text": "No, they can't. Wolves can't sing."
+          },
+          {
+            "image": "Images/Unit42/25.webp",
+            "audio": "Audio/Unit42/25_Chapter 1.mp3",
+            "text": "Can a baby read? Can it read?"
+          },
+          {
+            "image": "Images/Unit42/26.webp",
+            "audio": "Audio/Unit42/26_Chapter 1.mp3",
+            "text": "No, it can't. A baby can't read."
+          },
+          {
+            "image": "Images/Unit42/27.webp",
+            "audio": "Audio/Unit42/27_Chapter 1.mp3",
+            "text": "Can snakes walk? Can they walk?"
+          },
+          {
+            "image": "Images/Unit42/28.webp",
+            "audio": "Audio/Unit42/28_Chapter 1.mp3",
+            "text": "No, they can't. Snakes can't walk."
+          },
+          {
+            "image": "Images/Unit42/29.webp",
+            "audio": "Audio/Unit42/29_Chapter 1.mp3",
+            "text": "Can he ride a horse?"
+          },
+          {
+            "image": "Images/Unit42/30.webp",
+            "audio": "Audio/Unit42/30_Chapter 1.mp3",
+            "text": "Yes, he can."
+          },
+          {
+            "image": "Images/Unit42/31.webp",
+            "audio": "Audio/Unit42/31_Chapter 1.mp3",
+            "text": "Can he see?"
+          },
+          {
+            "image": "Images/Unit42/32.webp",
+            "audio": "Audio/Unit42/32_Chapter 1.mp3",
+            "text": "No, he can't."
+          },
+          {
+            "image": "Images/Unit42/33.webp",
+            "audio": "Audio/Unit42/33_Chapter 1.mp3",
+            "text": "Can he cook?"
+          },
+          {
+            "image": "Images/Unit42/34.webp",
+            "audio": "Audio/Unit42/34_Chapter 1.mp3",
+            "text": "No, he can't."
+          },
+          {
+            "image": "Images/Unit42/35.webp",
+            "audio": "Audio/Unit42/35_Chapter 1.mp3",
+            "text": "Can he speak?"
+          },
+          {
+            "image": "Images/Unit42/36.webp",
+            "audio": "Audio/Unit42/36_Chapter 1.mp3",
+            "text": "No, he can't."
+          },
+          {
+            "image": "Images/Unit42/37.webp",
+            "audio": "Audio/Unit42/37_Chapter 1.mp3",
+            "text": ""
+          }
+    
+    ]
+}

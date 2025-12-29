@@ -344,6 +344,41 @@
       "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
       "thumbnail": "Images/Unit38/1.webp",
       "category": "units"
+    },
+    {
+      "id": "unit39",
+      "title": "Unit 39: I have a Camera",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "thumbnail": "Images/Unit39/1.webp",
+      "category": "units"
+    },
+    {
+      "id": "unit41",
+      "title": "Unit 41: I can Read",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "thumbnail": "Images/Unit41/1.webp",
+      "category": "units"
+    },
+    {
+      "id": "unit41",
+      "title": "Unit 41: I can Read",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "thumbnail": "Images/Unit41/1.webp",
+      "category": "units"
+    },
+    {
+      "id": "unit42",
+      "title": "Unit 42: I can't sing",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "thumbnail": "Images/Unit42/1.webp",
+      "category": "units"
+    },
+    {
+      "id": "unit43",
+      "title": "Unit 43: What Time is it",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "thumbnail": "Images/Unit43/1.webp",
+      "category": "units"
     }
   ]
 }
