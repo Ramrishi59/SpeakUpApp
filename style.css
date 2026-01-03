@@ -148,7 +148,7 @@ body {
 .lesson-card {
     display: flex;
     align-items: center;
-    background: linear-gradient(120deg, #a3c3e5 0%, #ffffff 45%, #ffffff 65%, #aac7e7fc 100%); /* Blue edges, white center */
+    background: linear-gradient(120deg, #d1e7ff 0%, #ffffff 45%, #ffffff 65%, #cad8eafc 100%); /* Blue edges, white center */
     border: 1px solid var(--border-light);
     border-radius: 36px;
     padding: 15px;
