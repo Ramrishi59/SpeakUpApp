@@ -8,7 +8,8 @@
     --card-bg: #fff;
 }
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Fredoka', 'Arial', sans-serif;
+    font-weight: 500;
     margin: 0;
     padding: 0;
     background-color: var(--body-bg);
@@ -31,18 +32,7 @@ body {
 
 /* Header Styling */
 .app-header {
-    background-color: var(--primary-gold);
-    color: var(--light-text);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    font-size: 1.2em;
-    font-weight: bold;
-    position: sticky; /* Keeps header at top on scroll */
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: none; /* Hide the yellow banner */
 }
 
 .menu-icon, .notification-icon {
@@ -55,17 +45,22 @@ body {
     flex-grow: 1; /* Allows main content to take available vertical space */
     padding: 20px;
     overflow-y: auto; /* Enables scrolling if content overflows */
+    background: linear-gradient(180deg, #ffe6f2 0%, #ffd6e8 35%, #d4e8ff 100%); /* Pink at top fading to blue at bottom */
 }
 
 .options-section {
     margin-bottom: 25px;
     position: relative; /* For positioning the add button */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .options-section h2 {
     color: var(--dark-text);
     font-size: 1.8em;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .search-label {
@@ -76,24 +71,7 @@ body {
 }
 
 .add-button {
-    position: absolute;
-    right: 0;
-    top: 50px; /* Adjust based on exact placement in screenshot */
-    background-color: #4CAF50; /* Green color for plus button */
-    color: white;
-    border: none;
-    border-radius: 50%; /* Make it circular */
-    width: 40px;
-    height: 40px;
-    font-size: 2em;
-    line-height: 1; /* Center the plus sign vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.2s;
-    transform: translateY(-50%); /* Adjust to center vertically with label */
+    display: none; /* Hidden as requested */
 }
 
 .add-button:hover {
@@ -122,26 +100,39 @@ body {
 .search-bar {
     display: flex;
     align-items: center;
-    border: 1px solid var(--border-light);
-    border-radius: 25px;
-    padding: 8px 15px;
-    background-color: #f9f9f9; /* Slightly off-white for search bar */
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    gap: 10px;
+    border: 1px solid #ffd6e8;
+    border-radius: 28px;
+    padding: 10px 14px;
+    background: linear-gradient(120deg, #fff7fb 0%, #ffe6f2 100%);
+    box-shadow: 0 4px 12px rgba(255, 165, 200, 0.25);
 }
 
 .search-input {
     flex-grow: 1;
     border: none;
     outline: none;
-    padding: 5px 10px;
+    padding: 8px 4px;
     font-size: 1em;
-    background: transparent; /* Match parent background */
+    background: transparent;
+    color: #444;
+}
+
+.search-input::placeholder {
+    color: #a77ea1;
 }
 
 .search-icon {
-    color: #888;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #ffb3cc 0%, #ffcce0 100%);
+    color: #7b3d6e;
     font-size: 1.2em;
-    margin-right: 5px;
+    box-shadow: 0 2px 6px rgba(123, 61, 110, 0.25);
 }
 
 
@@ -150,15 +141,16 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px; /* Space between lesson cards */
+    padding: 0 12px; /* Pull cards away from screen edges */
 }
 
 /* Individual Lesson Card Styling (The items like "A / An", "Science Experiment") */
 .lesson-card {
     display: flex;
     align-items: center;
-    background-color: var(--card-bg);
+    background: linear-gradient(120deg, #a3c3e5 0%, #ffffff 45%, #ffffff 65%, #aac7e7fc 100%); /* Blue edges, white center */
     border: 1px solid var(--border-light);
-    border-radius: 10px;
+    border-radius: 36px;
     padding: 15px;
     box-shadow: 0 2px 8px var(--shadow-light);
     cursor: pointer;
