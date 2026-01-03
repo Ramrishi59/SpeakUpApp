@@ -64,9 +64,16 @@
                 window.location.reload();
               });
 
-              // If there's an updated worker waiting, activate it immediately
+              function promptUserToRefresh(worker) {
+                const shouldRefresh = window.confirm('A new update is available. Refresh now?');
+                if (shouldRefresh) {
+                  worker.postMessage({ type: 'SKIP_WAITING' });
+                }
+              }
+
+              // If there's an updated worker waiting, ask user before activating
               if (registration.waiting) {
-                registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+                promptUserToRefresh(registration.waiting);
               }
 
               registration.addEventListener('updatefound', () => {
@@ -74,7 +81,7 @@
                 if (newWorker) {
                   newWorker.addEventListener('statechange', () => {
                     if (newWorker.state === 'installed' && registration.waiting) {
-                      registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+                      promptUserToRefresh(registration.waiting);
                     }
                   });
                 }
