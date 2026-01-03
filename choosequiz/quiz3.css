@@ -45,7 +45,7 @@ body {
   
   .pill {
     background: #ffc439;
-    padding: 10px 32px;
+    padding: 6px 30px;
     border-radius: 999px;
     font-weight: 900;
     box-shadow: var(--shadow);
