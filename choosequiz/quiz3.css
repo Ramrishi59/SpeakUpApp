@@ -129,14 +129,14 @@ main#app {
     justify-content: center;
   }
   
-  #itemImage {
-    width: min(98%, 720px);
-    max-height: 44svh;
-    object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,.18));
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.4);
-  }
+#itemImage {
+  width: min(99%, 720px);
+  max-height: 44svh;
+  /* padding-top: 2px; */
+  object-fit: contain;
+  border-radius: 15px;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,.18));
+}
   
   /* Question */
 .question {
