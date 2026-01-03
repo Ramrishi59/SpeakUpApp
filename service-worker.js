@@ -1,4 +1,4 @@
-const CACHE_NAME = 'speakupapp-cache-v5';
+const CACHE_NAME = 'speakupapp-cache-v6';
 
 const urlsToCache = [
   './',
@@ -14,6 +14,7 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', event => {
+  self.skipWaiting(); // activate updated SW immediately
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
     const failures = [];
@@ -47,14 +48,23 @@ self.addEventListener('fetch', event => {
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(name => {
-          if (!cacheWhitelist.includes(name)) {
-            return caches.delete(name);
-          }
-        })
-      );
-    })
+    Promise.all([
+      caches.keys().then(cacheNames => {
+        return Promise.all(
+          cacheNames.map(name => {
+            if (!cacheWhitelist.includes(name)) {
+              return caches.delete(name);
+            }
+          })
+        );
+      }),
+      self.clients.claim()
+    ])
   );
+});
+
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
