@@ -149,7 +149,7 @@ body {
     display: flex;
     align-items: center;
     background: linear-gradient(120deg, #d1e7ff 0%, #ffffff 45%, #ffffff 65%, #c4d7eefc 100%); /* Blue edges, white center */
-    border: 2px solid #403b3b; /* clearer outline */
+    border: 1px solid #302d2d; /* clearer outline */
     border-radius: 20px;
     padding: 15px;
     box-shadow: 0 2px 8px var(--shadow-light);
