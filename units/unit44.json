@@ -1,0 +1,134 @@
+{
+    "id": "44",
+    "name": "I'm reading",
+    "description": "",
+    "thumbnail": "Images/Unit44/44_thumbnail.jpg",
+    "words": [
+      {
+        "image": "Images/Unit44/1.webp",
+        "audio": "Audio/Unit44/01_Chapter 1.mp3",
+        "text": ""
+      },
+      {
+        "image": "Images/Unit44/2.webp",
+        "audio": "Audio/Unit44/02_Chapter 1.mp3",
+        "text": ""
+      },
+      {
+        "image": "Images/Unit44/3.webp",
+        "audio": "Audio/Unit44/03_Chapter 1.mp3",
+        "text": ""
+      },
+      {
+        "image": "Images/Unit44/4.webp",
+        "audio": "Audio/Unit44/04_Chapter 1.mp3",
+        "text": "I'm reading."
+      },
+      {
+        "image": "Images/Unit44/5.webp",
+        "audio": "Audio/Unit44/05_Chapter 1.mp3",
+        "text": "I'm writing."
+      },
+      {
+        "image": "Images/Unit44/6.webp",
+        "audio": "Audio/Unit44/06_Chapter 1.mp3",
+        "text": "You are sitting."
+      },
+      {
+        "image": "Images/Unit44/7.webp",
+        "audio": "Audio/Unit44/07_Chapter 1.mp3",
+        "text": "You are standing."
+      },
+      {
+        "image": "Images/Unit44/8.webp",
+        "audio": "Audio/Unit44/08_Chapter 1.mp3",
+        "text": "They are eating."
+      },
+      {
+        "image": "Images/Unit44/9.webp",
+        "audio": "Audio/Unit44/09_Chapter 1.mp3",
+        "text": "We are swimming."
+      },
+      {
+        "image": "Images/Unit44/10.webp",
+        "audio": "Audio/Unit44/10_Chapter 1.mp3",
+        "text": "He is climbing."
+      },
+      {
+        "image": "Images/Unit44/11.webp",
+        "audio": "Audio/Unit44/11_Chapter 1.mp3",
+        "text": "He is jumping."
+      },
+      {
+        "image": "Images/Unit44/12.webp",
+        "audio": "Audio/Unit44/12_Chapter 1.mp3",
+        "text": "The parrots are flying."
+      },
+      {
+        "image": "Images/Unit44/13.webp",
+        "audio": "Audio/Unit44/13_Chapter 1.mp3",
+        "text": "The baby is crying."
+      },
+      {
+        "image": "Images/Unit44/14.webp",
+        "audio": "Audio/Unit44/14_Chapter 1.mp3",
+        "text": "She is running."
+      },
+      {
+        "image": "Images/Unit44/15.webp",
+        "audio": "Audio/Unit44/15_Chapter 1.mp3",
+        "text": "The cat is sleeping."
+      },
+      {
+        "image": "Images/Unit44/16.webp",
+        "audio": "Audio/Unit44/16_Chapter 1.mp3",
+        "text": "We are drinking."
+      },
+      {
+        "image": "Images/Unit44/17.webp",
+        "audio": "Audio/Unit44/17_Chapter 1.mp3",
+        "text": "They are fighting."
+      },
+      {
+        "image": "Images/Unit44/18.webp",
+        "audio": "Audio/Unit44/18_Chapter 1.mp3",
+        "text": "He is sleeping."
+      },
+      {
+        "image": "Images/Unit44/19.webp",
+        "audio": "Audio/Unit44/19_Chapter 1.mp3",
+        "text": "He is juggling."
+      },
+      {
+        "image": "Images/Unit44/20.webp",
+        "audio": "Audio/Unit44/20_Chapter 1.mp3",
+        "text": "He is cooking."
+      },
+      {
+        "image": "Images/Unit44/21.webp",
+        "audio": "Audio/Unit44/21_Chapter 1.mp3",
+        "text": "It's raining."
+      },
+      {
+        "image": "Images/Unit44/22.webp",
+        "audio": "Audio/Unit44/22_Chapter 1.mp3",
+        "text": "He is talking."
+      },
+      {
+        "image": "Images/Unit44/23.webp",
+        "audio": "Audio/Unit44/23_Chapter 1.mp3",
+        "text": "He is pushing."
+      },
+      {
+        "image": "Images/Unit44/24.webp",
+        "audio": "Audio/Unit44/24_Chapter 1.mp3",
+        "text": "She is mopping."
+      },
+      {
+        "image": "Images/Unit44/25.webp",
+        "audio": "Audio/Unit44/25_Chapter 1.mp3",
+        "text": ""
+      }
+    ]
+  }
+  

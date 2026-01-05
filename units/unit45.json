@@ -1,0 +1,199 @@
+{
+    "id": "45",
+    "name": "What are you doing?",
+    "description": "",
+    "thumbnail": "Images/Unit45/45_thumbnail.jpg",
+    "words": [
+      {
+        "image": "Images/Unit45/1.webp",
+        "audio": "Audio/Unit45/01_Chapter 1.mp3",
+        "text": ""
+      },
+      {
+        "image": "Images/Unit45/2.webp",
+        "audio": "Audio/Unit45/02_Chapter 1.mp3",
+        "text": ""
+      },
+      {
+        "image": "Images/Unit45/3.webp",
+        "audio": "Audio/Unit45/03_Chapter 1.mp3",
+        "text": ""
+      },
+      {
+        "image": "Images/Unit45/4.webp",
+        "audio": "Audio/Unit45/04_Chapter 1.mp3",
+        "text": "What are you doing?"
+      },
+      {
+        "image": "Images/Unit45/4.webp",
+        "audio": "Audio/Unit45/05_Chapter 1.mp3",
+        "text": "I'm painting."
+      },
+      {
+        "image": "Images/Unit45/6.webp",
+        "audio": "Audio/Unit45/06_Chapter 1.mp3",
+        "text": "What are you doing?"
+      },
+      {
+        "image": "Images/Unit45/6.webp",
+        "audio": "Audio/Unit45/07_Chapter 1.mp3",
+        "text": "I'm reading."
+      },
+      {
+        "image": "Images/Unit45/8.webp",
+        "audio": "Audio/Unit45/08_Chapter 1.mp3",
+        "text": "Are you reading?"
+      },
+      {
+        "image": "Images/Unit45/8.webp",
+        "audio": "Audio/Unit45/09_Chapter 1.mp3",
+        "text": "No, I'm painting."
+      },
+      {
+        "image": "Images/Unit45/10.webp",
+        "audio": "Audio/Unit45/10_Chapter 1.mp3",
+        "text": "Are you reading?"
+      },
+      {
+        "image": "Images/Unit45/10.webp",
+        "audio": "Audio/Unit45/11_Chapter 1.mp3",
+        "text": "Yes, I am."
+      },
+      {
+        "image": "Images/Unit45/12.webp",
+        "audio": "Audio/Unit45/12_Chapter 1.mp3",
+        "text": "What are you doing?"
+      },
+      {
+        "image": "Images/Unit45/12.webp",
+        "audio": "Audio/Unit45/13_Chapter 1.mp3",
+        "text": "We are drinking."
+      },
+      {
+        "image": "Images/Unit45/14.webp",
+        "audio": "Audio/Unit45/14_Chapter 1.mp3",
+        "text": "Are they drinking?"
+      },
+      {
+        "image": "Images/Unit45/14.webp",
+        "audio": "Audio/Unit45/15_Chapter 1.mp3",
+        "text": "No, they are eating."
+      },
+      {
+        "image": "Images/Unit45/16.webp",
+        "audio": "Audio/Unit45/16_Chapter 1.mp3",
+        "text": "Are they drinking?"
+      },
+      {
+        "image": "Images/Unit45/16.webp",
+        "audio": "Audio/Unit45/17_Chapter 1.mp3",
+        "text": "Yes, they are."
+      },
+      {
+        "image": "Images/Unit45/18.webp",
+        "audio": "Audio/Unit45/18_Chapter 1.mp3",
+        "text": "What is he doing?"
+      },
+      {
+        "image": "Images/Unit45/18.webp",
+        "audio": "Audio/Unit45/19_Chapter 1.mp3",
+        "text": "He is talking."
+      },
+      {
+        "image": "Images/Unit45/20.webp",
+        "audio": "Audio/Unit45/20_Chapter 1.mp3",
+        "text": "What is she doing?"
+      },
+      {
+        "image": "Images/Unit45/20.webp",
+        "audio": "Audio/Unit45/21_Chapter 1.mp3",
+        "text": "She is driving."
+      },
+      {
+        "image": "Images/Unit45/22.webp",
+        "audio": "Audio/Unit45/22_Chapter 1.mp3",
+        "text": "Are they studying?"
+      },
+      {
+        "image": "Images/Unit45/22.webp",
+        "audio": "Audio/Unit45/23_Chapter 1.mp3",
+        "text": "No, they are eating."
+      },
+      {
+        "image": "Images/Unit45/24.webp",
+        "audio": "Audio/Unit45/24_Chapter 1.mp3",
+        "text": "Are you reading?"
+      },
+      {
+        "image": "Images/Unit45/24.webp",
+        "audio": "Audio/Unit45/25_Chapter 1.mp3",
+        "text": "Yes, we are."
+      },
+      {
+        "image": "Images/Unit45/26.webp",
+        "audio": "Audio/Unit45/26_Chapter 1.mp3",
+        "text": "What is he doing?"
+      },
+      {
+        "image": "Images/Unit45/26.webp",
+        "audio": "Audio/Unit45/27_Chapter 1.mp3",
+        "text": "He is playing."
+      },
+      {
+        "image": "Images/Unit45/28.webp",
+        "audio": "Audio/Unit45/28_Chapter 1.mp3",
+        "text": "What are you doing?"
+      },
+      {
+        "image": "Images/Unit45/28.webp",
+        "audio": "Audio/Unit45/29_Chapter 1.mp3",
+        "text": "I'm cooking."
+      },
+      {
+        "image": "Images/Unit45/30.webp",
+        "audio": "Audio/Unit45/30_Chapter 1.mp3",
+        "text": "What is she doing?"
+      },
+      {
+        "image": "Images/Unit45/30.webp",
+        "audio": "Audio/Unit45/31_Chapter 1.mp3",
+        "text": "She is watching TV."
+      },
+      {
+        "image": "Images/Unit45/32.webp",
+        "audio": "Audio/Unit45/32_Chapter 1.mp3",
+        "text": "Are they talking?"
+      },
+      {
+        "image": "Images/Unit45/32.webp",
+        "audio": "Audio/Unit45/33_Chapter 1.mp3",
+        "text": "No, they are fighting."
+      },
+      {
+        "image": "Images/Unit45/34.webp",
+        "audio": "Audio/Unit45/34_Chapter 1.mp3",
+        "text": "Is the baby crying?"
+      },
+      {
+        "image": "Images/Unit45/34.webp",
+        "audio": "Audio/Unit45/35_Chapter 1.mp3",
+        "text": "Yes, it is."
+      },
+      {
+        "image": "Images/Unit45/36.webp",
+        "audio": "Audio/Unit45/36_Chapter 1.mp3",
+        "text": "Is he sitting?"
+      },
+      {
+        "image": "Images/Unit45/36.webp",
+        "audio": "Audio/Unit45/37_Chapter 1.mp3",
+        "text": "No, he is standing."
+      },
+      {
+        "image": "Images/Unit45/38.webp",
+        "audio": "Audio/Unit45/38_Chapter 1.mp3",
+        "text": ""
+      }
+    ]
+  }
+  

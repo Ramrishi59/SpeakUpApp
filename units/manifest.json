@@ -379,6 +379,20 @@
       "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
       "thumbnail": "Images/Unit43/1.webp",
       "category": "units"
+    },
+    {
+      "id": "unit44",
+      "title": "Unit 44: I'm reading",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "thumbnail": "Images/Unit44/1.webp",
+      "category": "units"
+    },
+    {
+      "id": "unit45",
+      "title": "Unit 45: What are you doing?",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "thumbnail": "Images/Unit44/1.webp",
+      "category": "units"
     }
   ]
 }
