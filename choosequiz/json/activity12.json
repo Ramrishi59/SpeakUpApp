@@ -1,0 +1,97 @@
+{
+    "intro": {
+      "image": "Images/activity12/1.webp",
+      "audio": "Audio/activity12/01_Chapter 1.mp3",
+      "alt": "Manku introduces the What Colour choose-the-correct-option activity"
+    },
+  
+    "outro": {
+      "image": "Images/activity12/12.webp",
+      "audio": "Audio/activity12/12_Chapter 1.mp3",
+      "alt": "Manku congratulates the learner for identifying colours correctly"
+    },
+  
+    "items": [
+      {
+        "image": "Images/activity12/2.webp",
+        "choices": ["It’s red.", "It’s blue.", "It’s yellow."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity12/question.mp3",
+        "audioCorrect": "Audio/activity12/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity12/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity12/3.webp",
+        "choices": ["It’s green.", "It’s blue.", "It’s black."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity12/question.mp3",
+        "audioCorrect": "Audio/activity12/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity12/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity12/4.webp",
+        "choices": ["It’s pink.", "It’s yellow.", "It’s red."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity12/question.mp3",
+        "audioCorrect": "Audio/activity12/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity12/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity12/5.webp",
+        "choices": ["It’s green.", "It’s black.", "It’s blue."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity12/question.mp3",
+        "audioCorrect": "Audio/activity12/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity12/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity12/6.webp",
+        "choices": ["That’s yellow.", "That’s red.", "That’s green."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity12/question.mp3",
+        "audioCorrect": "Audio/activity12/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity12/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity12/7.webp",
+        "choices": ["That’s blue.", "That’s yellow.", "That’s black."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity12/question.mp3",
+        "audioCorrect": "Audio/activity12/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity12/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity12/8.webp",
+        "choices": ["They are blue and yellow.", "They are pink and green.", "They are red and black."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity12/question.mp3",
+        "audioCorrect": "Audio/activity12/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity12/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity12/9.webp",
+        "choices": ["They are red and black.", "They are green and yellow.", "They are brown and yellow."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity12/question.mp3",
+        "audioCorrect": "Audio/activity12/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity12/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity12/10.webp",
+        "choices": ["It’s green.", "It’s red.", "It’s blue."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity12/question.mp3",
+        "audioCorrect": "Audio/activity12/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity12/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity12/11.webp",
+        "choices": ["They are red.", "They are yellow.", "They are blue."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity12/question.mp3",
+        "audioCorrect": "Audio/activity12/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity12/tryagain.mp3"
+      }
+    ]
+  }
+  

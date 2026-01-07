@@ -1,0 +1,97 @@
+{
+    "intro": {
+      "image": "Images/activity9/1.webp",
+      "audio": "Audio/activity9/01_Chapter 1.mp3",
+      "alt": "Manku introduces the I am / He is / She is choose-the-correct-option game"
+    },
+  
+    "outro": {
+      "image": "Images/activity9/12.webp",
+      "audio": "Audio/activity9/12_Chapter 1.mp3",
+      "alt": "Manku praises the learner for using I am, He is, and She is correctly"
+    },
+  
+    "items": [
+      {
+        "image": "Images/activity9/2.webp",
+        "choices": ["He is a boy.", "She is a girl.", "He a boy is."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity9/question.mp3",
+        "audioCorrect": "Audio/activity9/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity9/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity9/3.webp",
+        "choices": ["He is a man.", "She is a girl.", "She is a monkey."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity9/question.mp3",
+        "audioCorrect": "Audio/activity9/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity9/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity9/4.webp",
+        "choices": ["He is a man.", "He is a boy.", "She is a woman."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity9/question.mp3",
+        "audioCorrect": "Audio/activity9/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity9/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity9/5.webp",
+        "choices": ["He is a boy.", "She is a woman.", "She is a girl."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity9/question.mp3",
+        "audioCorrect": "Audio/activity9/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity9/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity9/6.webp",
+        "choices": ["I am a boy.", "I am a man.", "I am a monkey."],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity9/question.mp3",
+        "audioCorrect": "Audio/activity9/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity9/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity9/7.webp",
+        "choices": ["He is John", "He John is.", "John is he."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity9/question.mp3",
+        "audioCorrect": "Audio/activity9/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity9/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity9/8.webp",
+        "choices": ["Is girl Saira", "Saira is a girl?", "She is a boy."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity9/question.mp3",
+        "audioCorrect": "Audio/activity9/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity9/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity9/9.webp",
+        "choices": ["Is she Reena?", "Is Reena she?", "Reena is she?"],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity9/question.mp3",
+        "audioCorrect": "Audio/activity9/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity9/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity9/10.webp",
+        "choices": ["He is not John", "He is John not?", "John is not he"],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity9/question.mp3",
+        "audioCorrect": "Audio/activity9/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity9/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity9/11.webp",
+        "choices": ["A girl she is", "She is a boy", "She is a girl"],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity9/question.mp3",
+        "audioCorrect": "Audio/activity9/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity9/tryagain.mp3"
+      }
+    ]
+  }
+  

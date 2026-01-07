@@ -9,6 +9,27 @@
       "route": "order-activity/order.html"
     },
     {
+      "id": "activity12",
+      "title": "Choose the correct option Quiz-12",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity12/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity12"
+    },
+    {
+      "id": "activity11",
+      "title": "Choose the correct option Quiz-11",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity11/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity11"
+    },
+    {
+      "id": "activity9",
+      "title": "Choose the correct option Quiz-9",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity9/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity9"
+    },
+    {
       "id": "activity8",
       "title": "Choose the correct option Quiz-8",
       "description": "activity",
