@@ -54,6 +54,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    align-items: center;
 }
 
 .options-section h2 {
@@ -107,10 +108,12 @@ body {
     background: linear-gradient(120deg, #fff7fb 0%, #ffe6f2 100%);
     box-shadow: 0 4px 12px rgba(255, 165, 200, 0.25);
     transition: all 0.25s ease;
+    width: min(90%, 360px);
 }
 
 .search-bar.collapsed {
     width: 34px;
+    height: 31px;
     padding: 7px;
     justify-content: center;
     gap: 0;
