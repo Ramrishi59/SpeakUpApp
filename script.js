@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const lessonsList = document.querySelector('.lessons-list');
   const searchInput = document.querySelector('.search-input');
   const searchLabel = document.querySelector('.search-label');
+  const searchBar = document.querySelector('.search-bar');
+  const searchIcon = document.querySelector('.search-icon');
   const optionsSection = document.querySelector('.options-section');
   const backButton = document.createElement('button');
   backButton.textContent = '‹ Back';
@@ -188,6 +190,22 @@ function buildCategories() {
   renderCurrentView();
 
   // -------- Search --------
+  function collapseSearchBar() {
+    if (!searchBar) return;
+    if (!searchInput || searchInput.value.trim() === '') {
+      searchBar.classList.add('collapsed');
+    }
+  }
+
+  function expandSearchBar() {
+    if (!searchBar) return;
+    searchBar.classList.remove('collapsed');
+    searchInput?.focus();
+  }
+
+  // Start collapsed by default for the icon-only look
+  collapseSearchBar();
+
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase().trim();
@@ -198,7 +216,18 @@ function buildCategories() {
       );
       renderLessonCards(filtered);
     });
+
+    searchInput.addEventListener('blur', () => collapseSearchBar());
+    searchInput.addEventListener('focus', () => expandSearchBar());
   }
+
+  // Clicking the icon or bar expands the search
+  searchIcon?.addEventListener('click', (e) => {
+    e.preventDefault();
+    expandSearchBar();
+  });
+
+  searchBar?.addEventListener('click', () => expandSearchBar());
 
   function renderCurrentView() {
     const cardsToRender = currentCategory ? (categories.get(currentCategory)?.items || []) : rootCards;
@@ -233,7 +262,10 @@ function buildCategories() {
         btn.classList.add('active');
 
         const target = btn.dataset.navTarget;
-        if (target !== 'lessons') {
+        if (target === 'lessons') {
+          // Always return to the dashboard
+          window.location.href = 'index.html';
+        } else {
           alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
         }
       });

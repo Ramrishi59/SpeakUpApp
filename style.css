@@ -106,6 +106,19 @@ body {
     padding: 10px 14px;
     background: linear-gradient(120deg, #fff7fb 0%, #ffe6f2 100%);
     box-shadow: 0 4px 12px rgba(255, 165, 200, 0.25);
+    transition: all 0.25s ease;
+}
+
+.search-bar.collapsed {
+    width: 34px;
+    padding: 7px;
+    justify-content: center;
+    gap: 0;
+    cursor: pointer;
+}
+
+.search-bar.collapsed .search-input {
+    display: none;
 }
 
 .search-input {
