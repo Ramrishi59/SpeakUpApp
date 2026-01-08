@@ -1,0 +1,131 @@
+{
+    "intro": {
+      "image": "Images/activity17/1.webp",
+      "audio": "Audio/activity17/01_Chapter 1.mp3",
+      "alt": "Manku introduces the at / in choose-the-correct-option activity"
+    },
+  
+    "items": [
+      {
+        "image": "Images/activity17/2.webp",
+        "choices": [
+          "He is at the school gate.",
+          "He is in the school gate.",
+          "He is at the classroom."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity17/question.mp3",
+        "audioCorrect": "Audio/activity17/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity17/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity17/3.webp",
+        "choices": [
+          "She is at the classroom.",
+          "She is in the classroom.",
+          "She is at the school gate."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity17/question.mp3",
+        "audioCorrect": "Audio/activity17/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity17/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity17/4.webp",
+        "choices": [
+          "They are at the hospital.",
+          "They are in the hospital.",
+          "They are at the classroom."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity17/question.mp3",
+        "audioCorrect": "Audio/activity17/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity17/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity17/5.webp",
+        "choices": [
+          "She is at the hospital.",
+          "She is in the hospital.",
+          "She is at the bank."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity17/question.mp3",
+        "audioCorrect": "Audio/activity17/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity17/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity17/6.webp",
+        "choices": [
+          "She is at the ATM.",
+          "She is in the ATM",
+          "She is at the school."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity17/question.mp3",
+        "audioCorrect": "Audio/activity17/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity17/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity17/7.webp",
+        "choices": [
+          "She is at the office.",
+          "She is in the office.",
+          "She is at the home."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity17/question.mp3",
+        "audioCorrect": "Audio/activity17/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity17/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity17/8.webp",
+        "choices": [
+          "He is at home.",
+          "He is in home.",
+          "He is at the kitchen."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity17/question.mp3",
+        "audioCorrect": "Audio/activity17/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity17/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity17/9.webp",
+        "choices": [
+          "He is at the kitchen.",
+          "He is in the kitchen.",
+          "He is in home."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity17/question.mp3",
+        "audioCorrect": "Audio/activity17/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity17/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity17/10.webp",
+        "choices": [
+          "We are at the door.",
+          "We are in the door.",
+          "We are at the door."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity17/question.mp3",
+        "audioCorrect": "Audio/activity17/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity17/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity17/11.webp",
+        "choices": [
+          "They are at the car.",
+          "They are in the car.",
+          "They are in the bus."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity17/question.mp3",
+        "audioCorrect": "Audio/activity17/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity17/tryagain.mp3"
+      }
+    ]
+  }
+  

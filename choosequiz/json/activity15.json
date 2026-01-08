@@ -1,0 +1,91 @@
+{
+    "intro": {
+      "image": "Images/activity15/1.webp",
+      "audio": "Audio/activity15/01_Chapter 1.mp3",
+      "alt": "Manku introduces the choose-the-correct-sentence activity about jobs"
+    },
+  
+    "items": [
+      {
+        "image": "Images/activity15/2.webp",
+        "choices": ["He is a doctor.", "He is a driver.", "He is a farmer."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity15/question.mp3",
+        "audioCorrect": "Audio/activity15/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity15/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity15/3.webp",
+        "choices": ["She is a pilot.", "She is an engineer.", "She is a carpenter."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity15/question.mp3",
+        "audioCorrect": "Audio/activity15/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity15/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity15/4.webp",
+        "choices": ["He is a truck driver.", "He is a mechanic.", "He is a porter."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity15/question.mp3",
+        "audioCorrect": "Audio/activity15/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity15/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity15/5.webp",
+        "choices": ["He is a soldier.", "He is a police officer.", "He is a mason."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity15/question.mp3",
+        "audioCorrect": "Audio/activity15/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity15/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity15/6.webp",
+        "choices": ["She is a teacher.", "She is a nurse.", "She is a vet."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity15/question.mp3",
+        "audioCorrect": "Audio/activity15/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity15/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity15/7.webp",
+        "choices": ["She is a pilot.", "She is a doctor.", "She is a farmer."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity15/question.mp3",
+        "audioCorrect": "Audio/activity15/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity15/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity15/8.webp",
+        "choices": ["He is a nurse.", "He is a vet.", "He is a teacher."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity15/question.mp3",
+        "audioCorrect": "Audio/activity15/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity15/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity15/9.webp",
+        "choices": ["He is a mechanic.", "He is a carpenter.", "He is a mason."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity15/question.mp3",
+        "audioCorrect": "Audio/activity15/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity15/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity15/10.webp",
+        "choices": ["She is a nurse.", "She is a student.", "She is a teacher."],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity15/question.mp3",
+        "audioCorrect": "Audio/activity15/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity15/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity15/11.webp",
+        "choices": ["He is a porter.", "He is a student.", "He is a farmer."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity15/question.mp3",
+        "audioCorrect": "Audio/activity15/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity15/tryagain.mp3"
+      }
+    ]
+  }
+  

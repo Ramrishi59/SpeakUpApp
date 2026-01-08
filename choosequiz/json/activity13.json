@@ -1,0 +1,97 @@
+{
+    "intro": {
+      "image": "Images/activity13/1.webp",
+      "audio": "Audio/activity13/01_Chapter 1.mp3",
+      "alt": "Manku introduces the my, your, our, their, his, her choose-the-correct-option activity"
+    },
+  
+    "outro": {
+      "image": "Images/activity13/12.webp",
+      "audio": "Audio/activity13/12_Chapter 1.mp3",
+      "alt": "Manku congratulates the learner for using my, your, our, their, his, and her correctly"
+    },
+  
+    "items": [
+      {
+        "image": "Images/activity13/2.webp",
+        "choices": ["This is my car.", "That’s my car.", "These are my cars."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity13/question.mp3",
+        "audioCorrect": "Audio/activity13/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity13/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity13/3.webp",
+        "choices": ["That’s your backpack.", "This is my backpack.", "Those are their backpacks."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity13/question.mp3",
+        "audioCorrect": "Audio/activity13/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity13/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity13/4.webp",
+        "choices": ["That’s your water bottle.", "This is my water bottle.", "These are our water bottles."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity13/question.mp3",
+        "audioCorrect": "Audio/activity13/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity13/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity13/5.webp",
+        "choices": ["This is my pen.", "Is this your pen?", "Are these your pens?"],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity13/question.mp3",
+        "audioCorrect": "Audio/activity13/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity13/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity13/6.webp",
+        "choices": ["Is that your house?", "Is this our house?", "Are those their houses?"],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity13/question.mp3",
+        "audioCorrect": "Audio/activity13/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity13/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity13/7.webp",
+        "choices": ["These are our cats.", "Those are their cats.", "These are my cats."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity13/question.mp3",
+        "audioCorrect": "Audio/activity13/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity13/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity13/8.webp",
+        "choices": ["These are our bicycles.", "Those are their bicycles.", "That is her bicycle."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity13/question.mp3",
+        "audioCorrect": "Audio/activity13/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity13/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity13/9.webp",
+        "choices": ["It's her cap.", "It's his cap.", "It's my caps."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity13/question.mp3",
+        "audioCorrect": "Audio/activity13/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity13/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity13/10.webp",
+        "choices": ["It's his hat.", "It's her hat.", "It's my hats."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity13/question.mp3",
+        "audioCorrect": "Audio/activity13/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity13/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity13/11.webp",
+        "choices": ["These dogs are me", "These are my dogs", "This are my dogs"],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity13/question.mp3",
+        "audioCorrect": "Audio/activity13/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity13/tryagain.mp3"
+      }
+    ]
+  }
+  

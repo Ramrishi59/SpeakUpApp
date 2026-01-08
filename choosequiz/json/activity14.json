@@ -1,0 +1,91 @@
+{
+    "intro": {
+      "image": "Images/activity14/1.webp",
+      "audio": "Audio/activity14/01_Chapter 1.mp3",
+      "alt": "Manku introduces the mine, his, hers, ours, theirs choose-the-correct-option activity"
+    },
+  
+    "items": [
+      {
+        "image": "Images/activity14/2.webp",
+        "choices": ["He is mine.", "He is his.", "He is hers."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity14/question.mp3",
+        "audioCorrect": "Audio/activity14/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity14/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity14/3.webp",
+        "choices": ["That dog is hers.", "That dog is his.", "That dog is mine."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity14/question.mp3",
+        "audioCorrect": "Audio/activity14/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity14/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity14/4.webp",
+        "choices": ["That backpack is hers.", "That backpack is his.", "That backpack is mine."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity14/question.mp3",
+        "audioCorrect": "Audio/activity14/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity14/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity14/5.webp",
+        "choices": ["This computer is mine.", "This computer is his.", "This computer is hers."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity14/question.mp3",
+        "audioCorrect": "Audio/activity14/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity14/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity14/6.webp",
+        "choices": ["That bicycle is his.", "That bicycle is hers.", "That bicycle are theirs."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity14/question.mp3",
+        "audioCorrect": "Audio/activity14/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity14/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity14/7.webp",
+        "choices": ["This cat is theirs.", "These cats are ours.", "These cats is theirs."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity14/question.mp3",
+        "audioCorrect": "Audio/activity14/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity14/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity14/8.webp",
+        "choices": ["Those cats are their.", "Those cats are theirs.", "Those cat are thiers."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity14/question.mp3",
+        "audioCorrect": "Audio/activity14/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity14/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity14/9.webp",
+        "choices": ["That book are hers.", "That book is hers.", "That book is her."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity14/question.mp3",
+        "audioCorrect": "Audio/activity14/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity14/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity14/10.webp",
+        "choices": ["That backpack is mine.", "That backpack are mine.", "That backpacks are mine."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity14/question.mp3",
+        "audioCorrect": "Audio/activity14/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity14/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity14/11.webp",
+        "choices": ["These cats is ours.", "These cat are ours.", "These cats are ours."],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity14/question.mp3",
+        "audioCorrect": "Audio/activity14/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity14/tryagain.mp3"
+      }
+    ]
+  }
+  

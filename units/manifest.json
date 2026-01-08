@@ -9,6 +9,55 @@
       "route": "order-activity/order.html"
     },
     {
+      "id": "activity19",
+      "title": "Choose the correct option Quiz-19",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity19/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity19"
+    },
+    {
+      "id": "activity18",
+      "title": "Choose the correct option Quiz-18",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity18/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity18"
+    },
+    {
+      "id": "activity17",
+      "title": "Choose the correct option Quiz-17",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity17/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity17"
+    },
+    {
+      "id": "activity16",
+      "title": "Choose the correct option Quiz-16",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity16/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity16"
+    },
+    {
+      "id": "activity15",
+      "title": "Choose the correct option Quiz-15",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity15/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity15"
+    },
+    {
+      "id": "activity14",
+      "title": "Choose the correct option Quiz-14",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity14/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity14"
+    },
+    {
+      "id": "activity13",
+      "title": "Choose the correct option Quiz-13",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity13/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity13"
+    },
+    {
       "id": "activity12",
       "title": "Choose the correct option Quiz-12",
       "description": "activity",

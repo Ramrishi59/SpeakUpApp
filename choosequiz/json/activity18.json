@@ -1,0 +1,111 @@
+{
+    "intro": {
+      "image": "Images/activity18/1.webp",
+      "audio": "Audio/activity18/01_Chapter 1.mp3",
+      "alt": "Manku introduces the Whose? ownership activity"
+    },
+  
+    "items": [
+      {
+        "image": "Images/activity18/2.webp",
+        "choices": [
+          "Anju’s bangles are blue.",
+          "Ammu’s bangles are red.",
+          "Reena’s bangles are pink."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity18/question.mp3",
+        "audioCorrect": "Audio/activity18/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity18/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity18/3.webp",
+        "choices": [
+          "Raju’s car is pink.",
+          "Reena’s car is pink.",
+          "Saira’s car is green."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity18/question.mp3",
+        "audioCorrect": "Audio/activity18/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity18/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity18/4.webp",
+        "choices": [
+          "Anju’s umbrella is blue.",
+          "Ammu’s umbrella is red.",
+          "Meera’s umbrella is green."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity18/question.mp3",
+        "audioCorrect": "Audio/activity18/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity18/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity18/5.webp",
+        "choices": [
+          "Nithin speaker yellow",
+          "Nithin's speaker is yellow.",
+          "Nithin's speaker is blue."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity18/question.mp3",
+        "audioCorrect": "Audio/activity18/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity18/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity18/6.webp",
+        "choices": [
+          "Yes, it's red.",
+          "No, John’s kite is green.",
+          "No, John’s kite is blue."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity18/question.mp3",
+        "audioCorrect": "Audio/activity18/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity18/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity18/7.webp",
+        "choices": ["It’s green.", "It’s pink.", "It’s yellow."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity18/question.mp3",
+        "audioCorrect": "Audio/activity18/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity18/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity18/8.webp",
+        "choices": ["It’s yellow.", "It’s blue.", "It’s black."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity18/question.mp3",
+        "audioCorrect": "Audio/activity18/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity18/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity18/9.webp",
+        "choices": ["It’s Saira’s.", "It’s John’s.", "It’s Meera’s."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity18/question.mp3",
+        "audioCorrect": "Audio/activity18/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity18/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity18/10.webp",
+        "choices": ["It's Sunaina's.", "It's Jameela's.", "It's  Reena’s."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity18/question.mp3",
+        "audioCorrect": "Audio/activity18/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity18/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity18/11.webp",
+        "choices": ["They are Anju’s.", "They are Meera’s.", "They are Raju’s."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity18/question.mp3",
+        "audioCorrect": "Audio/activity18/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity18/tryagain.mp3"
+      }
+    ]
+  }
+  

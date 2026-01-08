@@ -1,0 +1,131 @@
+{
+    "intro": {
+      "image": "Images/activity16/1.webp",
+      "audio": "Audio/activity16/01_Chapter 1.mp3",
+      "alt": "Manku introduces the in, on, under choose-the-correct-option activity"
+    },
+  
+    "items": [
+      {
+        "image": "Images/activity16/2.webp",
+        "choices": [
+          "The kite is in the tree.",
+          "The kite is on the tree.",
+          "The kite is under the tree."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity16/question.mp3",
+        "audioCorrect": "Audio/activity16/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity16/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity16/3.webp",
+        "choices": [
+          "The shoes are on the table.",
+          "The shoes are under the table.",
+          "The shoes are in the table."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity16/question.mp3",
+        "audioCorrect": "Audio/activity16/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity16/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity16/4.webp",
+        "choices": [
+          "The birds are on the cage.",
+          "The birds are in the cage.",
+          "The birds are under the cage."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity16/question.mp3",
+        "audioCorrect": "Audio/activity16/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity16/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity16/5.webp",
+        "choices": [
+          "The camera is on the bag.",
+          "The camera is in the bag.",
+          "The camera is under the bag."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity16/question.mp3",
+        "audioCorrect": "Audio/activity16/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity16/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity16/6.webp",
+        "choices": [
+          "The fish is on the bowl.",
+          "The fish is in the bowl.",
+          "The fish is under the bowl."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity16/question.mp3",
+        "audioCorrect": "Audio/activity16/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity16/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity16/7.webp",
+        "choices": [
+          "The vegetables are on the bag.",
+          "The vegetables are in the bag.",
+          "The vegetables are under the bag."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity16/question.mp3",
+        "audioCorrect": "Audio/activity16/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity16/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity16/8.webp",
+        "choices": [
+          "The pillows are on the bed.",
+          "The pillow is on the bed.",
+          "The pillows is in the bed."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity16/question.mp3",
+        "audioCorrect": "Audio/activity16/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity16/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity16/9.webp",
+        "choices": [
+          "The ball is on the table.",
+          "The ball is under the table.",
+          "The ball is in the table."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity16/question.mp3",
+        "audioCorrect": "Audio/activity16/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity16/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity16/10.webp",
+        "choices": [
+          "The clothes are on the basket.",
+          "The clothes are in the basket.",
+          "The clothes are under the basket."
+        ],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity16/question.mp3",
+        "audioCorrect": "Audio/activity16/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity16/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity16/11.webp",
+        "choices": [
+          "The squirrel is in the tree.",
+          "The squirrel is on the tree.",
+          "The squirrel is under the tree."
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity16/question.mp3",
+        "audioCorrect": "Audio/activity16/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity16/tryagain.mp3"
+      }
+    ]
+  }
+  
