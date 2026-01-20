@@ -45,7 +45,7 @@ body {
     flex-grow: 1; /* Allows main content to take available vertical space */
     padding: 20px;
     overflow-y: auto; /* Enables scrolling if content overflows */
-    background: linear-gradient(180deg, #ffd6e8 2%, #d4e8ff 10%); /* Pink at top fading to blue at bottom */
+    /* background: linear-gradient(180deg, #ffd6e8 2%, #d4e8ff 10%);  */
 }
 
 .options-section {
@@ -164,11 +164,11 @@ body {
 .lesson-card {
     display: flex;
     align-items: center;
-    background: linear-gradient(120deg, #d1e7ff 0%, #ffffff 45%, #ffffff 65%, #c4d7eefc 100%); /* Blue edges, white center */
-    border: 1px solid #302d2d; /* clearer outline */
-    border-radius: 20px;
+    background: #eaf4ff;
+    border: 1px solid #000000;
+    box-shadow: inset 0 0 0 2px #f1eef3c8, inset 0 0 20px 0 #9ac8fac3, 0 2px 8px var(--shadow-light);
+    border-radius: 10px;
     padding: 15px;
-    box-shadow: 0 2px 8px var(--shadow-light);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -181,7 +181,7 @@ body {
 .lesson-thumbnail {
     width: 60px; /* Fixed size for the thumbnail */
     height: 60px;
-    border-radius: 8px; /* Slightly rounded corners for images */
+    border-radius: 55px; /* Slightly rounded corners for images */
     object-fit: cover; /* Ensures image covers the area without distortion */
     margin-right: 15px;
 }
