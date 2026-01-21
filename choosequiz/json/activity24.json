@@ -1,0 +1,129 @@
+{
+  "intro": {
+    "image": "Images/activity24/1.webp",
+    "audio": "Audio/activity24/01_Chapter 1.mp3",
+    "alt": "Manku introduces the describing people and things choose-the-correct-option activity"
+  },
+  "items": [
+    {
+      "image": "Images/activity24/2.webp",
+      "choices": [
+        "She is short a woman.",
+        "She a short woman.",
+        "She is a short woman."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity24/question.mp3",
+      "audioCorrect": "Audio/activity24/02_Chapter 1.mp3",
+      "audioWrong": "Audio/activity24/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity24/3.webp",
+      "choices": [
+        "The yellow ruler is long.",
+        "The yellow ruler are long.",
+        "The ruler yellow is long."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity24/question.mp3",
+      "audioCorrect": "Audio/activity24/03_Chapter 1.mp3",
+      "audioWrong": "Audio/activity24/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity24/4.webp",
+      "choices": [
+        "The brown dog is big.",
+        "The brown dog are big.",
+        "The dog brown is big."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity24/question.mp3",
+      "audioCorrect": "Audio/activity24/04_Chapter 1.mp3",
+      "audioWrong": "Audio/activity24/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity24/5.webp",
+      "choices": [
+        "He is a old man.",
+        "He are an old man.",
+        "He is an old man."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity24/question.mp3",
+      "audioCorrect": "Audio/activity24/05_Chapter 1.mp3",
+      "audioWrong": "Audio/activity24/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity24/6.webp",
+      "choices": [
+        "She is not pretty.",
+        "She is no pretty.",
+        "She not is pretty."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity24/question.mp3",
+      "audioCorrect": "Audio/activity24/06_Chapter 1.mp3",
+      "audioWrong": "Audio/activity24/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity24/7.webp",
+      "choices": [
+        "He is strong a boy.",
+        "He are a strong boy.",
+        "He is a strong boy."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity24/question.mp3",
+      "audioCorrect": "Audio/activity24/07_Chapter 1.mp3",
+      "audioWrong": "Audio/activity24/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity24/8.webp",
+      "choices": [
+        "The yellow T-shirt is dirty.",
+        "The yellow T-shirt are dirty.",
+        "The T-shirt yellow is dirty."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity24/question.mp3",
+      "audioCorrect": "Audio/activity24/08_Chapter 1.mp3",
+      "audioWrong": "Audio/activity24/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity24/9.webp",
+      "choices": [
+        "It’s a little dog.",
+        "It is little a dog.",
+        "It are a little dog."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity24/question.mp3",
+      "audioCorrect": "Audio/activity24/09_Chapter 1.mp3",
+      "audioWrong": "Audio/activity24/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity24/10.webp",
+      "choices": [
+        "The tea are hot.",
+        "Tea is the hot.",
+        "The tea is hot."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity24/question.mp3",
+      "audioCorrect": "Audio/activity24/10_Chapter 1.mp3",
+      "audioWrong": "Audio/activity24/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity24/11.webp",
+      "choices": [
+        "He is movie a star.",
+        "He is a movie star.",
+        "He are a movie star."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity24/question.mp3",
+      "audioCorrect": "Audio/activity24/11_Chapter 1.mp3",
+      "audioWrong": "Audio/activity24/tryagain.mp3"
+    }
+  ]
+}

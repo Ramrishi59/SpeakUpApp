@@ -1,0 +1,130 @@
+{
+  "intro": {
+    "image": "Images/activity25/1.webp",
+    "audio": "Audio/activity25/01_Chapter 1.mp3",
+    "alt": "Manku introduces the one, which one, how many, and ordinals mixed revision choose-the-correct-option activity"
+  },
+
+  "items": [
+    {
+      "image": "Images/activity25/2.webp",
+      "choices": [
+        "The second one is blue.",
+        "The two one is blue.",
+        "The second is blue one."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity25/question.mp3",
+      "audioCorrect": "Audio/activity25/02_Chapter 1.mp3",
+      "audioWrong": "Audio/activity25/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity25/3.webp",
+      "choices": [
+        "The end one is pink.",
+        "The last is pink one.",
+        "The last one is pink."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity25/question.mp3",
+      "audioCorrect": "Audio/activity25/03_Chapter 1.mp3",
+      "audioWrong": "Audio/activity25/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity25/4.webp",
+      "choices": [
+        "The blue one is small.",
+        "The blue is small one.",
+        "Blue one small is."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity25/question.mp3",
+      "audioCorrect": "Audio/activity25/04_Chapter 1.mp3",
+      "audioWrong": "Audio/activity25/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity25/5.webp",
+      "choices": [
+        "Which is blue one?",
+        "Which one blue is?",
+        "Which one is blue?"
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity25/question.mp3",
+      "audioCorrect": "Audio/activity25/05_Chapter 1.mp3",
+      "audioWrong": "Audio/activity25/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity25/6.webp",
+      "choices": [
+        "Which one is Reena’s?",
+        "Which is Reena one?",
+        "Which one Reena is?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity25/question.mp3",
+      "audioCorrect": "Audio/activity25/06_Chapter 1.mp3",
+      "audioWrong": "Audio/activity25/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity25/7.webp",
+      "choices": [
+        "How many cat are there?",
+        "How many cats are there?",
+        "How many cats there?"
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity25/question.mp3",
+      "audioCorrect": "Audio/activity25/07_Chapter 1.mp3",
+      "audioWrong": "Audio/activity25/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity25/8.webp",
+      "choices": [
+        "There is five bottles.",
+        "There are five bottle.",
+        "There are five bottles."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity25/question.mp3",
+      "audioCorrect": "Audio/activity25/08_Chapter 1.mp3",
+      "audioWrong": "Audio/activity25/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity25/9.webp",
+      "choices": [
+        "The last one is the oil bottle.",
+        "The last is oil bottle.",
+        "The oil bottle is last one."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity25/question.mp3",
+      "audioCorrect": "Audio/activity25/09_Chapter 1.mp3",
+      "audioWrong": "Audio/activity25/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity25/10.webp",
+      "choices": [
+        "The white is on chair.",
+        "The white one is on the chair.",
+        "The one white on the chair."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity25/question.mp3",
+      "audioCorrect": "Audio/activity25/10_Chapter 1.mp3",
+      "audioWrong": "Audio/activity25/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity25/11.webp",
+      "choices": [
+        "The three one is small.",
+        "The third is small one.",
+        "The third one is small."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity25/question.mp3",
+      "audioCorrect": "Audio/activity25/11_Chapter 1.mp3",
+      "audioWrong": "Audio/activity25/tryagain.mp3"
+    }
+  ]
+}

@@ -9,6 +9,76 @@
       "route": "order-activity/order.html"
     },
     {
+      "id": "activity29",
+      "title": "Choose the correct option Quiz-29",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity29/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity29"
+    },
+    {
+      "id": "activity28",
+      "title": "Choose the correct option Quiz-28",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity28/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity28"
+    },
+    {
+      "id": "activity27",
+      "title": "Choose the correct option Quiz-27",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity27/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity27"
+    },
+    {
+      "id": "activity26",
+      "title": "Choose the correct option Quiz-26",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity26/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity26"
+    },
+    {
+      "id": "activity25",
+      "title": "Choose the correct option Quiz-25",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity25/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity25"
+    },
+    {
+      "id": "activity24",
+      "title": "Choose the correct option Quiz-24",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity24/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity24"
+    },
+    {
+      "id": "activity23",
+      "title": "Choose the correct option Quiz-23",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity23/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity23"
+    },
+    {
+      "id": "activity22",
+      "title": "Choose the correct option Quiz-22",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity22/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity22"
+    },
+    {
+      "id": "activity21",
+      "title": "Choose the correct option Quiz-21",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity21/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity21"
+    },
+    {
+      "id": "activity20",
+      "title": "Choose the correct option Quiz-20",
+      "description": "activity",
+      "thumbnail": "choosequiz/Images/activity20/1.webp",
+      "route": "choosequiz/quiz3.html?activity=activity20"
+    },
+    {
       "id": "activity19",
       "title": "Choose the correct option Quiz-19",
       "description": "activity",

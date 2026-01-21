@@ -1,0 +1,130 @@
+{
+  "intro": {
+    "image": "Images/activity20/1.webp",
+    "audio": "Audio/activity20/01_Chapter 1.mp3",
+    "alt": "Manku introduces the There is / There are choose-the-correct-option activity"
+  },
+
+  "items": [
+    {
+      "image": "Images/activity20/2.webp",
+      "choices": [
+        "There is a bag.",
+        "There are a bag.",
+        "There is bags."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity20/question.mp3",
+      "audioCorrect": "Audio/activity20/02_Chapter 1.mp3",
+      "audioWrong": "Audio/activity20/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity20/3.webp",
+      "choices": [
+        "There is dogs.",
+        "There are dogs.",
+        "There are a dog."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity20/question.mp3",
+      "audioCorrect": "Audio/activity20/03_Chapter 1.mp3",
+      "audioWrong": "Audio/activity20/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity20/4.webp",
+      "choices": [
+        "There are a girl.",
+        "There is a girl.",
+        "There is girls."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity20/question.mp3",
+      "audioCorrect": "Audio/activity20/04_Chapter 1.mp3",
+      "audioWrong": "Audio/activity20/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity20/5.webp",
+      "choices": [
+        "There are plants.",
+        "There is plants.",
+        "There are a plant."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity20/question.mp3",
+      "audioCorrect": "Audio/activity20/05_Chapter 1.mp3",
+      "audioWrong": "Audio/activity20/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity20/6.webp",
+      "choices": [
+        "There are a sofa.",
+        "There is a sofa.",
+        "There is sofas."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity20/question.mp3",
+      "audioCorrect": "Audio/activity20/06_Chapter 1.mp3",
+      "audioWrong": "Audio/activity20/tryagain.mp.mp3"
+    },
+    {
+      "image": "Images/activity20/7.webp",
+      "choices": [
+        "There is cats and dogs.",
+        "There are cats and dogs.",
+        "There are a cat and dog."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity20/question.mp3",
+      "audioCorrect": "Audio/activity20/07_Chapter 1.mp3",
+      "audioWrong": "Audio/activity20/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity20/8.webp",
+      "choices": [
+        "There is apples and oranges.",
+        "There are apples and oranges.",
+        "There are an apple and orange."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity20/question.mp3",
+      "audioCorrect": "Audio/activity20/08_Chapter 1.mp3",
+      "audioWrong": "Audio/activity20/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity20/9.webp",
+      "choices": [
+        "There is a laptop.",
+        "There are a laptop.",
+        "There is laptops."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity20/question.mp3",
+      "audioCorrect": "Audio/activity20/09_Chapter 1.mp3",
+      "audioWrong": "Audio/activity20/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity20/10.webp",
+      "choices": [
+        "There are a mobile phone.",
+        "There is a mobile phone.",
+        "There is mobile phones."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity20/question.mp3",
+      "audioCorrect": "Audio/activity20/10_Chapter 1.mp3",
+      "audioWrong": "Audio/activity20/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity20/11.webp",
+      "choices": [
+        "There is mugs.",
+        "There are mugs.",
+        "There are a mug."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity20/question.mp3",
+      "audioCorrect": "Audio/activity20/11_Chapter 1.mp3",
+      "audioWrong": "Audio/activity20/tryagain.mp3"
+    }
+  ]
+}

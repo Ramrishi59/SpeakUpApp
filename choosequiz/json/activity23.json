@@ -1,0 +1,130 @@
+{
+  "intro": {
+    "image": "Images/activity23/1.webp",
+    "audio": "Audio/activity23/01_Chapter 1.mp3",
+    "alt": "Manku introduces the weather, month, day, and date mixed revision activity"
+  },
+
+  "items": [
+    {
+      "image": "Images/activity23/2.webp",
+      "choices": [
+        "What’s the weather like?",
+        "What weather is it?",
+        "What weather is today?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity23/question.mp3",
+      "audioCorrect": "Audio/activity23/02_Chapter 1.mp3",
+      "audioWrong": "Audio/activity23/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity23/3.webp",
+      "choices": [
+        "It’s a windy day.",
+        "It’s wind day.",
+        "It’s windy days."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity23/question.mp3",
+      "audioCorrect": "Audio/activity23/03_Chapter 1.mp3",
+      "audioWrong": "Audio/activity23/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity23/4.webp",
+      "choices": [
+        "The sun is shining.",
+        "The sun are shining.",
+        "The sun is shine."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity23/question.mp3",
+      "audioCorrect": "Audio/activity23/04_Chapter 1.mp3",
+      "audioWrong": "Audio/activity23/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity23/5.webp",
+      "choices": [
+        "It’s raining.",
+        "It’s raining day.",
+        "It raining is."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity23/question.mp3",
+      "audioCorrect": "Audio/activity23/05_Chapter 1.mp3",
+      "audioWrong": "Audio/activity23/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity23/6.webp",
+      "choices": [
+        "What month is it?",
+        "What is the month today?",
+        "What month today is?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity23/question.mp3",
+      "audioCorrect": "Audio/activity23/06_Chapter 1.mp3",
+      "audioWrong": "Audio/activity23/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity23/7.webp",
+      "choices": [
+        "It’s December.",
+        "It December is.",
+        "It’s the December."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity23/question.mp3",
+      "audioCorrect": "Audio/activity23/07_Chapter 1.mp3",
+      "audioWrong": "Audio/activity23/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity23/8.webp",
+      "choices": [
+        "What day is it today?",
+        "What is today day?",
+        "What day today is?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity23/question.mp3",
+      "audioCorrect": "Audio/activity23/08_Chapter 1.mp3",
+      "audioWrong": "Audio/activity23/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity23/9.webp",
+      "choices": [
+        "It’s Friday.",
+        "It Friday is.",
+        "It’s the Friday."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity23/question.mp3",
+      "audioCorrect": "Audio/activity23/09_Chapter 1.mp3",
+      "audioWrong": "Audio/activity23/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity23/10.webp",
+      "choices": [
+        "What is today’s date?",
+        "What date is today's?",
+        "What is the date today’s?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity23/question.mp3",
+      "audioCorrect": "Audio/activity23/10_Chapter 1.mp3",
+      "audioWrong": "Audio/activity23/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity23/11.webp",
+      "choices": [
+        "It’s the sixth of November.",
+        "It’s six November.",
+        "It sixth November is."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity23/question.mp3",
+      "audioCorrect": "Audio/activity23/11_Chapter 1.mp3",
+      "audioWrong": "Audio/activity23/tryagain.mp3"
+    }
+  ]
+}

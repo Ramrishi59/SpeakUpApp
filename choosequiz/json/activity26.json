@@ -1,0 +1,130 @@
+{
+  "intro": {
+    "image": "Images/activity26/1.webp",
+    "audio": "Audio/activity26/01_Chapter 1.mp3",
+    "alt": "Manku introduces the have, like, and too choose-the-correct-option activity"
+  },
+
+  "items": [
+    {
+      "image": "Images/activity26/2.webp",
+      "choices": [
+        "I have a digital camera.",
+        "I a digital camera have.",
+        "I have digital a camera."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity26/question.mp3",
+      "audioCorrect": "Audio/activity26/02_Chapter 1.mp3",
+      "audioWrong": "Audio/activity26/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity26/3.webp",
+      "choices": [
+        "You have a bicycle red.",
+        "You have red a bicycle.",
+        "You have a red bicycle."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity26/question.mp3",
+      "audioCorrect": "Audio/activity26/03_Chapter 1.mp3",
+      "audioWrong": "Audio/activity26/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity26/4.webp",
+      "choices": [
+        "We have blue a caps.",
+        "We have blue caps.",
+        "We have cap blue."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity26/question.mp3",
+      "audioCorrect": "Audio/activity26/04_Chapter 1.mp3",
+      "audioWrong": "Audio/activity26/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity26/5.webp",
+      "choices": [
+        "I like a apple juice.",
+        "I like apples juice.",
+        "I like apple juice."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity26/question.mp3",
+      "audioCorrect": "Audio/activity26/05_Chapter 1.mp3",
+      "audioWrong": "Audio/activity26/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity26/6.webp",
+      "choices": [
+        "I don’t like pineapple juice.",
+        "I not like pineapple juice.",
+        "I don’t pineapple juice."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity26/question.mp3",
+      "audioCorrect": "Audio/activity26/06_Chapter 1.mp3",
+      "audioWrong": "Audio/activity26/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity26/7.webp",
+      "choices": [
+        "We like too music.",
+        "We music too like.",
+        "We like music too."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity26/question.mp3",
+      "audioCorrect": "Audio/activity26/07_Chapter 1.mp3",
+      "audioWrong": "Audio/activity26/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity26/8.webp",
+      "choices": [
+        "I like grapes too.",
+        "I like too grapes.",
+        "I like grape too."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity26/question.mp3",
+      "audioCorrect": "Audio/activity26/08_Chapter 1.mp3",
+      "audioWrong": "Audio/activity26/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity26/9.webp",
+      "choices": [
+        "They bicycles have.",
+        "They have a bicycles.",
+        "They have bicycle."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity26/question.mp3",
+      "audioCorrect": "Audio/activity26/09_Chapter 1.mp3",
+      "audioWrong": "Audio/activity26/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity26/10.webp",
+      "choices": [
+        "You have a green watch.",
+        "You a green have watch.",
+        "You have green a watch."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity26/question.mp3",
+      "audioCorrect": "Audio/activity26/10_Chapter 1.mp3",
+      "audioWrong": "Audio/activity26/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity26/11.webp",
+      "choices": [
+        "We watermelons like.",
+        "We like watermelon.",
+        "We like watermelons."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity26/question.mp3",
+      "audioCorrect": "Audio/activity26/11_Chapter 1.mp3",
+      "audioWrong": "Audio/activity26/tryagain.mp3"
+    }
+  ]
+}

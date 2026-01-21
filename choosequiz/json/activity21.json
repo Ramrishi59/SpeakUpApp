@@ -1,0 +1,130 @@
+{
+  "intro": {
+    "image": "Images/activity22/1.webp",
+    "audio": "Audio/activity22/01_Chapter 1.mp3",
+    "alt": "Manku introduces the mixed revision choose-the-correct-option activity"
+  },
+
+  "items": [
+    {
+      "image": "Images/activity22/2.webp",
+      "choices": [
+        "How many bottle are there?",
+        "How many bottles is there?",
+        "How many bottles are there?"
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity22/question.mp3",
+      "audioCorrect": "Audio/activity22/02_Chapter 1.mp3",
+      "audioWrong": "Audio/activity22/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity22/3.webp",
+      "choices": [
+        "How many candles are there?",
+        "How many candles is there?",
+        "How many candle are there?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity22/question.mp3",
+      "audioCorrect": "Audio/activity22/03_Chapter 1.mp3",
+      "audioWrong": "Audio/activity22/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity22/4.webp",
+      "choices": [
+        "There are three headphones.",
+        "There is three headphones.",
+        "There are three headphone."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity22/question.mp3",
+      "audioCorrect": "Audio/activity22/04_Chapter 1.mp3",
+      "audioWrong": "Audio/activity22/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity22/5.webp",
+      "choices": [
+        "Is there any boxes?",
+        "Are there box?",
+        "Are there any boxes?"
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity22/question.mp3",
+      "audioCorrect": "Audio/activity22/05_Chapter 1.mp3",
+      "audioWrong": "Audio/activity22/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity22/6.webp",
+      "choices": [
+        "There aren’t pineapples any.",
+        "There aren’t any pineapples.",
+        "There isn’t any pineapples."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity22/question.mp3",
+      "audioCorrect": "Audio/activity22/06_Chapter 1.mp3",
+      "audioWrong": "Audio/activity22/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity22/7.webp",
+      "choices": [
+        "How many flower is there?",
+        "How many flowers are there?",
+        "How many flower are there?"
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity22/question.mp3",
+      "audioCorrect": "Audio/activity22/07_Chapter 1.mp3",
+      "audioWrong": "Audio/activity22/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity22/8.webp",
+      "choices": [
+        "Is there green bag?",
+        "Are there a green bag?",
+        "Is there a green bag?"
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity22/question.mp3",
+      "audioCorrect": "Audio/activity22/08_Chapter 1.mp3",
+      "audioWrong": "Audio/activity22/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity22/9.webp",
+      "choices": [
+        "What colour is the T-shirt?",
+        "What colour are the T-shirt?",
+        "What colour T-shirt is?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity22/question.mp3",
+      "audioCorrect": "Audio/activity22/09_Chapter 1.mp3",
+      "audioWrong": "Audio/activity22/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity22/10.webp",
+      "choices": [
+        "Is there a watch?",
+        "Is there watch?",
+        "Are there a watch?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity22/question.mp3",
+      "audioCorrect": "Audio/activity22/10_Chapter 1.mp3",
+      "audioWrong": "Audio/activity22/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity22/11.webp",
+      "choices": [
+        "Are there any birds?",
+        "Is there any birds?",
+        "Are there any bird?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity22/question.mp3",
+      "audioCorrect": "Audio/activity22/11_Chapter 1.mp3",
+      "audioWrong": "Audio/activity22/tryagain.mp3"
+    }
+  ]
+}
