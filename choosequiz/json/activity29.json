@@ -1,106 +1,130 @@
 {
   "intro": {
-    "image": "Images/activity28/1.webp",
-    "audio": "Audio/activity28/01_Chapter 1.mp3",
-    "alt": "Manku introduces the telling the time choose-the-correct-option activity"
+    "image": "Images/activity29/1.webp",
+    "audio": "Audio/activity29/01_Chapter 1.mp3",
+    "alt": "Manku introduces the what are you doing choose-the-correct-option activity"
   },
 
   "items": [
     {
-      "image": "Images/activity28/2.webp",
+      "image": "Images/activity29/2.webp",
       "choices": [
-        "It’s seven clock.",
-        "It’s seven hours.",
-        "It’s seven o’clock."
+        "The parrots is flying.",
+        "The parrots are fly.",
+        "The parrots are flying."
       ],
       "correctIndex": 2,
-      "audioQuestion": "Audio/activity28/question.mp3",
-      "audioCorrect": "Audio/activity28/02_Chapter 1.mp3",
-      "audioWrong": "Audio/activity28/tryagain.mp3"
+      "audioQuestion": "Audio/activity29/question.mp3",
+      "audioCorrect": "Audio/activity29/02_Chapter 1.mp3",
+      "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/3.webp",
+      "image": "Images/activity29/3.webp",
       "choices": [
-        "It’s quarter to four.",
-        "It’s quarter past four.",
-        "It’s four quarter past."
+        "They is eating.",
+        "They are eating.",
+        "They are eat."
       ],
       "correctIndex": 1,
-      "audioQuestion": "Audio/activity28/question.mp3",
-      "audioCorrect": "Audio/activity28/03_Chapter 1.mp3",
-      "audioWrong": "Audio/activity28/tryagain.mp3"
+      "audioQuestion": "Audio/activity29/question.mp3",
+      "audioCorrect": "Audio/activity29/03_Chapter 1.mp3",
+      "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/4.webp",
+      "image": "Images/activity29/4.webp",
       "choices": [
-        "It’s thirty twelve.",
-        "It’s half to twelve.",
-        "It’s twelve thirty."
+        "He are juggling.",
+        "He is juggling.",
+        "He is juggle."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": "Audio/activity29/question.mp3",
+      "audioCorrect": "Audio/activity29/04_Chapter 1.mp3",
+      "audioWrong": "Audio/activity29/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity29/5.webp",
+      "choices": [
+        "What you are doing?",
+        "What is you doing?",
+        "What are you doing?"
       ],
       "correctIndex": 2,
-      "audioQuestion": "Audio/activity28/question.mp3",
-      "audioCorrect": "Audio/activity28/04_Chapter 1.mp3",
-      "audioWrong": "Audio/activity28/tryagain.mp3"
+      "audioQuestion": "Audio/activity29/question.mp3",
+      "audioCorrect": "Audio/activity29/05_Chapter 1.mp3",
+      "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/5.webp",
+      "image": "Images/activity29/6.webp",
       "choices": [
-        "It’s quarter to nine.",
-        "It’s quarter past nine.",
-        "It’s nine quarter to."
+        "The cat is sleeping.",
+        "The cat are sleeping.",
+        "The cat is sleep."
       ],
       "correctIndex": 0,
-      "audioQuestion": "Audio/activity28/question.mp3",
-      "audioCorrect": "Audio/activity28/05_Chapter 1.mp3",
-      "audioWrong": "Audio/activity28/tryagain.mp3"
+      "audioQuestion": "Audio/activity29/question.mp3",
+      "audioCorrect": "Audio/activity29/06_Chapter 1.mp3",
+      "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/6.webp",
+      "image": "Images/activity29/7.webp",
       "choices": [
-        "It’s an afternoon.",
-        "It’s afternoon.",
-        "It’s the afternoon."
+        "It raining is.",
+        "It’s rain.",
+        "It’s raining."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity29/question.mp3",
+      "audioCorrect": "Audio/activity29/07_Chapter 1.mp3",
+      "audioWrong": "Audio/activity29/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity29/8.webp",
+      "choices": [
+        "Are you reading?",
+        "Do you reading?",
+        "Are you read?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity29/question.mp3",
+      "audioCorrect": "Audio/activity29/08_Chapter 1.mp3",
+      "audioWrong": "Audio/activity29/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity29/9.webp",
+      "choices": [
+        "They is fighting.",
+        "They are fighting.",
+        "They are fight."
       ],
       "correctIndex": 1,
-      "audioQuestion": "Audio/activity28/question.mp3",
-      "audioCorrect": "Audio/activity28/06_Chapter 1.mp3",
-      "audioWrong": "Audio/activity28/tryagain.mp3"
+      "audioQuestion": "Audio/activity29/question.mp3",
+      "audioCorrect": "Audio/activity29/09_Chapter 1.mp3",
+      "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/7.webp",
+      "image": "Images/activity29/10.webp",
       "choices": [
-        "It’s ten thirty at night.",
-        "It’s ten thirty in night.",
-        "It’s night ten thirty."
+        "What they are doing?",
+        "What they doing are?",
+        "What are they doing?"
       ],
-      "correctIndex": 0,
-      "audioQuestion": "Audio/activity28/question.mp3",
-      "audioCorrect": "Audio/activity28/07_Chapter 1.mp3",
-      "audioWrong": "Audio/activity28/tryagain.mp3"
+      "correctIndex": 2,
+      "audioQuestion": "Audio/activity29/question.mp3",
+      "audioCorrect": "Audio/activity29/10_Chapter 1.mp3",
+      "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/8.webp",
+      "image": "Images/activity29/11.webp",
       "choices": [
-        "It’s five thirty.",
-        "It’s thirty five.",
-        "It’s half to five."
-      ],
-      "correctIndex": 0,
-      "audioQuestion": "Audio/activity28/question.mp3",
-      "audioCorrect": "Audio/activity28/08_Chapter 1.mp3",
-      "audioWrong": "Audio/activity28/tryagain.mp3"
-    },
-    {
-      "image": "Images/activity28/9.webp",
-      "choices": [
-        "It’s half to seven.",
-        "It’s half past seven.",
-        "It’s seven half past."
+        "Is talking he?",
+        "Is he talking?",
+        "Are he talking?"
       ],
       "correctIndex": 1,
-      "audioQuestion": "Audio/activity28/question.mp3",
-      "audioCorrect": "Audio/activity28/09_Chapter 1.mp3",
-      "audioWrong": "Audio/activity28/tryagain.mp3"
+      "audioQuestion": "Audio/activity29/question.mp3",
+      "audioCorrect": "Audio/activity29/11_Chapter 1.mp3",
+      "audioWrong": "Audio/activity29/tryagain.mp3"
     }
   ]
 }
