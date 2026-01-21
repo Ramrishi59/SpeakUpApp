@@ -45,7 +45,7 @@ body {
     flex-grow: 1; /* Allows main content to take available vertical space */
     padding: 20px;
     overflow-y: auto; /* Enables scrolling if content overflows */
-    /* background: linear-gradient(180deg, #ffd6e8 2%, #d4e8ff 10%);  */
+    background: #f9eee3;
 }
 
 .options-section {
@@ -164,9 +164,9 @@ body {
 .lesson-card {
     display: flex;
     align-items: center;
-    background: #eaf4ff;
-    border: 1px solid #000000;
-    box-shadow: inset 0 0 0 2px #f1eef3c8, inset 0 0 20px 0 #9ac8fac3, 0 2px 8px var(--shadow-light);
+    background: radial-gradient(circle at center, #ffffff 70%, #f2f8ff 90%, #cfe5ff 100%);
+    border: 5px #000000;
+    box-shadow: inset 0 0 0 2px #7fbaff, inset 0 0 32px 18px #d7ebff, 0 8px 20px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     padding: 15px;
     cursor: pointer;
