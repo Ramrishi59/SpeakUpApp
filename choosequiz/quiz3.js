@@ -162,7 +162,7 @@ function render(i) {
 
   answered = false;
   hadWrongAttempt = false;
-  nextBtn.disabled = false;   // user can always move ahead
+  nextBtn.disabled = true;   // require a choice before moving ahead
 
   // image + question
   imgEl.src = it.image;
@@ -243,8 +243,6 @@ function onChoose(slot) {
     });
 
     answered = true;
-    // user can move on anytime
-    nextBtn.disabled = false;
   } else {
     hadWrongAttempt = true;
     choiceEls[slot].classList.add("incorrect");
@@ -252,7 +250,7 @@ function onChoose(slot) {
     playAudio(WRONG_SFX);
 
     // Keep answered false so user can keep choosing
-    nextBtn.disabled = false; // allow moving ahead even if wrong
+    nextBtn.disabled = false; // allow moving ahead after any choice
   }
 }
 
