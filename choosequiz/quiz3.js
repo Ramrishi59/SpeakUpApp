@@ -4,6 +4,10 @@
 // Choose data file based on query param (?activity=activity2), default to activity1
 const params = new URLSearchParams(window.location.search);
 const activityId = params.get("activity") || "activity1";
+const returnCategory = params.get("from");
+const returnUrl = returnCategory
+  ? `../index.html?cat=${encodeURIComponent(returnCategory)}`
+  : "../index.html";
 const DATA_URL = `json/${activityId}.json`;
 let ITEMS = [];
 let dataLoaded = false;
@@ -349,7 +353,7 @@ resetBtn.addEventListener("click", () => {
 
 // Results overlay buttons
 restartBtn?.addEventListener("click", () => {
-  window.location.href = "../index.html";
+  window.location.href = returnUrl;
 });
 
 reviewBtn?.addEventListener("click", () => {

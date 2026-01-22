@@ -3,6 +3,23 @@ let categories = new Map(); // category -> { items: [], collectionCard }
 let rootCards = [];
 let currentCategory = null; // null = main view
 
+function appendQueryParam(url, key, value) {
+  if (!value) return url;
+  const [base, hash] = url.split('#');
+  const sep = base.includes('?') ? '&' : '?';
+  const next = `${base}${sep}${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+  return hash ? `${next}#${hash}` : next;
+}
+
+function setCategoryInUrl(cat) {
+  const url = new URL(window.location.href);
+  if (cat) {
+    url.searchParams.set('cat', cat);
+  } else {
+    url.searchParams.delete('cat');
+  }
+  window.history.replaceState({}, '', url.toString());
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
   const lessonsList = document.querySelector('.lessons-list');
@@ -17,6 +34,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   optionsSection?.appendChild(backButton);
   await loadDashboardLessons();
   buildCategories();
+  const params = new URLSearchParams(window.location.search);
+  const initialCat = params.get('cat');
+  const returnCat = sessionStorage.getItem('returnCategory');
+  if (initialCat && categories.has(initialCat)) {
+    currentCategory = initialCat;
+  } else if (returnCat && categories.has(returnCat)) {
+    currentCategory = returnCat;
+    setCategoryInUrl(returnCat);
+  }
+  if (returnCat) sessionStorage.removeItem('returnCategory');
 
   const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
 
@@ -140,7 +167,14 @@ function buildCategories() {
       return;
     }
     // Use overrides when present, else default resolver
-    window.location.href = getRouteForCard(card);
+    if (currentCategory) {
+      sessionStorage.setItem('returnCategory', currentCategory);
+    } else {
+      sessionStorage.removeItem('returnCategory');
+    }
+    const baseRoute = getRouteForCard(card);
+    const route = appendQueryParam(baseRoute, 'from', currentCategory);
+    window.location.href = route;
   }
 
 
@@ -242,12 +276,14 @@ function buildCategories() {
 
   function switchToCategoryView(cat) {
     currentCategory = cat;
+    setCategoryInUrl(cat);
     if (searchInput) searchInput.value = '';
     renderCurrentView();
   }
 
   function switchToMainView() {
     currentCategory = null;
+    setCategoryInUrl(null);
     if (searchInput) searchInput.value = '';
     renderCurrentView();
   }

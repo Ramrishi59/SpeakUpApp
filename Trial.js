@@ -35,6 +35,13 @@ const els = {
   next:         document.getElementById("nextButton"),
 };
 
+const returnCategory = new URLSearchParams(window.location.search).get("from");
+const returnUrl = returnCategory
+  ? `index.html?cat=${encodeURIComponent(returnCategory)}`
+  : "index.html";
+const homeLink = document.querySelector(".secondary-btn.home");
+if (homeLink) homeLink.setAttribute("href", returnUrl);
+
 /* ---------- unified footer visibility ---------- */
 function setFooterVisible(on) {
   const row = document.getElementById('lessonActions');
@@ -291,7 +298,7 @@ async function render(i) {
         try { els.introVideo.muted = false; els.introVideo.removeAttribute('muted'); els.introVideo.volume = 1.0; } catch {}
       };
       els.introVideo.addEventListener('playing', () => setTimeout(tryUnmute, 60), { once:true });
-      els.introVideo.onended = () => { stopAudio(); stopVideo(); exitVideoMode(); location.href = 'index.html'; };
+      els.introVideo.onended = () => { stopAudio(); stopVideo(); exitVideoMode(); location.href = returnUrl; };
       return;
     }
 
@@ -331,7 +338,7 @@ function showPrev(){ if (currentIndex > 0){ currentIndex--; render(currentIndex)
 function showNext(){
   stopVideo(); exitVideoMode();
   if (currentIndex < screens.length - 1){ currentIndex++; render(currentIndex); }
-  else { location.href = 'index.html'; }
+  else { location.href = returnUrl; }
 }
 function startOver(){
   currentIndex = 0;
