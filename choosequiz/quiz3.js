@@ -109,6 +109,8 @@ function shuffle3() {
 
 // Single shared audio for SFX (question / correct / wrong)
 const sfx = new Audio();
+const RIGHT_SFX = "effects/Right.mp3";
+const WRONG_SFX = "effects/Wrong.mp3";
 
 function playAudio(path, onEnded) {
   if (!path) {
@@ -231,11 +233,13 @@ function onChoose(slot) {
         showResults();
       }
     };
-    if (it.audioCorrect) {
-      playAudio(it.audioCorrect, advanceAfterAudio);
-    } else {
-      setTimeout(advanceAfterAudio, 900);
-    }
+    playAudio(RIGHT_SFX, () => {
+      if (it.audioCorrect) {
+        playAudio(it.audioCorrect, advanceAfterAudio);
+      } else {
+        setTimeout(advanceAfterAudio, 400);
+      }
+    });
 
     answered = true;
     // user can move on anytime
@@ -244,7 +248,7 @@ function onChoose(slot) {
     hadWrongAttempt = true;
     choiceEls[slot].classList.add("incorrect");
     choiceEls[slot].disabled = true; // keep other options active
-    playAudio(it.audioWrong || "Audio/not-correct.mp3");
+    playAudio(WRONG_SFX);
 
     // Keep answered false so user can keep choosing
     nextBtn.disabled = false; // allow moving ahead even if wrong
