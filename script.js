@@ -128,6 +128,26 @@ function buildCategories() {
     categories.get(cat).items.push(card);
   });
 
+  // Sort choose quiz activities ascending by number (e.g., activity1, activity2, ...)
+  const chooseCategory = categories.get('choose');
+  if (chooseCategory) {
+    chooseCategory.items.sort((a, b) => {
+      const getNum = (card) => {
+        const sources = [
+          card?.id,
+          card?.route,
+          card?.title
+        ];
+        for (const src of sources) {
+          const match = String(src || '').match(/activity(\d+)/i) || String(src || '').match(/quiz[-\s]?(\d+)/i);
+          if (match) return Number(match[1]);
+        }
+        return Number.MAX_SAFE_INTEGER;
+      };
+      return getNum(a) - getNum(b);
+    });
+  }
+
   // Build collection cards with preferred ordering
   const preferredOrder = ['choose', 'units'];
   const otherCats = Array.from(categories.keys()).filter(c => !preferredOrder.includes(c) && c !== 'other');

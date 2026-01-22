@@ -198,7 +198,7 @@
       "route": "choosequiz/quiz3.html?activity=activity2"
     },
     {
-      "id": "activity",
+      "id": "activity1",
       "title": "Choose the correct option Quiz-1",
       "description": "activity",
       "thumbnail": "choosequiz/Images/activity1/1-2.webp",
