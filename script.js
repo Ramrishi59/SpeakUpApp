@@ -166,14 +166,16 @@ function buildCategories() {
       console.warn('No card found for id:', id);
       return;
     }
-    // Use overrides when present, else default resolver
-    if (currentCategory) {
-      sessionStorage.setItem('returnCategory', currentCategory);
+    const navCategory = currentCategory || deriveCategory(card);
+    if (navCategory && navCategory !== 'other') {
+      setCategoryInUrl(navCategory);
+      sessionStorage.setItem('returnCategory', navCategory);
     } else {
       sessionStorage.removeItem('returnCategory');
     }
+    // Use overrides when present, else default resolver
     const baseRoute = getRouteForCard(card);
-    const route = appendQueryParam(baseRoute, 'from', currentCategory);
+    const route = appendQueryParam(baseRoute, 'from', navCategory);
     window.location.href = route;
   }
 

@@ -71,7 +71,6 @@ main#app {
     "question"
     "progress"
     "choices"
-    "feedback"
     "nav";
   row-gap: clamp(12px, 2.4svh, 22px);
   padding: clamp(12px, 2.4svh, 22px);
@@ -218,22 +217,6 @@ main#app {
   .choice-btn[disabled] {
     opacity: 0.7;
     cursor: not-allowed;
-  }
-  
-  /* Feedback */
-  .feedback {
-    grid-area: feedback;
-    min-height: 1.6em;
-    text-align: center;
-    font-size: clamp(16px, 2.4svh, 20px);
-  }
-  
-  .feedback.good {
-    color: var(--success);
-  }
-  
-  .feedback.bad {
-    color: var(--danger);
   }
   
   /* Nav row */

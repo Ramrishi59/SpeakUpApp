@@ -42,7 +42,6 @@ const dataPromise = fetch(DATA_URL)
 const imgEl = document.getElementById("itemImage");
 const qEl = document.getElementById("question");
 const pill = document.getElementById("progressPill");
-const fbEl = document.getElementById("feedback");
 const progressFill = document.getElementById("progressFill");
 const progressStats = document.getElementById("progressStats");
 const introImgEl = document.getElementById("introImage");
@@ -107,11 +106,6 @@ function shuffle3() {
   }
 }
 
-function setFeedback(msg, ok) {
-  fbEl.textContent = msg || "";
-  fbEl.classList.toggle("good", !!ok);
-  fbEl.classList.toggle("bad", !ok && !!msg);
-}
 
 // Single shared audio for SFX (question / correct / wrong)
 const sfx = new Audio();
@@ -154,7 +148,6 @@ function render(i) {
       }
     });
     qEl.textContent = loadError ? "Could not load questions." : "Loading questions...";
-    setFeedback(loadError ? "Could not load questions." : "Loading questions...", false);
     choiceEls.forEach(btn => btn.disabled = true);
     prevBtn.disabled = true;
     nextBtn.disabled = true;
@@ -166,7 +159,6 @@ function render(i) {
 
   answered = false;
   hadWrongAttempt = false;
-  setFeedback("");
   nextBtn.disabled = false;   // user can always move ahead
 
   // image + question
@@ -223,9 +215,7 @@ function onChoose(slot) {
     const earnedPoint = !hadWrongAttempt;
     if (earnedPoint) {
       score += 1;
-      setFeedback("Great!", true);
     } else {
-      setFeedback("Correct! No point this round.", true);
     }
     updateProgressUI();
 
@@ -252,7 +242,6 @@ function onChoose(slot) {
     nextBtn.disabled = false;
   } else {
     hadWrongAttempt = true;
-    setFeedback("Try again!", false);
     choiceEls[slot].classList.add("incorrect");
     choiceEls[slot].disabled = true; // keep other options active
     playAudio(it.audioWrong || "Audio/not-correct.mp3");
