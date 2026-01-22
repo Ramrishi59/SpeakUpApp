@@ -111,6 +111,7 @@ function shuffle3() {
 const sfx = new Audio();
 const RIGHT_SFX = "effects/Right.mp3";
 const WRONG_SFX = "effects/Wrong.mp3";
+const CLAP_SFX = "effects/Clap.mp3";
 
 function playAudio(path, onEnded) {
   if (!path) {
@@ -268,6 +269,7 @@ function showResults() {
     resultsOverlay.classList.remove("hidden");
     document.body.classList.add("overlay-open");
     reviewBtn?.focus();
+    playAudio(CLAP_SFX);
     popConfetti();
   };
 
