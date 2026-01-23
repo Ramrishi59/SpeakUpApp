@@ -98,9 +98,18 @@ let selectionIndices = [];
 // =====================
 function shuffleWords(count) {
   map = Array.from({ length: count }, (_, i) => i);
-  for (let i = map.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [map[i], map[j]] = [map[j], map[i]];
+  if (count < 2) return;
+  const isOrdered = (arr) => arr.every((v, i) => v === i);
+  let attempts = 0;
+  do {
+    for (let i = map.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [map[i], map[j]] = [map[j], map[i]];
+    }
+    attempts += 1;
+  } while (isOrdered(map) && attempts < 5);
+  if (isOrdered(map)) {
+    map.push(map.shift());
   }
 }
 
@@ -147,6 +156,7 @@ function renderWordButtons(words) {
 
 const sfx = new Audio();
 const RIGHT_SFX = "../choosequiz/effects/Right.mp3";
+const WRONG_SFX = "../choosequiz/effects/Wrong.mp3";
 function playAudio(path, onEnded) {
   if (!path) {
     if (typeof onEnded === "function") onEnded();
@@ -307,8 +317,12 @@ function handleWordTap(slot) {
 
     const reset = () => resetWordUI(it);
 
-    playAudio(it.audioWrong || "Audio/not-correct.mp3", () => {
-      setTimeout(reset, 400);
+    playAudio(WRONG_SFX, () => {
+      if (it.audioWrong) {
+        playAudio(it.audioWrong, () => setTimeout(reset, 200));
+      } else {
+        setTimeout(reset, 400);
+      }
     });
   }
 }
