@@ -15,8 +15,8 @@
   --header-h: 56px;
   --gap: 14px;
 
-  --btn-h: 74px;
-  --btn-fs: 22px;
+  --btn-h: 86px;
+  --btn-fs: 26px;
 }
 
 * {
@@ -71,7 +71,6 @@ main#app {
     "progress"
     "choices"
     "answer"
-    "feedback"
     "nav";
   row-gap: clamp(12px, 2.4svh, 22px);
   padding: clamp(12px, 2.4svh, 22px);
@@ -85,8 +84,8 @@ main#app {
   :root {
     --header-h: 50px;
     --gap: 10px;
-    --btn-h: 52px;
-    --btn-fs: 18px;
+    --btn-h: 64px;
+    --btn-fs: 20px;
   }
 
   main#app {
@@ -161,9 +160,9 @@ main#app {
 }
 
 .word-grid.compact .word-btn {
-  min-height: 56px;
-  padding: 8px;
-  font-size: clamp(16px, 2.4svh, 20px);
+  min-height: 64px;
+  padding: 10px;
+  font-size: clamp(18px, 2.6svh, 22px);
 }
 
 @media (min-width: 720px) {
@@ -171,8 +170,8 @@ main#app {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
   .word-grid.compact .word-btn {
-    min-height: 60px;
-    font-size: clamp(18px, 2.2svh, 22px);
+    min-height: 70px;
+    font-size: clamp(20px, 2.6svh, 24px);
   }
 }
 
@@ -233,22 +232,6 @@ main#app {
 #answerText {
   font-weight: 800;
   font-size: clamp(22px, 3.2svh, 30px);
-}
-
-/* Feedback */
-.feedback {
-  grid-area: feedback;
-  min-height: 1.6em;
-  text-align: center;
-  font-size: clamp(16px, 2.4svh, 20px);
-}
-
-.feedback.good {
-  color: var(--success);
-}
-
-.feedback.bad {
-  color: var(--danger);
 }
 
 /* Nav row */

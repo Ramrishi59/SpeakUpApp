@@ -35,7 +35,6 @@ const dataPromise = fetch(DATA_URL)
 // =====================
 const qEl = document.getElementById("question");
 const pill = document.getElementById("progressPill");
-const fbEl = document.getElementById("feedback");
 const progressFill = document.getElementById("progressFill");
 const progressStats = document.getElementById("progressStats");
 const introImgEl = document.getElementById("introImage");
@@ -113,11 +112,6 @@ function shuffleWords(count) {
   }
 }
 
-function setFeedback(msg, ok) {
-  fbEl.textContent = msg || "";
-  fbEl.classList.toggle("good", !!ok);
-  fbEl.classList.toggle("bad", !ok && !!msg);
-}
 
 function updateAnswerText(words, indices) {
   if (!words || indices.length === 0) {
@@ -211,7 +205,6 @@ function render(i) {
       }
     });
     qEl.textContent = loadError ? "Could not load activity." : "Loading...";
-    setFeedback(loadError ? "Could not load activity." : "Loading questions...", false);
     wordBtns.forEach(btn => btn.disabled = true);
     prevBtn.disabled = true;
     nextBtn.disabled = true;
@@ -222,7 +215,6 @@ function render(i) {
   if (!it) return;
 
   hadWrongAttempt = false;
-  setFeedback("");
   nextBtn.disabled = false;
 
   qEl.textContent = it.question || "Tap the words in order to make the sentence.";
@@ -257,7 +249,6 @@ function handleWordTap(slot) {
   const expectedIndex = selectionIndices.length;
   if (wordIndex !== expectedIndex) {
     hadWrongAttempt = true;
-    setFeedback("Oops, try again!", false);
     playAudio(WRONG_SFX, () => {
       if (it.audioWrong) playAudio(it.audioWrong);
     });
@@ -269,7 +260,6 @@ function handleWordTap(slot) {
 
   selectionIndices.push(wordIndex);
   updateAnswerText(it.words || [], selectionIndices);
-  setFeedback("", false);
 
   const totalWords = it.words?.length || 0;
   if (selectionIndices.length < totalWords) return;
@@ -277,9 +267,7 @@ function handleWordTap(slot) {
   const earnedPoint = !hadWrongAttempt;
   if (earnedPoint) {
     score += 1;
-    setFeedback("Great!", true);
   } else {
-    setFeedback("Correct! No point this time.", true);
   }
   updateProgressUI();
 
