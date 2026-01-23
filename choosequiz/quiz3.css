@@ -15,7 +15,7 @@
     --header-h: 56px;
     --gap: 14px;
   
-    --btn-h: 52px;
+    --btn-h: 64px;
     --btn-fs: 20px;
   }
   
@@ -84,7 +84,7 @@ main#app {
   :root {
     --header-h: 50px;
     --gap: 10px;
-    --btn-h: 48px;
+    --btn-h: 56px;
     --btn-fs: 18px;
   }
 
@@ -214,12 +214,8 @@ main#app {
     outline: 3px solid var(--danger);
   }
   
-  .choice-btn[disabled],
-  .choice-btn:disabled {
-    opacity: 1;
-    filter: none;
-    color: var(--ink);
-    background: #ffffff;
+  .choice-btn[disabled] {
+    opacity: 0.7;
     cursor: not-allowed;
   }
   

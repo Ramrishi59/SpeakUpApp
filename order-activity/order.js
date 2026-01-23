@@ -45,8 +45,9 @@ const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const resetBtn = document.getElementById("resetBtn");
 
-const wordBtns = [0, 1, 2, 3].map(i => document.getElementById("w" + i));
+const wordGrid = document.querySelector(".word-grid");
 const answerTextEl = document.getElementById("answerText");
+let wordBtns = [];
 
 // Results overlay
 const resultsOverlay = document.getElementById("resultsOverlay");
@@ -87,16 +88,16 @@ let answered = false;
 let hadWrongAttempt = false;
 let pendingRenderIndex = null;
 
-// mapping from button slot 0–3 -> original word index (0–3)
-let map = [0, 1, 2, 3];
+// mapping from button slot -> original word index
+let map = [];
 // order of selected original indices
 let selectionIndices = [];
 
 // =====================
 // HELPERS
 // =====================
-function shuffle4() {
-  map = [0, 1, 2, 3];
+function shuffleWords(count) {
+  map = Array.from({ length: count }, (_, i) => i);
   for (let i = map.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [map[i], map[j]] = [map[j], map[i]];
@@ -116,6 +117,32 @@ function updateAnswerText(words, indices) {
   }
   const parts = indices.map(i => words[i]);
   answerTextEl.textContent = parts.join(" ");
+}
+
+function updateWordGridDensity(words) {
+  if (!wordGrid) return;
+  const totalWords = words?.length || 0;
+  const totalChars = (words || []).join(" ").length;
+  const compact = totalWords > 4 || totalChars > 20;
+  wordGrid.classList.toggle("compact", compact);
+}
+
+function renderWordButtons(words) {
+  if (!wordGrid) return;
+  const count = words.length;
+  shuffleWords(count);
+  wordGrid.innerHTML = "";
+  wordBtns = map.map((wordIndex, slot) => {
+    const btn = document.createElement("button");
+    btn.className = "word-btn";
+    btn.type = "button";
+    btn.id = `w${slot}`;
+    btn.textContent = words[wordIndex] ?? "";
+    btn.setAttribute("data-word-index", wordIndex);
+    btn.addEventListener("click", () => handleWordTap(slot));
+    wordGrid.appendChild(btn);
+    return btn;
+  });
 }
 
 const sfx = new Audio();
@@ -191,18 +218,10 @@ function render(i) {
   pill.textContent = `${i + 1}/${ITEMS.length}`;
   updateProgressUI();
 
-  shuffle4();
-  resetWordUI(it);
-
   const words = it.words || [];
-  for (let slot = 0; slot < 4; slot++) {
-    const btn = wordBtns[slot];
-    const wordIndex = map[slot];
-    const label = words[wordIndex] ?? "";
-    btn.textContent = label;
-    btn.setAttribute("data-word-index", wordIndex);
-    btn.disabled = !label;
-  }
+  updateWordGridDensity(words);
+  renderWordButtons(words);
+  resetWordUI(it);
 
   prevBtn.disabled = (i === 0);
 
@@ -333,10 +352,6 @@ function hideResults() {
 // =====================
 // EVENT WIRES
 // =====================
-wordBtns.forEach((btn, i) => {
-  btn.addEventListener("click", () => handleWordTap(i));
-});
-
 prevBtn.addEventListener("click", () => {
   if (idx > 0) {
     idx -= 1;
@@ -370,10 +385,10 @@ reviewBtn?.addEventListener("click", () => {
 
 // Keyboard shortcuts: 1–4 for words, arrows for nav
 window.addEventListener("keydown", (e) => {
-  if (e.key === "1") return handleWordTap(0);
-  if (e.key === "2") return handleWordTap(1);
-  if (e.key === "3") return handleWordTap(2);
-  if (e.key === "4") return handleWordTap(3);
+  if (/^[1-9]$/.test(e.key)) {
+    const idx = Number(e.key) - 1;
+    if (idx < wordBtns.length) return handleWordTap(idx);
+  }
   if (e.key === "ArrowLeft") prevBtn.click();
   if (e.key === "ArrowRight") nextBtn.click();
 });
