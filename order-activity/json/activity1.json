@@ -1,27 +1,82 @@
 {
-    "intro": {
-      "image": "Images/activity1/intro.webp",
-      "audio": "Audio/activity1/01_intro.mp3",
-      "alt": "Manku saying hello"
+  "intro": {
+    "image": "Images/activity1/intro.webp",
+    "audio": "Audio/activity1/01_intro.mp3",
+    "alt": "Manku saying hello"
+  },
+  "outro": {
+    "audio": "Audio/activity1/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["It's", "a", "pencil"],
+      "audioQuestion": "Audio/activity1/q1.mp3",
+      "audioCorrect": "Audio/activity1/c1.mp3",
+      "audioWrong": "Audio/activity1/wrong.mp3"
     },
-    "outro": {
-      "audio": "Audio/activity1/99_outro.mp3"
+    {
+      "question": "Make the sentence.",
+      "words": ["It's", "a", "teddy", "bear"],
+      "audioQuestion": "Audio/activity1/q2.mp3",
+      "audioCorrect": "Audio/activity1/c2.mp3",
+      "audioWrong": "Audio/activity1/wrong.mp3"
     },
-    "items": [
-      {
-        "question": "Make the sentence.",
-        "words": ["these", "are", "a", "book","and","a","pen" ],
-        "audioQuestion": "Audio/activity1/q1.mp3",
-        "audioCorrect": "Audio/activity1/c1.mp3",
-        "audioWrong": "Audio/activity1/wrong.mp3"
-      },
-      {
-        "question": "Make the sentence.",
-        "words": ["Those", "are", "my", "pens"],
-        "audioQuestion": "Audio/activity1/q2.mp3",
-        "audioCorrect": "Audio/activity1/c2.mp3",
-        "audioWrong": "Audio/activity1/wrong.mp3"
-      }
-    ]
-  }
-  
+    {
+      "question": "Make the sentence.",
+      "words": ["It's", "an", "eraser"],
+      "audioQuestion": "Audio/activity1/q3.mp3",
+      "audioCorrect": "Audio/activity1/c3.mp3",
+      "audioWrong": "Audio/activity1/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["That's", "a", "train"],
+      "audioQuestion": "Audio/activity1/q4.mp3",
+      "audioCorrect": "Audio/activity1/c4.mp3",
+      "audioWrong": "Audio/activity1/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["That's", "a", "mountain"],
+      "audioQuestion": "Audio/activity1/q5.mp3",
+      "audioCorrect": "Audio/activity1/c5.mp3",
+      "audioWrong": "Audio/activity1/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["It's", "an", "umbrella"],
+      "audioQuestion": "Audio/activity1/q6.mp3",
+      "audioCorrect": "Audio/activity1/c6.mp3",
+      "audioWrong": "Audio/activity1/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["It's", "a", "backpack"],
+      "audioQuestion": "Audio/activity1/q7.mp3",
+      "audioCorrect": "Audio/activity1/c7.mp3",
+      "audioWrong": "Audio/activity1/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["That's", "a", "monkey"],
+      "audioQuestion": "Audio/activity1/q8.mp3",
+      "audioCorrect": "Audio/activity1/c8.mp3",
+      "audioWrong": "Audio/activity1/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["This", "is", "a", "tortoise"],
+      "audioQuestion": "Audio/activity1/q9.mp3",
+      "audioCorrect": "Audio/activity1/c9.mp3",
+      "audioWrong": "Audio/activity1/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["This", "is", "an", "orange"],
+      "audioQuestion": "Audio/activity1/q10.mp3",
+      "audioCorrect": "Audio/activity1/c10.mp3",
+      "audioWrong": "Audio/activity1/wrong.mp3"
+    }
+  ]
+}

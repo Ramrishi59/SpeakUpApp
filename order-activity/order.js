@@ -146,6 +146,7 @@ function renderWordButtons(words) {
 }
 
 const sfx = new Audio();
+const RIGHT_SFX = "../choosequiz/effects/Right.mp3";
 function playAudio(path, onEnded) {
   if (!path) {
     if (typeof onEnded === "function") onEnded();
@@ -286,11 +287,13 @@ function handleWordTap(slot) {
       }
     };
 
-    if (it.audioCorrect) {
-      playAudio(it.audioCorrect, advance);
-    } else {
-      setTimeout(advance, 900);
-    }
+    playAudio(RIGHT_SFX, () => {
+      if (it.audioCorrect) {
+        playAudio(it.audioCorrect, advance);
+      } else {
+        setTimeout(advance, 400);
+      }
+    });
 
   } else {
     hadWrongAttempt = true;
