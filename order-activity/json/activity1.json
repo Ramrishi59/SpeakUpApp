@@ -9,7 +9,7 @@
   },
   "items": [
     {
-      "question": "Make the sentence.",
+      "question": "Make the sentence",
       "words": ["It's", "a", "pencil"],
       "audioQuestion": "Audio/activity1/q1.mp3",
       "audioCorrect": "Audio/activity1/c1.mp3",
