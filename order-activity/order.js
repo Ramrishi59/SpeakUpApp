@@ -254,6 +254,16 @@ function handleWordTap(slot) {
   const wordIndex = Number(btn.getAttribute("data-word-index"));
   if (Number.isNaN(wordIndex)) return;
 
+  const expectedIndex = selectionIndices.length;
+  if (wordIndex !== expectedIndex) {
+    hadWrongAttempt = true;
+    setFeedback("Oops, try again!", false);
+    playAudio(WRONG_SFX, () => {
+      if (it.audioWrong) playAudio(it.audioWrong);
+    });
+    return;
+  }
+
   btn.disabled = true;
   btn.classList.add("selected");
 
@@ -264,67 +274,40 @@ function handleWordTap(slot) {
   const totalWords = it.words?.length || 0;
   if (selectionIndices.length < totalWords) return;
 
-  // Check order now
-  const isCorrect =
-    selectionIndices.length === totalWords &&
-    selectionIndices.every((originalIndex, pos) => originalIndex === pos);
-
-  if (isCorrect) {
-    const earnedPoint = !hadWrongAttempt;
-    if (earnedPoint) {
-      score += 1;
-      setFeedback("Great!", true);
-    } else {
-      setFeedback("Correct! No point this time.", true);
-    }
-    updateProgressUI();
-
-    wordBtns.forEach(b => {
-      b.classList.remove("selected", "incorrect");
-      b.classList.add("correct");
-      b.disabled = true;
-    });
-
-    answered = true;
-    popConfetti();
-
-    const advance = () => {
-      if (idx < ITEMS.length - 1) {
-        idx += 1;
-        render(idx);
-      } else {
-        showResults();
-      }
-    };
-
-    playAudio(RIGHT_SFX, () => {
-      if (it.audioCorrect) {
-        playAudio(it.audioCorrect, advance);
-      } else {
-        setTimeout(advance, 400);
-      }
-    });
-
+  const earnedPoint = !hadWrongAttempt;
+  if (earnedPoint) {
+    score += 1;
+    setFeedback("Great!", true);
   } else {
-    hadWrongAttempt = true;
-    setFeedback("Oops, try again!", false);
-
-    wordBtns.forEach(b => {
-      if (b.classList.contains("selected")) {
-        b.classList.add("incorrect");
-      }
-    });
-
-    const reset = () => resetWordUI(it);
-
-    playAudio(WRONG_SFX, () => {
-      if (it.audioWrong) {
-        playAudio(it.audioWrong, () => setTimeout(reset, 200));
-      } else {
-        setTimeout(reset, 400);
-      }
-    });
+    setFeedback("Correct! No point this time.", true);
   }
+  updateProgressUI();
+
+  wordBtns.forEach(b => {
+    b.classList.remove("selected", "incorrect");
+    b.classList.add("correct");
+    b.disabled = true;
+  });
+
+  answered = true;
+  popConfetti();
+
+  const advance = () => {
+    if (idx < ITEMS.length - 1) {
+      idx += 1;
+      render(idx);
+    } else {
+      showResults();
+    }
+  };
+
+  playAudio(RIGHT_SFX, () => {
+    if (it.audioCorrect) {
+      playAudio(it.audioCorrect, advance);
+    } else {
+      setTimeout(advance, 400);
+    }
+  });
 }
 
 // =====================
