@@ -151,6 +151,14 @@ function renderWordButtons(words) {
 const sfx = new Audio();
 const RIGHT_SFX = "../choosequiz/effects/Right.mp3";
 const WRONG_SFX = "../choosequiz/effects/Wrong.mp3";
+const CLAP_SFX = "../choosequiz/effects/Clap.mp3";
+
+function vibrate(pattern) {
+  if (!navigator.vibrate) return;
+  try {
+    navigator.vibrate(pattern);
+  } catch {}
+}
 function playAudio(path, onEnded) {
   if (!path) {
     if (typeof onEnded === "function") onEnded();
@@ -249,6 +257,7 @@ function handleWordTap(slot) {
   const expectedIndex = selectionIndices.length;
   if (wordIndex !== expectedIndex) {
     hadWrongAttempt = true;
+    vibrate([40, 60, 40]);
     playAudio(WRONG_SFX, () => {
       if (it.audioWrong) playAudio(it.audioWrong);
     });
@@ -278,6 +287,7 @@ function handleWordTap(slot) {
   });
 
   answered = true;
+  vibrate(30);
   popConfetti();
 
   const advance = () => {
@@ -310,6 +320,7 @@ function showResults() {
     resultsOverlay.classList.remove("hidden");
     document.body.classList.add("overlay-open");
     reviewBtn?.focus();
+    playAudio(CLAP_SFX);
     popConfetti();
   };
 
