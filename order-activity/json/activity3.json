@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity3/intro.webp",
+    "audio": "Audio/activity3/01_intro.mp3",
+    "alt": "Manku saying hello"
+  },
+  "outro": {
+    "audio": "Audio/activity3/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["That's", "not", "a", "tiger"],
+      "audioQuestion": "Audio/activity3/q1.mp3",
+      "audioCorrect": "Audio/activity3/c1.mp3",
+      "audioWrong": "Audio/activity3/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["This", "is", "a", "butterfly"],
+      "audioQuestion": "Audio/activity3/q2.mp3",
+      "audioCorrect": "Audio/activity3/c2.mp3",
+      "audioWrong": "Audio/activity3/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["This", "is", "a", "tortoise"],
+      "audioQuestion": "Audio/activity3/q3.mp3",
+      "audioCorrect": "Audio/activity3/c3.mp3",
+      "audioWrong": "Audio/activity3/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["That's", "not", "an", "ant"],
+      "audioQuestion": "Audio/activity3/q4.mp3",
+      "audioCorrect": "Audio/activity3/c4.mp3",
+      "audioWrong": "Audio/activity3/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["That's", "a", "snake"],
+      "audioQuestion": "Audio/activity3/q5.mp3",
+      "audioCorrect": "Audio/activity3/c5.mp3",
+      "audioWrong": "Audio/activity3/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["That's", "an", "octopus"],
+      "audioQuestion": "Audio/activity3/q6.mp3",
+      "audioCorrect": "Audio/activity3/c6.mp3",
+      "audioWrong": "Audio/activity3/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["This", "is", "an", "orange"],
+      "audioQuestion": "Audio/activity3/q7.mp3",
+      "audioCorrect": "Audio/activity3/c7.mp3",
+      "audioWrong": "Audio/activity3/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["That's", "a", "shark"],
+      "audioQuestion": "Audio/activity3/q8.mp3",
+      "audioCorrect": "Audio/activity3/c8.mp3",
+      "audioWrong": "Audio/activity3/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["That's", "not", "a", "dolphin"],
+      "audioQuestion": "Audio/activity3/q9.mp3",
+      "audioCorrect": "Audio/activity3/c9.mp3",
+      "audioWrong": "Audio/activity3/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["This", "is", "an", "envelope"],
+      "audioQuestion": "Audio/activity3/q10.mp3",
+      "audioCorrect": "Audio/activity3/c10.mp3",
+      "audioWrong": "Audio/activity3/wrong.mp3"
+    }
+  ]
+}

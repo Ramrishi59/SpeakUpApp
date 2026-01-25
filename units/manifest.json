@@ -17,6 +17,14 @@
       "route": "order-activity/order.html?activity=activity2",
        "category": "order"
     },
+        {
+      "id": "order-activity3",
+      "title": "Order Quiz-3",
+      "description": "activity",
+      "thumbnail": "order-activity/Images/score.webp",
+      "route": "order-activity/order.html?activity=activity3",
+       "category": "order"
+    },
     {
       "id": "activity29",
       "title": "Choose the correct option Quiz-29",
