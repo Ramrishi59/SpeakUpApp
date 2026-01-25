@@ -130,6 +130,12 @@ function updateWordGridDensity(words) {
   wordGrid.classList.toggle("compact", compact);
 }
 
+function getSentenceAudio(it, index) {
+  if (it?.audioSentence) return it.audioSentence;
+  const num = String(index + 1).padStart(2, "0");
+  return `Audio/${num}_Chapter 1.mp3`;
+}
+
 function renderWordButtons(words) {
   if (!wordGrid) return;
   const count = words.length;
@@ -300,10 +306,11 @@ function handleWordTap(slot) {
   };
 
   playAudio(RIGHT_SFX, () => {
-    if (it.audioCorrect) {
-      playAudio(it.audioCorrect, advance);
+    const sentenceAudio = getSentenceAudio(it, idx);
+    if (sentenceAudio) {
+      setTimeout(() => playAudio(sentenceAudio, advance), 80);
     } else {
-      setTimeout(advance, 400);
+      setTimeout(advance, 300);
     }
   });
 }
