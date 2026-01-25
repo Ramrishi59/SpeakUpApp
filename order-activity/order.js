@@ -3,6 +3,8 @@
 // =====================
 const params = new URLSearchParams(window.location.search);
 const activityId = params.get("activity") || "activity1";
+const activityNumberMatch = activityId.match(/\d+/);
+const activityNumber = activityNumberMatch ? activityNumberMatch[0] : "1";
 const DATA_URL = `json/${activityId}.json`;
 
 let ITEMS = [];
@@ -133,7 +135,7 @@ function updateWordGridDensity(words) {
 function getSentenceAudio(it, index) {
   if (it?.audioSentence) return it.audioSentence;
   const num = String(index + 1).padStart(2, "0");
-  return `Audio/${num}_Chapter 1.mp3`;
+  return `Audio/${activityNumber}/${num}_Chapter 1.mp3`;
 }
 
 function renderWordButtons(words) {
