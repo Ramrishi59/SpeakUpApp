@@ -2,11 +2,20 @@
   "version": 1,
   "cards": [
     {
-      "id": "Order Quiz",
-      "title": "Order Quiz",
+      "id": "order-activity1",
+      "title": "Order Quiz-1",
       "description": "activity",
-      "thumbnail": "choosequiz/Images/activity/1.webp",
-      "route": "order-activity/order.html"
+      "thumbnail": "order-activity/Images/score.webp",
+      "route": "order-activity/order.html?activity=activity1",
+       "category": "order"
+    },
+    {
+      "id": "order-activity2",
+      "title": "Order Quiz-2",
+      "description": "activity",
+      "thumbnail": "order-activity/Images/score.webp",
+      "route": "order-activity/order.html?activity=activity2",
+       "category": "order"
     },
     {
       "id": "activity29",
