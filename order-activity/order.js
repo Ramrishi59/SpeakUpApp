@@ -343,6 +343,7 @@ function showResults() {
     reviewBtn?.focus();
     playAudio(CLAP_SFX);
     popConfetti();
+    pill?.classList.add("hidden");
   };
 
   if (outroData && outroData.audio) {
@@ -367,6 +368,7 @@ function showResults() {
 function hideResults() {
   resultsOverlay.classList.add("hidden");
   document.body.classList.remove("overlay-open");
+  pill?.classList.remove("hidden");
 }
 
 // =====================

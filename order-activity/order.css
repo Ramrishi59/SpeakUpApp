@@ -364,7 +364,8 @@ main#app {
 
 /* Blur underlying slide when results are shown */
 body.overlay-open #app>*:not(.overlay) {
-  filter: blur(6px) brightness(0.9);
+  opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 }
 
