@@ -190,6 +190,13 @@ main#app {
   align-items: center;
   justify-content: center;
   transition: transform .08s ease, box-shadow .12s ease, background .12s ease, outline .12s ease;
+  word-break: break-word;
+
+}
+
+.word-btn.long-word {
+  min-height: calc(var(--btn-h) + 16px);
+  padding: 14px;
 }
 
 .word-btn:active {

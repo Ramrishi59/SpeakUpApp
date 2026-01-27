@@ -148,7 +148,9 @@ function renderWordButtons(words) {
     btn.className = "word-btn";
     btn.type = "button";
     btn.id = `w${slot}`;
-    btn.textContent = words[wordIndex] ?? "";
+    const label = words[wordIndex] ?? "";
+    btn.textContent = label;
+    if (label.length > 10) btn.classList.add("long-word");
     btn.setAttribute("data-word-index", wordIndex);
     btn.addEventListener("click", () => handleWordTap(slot));
     wordGrid.appendChild(btn);
