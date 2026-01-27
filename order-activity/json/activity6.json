@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity6/intro.webp",
+    "audio": "Audio/activity6/01_intro.mp3",
+    "alt": "Manku introducing activity 6"
+  },
+  "outro": {
+    "audio": "Audio/activity6/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["Is", "Raju", "a", "boy?"],
+      "audioQuestion": "Audio/activity6/q1.mp3",
+      "audioCorrect": "Audio/activity6/c1.mp3",
+      "audioWrong": "Audio/activity6/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Manku", "is", "a", "monkey"],
+      "audioQuestion": "Audio/activity6/q2.mp3",
+      "audioCorrect": "Audio/activity6/c2.mp3",
+      "audioWrong": "Audio/activity6/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["What", "colour", "is", "this?"],
+      "audioQuestion": "Audio/activity6/q3.mp3",
+      "audioCorrect": "Audio/activity6/c3.mp3",
+      "audioWrong": "Audio/activity6/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Is", "this", "your", "pen?"],
+      "audioQuestion": "Audio/activity6/q4.mp3",
+      "audioCorrect": "Audio/activity6/c4.mp3",
+      "audioWrong": "Audio/activity6/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Is", "that", "your", "bicycle?"],
+      "audioQuestion": "Audio/activity6/q5.mp3",
+      "audioCorrect": "Audio/activity6/c5.mp3",
+      "audioWrong": "Audio/activity6/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["This", "is", "my", "pen"],
+      "audioQuestion": "Audio/activity6/q6.mp3",
+      "audioCorrect": "Audio/activity6/c6.mp3",
+      "audioWrong": "Audio/activity6/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Are", "their", "cats", "black?"],
+      "audioQuestion": "Audio/activity6/q7.mp3",
+      "audioCorrect": "Audio/activity6/c7.mp3",
+      "audioWrong": "Audio/activity6/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["My", "cap", "is", "red"],
+      "audioQuestion": "Audio/activity6/q8.mp3",
+      "audioCorrect": "Audio/activity6/c8.mp3",
+      "audioWrong": "Audio/activity6/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["My", "hat", "is", "pink"],
+      "audioQuestion": "Audio/activity6/q9.mp3",
+      "audioCorrect": "Audio/activity6/c9.mp3",
+      "audioWrong": "Audio/activity6/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Your", "bicycle", "is", "red"],
+      "audioQuestion": "Audio/activity6/q10.mp3",
+      "audioCorrect": "Audio/activity6/c10.mp3",
+      "audioWrong": "Audio/activity6/wrong.mp3"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity4/intro.webp",
+    "audio": "Audio/activity4/01_intro.mp3",
+    "alt": "Manku introducing activity 4"
+  },
+  "outro": {
+    "audio": "Audio/activity4/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["Are", "these", "strawberries?"],
+      "audioQuestion": "Audio/activity4/q1.mp3",
+      "audioCorrect": "Audio/activity4/c1.mp3",
+      "audioWrong": "Audio/activity4/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["These", "are", "bees"],
+      "audioQuestion": "Audio/activity4/q2.mp3",
+      "audioCorrect": "Audio/activity4/c2.mp3",
+      "audioWrong": "Audio/activity4/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Those", "are", "erasers"],
+      "audioQuestion": "Audio/activity4/q3.mp3",
+      "audioCorrect": "Audio/activity4/c3.mp3",
+      "audioWrong": "Audio/activity4/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Those", "are", "umbrellas"],
+      "audioQuestion": "Audio/activity4/q4.mp3",
+      "audioCorrect": "Audio/activity4/c4.mp3",
+      "audioWrong": "Audio/activity4/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Those", "are", "apples"],
+      "audioQuestion": "Audio/activity4/q5.mp3",
+      "audioCorrect": "Audio/activity4/c5.mp3",
+      "audioWrong": "Audio/activity4/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["These", "are", "dolphins"],
+      "audioQuestion": "Audio/activity4/q6.mp3",
+      "audioCorrect": "Audio/activity4/c6.mp3",
+      "audioWrong": "Audio/activity4/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["These", "are", "horses"],
+      "audioQuestion": "Audio/activity4/q7.mp3",
+      "audioCorrect": "Audio/activity4/c7.mp3",
+      "audioWrong": "Audio/activity4/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Are", "these", "papayas?"],
+      "audioQuestion": "Audio/activity4/q8.mp3",
+      "audioCorrect": "Audio/activity4/c8.mp3",
+      "audioWrong": "Audio/activity4/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Are", "they", "grapes?"],
+      "audioQuestion": "Audio/activity4/q9.mp3",
+      "audioCorrect": "Audio/activity4/c9.mp3",
+      "audioWrong": "Audio/activity4/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["They", "are", "guavas"],
+      "audioQuestion": "Audio/activity4/q10.mp3",
+      "audioCorrect": "Audio/activity4/c10.mp3",
+      "audioWrong": "Audio/activity4/wrong.mp3"
+    }
+  ]
+}

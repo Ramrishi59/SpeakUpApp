@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity9/intro.webp",
+    "audio": "Audio/activity9/01_intro.mp3",
+    "alt": "Manku introducing activity 9"
+  },
+  "outro": {
+    "audio": "Audio/activity9/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "camera", "is", "in", "the", "bag"],
+      "audioQuestion": "Audio/activity9/q1.mp3",
+      "audioCorrect": "Audio/activity9/c1.mp3",
+      "audioWrong": "Audio/activity9/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "pillows", "are", "on", "the", "bed"],
+      "audioQuestion": "Audio/activity9/q2.mp3",
+      "audioCorrect": "Audio/activity9/c2.mp3",
+      "audioWrong": "Audio/activity9/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "vegetables", "are", "in", "the", "bag"],
+      "audioQuestion": "Audio/activity9/q3.mp3",
+      "audioCorrect": "Audio/activity9/c3.mp3",
+      "audioWrong": "Audio/activity9/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "birds", "are", "in", "the", "cage"],
+      "audioQuestion": "Audio/activity9/q4.mp3",
+      "audioCorrect": "Audio/activity9/c4.mp3",
+      "audioWrong": "Audio/activity9/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "cookies", "are", "in", "the", "jar"],
+      "audioQuestion": "Audio/activity9/q5.mp3",
+      "audioCorrect": "Audio/activity9/c5.mp3",
+      "audioWrong": "Audio/activity9/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Where", "is", "the", "coconut?"],
+      "audioQuestion": "Audio/activity9/q6.mp3",
+      "audioCorrect": "Audio/activity9/c6.mp3",
+      "audioWrong": "Audio/activity9/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "basket", "is", "on", "the", "table"],
+      "audioQuestion": "Audio/activity9/q7.mp3",
+      "audioCorrect": "Audio/activity9/c7.mp3",
+      "audioWrong": "Audio/activity9/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "bag", "is", "on", "the", "table"],
+      "audioQuestion": "Audio/activity9/q8.mp3",
+      "audioCorrect": "Audio/activity9/c8.mp3",
+      "audioWrong": "Audio/activity9/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Where", "are", "the", "girls?"],
+      "audioQuestion": "Audio/activity9/q9.mp3",
+      "audioCorrect": "Audio/activity9/c9.mp3",
+      "audioWrong": "Audio/activity9/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Where", "are", "the", "parrots?"],
+      "audioQuestion": "Audio/activity9/q10.mp3",
+      "audioCorrect": "Audio/activity9/c10.mp3",
+      "audioWrong": "Audio/activity9/wrong.mp3"
+    }
+  ]
+}

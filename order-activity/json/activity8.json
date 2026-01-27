@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity8/intro.webp",
+    "audio": "Audio/activity8/01_intro.mp3",
+    "alt": "Manku introducing activity 8"
+  },
+  "outro": {
+    "audio": "Audio/activity8/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["He", "is", "a", "police", "officer"],
+      "audioQuestion": "Audio/activity8/q1.mp3",
+      "audioCorrect": "Audio/activity8/c1.mp3",
+      "audioWrong": "Audio/activity8/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["He", "is", "a", "carpenter"],
+      "audioQuestion": "Audio/activity8/q2.mp3",
+      "audioCorrect": "Audio/activity8/c2.mp3",
+      "audioWrong": "Audio/activity8/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["He", "is", "a", "mechanic"],
+      "audioQuestion": "Audio/activity8/q3.mp3",
+      "audioCorrect": "Audio/activity8/c3.mp3",
+      "audioWrong": "Audio/activity8/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["He", "is", "a", "doctor"],
+      "audioQuestion": "Audio/activity8/q4.mp3",
+      "audioCorrect": "Audio/activity8/c4.mp3",
+      "audioWrong": "Audio/activity8/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Is", "she", "a", "teacher?"],
+      "audioQuestion": "Audio/activity8/q5.mp3",
+      "audioCorrect": "Audio/activity8/c5.mp3",
+      "audioWrong": "Audio/activity8/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["I'm", "an", "engineer"],
+      "audioQuestion": "Audio/activity8/q6.mp3",
+      "audioCorrect": "Audio/activity8/c6.mp3",
+      "audioWrong": "Audio/activity8/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["He", "is", "a", "truck", "driver"],
+      "audioQuestion": "Audio/activity8/q7.mp3",
+      "audioCorrect": "Audio/activity8/c7.mp3",
+      "audioWrong": "Audio/activity8/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Is", "he", "a", "carpenter?"],
+      "audioQuestion": "Audio/activity8/q8.mp3",
+      "audioCorrect": "Audio/activity8/c8.mp3",
+      "audioWrong": "Audio/activity8/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["They", "are", "mechanics"],
+      "audioQuestion": "Audio/activity8/q9.mp3",
+      "audioCorrect": "Audio/activity8/c9.mp3",
+      "audioWrong": "Audio/activity8/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Raju", "is", "a", "student"],
+      "audioQuestion": "Audio/activity8/q10.mp3",
+      "audioCorrect": "Audio/activity8/c10.mp3",
+      "audioWrong": "Audio/activity8/wrong.mp3"
+    }
+  ]
+}
