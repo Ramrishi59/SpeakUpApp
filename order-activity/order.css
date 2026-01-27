@@ -325,6 +325,18 @@ main#app {
   font-size: clamp(22px, 3svh, 28px);
 }
 
+.results-score {
+  position: absolute;
+  right: 12%;
+  top: 33%;
+  transform: translateY(-50%);
+  font-size: clamp(24px, 4svh, 40px);
+  font-weight: 900;
+  color: #b84c00;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
 .results-text {
   margin: 4px 0 6px;
   font-size: clamp(18px, 2.6svh, 22px);
@@ -332,9 +344,9 @@ main#app {
 
 .overlay-nav {
   position: absolute;
-  top: 68%;
+  bottom: 14%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   justify-content: center;
   z-index: 2;
   display: flex;

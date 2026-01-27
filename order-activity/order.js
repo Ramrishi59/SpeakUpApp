@@ -53,6 +53,8 @@ let wordBtns = [];
 // Results overlay
 const resultsOverlay = document.getElementById("resultsOverlay");
 const resultsText = document.getElementById("resultsText");
+const resultsImage = document.getElementById("resultsImage");
+const resultsScore = document.getElementById("resultsScore");
 const restartBtn = document.getElementById("restartBtn");
 const reviewBtn = document.getElementById("reviewBtn");
 
@@ -325,7 +327,15 @@ function handleWordTap(slot) {
 function showResults() {
   const total = ITEMS.length || 1;
   const pct = Math.round((score / total) * 100);
-  resultsText.textContent = `You built ${score} out of ${total} sentences correctly (${pct}%).`;
+  if (resultsScore) {
+    resultsScore.textContent = `${score}/${total}`;
+  }
+  if (resultsImage) {
+    resultsImage.src = score <= 8 ? "Images/score2.webp" : "Images/score.webp";
+  }
+  if (resultsText) {
+    resultsText.textContent = `You built ${score} out of ${total} sentences correctly (${pct}%).`;
+  }
 
   const revealResults = () => {
     resultsOverlay.classList.remove("hidden");
