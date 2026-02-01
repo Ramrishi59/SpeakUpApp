@@ -94,6 +94,21 @@ body {
     gap: 2px;
 }
 
+.refresh-button {
+    align-self: center;
+    padding: 6px 12px;
+    border-radius: 16px;
+    border: 1px solid #c9d3ff;
+    background: #f4f7ff;
+    color: #1f3a93;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.refresh-button:active {
+    transform: translateY(1px);
+}
+
 .back-button.hidden {
     display: none;
 }

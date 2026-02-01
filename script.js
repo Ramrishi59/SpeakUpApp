@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const searchLabel = document.querySelector('.search-label');
   const searchBar = document.querySelector('.search-bar');
   const searchIcon = document.querySelector('.search-icon');
+  const refreshButton = document.querySelector('.refresh-button');
   const optionsSection = document.querySelector('.options-section');
   const backButton = document.createElement('button');
   backButton.textContent = '‹ Back';
@@ -44,6 +45,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     setCategoryInUrl(returnCat);
   }
   if (returnCat) sessionStorage.removeItem('returnCategory');
+
+  refreshButton?.addEventListener('click', async () => {
+    try {
+      if (navigator.serviceWorker?.getRegistration) {
+        const reg = await navigator.serviceWorker.getRegistration();
+        reg?.waiting?.postMessage({ type: 'SKIP_WAITING' });
+        reg?.update?.();
+      }
+    } catch {}
+    window.location.reload();
+  });
 
   const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
 
@@ -82,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // -------------------------------
 async function loadDashboardLessons() {
   try {
-    const res = await fetch('units/manifest.json?v=4'); // bump version when you update
+    const res = await fetch('units/manifest.json?v=6'); // bump version when you update
     if (!res.ok) throw new Error('Failed to load manifest.json');
     const { cards } = await res.json();
 
