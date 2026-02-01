@@ -3,7 +3,7 @@
   "cards": [
     {
       "id": "order-activity1",
-      "title": "Order Quiz-1",
+      "title": "Make the sentence-1",
       "description": "activity",
       "thumbnail": "order-activity/Images/score.webp",
       "route": "order-activity/order.html?activity=activity1",
@@ -11,7 +11,7 @@
     },
     {
       "id": "order-activity2",
-      "title": "Order Quiz-2",
+      "title": "Make the sentence-2",
       "description": "activity",
       "thumbnail": "order-activity/Images/score.webp",
       "route": "order-activity/order.html?activity=activity2",
@@ -19,7 +19,7 @@
     },
     {
       "id": "order-activity3",
-      "title": "Order Quiz-3",
+      "title": "Make the sentence-3",
       "description": "activity",
       "thumbnail": "order-activity/Images/score.webp",
       "route": "order-activity/order.html?activity=activity3",
@@ -27,7 +27,7 @@
     },
     {
       "id": "order-activity4",
-      "title": "Order Quiz-4",
+      "title": "Make the sentence-4",
       "description": "activity",
       "thumbnail": "order-activity/Images/score.webp",
       "route": "order-activity/order.html?activity=activity4",
@@ -35,7 +35,7 @@
     },
     {
       "id": "order-activity5",
-      "title": "Order Quiz-5",
+      "title": "Make the sentence-5",
       "description": "activity",
       "thumbnail": "order-activity/Images/score.webp",
       "route": "order-activity/order.html?activity=activity5",
@@ -43,7 +43,7 @@
     },
     {
       "id": "order-activity6",
-      "title": "Order Quiz-6",
+      "title": "Make the sentence-6",
       "description": "activity",
       "thumbnail": "order-activity/Images/score.webp",
       "route": "order-activity/order.html?activity=activity6",
@@ -51,7 +51,7 @@
     },
     {
       "id": "order-activity7",
-      "title": "Order Quiz-7",
+      "title": "Make the sentence-7",
       "description": "activity",
       "thumbnail": "order-activity/Images/score.webp",
       "route": "order-activity/order.html?activity=activity7",
@@ -59,7 +59,7 @@
     },
     {
       "id": "order-activity8",
-      "title": "Order Quiz-8",
+      "title": "Make the sentence-8",
       "description": "activity",
       "thumbnail": "order-activity/Images/score.webp",
       "route": "order-activity/order.html?activity=activity8",
@@ -67,7 +67,7 @@
     },
     {
       "id": "order-activity9",
-      "title": "Order Quiz-9",
+      "title": "Make the sentence-9",
       "description": "activity",
       "thumbnail": "order-activity/Images/score.webp",
       "route": "order-activity/order.html?activity=activity9",
