@@ -109,6 +109,8 @@ function shuffle3() {
 
 // Single shared audio for SFX (question / correct / wrong)
 const sfx = new Audio();
+const correctAudio = new Audio();
+correctAudio.preload = "auto";
 const RIGHT_SFX = "effects/Right.mp3";
 const WRONG_SFX = "effects/Wrong.mp3";
 const CLAP_SFX = "effects/Clap.mp3";
@@ -190,6 +192,12 @@ function render(i) {
   if (it.audioQuestion) {
     playAudio(it.audioQuestion);
   }
+  if (it.audioCorrect) {
+    correctAudio.src = it.audioCorrect;
+    correctAudio.currentTime = 0;
+  } else {
+    correctAudio.removeAttribute("src");
+  }
 
 }
 
@@ -235,11 +243,17 @@ function onChoose(slot) {
       }
     };
     playAudio(RIGHT_SFX, () => {
-      if (it.audioCorrect) {
-        playAudio(it.audioCorrect, advanceAfterAudio);
-      } else {
+      if (!it.audioCorrect) {
         setTimeout(advanceAfterAudio, 400);
+        return;
       }
+      correctAudio.onended = () => {
+        correctAudio.onended = null;
+        advanceAfterAudio();
+      };
+      correctAudio.play().catch(() => {
+        advanceAfterAudio();
+      });
     });
 
     answered = true;
