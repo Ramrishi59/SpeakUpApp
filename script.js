@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // -------------------------------
 async function loadDashboardLessons() {
   try {
-    const res = await fetch('units/manifest.json?v=6'); // bump version when you update
+    const res = await fetch('units/manifest.json?v=7'); // bump version when you update
     if (!res.ok) throw new Error('Failed to load manifest.json');
     const { cards } = await res.json();
 
@@ -162,7 +162,7 @@ function buildCategories() {
   }
 
   // Build collection cards with preferred ordering
-  const preferredOrder = ['choose', 'units'];
+  const preferredOrder = ['units', 'choose'];
   const otherCats = Array.from(categories.keys()).filter(c => !preferredOrder.includes(c) && c !== 'other');
   const orderedCats = [...preferredOrder, ...otherCats];
 
