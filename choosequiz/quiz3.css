@@ -44,13 +44,13 @@ body {
   }
   
   .pill {
-    background: #fff700;
+    background: #0fa1db;
     padding: 10px 38px;
     border-radius: 999px;
     font-weight: 900;
     box-shadow: var(--shadow);
     font-size: clamp(18px, 2.6svh, 22px);
-    color: #0b0b0b;
+    color: #ffffff;
   }
   
   /* Layout */

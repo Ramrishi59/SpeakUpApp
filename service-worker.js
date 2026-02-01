@@ -1,4 +1,4 @@
-const CACHE_NAME = 'speakupapp-cache-v6';
+const CACHE_NAME = 'speakupapp-cache-v7';
 
 const urlsToCache = [
   './',

@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // -------------------------------
 async function loadDashboardLessons() {
   try {
-    const res = await fetch('units/manifest.json?v=1'); // bump version when you update
+    const res = await fetch('units/manifest.json?v=2'); // bump version when you update
     if (!res.ok) throw new Error('Failed to load manifest.json');
     const { cards } = await res.json();
 
@@ -111,7 +111,7 @@ function deriveCategory(card) {
 }
 
 function labelizeCategory(cat) {
-  if (cat === 'choose') return 'Choose Quiz';
+  if (cat === 'choose') return 'Choose the right option';
   if (cat === 'units') return 'Units';
   if (cat === 'practice') return 'Practice';
   return cat.charAt(0).toUpperCase() + cat.slice(1);
