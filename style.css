@@ -200,6 +200,7 @@ body {
     height: 60px;
     border-radius: 55px; /* Slightly rounded corners for images */
     object-fit: cover; /* Ensures image covers the area without distortion */
+    transform: scale(1);
     margin-right: 15px;
 }
 
