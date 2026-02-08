@@ -6,7 +6,7 @@
   "words": [
     { "image": "Images/Unit5/1.webp", "audio": "Audio/Unit5/01_Chapter 1.mp3" },
     { "image": "Images/Unit5/2.webp", "audio": "Audio/Unit5/02_Chapter 1.mp3" },
-    { "image": "Images/Unit5/3.webp", "audio": "Audio/intro2/looklistenrepeat.mp3" },
+    { "image": "Images/repeating_assets/looklisten.webp", "audio": "Audio/intro2/looklistenrepeat.mp3" },
 
     { "text": "Helicopter.", "image": "Images/Unit5/4.webp",  "audio": "Audio/Unit5/04_Chapter 1.mp3" },
     { "text": "Bridge.",     "image": "Images/Unit5/5.webp",  "audio": "Audio/Unit5/05_Chapter 1.mp3" },

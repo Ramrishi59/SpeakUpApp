@@ -5,7 +5,7 @@
   "thumbnail": "Images/Unit19/unit19_thumbnail.jpg",
   "words": [
     { "image": "Images/Unit19/1.webp", "audio": "Audio/Unit19/01_Chapter 1.mp3", "text": "" },
-    { "image": "Images/Unit19/2.webp", "audio": "Audio/intro2/looklistenrepeat.mp3", "text": "" },
+    { "image": "Images/repeating_assets/looklisten.webp", "audio": "Audio/intro2/looklistenrepeat.mp3", "text": "" },
     { "image": "Images/Unit19/3.webp", "audio": "Audio/Unit19/03_Chapter 1.mp3", "text": "" },
     { "image": "Images/Unit19/4.webp", "audio": "Audio/Unit19/04_Chapter 1.mp3", "text": "" },
     { "image": "Images/Unit19/5.webp", "audio": "Audio/Unit19/05_Chapter 1.mp3", "text": "" },
