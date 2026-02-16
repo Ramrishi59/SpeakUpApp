@@ -198,6 +198,23 @@ main#app {
 
 }
 
+.word-grid{
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+/* IMPORTANT: keep text inside the tile */
+.word-btn{
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;            /* allows shrinking inside grid */
+  overflow: hidden;        /* hides any spill */
+  text-overflow: ellipsis; /* shows ... */
+  white-space: nowrap;     /* stays on one line */
+}
+
+
 .word-btn.long-word {
   padding: 12px 18px;
   grid-column: span 2;
