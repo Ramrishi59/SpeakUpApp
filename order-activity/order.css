@@ -152,14 +152,13 @@ main#app {
 }
 
 /* 4-word grid */
-.word-grid {
-  grid-area: choices;
+.word-grid{
   display: grid;
-  --gap: 10px;
-
-grid-template-columns: repeat(4, 1fr);
-
+  gap: 14px; /* your safe distance */
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
 }
+
+
 
 .word-grid.compact .word-btn {
   min-height: 64px;
@@ -193,6 +192,9 @@ grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   transition: transform .08s ease, box-shadow .12s ease, background .12s ease, outline .12s ease;
   white-space: nowrap;
+
+  width: 100%;
+  max-width: 100%;
 
 }
 
