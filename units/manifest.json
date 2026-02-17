@@ -73,6 +73,62 @@
       "thumbnail": "order-activity/Images/score.webp"
     }, 
     {
+      "category": "order", 
+      "description": "activity", 
+      "title": "Make the sentence-10", 
+      "route": "order-activity/order.html?activity=activity10", 
+      "id": "order-activity10", 
+      "thumbnail": "order-activity/Images/score.webp"
+    }, 
+    {
+      "category": "order", 
+      "description": "activity", 
+      "title": "Make the sentence-11", 
+      "route": "order-activity/order.html?activity=activity11", 
+      "id": "order-activity11", 
+      "thumbnail": "order-activity/Images/score.webp"
+    }, 
+    {
+      "category": "order", 
+      "description": "activity", 
+      "title": "Make the sentence-12", 
+      "route": "order-activity/order.html?activity=activity12", 
+      "id": "order-activity12", 
+      "thumbnail": "order-activity/Images/score.webp"
+    }, 
+    {
+      "category": "order", 
+      "description": "activity", 
+      "title": "Make the sentence-13", 
+      "route": "order-activity/order.html?activity=activity13", 
+      "id": "order-activity13", 
+      "thumbnail": "order-activity/Images/score.webp"
+    }, 
+    {
+      "category": "order", 
+      "description": "activity", 
+      "title": "Make the sentence-14", 
+      "route": "order-activity/order.html?activity=activity14", 
+      "id": "order-activity14", 
+      "thumbnail": "order-activity/Images/score.webp"
+    }, 
+    {
+      "category": "order", 
+      "description": "activity", 
+      "title": "Make the sentence-15", 
+      "route": "order-activity/order.html?activity=activity15", 
+      "id": "order-activity15", 
+      "thumbnail": "order-activity/Images/score.webp"
+    }, 
+    {
+      "category": "order", 
+      "description": "activity", 
+      "title": "Make the sentence-16", 
+      "route": "order-activity/order.html?activity=activity16", 
+      "id": "order-activity16", 
+      "thumbnail": "order-activity/Images/score.webp"
+    }, 
+    {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity29", 

@@ -1,0 +1,83 @@
+{
+    "intro": {
+      "image": "Images/activity12/intro.webp",
+      "audio": "Audio/activity12/01_intro.mp3",
+      "alt": "Manku introducing activity 12"
+    },
+    "outro": {
+      "audio": "Audio/activity12/99_outro.mp3"
+    },
+    "items": [
+      {
+        "question": "Make the sentence.",
+        "words": ["Whose", "car", "is", "pink?"],
+        "audioQuestion": "Audio/activity12/q1.mp3",
+        "audioCorrect": "Audio/activity12/c1.mp3",
+        "audioWrong": "Audio/activity12/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Is", "Raju's", "car", "green?"],
+        "audioQuestion": "Audio/activity12/q2.mp3",
+        "audioCorrect": "Audio/activity12/c2.mp3",
+        "audioWrong": "Audio/activity12/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Is", "John's", "kite", "red?"],
+        "audioQuestion": "Audio/activity12/q3.mp3",
+        "audioCorrect": "Audio/activity12/c3.mp3",
+        "audioWrong": "Audio/activity12/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["What", "colour", "is", "Saira's", "kite?"],
+        "audioQuestion": "Audio/activity12/q4.mp3",
+        "audioCorrect": "Audio/activity12/c4.mp3",
+        "audioWrong": "Audio/activity12/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["What", "colour", "is", "Nithin's", "speaker?"],
+        "audioQuestion": "Audio/activity12/q5.mp3",
+        "audioCorrect": "Audio/activity12/c5.mp3",
+        "audioWrong": "Audio/activity12/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["What", "colour", "is", "this", "watch?"],
+        "audioQuestion": "Audio/activity12/q6.mp3",
+        "audioCorrect": "Audio/activity12/c6.mp3",
+        "audioWrong": "Audio/activity12/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Whose", "watch", "is", "this?"],
+        "audioQuestion": "Audio/activity12/q7.mp3",
+        "audioCorrect": "Audio/activity12/c7.mp3",
+        "audioWrong": "Audio/activity12/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Whose", "is", "that?"],
+        "audioQuestion": "Audio/activity12/q8.mp3",
+        "audioCorrect": "Audio/activity12/c8.mp3",
+        "audioWrong": "Audio/activity12/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Are", "they", "black", "and", "white?"],
+        "audioQuestion": "Audio/activity12/q9.mp3",
+        "audioCorrect": "Audio/activity12/c9.mp3",
+        "audioWrong": "Audio/activity12/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["They", "are", "black", "and", "blue"],
+        "audioQuestion": "Audio/activity12/q10.mp3",
+        "audioCorrect": "Audio/activity12/c10.mp3",
+        "audioWrong": "Audio/activity12/wrong.mp3"
+      }
+    ]
+  }
+  

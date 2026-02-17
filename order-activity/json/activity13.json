@@ -1,0 +1,83 @@
+{
+    "intro": {
+      "image": "Images/activity13/intro.webp",
+      "audio": "Audio/activity13/01_intro.mp3",
+      "alt": "Manku introducing activity 13"
+    },
+    "outro": {
+      "audio": "Audio/activity13/99_outro.mp3"
+    },
+    "items": [
+      {
+        "question": "Make the sentence.",
+        "words": ["I'm", "ten", "years", "old"],
+        "audioQuestion": "Audio/activity13/q1.mp3",
+        "audioCorrect": "Audio/activity13/c1.mp3",
+        "audioWrong": "Audio/activity13/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["How", "old", "are", "you?"],
+        "audioQuestion": "Audio/activity13/q2.mp3",
+        "audioCorrect": "Audio/activity13/c2.mp3",
+        "audioWrong": "Audio/activity13/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["How", "old", "is", "your", "father?"],
+        "audioQuestion": "Audio/activity13/q3.mp3",
+        "audioCorrect": "Audio/activity13/c3.mp3",
+        "audioWrong": "Audio/activity13/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["How", "old", "is", "your", "mother?"],
+        "audioQuestion": "Audio/activity13/q4.mp3",
+        "audioCorrect": "Audio/activity13/c4.mp3",
+        "audioWrong": "Audio/activity13/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["How", "old", "is", "your", "sister?"],
+        "audioQuestion": "Audio/activity13/q5.mp3",
+        "audioCorrect": "Audio/activity13/c5.mp3",
+        "audioWrong": "Audio/activity13/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Her", "brother", "is", "ten", "years", "old"],
+        "audioQuestion": "Audio/activity13/q6.mp3",
+        "audioCorrect": "Audio/activity13/c6.mp3",
+        "audioWrong": "Audio/activity13/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["My", "grandmother", "is", "sixty", "years", "old"],
+        "audioQuestion": "Audio/activity13/q7.mp3",
+        "audioCorrect": "Audio/activity13/c7.mp3",
+        "audioWrong": "Audio/activity13/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["How", "old", "is", "your", "mom?"],
+        "audioQuestion": "Audio/activity13/q8.mp3",
+        "audioCorrect": "Audio/activity13/c8.mp3",
+        "audioWrong": "Audio/activity13/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["I'm", "ten", "years", "old"],
+        "audioQuestion": "Audio/activity13/q9.mp3",
+        "audioCorrect": "Audio/activity13/c9.mp3",
+        "audioWrong": "Audio/activity13/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["He", "is", "nine", "years", "old"],
+        "audioQuestion": "Audio/activity13/q10.mp3",
+        "audioCorrect": "Audio/activity13/c10.mp3",
+        "audioWrong": "Audio/activity13/wrong.mp3"
+      }
+    ]
+  }
+  

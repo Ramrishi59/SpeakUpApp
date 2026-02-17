@@ -1,0 +1,83 @@
+{
+    "intro": {
+      "image": "Images/activity10/intro.webp",
+      "audio": "Audio/activity10/01_intro.mp3",
+      "alt": "Manku introducing activity 10"
+    },
+    "outro": {
+      "audio": "Audio/activity10/99_outro.mp3"
+    },
+    "items": [
+      {
+        "question": "Make the sentence.",
+        "words": ["Where", "is", "the", "kite?"],
+        "audioQuestion": "Audio/activity10/q1.mp3",
+        "audioCorrect": "Audio/activity10/c1.mp3",
+        "audioWrong": "Audio/activity10/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["The", "squirrel", "is", "in", "the", "tree"],
+        "audioQuestion": "Audio/activity10/q2.mp3",
+        "audioCorrect": "Audio/activity10/c2.mp3",
+        "audioWrong": "Audio/activity10/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["The", "goat", "is", "under", "the", "tree"],
+        "audioQuestion": "Audio/activity10/q3.mp3",
+        "audioCorrect": "Audio/activity10/c3.mp3",
+        "audioWrong": "Audio/activity10/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["The", "alarm", "clock", "is", "on", "the", "fridge"],
+        "audioQuestion": "Audio/activity10/q4.mp3",
+        "audioCorrect": "Audio/activity10/c4.mp3",
+        "audioWrong": "Audio/activity10/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Where", "is", "the", "basket?"],
+        "audioQuestion": "Audio/activity10/q5.mp3",
+        "audioCorrect": "Audio/activity10/c5.mp3",
+        "audioWrong": "Audio/activity10/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Is", "the", "ball", "on", "the", "table?"],
+        "audioQuestion": "Audio/activity10/q6.mp3",
+        "audioCorrect": "Audio/activity10/c6.mp3",
+        "audioWrong": "Audio/activity10/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["What", "colour", "is", "the", "ball?"],
+        "audioQuestion": "Audio/activity10/q7.mp3",
+        "audioCorrect": "Audio/activity10/c7.mp3",
+        "audioWrong": "Audio/activity10/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["The", "coconuts", "are", "in", "the", "basket"],
+        "audioQuestion": "Audio/activity10/q8.mp3",
+        "audioCorrect": "Audio/activity10/c8.mp3",
+        "audioWrong": "Audio/activity10/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["The", "cat", "is", "in", "the", "box"],
+        "audioQuestion": "Audio/activity10/q9.mp3",
+        "audioCorrect": "Audio/activity10/c9.mp3",
+        "audioWrong": "Audio/activity10/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["The", "pineapples", "are", "in", "the", "table"],
+        "audioQuestion": "Audio/activity10/q10.mp3",
+        "audioCorrect": "Audio/activity10/c10.mp3",
+        "audioWrong": "Audio/activity10/wrong.mp3"
+      }
+    ]
+  }
+  

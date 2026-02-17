@@ -1,0 +1,83 @@
+{
+    "intro": {
+      "image": "Images/activity11/intro.webp",
+      "audio": "Audio/activity11/01_intro.mp3",
+      "alt": "Manku introducing activity 11"
+    },
+    "outro": {
+      "audio": "Audio/activity11/99_outro.mp3"
+    },
+    "items": [
+      {
+        "question": "Make the sentence.",
+        "words": ["Raju", "is", "at", "the", "school", "gate"],
+        "audioQuestion": "Audio/activity11/q1.mp3",
+        "audioCorrect": "Audio/activity11/c1.mp3",
+        "audioWrong": "Audio/activity11/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["She", "is", "in", "the", "classroom"],
+        "audioQuestion": "Audio/activity11/q2.mp3",
+        "audioCorrect": "Audio/activity11/c2.mp3",
+        "audioWrong": "Audio/activity11/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Meera", "is", "at", "the", "bank"],
+        "audioQuestion": "Audio/activity11/q3.mp3",
+        "audioCorrect": "Audio/activity11/c3.mp3",
+        "audioWrong": "Audio/activity11/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["She", "is", "in", "the", "office"],
+        "audioQuestion": "Audio/activity11/q4.mp3",
+        "audioCorrect": "Audio/activity11/c4.mp3",
+        "audioWrong": "Audio/activity11/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Nithin", "is", "in", "the", "kitchen"],
+        "audioQuestion": "Audio/activity11/q5.mp3",
+        "audioCorrect": "Audio/activity11/c5.mp3",
+        "audioWrong": "Audio/activity11/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Where", "are", "they?"],
+        "audioQuestion": "Audio/activity11/q6.mp3",
+        "audioCorrect": "Audio/activity11/c6.mp3",
+        "audioWrong": "Audio/activity11/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["They", "are", "in", "the", "supermarket"],
+        "audioQuestion": "Audio/activity11/q7.mp3",
+        "audioCorrect": "Audio/activity11/c7.mp3",
+        "audioWrong": "Audio/activity11/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Where", "is", "she?"],
+        "audioQuestion": "Audio/activity11/q8.mp3",
+        "audioCorrect": "Audio/activity11/c8.mp3",
+        "audioWrong": "Audio/activity11/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["She", "is", "in", "the", "office"],
+        "audioQuestion": "Audio/activity11/q9.mp3",
+        "audioCorrect": "Audio/activity11/c9.mp3",
+        "audioWrong": "Audio/activity11/wrong.mp3"
+      },
+      {
+        "question": "Make the sentence.",
+        "words": ["Saira", "is", "in", "the", "hospital"],
+        "audioQuestion": "Audio/activity11/q10.mp3",
+        "audioCorrect": "Audio/activity11/c10.mp3",
+        "audioWrong": "Audio/activity11/wrong.mp3"
+      }
+    ]
+  }
+  
