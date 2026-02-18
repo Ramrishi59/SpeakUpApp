@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity19/intro.webp",
+    "audio": "Audio/activity19/01_intro.mp3",
+    "alt": "Manku introducing activity 19"
+  },
+  "outro": {
+    "audio": "Audio/activity19/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "first", "one", "is", "red"],
+      "audioQuestion": "Audio/activity19/q1.mp3",
+      "audioCorrect": "Audio/activity19/c1.mp3",
+      "audioWrong": "Audio/activity19/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "fourth", "one", "is", "yellow"],
+      "audioQuestion": "Audio/activity19/q2.mp3",
+      "audioCorrect": "Audio/activity19/c2.mp3",
+      "audioWrong": "Audio/activity19/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "fifth", "one", "is", "purple"],
+      "audioQuestion": "Audio/activity19/q3.mp3",
+      "audioCorrect": "Audio/activity19/c3.mp3",
+      "audioWrong": "Audio/activity19/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "last", "one", "is", "pink"],
+      "audioQuestion": "Audio/activity19/q4.mp3",
+      "audioCorrect": "Audio/activity19/c4.mp3",
+      "audioWrong": "Audio/activity19/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "blue", "one", "is", "small"],
+      "audioQuestion": "Audio/activity19/q5.mp3",
+      "audioCorrect": "Audio/activity19/c5.mp3",
+      "audioWrong": "Audio/activity19/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Which", "one", "is", "yellow?"],
+      "audioQuestion": "Audio/activity19/q6.mp3",
+      "audioCorrect": "Audio/activity19/c6.mp3",
+      "audioWrong": "Audio/activity19/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "red", "one", "is", "Reena's"],
+      "audioQuestion": "Audio/activity19/q7.mp3",
+      "audioCorrect": "Audio/activity19/c7.mp3",
+      "audioWrong": "Audio/activity19/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "first", "one", "is", "the", "honey", "bottle"],
+      "audioQuestion": "Audio/activity19/q8.mp3",
+      "audioCorrect": "Audio/activity19/c8.mp3",
+      "audioWrong": "Audio/activity19/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "first", "one", "is", "coffee"],
+      "audioQuestion": "Audio/activity19/q9.mp3",
+      "audioCorrect": "Audio/activity19/c9.mp3",
+      "audioWrong": "Audio/activity19/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["What", "is", "the", "second", "one?"],
+      "audioQuestion": "Audio/activity19/q10.mp3",
+      "audioCorrect": "Audio/activity19/c10.mp3",
+      "audioWrong": "Audio/activity19/wrong.mp3"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity20/intro.webp",
+    "audio": "Audio/activity20/01_intro.mp3",
+    "alt": "Manku introducing activity 20"
+  },
+  "outro": {
+    "audio": "Audio/activity20/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["I", "have", "a", "digital", "camera"],
+      "audioQuestion": "Audio/activity20/q1.mp3",
+      "audioCorrect": "Audio/activity20/c1.mp3",
+      "audioWrong": "Audio/activity20/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["You", "have", "a", "green", "watch"],
+      "audioQuestion": "Audio/activity20/q2.mp3",
+      "audioCorrect": "Audio/activity20/c2.mp3",
+      "audioWrong": "Audio/activity20/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["You", "have", "a", "pink", "bicycle"],
+      "audioQuestion": "Audio/activity20/q3.mp3",
+      "audioCorrect": "Audio/activity20/c3.mp3",
+      "audioWrong": "Audio/activity20/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["We", "have", "blue", "caps"],
+      "audioQuestion": "Audio/activity20/q4.mp3",
+      "audioCorrect": "Audio/activity20/c4.mp3",
+      "audioWrong": "Audio/activity20/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["I", "have", "a", "red", "bicycle"],
+      "audioQuestion": "Audio/activity20/q5.mp3",
+      "audioCorrect": "Audio/activity20/c5.mp3",
+      "audioWrong": "Audio/activity20/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["I", "don't", "like", "grapes"],
+      "audioQuestion": "Audio/activity20/q6.mp3",
+      "audioCorrect": "Audio/activity20/c6.mp3",
+      "audioWrong": "Audio/activity20/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["I", "like", "mangoes"],
+      "audioQuestion": "Audio/activity20/q7.mp3",
+      "audioCorrect": "Audio/activity20/c7.mp3",
+      "audioWrong": "Audio/activity20/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["We", "like", "watermelons"],
+      "audioQuestion": "Audio/activity20/q8.mp3",
+      "audioCorrect": "Audio/activity20/c8.mp3",
+      "audioWrong": "Audio/activity20/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["We", "like", "movies"],
+      "audioQuestion": "Audio/activity20/q9.mp3",
+      "audioCorrect": "Audio/activity20/c9.mp3",
+      "audioWrong": "Audio/activity20/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["I", "like", "orange", "juice", "too"],
+      "audioQuestion": "Audio/activity20/q10.mp3",
+      "audioCorrect": "Audio/activity20/c10.mp3",
+      "audioWrong": "Audio/activity20/wrong.mp3"
+    }
+  ]
+}

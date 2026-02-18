@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity18/intro.webp",
+    "audio": "Audio/activity18/01_intro.mp3",
+    "alt": "Manku introducing activity 18"
+  },
+  "outro": {
+    "audio": "Audio/activity18/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["He", "is", "a", "tall", "man"],
+      "audioQuestion": "Audio/activity18/q1.mp3",
+      "audioCorrect": "Audio/activity18/c1.mp3",
+      "audioWrong": "Audio/activity18/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["She", "is", "a", "short", "woman"],
+      "audioQuestion": "Audio/activity18/q2.mp3",
+      "audioCorrect": "Audio/activity18/c2.mp3",
+      "audioWrong": "Audio/activity18/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["She", "is", "a", "slender", "girl"],
+      "audioQuestion": "Audio/activity18/q3.mp3",
+      "audioCorrect": "Audio/activity18/c3.mp3",
+      "audioWrong": "Audio/activity18/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "green", "ruler", "is", "short"],
+      "audioQuestion": "Audio/activity18/q4.mp3",
+      "audioCorrect": "Audio/activity18/c4.mp3",
+      "audioWrong": "Audio/activity18/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["It", "is", "a", "dirty", "shirt"],
+      "audioQuestion": "Audio/activity18/q5.mp3",
+      "audioCorrect": "Audio/activity18/c5.mp3",
+      "audioWrong": "Audio/activity18/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "tea", "is", "hot"],
+      "audioQuestion": "Audio/activity18/q6.mp3",
+      "audioCorrect": "Audio/activity18/c6.mp3",
+      "audioWrong": "Audio/activity18/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["He", "is", "an", "old", "man"],
+      "audioQuestion": "Audio/activity18/q7.mp3",
+      "audioCorrect": "Audio/activity18/c7.mp3",
+      "audioWrong": "Audio/activity18/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["She", "is", "a", "movie", "star"],
+      "audioQuestion": "Audio/activity18/q8.mp3",
+      "audioCorrect": "Audio/activity18/c8.mp3",
+      "audioWrong": "Audio/activity18/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["She", "is", "not", "fat"],
+      "audioQuestion": "Audio/activity18/q9.mp3",
+      "audioCorrect": "Audio/activity18/c9.mp3",
+      "audioWrong": "Audio/activity18/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["She", "is", "an", "old", "ugly", "witch"],
+      "audioQuestion": "Audio/activity18/q10.mp3",
+      "audioCorrect": "Audio/activity18/c10.mp3",
+      "audioWrong": "Audio/activity18/wrong.mp3"
+    }
+  ]
+}

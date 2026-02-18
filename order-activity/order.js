@@ -164,6 +164,8 @@ const sfx = new Audio();
 const RIGHT_SFX = "../choosequiz/effects/Right.mp3";
 const WRONG_SFX = "../choosequiz/effects/Wrong.mp3";
 const CLAP_SFX = "../choosequiz/effects/Clap.mp3";
+const NICE_EFFORT_SFX = "Audio/effects/nice_effort.mp3";
+const EXCELLENT_SFX = "Audio/effects/excellent_above.mp3";
 
 function vibrate(pattern) {
   if (!navigator.vibrate) return;
@@ -341,7 +343,10 @@ function showResults() {
     resultsOverlay.classList.remove("hidden");
     document.body.classList.add("overlay-open");
     reviewBtn?.focus();
-    playAudio(CLAP_SFX);
+    const resultSfx = score >= 8 ? EXCELLENT_SFX : NICE_EFFORT_SFX;
+    playAudio(resultSfx, () => {
+      playAudio(CLAP_SFX);
+    });
     popConfetti();
     pill?.classList.add("hidden");
   };

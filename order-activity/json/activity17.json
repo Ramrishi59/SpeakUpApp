@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity17/intro.webp",
+    "audio": "Audio/activity17/01_intro.mp3",
+    "alt": "Manku introducing activity 17"
+  },
+  "outro": {
+    "audio": "Audio/activity17/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["What's", "the", "weather", "like?"],
+      "audioQuestion": "Audio/activity17/q1.mp3",
+      "audioCorrect": "Audio/activity17/c1.mp3",
+      "audioWrong": "Audio/activity17/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "wind", "is", "blowing"],
+      "audioQuestion": "Audio/activity17/q2.mp3",
+      "audioCorrect": "Audio/activity17/c2.mp3",
+      "audioWrong": "Audio/activity17/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["It's", "not", "sunny"],
+      "audioQuestion": "Audio/activity17/q3.mp3",
+      "audioCorrect": "Audio/activity17/c3.mp3",
+      "audioWrong": "Audio/activity17/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "sun", "is", "shining"],
+      "audioQuestion": "Audio/activity17/q4.mp3",
+      "audioCorrect": "Audio/activity17/c4.mp3",
+      "audioWrong": "Audio/activity17/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["It's", "a", "rainy", "day"],
+      "audioQuestion": "Audio/activity17/q5.mp3",
+      "audioCorrect": "Audio/activity17/c5.mp3",
+      "audioWrong": "Audio/activity17/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["What", "month", "is", "it?"],
+      "audioQuestion": "Audio/activity17/q6.mp3",
+      "audioCorrect": "Audio/activity17/c6.mp3",
+      "audioWrong": "Audio/activity17/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["What", "day", "is", "it", "today?"],
+      "audioQuestion": "Audio/activity17/q7.mp3",
+      "audioCorrect": "Audio/activity17/c7.mp3",
+      "audioWrong": "Audio/activity17/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["What", "is", "today's", "date?"],
+      "audioQuestion": "Audio/activity17/q8.mp3",
+      "audioCorrect": "Audio/activity17/c8.mp3",
+      "audioWrong": "Audio/activity17/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["It's", "the", "first", "of", "April"],
+      "audioQuestion": "Audio/activity17/q9.mp3",
+      "audioCorrect": "Audio/activity17/c9.mp3",
+      "audioWrong": "Audio/activity17/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["It's", "the", "fifteenth", "of", "August"],
+      "audioQuestion": "Audio/activity17/q10.mp3",
+      "audioCorrect": "Audio/activity17/c10.mp3",
+      "audioWrong": "Audio/activity17/wrong.mp3"
+    }
+  ]
+}

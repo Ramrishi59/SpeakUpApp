@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity24/intro.webp",
+    "audio": "Audio/activity24/01_intro.mp3",
+    "alt": "Manku introducing activity 24"
+  },
+  "outro": {
+    "audio": "Audio/activity24/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["What", "are", "you", "doing?"],
+      "audioQuestion": "Audio/activity24/q1.mp3",
+      "audioCorrect": "Audio/activity24/c1.mp3",
+      "audioWrong": "Audio/activity24/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["We", "are", "drinking"],
+      "audioQuestion": "Audio/activity24/q2.mp3",
+      "audioCorrect": "Audio/activity24/c2.mp3",
+      "audioWrong": "Audio/activity24/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Are", "they", "drinking?"],
+      "audioQuestion": "Audio/activity24/q3.mp3",
+      "audioCorrect": "Audio/activity24/c3.mp3",
+      "audioWrong": "Audio/activity24/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["What", "is", "he", "doing?"],
+      "audioQuestion": "Audio/activity24/q4.mp3",
+      "audioCorrect": "Audio/activity24/c4.mp3",
+      "audioWrong": "Audio/activity24/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["What", "is", "she", "doing?"],
+      "audioQuestion": "Audio/activity24/q5.mp3",
+      "audioCorrect": "Audio/activity24/c5.mp3",
+      "audioWrong": "Audio/activity24/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Is", "the", "baby", "crying?"],
+      "audioQuestion": "Audio/activity24/q6.mp3",
+      "audioCorrect": "Audio/activity24/c6.mp3",
+      "audioWrong": "Audio/activity24/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Are", "you", "reading?"],
+      "audioQuestion": "Audio/activity24/q7.mp3",
+      "audioCorrect": "Audio/activity24/c7.mp3",
+      "audioWrong": "Audio/activity24/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["She", "is", "driving"],
+      "audioQuestion": "Audio/activity24/q8.mp3",
+      "audioCorrect": "Audio/activity24/c8.mp3",
+      "audioWrong": "Audio/activity24/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Are", "they", "studying?"],
+      "audioQuestion": "Audio/activity24/q9.mp3",
+      "audioCorrect": "Audio/activity24/c9.mp3",
+      "audioWrong": "Audio/activity24/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["What", "are", "they", "doing?"],
+      "audioQuestion": "Audio/activity24/q10.mp3",
+      "audioCorrect": "Audio/activity24/c10.mp3",
+      "audioWrong": "Audio/activity24/wrong.mp3"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "image": "Images/activity23/intro.webp",
+    "audio": "Audio/activity23/01_intro.mp3",
+    "alt": "Manku introducing activity 23"
+  },
+  "outro": {
+    "audio": "Audio/activity23/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["You", "are", "sitting"],
+      "audioQuestion": "Audio/activity23/q1.mp3",
+      "audioCorrect": "Audio/activity23/c1.mp3",
+      "audioWrong": "Audio/activity23/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["We", "are", "swimming"],
+      "audioQuestion": "Audio/activity23/q2.mp3",
+      "audioCorrect": "Audio/activity23/c2.mp3",
+      "audioWrong": "Audio/activity23/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["She", "is", "running"],
+      "audioQuestion": "Audio/activity23/q3.mp3",
+      "audioCorrect": "Audio/activity23/c3.mp3",
+      "audioWrong": "Audio/activity23/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "cat", "is", "sleeping"],
+      "audioQuestion": "Audio/activity23/q4.mp3",
+      "audioCorrect": "Audio/activity23/c4.mp3",
+      "audioWrong": "Audio/activity23/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "parrots", "are", "flying"],
+      "audioQuestion": "Audio/activity23/q5.mp3",
+      "audioCorrect": "Audio/activity23/c5.mp3",
+      "audioWrong": "Audio/activity23/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["They", "are", "fighting"],
+      "audioQuestion": "Audio/activity23/q6.mp3",
+      "audioCorrect": "Audio/activity23/c6.mp3",
+      "audioWrong": "Audio/activity23/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["He", "is", "pushing"],
+      "audioQuestion": "Audio/activity23/q7.mp3",
+      "audioCorrect": "Audio/activity23/c7.mp3",
+      "audioWrong": "Audio/activity23/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["He", "is", "juggling"],
+      "audioQuestion": "Audio/activity23/q8.mp3",
+      "audioCorrect": "Audio/activity23/c8.mp3",
+      "audioWrong": "Audio/activity23/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["She", "is", "mopping"],
+      "audioQuestion": "Audio/activity23/q9.mp3",
+      "audioCorrect": "Audio/activity23/c9.mp3",
+      "audioWrong": "Audio/activity23/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["The", "baby", "is", "crying"],
+      "audioQuestion": "Audio/activity23/q10.mp3",
+      "audioCorrect": "Audio/activity23/c10.mp3",
+      "audioWrong": "Audio/activity23/wrong.mp3"
+    }
+  ]
+}
