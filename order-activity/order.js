@@ -302,7 +302,6 @@ function handleWordTap(slot) {
 
   answered = true;
   vibrate(30);
-  popConfetti();
 
   const advance = () => {
     if (idx < ITEMS.length - 1) {
