@@ -6,7 +6,7 @@
   "words": [
     {
       "image": "Images/Unit2/1.webp",
-      "audio": "Audio/Unit2/intro.mp3"
+      "audio": "Audio/Unit2/01_Chapter 1.mp3"
     },
     {
       "image": "Images/Unit2/2.webp",
@@ -82,7 +82,7 @@
       "audio": "Audio/Unit2/16_Chapter 1.mp3"
     },
     {
-      "text": "an apple, an orange and a mug",
+      "text": "an apple, an orange and an egg",
       "image": "Images/Unit2/17.webp",
       "audio": "Audio/Unit2/17_Chapter 1.mp3"
     },
@@ -92,7 +92,6 @@
       "audio": "Audio/Unit2/18_Chapter 1.mp3"
     },
     {
-      "text": "Fantastic!",
       "image": "Images/Unit2/19.webp",
       "audio": "Audio/Unit2/19_Chapter 1.mp3"
     }
