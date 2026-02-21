@@ -68,113 +68,91 @@
     },
 
     {
-      "text": "He is Raju.",
+      "text": "He is Raju. He is a boy.",
       "image": "Images/Unit12/9.webp",
       "audio": "Audio/Unit12/14_Chapter 1.mp3"
     },
+
     {
-      "text": "He is a boy.",
-      "image": "Images/Unit12/9.webp",
+      "text": "She is Reena. She is a girl.",
+      "image": "Images/Unit12/10.webp",
       "audio": "Audio/Unit12/15_Chapter 1.mp3"
     },
 
     {
-      "text": "She is Reena.",
-      "image": "Images/Unit12/10.webp",
+      "text": "He is Nithin uncle. He is a man.",
+      "image": "Images/Unit12/11.webp",
       "audio": "Audio/Unit12/16_Chapter 1.mp3"
     },
     {
-      "text": "She is a girl.",
-      "image": "Images/Unit12/10.webp",
+      "text": "She is Meera aunty. She is a woman.",
+      "image": "Images/Unit12/12.webp",
       "audio": "Audio/Unit12/17_Chapter 1.mp3"
     },
 
     {
-      "text": "He is Nithin uncle.",
-      "image": "Images/Unit12/11.webp",
-      "audio": "Audio/Unit12/18_Chapter 1.mp3"
-    },
-    {
-      "text": "He is a man.",
-      "image": "Images/Unit12/11.webp",
-      "audio": "Audio/Unit12/19_Chapter 1.mp3"
-    },
-
-    {
-      "text": "She is Meera aunty.",
-      "image": "Images/Unit12/12.webp",
-      "audio": "Audio/Unit12/20_Chapter 1.mp3"
-    },
-    {
-      "text": "She is a woman.",
-      "image": "Images/Unit12/12.webp",
-      "audio": "Audio/Unit12/21_Chapter 1.mp3"
-    },
-
-    {
-      "text": "He is Thomas.",
+      "text": "He is John.",
       "image": "Images/Unit12/13.webp",
-      "audio": "Audio/Unit12/22_Chapter 1.mp3"
+      "audio": "Audio/Unit12/18_Chapter 1.mp3"
     },
     {
       "text": "Is he a boy?",
       "image": "Images/Unit12/13.webp",
-      "audio": "Audio/Unit12/23_Chapter 1.mp3"
+      "audio": "Audio/Unit12/19_Chapter 1.mp3"
     },
     {
       "text": "Yes, he is.",
       "image": "Images/Unit12/13.webp",
-      "audio": "Audio/Unit12/24_Chapter 1.mp3"
+      "audio": "Audio/Unit12/20_Chapter 1.mp3"
     },
 
     {
       "text": "Is Saira a boy?",
       "image": "Images/Unit12/14.webp",
-      "audio": "Audio/Unit12/25_Chapter 1.mp3"
+      "audio": "Audio/Unit12/21_Chapter 1.mp3"
     },
     {
       "text": "No, she is a girl.",
       "image": "Images/Unit12/14.webp",
+      "audio": "Audio/Unit12/22_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Is she Reena?",
+      "image": "Images/Unit12/15.webp",
+      "audio": "Audio/Unit12/23_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, she is.",
+      "image": "Images/Unit12/15.webp",
+      "audio": "Audio/Unit12/24_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Is he John?",
+      "image": "Images/Unit12/16.webp",
+      "audio": "Audio/Unit12/25_Chapter 1.mp3"
+    },
+    {
+      "text": "No, he is Raju.",
+      "image": "Images/Unit12/16.webp",
       "audio": "Audio/Unit12/26_Chapter 1.mp3"
     },
 
     {
       "text": "Is she Reena?",
-      "image": "Images/Unit12/15.webp",
+      "image": "Images/Unit12/17.webp",
       "audio": "Audio/Unit12/27_Chapter 1.mp3"
     },
     {
-      "text": "Yes, she is.",
-      "image": "Images/Unit12/15.webp",
+      "text": "No, she is Saira.",
+      "image": "Images/Unit12/17.webp",
       "audio": "Audio/Unit12/28_Chapter 1.mp3"
     },
 
     {
-      "text": "Is he Thomas?",
-      "image": "Images/Unit12/16.webp",
+      "image": "Images/Unit12/18.webp",
       "audio": "Audio/Unit12/29_Chapter 1.mp3"
-    },
-    {
-      "text": "No, he is Raju.",
-      "image": "Images/Unit12/16.webp",
-      "audio": "Audio/Unit12/30_Chapter 1.mp3"
-    },
-
-    {
-      "text": "Is she Reena?",
-      "image": "Images/Unit12/27.webp",
-      "audio": "Audio/Unit12/31_Chapter 1.mp3"
-    },
-    {
-      "text": "No, she is Saira.",
-      "image": "Images/Unit12/27.webp",
-      "audio": "Audio/Unit12/32_Chapter 1.mp3"
-    },
-
-    {
-      "text": "Great! See you in the next unit. Bye!",
-      "image": "Images/Unit12/29.webp",
-      "audio": "Audio/Unit12/33_Chapter 1.mp3"
     }
   ]
 }
