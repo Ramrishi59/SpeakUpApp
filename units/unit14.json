@@ -4,260 +4,77 @@
   "description": "Learn to ask and answer questions about colours using 'What colour is this?' and 'What colour is that?'.",
   "thumbnail": "Images/Unit14/what_colour_thumbnail.jpg",
   "words": [
-    {
-      "image": "Images/Unit14/1.webp",
-      "audio": "Audio/Unit14/01_Chapter 1.mp3"
-    },
-    {
-    
-      "image": "Images/repeating_assets/looklisten.webp",
-      "audio": "Audio/intro2/looklistenrepeat.mp3"
-    },
 
-    {
-      "text": "What colour is this?",
-      "image": "Images/Unit14/3.webp",
-      "audio": "Audio/Unit14/03_Chapter 1.mp3"
-    },
-    {
-      "text": "It's red.",
-      "image": "Images/repeating_assets/looklisten.webp",
-      "audio": "Audio/Unit14/04_Chapter 1.mp3"
-    },
+    { "image": "Images/Unit14/1.webp",  "audio": "Audio/Unit14/01_Chapter 1.mp3" },
+    { "image": "Images/Unit14/2.webp",  "audio": "Audio/Unit14/02_Chapter 1.mp3" },
+    { "image": "Images/Unit14/3.webp",  "audio": "Audio/Unit14/03_Chapter 1.mp3" },
 
-    {
-      "text": "What colour is this?",
-      "image": "Images/Unit14/4.webp",
-      "audio": "Audio/Unit14/05_Chapter 1.mp3"
-    },
-    {
-      "text": "It's blue.",
-      "image": "Images/Unit14/4.webp",
-      "audio": "Audio/Unit14/06_Chapter 1.mp3"
-    },
+    { "text": "What colour is this?", "image": "Images/Unit14/4.webp",  "audio": "Audio/Unit14/04_Chapter 1.mp3" },
+    { "text": "It's red.",            "image": "Images/Unit14/5.webp",  "audio": "Audio/Unit14/05_Chapter 1.mp3" },
 
-    {
-      "text": "What colour is this?",
-      "image": "Images/Unit14/5.webp",
-      "audio": "Audio/Unit14/07_Chapter 1.mp3"
-    },
-    {
-      "text": "It's yellow.",
-      "image": "Images/Unit14/5.webp",
-      "audio": "Audio/Unit14/08_Chapter 1.mp3"
-    },
+    { "text": "What colour is this?", "image": "Images/Unit14/6.webp",  "audio": "Audio/Unit14/06_Chapter 1.mp3" },
+    { "text": "It's blue.",           "image": "Images/Unit14/7.webp",  "audio": "Audio/Unit14/07_Chapter 1.mp3" },
 
-    {
-      "text": "What colour is this?",
-      "image": "Images/Unit14/6.webp",
-      "audio": "Audio/Unit14/09_Chapter 1.mp3"
-    },
-    {
-      "text": "It's black.",
-      "image": "Images/Unit14/6.webp",
-      "audio": "Audio/Unit14/10_Chapter 1.mp3"
-    },
+    { "text": "What colour is this?", "image": "Images/Unit14/8.webp",  "audio": "Audio/Unit14/08_Chapter 1.mp3" },
+    { "text": "It's yellow.",         "image": "Images/Unit14/9.webp",  "audio": "Audio/Unit14/09_Chapter 1.mp3" },
 
-    {
-      "text": "What colour is this?",
-      "image": "Images/Unit14/7.webp",
-      "audio": "Audio/Unit14/11_Chapter 1.mp3"
-    },
-    {
-      "text": "It's green.",
-      "image": "Images/Unit14/7.webp",
-      "audio": "Audio/Unit14/12_Chapter 1.mp3"
-    },
+    { "text": "What colour is this?", "image": "Images/Unit14/10.webp", "audio": "Audio/Unit14/10_Chapter 1.mp3" },
+    { "text": "It's black.",          "image": "Images/Unit14/11.webp", "audio": "Audio/Unit14/11_Chapter 1.mp3" },
 
-    {
-      "text": "What colour is this?",
-      "image": "Images/Unit14/8.webp",
-      "audio": "Audio/Unit14/13_Chapter 1.mp3"
-    },
-    {
-      "text": "It's pink.",
-      "image": "Images/Unit14/8.webp",
-      "audio": "Audio/Unit14/14_Chapter 1.mp3"
-    },
+    { "text": "What colour is this?", "image": "Images/Unit14/12.webp", "audio": "Audio/Unit14/12_Chapter 1.mp3" },
+    { "text": "It's green.",          "image": "Images/Unit14/13.webp", "audio": "Audio/Unit14/13_Chapter 1.mp3" },
 
-    {
-      "text": "What colour is that?",
-      "image": "Images/Unit14/9.webp",
-      "audio": "Audio/Unit14/15_Chapter 1.mp3"
-    },
-    {
-      "text": "That's red.",
-      "image": "Images/Unit14/9.webp",
-      "audio": "Audio/Unit14/16_Chapter 1.mp3"
-    },
+    { "text": "What colour is this?", "image": "Images/Unit14/14.webp", "audio": "Audio/Unit14/14_Chapter 1.mp3" },
+    { "text": "It's pink.",           "image": "Images/Unit14/15.webp", "audio": "Audio/Unit14/15_Chapter 1.mp3" },
 
-    {
-      "text": "What colour is that?",
-      "image": "Images/Unit14/10.webp",
-      "audio": "Audio/Unit14/17_Chapter 1.mp3"
-    },
-    {
-      "text": "That's yellow.",
-      "image": "Images/Unit14/10.webp",
-      "audio": "Audio/Unit14/18_Chapter 1.mp3"
-    },
+    { "text": "What colour is that?", "image": "Images/Unit14/16.webp", "audio": "Audio/Unit14/16_Chapter 1.mp3" },
+    { "text": "That's red.",          "image": "Images/Unit14/17.webp", "audio": "Audio/Unit14/17_Chapter 1.mp3" },
 
-    {
-      "text": "Is this pink?",
-      "image": "Images/Unit14/11.webp",
-      "audio": "Audio/Unit14/19_Chapter 1.mp3"
-    },
-    {
-      "text": "No, it's green.",
-      "image": "Images/Unit14/11.webp",
-      "audio": "Audio/Unit14/20_Chapter 1.mp3"
-    },
+    { "text": "What colour is that?", "image": "Images/Unit14/18.webp", "audio": "Audio/Unit14/18_Chapter 1.mp3" },
+    { "text": "That's yellow.",       "image": "Images/Unit14/19.webp", "audio": "Audio/Unit14/19_Chapter 1.mp3" },
 
-    {
-      "text": "Is that yellow?",
-      "image": "Images/Unit14/12.webp",
-      "audio": "Audio/Unit14/21_Chapter 1.mp3"
-    },
-    {
-      "text": "No, it's red.",
-      "image": "Images/Unit14/12.webp",
-      "audio": "Audio/Unit14/22_Chapter 1.mp3"
-    },
+    { "text": "Is this pink?",        "image": "Images/Unit14/20.webp", "audio": "Audio/Unit14/20_Chapter 1.mp3" },
+    { "text": "No, it's green.",      "image": "Images/Unit14/21.webp", "audio": "Audio/Unit14/21_Chapter 1.mp3" },
 
-    {
-      "text": "Is that blue?",
-      "image": "Images/Unit14/13.webp",
-      "audio": "Audio/Unit14/23_Chapter 1.mp3"
-    },
-    {
-      "text": "Yes, it is.",
-      "image": "Images/Unit14/13.webp",
-      "audio": "Audio/Unit14/24_Chapter 1.mp3"
-    },
+    { "text": "Is that yellow?",      "image": "Images/Unit14/22.webp", "audio": "Audio/Unit14/22_Chapter 1.mp3" },
+    { "text": "No, it's red.",        "image": "Images/Unit14/23.webp", "audio": "Audio/Unit14/23_Chapter 1.mp3" },
 
-    {
-      "text": "Is that black?",
-      "image": "Images/Unit14/14.webp",
-      "audio": "Audio/Unit14/25_Chapter 1.mp3"
-    },
-    {
-      "text": "No, it's green.",
-      "image": "Images/Unit14/14.webp",
-      "audio": "Audio/Unit14/26_Chapter 1.mp3"
-    },
+    { "text": "Is that blue?",        "image": "Images/Unit14/24.webp", "audio": "Audio/Unit14/24_Chapter 1.mp3" },
+    { "text": "Yes, it is.",          "image": "Images/Unit14/25.webp", "audio": "Audio/Unit14/25_Chapter 1.mp3" },
 
-    {
-      "text": "orange and yellow",
-      "image": "Images/Unit14/15.webp",
-      "audio": "Audio/Unit14/27_Chapter 1.mp3"
-    },
-    {
-      "text": "green and red",
-      "image": "Images/Unit14/16.webp",
-      "audio": "Audio/Unit14/28_Chapter 1.mp3"
-    },
-    {
-      "text": "black and white",
-      "image": "Images/Unit14/17.webp",
-      "audio": "Audio/Unit14/29_Chapter 1.mp3"
-    },
-    {
-      "text": "brown and yellow",
-      "image": "Images/Unit14/18.webp",
-      "audio": "Audio/Unit14/30_Chapter 1.mp3"
-    },
+    { "text": "Is that black?",       "image": "Images/Unit14/26.webp", "audio": "Audio/Unit14/26_Chapter 1.mp3" },
+    { "text": "No, it's green.",      "image": "Images/Unit14/27.webp", "audio": "Audio/Unit14/27_Chapter 1.mp3" },
 
-    {
-      "text": "Are they blue and yellow?",
-      "image": "Images/Unit14/19.webp",
-      "audio": "Audio/Unit14/31_Chapter 1.mp3"
-    },
-    {
-      "text": "No, they are red and black.",
-      "image": "Images/Unit14/19.webp",
-      "audio": "Audio/Unit14/32_Chapter 1.mp3"
-    },
+    { "text": "Orange and yellow",    "image": "Images/Unit14/28.webp", "audio": "Audio/Unit14/28_Chapter 1.mp3" },
+    { "text": "Green and red",        "image": "Images/Unit14/29.webp", "audio": "Audio/Unit14/29_Chapter 1.mp3" },
+    { "text": "Black and white",      "image": "Images/Unit14/30.webp", "audio": "Audio/Unit14/30_Chapter 1.mp3" },
+    { "text": "Brown and yellow",     "image": "Images/Unit14/31.webp", "audio": "Audio/Unit14/31_Chapter 1.mp3" },
 
-    {
-      "text": "Are they black and white?",
-      "image": "Images/Unit14/20.webp",
-      "audio": "Audio/Unit14/33_Chapter 1.mp3"
-    },
-    {
-      "text": "No, they are green and yellow.",
-      "image": "Images/Unit14/20.webp",
-      "audio": "Audio/Unit14/34_Chapter 1.mp3"
-    },
+    { "text": "Are they blue and yellow?",        "image": "Images/Unit14/32.webp", "audio": "Audio/Unit14/32_Chapter 1.mp3" },
+    { "text": "No, they are red and black.",      "image": "Images/Unit14/33.webp", "audio": "Audio/Unit14/33_Chapter 1.mp3" },
 
-    {
-      "text": "Are they pink and green?",
-      "image": "Images/Unit14/21.webp",
-      "audio": "Audio/Unit14/35_Chapter 1.mp3"
-    },
-    {
-      "text": "Yes, they are.",
-      "image": "Images/Unit14/21.webp",
-      "audio": "Audio/Unit14/36_Chapter 1.mp3"
-    },
+    { "text": "Are they black and white?",        "image": "Images/Unit14/34.webp", "audio": "Audio/Unit14/34_Chapter 1.mp3" },
+    { "text": "No, they are green and yellow.",   "image": "Images/Unit14/35.webp", "audio": "Audio/Unit14/35_Chapter 1.mp3" },
 
-    {
-      "text": "Are they red and green?",
-      "image": "Images/Unit14/22.webp",
-      "audio": "Audio/Unit14/37_Chapter 1.mp3"
-    },
-    {
-      "text": "No, they are yellow and purple.",
-      "image": "Images/Unit14/22.webp",
-      "audio": "Audio/Unit14/38_Chapter 1.mp3"
-    },
+    { "text": "Are they pink and green?",         "image": "Images/Unit14/36.webp", "audio": "Audio/Unit14/36_Chapter 1.mp3" },
+    { "text": "Yes, they are.",                   "image": "Images/Unit14/37.webp", "audio": "Audio/Unit14/37_Chapter 1.mp3" },
 
-    {
-      "text": "What colour is this backpack?",
-      "image": "Images/Unit14/23.webp",
-      "audio": "Audio/Unit14/39_Chapter 1.mp3"
-    },
-    {
-      "text": "It's red.",
-      "image": "Images/Unit14/23.webp",
-      "audio": "Audio/Unit14/40_Chapter 1.mp3"
-    },
+    { "text": "Are they red and green?",          "image": "Images/Unit14/38.webp", "audio": "Audio/Unit14/38_Chapter 1.mp3" },
+    { "text": "No, they are yellow and purple.",  "image": "Images/Unit14/39.webp", "audio": "Audio/Unit14/39_Chapter 1.mp3" },
 
-    {
-      "text": "What colour is this parrot?",
-      "image": "Images/Unit14/24.webp",
-      "audio": "Audio/Unit14/41_Chapter 1.mp3"
-    },
-    {
-      "text": "It's green.",
-      "image": "Images/Unit14/24.webp",
-      "audio": "Audio/Unit14/42_Chapter 1.mp3"
-    },
+    { "text": "What colour is this backpack?",    "image": "Images/Unit14/40.webp", "audio": "Audio/Unit14/40_Chapter 1.mp3" },
+    { "text": "It's red.",                        "image": "Images/Unit14/41.webp", "audio": "Audio/Unit14/41_Chapter 1.mp3" },
 
-    {
-      "text": "What colour are those cars?",
-      "image": "Images/Unit14/25.webp",
-      "audio": "Audio/Unit14/43_Chapter 1.mp3"
-    },
-    {
-      "text": "They are yellow.",
-      "image": "Images/Unit14/25.webp",
-      "audio": "Audio/Unit14/44_Chapter 1.mp3"
-    },
+    { "text": "What colour is this parrot?",      "image": "Images/Unit14/42.webp", "audio": "Audio/Unit14/42_Chapter 1.mp3" },
+    { "text": "It's green.",                      "image": "Images/Unit14/43.webp", "audio": "Audio/Unit14/43_Chapter 1.mp3" },
 
-    {
-      "text": "What colour are those mugs?",
-      "image": "Images/Unit14/26.webp",
-      "audio": "Audio/Unit14/45_Chapter 1.mp3"
-    },
-    {
-      "text": "They are red.",
-      "image": "Images/Unit14/26.webp",
-      "audio": "Audio/Unit14/46_Chapter 1.mp3"
-    },
+    { "text": "What colour are those cars?",      "image": "Images/Unit14/44.webp", "audio": "Audio/Unit14/44_Chapter 1.mp3" },
+    { "text": "They are yellow.",                 "image": "Images/Unit14/45.webp", "audio": "Audio/Unit14/45_Chapter 1.mp3" },
 
-    {
-      "image": "Images/Unit14/27.webp",
-      "audio": "Audio/Unit14/47_Chapter 1.mp3"
-    }
+    { "text": "What colour are those mugs?",      "image": "Images/Unit14/46.webp", "audio": "Audio/Unit14/46_Chapter 1.mp3" },
+    { "text": "They are red.",                    "image": "Images/Unit14/47.webp", "audio": "Audio/Unit14/47_Chapter 1.mp3" },
+
+    { "image": "Images/Unit14/48.webp", "audio": "Audio/Unit14/48_Chapter 1.mp3" }
+
   ]
 }
