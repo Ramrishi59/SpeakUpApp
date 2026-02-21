@@ -202,10 +202,19 @@ body.intro-mascot #wordImage{
   padding-top: 90px;
 
   border-radius:12px;
-  max-width:90%;
+  display:inline-block;
+  max-width: 90%;
   text-align:center;
-  white-space:normal;
+  white-space:nowrap;
+  text-wrap: balance;
   line-height:1.2;
+}
+
+@media (max-width: 600px){
+  #wordText{
+    max-width: 94%;
+    text-wrap: normal;
+  }
 }
 /* Exception: make word text smaller on the last slide (often used as an outro) */
 body.last-slide #wordText{
