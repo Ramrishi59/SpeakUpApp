@@ -49,5 +49,35 @@
 
     <p class="footer-note">No password needed. Check your inbox for the link.</p>
   </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-button" data-nav-target="lessons">
+      <img src="Images/Unit1/icon.png" alt="Lessons" />
+      <span>Lessons</span>
+    </button>
+    <button class="nav-button active" data-nav-target="login">
+      <img src="Images/Unit1/icon.png" alt="Log in" />
+      <span>Log in</span>
+    </button>
+    <button class="nav-button" data-nav-target="new-screen">
+      <img src="Images/Unit1/icon.png" alt="New Screen" />
+      <span>New Screen</span>
+    </button>
+  </nav>
+
+  <script>
+    document.querySelectorAll('.bottom-nav .nav-button').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.navTarget;
+        if (target === 'lessons') {
+          window.location.href = 'index.html';
+        } else if (target === 'login') {
+          window.location.href = 'login.html';
+        } else {
+          alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
