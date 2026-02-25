@@ -336,6 +336,8 @@ function buildCategories() {
         if (target === 'lessons') {
           // Always return to the dashboard
           window.location.href = 'index.html';
+        } else if (target === 'login') {
+          window.location.href = 'login.html';
         } else {
           alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
         }
