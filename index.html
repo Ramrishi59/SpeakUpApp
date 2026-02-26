@@ -18,18 +18,20 @@
             <div class="header-title">Lessons</div>
             <div class="notification-icon"></div> </header>
 
-        <main class="main-content">
-            <div class="options-section">
-                <h2>Choose a Lesson</h2>
-                <div class="search-bar">
-                    <input type="text" placeholder="Search" class="search-input">
-                    <span class="search-icon">🔍</span>
+        <main id="appRoot" class="main-content">
+            <div id="dashboard-screen">
+                <div class="options-section">
+                    <h2>Choose a Lesson</h2>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search" class="search-input">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <button class="refresh-button" type="button">Refresh</button>
                 </div>
-                <button class="refresh-button" type="button">Refresh</button>
-            </div>
 
-            <div class="lessons-list">
-                </div>
+                <div class="lessons-list">
+                    </div>
+            </div>
         </main>
 
         <nav class="bottom-nav">
@@ -48,6 +50,11 @@
         </nav>
     </div>
 
+    <script src="auth-mock.js"></script>
+    <script>
+      // This runs after auth-mock.js loads
+      if (!window.SUAuth) alert("SUAuth not loaded (auth-mock.js missing or error)");
+    </script>
     <script src="script.js"></script>
 
     <script>

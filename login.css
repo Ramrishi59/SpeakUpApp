@@ -147,6 +147,13 @@ body {
   gap: 14px;
 }
 
+.status-line {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 15px;
+}
+
 label {
   font-weight: 600;
   font-size: 14px;

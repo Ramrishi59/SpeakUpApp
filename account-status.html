@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpeakUpApp - Account Status</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="bg-shapes" aria-hidden="true">
+    <span class="shape shape-a"></span>
+    <span class="shape shape-b"></span>
+    <span class="shape shape-c"></span>
+  </div>
+
+  <main class="login-shell">
+    <div class="brand">
+      <div class="brand-mark">
+        <img src="Images/dashboard thumbnails/Manku.webp" alt="SpeakUp" />
+      </div>
+      <div class="brand-text">
+        <p class="brand-eyebrow">Account</p>
+        <h1>Status</h1>
+      </div>
+    </div>
+
+    <section class="login-card" aria-labelledby="status-title">
+      <div class="card-header">
+        <h2 id="status-title">Account Status</h2>
+      </div>
+
+      <div id="account-status-content"></div>
+
+      <p class="footer-note">Offline access: Available (30-day licence)</p>
+    </section>
+
+    <button class="nav-button" id="signOutButton" type="button">Sign out</button>
+  </main>
+
+  <script src="auth-mock.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

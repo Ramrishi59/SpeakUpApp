@@ -3,6 +3,152 @@ let categories = new Map(); // category -> { items: [], collectionCard }
 let rootCards = [];
 let currentCategory = null; // null = main view
 
+function isFreeLesson(lessonId) {
+  // TODO: put your real free list here
+  const FREE = new Set(["unit1", "unit2", "trial"]); 
+  return FREE.has(String(lessonId));
+}
+
+function getLoginState() {
+  return window.SUAuth.getAuth(); // { isLoggedIn, phone }
+}
+
+function getAccessState() {
+  return window.SUAuth.isEntitled(); // true/false (checks expiry too)
+}
+
+function getAppRoot() {
+  return document.getElementById('appRoot');
+}
+
+function showDashboardScreen() {
+  const dashboard = document.getElementById('dashboard-screen');
+  const account = document.getElementById('account-screen');
+  if (dashboard) dashboard.style.display = '';
+  if (account) account.style.display = 'none';
+}
+
+function openAccountScreen() {
+  renderAccountStatus();
+}
+
+function renderAccountStatus() {
+  const appRoot = getAppRoot();
+  if (!appRoot) return;
+
+  let accountScreen = document.getElementById('account-screen');
+  if (!accountScreen) {
+    accountScreen = document.createElement('div');
+    accountScreen.id = 'account-screen';
+    appRoot.appendChild(accountScreen);
+  }
+
+  const dashboard = document.getElementById('dashboard-screen');
+  if (dashboard) dashboard.style.display = 'none';
+  accountScreen.style.display = '';
+
+  const auth = getLoginState();
+  const unlocked = getAccessState();
+
+  if (!auth.isLoggedIn) {
+    accountScreen.innerHTML = `
+      <section class="login-card" aria-labelledby="status-title">
+        <div class="card-header">
+          <h2 id="status-title">Account Status</h2>
+        </div>
+        <div class="login-form">
+          <label for="mock-phone">Phone number</label>
+          <input
+            id="mock-phone"
+            name="phone"
+            type="tel"
+            placeholder="+91 98765 43210"
+            autocomplete="tel"
+            required
+          />
+          <button type="button" id="mock-login-button">Mock Login</button>
+        </div>
+        <p class="footer-note">Offline access: Available (30-day licence)</p>
+        <div class="login-form">
+          <button type="button" id="back-dashboard">Back to Dashboard</button>
+        </div>
+      </section>
+    `;
+
+    const loginButton = document.getElementById('mock-login-button');
+    loginButton?.addEventListener('click', () => {
+      const phoneInput = document.getElementById('mock-phone');
+      const phone = phoneInput?.value?.trim() || '+91 XXXXX…';
+      window.SUAuth.mockLogin(phone);
+      renderAccountStatus();
+    });
+  } else {
+    accountScreen.innerHTML = `
+      <section class="login-card" aria-labelledby="status-title">
+        <div class="card-header">
+          <h2 id="status-title">Account Status</h2>
+        </div>
+        <p class="status-line">Signed in as: ${auth.phone || '+91 XXXXX…'}</p>
+        <p class="status-line">Access: ${unlocked ? 'Unlocked ✅' : 'Locked ✅'}</p>
+        ${unlocked ? '' : '<div class="login-form"><button type="button" id="unlock-button">Unlock Everything</button></div>'}
+        <p class="footer-note">Offline access: Available (30-day licence)</p>
+        <div class="login-form">
+          <button type="button" id="back-dashboard">Back to Dashboard</button>
+        </div>
+      </section>
+    `;
+
+    if (!unlocked) {
+      const unlockButton = document.getElementById('unlock-button');
+      unlockButton?.addEventListener('click', () => {
+        window.SUAuth.mockGrantFullUnlock(30);
+        renderAccountStatus();
+        showDashboardScreen();
+      });
+    }
+  }
+
+  const backButton = document.getElementById('back-dashboard');
+  backButton?.addEventListener('click', showDashboardScreen);
+
+  if (auth.isLoggedIn) {
+    const signOut = document.createElement('button');
+    signOut.type = 'button';
+    signOut.className = 'nav-button';
+    signOut.textContent = 'Sign out';
+    signOut.addEventListener('click', () => {
+      window.SUAuth.mockLogout();
+      renderAccountStatus();
+    });
+    accountScreen.appendChild(signOut);
+  }
+
+  const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+  if (isLocalhost) {
+    const devPanel = document.createElement('div');
+    devPanel.className = 'login-form';
+    devPanel.innerHTML = `
+      <button type="button" id="dev-grant">Grant Full Unlock</button>
+      <button type="button" id="dev-revoke">Revoke Unlock</button>
+      <button type="button" id="dev-expire">Expire License</button>
+    `;
+    accountScreen.appendChild(devPanel);
+
+    document.getElementById('dev-grant')?.addEventListener('click', () => {
+      window.SUAuth.mockGrantFullUnlock();
+      renderAccountStatus();
+    });
+    document.getElementById('dev-revoke')?.addEventListener('click', () => {
+      window.SUAuth.mockRevokeUnlock();
+      renderAccountStatus();
+    });
+    document.getElementById('dev-expire')?.addEventListener('click', () => {
+      window.SUAuth.mockExpireLicense();
+      renderAccountStatus();
+    });
+  }
+}
+
 function appendQueryParam(url, key, value) {
   if (!value) return url;
   const [base, hash] = url.split('#');
@@ -22,6 +168,8 @@ function setCategoryInUrl(cat) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  showDashboardScreen();
+
   const lessonsList = document.querySelector('.lessons-list');
   const searchInput = document.querySelector('.search-input');
   const searchLabel = document.querySelector('.search-label');
@@ -199,6 +347,10 @@ function buildCategories() {
       console.warn('No card found for id:', id);
       return;
     }
+    if (!getAccessState() && !isFreeLesson(id)) {
+      openAccountScreen();
+      return;
+    }
     const navCategory = currentCategory || deriveCategory(card);
     if (navCategory && navCategory !== 'other') {
       setCategoryInUrl(navCategory);
@@ -337,7 +489,7 @@ function buildCategories() {
           // Always return to the dashboard
           window.location.href = 'index.html';
         } else if (target === 'login') {
-          window.location.href = 'login.html';
+          openAccountScreen();
         } else {
           alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
         }
