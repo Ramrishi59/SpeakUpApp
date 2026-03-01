@@ -54,6 +54,10 @@ function renderAccountStatus() {
     accountScreen.innerHTML = `
       <section class="account-screen" aria-labelledby="status-title">
         <div class="account-card">
+          <div class="account-brand">
+            <img src="Images/dashboard thumbnails/Manku.webp" alt="SpeakUp" />
+            <span>SpeakUp</span>
+          </div>
           <h2 class="account-title" id="status-title">Account Status</h2>
           <p class="account-subtitle">Sign in to see your access status.</p>
           <div class="login-form">

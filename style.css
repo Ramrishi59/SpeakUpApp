@@ -304,8 +304,25 @@ body {
 
 #account-screen .account-title {
     margin: 0 0 6px;
-    font-size: 1.4em;
+    font-size: 1.2em;
     color: #1d1b2a;
+}
+
+#account-screen .account-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #1d1b2a;
+    font-size: 23px;
+}
+
+#account-screen .account-brand img {
+    width: 68px;
+    height: 68px;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 #account-screen .account-subtitle {
