@@ -284,7 +284,8 @@ body {
 
 /* Account screen (in-app) */
 #account-screen {
-    display: none;  
+    display: none;
+    padding-bottom: 140px;
 }
 
 #account-screen .account-screen {
