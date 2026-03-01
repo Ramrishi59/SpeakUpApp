@@ -45,32 +45,33 @@ function renderAccountStatus() {
 
   const dashboard = document.getElementById('dashboard-screen');
   if (dashboard) dashboard.style.display = 'none';
-  accountScreen.style.display = '';
+  accountScreen.style.display = 'block';
 
   const auth = getLoginState();
   const unlocked = getAccessState();
 
   if (!auth.isLoggedIn) {
     accountScreen.innerHTML = `
-      <section class="login-card" aria-labelledby="status-title">
-        <div class="card-header">
-          <h2 id="status-title">Account Status</h2>
-        </div>
-        <div class="login-form">
-          <label for="mock-phone">Phone number</label>
-          <input
-            id="mock-phone"
-            name="phone"
-            type="tel"
-            placeholder="+91 98765 43210"
-            autocomplete="tel"
-            required
-          />
-          <button type="button" id="mock-login-button">Mock Login</button>
-        </div>
-        <p class="footer-note">Offline access: Available (30-day licence)</p>
-        <div class="login-form">
-          <button type="button" id="back-dashboard">Back to Dashboard</button>
+      <section class="account-screen" aria-labelledby="status-title">
+        <div class="account-card">
+          <h2 class="account-title" id="status-title">Account Status</h2>
+          <p class="account-subtitle">Sign in to see your access status.</p>
+          <div class="login-form">
+            <label for="mock-phone">Phone number</label>
+            <input
+              id="mock-phone"
+              name="phone"
+              type="tel"
+              placeholder="+91 98765 43210"
+              autocomplete="tel"
+              required
+            />
+          </div>
+          <div class="button-row">
+            <button type="button" class="primary-button" id="mock-login-button">Mock Login</button>
+            <button type="button" class="secondary-button" id="back-dashboard">Back to Dashboard</button>
+          </div>
+          <p class="footer-note">Offline access: Available (30-day licence)</p>
         </div>
       </section>
     `;
@@ -84,16 +85,25 @@ function renderAccountStatus() {
     });
   } else {
     accountScreen.innerHTML = `
-      <section class="login-card" aria-labelledby="status-title">
-        <div class="card-header">
-          <h2 id="status-title">Account Status</h2>
-        </div>
-        <p class="status-line">Signed in as: ${auth.phone || '+91 XXXXX…'}</p>
-        <p class="status-line">Access: ${unlocked ? 'Unlocked ✅' : 'Locked ✅'}</p>
-        ${unlocked ? '' : '<div class="login-form"><button type="button" id="unlock-button">Unlock Everything</button></div>'}
-        <p class="footer-note">Offline access: Available (30-day licence)</p>
-        <div class="login-form">
-          <button type="button" id="back-dashboard">Back to Dashboard</button>
+      <section class="account-screen" aria-labelledby="status-title">
+        <div class="account-card">
+          <h2 class="account-title" id="status-title">Account Status</h2>
+          <p class="account-subtitle">Your access and offline license status.</p>
+          <div class="status-list">
+            <div class="status-item">
+              <span>Signed in as</span>
+              <strong>${auth.phone || '+91 XXXXX…'}</strong>
+            </div>
+            <div class="status-item">
+              <span>Access</span>
+              <strong>${unlocked ? 'Unlocked ✅' : 'Locked ✅'}</strong>
+            </div>
+          </div>
+          ${unlocked ? '' : '<div class="button-row"><button type="button" class="primary-button" id="unlock-button">Unlock Everything</button></div>'}
+          <p class="footer-note">Offline access: Available (30-day licence)</p>
+          <div class="button-row">
+            <button type="button" class="secondary-button" id="back-dashboard">Back to Dashboard</button>
+          </div>
         </div>
       </section>
     `;
@@ -114,7 +124,7 @@ function renderAccountStatus() {
   if (auth.isLoggedIn) {
     const signOut = document.createElement('button');
     signOut.type = 'button';
-    signOut.className = 'nav-button';
+    signOut.className = 'ghost-button';
     signOut.textContent = 'Sign out';
     signOut.addEventListener('click', () => {
       window.SUAuth.mockLogout();

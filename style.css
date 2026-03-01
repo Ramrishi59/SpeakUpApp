@@ -281,3 +281,134 @@ body {
 .nav-button:active {
     transform: translateY(0);
 }
+
+/* Account screen (in-app) */
+#account-screen {
+    display: none;
+}
+
+#account-screen .account-screen {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+#account-screen .account-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 22px;
+    padding: 22px;
+    border: 1px solid rgba(29, 27, 42, 0.12);
+    box-shadow: 0 18px 40px rgba(31, 30, 51, 0.16);
+}
+
+#account-screen .account-title {
+    margin: 0 0 6px;
+    font-size: 1.4em;
+    color: #1d1b2a;
+}
+
+#account-screen .account-subtitle {
+    margin: 0 0 14px;
+    color: #3d3952;
+    font-size: 0.9em;
+}
+
+#account-screen .status-list {
+    display: grid;
+    gap: 10px;
+    margin: 16px 0 6px;
+}
+
+#account-screen .status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(29, 27, 42, 0.08);
+    font-size: 0.95em;
+}
+
+#account-screen .status-item span {
+    color: #3d3952;
+}
+
+#account-screen .status-item strong {
+    color: #1d1b2a;
+}
+
+#account-screen .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+    
+    
+}
+
+#account-screen .login-form button {
+    color: white;
+    background: linear-gradient(135deg, #ff7b5d, #f4564e);
+    box-shadow: 0 14px 30px rgba(244, 86, 78, 0.28);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 0.95em;
+    font-weight: 700;
+}
+
+#account-screen label {
+    font-weight: 700;
+    font-size: 0.9em;
+    color: #333;
+}
+
+#account-screen input {
+    border-radius: 12px;
+    border: 1px solid rgba(29, 27, 42, 0.18);
+    padding: 12px 14px;
+    font-size: 1em;
+}
+
+#account-screen .button-row {
+    display: grid;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+#account-screen .primary-button,
+#account-screen .secondary-button,
+#account-screen .ghost-button {
+    border: 20px;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 0.95em;
+    font-weight: 700;
+    cursor: pointer;
+    color: white;
+    
+}
+
+#account-screen .primary-button {
+    color: white;
+    background: linear-gradient(135deg, #ff7b5d, #f4564e);
+    box-shadow: 0 14px 30px rgba(244, 86, 78, 0.28);
+}
+
+#account-screen .secondary-button {
+    background: rgba(29, 27, 42, 0.06);
+    color: #1d1b2a;
+}
+
+#account-screen .ghost-button {
+    color: #1d1b2a;
+    background: rgba(29, 27, 42, 0.06);
+    /* box-shadow: 0 14px 30px rgba(244, 86, 78, 0.28); */
+    border: none;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.95em;
+    font-weight: 700;
+}
