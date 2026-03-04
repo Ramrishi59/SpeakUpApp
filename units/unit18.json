@@ -4,6 +4,9 @@
   "description": "Unit 18: I'm a Student.",
   "thumbnail": "Images/Unit18/unit18_thumbnail.jpg",
   "words": [
+    { "image": "Images/Unit18/1.webp", "audio": "Audio/Unit18/01_Chapter 1.mp3" },
+    { "image": "Images/Unit18/2.webp", "audio": "Audio/Unit18/02_Chapter 1.mp3" },
+    { "image": "Images/Unit18/3.webp", "audio": "Audio/Unit18/03_Chapter 1.mp3" },
     { "image": "Images/Unit18/4.webp", "audio": "Audio/Unit18/04_Chapter 1.mp3", "text": "Hi, I'm Muneer." },
     { "image": "Images/Unit18/5.webp", "audio": "Audio/Unit18/05_Chapter 1.mp3", "text": "I'm a doctor." },
     { "image": "Images/Unit18/6.webp", "audio": "Audio/Unit18/06_Chapter 1.mp3", "text": "He is Muneer." },
@@ -74,6 +77,6 @@
     { "image": "Images/Unit18/58.webp", "audio": "Audio/Unit18/58_Chapter 1.mp3", "text": "He is Raju." },
     { "image": "Images/Unit18/59.webp", "audio": "Audio/Unit18/59_Chapter 1.mp3", "text": "He is a student." },
 
-    { "image": "Images/Unit18/60.webp", "audio": "Audio/Unit18/60_Chapter 1.mp3", "text": "Amazing!" }
+    { "image": "Images/Unit18/60.webp", "audio": "Audio/Unit18/60_Chapter 1.mp3"}
   ]
 }
