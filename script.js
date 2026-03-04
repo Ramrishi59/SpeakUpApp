@@ -389,11 +389,12 @@ function buildCategories() {
       card.dataset.lessonId = lesson.id;
       card.tabIndex = 0; // keyboard focusable
 
+      const showDescription = !currentCategory;
       card.innerHTML = `
           <img src="${lesson.thumbnail}" alt="${lesson.title}" class="lesson-thumbnail" loading="lazy">
           <div class="lesson-info">
             <h3>${lesson.title}</h3>
-            <p>${lesson.description}</p>
+            ${showDescription ? `<p>${lesson.description}</p>` : ''}
           </div>
           <span class="forward-arrow">›</span>
         `;
