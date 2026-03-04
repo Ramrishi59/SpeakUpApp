@@ -1,139 +1,36 @@
 {
   "id": "unit17",
-  "name": "Unit 17: Mine, Yours, Theirs, His and Hers",
-  "description": "Learn to use mine, yours, theirs, his and hers in sentences.",
-  "thumbnail": "Images/Unit17/mine_yours_theirs_thumbnail.jpg",
+  "name": "Unit 17",
+  "description": "Welcome to Unit 17. Mine, Yours, Theirs, Ours, His and Hers.",
+  "thumbnail": "Images/Unit17/unit17_thumbnail.jpg",
   "words": [
-    {
-      "image": "Images/Unit17/1.webp",
-      "audio": "Audio/Unit17/01_Chapter 1.mp3"
-    },
-    {
-
-    "image": "Images/repeating_assets/looklisten.webp",
-      "audio": "Audio/Unit17/02_Chapter 1.mp3"
-    },
-
-    {
-
-      "image": "Images/Unit17/3.webp",
-      "audio": "Audio/intro2/looklistenrepeat.mp3"
-    },
-    {
- 
-      "image": "Images/repeating_assets/looklisten.webp",
-      "audio": "Audio/Unit17/04_Chapter 1.mp3"
-    },
-    {
-      
-      "image": "Images/repeating_assets/looklisten.webp",
-      "audio": "Audio/Unit17/05_Chapter 1.mp3"
-    },
-
-    {
-     
-      "image": "Images/Unit17/4.webp",
-      "audio": "Audio/Unit17/06_Chapter 1.mp3"
-    },
-    {
-
-      "image": "Images/Unit17/4.webp",
-      "audio": "Audio/Unit17/07_Chapter 1.mp3"
-    },
-    {
-      
-      "image": "Images/Unit17/4.webp",
-      "audio": "Audio/Unit17/08_Chapter 1.mp3"
-    },
-
-    {
-     
-      "image": "Images/Unit17/5.webp",
-      "audio": "Audio/Unit17/09_Chapter 1.mp3"
-    },
-    {
-    
-      "image": "Images/Unit17/5.webp",
-      "audio": "Audio/Unit17/10_Chapter 1.mp3"
-    },
-    {
-    
-      "image": "Images/Unit17/5.webp",
-      "audio": "Audio/Unit17/11_Chapter 1.mp3"
-    },
-
-    {
-      "image": "Images/Unit17/6.webp",
-      "audio": "Audio/Unit17/12_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/6.webp",
-      "audio": "Audio/Unit17/13_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/6.webp",
-      "audio": "Audio/Unit17/15_Chapter 1.mp3"
-    },
-
-    {
-      "image": "Images/Unit17/7.webp",
-      "audio": "Audio/Unit17/16_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/7.webp",
-      "audio": "Audio/Unit17/17_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/7.webp",
-      "audio": "Audio/Unit17/18_Chapter 1.mp3"
-    },
-
-    {
-      "image": "Images/Unit17/8.webp",
-      "audio": "Audio/Unit17/19_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/8.webp",
-      "audio": "Audio/Unit17/20_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/8.webp",
-      "audio": "Audio/Unit17/21_Chapter 1.mp3"
-    },
-
-    {
-      "image": "Images/Unit17/9.webp",
-      "audio": "Audio/Unit17/22_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/9.webp",
-      "audio": "Audio/Unit17/23_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/9.webp",
-      "audio": "Audio/Unit17/24_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/10.webp",
-      "audio": "Audio/Unit17/25_Chapter 1.mp3"
-    },
-
-    {
-      "image": "Images/Unit17/10.webp",
-      "audio": "Audio/Unit17/26_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/10.webp",
-      "audio": "Audio/Unit17/27_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/Unit17/11.webp",
-      "audio": "Audio/Unit17/28_Chapter 1.mp3"
-    },
-
-    {
-      "image": "Images/Unit17/11.webp",
-      "audio": "Audio/Unit17/29_Chapter 1.mp3"
-    }
+    { "image": "Images/Unit17/1.webp", "audio": "Audio/Unit17/01_Chapter 1.mp3" },
+    { "image": "Images/Unit17/2.webp", "audio": "Audio/Unit17/02_Chapter 1.mp3" },
+    { "image": "Images/Unit17/3.webp", "audio": "Audio/Unit17/03_Chapter 1.mp3" },
+    { "image": "Images/Unit17/4.webp", "audio": "Audio/Unit17/04_Chapter 1.mp3" },
+    { "image": "Images/Unit17/5.webp", "audio": "Audio/Unit17/05_Chapter 1.mp3" },
+    { "image": "Images/Unit17/6.webp", "audio": "Audio/Unit17/06_Chapter 1.mp3" },
+    { "image": "Images/Unit17/7.webp", "audio": "Audio/Unit17/07_Chapter 1.mp3" },
+    { "image": "Images/Unit17/8.webp", "audio": "Audio/Unit17/08_Chapter 1.mp3" },
+    { "image": "Images/Unit17/9.webp", "audio": "Audio/Unit17/09_Chapter 1.mp3" },
+    { "image": "Images/Unit17/10.webp", "audio": "Audio/Unit17/10_Chapter 1.mp3" },
+    { "image": "Images/Unit17/11.webp", "audio": "Audio/Unit17/11_Chapter 1.mp3" },
+    { "image": "Images/Unit17/12.webp", "audio": "Audio/Unit17/12_Chapter 1.mp3" },
+    { "image": "Images/Unit17/13.webp", "audio": "Audio/Unit17/13_Chapter 1.mp3" },
+    { "image": "Images/Unit17/14.webp", "audio": "Audio/Unit17/14_Chapter 1.mp3" },
+    { "image": "Images/Unit17/15.webp", "audio": "Audio/Unit17/15_Chapter 1.mp3" },
+    { "image": "Images/Unit17/16.webp", "audio": "Audio/Unit17/16_Chapter 1.mp3" },
+    { "image": "Images/Unit17/17.webp", "audio": "Audio/Unit17/17_Chapter 1.mp3" },
+    { "image": "Images/Unit17/18.webp", "audio": "Audio/Unit17/18_Chapter 1.mp3" },
+    { "image": "Images/Unit17/19.webp", "audio": "Audio/Unit17/19_Chapter 1.mp3" },
+    { "image": "Images/Unit17/20.webp", "audio": "Audio/Unit17/20_Chapter 1.mp3" },
+    { "image": "Images/Unit17/21.webp", "audio": "Audio/Unit17/21_Chapter 1.mp3" },
+    { "image": "Images/Unit17/22.webp", "audio": "Audio/Unit17/22_Chapter 1.mp3" },
+    { "image": "Images/Unit17/23.webp", "audio": "Audio/Unit17/23_Chapter 1.mp3" },
+    { "image": "Images/Unit17/24.webp", "audio": "Audio/Unit17/24_Chapter 1.mp3" },
+    { "image": "Images/Unit17/25.webp", "audio": "Audio/Unit17/25_Chapter 1.mp3" },
+    { "image": "Images/Unit17/26.webp", "audio": "Audio/Unit17/26_Chapter 1.mp3" },
+    { "image": "Images/Unit17/27.webp", "audio": "Audio/Unit17/27_Chapter 1.mp3" },
+    { "image": "Images/Unit17/28.webp", "audio": "Audio/Unit17/28_Chapter 1.mp3" }
   ]
 }
