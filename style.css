@@ -260,7 +260,7 @@ body {
     align-items: center;
     gap: 4px;
     font-family: inherit;
-    font-size: 12px;
+    font-size: 15px;
     color: var(--ink-soft);
     padding: 8px 10px;
     border-radius: 16px;
@@ -269,8 +269,8 @@ body {
 }
 
 .nav-button img {
-    width: 38px;
-    height: 38px;
+    width: 51px;
+    height: 48px;
 }
 
 .nav-button.active {
