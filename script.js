@@ -441,12 +441,16 @@ function buildCategories() {
       card.tabIndex = 0; // keyboard focusable
 
       const showDescription = !currentCategory;
+      const isFree = isFreeLesson(lesson.id);
+      const entitled = getAccessState();
+      const badge = entitled ? '' : (isFree ? '<span class="lesson-badge free">Free</span>' : '<span class="lesson-badge locked">🔒 Locked</span>');
       card.innerHTML = `
           <img src="${lesson.thumbnail}" alt="${lesson.title}" class="lesson-thumbnail" loading="lazy">
           <div class="lesson-info">
             <h3>${lesson.title}</h3>
             ${showDescription ? `<p>${lesson.description}</p>` : ''}
           </div>
+          ${badge}
           <span class="forward-arrow">›</span>
         `;
 

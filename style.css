@@ -194,6 +194,29 @@ body {
     -webkit-box-reflect: below 2px linear-gradient(transparent 10%, rgba(120, 170, 220, 0.22) 100%);
 }
 
+.lesson-badge {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 0.75em;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.lesson-badge.free {
+    background: #e7f8ed;
+    color: #11623a;
+    border: 1px solid #bce7cd;
+}
+
+.lesson-badge.locked {
+    background: #fff1f2;
+    color: #9f1239;
+    border: 1px solid #fecdd3;
+}
+
 .lesson-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
