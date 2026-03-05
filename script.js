@@ -88,57 +88,85 @@ function renderAccountStatus() {
       renderAccountStatus();
     });
   } else {
+    const license = window.SUAuth.getLicense();
+    const expText = (license && license.licenseExpiresAt)
+      ? new Date(license.licenseExpiresAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+      : null;
+    
     accountScreen.innerHTML = `
-      <section class="account-screen" aria-labelledby="status-title">
-        <div class="account-card">
-          <h2 class="account-title" id="status-title">Account Status</h2>
-          <p class="account-subtitle">Your access and offline license status.</p>
-          <div class="status-list">
-            <div class="status-item">
-              <span>Signed in as</span>
-              <strong>${auth.phone || '+91 XXXXX…'}</strong>
-            </div>
-            <div class="status-item">
-              <span>Access</span>
-              <strong>${unlocked ? 'Unlocked ✅' : 'Locked ✅'}</strong>
-            </div>
-          </div>
-          ${unlocked ? '' : '<div class="button-row"><button type="button" class="primary-button" id="unlock-button">Unlock Everything</button></div>'}
-          <p class="footer-note">Offline access: Available (30-day licence)</p>
-          <div class="button-row">
-            <button type="button" class="secondary-button" id="back-dashboard">Back to Dashboard</button>
-          </div>
+      <section class="login-card" aria-labelledby="status-title">
+        <div class="card-header">
+          <h2 id="status-title">Account</h2>
         </div>
+    
+        <p class="status-line"><strong>Signed in:</strong> ${auth.phone || '+91 XXXXX…'}</p>
+    
+        <div class="status-badge ${unlocked ? 'status-unlocked' : 'status-locked'}">
+          ${unlocked ? 'Unlocked ✅' : 'Locked 🔒'}
+        </div>
+    
+        ${
+          unlocked
+          ? `
+            <div class="premium-box">
+              <h3 class="premium-title">Speak Up Premium</h3>
+              <p class="premium-sub">Offline access is active.</p>
+              ${expText ? `<p class="premium-sub"><strong>Offline until:</strong> ${expText}</p>` : ''}
+            </div>
+          `
+          : `
+            <div class="premium-box">
+              <h3 class="premium-title">Speak Up Premium</h3>
+              <p class="premium-sub">Unlock all lessons and activities.</p>
+    
+              <ul class="premium-list">
+                <li>✔ All units + activities</li>
+                <li>✔ Speaking practice</li>
+                <li>✔ Works offline after unlock (30 days)</li>
+              </ul>
+    
+              <div class="price-row">
+                <span class="price-label">Price</span>
+                <span class="price-value">₹499 (one-time)</span>
+              </div>
+    
+              <div class="login-form">
+                <button type="button" id="buy-button" class="primary-btn">Buy Now</button>
+              </div>
+              <p class="footer-note">Tip: You can restore access anytime by signing in with the same phone number.</p>
+            </div>
+          `
+        }
+    
+        <div class="login-form">
+          <button type="button" id="back-dashboard" class="ghost-btn">Back to Dashboard</button>
+          <button type="button" id="signout-btn" class="ghost-btn">Sign out</button>
+        </div>
+    
+        <p class="footer-note">Offline access: Available (30-day licence)</p>
       </section>
     `;
 
     if (!unlocked) {
-      const unlockButton = document.getElementById('unlock-button');
-      unlockButton?.addEventListener('click', () => {
+      document.getElementById('buy-button')?.addEventListener('click', () => {
+        // MOCK purchase for now
         window.SUAuth.mockGrantFullUnlock(30);
         renderAccountStatus();
-        showDashboardScreen();
+        showDashboardScreen(); // refresh dashboard locks
       });
     }
   }
 
-  const backButton = document.getElementById('back-dashboard');
-  backButton?.addEventListener('click', showDashboardScreen);
+  document.getElementById('back-dashboard')?.addEventListener('click', showDashboardScreen);
 
-  if (auth.isLoggedIn) {
-    const signOut = document.createElement('button');
-    signOut.type = 'button';
-    signOut.className = 'ghost-button';
-    signOut.textContent = 'Sign out';
-    signOut.addEventListener('click', () => {
-      window.SUAuth.mockLogout();
-      renderAccountStatus();
-    });
-    accountScreen.appendChild(signOut);
-  }
+  document.getElementById('signout-btn')?.addEventListener('click', () => {
+    window.SUAuth.mockLogout();
+    renderAccountStatus();
+    showDashboardScreen();
+  });
 
   const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-  if (isLocalhost) {
+  if (isLocalhost && auth.isLoggedIn)  {
     const devPanel = document.createElement('div');
     devPanel.className = 'login-form';
     devPanel.innerHTML = `
