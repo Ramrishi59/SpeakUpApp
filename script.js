@@ -190,6 +190,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const searchBar = document.querySelector('.search-bar');
   const searchIcon = document.querySelector('.search-icon');
   const refreshButton = document.querySelector('.refresh-button');
+  const mainContent = document.querySelector('.main-content');
   const optionsSection = document.querySelector('.options-section');
   const backButton = document.createElement('button');
   backButton.textContent = '‹ Back';
@@ -354,6 +355,27 @@ function buildCategories() {
 }
 
 
+  function getScrollKey(cat) {
+    return `scroll:${cat || 'root'}`;
+  }
+
+  function saveScrollPosition(cat) {
+    if (!mainContent) return;
+    sessionStorage.setItem(getScrollKey(cat), String(mainContent.scrollTop || 0));
+  }
+
+  function restoreScrollPosition(cat) {
+    if (!mainContent) return;
+    const value = sessionStorage.getItem(getScrollKey(cat));
+    if (value == null) return;
+    const next = Number(value);
+    if (!Number.isNaN(next)) {
+      requestAnimationFrame(() => {
+        mainContent.scrollTop = next;
+      });
+    }
+  }
+
   function navigateToLesson(id) {
     // find the full card so resolveRoute can honour overrides and future per-card routes
     const card = dashboardLessons.find(c => c.id === id);
@@ -366,6 +388,7 @@ function buildCategories() {
       return;
     }
     const navCategory = currentCategory || deriveCategory(card);
+    saveScrollPosition(navCategory);
     if (navCategory && navCategory !== 'other') {
       setCategoryInUrl(navCategory);
       sessionStorage.setItem('returnCategory', navCategory);
@@ -474,6 +497,7 @@ function buildCategories() {
     if (backButton) {
       backButton.classList.toggle('hidden', !currentCategory);
     }
+    restoreScrollPosition(currentCategory);
   }
 
   function switchToCategoryView(cat) {
@@ -481,6 +505,7 @@ function buildCategories() {
     setCategoryInUrl(cat);
     if (searchInput) searchInput.value = '';
     renderCurrentView();
+    if (mainContent) mainContent.scrollTop = 0;
   }
 
   function switchToMainView() {
@@ -488,6 +513,7 @@ function buildCategories() {
     setCategoryInUrl(null);
     if (searchInput) searchInput.value = '';
     renderCurrentView();
+    if (mainContent) mainContent.scrollTop = 0;
   }
 
   backButton?.addEventListener('click', switchToMainView);
