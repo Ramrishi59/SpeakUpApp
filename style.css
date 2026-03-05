@@ -453,7 +453,7 @@ body {
     margin-top: 12px;
     padding: 14px;
     border-radius: 14px;
-    background: rgba(0,0,0,0.03);
+    background: rgb(254, 220, 220);
   }
   
   .premium-title {
