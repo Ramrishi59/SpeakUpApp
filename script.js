@@ -2,6 +2,7 @@ let dashboardLessons = [];
 let categories = new Map(); // category -> { items: [], collectionCard }
 let rootCards = [];
 let currentCategory = null; // null = main view
+let rerenderDashboard = null;
 
 function isFreeLesson(lessonId) {
   // TODO: put your real free list here
@@ -26,6 +27,7 @@ function showDashboardScreen() {
   const account = document.getElementById('account-screen');
   if (dashboard) dashboard.style.display = '';
   if (account) account.style.display = 'none';
+  rerenderDashboard?.();
 }
 
 function openAccountScreen() {
@@ -531,6 +533,8 @@ function buildCategories() {
     }
     restoreScrollPosition(currentCategory);
   }
+
+  rerenderDashboard = renderCurrentView;
 
   function switchToCategoryView(cat) {
     currentCategory = cat;
