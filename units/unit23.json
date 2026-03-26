@@ -4,315 +4,95 @@
   "description": "Learn to ask 'Whose...?' and talk about colours and owners.",
   "thumbnail": "Images/Unit23/unit23_thumbnail.jpg",
   "words": [
-    {
-      "image": "Images/Unit23/1.webp",
-      "audio": "Audio/Unit23/01_Chapter 1.mp3",
-      "text": ""
-    },
-    {
-      "image": "Images/Unit23/2.webp",
-      "audio": "Audio/Unit23/02_Chapter 1.mp3"
-    },
-    {
-      "image": "Images/repeating_assets/looklisten.webp",
-      "audio": "Audio/intro2/looklistenrepeat.mp3"
-    },
+    { "image": "Images/Unit23/1.webp", "audio": "Audio/Unit23/01_Chapter 1.mp3", "text": "" },
+    { "image": "Images/Unit23/2.webp", "audio": "Audio/Unit23/02_Chapter 1.mp3" },
+    { "image": "Images/repeating_assets/looklisten.webp", "audio": "Audio/intro2/looklistenrepeat.mp3" },
 
-    {
-      "image": "Images/Unit23/4.webp",
-      "audio": "Audio/Unit23/04_Chapter 1.mp3",
-      "text": "Whose bangles are blue?"
-    },
-    {
-      "image": "Images/Unit23/4.webp",
-      "audio": "Audio/Unit23/05_Chapter 1.mp3",
-      "text": "Anju's bangles are blue."
-    },
+    { "image": "Images/Unit23/4.webp", "audio": "Audio/Unit23/04_Chapter 1.mp3", "text": "Whose bangles are blue?" },
+    { "image": "Images/Unit23/5.webp", "audio": "Audio/Unit23/05_Chapter 1.mp3", "text": "Anju's bangles are blue." },
 
-    {
-      "image": "Images/Unit23/6.webp",
-      "audio": "Audio/Unit23/06_Chapter 1.mp3",
-      "text": "Whose bangles are red?"
-    },
-    {
-      "image": "Images/Unit23/6.webp",
-      "audio": "Audio/Unit23/07_Chapter 1.mp3",
-      "text": "Anju's bangles are red."
-    },
+    { "image": "Images/Unit23/6.webp", "audio": "Audio/Unit23/06_Chapter 1.mp3", "text": "Whose bangles are red?" },
+    { "image": "Images/Unit23/7.webp", "audio": "Audio/Unit23/07_Chapter 1.mp3", "text": "Ammu's bangles are red." },
 
-    {
-      "image": "Images/Unit23/8.webp",
-      "audio": "Audio/Unit23/08_Chapter 1.mp3",
-      "text": "Where is Raju's car?"
-    },
-    {
-      "image": "Images/Unit23/8.webp",
-      "audio": "Audio/Unit23/09_Chapter 1.mp3",
-      "text": "Raju's car is on the table."
-    },
+    { "image": "Images/Unit23/8.webp", "audio": "Audio/Unit23/08_Chapter 1.mp3", "text": "There are two cars." },
+    { "image": "Images/Unit23/9.webp", "audio": "Audio/Unit23/09_Chapter 1.mp3", "text": "The yellow car is on the table." },
 
-    {
-      "image": "Images/Unit23/10.webp",
-      "audio": "Audio/Unit23/10_Chapter 1.mp3",
-      "text": "Whose car is pink?"
-    },
-    {
-      "image": "Images/Unit23/10.webp",
-      "audio": "Audio/Unit23/11_Chapter 1.mp3",
-      "text": "Reena's car is pink."
-    },
+    { "image": "Images/Unit23/10.webp", "audio": "Audio/Unit23/10_Chapter 1.mp3", "text": "The pink car is under the table." },
+    { "image": "Images/Unit23/11.webp", "audio": "Audio/Unit23/11_Chapter 1.mp3", "text": "The yellow car is Raju's." },
 
-    {
-      "image": "Images/Unit23/12.webp",
-      "audio": "Audio/Unit23/12_Chapter 1.mp3",
-      "text": "Is Raju's car green?"
-    },
-    {
-      "image": "Images/Unit23/12.webp",
-      "audio": "Audio/Unit23/13_Chapter 1.mp3",
-      "text": "No, Raju's car is yellow."
-    },
+    { "image": "Images/Unit23/12.webp", "audio": "Audio/Unit23/12_Chapter 1.mp3", "text": "The pink car is Reena's." },
+    { "image": "Images/Unit23/13.webp", "audio": "Audio/Unit23/13_Chapter 1.mp3", "text": "Whose car is pink?" },
 
-    {
-      "image": "Images/Unit23/14.webp",
-      "audio": "Audio/Unit23/14_Chapter 1.mp3",
-      "text": "Whose umbrella is red?"
-    },
-    {
-      "image": "Images/Unit23/14.webp",
-      "audio": "Audio/Unit23/15_Chapter 1.mp3",
-      "text": "Ammu's umbrella is red."
-    },
+    { "image": "Images/Unit23/14.webp", "audio": "Audio/Unit23/14_Chapter 1.mp3", "text": "Reena's car is pink." },
 
-    {
-      "image": "Images/Unit23/16.webp",
-      "audio": "Audio/Unit23/16_Chapter 1.mp3",
-      "text": "Whose umbrella is blue?"
-    },
-    {
-      "image": "Images/Unit23/16.webp",
-      "audio": "Audio/Unit23/17_Chapter 1.mp3",
-      "text": "Anju's umbrella is blue."
-    },
+    { "image": "Images/Unit23/15.webp", "audio": "Audio/Unit23/15_Chapter 1.mp3", "text": "Is Raju's car green?" },
+    { "image": "Images/Unit23/16.webp", "audio": "Audio/Unit23/16_Chapter 1.mp3", "text": "No, Raju's car is yellow." },
 
-    {
-      "image": "Images/Unit23/18.webp",
-      "audio": "Audio/Unit23/18_Chapter 1.mp3",
-      "text": "Is John's kite red?"
-    },
-    {
-      "image": "Images/Unit23/18.webp",
-      "audio": "Audio/Unit23/19_Chapter 1.mp3",
-      "text": "No, John's kite is green."
-    },
+    { "image": "Images/Unit23/17.webp", "audio": "Audio/Unit23/17_Chapter 1.mp3", "text": "Whose umbrella is red?" },
+    { "image": "Images/Unit23/18.webp", "audio": "Audio/Unit23/18_Chapter 1.mp3", "text": "Ammu's umbrella is red." },
 
-    {
-      "image": "Images/Unit23/20.webp",
-      "audio": "Audio/Unit23/20_Chapter 1.mp3",
-      "text": "What colour is Saira's kite?"
-    },
-    {
-      "image": "Images/Unit23/20.webp",
-      "audio": "Audio/Unit23/21_Chapter 1.mp3",
-      "text": "Saira's kite is pink."
-    },
+    { "image": "Images/Unit23/19.webp", "audio": "Audio/Unit23/19_Chapter 1.mp3", "text": "Whose umbrella is blue?" },
+    { "image": "Images/Unit23/20.webp", "audio": "Audio/Unit23/20_Chapter 1.mp3", "text": "Anju's umbrella is blue." },
 
-    {
-      "image": "Images/Unit23/22.webp",
-      "audio": "Audio/Unit23/22_Chapter 1.mp3",
-      "text": "They are bluetooth speakers."
-    },
+    { "image": "Images/Unit23/21.webp", "audio": "Audio/Unit23/21_Chapter 1.mp3", "text": "Is John's kite red?" },
+    { "image": "Images/Unit23/22.webp", "audio": "Audio/Unit23/22_Chapter 1.mp3", "text": "No, John's kite is green." },
 
-    {
-      "image": "Images/Unit23/23.webp",
-      "audio": "Audio/Unit23/23_Chapter 1.mp3",
-      "text": "What colour is Nithin's speaker?"
-    },
-    {
-      "image": "Images/Unit23/23.webp",
-      "audio": "Audio/Unit23/24_Chapter 1.mp3",
-      "text": "Nithin's speaker is yellow."
-    },
+    { "image": "Images/Unit23/23.webp", "audio": "Audio/Unit23/23_Chapter 1.mp3", "text": "What colour is Saira's kite?" },
+    { "image": "Images/Unit23/24.webp", "audio": "Audio/Unit23/24_Chapter 1.mp3", "text": "Saira's kite is pink." },
 
-    {
-      "image": "Images/Unit23/26.webp",
-      "audio": "Audio/Unit23/25_Chapter 1.mp3",
-      "text": "Is Reena's speaker green?"
-    },
-    {
-      "image": "Images/Unit23/26.webp",
-      "audio": "Audio/Unit23/26_Chapter 1.mp3",
-      "text": "No, Reena's speaker is blue."
-    },
+    { "image": "Images/Unit23/25.webp", "audio": "Audio/Unit23/25_Chapter 1.mp3", "text": "They are bluetooth speakers." },
 
-    {
-      "image": "Images/Unit23/27.webp",
-      "audio": "Audio/Unit23/27_Chapter 1.mp3",
-      "text": "What colour is this watch?"
-    },
-    {
-      "image": "Images/Unit23/27.webp",
-      "audio": "Audio/Unit23/28_Chapter 1.mp3",
-      "text": "It's black."
-    },
+    { "image": "Images/Unit23/26.webp", "audio": "Audio/Unit23/26_Chapter 1.mp3", "text": "What colour is Nithin's speaker?" },
+    { "image": "Images/Unit23/27.webp", "audio": "Audio/Unit23/27_Chapter 1.mp3", "text": "Nithin's speaker is yellow." },
 
-    {
-      "image": "Images/Unit23/29.webp",
-      "audio": "Audio/Unit23/29_Chapter 1.mp3",
-      "text": "What colour is this watch?"
-    },
-    {
-      "image": "Images/Unit23/29.webp",
-      "audio": "Audio/Unit23/30_Chapter 1.mp3",
-      "text": "It's pink."
-    },
+    { "image": "Images/Unit23/28.webp", "audio": "Audio/Unit23/28_Chapter 1.mp3", "text": "Is Meera's speaker green?" },
+    { "image": "Images/Unit23/29.webp", "audio": "Audio/Unit23/29_Chapter 1.mp3", "text": "No, Meera's speaker is blue." },
 
-    {
-      "image": "Images/Unit23/31.webp",
-      "audio": "Audio/Unit23/31_Chapter 1.mp3",
-      "text": "Whose watch is this?"
-    },
-    {
-      "image": "Images/Unit23/31.webp",
-      "audio": "Audio/Unit23/32_Chapter 1.mp3",
-      "text": "It's John's."
-    },
+    { "image": "Images/Unit23/30.webp", "audio": "Audio/Unit23/30_Chapter 1.mp3", "text": "What colour is this watch?" },
+    { "image": "Images/Unit23/31.webp", "audio": "Audio/Unit23/31_Chapter 1.mp3", "text": "It's black." },
 
-    {
-      "image": "Images/Unit23/33.webp",
-      "audio": "Audio/Unit23/33_Chapter 1.mp3",
-      "text": "Whose watch is that?"
-    },
-    {
-      "image": "Images/Unit23/33.webp",
-      "audio": "Audio/Unit23/34_Chapter 1.mp3",
-      "text": "That's Saira's."
-    },
+    { "image": "Images/Unit23/32.webp", "audio": "Audio/Unit23/32_Chapter 1.mp3", "text": "What colour is this watch?" },
+    { "image": "Images/Unit23/33.webp", "audio": "Audio/Unit23/33_Chapter 1.mp3", "text": "It's pink." },
 
-    {
-      "image": "Images/Unit23/35.webp",
-      "audio": "Audio/Unit23/35_Chapter 1.mp3",
-      "text": "What colour is this water bottle?"
-    },
-    {
-      "image": "Images/Unit23/35.webp",
-      "audio": "Audio/Unit23/36_Chapter 1.mp3",
-      "text": "It's brown."
-    },
+    { "image": "Images/Unit23/34.webp", "audio": "Audio/Unit23/34_Chapter 1.mp3", "text": "Whose watch is this?" },
+    { "image": "Images/Unit23/35.webp", "audio": "Audio/Unit23/35_Chapter 1.mp3", "text": "It's John's." },
 
-    {
-      "image": "Images/Unit23/37.webp",
-      "audio": "Audio/Unit23/37_Chapter 1.mp3",
-      "text": "What colour is that water bottle?"
-    },
-    {
-      "image": "Images/Unit23/37.webp",
-      "audio": "Audio/Unit23/38_Chapter 1.mp3",
-      "text": "That's pink."
-    },
+    { "image": "Images/Unit23/36.webp", "audio": "Audio/Unit23/36_Chapter 1.mp3", "text": "Whose watch is that?" },
+    { "image": "Images/Unit23/37.webp", "audio": "Audio/Unit23/37_Chapter 1.mp3", "text": "That's Saira's." },
 
-    {
-      "image": "Images/Unit23/39.webp",
-      "audio": "Audio/Unit23/39_Chapter 1.mp3",
-      "text": "Whose is this?"
-    },
-    {
-      "image": "Images/Unit23/39.webp",
-      "audio": "Audio/Unit23/40_Chapter 1.mp3",
-      "text": "It's Jameela's."
-    },
+    { "image": "Images/Unit23/38.webp", "audio": "Audio/Unit23/38_Chapter 1.mp3", "text": "What colour is this water bottle?" },
+    { "image": "Images/Unit23/39.webp", "audio": "Audio/Unit23/39_Chapter 1.mp3", "text": "It's brown." },
 
-    {
-      "image": "Images/Unit23/41.webp",
-      "audio": "Audio/Unit23/41_Chapter 1.mp3",
-      "text": "Whose is that?"
-    },
-    {
-      "image": "Images/Unit23/41.webp",
-      "audio": "Audio/Unit23/42_Chapter 1.mp3",
-      "text": "It's Sunaina's."
-    },
-    {
-      "image": "Images/Unit23/43.webp",
-      "audio": "Audio/Unit23/43_Chapter 1.mp3",
-      "text": "What are these?"
-    },
-    {
-      "image": "Images/Unit23/43.webp",
-      "audio": "Audio/Unit23/44_Chapter 1.mp3",
-      "text": "They are wallets."
-    },
-    {
-      "image": "Images/Unit23/43.webp",
-      "audio": "Audio/Unit23/45_Chapter 1.mp3",
-      "text": "What colours are these?"
-    },
-    {
-      "image": "Images/Unit23/43.webp",
-      "audio": "Audio/Unit23/46_Chapter 1.mp3",
-      "text": "They are red, white, blue and green."
-    },
-    
-    {
-      "image": "Images/Unit23/47.webp",
-      "audio": "Audio/Unit23/47_Chapter 1.mp3",
-      "text": "Nithin's wallets are blue and green."
-    },
-    
-    {
-      "image": "Images/Unit23/48.webp",
-      "audio": "Audio/Unit23/48_Chapter 1.mp3",
-      "text": "Meera's wallets are red and white."
-    },
-    
-    {
-      "image": "Images/Unit23/49.webp",
-      "audio": "Audio/Unit23/49_Chapter 1.mp3",
-      "text": "Whose is this?"
-    },
-    {
-      "image": "Images/Unit23/49.webp",
-      "audio": "Audio/Unit23/50_Chapter 1.mp3",
-      "text": "It's Raju's."
-    },
-    
-    {
-      "image": "Images/Unit23/51.webp",
-      "audio": "Audio/Unit23/51_Chapter 1.mp3",
-      "text": "Whose is that?"
-    },
-    {
-      "image": "Images/Unit23/51.webp",
-      "audio": "Audio/Unit23/52_Chapter 1.mp3",
-      "text": "That's Reena's."
-    },
-    
-    {
-      "image": "Images/Unit23/53.webp",
-      "audio": "Audio/Unit23/53_Chapter 1.mp3",
-      "text": "Whose are these?"
-    },
-    {
-      "image": "Images/Unit23/53.webp",
-      "audio": "Audio/Unit23/54_Chapter 1.mp3",
-      "text": "They are Meera's."
-    },
-    
-    {
-      "image": "Images/Unit23/55.webp",
-      "audio": "Audio/Unit23/55_Chapter 1.mp3",
-      "text": "Whose are those?"
-    },
-    {
-      "image": "Images/Unit23/55.webp",
-      "audio": "Audio/Unit23/56_Chapter 1.mp3",
-      "text": "They are Anju's."
-    },
-    
-    {
-      "image": "Images/Unit23/57.webp",
-      "audio": "Audio/Unit23/57_Chapter 1.mp3",
-      "text": ""
-    }    
+    { "image": "Images/Unit23/40.webp", "audio": "Audio/Unit23/40_Chapter 1.mp3", "text": "What colour is that water bottle?" },
+    { "image": "Images/Unit23/41.webp", "audio": "Audio/Unit23/41_Chapter 1.mp3", "text": "That's pink." },
+
+    { "image": "Images/Unit23/42.webp", "audio": "Audio/Unit23/42_Chapter 1.mp3", "text": "Whose is this?" },
+    { "image": "Images/Unit23/43.webp", "audio": "Audio/Unit23/43_Chapter 1.mp3", "text": "It's Jameela's." },
+
+    { "image": "Images/Unit23/44.webp", "audio": "Audio/Unit23/44_Chapter 1.mp3", "text": "Whose is that?" },
+    { "image": "Images/Unit23/45.webp", "audio": "Audio/Unit23/45_Chapter 1.mp3", "text": "It's Sunaina's." },
+
+    { "image": "Images/Unit23/46.webp", "audio": "Audio/Unit23/46_Chapter 1.mp3", "text": "What are these?" },
+    { "image": "Images/Unit23/47.webp", "audio": "Audio/Unit23/47_Chapter 1.mp3", "text": "They are wallets." },
+
+    { "image": "Images/Unit23/48.webp", "audio": "Audio/Unit23/48_Chapter 1.mp3", "text": "What colours are these?" },
+    { "image": "Images/Unit23/49.webp", "audio": "Audio/Unit23/49_Chapter 1.mp3", "text": "They are red, white, blue and green." },
+
+    { "image": "Images/Unit23/50.webp", "audio": "Audio/Unit23/50_Chapter 1.mp3", "text": "Nithin's wallets are blue and green." },
+    { "image": "Images/Unit23/51.webp", "audio": "Audio/Unit23/51_Chapter 1.mp3", "text": "Meera's wallets are red and white." },
+
+    { "image": "Images/Unit23/52.webp", "audio": "Audio/Unit23/52_Chapter 1.mp3", "text": "Whose is this?" },
+    { "image": "Images/Unit23/53.webp", "audio": "Audio/Unit23/53_Chapter 1.mp3", "text": "It's Raju's." },
+
+    { "image": "Images/Unit23/54.webp", "audio": "Audio/Unit23/54_Chapter 1.mp3", "text": "Whose is that?" },
+    { "image": "Images/Unit23/55.webp", "audio": "Audio/Unit23/55_Chapter 1.mp3", "text": "That's Reena's." },
+
+    { "image": "Images/Unit23/56.webp", "audio": "Audio/Unit23/56_Chapter 1.mp3", "text": "Whose are these?" },
+    { "image": "Images/Unit23/57.webp", "audio": "Audio/Unit23/57_Chapter 1.mp3", "text": "They are Meera's." },
+
+    { "image": "Images/Unit23/58.webp", "audio": "Audio/Unit23/58_Chapter 1.mp3", "text": "Whose are those?" },
+    { "image": "Images/Unit23/59.webp", "audio": "Audio/Unit23/59_Chapter 1.mp3", "text": "They are Anju's." },
+
+    { "image": "Images/Unit23/60.webp", "audio": "Audio/Unit23/60_Chapter 1.mp3" }
   ]
 }
