@@ -1,8 +1,10 @@
-const CACHE_NAME = 'speakupapp-cache-v16';
+const CACHE_NAME = 'speakupapp-cache-v17';
 
 const urlsToCache = [
   './',
   './index.html',
+  './landingpage.html',
+  './dashboard.html',
   './style.css',
   './script.js',
   './manifest.json',

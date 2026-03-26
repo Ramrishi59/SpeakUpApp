@@ -2,7 +2,7 @@
   "name": "SpeakUpApp - Learn English",
   "short_name": "SpeakUpApp",
   "description": "A fun and interactive English learning app for kids aged 5-10.",
-  "start_url": "./index.html",
+  "start_url": "./landingpage.html",
   "display": "standalone",
   "background_color": "#f0f8ff",
   "theme_color": "#007bff",

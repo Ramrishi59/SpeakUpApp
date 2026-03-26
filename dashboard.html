@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeakUpApp - Learn English</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+    <div id="app-container">
+        <header class="app-header">
+            <div class="menu-icon">☰</div>
+            <div class="header-title">Lessons</div>
+            <div class="notification-icon"></div> </header>
+
+        <main id="appRoot" class="main-content">
+            <div id="dashboard-screen">
+                <div class="options-section">
+                    <h2>Choose a Lesson</h2>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search" class="search-input">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <button class="refresh-button" type="button">Refresh</button>
+                </div>
+
+                <div class="lessons-list">
+                    </div>
+            </div>
+        </main>
+
+        <nav class="bottom-nav">
+            <button class="nav-button active" data-nav-target="lessons">
+                <img src="Images/buttons/27.png" alt="Lessons">
+                <span>Lessons</span>
+            </button>
+            <button class="nav-button" data-nav-target="login">
+                <img src="Images/buttons/startover.png" alt="Log in">
+                <span>Log in</span>
+            </button>
+            <button class="nav-button" data-nav-target="new-screen">
+                <img src="Images/buttons/25.png" alt="New Screen">
+                <span>New Screen</span>
+            </button>
+        </nav>
+    </div>
+
+    <script src="auth-mock.js"></script>
+    <script>
+      // This runs after auth-mock.js loads
+      if (!window.SUAuth) alert("SUAuth not loaded (auth-mock.js missing or error)");
+    </script>
+    <script src="script.js"></script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('service-worker.js')
+            .then(registration => {
+              console.log('Service Worker registered: ', registration);
+
+              // Force refresh when a new SW takes over
+              let refreshing = false;
+              navigator.serviceWorker.addEventListener('controllerchange', () => {
+                if (refreshing) return;
+                refreshing = true;
+                window.location.reload();
+              });
+
+              let hasPrompted = false;
+              function promptUserToRefresh(worker) {
+                if (hasPrompted) return;
+                // Only prompt if there's already an active controller (i.e., this is an update, not first install)
+                if (!navigator.serviceWorker.controller) return;
+                hasPrompted = true;
+                const shouldRefresh = window.confirm('A new update is available. Refresh now?');
+                if (shouldRefresh) {
+                  worker.postMessage({ type: 'SKIP_WAITING' });
+                }
+              }
+
+              // If there's an updated worker waiting, ask user before activating
+              if (registration.waiting) {
+                promptUserToRefresh(registration.waiting);
+              }
+
+              registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                if (newWorker) {
+                  newWorker.addEventListener('statechange', () => {
+                    if (newWorker.state === 'installed' && registration.waiting) {
+                      promptUserToRefresh(registration.waiting);
+                    }
+                  });
+                }
+              });
+            })
+            .catch(error => {
+              console.error('Service Worker registration failed: ', error);
+            });
+        });
+      }
+    </script>
+</body>
+</html>

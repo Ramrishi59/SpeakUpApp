@@ -1,0 +1,310 @@
+export default function SpeakUpLandingPage() {
+    const features = [
+      {
+        icon: "👀",
+        title: "Watch",
+        text: "Children learn with clear visuals, guided prompts, and an easy lesson flow.",
+      },
+      {
+        icon: "👂",
+        title: "Listen",
+        text: "Friendly audio-led practice helps learners hear natural English again and again.",
+      },
+      {
+        icon: "🗣️",
+        title: "Speak",
+        text: "Simple repetition and response activities build confidence step by step.",
+      },
+    ];
+  
+    const highlights = [
+      "Kid-friendly and colourful without feeling cluttered",
+      "Built for Indian learners with simple, practical English",
+      "Audio-first approach that supports real speaking confidence",
+      "Designed by an experienced voice artist and educator",
+    ];
+  
+    const lessons = [
+      "Short, guided lessons",
+      "Fun listening and speaking practice",
+      "Easy daily use on phone or tablet",
+    ];
+  
+    return (
+      <div className="min-h-screen bg-[linear-gradient(180deg,#dff5ff_0%,#f8fdff_45%,#ffffff_100%)] text-slate-800">
+        <section className="relative overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-10 left-8 h-24 w-24 rounded-full bg-yellow-200/50 blur-2xl" />
+            <div className="absolute top-24 right-12 h-28 w-28 rounded-full bg-pink-200/50 blur-2xl" />
+            <div className="absolute bottom-8 left-1/4 h-24 w-24 rounded-full bg-sky-200/50 blur-2xl" />
+          </div>
+  
+          <div className="mx-auto max-w-7xl px-6 py-6 md:px-10 lg:px-12">
+            <header className="flex items-center justify-between rounded-full bg-white/80 px-5 py-3 shadow-sm backdrop-blur">
+              <div className="flex items-center gap-3">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-yellow-300 text-xl shadow-sm">
+                  ⭐
+                </div>
+                <div>
+                  <div className="text-xl font-black tracking-tight">Speak Up</div>
+                  <div className="text-xs text-slate-500">Fun English learning for children</div>
+                </div>
+              </div>
+              <nav className="hidden items-center gap-6 text-sm font-semibold text-slate-600 md:flex">
+                <a href="#about" className="hover:text-slate-900">About</a>
+                <a href="#how" className="hover:text-slate-900">How it works</a>
+                <a href="#demo" className="hover:text-slate-900">Demo</a>
+                <a href="#parents" className="hover:text-slate-900">For Parents</a>
+              </nav>
+              <a
+                href="https://ramrishi59.github.io/SpeakUpApp/"
+                className="rounded-full bg-sky-500 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition hover:scale-[1.02]"
+              >
+                Open App
+              </a>
+            </header>
+  
+            <div className="grid items-center gap-10 py-14 md:py-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+              <div>
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
+                  <span>🌈</span>
+                  <span>Playful learning. Real confidence.</span>
+                </div>
+                <h1 className="max-w-3xl text-4xl font-black leading-tight tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
+                  Help children start speaking English with joy, clarity, and confidence.
+                </h1>
+                <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
+                  Speak Up is a colourful, audio-first learning app that helps children build spoken English through simple lessons, repetition, and guided activities.
+                </p>
+  
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <a
+                    href="https://ramrishi59.github.io/SpeakUpApp/"
+                    className="rounded-full bg-yellow-400 px-7 py-3.5 text-base font-extrabold text-slate-900 shadow-md transition hover:scale-[1.02]"
+                  >
+                    Try Free Demo
+                  </a>
+                  <button className="rounded-full border-2 border-sky-300 bg-white px-7 py-3.5 text-base font-bold text-sky-700 shadow-sm transition hover:scale-[1.02]">
+                    See How It Works
+                  </button>
+                </div>
+  
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {lessons.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+  
+              <div className="relative">
+                <div className="relative rounded-[2rem] bg-white p-5 shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
+                  <div className="rounded-[1.5rem] bg-[linear-gradient(180deg,#bfeaff_0%,#ecfbff_100%)] p-5">
+                    <div className="mb-4 flex items-center justify-between">
+                      <div>
+                        <div className="text-sm font-bold text-slate-500">Today’s lesson</div>
+                        <div className="text-2xl font-black text-slate-900">Watch • Listen • Speak</div>
+                      </div>
+                      <div className="rounded-full bg-white px-3 py-1 text-sm font-bold text-emerald-600 shadow-sm">
+                        Easy Start
+                      </div>
+                    </div>
+  
+                    <div className="rounded-[1.5rem] bg-white p-5 shadow-sm">
+                      <div className="rounded-[1.5rem] bg-yellow-100 p-5 text-center">
+                        <div className="mx-auto mb-4 flex h-28 w-28 items-center justify-center rounded-full bg-pink-200 text-6xl shadow-inner">
+                          🧒
+                        </div>
+                        <div className="text-2xl font-black text-slate-900">Hello!</div>
+                        <div className="mt-2 text-base text-slate-600">Listen and repeat after Manku</div>
+                      </div>
+  
+                      <div className="mt-4 grid grid-cols-3 gap-3">
+                        <div className="rounded-2xl bg-sky-100 p-3 text-center">
+                          <div className="text-2xl">👀</div>
+                          <div className="mt-1 text-sm font-bold">Watch</div>
+                        </div>
+                        <div className="rounded-2xl bg-emerald-100 p-3 text-center">
+                          <div className="text-2xl">👂</div>
+                          <div className="mt-1 text-sm font-bold">Listen</div>
+                        </div>
+                        <div className="rounded-2xl bg-pink-100 p-3 text-center">
+                          <div className="text-2xl">🗣️</div>
+                          <div className="mt-1 text-sm font-bold">Speak</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div className="absolute -bottom-4 -left-4 rounded-2xl bg-white px-4 py-3 shadow-lg">
+                  <div className="text-xs font-bold uppercase tracking-wide text-slate-400">Parent friendly</div>
+                  <div className="text-sm font-bold text-slate-700">Simple. Safe. Guided.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+  
+        <section id="about" className="mx-auto max-w-7xl px-6 py-8 md:px-10 lg:px-12 lg:py-14">
+          <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
+            <div className="rounded-[2rem] bg-white p-8 shadow-sm">
+              <div className="mb-3 inline-flex rounded-full bg-sky-100 px-4 py-2 text-sm font-bold text-sky-700">
+                What is Speak Up?
+              </div>
+              <h2 className="text-3xl font-black tracking-tight text-slate-900">
+                A simple spoken-English learning experience for children.
+              </h2>
+              <p className="mt-4 text-lg leading-8 text-slate-600">
+                Speak Up helps children hear, understand, and say useful English through friendly guidance, repeatable patterns, and engaging audio-led lessons.
+              </p>
+            </div>
+  
+            <div className="rounded-[2rem] bg-[linear-gradient(180deg,#fff7d6_0%,#ffffff_100%)] p-8 shadow-sm">
+              <div className="mb-4 text-xl font-black text-slate-900">Why children enjoy it</div>
+              <div className="space-y-3">
+                {highlights.map((item) => (
+                  <div key={item} className="flex items-start gap-3 rounded-2xl bg-white px-4 py-3 shadow-sm">
+                    <span className="mt-0.5 text-lg">✨</span>
+                    <span className="text-slate-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+  
+        <section id="how" className="mx-auto max-w-7xl px-6 py-8 md:px-10 lg:px-12 lg:py-14">
+          <div className="mb-8 text-center">
+            <div className="inline-flex rounded-full bg-pink-100 px-4 py-2 text-sm font-bold text-pink-700">
+              How it works
+            </div>
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-900 md:text-4xl">
+              A gentle three-step learning flow
+            </h2>
+          </div>
+  
+          <div className="grid gap-6 md:grid-cols-3">
+            {features.map((feature) => (
+              <div key={feature.title} className="rounded-[2rem] bg-white p-8 text-center shadow-sm transition hover:-translate-y-1">
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-sky-100 text-4xl shadow-inner">
+                  {feature.icon}
+                </div>
+                <h3 className="mt-5 text-2xl font-black text-slate-900">{feature.title}</h3>
+                <p className="mt-3 text-base leading-7 text-slate-600">{feature.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+  
+        <section id="demo" className="mx-auto max-w-7xl px-6 py-8 md:px-10 lg:px-12 lg:py-14">
+          <div className="grid items-center gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+            <div className="rounded-[2rem] bg-[linear-gradient(180deg,#e8f9e8_0%,#ffffff_100%)] p-8 shadow-sm">
+              <div className="inline-flex rounded-full bg-white px-4 py-2 text-sm font-bold text-emerald-700 shadow-sm">
+                Try a demo lesson
+              </div>
+              <h2 className="mt-4 text-3xl font-black text-slate-900">See how a child experiences Speak Up</h2>
+              <p className="mt-4 text-lg leading-8 text-slate-600">
+                Let parents explore a sample lesson before joining. A demo builds trust and helps them understand the app flow immediately.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-4">
+                <a
+                  href="https://ramrishi59.github.io/SpeakUpApp/"
+                  className="rounded-full bg-emerald-500 px-7 py-3.5 text-base font-extrabold text-white shadow-md transition hover:scale-[1.02]"
+                >
+                  Launch Demo
+                </a>
+                <button className="rounded-full bg-white px-7 py-3.5 text-base font-bold text-slate-700 shadow-sm">
+                  Watch Preview
+                </button>
+              </div>
+            </div>
+  
+            <div className="rounded-[2rem] bg-white p-5 shadow-sm">
+              <div className="rounded-[1.75rem] border-4 border-dashed border-sky-200 bg-sky-50 p-6">
+                <div className="rounded-[1.5rem] bg-white p-6 shadow-sm">
+                  <div className="mb-4 flex items-center justify-between">
+                    <div>
+                      <div className="text-sm font-bold text-slate-500">Preview screen</div>
+                      <div className="text-2xl font-black text-slate-900">Sample Lesson</div>
+                    </div>
+                    <div className="text-3xl">📱</div>
+                  </div>
+                  <div className="flex min-h-[270px] items-center justify-center rounded-[1.5rem] bg-[linear-gradient(180deg,#dff4ff_0%,#fff7d6_100%)] text-center">
+                    <div>
+                      <div className="text-6xl">🎈</div>
+                      <div className="mt-3 text-2xl font-black text-slate-900">Interactive lesson preview</div>
+                      <div className="mt-2 text-slate-600">Screenshot or short video can go here</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+  
+        <section id="parents" className="mx-auto max-w-7xl px-6 py-8 md:px-10 lg:px-12 lg:py-14">
+          <div className="rounded-[2.25rem] bg-slate-900 p-8 text-white shadow-[0_20px_60px_rgba(15,23,42,0.16)] md:p-10">
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+              <div>
+                <div className="inline-flex rounded-full bg-white/10 px-4 py-2 text-sm font-bold text-sky-200">
+                  Built for parents too
+                </div>
+                <h2 className="mt-4 text-3xl font-black tracking-tight md:text-4xl">
+                  A colourful learning app with a trustworthy foundation.
+                </h2>
+                <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+                  Speak Up is designed to be cheerful for children and reassuring for parents. The learning approach is simple, guided, and focused on practical spoken English.
+                </p>
+              </div>
+  
+              <div className="grid gap-4">
+                <div className="rounded-[1.5rem] bg-white/10 p-5">
+                  <div className="text-lg font-black">Practical English</div>
+                  <div className="mt-1 text-slate-300">Useful words and patterns children can actually use.</div>
+                </div>
+                <div className="rounded-[1.5rem] bg-white/10 p-5">
+                  <div className="text-lg font-black">Audio-led confidence</div>
+                  <div className="mt-1 text-slate-300">Children hear, repeat, and respond in a natural rhythm.</div>
+                </div>
+                <div className="rounded-[1.5rem] bg-white/10 p-5">
+                  <div className="text-lg font-black">Strong creator identity</div>
+                  <div className="mt-1 text-slate-300">Created with an educator’s approach and a voice artist’s clarity.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+  
+        <section className="mx-auto max-w-7xl px-6 py-8 md:px-10 lg:px-12 lg:py-16">
+          <div className="rounded-[2.25rem] bg-[linear-gradient(180deg,#fff0c2_0%,#ffe2ec_100%)] p-8 text-center shadow-sm md:p-10">
+            <div className="text-3xl font-black tracking-tight text-slate-900 md:text-4xl">
+              Start your child’s English journey with Speak Up
+            </div>
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-700">
+              Simple to begin, joyful to use, and built to encourage real spoken confidence.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
+              <a
+                href="https://ramrishi59.github.io/SpeakUpApp/"
+                className="rounded-full bg-sky-500 px-8 py-3.5 text-base font-extrabold text-white shadow-md transition hover:scale-[1.02]"
+              >
+                Try Free Demo
+              </a>
+              <a
+                href="https://ramrishi59.github.io/SpeakUpApp/"
+                className="rounded-full bg-white px-8 py-3.5 text-base font-bold text-slate-800 shadow-sm transition hover:scale-[1.02]"
+              >
+                Open App
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
+  
