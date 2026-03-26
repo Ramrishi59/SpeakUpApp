@@ -1,5 +1,6 @@
 let screens = [];
 let firstTextIndex = 0;
+let introMascotEndIndex = -1;
 let currentIndex = 0;
 
 let userInteracted = false;
@@ -120,6 +121,13 @@ function isOutroItem(item, index, list) {
   return isLast && hasImg && hasAud && noText;
 }
 
+function isLookListenMarker(item) {
+  const image = String(item?.image || "");
+  const audioSrc = String(item?.audio || "");
+  return image.includes("Images/repeating_assets/looklisten.webp")
+    || audioSrc.includes("Audio/intro2/looklistenrepeat.mp3");
+}
+
 function showOutroFromLegacyItem(item) {
   SpeakUpOutro.render({ image: item.image || "", audio: item.audio || "", text: "" });
   document.body.classList.add('outro-active');
@@ -222,11 +230,13 @@ async function render(i) {
   const item = screens[i];
   if (!item) return;
 
-  // Mark intro mascot slides: image-only items before the first text/video
-  const hasTrueIntro = firstTextIndex < screens.length;
+  // Prefer the explicit look/listen/repeat card as the intro boundary when present.
+  const isImageOnlySlide = !!(item?.image && !item?.text && !item?.video);
   let isIntroMascot = false;
-  if (hasTrueIntro) {
-    isIntroMascot = !!(item?.image && !item?.text && !item?.video && i < firstTextIndex);
+  if (introMascotEndIndex >= 0) {
+    isIntroMascot = isImageOnlySlide && i <= introMascotEndIndex;
+  } else if (firstTextIndex < screens.length) {
+    isIntroMascot = isImageOnlySlide && i < firstTextIndex;
   } else {
     const isImageOnlyUnit = !!(item?.image && !item?.video);
     const isOpeningPair = i <= 1;
@@ -368,6 +378,7 @@ async function loadUnit(id){ const r = await fetch(`units/${id}.json`, { cache: 
   (function findFirstText(){
     firstTextIndex = screens.findIndex(it => it?.text || it?.video);
     if (firstTextIndex < 0) firstTextIndex = screens.length;
+    introMascotEndIndex = screens.findIndex(isLookListenMarker);
   })();
 
   currentIndex = 0;
