@@ -1,0 +1,40 @@
+{
+    "id": "intro",
+    "name": "Introduction",
+    "description": "",
+    "thumbnail": "Images/intro/intro_thumbnail.jpg",
+    "words": [
+      {
+        "image": "Images/intro/1.webp",
+        "audio": "Audio/intro/01_Chapter 1.mp3"
+      },
+      {
+        "image": "Images/intro/2.webp",
+        "audio": "Audio/intro/02_Chapter 1.mp3"
+      },
+      {
+        "image": "Images/intro/3.webp",
+        "audio": "Audio/intro/03_Chapter 1.mp3"
+      },
+      {
+        "image": "Images/intro/4.webp",
+        "audio": "Audio/intro/04_Chapter 1.mp3"
+      },
+      {
+        "image": "Images/intro/5.webp",
+        "audio": "Audio/intro/05_Chapter 1.mp3"
+      },
+      {
+        "image": "Images/intro/6.webp",
+        "audio": "Audio/intro/06_Chapter 1.mp3"
+      },
+      {
+        "image": "Images/intro/7.webp",
+        "audio": "Audio/intro/07_Chapter 1.mp3"
+      },
+      {
+        "image": "Images/intro/8.webp",
+        "audio": "Audio/intro/08_Chapter 1.mp3"
+      }
+    ]
+  }

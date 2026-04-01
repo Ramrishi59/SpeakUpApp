@@ -38,8 +38,8 @@ const els = {
 
 const returnCategory = new URLSearchParams(window.location.search).get("from");
 const returnUrl = returnCategory
-  ? `index.html?cat=${encodeURIComponent(returnCategory)}`
-  : "index.html";
+  ? `dashboard.html?cat=${encodeURIComponent(returnCategory)}`
+  : "dashboard.html";
 const homeLink = document.querySelector(".secondary-btn.home");
 if (homeLink) homeLink.setAttribute("href", returnUrl);
 

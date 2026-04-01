@@ -402,7 +402,7 @@ resetBtn.addEventListener("click", () => {
 });
 
 restartBtn?.addEventListener("click", () => {
-  window.location.href = "../index.html";
+  window.location.href = "../dashboard.html";
 });
 
 reviewBtn?.addEventListener("click", () => {

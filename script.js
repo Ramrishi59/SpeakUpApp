@@ -1,7 +1,4 @@
 let dashboardLessons = [];
-let categories = new Map(); // category -> { items: [], collectionCard }
-let rootCards = [];
-let currentCategory = null; // null = main view
 let rerenderDashboard = null;
 
 function isFreeLesson(lessonId) {
@@ -201,16 +198,6 @@ function appendQueryParam(url, key, value) {
   return hash ? `${next}#${hash}` : next;
 }
 
-function setCategoryInUrl(cat) {
-  const url = new URL(window.location.href);
-  if (cat) {
-    url.searchParams.set('cat', cat);
-  } else {
-    url.searchParams.delete('cat');
-  }
-  window.history.replaceState({}, '', url.toString());
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
   showDashboardScreen();
 
@@ -221,23 +208,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const searchIcon = document.querySelector('.search-icon');
   const refreshButton = document.querySelector('.refresh-button');
   const mainContent = document.querySelector('.main-content');
-  const optionsSection = document.querySelector('.options-section');
-  const backButton = document.createElement('button');
-  backButton.textContent = '‹ Back';
-  backButton.className = 'back-button hidden';
-  optionsSection?.appendChild(backButton);
   await loadDashboardLessons();
-  buildCategories();
-  const params = new URLSearchParams(window.location.search);
-  const initialCat = params.get('cat');
-  const returnCat = sessionStorage.getItem('returnCategory');
-  if (initialCat && categories.has(initialCat)) {
-    currentCategory = initialCat;
-  } else if (returnCat && categories.has(returnCat)) {
-    currentCategory = returnCat;
-    setCategoryInUrl(returnCat);
-  }
-  if (returnCat) sessionStorage.removeItem('returnCategory');
 
   refreshButton?.addEventListener('click', async () => {
     try {
@@ -287,7 +258,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // -------------------------------
 async function loadDashboardLessons() {
   try {
-    const res = await fetch('units/manifest.json?v=7'); // bump version when you update
+    const res = await fetch('units/manifest.json?v=8'); // bump version when you update
     if (!res.ok) throw new Error('Failed to load manifest.json');
     const { cards } = await res.json();
 
@@ -306,97 +277,18 @@ async function loadDashboardLessons() {
     // dashboardLessons = [ /* paste your old array here if needed */ ];
   }
 }
-
-function deriveCategory(card) {
-  if (card.category) return card.category;
-  if (card.route && card.route.startsWith('choosequiz/')) return 'choose';
-  if (card.id && card.id.startsWith('unit')) return 'units';
-  if (card.id && card.id.includes('practice')) return 'practice';
-  return 'other';
-}
-
-function labelizeCategory(cat) {
-  if (cat === 'choose') return 'Choose the right option';
-  if (cat === 'units') return "Let's Learn";
-  if (cat === 'practice') return 'Practice';
-  if (cat === 'order') return 'Make the sentence';
-  return cat.charAt(0).toUpperCase() + cat.slice(1);
-}
-
-function buildCategories() {
-  categories = new Map();
-
-  dashboardLessons.forEach(card => {
-    const cat = deriveCategory(card);
-    if (!categories.has(cat)) {
-      categories.set(cat, { items: [], collectionCard: null });
-    }
-    categories.get(cat).items.push(card);
-  });
-
-  // Sort choose quiz activities ascending by number (e.g., activity1, activity2, ...)
-  const chooseCategory = categories.get('choose');
-  if (chooseCategory) {
-    chooseCategory.items.sort((a, b) => {
-      const getNum = (card) => {
-        const sources = [
-          card?.id,
-          card?.route,
-          card?.title
-        ];
-        for (const src of sources) {
-          const match = String(src || '').match(/activity(\d+)/i) || String(src || '').match(/quiz[-\s]?(\d+)/i);
-          if (match) return Number(match[1]);
-        }
-        return Number.MAX_SAFE_INTEGER;
-      };
-      return getNum(a) - getNum(b);
-    });
+  function getScrollKey() {
+    return 'scroll:dashboard';
   }
 
-  // Build collection cards with preferred ordering
-  const preferredOrder = ['units', 'choose'];
-  const otherCats = Array.from(categories.keys()).filter(c => !preferredOrder.includes(c) && c !== 'other');
-  const orderedCats = [...preferredOrder, ...otherCats];
-
-  rootCards = [];
-
-  // Add collections first
-  orderedCats.forEach(cat => {
-    const value = categories.get(cat);
-    if (!value || cat === 'other') return;
-    const collectionCard = {
-      id: `collection-${cat}`,
-      title: labelizeCategory(cat),
-      description: `Browse ${labelizeCategory(cat)}`,
-      thumbnail: value.items[0]?.thumbnail || 'Images/icon.png',
-      category: cat,
-      isCollection: true
-    };
-    value.collectionCard = collectionCard;
-    rootCards.push(collectionCard);
-  });
-
-  // Then append non-collection items (category 'other')
-  const otherCategory = categories.get('other');
-  if (otherCategory) {
-    rootCards.push(...otherCategory.items);
-  }
-}
-
-
-  function getScrollKey(cat) {
-    return `scroll:${cat || 'root'}`;
-  }
-
-  function saveScrollPosition(cat) {
+  function saveScrollPosition() {
     if (!mainContent) return;
-    sessionStorage.setItem(getScrollKey(cat), String(mainContent.scrollTop || 0));
+    sessionStorage.setItem(getScrollKey(), String(mainContent.scrollTop || 0));
   }
 
-  function restoreScrollPosition(cat) {
+  function restoreScrollPosition() {
     if (!mainContent) return;
-    const value = sessionStorage.getItem(getScrollKey(cat));
+    const value = sessionStorage.getItem(getScrollKey());
     if (value == null) return;
     const next = Number(value);
     if (!Number.isNaN(next)) {
@@ -417,17 +309,10 @@ function buildCategories() {
       openAccountScreen();
       return;
     }
-    const navCategory = currentCategory || deriveCategory(card);
-    saveScrollPosition(navCategory);
-    if (navCategory && navCategory !== 'other') {
-      setCategoryInUrl(navCategory);
-      sessionStorage.setItem('returnCategory', navCategory);
-    } else {
-      sessionStorage.removeItem('returnCategory');
-    }
+    saveScrollPosition();
     // Use overrides when present, else default resolver
     const baseRoute = getRouteForCard(card);
-    const route = appendQueryParam(baseRoute, 'from', navCategory);
+    const route = appendQueryParam(baseRoute, 'from', 'dashboard');
     window.location.href = route;
   }
 
@@ -442,7 +327,6 @@ function buildCategories() {
       card.dataset.lessonId = lesson.id;
       card.tabIndex = 0; // keyboard focusable
 
-      const showDescription = !currentCategory;
       const isFree = isFreeLesson(lesson.id);
       const entitled = getAccessState();
       const badge = entitled ? '' : (isFree ? '<span class="lesson-badge free">Free</span>' : '<span class="lesson-badge locked">🔒 Locked</span>');
@@ -450,19 +334,14 @@ function buildCategories() {
           <img src="${lesson.thumbnail}" alt="${lesson.title}" class="lesson-thumbnail" loading="lazy">
           <div class="lesson-info">
             <h3>${lesson.title}</h3>
-            ${showDescription ? `<p>${lesson.description}</p>` : ''}
+            ${lesson.description ? `<p>${lesson.description}</p>` : ''}
           </div>
           ${badge}
           <span class="forward-arrow">›</span>
         `;
 
-      const isCollection = lesson.isCollection;
       const handleClick = () => {
-        if (isCollection && lesson.category) {
-          switchToCategoryView(lesson.category);
-        } else {
-          navigateToLesson(lesson.id);
-        }
+        navigateToLesson(lesson.id);
       };
 
       // click
@@ -502,10 +381,9 @@ function buildCategories() {
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       const q = e.target.value.toLowerCase().trim();
-      const activeList = currentCategory ? (categories.get(currentCategory)?.items || []) : rootCards;
-      const filtered = activeList.filter(lesson =>
+      const filtered = dashboardLessons.filter(lesson =>
         lesson.title.toLowerCase().includes(q) ||
-        lesson.description.toLowerCase().includes(q)
+        String(lesson.description || '').toLowerCase().includes(q)
       );
       renderLessonCards(filtered);
     });
@@ -523,36 +401,14 @@ function buildCategories() {
   searchBar?.addEventListener('click', () => expandSearchBar());
 
   function renderCurrentView() {
-    const cardsToRender = currentCategory ? (categories.get(currentCategory)?.items || []) : rootCards;
-    renderLessonCards(cardsToRender);
+    renderLessonCards(dashboardLessons);
     if (searchLabel) {
-      searchLabel.textContent = currentCategory ? labelizeCategory(currentCategory) : 'Lessons';
+      searchLabel.textContent = 'Lessons';
     }
-    if (backButton) {
-      backButton.classList.toggle('hidden', !currentCategory);
-    }
-    restoreScrollPosition(currentCategory);
+    restoreScrollPosition();
   }
 
   rerenderDashboard = renderCurrentView;
-
-  function switchToCategoryView(cat) {
-    currentCategory = cat;
-    setCategoryInUrl(cat);
-    if (searchInput) searchInput.value = '';
-    renderCurrentView();
-    if (mainContent) mainContent.scrollTop = 0;
-  }
-
-  function switchToMainView() {
-    currentCategory = null;
-    setCategoryInUrl(null);
-    if (searchInput) searchInput.value = '';
-    renderCurrentView();
-    if (mainContent) mainContent.scrollTop = 0;
-  }
-
-  backButton?.addEventListener('click', switchToMainView);
 
   // -------- Bottom nav --------
   if (navButtons) {
@@ -564,7 +420,7 @@ function buildCategories() {
         const target = btn.dataset.navTarget;
         if (target === 'lessons') {
           // Always return to the dashboard
-          window.location.href = 'index.html';
+          window.location.href = 'dashboard.html';
         } else if (target === 'login') {
           openAccountScreen();
         } else {

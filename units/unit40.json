@@ -1,0 +1,75 @@
+{
+    "id": "40",
+    "name": "I like bananas",
+    "description": "",
+    "thumbnail": "Images/Unit40/40_thumbnail.jpg",
+    "words": [
+      {
+        "image": "Images/Unit40/1.webp",
+        "audio": "Audio/Unit40/01_Chapter 1.mp3"
+      },
+      {
+        "image": "Images/Unit40/2.webp",
+        "audio": "Audio/Unit40/02_Chapter 1.mp3"
+      },
+      {
+        "image": "Images/Unit40/3.webp",
+        "audio": "Audio/Unit40/03_Chapter 1.mp3"
+      },
+      {
+        "image": "Images/Unit40/4.webp",
+        "audio": "Audio/Unit40/04_Chapter 1.mp3",
+        "text": "I like apples. I don't like grapes."
+      },
+      {
+        "image": "Images/Unit40/5.webp",
+        "audio": "Audio/Unit40/05_Chapter 1.mp3",
+        "text": "I like bananas. I don't like strawberries."
+      },
+      {
+        "image": "Images/Unit40/6.webp",
+        "audio": "Audio/Unit40/06_Chapter 1.mp3",
+        "text": "I like mangoes. I don't like pineapples."
+      },
+      {
+        "image": "Images/Unit40/7.webp",
+        "audio": "Audio/Unit40/07_Chapter 1.mp3",
+        "text": "We like watermelons. We don't like grapes."
+      },
+      {
+        "image": "Images/Unit40/8.webp",
+        "audio": "Audio/Unit40/08_Chapter 1.mp3",
+        "text": "I like grapes. I like strawberries too."
+      },
+      {
+        "image": "Images/Unit40/9.webp",
+        "audio": "Audio/Unit40/09_Chapter 1.mp3",
+        "text": "I like apple juice. I like orange juice too."
+      },
+      {
+        "image": "Images/Unit40/10.webp",
+        "audio": "Audio/Unit40/10_Chapter 1.mp3",
+        "text": "We like oranges. We like pomegranates too."
+      },
+      {
+        "image": "Images/Unit40/11.webp",
+        "audio": "Audio/Unit40/11_Chapter 1.mp3",
+        "text": "I like maths. I like Science too."
+      },
+      {
+        "image": "Images/Unit40/12.webp",
+        "audio": "Audio/Unit40/12_Chapter 1.mp3",
+        "text": "We like movies. We like music too."
+      },
+      {
+        "image": "Images/Unit40/13.webp",
+        "audio": "Audio/Unit40/13_Chapter 1.mp3",
+        "text": "I like English. I like Malayalam too."
+      },
+      {
+        "image": "Images/Unit40/14.webp",
+        "audio": "Audio/Unit40/14_Chapter 1.mp3",
+        "text": ""
+      }
+    ]
+  }

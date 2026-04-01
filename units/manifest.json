@@ -1,5 +1,12 @@
 {
   "cards": [
+    { 
+      "description": "Intro", 
+      "title": "Introduction", 
+      "route": "", 
+      "id": "intro", 
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    }, 
     {
       "category": "order", 
       "description": "activity", 
@@ -610,7 +617,7 @@
       "category": "units", 
       "thumbnail": "Images/Unit30/4.webp", 
       "id": "unit30", 
-      "title": "Unit 30: Where are the bottles?"
+      "title": "Unit 30: What's the weather like?"
     }, 
     {
       "category": "units", 
@@ -673,6 +680,13 @@
       
       "id": "unit39", 
       "title": "Unit 39: I have a Camera"
+    }, 
+    {
+      "category": "units", 
+      "thumbnail": "Images/Unit40/1.webp", 
+      
+      "id": "unit40", 
+      "title": "Unit 40: I like Bananas"
     }, 
     {
       "category": "units", 

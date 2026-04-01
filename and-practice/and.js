@@ -154,5 +154,5 @@ els.btnNext.addEventListener('click', next);
 els.btnRestart.addEventListener('click', restart);
 els.overlayNext.addEventListener('click', ()=>{ hideReward(); advance(); });
 els.outroRestart.addEventListener('click', restart);
-els.outroHome.addEventListener('click', ()=>{ window.location.href = 'index.html'; });
+els.outroHome.addEventListener('click', ()=>{ window.location.href = 'dashboard.html'; });
 }
