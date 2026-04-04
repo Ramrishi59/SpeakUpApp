@@ -334,7 +334,7 @@
       <li><a href="#pricing"><span class="en">Pricing</span><span class="ml">വില</span></a></li>
       <li><a href="#testimonials"><span class="en">Reviews</span><span class="ml">അഭിപ്രായങ്ങൾ</span></a></li>
       <li><a href="#contact" class="nav-cta"><span class="en">Get Started 🚀</span><span class="ml">ആരംഭിക്കൂ 🚀</span></a></li>
-      <li><a href="https://ramrishi59.github.io/SpeakUpApp/" target="_blank" class="nav-cta nav-cta-pink"><span class="en">Open App 📱</span><span class="ml">ആപ്പ് തുറക്കൂ 📱</span></a></li>
+      <li><a href="app/dashboard.html" target="_blank" class="nav-cta nav-cta-pink"><span class="en">Open App 📱</span><span class="ml">ആപ്പ് തുറക്കൂ 📱</span></a></li>
     </ul>
     <div class="lang-toggle" onclick="toggleLang()" title="Switch Language / ഭാഷ മാറ്റൂ">
       <span class="lang-pill active" id="pillEN">EN</span>
@@ -363,7 +363,7 @@
       <span class="ml">SpeakUp App 5–12 വയസ്സുള്ള മലയാളം സംസാരിക്കുന്ന കുട്ടികളെ ഗെയിംസ്, പാട്ടുകൾ, കഥകൾ വഴി ഇംഗ്ലീഷ് പഠിക്കാൻ സഹായിക്കുന്നു!</span>
     </p>
     <div class="hero-buttons">
-      <a href="https://ramrishi59.github.io/SpeakUpApp/" target="_blank" class="btn-primary">
+      <a href="app/dashboard.html" target="_blank" class="btn-primary">
         <span class="en">Start Free Trial 🎉</span>
         <span class="ml">സൗജന്യ ട്രയൽ ആരംഭിക്കൂ 🎉</span>
       </a>
@@ -586,6 +586,33 @@
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+</script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyB_xzbqAPsfMzbPDF9NldXnT-OqWXqd17U",
+    authDomain: "speakup-19106.firebaseapp.com",
+    projectId: "speakup-19106",
+    storageBucket: "speakup-19106.firebasestorage.app",
+    messagingSenderId: "899411455318",
+    appId: "1:899411455318:web:8c202ae8fb363e5b53baf7"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  window.auth = auth;
+  window.db = db;
 </script>
 </body>
 </html>

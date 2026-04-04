@@ -1,5 +1,6 @@
 let dashboardLessons = [];
 let rerenderDashboard = null;
+let dashboardLoadError = "";
 
 function isFreeLesson(lessonId) {
   // TODO: put your real free list here
@@ -8,10 +9,16 @@ function isFreeLesson(lessonId) {
 }
 
 function getLoginState() {
-  return window.SUAuth.getAuth(); // { isLoggedIn, phone }
+  if (!window.SUAuth || typeof window.SUAuth.getAuth !== 'function') {
+    return { isLoggedIn: false, email: null, uid: null };
+  }
+  return window.SUAuth.getAuth(); // { isLoggedIn, email, uid }
 }
 
 function getAccessState() {
+  if (!window.SUAuth || typeof window.SUAuth.isEntitled !== 'function') {
+    return false;
+  }
   return window.SUAuth.isEntitled(); // true/false (checks expiry too)
 }
 
@@ -59,32 +66,70 @@ function renderAccountStatus() {
           </div>
           <h2 class="account-title" id="status-title">Account Status</h2>
           <p class="account-subtitle">Sign in to see your access status.</p>
+  
           <div class="login-form">
-            <label for="mock-phone">Phone number</label>
+            <label for="login-email">Email</label>
             <input
-              id="mock-phone"
-              name="phone"
-              type="tel"
-              placeholder="+91 98765 43210"
-              autocomplete="tel"
+              id="login-email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
               required
             />
           </div>
+  
+          <div class="login-form">
+            <label for="login-password">Password</label>
+            <input
+              id="login-password"
+              name="password"
+              type="password"
+              placeholder="Enter password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+  
+          <p id="login-message" class="footer-note"></p>
+  
           <div class="button-row">
-            <button type="button" class="primary-button" id="mock-login-button">Mock Login</button>
+            <button type="button" class="primary-button" id="login-button">Log In</button>
             <button type="button" class="secondary-button" id="back-dashboard">Back to Dashboard</button>
           </div>
-          <p class="footer-note">Offline access: Available (30-day licence)</p>
         </div>
       </section>
     `;
-
-    const loginButton = document.getElementById('mock-login-button');
-    loginButton?.addEventListener('click', () => {
-      const phoneInput = document.getElementById('mock-phone');
-      const phone = phoneInput?.value?.trim() || '+91 XXXXX…';
-      window.SUAuth.mockLogin(phone);
-      renderAccountStatus();
+  
+    const loginButton = document.getElementById('login-button');
+  
+    loginButton?.addEventListener('click', async () => {
+      const email = document.getElementById('login-email')?.value?.trim() || '';
+      const password = document.getElementById('login-password')?.value || '';
+      const message = document.getElementById('login-message');
+  
+      if (!email || !password) {
+        if (message) message.textContent = 'Please enter email and password.';
+        return;
+      }
+  
+      try {
+        await window.SUAuth.loginWithEmail(email, password);
+  
+        const updatedAuth = getLoginState();
+        const unlockedNow = getAccessState();
+  
+        if (updatedAuth.isLoggedIn && unlockedNow) {
+          renderAccountStatus();
+          showDashboardScreen();
+        } else if (updatedAuth.isLoggedIn && !unlockedNow) {
+          renderAccountStatus();
+          if (message) message.textContent = 'Access not enabled yet.';
+        }
+      } catch (error) {
+        console.error(error);
+        if (message) message.textContent = 'Login failed. Check email and password.';
+      }
     });
   } else {
     const license = window.SUAuth.getLicense();
@@ -98,7 +143,7 @@ function renderAccountStatus() {
           <h2 id="status-title">Account</h2>
         </div>
     
-        <p class="status-line"><strong>Signed in:</strong> ${auth.phone || '+91 XXXXX…'}</p>
+        <p class="status-line"><strong>Signed in:</strong> ${auth.email || 'Unknown user'}</p>
     
         <div class="status-badge ${unlocked ? 'status-unlocked' : 'status-locked'}">
           ${unlocked ? 'Unlocked ✅' : 'Locked 🔒'}
@@ -148,46 +193,20 @@ function renderAccountStatus() {
 
     if (!unlocked) {
       document.getElementById('buy-button')?.addEventListener('click', () => {
-        // MOCK purchase for now
-        window.SUAuth.mockGrantFullUnlock(30);
-        renderAccountStatus();
-        showDashboardScreen(); // refresh dashboard locks
+        alert('Access will be enabled by the Speak Up team.');
       });
     }
   }
 
   document.getElementById('back-dashboard')?.addEventListener('click', showDashboardScreen);
 
-  document.getElementById('signout-btn')?.addEventListener('click', () => {
-    window.SUAuth.mockLogout();
+  document.getElementById('signout-btn')?.addEventListener('click', async () => {
+    await window.SUAuth.logout();
     renderAccountStatus();
     showDashboardScreen();
   });
 
-  const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-  if (isLocalhost && auth.isLoggedIn)  {
-    const devPanel = document.createElement('div');
-    devPanel.className = 'login-form';
-    devPanel.innerHTML = `
-      <button type="button" id="dev-grant">Grant Full Unlock</button>
-      <button type="button" id="dev-revoke">Revoke Unlock</button>
-      <button type="button" id="dev-expire">Expire License</button>
-    `;
-    accountScreen.appendChild(devPanel);
 
-    document.getElementById('dev-grant')?.addEventListener('click', () => {
-      window.SUAuth.mockGrantFullUnlock();
-      renderAccountStatus();
-    });
-    document.getElementById('dev-revoke')?.addEventListener('click', () => {
-      window.SUAuth.mockRevokeUnlock();
-      renderAccountStatus();
-    });
-    document.getElementById('dev-expire')?.addEventListener('click', () => {
-      window.SUAuth.mockExpireLicense();
-      renderAccountStatus();
-    });
-  }
 }
 
 function appendQueryParam(url, key, value) {
@@ -199,16 +218,34 @@ function appendQueryParam(url, key, value) {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  console.log('A: DOM loaded');
+
+  try {
+    if (window.SUAuth?.ready) {
+      await window.SUAuth.ready;
+      console.log('B: SUAuth ready finished');
+    } else {
+      console.warn('B-WARN: SUAuth missing, continuing with locked dashboard fallback');
+    }
+  } catch (err) {
+    console.error('B-ERROR: SUAuth.ready failed:', err);
+  }
+
   showDashboardScreen();
+  console.log('C: showDashboardScreen done');
 
   const lessonsList = document.querySelector('.lessons-list');
+  console.log('D: lessonsList =', lessonsList);
+
   const searchInput = document.querySelector('.search-input');
   const searchLabel = document.querySelector('.search-label');
   const searchBar = document.querySelector('.search-bar');
   const searchIcon = document.querySelector('.search-icon');
   const refreshButton = document.querySelector('.refresh-button');
   const mainContent = document.querySelector('.main-content');
+
   await loadDashboardLessons();
+  console.log('E: dashboardLessons after load =', dashboardLessons);
 
   refreshButton?.addEventListener('click', async () => {
     try {
@@ -220,6 +257,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch {}
     window.location.reload();
   });
+
 
   const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
 
@@ -258,7 +296,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 // -------------------------------
 async function loadDashboardLessons() {
   try {
-    const res = await fetch('units/manifest.json?v=8'); // bump version when you update
+    const manifestUrl = new URL('./units/manifest.json?v=9', window.location.href);
+    const res = await fetch(manifestUrl, { cache: 'no-store' });
     if (!res.ok) throw new Error('Failed to load manifest.json');
     const { cards } = await res.json();
 
@@ -271,10 +310,11 @@ async function loadDashboardLessons() {
     }
 
     dashboardLessons = cards;
+    dashboardLoadError = "";
   } catch (e) {
     console.error('Could not load manifest.json:', e);
-    // Optional fallback (only during testing)
-    // dashboardLessons = [ /* paste your old array here if needed */ ];
+    dashboardLessons = [];
+    dashboardLoadError = `${e?.message || e}`;
   }
 }
   function getScrollKey() {
@@ -321,6 +361,32 @@ async function loadDashboardLessons() {
   function renderLessonCards(lessonsToRender) {
     if (!lessonsList) return;
     lessonsList.innerHTML = '';
+
+    if (dashboardLoadError) {
+      lessonsList.innerHTML = `
+        <div class="lesson-card" style="cursor: default;">
+          <div class="lesson-info">
+            <h3>Could not load dashboard items</h3>
+            <p>${dashboardLoadError}</p>
+            <p>Expected file: app/units/manifest.json</p>
+            <p>Current page: ${window.location.href}</p>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    if (!lessonsToRender.length) {
+      lessonsList.innerHTML = `
+        <div class="lesson-card" style="cursor: default;">
+          <div class="lesson-info">
+            <h3>No dashboard items found</h3>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
     lessonsToRender.forEach(lesson => {
       const card = document.createElement('div');
       card.classList.add('lesson-card');
