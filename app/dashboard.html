@@ -65,12 +65,19 @@
 
     <script>
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
+        window.addEventListener('load', async () => {
+          const isLocalDev = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+
+          if (isLocalDev) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            await Promise.all(registrations.map((registration) => registration.unregister()));
+            return;
+          }
+
           navigator.serviceWorker.register('service-worker.js')
             .then(registration => {
               console.log('Service Worker registered: ', registration);
 
-              // Force refresh when a new SW takes over
               let refreshing = false;
               navigator.serviceWorker.addEventListener('controllerchange', () => {
                 if (refreshing) return;
@@ -81,7 +88,6 @@
               let hasPrompted = false;
               function promptUserToRefresh(worker) {
                 if (hasPrompted) return;
-                // Only prompt if there's already an active controller (i.e., this is an update, not first install)
                 if (!navigator.serviceWorker.controller) return;
                 hasPrompted = true;
                 const shouldRefresh = window.confirm('A new update is available. Refresh now?');
@@ -90,7 +96,6 @@
                 }
               }
 
-              // If there's an updated worker waiting, ask user before activating
               if (registration.waiting) {
                 promptUserToRefresh(registration.waiting);
               }

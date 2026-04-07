@@ -104,6 +104,18 @@ function renderAccountStatus() {
 
           <div class="auth-panel" id="signup-panel" hidden>
             <div class="login-form">
+              <label for="signup-username">Username</label>
+              <input
+                id="signup-username"
+                name="signup-username"
+                type="text"
+                placeholder="Choose a username"
+                autocomplete="username"
+                required
+              />
+            </div>
+
+            <div class="login-form">
               <label for="signup-email">Email</label>
               <input
                 id="signup-email"
@@ -205,12 +217,12 @@ function renderAccountStatus() {
     });
 
     signupButton?.addEventListener('click', async () => {
-      const username = document.getElementById('signup-username').value.trim();
+      const username = document.getElementById('signup-username')?.value?.trim() || '';
       const email = document.getElementById('signup-email')?.value?.trim() || '';
       const password = document.getElementById('signup-password')?.value || '';
       const confirmPassword = document.getElementById('signup-confirm-password')?.value || '';
 
-      if (!email || !password || !confirmPassword) {
+      if (!username || !email || !password || !confirmPassword) {
         if (message) message.textContent = 'Please complete all sign up fields.';
         return;
       }
@@ -226,10 +238,12 @@ function renderAccountStatus() {
       }
 
       try {
-        await window.SUAuth.signupWithEmail(username,email, password);
+        const result = await window.SUAuth.signupWithEmail(username, email, password);
         renderAccountStatus();
         if (message) {
-          message.textContent = 'Account created. You can now request access.';
+          message.textContent = result?.profileSynced === false
+            ? 'Account created, but profile setup is incomplete. Check Firestore rules.'
+            : 'Account created. You can now request access.';
         }
       } catch (error) {
         console.error(error);

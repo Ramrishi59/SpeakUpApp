@@ -95,8 +95,19 @@ onAuthStateChanged(auth, async (user) => {
       email: user.email || null,
       uid: user.uid
     };
-
-    await loadUserProfile(user.uid);
+    try {
+      await loadUserProfile(user.uid);
+    } catch (error) {
+      console.warn("Could not load user profile from Firestore.", error);
+      currentProfile = null;
+      licenseState = {
+        entitled: false,
+        entitlements: [],
+        licenseExpiresAt: null,
+        approved: false,
+        role: null
+      };
+    }
   } else {
     authState = {
       isLoggedIn: false,
@@ -130,40 +141,45 @@ async function loginWithEmail(email, password) {
     uid: user.uid
   };
 
-  const ref = doc(db, "users", user.uid);
-  const snap = await getDoc(ref);
-
-
-
-  await loadUserProfile(user.uid);
+  try {
+    await loadUserProfile(user.uid);
+  } catch (error) {
+    console.warn("Login succeeded, but the user profile could not be loaded.", error);
+  }
   return authState;
 }
 
 async function signupWithEmail(username, email, password) {
-    const cred = await createUserWithEmailAndPassword(auth, email, password);
-    const user = cred.user;
-  
-    authState = {
-      isLoggedIn: true,
-      email: user.email || null,
-      uid: user.uid
-    };
-  
+  const cred = await createUserWithEmailAndPassword(auth, email, password);
+  const user = cred.user;
+
+  authState = {
+    isLoggedIn: true,
+    email: user.email || null,
+    uid: user.uid
+  };
+
+  let profileSynced = true;
+
+  try {
     await setDoc(doc(db, "users", user.uid), {
-      username: username,
+      username,
       email: user.email || email,
-      approved: false,
-      accountStatus: "pending",
-      entitlements: [],
+      role: "user",
+      fullUnlock: false,
+      unlockedUnits: ["unit1", "unit2"],
       licenseExpiresAt: null,
-      role: "tester",
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp()
     });
-  
     await loadUserProfile(user.uid);
-    return authState;
+  } catch (error) {
+    profileSynced = false;
+    console.warn("Account was created, but the profile could not be saved to Firestore.", error);
   }
+
+  return { ...authState, profileSynced };
+}
 
 async function logout() {
   await signOut(auth);
