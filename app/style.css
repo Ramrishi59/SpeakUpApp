@@ -356,6 +356,35 @@ body {
     font-size: 0.9em;
 }
 
+#account-screen .auth-mode-switch {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 14px 0 8px;
+}
+
+#account-screen .auth-mode-button {
+    border: 1px solid rgba(29, 27, 42, 0.12);
+    border-radius: 12px;
+    background: rgba(29, 27, 42, 0.06);
+    color: #1d1b2a;
+    font-size: 0.95em;
+    font-weight: 700;
+    padding: 11px 14px;
+    cursor: pointer;
+}
+
+#account-screen .auth-mode-button.is-active {
+    color: white;
+    background: linear-gradient(135deg, #ff7b5d, #f4564e);
+    box-shadow: 0 14px 30px rgba(244, 86, 78, 0.18);
+    border-color: transparent;
+}
+
+#account-screen .auth-panel[hidden] {
+    display: none;
+}
+
 #account-screen .status-list {
     display: grid;
     gap: 10px;

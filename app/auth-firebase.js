@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebas
 import {
   getAuth,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
@@ -134,6 +135,30 @@ async function loginWithEmail(email, password) {
   return authState;
 }
 
+async function signupWithEmail(email, password) {
+  const cred = await createUserWithEmailAndPassword(auth, email, password);
+  const user = cred.user;
+
+  authState = {
+    isLoggedIn: true,
+    email: user.email || null,
+    uid: user.uid
+  };
+
+  await setDoc(doc(db, "users", user.uid), {
+    email: user.email || email,
+    approved: false,
+    entitlements: [],
+    licenseExpiresAt: null,
+    role: "student",
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
+  }, { merge: true });
+
+  await loadUserProfile(user.uid);
+  return authState;
+}
+
 async function logout() {
   await signOut(auth);
 }
@@ -176,6 +201,7 @@ async function mockRevokeUnlock() {
 window.SUAuth = {
   ready,
   loginWithEmail,
+  signupWithEmail,
   logout,
   getAuth: getAuthState,
   getLicense,

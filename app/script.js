@@ -65,60 +65,131 @@ function renderAccountStatus() {
             <span>SpeakUp</span>
           </div>
           <h2 class="account-title" id="status-title">Account Status</h2>
-          <p class="account-subtitle">Sign in to see your access status.</p>
-  
-          <div class="login-form">
-            <label for="login-email">Email</label>
-            <input
-              id="login-email"
-              name="email"
-              type="email"
-              placeholder="you@example.com"
-              autocomplete="email"
-              required
-            />
+          <p class="account-subtitle">Log in or create an account to manage access.</p>
+
+          <div class="auth-mode-switch" role="tablist" aria-label="Account options">
+            <button type="button" class="auth-mode-button is-active" id="show-login" data-auth-mode="login" aria-selected="true">Log In</button>
+            <button type="button" class="auth-mode-button" id="show-signup" data-auth-mode="signup" aria-selected="false">Sign Up</button>
           </div>
-  
-          <div class="login-form">
-            <label for="login-password">Password</label>
-            <input
-              id="login-password"
-              name="password"
-              type="password"
-              placeholder="Enter password"
-              autocomplete="current-password"
-              required
-            />
+
+          <div class="auth-panel" id="login-panel">
+            <div class="login-form">
+              <label for="login-email">Email</label>
+              <input
+                id="login-email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+
+            <div class="login-form">
+              <label for="login-password">Password</label>
+              <input
+                id="login-password"
+                name="password"
+                type="password"
+                placeholder="Enter password"
+                autocomplete="current-password"
+                required
+              />
+            </div>
+
+            <div class="button-row">
+              <button type="button" class="primary-button" id="login-button">Log In</button>
+            </div>
           </div>
-  
+
+          <div class="auth-panel" id="signup-panel" hidden>
+            <div class="login-form">
+              <label for="signup-email">Email</label>
+              <input
+                id="signup-email"
+                name="signup-email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+              />
+            </div>
+
+            <div class="login-form">
+              <label for="signup-password">Password</label>
+              <input
+                id="signup-password"
+                name="signup-password"
+                type="password"
+                placeholder="Create password"
+                autocomplete="new-password"
+                required
+              />
+            </div>
+
+            <div class="login-form">
+              <label for="signup-confirm-password">Confirm Password</label>
+              <input
+                id="signup-confirm-password"
+                name="signup-confirm-password"
+                type="password"
+                placeholder="Confirm password"
+                autocomplete="new-password"
+                required
+              />
+            </div>
+
+            <div class="button-row">
+              <button type="button" class="primary-button" id="signup-button">Create Account</button>
+            </div>
+          </div>
+
           <p id="login-message" class="footer-note"></p>
-  
+
           <div class="button-row">
-            <button type="button" class="primary-button" id="login-button">Log In</button>
             <button type="button" class="secondary-button" id="back-dashboard">Back to Dashboard</button>
           </div>
         </div>
       </section>
     `;
-  
+
+    const message = document.getElementById('login-message');
     const loginButton = document.getElementById('login-button');
-  
+    const signupButton = document.getElementById('signup-button');
+    const loginPanel = document.getElementById('login-panel');
+    const signupPanel = document.getElementById('signup-panel');
+    const loginToggle = document.getElementById('show-login');
+    const signupToggle = document.getElementById('show-signup');
+
+    function setAuthMode(mode) {
+      const isLogin = mode === 'login';
+      loginPanel.hidden = !isLogin;
+      signupPanel.hidden = isLogin;
+      loginToggle?.classList.toggle('is-active', isLogin);
+      signupToggle?.classList.toggle('is-active', !isLogin);
+      loginToggle?.setAttribute('aria-selected', String(isLogin));
+      signupToggle?.setAttribute('aria-selected', String(!isLogin));
+      if (message) message.textContent = '';
+    }
+
+    loginToggle?.addEventListener('click', () => setAuthMode('login'));
+    signupToggle?.addEventListener('click', () => setAuthMode('signup'));
+
     loginButton?.addEventListener('click', async () => {
       const email = document.getElementById('login-email')?.value?.trim() || '';
       const password = document.getElementById('login-password')?.value || '';
-      const message = document.getElementById('login-message');
-  
+
       if (!email || !password) {
         if (message) message.textContent = 'Please enter email and password.';
         return;
       }
-  
+
       try {
         await window.SUAuth.loginWithEmail(email, password);
-  
+
         const updatedAuth = getLoginState();
         const unlockedNow = getAccessState();
-  
+
         if (updatedAuth.isLoggedIn && unlockedNow) {
           renderAccountStatus();
           showDashboardScreen();
@@ -129,6 +200,38 @@ function renderAccountStatus() {
       } catch (error) {
         console.error(error);
         if (message) message.textContent = 'Login failed. Check email and password.';
+      }
+    });
+
+    signupButton?.addEventListener('click', async () => {
+      const email = document.getElementById('signup-email')?.value?.trim() || '';
+      const password = document.getElementById('signup-password')?.value || '';
+      const confirmPassword = document.getElementById('signup-confirm-password')?.value || '';
+
+      if (!email || !password || !confirmPassword) {
+        if (message) message.textContent = 'Please complete all sign up fields.';
+        return;
+      }
+
+      if (password.length < 6) {
+        if (message) message.textContent = 'Password must be at least 6 characters.';
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        if (message) message.textContent = 'Passwords do not match.';
+        return;
+      }
+
+      try {
+        await window.SUAuth.signupWithEmail(email, password);
+        renderAccountStatus();
+        if (message) {
+          message.textContent = 'Account created. You can now request access.';
+        }
+      } catch (error) {
+        console.error(error);
+        if (message) message.textContent = 'Sign up failed. Try a different email.';
       }
     });
   } else {
