@@ -57,16 +57,31 @@ function setActiveBottomNav(target) {
   });
 }
 
+function updateAccountNavLabel() {
+  const auth = getLoginState();
+  const accountNavButton = document.querySelector('.bottom-nav .nav-button[data-nav-target="login"]');
+  if (!accountNavButton) return;
+
+  const label = auth.isLoggedIn ? 'Profile' : 'Log in';
+  const labelNode = accountNavButton.querySelector('span');
+  const iconNode = accountNavButton.querySelector('img');
+
+  if (labelNode) labelNode.textContent = label;
+  if (iconNode) iconNode.alt = label;
+}
+
 function showDashboardScreen() {
   const dashboard = document.getElementById('dashboard-screen');
   const account = document.getElementById('account-screen');
   if (dashboard) dashboard.style.display = '';
   if (account) account.style.display = 'none';
+  updateAccountNavLabel();
   setActiveBottomNav('lessons');
   rerenderDashboard?.();
 }
 
 function openAccountScreen() {
+  updateAccountNavLabel();
   setActiveBottomNav('login');
   renderAccountStatus();
 }
@@ -74,6 +89,7 @@ function openAccountScreen() {
 function renderAccountStatus() {
   const appRoot = getAppRoot();
   if (!appRoot) return;
+  updateAccountNavLabel();
 
   let accountScreen = document.getElementById('account-screen');
   if (!accountScreen) {
@@ -101,8 +117,7 @@ function renderAccountStatus() {
           <h2 class="account-title" id="status-title">Account Status</h2>
           <p class="account-subtitle">Log in or create an account to manage access.</p>
 
-          <div class="auth-mode-switch" role="tablist" aria-label="Account options">
-            <button type="button" class="auth-mode-button is-active" id="show-login" data-auth-mode="login" aria-selected="true">Log In</button>
+          <div class="auth-mode-switch" aria-label="Account options">
             <button type="button" class="auth-mode-button" id="show-signup" data-auth-mode="signup" aria-selected="false">Sign Up</button>
           </div>
 
@@ -188,6 +203,10 @@ function renderAccountStatus() {
             <div class="button-row">
               <button type="button" class="primary-button" id="signup-button">Create Account</button>
             </div>
+
+            <div class="button-row">
+              <button type="button" class="secondary-button" id="back-to-login">Back to Log In</button>
+            </div>
           </div>
 
           <p id="login-message" class="footer-note"></p>
@@ -204,22 +223,21 @@ function renderAccountStatus() {
     const signupButton = document.getElementById('signup-button');
     const loginPanel = document.getElementById('login-panel');
     const signupPanel = document.getElementById('signup-panel');
-    const loginToggle = document.getElementById('show-login');
     const signupToggle = document.getElementById('show-signup');
+    const backToLogin = document.getElementById('back-to-login');
 
     function setAuthMode(mode) {
       const isLogin = mode === 'login';
       loginPanel.hidden = !isLogin;
       signupPanel.hidden = isLogin;
-      loginToggle?.classList.toggle('is-active', isLogin);
       signupToggle?.classList.toggle('is-active', !isLogin);
-      loginToggle?.setAttribute('aria-selected', String(isLogin));
       signupToggle?.setAttribute('aria-selected', String(!isLogin));
+      signupToggle.hidden = !isLogin;
       if (message) message.textContent = '';
     }
 
-    loginToggle?.addEventListener('click', () => setAuthMode('login'));
     signupToggle?.addEventListener('click', () => setAuthMode('signup'));
+    backToLogin?.addEventListener('click', () => setAuthMode('login'));
 
     loginButton?.addEventListener('click', async () => {
       

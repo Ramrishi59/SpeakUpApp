@@ -359,9 +359,8 @@ body {
 }
 
 #account-screen .auth-mode-switch {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    display: flex;
+    justify-content: flex-start;
     margin: 14px 0 8px;
 }
 
