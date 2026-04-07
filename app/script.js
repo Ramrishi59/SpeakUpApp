@@ -16,14 +16,41 @@ function getLoginState() {
 }
 
 function getAccessState() {
-  if (!window.SUAuth || typeof window.SUAuth.isEntitled !== 'function') {
-    return false;
+  if (!window.SUAuth || typeof window.SUAuth.getLicense !== 'function') {
+    return {
+      fullUnlock: false,
+      unlockedUnits: [],
+      licenseExpiresAt: null,
+      role: null
+    };
   }
-  return window.SUAuth.isEntitled(); // true/false (checks expiry too)
+  return window.SUAuth.getLicense();
+}
+
+function getProfileState() {
+  if (!window.SUAuth || typeof window.SUAuth.getProfile !== 'function') {
+    return null;
+  }
+  return window.SUAuth.getProfile();
+}
+
+function hasLessonAccess(lessonId) {
+  if (isFreeLesson(lessonId)) return true;
+
+  const access = getAccessState();
+  if (access.fullUnlock) return true;
+
+  return Array.isArray(access.unlockedUnits) && access.unlockedUnits.includes(String(lessonId));
 }
 
 function getAppRoot() {
   return document.getElementById('appRoot');
+}
+
+function setActiveBottomNav(target) {
+  document.querySelectorAll('.bottom-nav .nav-button').forEach((button) => {
+    button.classList.toggle('active', button.dataset.navTarget === target);
+  });
 }
 
 function showDashboardScreen() {
@@ -31,10 +58,12 @@ function showDashboardScreen() {
   const account = document.getElementById('account-screen');
   if (dashboard) dashboard.style.display = '';
   if (account) account.style.display = 'none';
+  setActiveBottomNav('lessons');
   rerenderDashboard?.();
 }
 
 function openAccountScreen() {
+  setActiveBottomNav('login');
   renderAccountStatus();
 }
 
@@ -54,7 +83,8 @@ function renderAccountStatus() {
   accountScreen.style.display = 'block';
 
   const auth = getLoginState();
-  const unlocked = getAccessState();
+  const access = getAccessState();
+  const unlocked = access.fullUnlock;
 
   if (!auth.isLoggedIn) {
     accountScreen.innerHTML = `
@@ -201,14 +231,15 @@ function renderAccountStatus() {
         await window.SUAuth.loginWithEmail(email, password);
 
         const updatedAuth = getLoginState();
-        const unlockedNow = getAccessState();
+        const accessNow = getAccessState();
+        const hasSomeAccess = accessNow.fullUnlock || (Array.isArray(accessNow.unlockedUnits) && accessNow.unlockedUnits.length > 0);
 
-        if (updatedAuth.isLoggedIn && unlockedNow) {
+        if (updatedAuth.isLoggedIn && hasSomeAccess) {
           renderAccountStatus();
           showDashboardScreen();
-        } else if (updatedAuth.isLoggedIn && !unlockedNow) {
+        } else if (updatedAuth.isLoggedIn && !hasSomeAccess) {
           renderAccountStatus();
-          if (message) message.textContent = 'Access not enabled yet.';
+          if (message) message.textContent = 'Logged in. Only free lessons are available right now.';
         }
       } catch (error) {
         console.error(error);
@@ -252,61 +283,92 @@ function renderAccountStatus() {
     });
   } else {
     const license = window.SUAuth.getLicense();
+    const profile = getProfileState();
     const expText = (license && license.licenseExpiresAt)
       ? new Date(license.licenseExpiresAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
       : null;
+    const unlockedUnitsText = Array.isArray(license?.unlockedUnits) && license.unlockedUnits.length
+      ? license.unlockedUnits.join(', ')
+      : 'None yet';
+    const displayName = profile?.username || auth.email || 'Unknown user';
+    const profileInitial = String(displayName).trim().charAt(0).toUpperCase() || 'U';
     
     accountScreen.innerHTML = `
       <section class="login-card" aria-labelledby="status-title">
-        <div class="card-header">
-          <h2 id="status-title">Account</h2>
+        <div class="account-hero ${unlocked ? 'is-premium' : 'is-limited'}">
+          <div class="account-hero-top">
+            <div class="profile-mark" aria-hidden="true">${profileInitial}</div>
+            <div class="card-header">
+              <p class="eyebrow">SpeakUp Account</p>
+              <h2 id="status-title">Welcome back, ${displayName}</h2>
+              <p class="hero-subtitle">${unlocked ? 'Your premium access is active and ready to use.' : 'Your learning profile is active with free and granted lessons.'}</p>
+            </div>
+          </div>
+
+          <div class="hero-chips">
+            <span class="hero-chip">${license?.role || 'user'}</span>
+            <span class="hero-chip">${unlocked ? 'Full access' : 'Limited access'}</span>
+          </div>
         </div>
-    
-        <p class="status-line"><strong>Signed in:</strong> ${auth.email || 'Unknown user'}</p>
-    
+
         <div class="status-badge ${unlocked ? 'status-unlocked' : 'status-locked'}">
-          ${unlocked ? 'Unlocked ✅' : 'Locked 🔒'}
+          ${unlocked ? 'Full Access ✅' : 'Limited Access 🔒'}
         </div>
-    
+
+        <div class="account-stats">
+          <div class="account-stat">
+            <span class="account-stat-label">Signed in as</span>
+            <strong class="account-stat-value">${displayName}</strong>
+          </div>
+          <div class="account-stat">
+            <span class="account-stat-label">Email</span>
+            <strong class="account-stat-value">${auth.email || 'Not available'}</strong>
+          </div>
+          <div class="account-stat">
+            <span class="account-stat-label">Unlocked units</span>
+            <strong class="account-stat-value">${Array.isArray(license?.unlockedUnits) ? license.unlockedUnits.length : 0}</strong>
+          </div>
+        </div>
+
         ${
           unlocked
           ? `
             <div class="premium-box">
               <h3 class="premium-title">Speak Up Premium</h3>
-              <p class="premium-sub">Offline access is active.</p>
-              ${expText ? `<p class="premium-sub"><strong>Offline until:</strong> ${expText}</p>` : ''}
+              <p class="premium-sub">Every lesson is open on this device. Keep learning even when the internet is unstable.</p>
+              ${expText ? `<div class="price-row"><span class="price-label">Offline until</span><span class="price-value">${expText}</span></div>` : ''}
             </div>
           `
           : `
             <div class="premium-box">
-              <h3 class="premium-title">Speak Up Premium</h3>
-              <p class="premium-sub">Unlock all lessons and activities.</p>
+              <h3 class="premium-title">Current Access</h3>
+              <p class="premium-sub">Free lessons are always available. Extra units come from your Firestore profile.</p>
     
               <ul class="premium-list">
-                <li>✔ All units + activities</li>
-                <li>✔ Speaking practice</li>
-                <li>✔ Works offline after unlock (30 days)</li>
+                <li>✔ Free lessons</li>
+                <li>✔ Individually unlocked units</li>
+                <li>✔ Expiry-ready access model</li>
               </ul>
     
               <div class="price-row">
-                <span class="price-label">Price</span>
-                <span class="price-value">₹499 (one-time)</span>
+                <span class="price-label">Unlocked units</span>
+                <span class="price-value">${unlockedUnitsText}</span>
               </div>
-    
-              <div class="login-form">
+
+              <div class="cta-row">
                 <button type="button" id="buy-button" class="primary-btn">Buy Now</button>
               </div>
-              <p class="footer-note">Tip: You can restore access anytime by signing in with the same phone number.</p>
+              <p class="footer-note">Tip: Sign in again anytime to refresh your granted units from Firestore.</p>
             </div>
           `
         }
-    
-        <div class="login-form">
+
+        <div class="account-actions">
           <button type="button" id="back-dashboard" class="ghost-btn">Back to Dashboard</button>
           <button type="button" id="signout-btn" class="ghost-btn">Sign out</button>
         </div>
     
-        <p class="footer-note">Offline access: Available (30-day licence)</p>
+        <p class="footer-note account-note">Access expiry support is enabled.</p>
       </section>
     `;
 
@@ -464,7 +526,7 @@ async function loadDashboardLessons() {
       console.warn('No card found for id:', id);
       return;
     }
-    if (!getAccessState() && !isFreeLesson(id)) {
+    if (!hasLessonAccess(id)) {
       openAccountScreen();
       return;
     }
@@ -512,9 +574,14 @@ async function loadDashboardLessons() {
       card.dataset.lessonId = lesson.id;
       card.tabIndex = 0; // keyboard focusable
 
+      const access = getAccessState();
       const isFree = isFreeLesson(lesson.id);
-      const entitled = getAccessState();
-      const badge = entitled ? '' : (isFree ? '<span class="lesson-badge free">Free</span>' : '<span class="lesson-badge locked">🔒 Locked</span>');
+      const hasAccess = hasLessonAccess(lesson.id);
+      const badge = access.fullUnlock
+        ? ''
+        : hasAccess
+          ? (isFree ? '<span class="lesson-badge free">Free</span>' : '')
+          : '<span class="lesson-badge locked">🔒 Locked</span>';
       card.innerHTML = `
           <img src="${lesson.thumbnail}" alt="${lesson.title}" class="lesson-thumbnail" loading="lazy">
           <div class="lesson-info">

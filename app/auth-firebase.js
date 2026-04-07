@@ -35,10 +35,9 @@ let authState = {
 };
 
 let licenseState = {
-  entitled: false,
-  entitlements: [],
+  fullUnlock: false,
+  unlockedUnits: [],
   licenseExpiresAt: null,
-  approved: false,
   role: null
 };
 
@@ -53,31 +52,23 @@ async function loadUserProfile(uid) {
   if (!snap.exists()) {
     currentProfile = null;
     licenseState = {
-      entitled: false,
-      entitlements: [],
+      fullUnlock: false,
+      unlockedUnits: [],
       licenseExpiresAt: null,
-      approved: false,
       role: null
     };
     return null;
   }
 
   currentProfile = snap.data();
-
-  const approved = currentProfile.approved === true;
   const expiresAt = currentProfile.licenseExpiresAt || null;
-
-  let entitled = approved;
-  if (expiresAt) {
-    const exp = new Date(expiresAt).getTime();
-    entitled = approved && Number.isFinite(exp) && exp > Date.now();
-  }
+  const expiresAtMs = expiresAt ? new Date(expiresAt).getTime() : null;
+  const hasValidExpiry = expiresAtMs == null || (Number.isFinite(expiresAtMs) && expiresAtMs > Date.now());
 
   licenseState = {
-    entitled,
-    entitlements: Array.isArray(currentProfile.entitlements) ? currentProfile.entitlements : [],
+    fullUnlock: currentProfile.fullUnlock === true && hasValidExpiry,
+    unlockedUnits: Array.isArray(currentProfile.unlockedUnits) ? currentProfile.unlockedUnits.map(String) : [],
     licenseExpiresAt: expiresAt,
-    approved,
     role: currentProfile.role || null
   };
 
@@ -101,10 +92,9 @@ onAuthStateChanged(auth, async (user) => {
       console.warn("Could not load user profile from Firestore.", error);
       currentProfile = null;
       licenseState = {
-        entitled: false,
-        entitlements: [],
+        fullUnlock: false,
+        unlockedUnits: [],
         licenseExpiresAt: null,
-        approved: false,
         role: null
       };
     }
@@ -117,10 +107,9 @@ onAuthStateChanged(auth, async (user) => {
 
     currentProfile = null;
     licenseState = {
-      entitled: false,
-      entitlements: [],
+      fullUnlock: false,
+      unlockedUnits: [],
       licenseExpiresAt: null,
-      approved: false,
       role: null
     };
   }
@@ -193,8 +182,12 @@ function getLicense() {
   return { ...licenseState };
 }
 
+function getProfile() {
+  return currentProfile ? { ...currentProfile } : null;
+}
+
 function isEntitled() {
-  return !!licenseState.entitled;
+  return !!licenseState.fullUnlock;
 }
 
 // Optional admin helper methods for now.
@@ -203,8 +196,7 @@ async function mockGrantFullUnlock() {
   if (!auth.currentUser) return;
   const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
   await updateDoc(doc(db, "users", auth.currentUser.uid), {
-    approved: true,
-    entitlements: ["FULL_UNLOCK_V1"],
+    fullUnlock: true,
     licenseExpiresAt: expiresAt
   });
   await loadUserProfile(auth.currentUser.uid);
@@ -213,8 +205,8 @@ async function mockGrantFullUnlock() {
 async function mockRevokeUnlock() {
   if (!auth.currentUser) return;
   await updateDoc(doc(db, "users", auth.currentUser.uid), {
-    approved: false,
-    entitlements: [],
+    fullUnlock: false,
+    unlockedUnits: [],
     licenseExpiresAt: null
   });
   await loadUserProfile(auth.currentUser.uid);
@@ -227,6 +219,7 @@ window.SUAuth = {
   logout,
   getAuth: getAuthState,
   getLicense,
+  getProfile,
   isEntitled,
   mockGrantFullUnlock,
   mockRevokeUnlock

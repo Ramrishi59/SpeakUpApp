@@ -1,5 +1,12 @@
 {
   "cards": [
+    { 
+      "description": "Intro", 
+      "title": "Introduction", 
+      "route": "", 
+      "id": "intro", 
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    }, 
 
     {
       "category": "units", 
@@ -8,14 +15,7 @@
       "id": "unit1", 
       "title": "Unit 1: A / An"
     }, 
-    {
-      "category": "Practice", 
-      "description": "Practice", 
-      "title": "Practice Session- Unit 1", 
-      "route": "an-quiz/an-quiz.html", 
-      "id": "unit1-practice", 
-      "thumbnail": "an-quiz/Images/introquiz.webp"
-    }, 
+
     {
       "category": "units", 
       "thumbnail": "Images/Unit2/4.webp", 
@@ -23,13 +23,35 @@
       "id": "unit2", 
       "title": "Unit 2: And"
     }, 
-    { 
-      "description": "Intro", 
-      "title": "Introduction", 
-      "route": "", 
-      "id": "intro", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    {
+      "category": "units", 
+      "thumbnail": "Images/Unit4/5.webp", 
+      "description": "Learn about This and That. Just watch, listen and repeat", 
+      "id": "unit4", 
+      "title": "Unit 4: What's this?"
     }, 
+    {
+      "category": "units", 
+      "thumbnail": "Images/Unit15/4.webp", 
+      "description": "What is that?", 
+      "id": "unit5", 
+      "title": "Unit 5: What's that?"
+    }, 
+    {
+      "category": "units", 
+      "thumbnail": "Images/Unit6/7.webp", 
+      "description": "Is this a globe?", 
+      "id": "unit6", 
+      "title": "Unit 6: Is this a globe?"
+    }, 
+    {
+      "category": "units", 
+      "thumbnail": "Images/Unit7/9.webp", 
+      "description": "Is that a Zebra?", 
+      "id": "unit7", 
+      "title": "Unit 7: Is that a Zebra?"
+    }, 
+
     {
       "category": "order", 
       "description": "activity", 
@@ -433,34 +455,7 @@
       "id": "unit3", 
       "title": "Unit 3: What is this?"
     }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit4/5.webp", 
-      "description": "Learn about This and That. Just watch, listen and repeat", 
-      "id": "unit4", 
-      "title": "Unit 4: What's this?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit15/4.webp", 
-      "description": "What is that?", 
-      "id": "unit5", 
-      "title": "Unit 5: What's that?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit6/7.webp", 
-      "description": "Is this a globe?", 
-      "id": "unit6", 
-      "title": "Unit 6: Is this a globe?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit7/9.webp", 
-      "description": "Is that a Zebra?", 
-      "id": "unit7", 
-      "title": "Unit 7: Is that a Zebra?"
-    }, 
+ 
     {
       "category": "units", 
       "thumbnail": "Images/Unit8/5.webp", 
@@ -716,6 +711,14 @@
       "thumbnail": "Images/Unit44/1.webp", 
        "id": "unit44", 
       "title": "Unit 44: I'm reading"
+    }, 
+    {
+      "category": "Practice", 
+      "description": "Practice", 
+      "title": "Practice Session- Unit 1", 
+      "route": "an-quiz/an-quiz.html", 
+      "id": "unit1-practice", 
+      "thumbnail": "an-quiz/Images/introquiz.webp"
     }, 
     {
       "category": "units", 
