@@ -34,6 +34,10 @@ function getProfileState() {
   return window.SUAuth.getProfile();
 }
 
+function getDashboardContentCount() {
+  return dashboardLessons.filter((card) => card?.id && card.id !== 'intro').length;
+}
+
 function hasLessonAccess(lessonId) {
   if (isFreeLesson(lessonId)) return true;
 
@@ -292,6 +296,10 @@ function renderAccountStatus() {
       : 'None yet';
     const displayName = profile?.username || auth.email || 'Unknown user';
     const profileInitial = String(displayName).trim().charAt(0).toUpperCase() || 'U';
+    const unlockedCount = unlocked
+      ? getDashboardContentCount()
+      : (Array.isArray(license?.unlockedUnits) ? license.unlockedUnits.length : 0);
+    const unlockedCountLabel = unlocked ? 'Available content' : 'Unlocked units';
     
     accountScreen.innerHTML = `
       <section class="login-card" aria-labelledby="status-title">
@@ -325,8 +333,8 @@ function renderAccountStatus() {
             <strong class="account-stat-value">${auth.email || 'Not available'}</strong>
           </div>
           <div class="account-stat">
-            <span class="account-stat-label">Unlocked units</span>
-            <strong class="account-stat-value">${Array.isArray(license?.unlockedUnits) ? license.unlockedUnits.length : 0}</strong>
+            <span class="account-stat-label">${unlockedCountLabel}</span>
+            <strong class="account-stat-value">${unlockedCount}</strong>
           </div>
         </div>
 
