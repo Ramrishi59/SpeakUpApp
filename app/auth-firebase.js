@@ -43,6 +43,8 @@ let licenseState = {
 };
 
 let currentProfile = null;
+let resolveReady;
+let readyResolved = false;
 
 async function loadUserProfile(uid) {
   const ref = doc(db, "users", uid);
@@ -83,37 +85,39 @@ async function loadUserProfile(uid) {
 }
 
 const ready = new Promise((resolve) => {
-  const unsub = onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      authState = {
-        isLoggedIn: true,
-        email: user.email || null,
-        uid: user.uid
-      };
+  resolveReady = resolve;
+});
 
-      await loadUserProfile(user.uid);
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    authState = {
+      isLoggedIn: true,
+      email: user.email || null,
+      uid: user.uid
+    };
 
+    await loadUserProfile(user.uid);
+  } else {
+    authState = {
+      isLoggedIn: false,
+      email: null,
+      uid: null
+    };
 
-    } else {
-      authState = {
-        isLoggedIn: false,
-        email: null,
-        uid: null
-      };
+    currentProfile = null;
+    licenseState = {
+      entitled: false,
+      entitlements: [],
+      licenseExpiresAt: null,
+      approved: false,
+      role: null
+    };
+  }
 
-      currentProfile = null;
-      licenseState = {
-        entitled: false,
-        entitlements: [],
-        licenseExpiresAt: null,
-        approved: false,
-        role: null
-      };
-    }
-
-    resolve();
-    unsub();
-  });
+  if (!readyResolved) {
+    readyResolved = true;
+    resolveReady();
+  }
 });
 
 async function loginWithEmail(email, password) {
@@ -135,29 +139,31 @@ async function loginWithEmail(email, password) {
   return authState;
 }
 
-async function signupWithEmail(email, password) {
-  const cred = await createUserWithEmailAndPassword(auth, email, password);
-  const user = cred.user;
-
-  authState = {
-    isLoggedIn: true,
-    email: user.email || null,
-    uid: user.uid
-  };
-
-  await setDoc(doc(db, "users", user.uid), {
-    email: user.email || email,
-    approved: false,
-    entitlements: [],
-    licenseExpiresAt: null,
-    role: "student",
-    createdAt: serverTimestamp(),
-    updatedAt: serverTimestamp()
-  }, { merge: true });
-
-  await loadUserProfile(user.uid);
-  return authState;
-}
+async function signupWithEmail(username, email, password) {
+    const cred = await createUserWithEmailAndPassword(auth, email, password);
+    const user = cred.user;
+  
+    authState = {
+      isLoggedIn: true,
+      email: user.email || null,
+      uid: user.uid
+    };
+  
+    await setDoc(doc(db, "users", user.uid), {
+      username: username,
+      email: user.email || email,
+      approved: false,
+      accountStatus: "pending",
+      entitlements: [],
+      licenseExpiresAt: null,
+      role: "tester",
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
+    });
+  
+    await loadUserProfile(user.uid);
+    return authState;
+  }
 
 async function logout() {
   await signOut(auth);

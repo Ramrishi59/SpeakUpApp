@@ -176,6 +176,7 @@ function renderAccountStatus() {
     signupToggle?.addEventListener('click', () => setAuthMode('signup'));
 
     loginButton?.addEventListener('click', async () => {
+      
       const email = document.getElementById('login-email')?.value?.trim() || '';
       const password = document.getElementById('login-password')?.value || '';
 
@@ -204,6 +205,7 @@ function renderAccountStatus() {
     });
 
     signupButton?.addEventListener('click', async () => {
+      const username = document.getElementById('signup-username').value.trim();
       const email = document.getElementById('signup-email')?.value?.trim() || '';
       const password = document.getElementById('signup-password')?.value || '';
       const confirmPassword = document.getElementById('signup-confirm-password')?.value || '';
@@ -224,7 +226,7 @@ function renderAccountStatus() {
       }
 
       try {
-        await window.SUAuth.signupWithEmail(email, password);
+        await window.SUAuth.signupWithEmail(username,email, password);
         renderAccountStatus();
         if (message) {
           message.textContent = 'Account created. You can now request access.';
