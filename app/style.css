@@ -19,6 +19,8 @@ body {
     justify-content: center; /* Center the app container */
     align-items: flex-start; /* Align to top */
     min-height: 100vh; /* Full viewport height */
+    overflow: hidden;
+    overscroll-behavior: none;
 }
 
 /* Outer container to simulate phone screen */
@@ -29,7 +31,9 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures it stretches if content is short */
+    min-height: 100dvh; /* Ensures it stretches if content is short */
+    height: 100dvh;
+    overflow: hidden;
 }
 
 /* Header Styling */
@@ -48,6 +52,8 @@ body {
     padding: 20px;
     padding-bottom: 116px;
     overflow-y: auto; /* Enables scrolling if content overflows */
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     background: #f9eee3;
 }
 
@@ -311,7 +317,10 @@ body {
 /* Account screen (in-app) */
 #account-screen {
     display: none;
-    padding-bottom: 156px;
+    margin: -20px;
+    padding: 20px 20px 0;
+    min-height: 100%;
+    background: linear-gradient(180deg, #fff8ef 0%, #fffdf8 42%, #f9eee3 100%);
 }
 
 #account-screen .account-screen {
@@ -515,9 +524,10 @@ body {
       radial-gradient(circle at top right, rgba(193, 231, 255, 0.9), transparent 32%),
       linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
     border-radius: 28px;
-    padding: 22px;
+    padding: 22px 22px 110px;
     border: 1px solid rgba(31, 30, 51, 0.08);
     box-shadow: 0 22px 44px rgba(31, 30, 51, 0.14);
+    min-height: calc(100dvh - 20px);
 }
 
 .account-hero {
@@ -743,6 +753,27 @@ body {
 }
 
 @media (max-width: 480px) {
+    #account-screen {
+        margin: -20px;
+        padding: 0;
+    }
+
+    .login-card {
+        min-height: 100dvh;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        box-shadow: none;
+        padding: 18px 16px 110px;
+    }
+
+    .account-hero {
+        border-radius: 0 0 24px 24px;
+        margin: -18px -16px 0;
+        padding: 20px 16px 18px;
+    }
+
     .account-stats {
         grid-template-columns: 1fr;
     }
