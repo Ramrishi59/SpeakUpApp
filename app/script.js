@@ -548,14 +548,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await loadDashboardLessons();
   console.log('E: dashboardLessons after load =', dashboardLessons);
 
-  refreshButton?.addEventListener('click', async () => {
-    try {
-      if (navigator.serviceWorker?.getRegistration) {
-        const reg = await navigator.serviceWorker.getRegistration();
-        reg?.waiting?.postMessage({ type: 'SKIP_WAITING' });
-        reg?.update?.();
-      }
-    } catch {}
+  refreshButton?.addEventListener('click', () => {
     window.location.reload();
   });
 

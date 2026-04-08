@@ -66,54 +66,17 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {
-          const isLocalDev = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-
-          if (isLocalDev) {
+          try {
             const registrations = await navigator.serviceWorker.getRegistrations();
             await Promise.all(registrations.map((registration) => registration.unregister()));
-            return;
+
+            if (window.caches?.keys) {
+              const cacheKeys = await caches.keys();
+              await Promise.all(cacheKeys.map((key) => caches.delete(key)));
+            }
+          } catch (error) {
+            console.error('Service Worker cleanup failed:', error);
           }
-
-          navigator.serviceWorker.register('service-worker.js')
-            .then(registration => {
-              console.log('Service Worker registered: ', registration);
-
-              let refreshing = false;
-              navigator.serviceWorker.addEventListener('controllerchange', () => {
-                if (refreshing) return;
-                refreshing = true;
-                window.location.reload();
-              });
-
-              let hasPrompted = false;
-              function promptUserToRefresh(worker) {
-                if (hasPrompted) return;
-                if (!navigator.serviceWorker.controller) return;
-                hasPrompted = true;
-                const shouldRefresh = window.confirm('A new update is available. Refresh now?');
-                if (shouldRefresh) {
-                  worker.postMessage({ type: 'SKIP_WAITING' });
-                }
-              }
-
-              if (registration.waiting) {
-                promptUserToRefresh(registration.waiting);
-              }
-
-              registration.addEventListener('updatefound', () => {
-                const newWorker = registration.installing;
-                if (newWorker) {
-                  newWorker.addEventListener('statechange', () => {
-                    if (newWorker.state === 'installed' && registration.waiting) {
-                      promptUserToRefresh(registration.waiting);
-                    }
-                  });
-                }
-              });
-            })
-            .catch(error => {
-              console.error('Service Worker registration failed: ', error);
-            });
         });
       }
     </script>
