@@ -38,6 +38,13 @@ function getDashboardContentCount() {
   return dashboardLessons.filter((card) => card?.id && card.id !== 'intro').length;
 }
 
+function getTimeGreeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return 'Good morning';
+  if (hour < 18) return 'Good afternoon';
+  return 'Good evening';
+}
+
 function hasLessonAccess(lessonId) {
   if (isFreeLesson(lessonId)) return true;
 
@@ -318,6 +325,7 @@ function renderAccountStatus() {
       ? getDashboardContentCount()
       : (Array.isArray(license?.unlockedUnits) ? license.unlockedUnits.length : 0);
     const unlockedCountLabel = unlocked ? 'Available content' : 'Unlocked units';
+    const greeting = getTimeGreeting();
     
     accountScreen.innerHTML = `
       <section class="login-card" aria-labelledby="status-title">
@@ -326,7 +334,7 @@ function renderAccountStatus() {
             <div class="profile-mark" aria-hidden="true">${profileInitial}</div>
             <div class="card-header">
               <p class="eyebrow">SpeakUp Account</p>
-              <h2 id="status-title">Welcome back, ${displayName}</h2>
+              <h2 id="status-title">${greeting}, ${displayName}</h2>
               <p class="hero-subtitle">${unlocked ? 'Your premium access is active and ready to use.' : 'Your learning profile is active with free and granted lessons.'}</p>
             </div>
           </div>
