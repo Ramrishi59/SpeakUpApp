@@ -2,6 +2,11 @@ let dashboardLessons = [];
 let rerenderDashboard = null;
 let dashboardLoadError = "";
 
+const ROUTE_OVERRIDES = {
+  'unit1-practice': () => 'an-quiz/an-quiz.html',
+  'and-practice': () => 'and-practice/and.html',
+};
+
 function isFreeLesson(lessonId) {
   // TODO: put your real free list here
   const FREE = new Set(["unit1", "unit2", "trial"]); 
@@ -36,6 +41,42 @@ function getProfileState() {
 
 function getDashboardContentCount() {
   return dashboardLessons.filter((card) => card?.id && card.id !== 'intro').length;
+}
+
+function getLessonTitleById(lessonId) {
+  if (!lessonId) return null;
+  const lesson = dashboardLessons.find((card) => String(card?.id) === String(lessonId));
+  return lesson?.title || null;
+}
+
+function getLessonCardById(lessonId) {
+  if (!lessonId) return null;
+  return dashboardLessons.find((card) => String(card?.id) === String(lessonId)) || null;
+}
+
+function getLessonProgressState(lessonId) {
+  const profile = getProfileState();
+  const normalizedLessonId = String(lessonId);
+  const completedUnits = Array.isArray(profile?.completedUnits) ? profile.completedUnits.map(String) : [];
+  const isCompleted = completedUnits.includes(normalizedLessonId);
+  const isInProgress = !isCompleted && String(profile?.lastOpenedUnit || '') === normalizedLessonId;
+
+  return { isCompleted, isInProgress };
+}
+
+function resolveRoute(card) {
+  if (card.route) return card.route;
+  return card.id.endsWith('-practice')
+    ? `${card.id}/${card.id}.html`
+    : `Trial.html?unitId=${card.id}`;
+}
+
+function getRouteForCard(card) {
+  if (!card?.id) return null;
+  if (ROUTE_OVERRIDES[card.id]) {
+    return ROUTE_OVERRIDES[card.id]();
+  }
+  return resolveRoute(card);
 }
 
 function getTimeGreeting() {
@@ -247,6 +288,10 @@ function renderAccountStatus() {
     backToLogin?.addEventListener('click', () => setAuthMode('login'));
 
     loginButton?.addEventListener('click', async () => {
+      if (!window.SUAuth?.loginWithEmail) {
+        if (message) message.textContent = 'Authentication is unavailable right now. Refresh and try again.';
+        return;
+      }
       
       const email = document.getElementById('login-email')?.value?.trim() || '';
       const password = document.getElementById('login-password')?.value || '';
@@ -277,6 +322,11 @@ function renderAccountStatus() {
     });
 
     signupButton?.addEventListener('click', async () => {
+      if (!window.SUAuth?.signupWithEmail) {
+        if (message) message.textContent = 'Authentication is unavailable right now. Refresh and try again.';
+        return;
+      }
+
       const username = document.getElementById('signup-username')?.value?.trim() || '';
       const email = document.getElementById('signup-email')?.value?.trim() || '';
       const password = document.getElementById('signup-password')?.value || '';
@@ -326,6 +376,9 @@ function renderAccountStatus() {
       : (Array.isArray(license?.unlockedUnits) ? license.unlockedUnits.length : 0);
     const unlockedCountLabel = unlocked ? 'Available content' : 'Unlocked units';
     const greeting = getTimeGreeting();
+    const lastOpenedUnitId = profile?.lastOpenedUnit || null;
+    const lastOpenedUnitLabel = getLessonTitleById(lastOpenedUnitId) || lastOpenedUnitId || 'No lesson opened yet';
+    const completedUnitsCount = Array.isArray(profile?.completedUnits) ? profile.completedUnits.length : 0;
     
     accountScreen.innerHTML = `
       <section class="login-card" aria-labelledby="status-title">
@@ -362,6 +415,32 @@ function renderAccountStatus() {
             <span class="account-stat-label">${unlockedCountLabel}</span>
             <strong class="account-stat-value">${unlockedCount}</strong>
           </div>
+        </div>
+
+        <div class="premium-box progress-box">
+          <h3 class="premium-title">Progress Tracker</h3>
+          <p class="premium-sub">Your latest lesson and completed units are saved automatically while you learn.</p>
+
+          <div class="progress-grid">
+            <div class="progress-item">
+              <span class="progress-label">Last opened unit</span>
+              <strong class="progress-value">${lastOpenedUnitLabel}</strong>
+            </div>
+            <div class="progress-item">
+              <span class="progress-label">Completed units</span>
+              <strong class="progress-value">${completedUnitsCount}</strong>
+            </div>
+          </div>
+
+          ${
+            lastOpenedUnitId
+              ? `
+                <div class="cta-row">
+                  <button type="button" id="continue-learning-button" class="primary-btn">Continue Learning</button>
+                </div>
+              `
+              : ''
+          }
         </div>
 
         ${
@@ -411,6 +490,13 @@ function renderAccountStatus() {
         alert('Access will be enabled by the Speak Up team.');
       });
     }
+
+    document.getElementById('continue-learning-button')?.addEventListener('click', () => {
+      const savedCard = getLessonCardById(lastOpenedUnitId) || { id: String(lastOpenedUnitId) };
+      const baseRoute = getRouteForCard(savedCard);
+      if (!baseRoute) return;
+      window.location.href = appendQueryParam(baseRoute, 'from', 'dashboard');
+    });
   }
 
   document.getElementById('back-dashboard')?.addEventListener('click', showDashboardScreen);
@@ -475,36 +561,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
   const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
-
-  // -------- Routing (centralised) --------
-  // Special routes (only when a card needs a custom file)
-  // Special routes (only when a card needs a custom file)
-  const ROUTE_OVERRIDES = {
-    'unit1-practice': () => 'an-quiz/an-quiz.html',
-    'and-practice': () => 'and-practice/and.html',
-  };
-
-
-  function resolveRoute(card) {
-    // Honour explicit route from manifest if present
-    if (card.route) return card.route;
-    // Default rule:
-    //  - Practice pages: <id>/<id>.html (only if you adopt that convention)
-    //  - Units: Trial.html?unitId=<id>
-    return card.id.endsWith('-practice')
-      ? `${card.id}/${card.id}.html`
-      : `Trial.html?unitId=${card.id}`;
-  }
-
-  function getRouteForCard(card) {
-    // 1. check manual overrides
-    if (ROUTE_OVERRIDES[card.id]) {
-      return ROUTE_OVERRIDES[card.id]();
-    }
-  
-    // 2. otherwise use default resolver
-    return resolveRoute(card);
-  }
   
   // -------------------------------
 // Load dashboard lessons from manifest.json
@@ -553,7 +609,7 @@ async function loadDashboardLessons() {
     }
   }
 
-  function navigateToLesson(id) {
+  async function navigateToLesson(id) {
     // find the full card so resolveRoute can honour overrides and future per-card routes
     const card = dashboardLessons.find(c => c.id === id);
     if (!card) {
@@ -563,6 +619,11 @@ async function loadDashboardLessons() {
     if (!hasLessonAccess(id)) {
       openAccountScreen();
       return;
+    }
+    try {
+      await window.SUAuth?.saveProgress?.(id, 0);
+    } catch (error) {
+      console.warn('Could not save initial lesson progress.', error);
     }
     saveScrollPosition();
     // Use overrides when present, else default resolver
@@ -611,11 +672,19 @@ async function loadDashboardLessons() {
       const access = getAccessState();
       const isFree = isFreeLesson(lesson.id);
       const hasAccess = hasLessonAccess(lesson.id);
-      const badge = access.fullUnlock
-        ? ''
-        : hasAccess
+      const progress = getLessonProgressState(lesson.id);
+      let badge = '';
+
+      if (progress.isCompleted) {
+        badge = '<span class="lesson-badge completed">Completed</span>';
+      } else if (progress.isInProgress) {
+        badge = '<span class="lesson-badge in-progress">In Progress</span>';
+      } else if (!access.fullUnlock) {
+        badge = hasAccess
           ? (isFree ? '<span class="lesson-badge free">Free</span>' : '')
-          : '<span class="lesson-badge locked">🔒 Locked</span>';
+          : '<span class="lesson-badge locked">Locked</span>';
+      }
+
       card.innerHTML = `
           <img src="${lesson.thumbnail}" alt="${lesson.title}" class="lesson-thumbnail" loading="lazy">
           <div class="lesson-info">

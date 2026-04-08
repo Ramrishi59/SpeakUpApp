@@ -7,6 +7,7 @@ import {
   signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import {
+  arrayUnion,
   getFirestore,
   doc,
   getDoc,
@@ -158,6 +159,10 @@ async function signupWithEmail(username, email, password) {
       fullUnlock: false,
       unlockedUnits: ["unit1", "unit2"],
       licenseExpiresAt: null,
+
+      lastOpenedUnit: null,
+      lastScreenIndex: 0,
+      completedUnits: [],
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp()
     });
@@ -168,6 +173,51 @@ async function signupWithEmail(username, email, password) {
   }
 
   return { ...authState, profileSynced };
+}
+
+async function saveProgress(unitId, screenIndex) {
+  const user = auth.currentUser;
+  if (!user) return false;
+
+  await updateDoc(doc(db, "users", user.uid), {
+    lastOpenedUnit: String(unitId),
+    lastScreenIndex: Number(screenIndex) || 0,
+    updatedAt: serverTimestamp()
+  });
+
+  if (currentProfile) {
+    currentProfile = {
+      ...currentProfile,
+      lastOpenedUnit: String(unitId),
+      lastScreenIndex: Number(screenIndex) || 0
+    };
+  }
+
+  return true;
+}
+
+async function markUnitCompleted(unitId) {
+  const user = auth.currentUser;
+  if (!user || !unitId) return false;
+
+  const normalizedUnitId = String(unitId);
+
+  await updateDoc(doc(db, "users", user.uid), {
+    completedUnits: arrayUnion(normalizedUnitId),
+    updatedAt: serverTimestamp()
+  });
+
+  if (currentProfile) {
+    const existingCompleted = Array.isArray(currentProfile.completedUnits) ? currentProfile.completedUnits.map(String) : [];
+    currentProfile = {
+      ...currentProfile,
+      completedUnits: existingCompleted.includes(normalizedUnitId)
+        ? existingCompleted
+        : [...existingCompleted, normalizedUnitId]
+    };
+  }
+
+  return true;
 }
 
 async function logout() {
@@ -216,6 +266,8 @@ window.SUAuth = {
   ready,
   loginWithEmail,
   signupWithEmail,
+  saveProgress,
+  markUnitCompleted,
   logout,
   getAuth: getAuthState,
   getLicense,

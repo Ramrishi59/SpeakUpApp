@@ -217,6 +217,18 @@ body {
     border: 1px solid #bce7cd;
 }
 
+.lesson-badge.completed {
+    background: #e8fff3;
+    color: #0f6b3e;
+    border: 1px solid #9fe0bc;
+}
+
+.lesson-badge.in-progress {
+    background: #fff7de;
+    color: #8a5a00;
+    border: 1px solid #f6d98b;
+}
+
 .lesson-badge.locked {
     background: #fff1f2;
     color: #9f1239;
@@ -668,6 +680,37 @@ body {
     box-shadow: 0 16px 30px rgba(123, 200, 255, 0.12);
 }
 
+.progress-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.progress-item {
+    padding: 14px 12px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(123, 200, 255, 0.2);
+}
+
+.progress-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #7a6c61;
+}
+
+.progress-value {
+    display: block;
+    color: #201d2d;
+    font-size: 0.98rem;
+    line-height: 1.35;
+    word-break: break-word;
+}
+
 .premium-title {
     margin: 0 0 8px 0;
     color: #2a2235;
@@ -779,6 +822,10 @@ body {
     }
 
     .account-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-grid {
         grid-template-columns: 1fr;
     }
 

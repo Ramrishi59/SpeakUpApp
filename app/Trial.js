@@ -308,7 +308,13 @@ async function render(i) {
         try { els.introVideo.muted = false; els.introVideo.removeAttribute('muted'); els.introVideo.volume = 1.0; } catch {}
       };
       els.introVideo.addEventListener('playing', () => setTimeout(tryUnmute, 60), { once:true });
-      els.introVideo.onended = () => { stopAudio(); stopVideo(); exitVideoMode(); location.href = returnUrl; };
+      els.introVideo.onended = async () => {
+        await completeCurrentUnit();
+        stopAudio();
+        stopVideo();
+        exitVideoMode();
+        location.href = returnUrl;
+      };
       return;
     }
 
@@ -347,13 +353,44 @@ async function render(i) {
 function showPrev(){ if (currentIndex > 0){ currentIndex--; render(currentIndex); } }
 function showNext(){
   stopVideo(); exitVideoMode();
-  if (currentIndex < screens.length - 1){ currentIndex++; render(currentIndex); }
-  else { location.href = returnUrl; }
+  if (currentIndex < screens.length - 1){
+    currentIndex++;
+    render(currentIndex);
+    persistProgress(currentIndex);
+  }
+  else {
+    completeCurrentUnit().finally(() => {
+      location.href = returnUrl;
+    });
+  }
 }
 function startOver(){
   currentIndex = 0;
   stopAudio(); stopVideo(); exitVideoMode();
   render(currentIndex);
+  persistProgress(currentIndex);
+}
+
+async function persistProgress(index = currentIndex) {
+  const unitId = getUnitIdFromUrl();
+  if (!unitId) return;
+
+  try {
+    await window.SUAuth?.saveProgress?.(unitId, index);
+  } catch (error) {
+    console.warn("Could not save lesson progress.", error);
+  }
+}
+
+async function completeCurrentUnit() {
+  const unitId = getUnitIdFromUrl();
+  if (!unitId) return;
+
+  try {
+    await window.SUAuth?.markUnitCompleted?.(unitId);
+  } catch (error) {
+    console.warn("Could not save completed unit.", error);
+  }
 }
 
 /* ---------- events ---------- */
