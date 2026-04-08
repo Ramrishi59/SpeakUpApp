@@ -550,7 +550,7 @@ body {
 }
 
 .account-hero.is-premium {
-    background: linear-gradient(135deg, #ff996d 0%, #ffcf7d 46%, #fff0c4 100%);
+    background: linear-gradient(135deg, #7bc8ff 0%, #b5e1ff 44%, #fff2cf 100%);
 }
 
 .account-hero.is-limited {
@@ -637,9 +637,9 @@ body {
 .account-stat {
     padding: 14px 12px;
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.86);
-    border: 1px solid rgba(31, 30, 51, 0.08);
-    box-shadow: 0 10px 24px rgba(31, 30, 51, 0.06);
+    background: linear-gradient(180deg, rgba(236, 247, 255, 0.98) 0%, rgba(248, 252, 255, 0.96) 100%);
+    border: 1px solid rgba(123, 200, 255, 0.24);
+    box-shadow: 0 16px 30px rgba(123, 200, 255, 0.12);
 }
 
 .account-stat-label {
@@ -663,9 +663,9 @@ body {
     margin-top: 16px;
     padding: 18px;
     border-radius: 22px;
-    background: linear-gradient(180deg, rgba(255, 244, 231, 0.96) 0%, rgba(255, 255, 255, 0.96) 100%);
-    border: 1px solid rgba(240, 170, 112, 0.2);
-    box-shadow: 0 16px 30px rgba(220, 151, 74, 0.12);
+    background: linear-gradient(180deg, rgba(236, 247, 255, 0.98) 0%, rgba(248, 252, 255, 0.96) 100%);
+    border: 1px solid rgba(123, 200, 255, 0.24);
+    box-shadow: 0 16px 30px rgba(123, 200, 255, 0.12);
 }
 
 .premium-title {
