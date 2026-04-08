@@ -261,17 +261,17 @@ body {
     left: 50%;
     bottom: 0;
     transform: translateX(-50%);
-    width: min(450px, 100%);
+    width: min(430px, calc(100% - 20px));
     background: rgba(255, 251, 246, 0.98);
     backdrop-filter: blur(10px);
     border-top: 1px solid rgba(29, 27, 42, 0.08);
     border-left: 1px solid rgba(29, 27, 42, 0.04);
     border-right: 1px solid rgba(29, 27, 42, 0.04);
-    border-radius: 0;
-    padding: 8px 14px calc(8px + env(safe-area-inset-bottom));
+    border-radius: 18px 18px 0 0;
+    padding: 8px 18px calc(8px + env(safe-area-inset-bottom));
     display: flex;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: space-around;
+    gap: 12px;
     box-shadow: 0 -10px 24px rgba(31, 30, 51, 0.08);
     z-index: 2;
 }
