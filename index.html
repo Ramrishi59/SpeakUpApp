@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SpeakUp App – Learn English the Fun Way!</title>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Baloo+Chettan+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --yellow: #FFD93D;
@@ -28,44 +28,6 @@
     color: var(--dark);
     overflow-x: hidden;
   }
-
-  /* Malayalam font */
-  body.ml-active { font-family: 'Baloo Chettan 2', sans-serif; }
-  body.ml-active .hero-title,
-  body.ml-active .section-title,
-  body.ml-active .feature-card h3,
-  body.ml-active .pricing-plan,
-  body.ml-active .about-card h3 {
-    font-family: 'Baloo Chettan 2', sans-serif;
-    font-weight: 800;
-  }
-
-  /* Language show/hide */
-  .en { display: inline; }
-  .ml { display: none; }
-  body.ml-active .en { display: none; }
-  body.ml-active .ml { display: inline; }
-  .en-block { display: block; }
-  .ml-block { display: none; }
-  body.ml-active .en-block { display: none; }
-  body.ml-active .ml-block { display: block; }
-
-  /* ── LANG TOGGLE ── */
-  .lang-toggle {
-    display: flex; align-items: center; gap: 6px;
-    background: var(--yellow); border: 2px solid var(--orange);
-    border-radius: 50px; padding: 5px 8px;
-    cursor: pointer; transition: transform 0.15s; flex-shrink: 0;
-    user-select: none;
-  }
-  .lang-toggle:hover { transform: scale(1.05); }
-  .lang-pill {
-    font-weight: 800; font-size: 0.8rem;
-    padding: 4px 11px; border-radius: 50px;
-    transition: background 0.25s, color 0.25s; white-space: nowrap;
-  }
-  .lang-pill.active { background: var(--orange); color: var(--white); }
-  .lang-pill.inactive { background: transparent; color: var(--dark); }
 
   /* ── BLOBS ── */
   .blob {
@@ -196,6 +158,31 @@
   .feature-card:nth-child(4) .feature-icon { animation-delay: 0.9s; }
   .feature-card:nth-child(5) .feature-icon { animation-delay: 1.2s; }
   .feature-card:nth-child(6) .feature-icon { animation-delay: 1.5s; }
+  .friend-faces {
+    display: grid;
+    grid-template-columns: repeat(4, 64px);
+    gap: 14px;
+    margin-bottom: 18px;
+    margin-top: 18px;
+    width: fit-content;
+  }
+  .friend-face:nth-child(5) { grid-column: 1; }
+  .friend-face {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+    background: linear-gradient(135deg, var(--yellow), var(--pink));
+    display: block;
+    overflow: hidden;
+  }
+  .friend-face img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
   .feature-card h3 { font-family: 'Fredoka One', cursive; font-size: 1.4rem; margin-bottom: 10px; }
   .feature-card p { color: #000000; line-height: 1.6; font-size: 1.2rem; }
   .fc-yellow { border-top: 5px solid var(--yellow); }
@@ -297,10 +284,6 @@
   @keyframes slideUp { from{transform:translateY(30px);opacity:0} to{transform:translateY(0);opacity:1} }
   @keyframes floatAnim { 0%,100%{transform:translateY(-50%) rotate(-2deg)} 50%{transform:translateY(calc(-50% - 18px)) rotate(2deg)} }
   @keyframes wobble { 0%,100%{transform:rotate(0deg)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)} }
-  @keyframes langSwitch { from{opacity:0.4;transform:scale(0.97)} to{opacity:1;transform:scale(1)} }
-
-  .lang-animate { animation: langSwitch 0.3s ease forwards; }
-
   /* Scroll reveal */
   .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -322,18 +305,13 @@
   <a href="#" class="nav-logo">🎙️ SpeakUp<span>App</span></a>
   <div class="nav-right">
     <ul>
-      <li><a href="#features"><span class="en">Features</span><span class="ml">സവിശേഷതകൾ</span></a></li>
-      <li><a href="#about"><span class="en">About</span><span class="ml">ഞങ്ങളെ കുറിച്ച്</span></a></li>
-      <li><a href="#pricing"><span class="en">Pricing</span><span class="ml">വില</span></a></li>
-      <li><a href="#testimonials"><span class="en">Reviews</span><span class="ml">അഭിപ്രായങ്ങൾ</span></a></li>
-      <li><a href="#contact" class="nav-cta"><span class="en">Get Started 🚀</span><span class="ml">ആരംഭിക്കൂ 🚀</span></a></li>
-      <li><a href="app/dashboard.html" target="_blank" class="nav-cta nav-cta-pink"><span class="en">Open App 📱</span><span class="ml">ആപ്പ് തുറക്കൂ 📱</span></a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started 🚀</a></li>
+      <li><a href="app/dashboard.html" target="_blank" class="nav-cta nav-cta-pink">Open App 📱</a></li>
     </ul>
-    <div class="lang-toggle" onclick="toggleLang()" title="Switch Language / ഭാഷ മാറ്റൂ">
-      <span class="lang-pill active" id="pillEN">EN</span>
-      <span style="font-size:1rem;">🌐</span>
-      <span class="lang-pill inactive" id="pillML">മലയാളം</span>
-    </div>
   </div>
 </nav>
 
@@ -343,25 +321,13 @@
   <div class="blob blob-2"></div>
   <div class="blob blob-3"></div>
   <div class="hero-content">
-    <div class="hero-badge">
-      <span class="en">🌟 Fun English for Kids!</span>
-      <span class="ml">🌟 കുട്ടികൾക്കായി രസകരമായ ഇംഗ്ലീഷ്!</span>
-    </div>
+    <div class="hero-badge">🌟 Fun English for Kids!</div>
     <h1 class="hero-title">
-      <span class="en-block">Help Your Child <span class="highlight">Speak English </span><br>with Confidence!
-    </span>
-      <span class="ml-block">നിങ്ങളുടെ കുട്ടികൾക്ക്<span class="highlight">ആത്മവിശ്വാസത്തോടെ</span>ഇംഗ്ലീഷ് സംസാരിക്കാം!</span>
+      Help Your Child <span class="highlight">Speak English </span><br>with Confidence!
     </h1>
-    <p class="hero-subtitle">
-      <span class="en">No boring rules. Just fun games and activities for kids aged 5 to 12.</span>
-      <span class="ml">നിങ്ങളുടെ കുട്ടികൾക്ക് ആത്മവിശ്വാസത്തോടെ ഇംഗ്ലീഷ് സംസാരിക്കാം!</span>
-    </p>
+    <p class="hero-subtitle">No boring rules. Just fun games and activities for kids aged 5 to 12.</p>
     <div class="hero-buttons">
-
-      <a href="#features" class="btn-secondary">
-        <span class="en">See How It Works</span>
-        <span class="ml">എങ്ങനെ പ്രവർത്തിക്കുന്നു</span>
-      </a>
+      <a href="#features" class="btn-secondary">See How It Works</a>
     </div>
   </div>
   <div class="hero-image">
@@ -374,33 +340,41 @@
 <!-- FEATURES -->
 <section id="features">
   <div class="features-header reveal">
-    <span class="section-tag"><span class="en">✨ What's Inside</span><span class="ml">✨ ഉള്ളടക്കം</span></span>
-    <h2 class="section-title"><span class="en">Everything Kids Need to Speak Up!</span><span class="ml">കുട്ടികൾക്ക് ആവശ്യമായ എല്ലാം!</span></h2>
+    <span class="section-tag">✨ What's Inside</span>
+    <h2 class="section-title">Everything Kids Need to Speak Up!</h2>
    
   </div>
   <div class="features-grid">
+    
     <div class="feature-card fc-orange reveal">
-      <span class="feature-icon">👋</span>
-      <h3><span class="en">Meet the Friends.</span><span class="ml">പാട്ടുകളും താളങ്ങളും</span></h3>
-      <p><span class="en">Learn along with Raju, Reena, Saira, John and their cute monkey friend Manku.
-      </span><span class="ml">കേൾക്കാൻ ഇഷ്ടമുള്ള ഇംഗ്ലീഷ് പാട്ടുകൾ, മലയാളം വിശദീകരണത്തോടെ — കുട്ടികൾ ഉടനടി മനസ്സിലാക്കും.</span></p>
+      <h3>Meet the Friends.</h3>
+      <p>Learn along with Raju, Reena, Saira, John, Ammu, Anju and their cute monkey friend Manku.</p>
+      <div class="friend-faces" aria-label="Character face placeholders">
+        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Raju.webp" alt="Raju"></span>
+        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Reena.webp" alt="Reena"></span>
+        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/John.webp" alt="John"></span>
+        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Manku.webp" alt="Manku"></span>
+        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Manku.webp" alt="Manku"></span>
+        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Manku.webp" alt="Manku"></span>
+        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Manku.webp" alt="Manku"></span>
+      </div>
     </div>
     <div class="feature-card fc-yellow reveal">
       <span class="feature-icon">🎮</span>
-      <h3><span class="en">Fun Games</span><span class="ml">രസകരമായ ഗെയിമുകൾ</span></h3>
-      <p><span class="en">Interactive quizzes like "Choose the Right Option" and "Make the sentence"</span>
+      <h3>Fun Games</h3>
+      <p>Interactive quizzes like "Choose the Right Option" and "Make the sentence"</p>
     </div>
 
 
     <div class="feature-card fc-purple reveal">
       <span class="feature-icon">📊</span>
-      <h3><span class="en">Progress Tracker</span><span class="ml">പ്രോഗ്രസ് ട്രാക്കർ</span></h3>
-      <p><span class="en">Watch your child grow with our simple progress charts.</span><span class="ml">രക്ഷകർത്താക്കൾക്ക് ആഴ്ചതോറും ലളിതമായ റിപ്പോർട്ടിലൂടെ കുട്ടിയുടെ പഠന വളർച്ച കാണാം.</span></p>
+      <h3>Progress Tracker</h3>
+      <p>Watch your child grow with our simple progress charts.</p>
     </div>
     <div class="feature-card fc-blue reveal">
       <span class="feature-icon">🏆</span>
-      <h3><span class="en">Rewards & Badges</span><span class="ml">സമ്മാനങ്ങളും ബാഡ്ജുകളും</span></h3>
-      <p><span class="en">Kids earn stars and badges as they level up — keeping them motivated to learn more and more!</span><span class="ml">ലെവൽ കയറുമ്പോൾ നക്ഷത്രങ്ങളും ബാഡ്ജുകളും — കൂടുതൽ പഠിക്കാൻ എപ്പോഴും പ്രേരണ!</span></p>
+      <h3>Rewards & Badges</h3>
+      <p>Kids earn stars and badges as they level up — keeping them motivated to learn more and more!</p>
     </div>
   </div>
 </section>
@@ -410,124 +384,96 @@
   <div class="about-visual reveal">
     <div class="about-card">
       <span class="big-emoji">🎙️</span>
-      <h3><span class="en">Made by a Voice Pro</span><span class="ml">ഒരു വോയ്സ് പ്രൊഫഷണൽ നിർമ്മിച്ചത്</span></h3>
-      <p><span class="en">Created by a Malayalam & British English voice artist with years of teaching experience.</span><span class="ml">മലയാളം & ബ്രിട്ടീഷ് ഇംഗ്ലീഷ് വോയ്സ് ആർട്ടിസ്റ്റ്, വർഷങ്ങളുടെ അധ്യാപന പരിചയത്തോടെ.</span></p>
+      <h3>Made by a Voice Pro</h3>
+      <p>Created by a British English voice artist with years of teaching experience.</p>
     </div>
   </div>
   <div class="about-text reveal">
-    <span class="section-tag"><span class="en">💛 Our Story</span><span class="ml">💛 ഞങ്ങളുടെ കഥ</span></span>
-    <h2 class="section-title"><span class="en">Built with Love for Kerala's Kids</span><span class="ml">കേരളത്തിലെ കുട്ടികൾക്കായി സ്നേഹത്തോടെ</span></h2>
+    <span class="section-tag">💛 Our Story</span>
+    <h2 class="section-title">Built to Help Kids Speak with Confidence</h2>
     <p style="color:#666;line-height:1.7;font-size:1.05rem;">
-      <span class="en">SpeakUp App was born from a simple belief — every Malayalam-speaking child deserves to learn English in a way that feels natural, joyful, and connected to their own language and culture.</span>
-      <span class="ml">SpeakUp App ഒരു ലളിതമായ വിശ്വാസത്തിൽ നിന്ന് ജനിച്ചു — ഓരോ മലയാളം സംസാരിക്കുന്ന കുട്ടിക്കും സ്വന്തം ഭാഷയോടും സംസ്കാരത്തോടും ബന്ധപ്പെട്ട, സ്വാഭാവികവും ആനന്ദകരവുമായ രീതിയിൽ ഇംഗ്ലീഷ് പഠിക്കാൻ അർഹതയുണ്ട്.</span>
+      SpeakUp App was built on a simple belief: children learn best when English feels playful, natural, and part of everyday life.
     </p>
     <ul class="about-list">
-      <li><span class="check">✓</span><span><span class="en">Lessons designed by professional voice & language experts</span><span class="ml">പ്രൊഫഷണൽ വോയ്സ് & ഭാഷാ വിദഗ്ധർ ഡിസൈൻ ചെയ്ത പാഠങ്ങൾ</span></span></li>
-      <li><span class="check">✓</span><span><span class="en">100% bilingual — English taught through Malayalam</span><span class="ml">100% ദ്വിഭാഷ — മലയാളം വഴി ഇംഗ്ലീഷ് പഠിപ്പിക്കുന്നു</span></span></li>
-      <li><span class="check">✓</span><span><span class="en">Safe, ad-free environment for children</span><span class="ml">കുട്ടികൾക്ക് സുരക്ഷിതവും പരസ്യരഹിതവുമായ അന്തരീക്ഷം</span></span></li>
-      <li><span class="check">✓</span><span><span class="en">Works offline — no internet needed for lessons</span><span class="ml">ഓഫ്‌ലൈനിൽ പ്രവർത്തിക്കുന്നു — ഇന്റർനെറ്റ് ആവശ്യമില്ല</span></span></li>
-      <li><span class="check">✓</span><span><span class="en">Aligned with Kerala school curriculum</span><span class="ml">കേരള സ്കൂൾ പാഠ്യപദ്ധതിക്ക് അനുസൃതം</span></span></li>
+      <li><span class="check">✓</span><span>Lessons designed by professional voice and language experts</span></li>
+      <li><span class="check">✓</span><span>Safe, ad-free environment for children</span></li>
+      <li><span class="check">✓</span><span>Works offline with no internet needed for lessons</span></li>
+      <li><span class="check">✓</span><span>Fun practice built around songs, stories, and games</span></li>
+      <li><span class="check">✓</span><span>Simple progress tracking for families</span></li>
     </ul>
   </div>
 </section>
 
 <!-- PRICING -->
 <section id="pricing">
-  <span class="section-tag reveal"><span class="en">💰 Simple Pricing</span><span class="ml">💰 ലളിതമായ വില</span></span>
-  <h2 class="section-title reveal"><span class="en">Choose the Right Plan</span><span class="ml">ശരിയായ പ്ലാൻ തിരഞ്ഞെടുക്കൂ</span></h2>
-  <p class="section-sub reveal"><span class="en">Start free, upgrade anytime. No hidden fees — just happy learning!</span><span class="ml">സൗജന്യമായി ആരംഭിക്കൂ, എപ്പോൾ വേണമെങ്കിലും അപ്ഗ്രേഡ് ചെയ്യൂ. മറഞ്ഞിരിക്കുന്ന ഫീസൊന്നുമില്ല!</span></p>
+  <span class="section-tag reveal">💰 Simple Pricing</span>
+  <h2 class="section-title reveal">Choose the Right Plan</h2>
+  <p class="section-sub reveal">Start free, upgrade anytime. No hidden fees — just happy learning!</p>
   <div class="pricing-grid">
     <div class="pricing-card reveal">
-      <div class="pricing-plan">🌱 <span class="en">Starter</span><span class="ml">സ്റ്റാർട്ടർ</span></div>
-      <div class="pricing-price"><span class="en">Free</span><span class="ml">സൗജന്യം</span></div>
-      <div class="pricing-period"><span class="en">Forever free</span><span class="ml">എന്നും സൗജന്യം</span></div>
+      <div class="pricing-plan">🌱 Starter</div>
+      <div class="pricing-price">Free</div>
+      <div class="pricing-period">Forever free</div>
       <ul class="pricing-features">
-        <li><span class="en">50 basic lessons</span><span class="ml">50 അടിസ്ഥാന പാഠങ്ങൾ</span></li>
-        <li><span class="en">5 fun games</span><span class="ml">5 രസകരമായ ഗെയിമുകൾ</span></li>
-        <li><span class="en">Basic progress report</span><span class="ml">അടിസ്ഥാന പ്രോഗ്രസ് റിപ്പോർട്ട്</span></li>
-        <li><span class="en">1 child profile</span><span class="ml">1 കുട്ടി പ്രൊഫൈൽ</span></li>
+        <li>50 basic lessons</li>
+        <li>5 fun games</li>
+        <li>Basic progress report</li>
+        <li>1 child profile</li>
       </ul>
-      <a href="https://ramrishi59.github.io/SpeakUpApp/" target="_blank" class="btn-plan btn-plan-light"><span class="en">Get Started</span><span class="ml">ആരംഭിക്കൂ</span></a>
+      <a href="https://ramrishi59.github.io/SpeakUpApp/" target="_blank" class="btn-plan btn-plan-light">Get Started</a>
     </div>
     <div class="pricing-card featured reveal">
-      <div class="popular-badge">⭐ <span class="en">Most Popular</span><span class="ml">ഏറ്റവും പ്രചാരമുള്ളത്</span></div>
-      <div class="pricing-plan">🚀 <span class="en">Explorer</span><span class="ml">എക്സ്പ്ലോറർ</span></div>
+      <div class="popular-badge">⭐ Most Popular</div>
+      <div class="pricing-plan">🚀 Explorer</div>
       <div class="pricing-price">₹299</div>
-      <div class="pricing-period"><span class="en">per month</span><span class="ml">പ്രതിമാസം</span></div>
+      <div class="pricing-period">per month</div>
       <ul class="pricing-features">
-        <li><span class="en">All 500+ lessons</span><span class="ml">500+ പാഠങ്ങൾ മുഴുവൻ</span></li>
-        <li><span class="en">All games & songs</span><span class="ml">എല്ലാ ഗെയിമുകളും പാട്ടുകളും</span></li>
-        <li><span class="en">Voice practice mode</span><span class="ml">വോയ്സ് പ്രാക്ടീസ് മോഡ്</span></li>
-        <li><span class="en">Weekly parent reports</span><span class="ml">ആഴ്ചതോറും രക്ഷകർത്തൃ റിപ്പോർട്ട്</span></li>
-        <li><span class="en">3 child profiles</span><span class="ml">3 കുട്ടി പ്രൊഫൈലുകൾ</span></li>
-        <li><span class="en">Offline access</span><span class="ml">ഓഫ്‌ലൈൻ ആക്സസ്</span></li>
+        <li>All 500+ lessons</li>
+        <li>All games and songs</li>
+        <li>Voice practice mode</li>
+        <li>Weekly parent reports</li>
+        <li>3 child profiles</li>
+        <li>Offline access</li>
       </ul>
-      <a href="https://ramrishi59.github.io/SpeakUpApp/" target="_blank" class="btn-plan btn-plan-featured"><span class="en">Start Free Trial</span><span class="ml">സൗജന്യ ട്രയൽ ആരംഭിക്കൂ</span></a>
+      <a href="https://ramrishi59.github.io/SpeakUpApp/" target="_blank" class="btn-plan btn-plan-featured">Start Free Trial</a>
     </div>
     <div class="pricing-card reveal">
-      <div class="pricing-plan">👨‍👩‍👧‍👦 <span class="en">Family</span><span class="ml">കുടുംബം</span></div>
+      <div class="pricing-plan">👨‍👩‍👧‍👦 Family</div>
       <div class="pricing-price">₹499</div>
-      <div class="pricing-period"><span class="en">per month</span><span class="ml">പ്രതിമാസം</span></div>
+      <div class="pricing-period">per month</div>
       <ul class="pricing-features">
-        <li><span class="en">Everything in Explorer</span><span class="ml">എക്സ്പ്ലോററിലെ എല്ലാം</span></li>
-        <li><span class="en">Up to 5 child profiles</span><span class="ml">5 കുട്ടി പ്രൊഫൈലുകൾ വരെ</span></li>
-        <li><span class="en">Priority support</span><span class="ml">മുൻഗണനാ സപ്പോർട്ട്</span></li>
-        <li><span class="en">Bonus story packs</span><span class="ml">ബോണസ് കഥ പായ്ക്കുകൾ</span></li>
+        <li>Everything in Explorer</li>
+        <li>Up to 5 child profiles</li>
+        <li>Priority support</li>
+        <li>Bonus story packs</li>
       </ul>
-      <a href="https://ramrishi59.github.io/SpeakUpApp/" target="_blank" class="btn-plan btn-plan-light"><span class="en">Get Started</span><span class="ml">ആരംഭിക്കൂ</span></a>
+      <a href="https://ramrishi59.github.io/SpeakUpApp/" target="_blank" class="btn-plan btn-plan-light">Get Started</a>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <span class="section-tag"><span class="en">📬 Get in Touch</span><span class="ml">📬 ബന്ധപ്പെടൂ</span></span>
-  <h2 class="section-title"><span class="en">Ready to Get Started?</span><span class="ml">ആരംഭിക്കാൻ തയ്യാറാണോ?</span></h2>
-  <p class="section-sub"><span class="en">Have questions? Want a school or group plan? Drop us a message — we'd love to hear from you!</span><span class="ml">സംശയങ്ങളുണ്ടോ? സ്കൂൾ അല്ലെങ്കിൽ ഗ്രൂപ്പ് പ്ലാൻ വേണോ? ഒരു സന്ദേശം അയക്കൂ — ഞങ്ങൾ കേൾക്കാൻ സന്തോഷം!</span></p>
+  <span class="section-tag">📬 Get in Touch</span>
+  <h2 class="section-title">Ready to Get Started?</h2>
+  <p class="section-sub">Have questions? Want a school or group plan? Drop us a message — we'd love to hear from you!</p>
   <form class="contact-form" onsubmit="handleSubmit(event)">
-    <input type="text" id="inp-name" placeholder="Your Name / നിങ്ങളുടെ പേര്" required>
-    <input type="email" id="inp-email" placeholder="Email Address / ഇമെയിൽ വിലാസം" required>
-    <input type="text" id="inp-age" placeholder="Child's Age / കുട്ടിയുടെ പ്രായം (optional)">
-    <textarea id="inp-msg" placeholder="Your message / നിങ്ങളുടെ സന്ദേശം..."></textarea>
-    <button type="submit" class="btn-submit" id="submitBtn">
-      <span class="en">Send Message 🚀</span><span class="ml">സന്ദേശം അയക്കൂ 🚀</span>
-    </button>
+    <input type="text" id="inp-name" placeholder="Your Name" required>
+    <input type="email" id="inp-email" placeholder="Email Address" required>
+    <input type="text" id="inp-age" placeholder="Child's Age (optional)">
+    <textarea id="inp-msg" placeholder="Your message..."></textarea>
+    <button type="submit" class="btn-submit" id="submitBtn">Send Message 🚀</button>
   </form>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <span class="footer-logo">🎙️ SpeakUpApp</span>
-  <p>© 2025 SpeakUp App. <span class="en">Made with ❤️ in Kerala, India.</span><span class="ml">കേരളത്തിൽ ❤️ നിന്ന് നിർമ്മിച്ചത്.</span></p>
-  <p style="margin-top:8px;"><span class="en">English Learning for Malayalam-Speaking Kids</span><span class="ml">മലയാളം സംസാരിക്കുന്ന കുട്ടികൾക്കായി ഇംഗ്ലീഷ് പഠനം</span></p>
+  <p>© 2025 SpeakUp App. Made with ❤️ in Kerala, India.</p>
+  <p style="margin-top:8px;">English Learning for Kids</p>
 </footer>
 
 <script>
-  let currentLang = 'en';
-
-  function toggleLang() {
-    currentLang = currentLang === 'en' ? 'ml' : 'en';
-    const body = document.body;
-
-    // Animate
-    body.classList.add('lang-animate');
-    setTimeout(() => body.classList.remove('lang-animate'), 350);
-
-    if (currentLang === 'ml') {
-      body.classList.add('ml-active');
-      document.getElementById('pillEN').classList.replace('active', 'inactive');
-      document.getElementById('pillML').classList.replace('inactive', 'active');
-      document.documentElement.lang = 'ml';
-      document.title = 'SpeakUp App – ഇംഗ്ലീഷ് രസകരമായി പഠിക്കൂ!';
-    } else {
-      body.classList.remove('ml-active');
-      document.getElementById('pillML').classList.replace('active', 'inactive');
-      document.getElementById('pillEN').classList.replace('inactive', 'active');
-      document.documentElement.lang = 'en';
-      document.title = 'SpeakUp App – Learn English the Fun Way!';
-    }
-  }
-
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
@@ -542,13 +488,10 @@
   function handleSubmit(e) {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
-    const isMl = currentLang === 'ml';
-    btn.textContent = isMl ? '✅ അയച്ചു!' : '✅ Message Sent!';
+    btn.textContent = '✅ Message Sent!';
     btn.style.background = 'var(--green)';
     setTimeout(() => {
-      btn.innerHTML = isMl
-        ? '<span class="ml">സന്ദേശം അയക്കൂ 🚀</span>'
-        : '<span class="en">Send Message 🚀</span>';
+      btn.textContent = 'Send Message 🚀';
       btn.style.background = '';
       e.target.reset();
     }, 3000);
