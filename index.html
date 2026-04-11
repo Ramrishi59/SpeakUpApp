@@ -161,20 +161,12 @@
   }
 
 
-  /* ── STATS ── */
-  .stats-strip {
-    background: var(--orange); padding: 24px 5%;
-    display: flex; justify-content: center; gap: 60px; flex-wrap: wrap;
-  }
-  .stat { text-align: center; color: var(--white); }
-  .stat-number { font-family: 'Fredoka One', cursive; font-size: 2.2rem; display: block; }
-  .stat-label { font-weight: 700; font-size: 0.9rem; opacity: 0.9; }
 
   /* ── SECTION BASE ── */
   section { padding: 80px 5%; position: relative; }
   .section-tag {
-    font-family: 'Fredoka One', cursive; font-size: 0.9rem;
-    color: var(--orange); text-transform: uppercase;
+    font-family: 'Fredoka One', cursive; font-size: 1.4rem;
+    color: var(--orange); 
     letter-spacing: 2px; margin-bottom: 12px; display: block;
   }
   .section-title {
@@ -195,6 +187,7 @@
     background: var(--cream); border-radius: 24px; padding: 36px 28px;
     border: 3px solid transparent;
     transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  
   }
   .feature-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); border-color: var(--yellow); }
   .feature-icon { font-size: 3rem; margin-bottom: 18px; display: block; animation: wobble 2s ease-in-out infinite; }
@@ -204,7 +197,7 @@
   .feature-card:nth-child(5) .feature-icon { animation-delay: 1.2s; }
   .feature-card:nth-child(6) .feature-icon { animation-delay: 1.5s; }
   .feature-card h3 { font-family: 'Fredoka One', cursive; font-size: 1.4rem; margin-bottom: 10px; }
-  .feature-card p { color: #666; line-height: 1.6; font-size: 0.97rem; }
+  .feature-card p { color: #000000; line-height: 1.6; font-size: 1.2rem; }
   .fc-yellow { border-top: 5px solid var(--yellow); }
   .fc-orange { border-top: 5px solid var(--orange); }
   .fc-pink   { border-top: 5px solid var(--pink); }
@@ -355,18 +348,16 @@
       <span class="ml">🌟 കുട്ടികൾക്കായി രസകരമായ ഇംഗ്ലീഷ്!</span>
     </div>
     <h1 class="hero-title">
-      <span class="en-block">Learn English<br>the <span class="highlight">Exciting</span><br>Way!</span>
-      <span class="ml-block">ഇംഗ്ലീഷ് പഠിക്കൂ<br><span class="highlight">രസകരമായ</span><br>രീതിയിൽ!</span>
+      <span class="en-block">Help Your Child <span class="highlight">Speak English </span><br>with Confidence!
+    </span>
+      <span class="ml-block">നിങ്ങളുടെ കുട്ടികൾക്ക്<span class="highlight">ആത്മവിശ്വാസത്തോടെ</span>ഇംഗ്ലീഷ് സംസാരിക്കാം!</span>
     </h1>
     <p class="hero-subtitle">
-      <span class="en">SpeakUp App helps Malayalam-speaking kids aged 5–12 learn English through games, songs, and stories — all at their own pace!</span>
-      <span class="ml">SpeakUp App 5–12 വയസ്സുള്ള മലയാളം സംസാരിക്കുന്ന കുട്ടികളെ ഗെയിംസ്, പാട്ടുകൾ, കഥകൾ വഴി ഇംഗ്ലീഷ് പഠിക്കാൻ സഹായിക്കുന്നു!</span>
+      <span class="en">No boring rules. Just fun games and activities for kids aged 5 to 12.</span>
+      <span class="ml">നിങ്ങളുടെ കുട്ടികൾക്ക് ആത്മവിശ്വാസത്തോടെ ഇംഗ്ലീഷ് സംസാരിക്കാം!</span>
     </p>
     <div class="hero-buttons">
-      <a href="app/dashboard.html" target="_blank" class="btn-primary">
-        <span class="en">Start Free Trial 🎉</span>
-        <span class="ml">സൗജന്യ ട്രയൽ ആരംഭിക്കൂ 🎉</span>
-      </a>
+
       <a href="#features" class="btn-secondary">
         <span class="en">See How It Works</span>
         <span class="ml">എങ്ങനെ പ്രവർത്തിക്കുന്നു</span>
@@ -378,46 +369,33 @@
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-strip">
-  <div class="stat"><span class="stat-number">10,000+</span><span class="stat-label"><span class="en">Happy Kids</span><span class="ml">സന്തുഷ്ടരായ കുട്ടികൾ</span></span></div>
-  <div class="stat"><span class="stat-number">500+</span><span class="stat-label"><span class="en">Fun Lessons</span><span class="ml">രസകരമായ പാഠങ്ങൾ</span></span></div>
-  <div class="stat"><span class="stat-number">4.9 ⭐</span><span class="stat-label"><span class="en">Parent Rating</span><span class="ml">രക്ഷകർത്താക്കളുടെ റേറ്റിംഗ്</span></span></div>
-  <div class="stat"><span class="stat-number">100%</span><span class="stat-label"><span class="en">Malayalam Support</span><span class="ml">മലയാളം പിന്തുണ</span></span></div>
-</div>
+
 
 <!-- FEATURES -->
 <section id="features">
   <div class="features-header reveal">
     <span class="section-tag"><span class="en">✨ What's Inside</span><span class="ml">✨ ഉള്ളടക്കം</span></span>
     <h2 class="section-title"><span class="en">Everything Kids Need to Speak Up!</span><span class="ml">കുട്ടികൾക്ക് ആവശ്യമായ എല്ലാം!</span></h2>
-    <p class="section-sub"><span class="en">From their first ABCs to full conversations — SpeakUp has it all, designed to make every child smile.</span><span class="ml">ആദ്യത്തെ ABC മുതൽ സമ്പൂർണ സംഭാഷണം വരെ — SpeakUp-ൽ എല്ലാമുണ്ട്, ഓരോ കുട്ടിയും ചിരിക്കാൻ ഡിസൈൻ ചെയ്തത്.</span></p>
+   
   </div>
   <div class="features-grid">
+    <div class="feature-card fc-orange reveal">
+      <span class="feature-icon">👋</span>
+      <h3><span class="en">Meet the Friends.</span><span class="ml">പാട്ടുകളും താളങ്ങളും</span></h3>
+      <p><span class="en">Learn along with Raju, Reena, Saira, John and their cute monkey friend Manku.
+      </span><span class="ml">കേൾക്കാൻ ഇഷ്ടമുള്ള ഇംഗ്ലീഷ് പാട്ടുകൾ, മലയാളം വിശദീകരണത്തോടെ — കുട്ടികൾ ഉടനടി മനസ്സിലാക്കും.</span></p>
+    </div>
     <div class="feature-card fc-yellow reveal">
       <span class="feature-icon">🎮</span>
       <h3><span class="en">Fun Games</span><span class="ml">രസകരമായ ഗെയിമുകൾ</span></h3>
-      <p><span class="en">Interactive word games, puzzles, and quizzes that make learning English feel like playtime every day.</span><span class="ml">ഇന്ററാക്ടീവ് വേർഡ് ഗെയിമുകൾ, പസിലുകൾ, ക്വിസ്സുകൾ — ഇംഗ്ലീഷ് പഠനം എല്ലാ ദിവസവും കളി പോലെ.</span></p>
+      <p><span class="en">Interactive quizzes like "Choose the Right Option" and "Make the sentence"</span>
     </div>
-    <div class="feature-card fc-orange reveal">
-      <span class="feature-icon">🎵</span>
-      <h3><span class="en">Songs & Rhymes</span><span class="ml">പാട്ടുകളും താളങ്ങളും</span></h3>
-      <p><span class="en">Catchy English songs and nursery rhymes with Malayalam explanations so kids understand instantly.</span><span class="ml">കേൾക്കാൻ ഇഷ്ടമുള്ള ഇംഗ്ലീഷ് പാട്ടുകൾ, മലയാളം വിശദീകരണത്തോടെ — കുട്ടികൾ ഉടനടി മനസ്സിലാക്കും.</span></p>
-    </div>
-    <div class="feature-card fc-pink reveal">
-      <span class="feature-icon">📖</span>
-      <h3><span class="en">Story Time</span><span class="ml">കഥ സമയം</span></h3>
-      <p><span class="en">Colourful animated stories with audio narration — perfect for bedtime or classroom reading.</span><span class="ml">വർണ്ണശബളമായ ആനിമേറ്റഡ് കഥകൾ ഓഡിയോ നാരേഷനോടെ — ഉറക്കത്തിനും ക്ലാസ് വായനയ്ക്കും.</span></p>
-    </div>
-    <div class="feature-card fc-green reveal">
-      <span class="feature-icon">🗣️</span>
-      <h3><span class="en">Speak & Practice</span><span class="ml">സംസാരിക്കൂ & പരിശീലിക്കൂ</span></h3>
-      <p><span class="en">Voice recognition lets kids practice pronunciation and get instant, encouraging feedback.</span><span class="ml">വോയ്സ് റെക്കഗ്നിഷൻ ഉപയോഗിച്ച് ഉച്ചാരണം പരിശീലിക്കാം, ഉടനടി പ്രോത്സാഹനം ലഭിക്കും.</span></p>
-    </div>
+
+
     <div class="feature-card fc-purple reveal">
       <span class="feature-icon">📊</span>
       <h3><span class="en">Progress Tracker</span><span class="ml">പ്രോഗ്രസ് ട്രാക്കർ</span></h3>
-      <p><span class="en">Parents can track their child's learning journey with simple, clear progress reports every week.</span><span class="ml">രക്ഷകർത്താക്കൾക്ക് ആഴ്ചതോറും ലളിതമായ റിപ്പോർട്ടിലൂടെ കുട്ടിയുടെ പഠന വളർച്ച കാണാം.</span></p>
+      <p><span class="en">Watch your child grow with our simple progress charts.</span><span class="ml">രക്ഷകർത്താക്കൾക്ക് ആഴ്ചതോറും ലളിതമായ റിപ്പോർട്ടിലൂടെ കുട്ടിയുടെ പഠന വളർച്ച കാണാം.</span></p>
     </div>
     <div class="feature-card fc-blue reveal">
       <span class="feature-icon">🏆</span>
