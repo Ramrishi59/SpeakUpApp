@@ -624,49 +624,49 @@
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit32/1.webp", 
+      "thumbnail": "Images/Unit32/4.webp", 
     
       "id": "unit32", 
       "title": "Unit 32: What day is it today?"
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit33/1.webp", 
+      "thumbnail": "Images/Unit33/4.webp", 
      
       "id": "unit33", 
       "title": "Unit 33: What is today's date?"
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit34/1.webp", 
+      "thumbnail": "Images/Unit34/29.webp", 
       
       "id": "unit34", 
       "title": "Unit 34: Mathew is Tall"
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit35/1.webp", 
+      "thumbnail": "Images/Unit35/6.webp", 
      
       "id": "unit35", 
       "title": "Unit 35: The first, The second"
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit36/1.webp", 
+      "thumbnail": "Images/Unit36/7.webp", 
       
       "id": "unit36", 
       "title": "Unit 36: May is the fifth month"
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit37/1.webp", 
+      "thumbnail": "Images/Unit37/6.webp", 
       
       "id": "unit37", 
       "title": "Unit 37: Which...? Which one...?"
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit38/1.webp", 
+      "thumbnail": "Images/Unit38/8.webp", 
      
       "id": "unit38", 
       "title": "Unit 38: Which one is old?"
@@ -680,38 +680,45 @@
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit40/1.webp", 
+      "thumbnail": "Images/Unit40/5.webp", 
       
       "id": "unit40", 
       "title": "Unit 40: I like Bananas"
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit41/1.webp", 
+      "thumbnail": "Images/Unit41/6.webp", 
       
       "id": "unit41", 
       "title": "Unit 41: I can Read"
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit42/1.webp", 
+      "thumbnail": "Images/Unit42/4.webp", 
       
       "id": "unit42", 
       "title": "Unit 42: I can't sing"
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit43/1.webp", 
+      "thumbnail": "Images/Unit43/14.webp", 
       
       "id": "unit43", 
       "title": "Unit 43: What Time is it"
     }, 
     {
       "category": "units", 
-      "thumbnail": "Images/Unit44/1.webp", 
+      "thumbnail": "Images/Unit44/4.webp", 
        "id": "unit44", 
       "title": "Unit 44: I'm reading"
     }, 
+    {
+      "category": "units", 
+      "thumbnail": "Images/Unit45/24.webp", 
+     
+      "id": "unit45", 
+      "title": "Unit 45: What are you doing?"
+    },
     {
       "category": "Practice", 
       "description": "Practice", 
@@ -719,13 +726,6 @@
       "route": "an-quiz/an-quiz.html", 
       "id": "unit1-practice", 
       "thumbnail": "an-quiz/Images/introquiz.webp"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit44/1.webp", 
-     
-      "id": "unit45", 
-      "title": "Unit 45: What are you doing?"
     }
   ], 
   "version": 1

@@ -549,8 +549,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   console.log('E: dashboardLessons after load =', dashboardLessons);
 
   refreshButton?.addEventListener('click', () => {
+    saveScrollPosition();
     window.location.reload();
   });
+
+  mainContent?.addEventListener('scroll', saveScrollPosition, { passive: true });
+  window.addEventListener('pagehide', saveScrollPosition);
+  window.addEventListener('beforeunload', saveScrollPosition);
 
 
   const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
@@ -585,21 +590,51 @@ async function loadDashboardLessons() {
     return 'scroll:dashboard';
   }
 
+  function getLastLessonKey() {
+    return 'scroll:dashboard:last-lesson';
+  }
+
   function saveScrollPosition() {
     if (!mainContent) return;
     sessionStorage.setItem(getScrollKey(), String(mainContent.scrollTop || 0));
   }
 
+  function saveLastOpenedLesson(id) {
+    if (!id) return;
+    sessionStorage.setItem(getLastLessonKey(), String(id));
+  }
+
+  function restoreLastOpenedLessonIntoView() {
+    if (!mainContent || !lessonsList) return false;
+    const lessonId = sessionStorage.getItem(getLastLessonKey());
+    if (!lessonId) return false;
+
+    const targetCard = Array.from(lessonsList.querySelectorAll('[data-lesson-id]'))
+      .find((card) => String(card.dataset.lessonId) === String(lessonId));
+    if (!targetCard) return false;
+
+    const containerRect = mainContent.getBoundingClientRect();
+    const targetRect = targetCard.getBoundingClientRect();
+    const nextScrollTop = mainContent.scrollTop + (targetRect.top - containerRect.top) - 24;
+    mainContent.scrollTop = Math.max(0, nextScrollTop);
+    return true;
+  }
+
   function restoreScrollPosition() {
     if (!mainContent) return;
     const value = sessionStorage.getItem(getScrollKey());
-    if (value == null) return;
-    const next = Number(value);
-    if (!Number.isNaN(next)) {
-      requestAnimationFrame(() => {
+    const next = value == null ? Number.NaN : Number(value);
+
+    const applyRestore = () => {
+      if (!Number.isNaN(next)) {
         mainContent.scrollTop = next;
-      });
-    }
+        return;
+      }
+      restoreLastOpenedLessonIntoView();
+    };
+
+    requestAnimationFrame(applyRestore);
+    requestAnimationFrame(() => requestAnimationFrame(applyRestore));
   }
 
   async function navigateToLesson(id) {
@@ -618,6 +653,7 @@ async function loadDashboardLessons() {
     } catch (error) {
       console.warn('Could not save initial lesson progress.', error);
     }
+    saveLastOpenedLesson(id);
     saveScrollPosition();
     // Use overrides when present, else default resolver
     const baseRoute = getRouteForCard(card);
