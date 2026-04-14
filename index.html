@@ -254,27 +254,7 @@
   .btn-plan-featured:hover { transform: translateY(-2px); }
 
   
-  /* ── CONTACT ── */
-  #contact { background: var(--dark); color: var(--white); text-align: center; padding: 80px 5%; }
-  #contact .section-tag { color: var(--yellow); }
-  #contact .section-title { color: var(--white); }
-  #contact .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto 40px; }
-  .contact-form { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
-  .contact-form input, .contact-form textarea {
-    background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15);
-    border-radius: 16px; padding: 16px 20px; color: var(--white);
-    font-family: inherit; font-size: 1rem; font-weight: 600; outline: none; transition: border-color 0.2s;
-  }
-  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
-  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--yellow); }
-  .contact-form textarea { min-height: 120px; resize: vertical; }
-  .btn-submit {
-    background: var(--yellow); color: var(--dark); padding: 18px; border-radius: 50px;
-    font-family: 'Fredoka One', cursive; font-size: 1.2rem; border: none; cursor: pointer;
-    box-shadow: 0 6px 0 #c9a800; transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 9px 0 #c9a800; }
-
+ 
   /* ── FOOTER ── */
   footer { background: #1a1a1a; color: rgba(255,255,255,0.5); text-align: center; padding: 28px 5%; font-size: 0.9rem; }
   footer .footer-logo { font-family: 'Fredoka One', cursive; font-size: 1.5rem; color: var(--orange); display: block; margin-bottom: 8px; }
@@ -437,34 +417,11 @@
       </ul>
       <a href="https://ramrishi59.github.io/SpeakUpApp/" target="_blank" class="btn-plan btn-plan-featured">Start Free Trial</a>
     </div>
-    <div class="pricing-card reveal">
-      <div class="pricing-plan">👨‍👩‍👧‍👦 Family</div>
-      <div class="pricing-price">₹499</div>
-      <div class="pricing-period">per month</div>
-      <ul class="pricing-features">
-        <li>Everything in Explorer</li>
-        <li>Up to 5 child profiles</li>
-        <li>Priority support</li>
-        <li>Bonus story packs</li>
-      </ul>
-      <a href="https://ramrishi59.github.io/SpeakUpApp/" target="_blank" class="btn-plan btn-plan-light">Get Started</a>
-    </div>
+
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <span class="section-tag">📬 Get in Touch</span>
-  <h2 class="section-title">Ready to Get Started?</h2>
-  <p class="section-sub">Have questions? Want a school or group plan? Drop us a message — we'd love to hear from you!</p>
-  <form class="contact-form" onsubmit="handleSubmit(event)">
-    <input type="text" id="inp-name" placeholder="Your Name" required>
-    <input type="email" id="inp-email" placeholder="Email Address" required>
-    <input type="text" id="inp-age" placeholder="Child's Age (optional)">
-    <textarea id="inp-msg" placeholder="Your message..."></textarea>
-    <button type="submit" class="btn-submit" id="submitBtn">Send Message 🚀</button>
-  </form>
-</section>
+
 
 <!-- FOOTER -->
 <footer>
