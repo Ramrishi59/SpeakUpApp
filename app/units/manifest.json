@@ -66,7 +66,7 @@
       "title": "Make the sentence-2", 
       "route": "order-activity/order.html?activity=activity2", 
       "id": "order-activity2", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -74,7 +74,7 @@
       "title": "Make the sentence-3", 
       "route": "order-activity/order.html?activity=activity3", 
       "id": "order-activity3", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -82,7 +82,7 @@
       "title": "Make the sentence-4", 
       "route": "order-activity/order.html?activity=activity4", 
       "id": "order-activity4", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -90,7 +90,7 @@
       "title": "Make the sentence-5", 
       "route": "order-activity/order.html?activity=activity5", 
       "id": "order-activity5", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -98,7 +98,7 @@
       "title": "Make the sentence-6", 
       "route": "order-activity/order.html?activity=activity6", 
       "id": "order-activity6", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -106,7 +106,7 @@
       "title": "Make the sentence-7", 
       "route": "order-activity/order.html?activity=activity7", 
       "id": "order-activity7", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -114,7 +114,7 @@
       "title": "Make the sentence-8", 
       "route": "order-activity/order.html?activity=activity8", 
       "id": "order-activity8", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -122,7 +122,7 @@
       "title": "Make the sentence-9", 
       "route": "order-activity/order.html?activity=activity9", 
       "id": "order-activity9", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -130,7 +130,7 @@
       "title": "Make the sentence-10", 
       "route": "order-activity/order.html?activity=activity10", 
       "id": "order-activity10", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -138,7 +138,7 @@
       "title": "Make the sentence-11", 
       "route": "order-activity/order.html?activity=activity11", 
       "id": "order-activity11", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -146,7 +146,7 @@
       "title": "Make the sentence-12", 
       "route": "order-activity/order.html?activity=activity12", 
       "id": "order-activity12", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -154,7 +154,7 @@
       "title": "Make the sentence-13", 
       "route": "order-activity/order.html?activity=activity13", 
       "id": "order-activity13", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -162,7 +162,7 @@
       "title": "Make the sentence-14", 
       "route": "order-activity/order.html?activity=activity14", 
       "id": "order-activity14", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -170,7 +170,7 @@
       "title": "Make the sentence-15", 
       "route": "order-activity/order.html?activity=activity15", 
       "id": "order-activity15", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "category": "order", 
@@ -178,7 +178,7 @@
       "title": "Make the sentence-16", 
       "route": "order-activity/order.html?activity=activity16", 
       "id": "order-activity16", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
       {
       "category": "order", 
@@ -186,7 +186,7 @@
       "title": "Make the sentence-17", 
       "route": "order-activity/order.html?activity=activity17", 
       "id": "order-activity17", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
       {
       "category": "order", 
@@ -194,7 +194,7 @@
       "title": "Make the sentence-18", 
       "route": "order-activity/order.html?activity=activity18", 
       "id": "order-activity18", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
       {
       "category": "order", 
@@ -202,7 +202,7 @@
       "title": "Make the sentence-19", 
       "route": "order-activity/order.html?activity=activity19", 
       "id": "order-activity19", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
       {
       "category": "order", 
@@ -210,7 +210,7 @@
       "title": "Make the sentence-20", 
       "route": "order-activity/order.html?activity=activity20", 
       "id": "order-activity20", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
       {
       "category": "order", 
@@ -218,7 +218,7 @@
       "title": "Make the sentence-21", 
       "route": "order-activity/order.html?activity=activity21", 
       "id": "order-activity21", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
       {
       "category": "order", 
@@ -226,7 +226,7 @@
       "title": "Make the sentence-22", 
       "route": "order-activity/order.html?activity=activity22", 
       "id": "order-activity22", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
       {
       "category": "order", 
@@ -234,7 +234,7 @@
       "title": "Make the sentence-23", 
       "route": "order-activity/order.html?activity=activity23", 
       "id": "order-activity23", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail":"Images/dashboard thumbnails/Reena.webp"
     }, 
       {
       "category": "order", 
@@ -242,210 +242,210 @@
       "title": "Make the sentence-24", 
       "route": "order-activity/order.html?activity=activity24", 
       "id": "order-activity24", 
-      "thumbnail": "order-activity/Images/score.webp"
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity29", 
       "id": "activity29", 
-      "title": "Choose the right option Quiz-29"
+      "title": "Choose the right option -29"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity28", 
       "id": "activity28", 
-      "title": "Choose the right option Quiz-28"
+      "title": "Choose the right option -28"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity27", 
       "id": "activity27", 
-      "title": "Choose the right option Quiz-27"
+      "title": "Choose the right option -27"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity26", 
       "id": "activity26", 
-      "title": "Choose the right option Quiz-26"
+      "title": "Choose the right option -26"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity25", 
       "id": "activity25", 
-      "title": "Choose the right option Quiz-25"
+      "title": "Choose the right option -25"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity24", 
       "id": "activity24", 
-      "title": "Choose the right option Quiz-24"
+      "title": "Choose the right option -24"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity23", 
       "id": "activity23", 
-      "title": "Choose the right option Quiz-23"
+      "title": "Choose the right option -23"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity22", 
       "id": "activity22", 
-      "title": "Choose the right option Quiz-22"
+      "title": "Choose the right option -22"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity21", 
       "id": "activity21", 
-      "title": "Choose the right option Quiz-21"
+      "title": "Choose the right option -21"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity20", 
       "id": "activity20", 
-      "title": "Choose the right option Quiz-20"
+      "title": "Choose the right option -20"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity19", 
       "id": "activity19", 
-      "title": "Choose the right option Quiz-19"
+      "title": "Choose the right option -19"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity18", 
       "id": "activity18", 
-      "title": "Choose the right option Quiz-18"
+      "title": "Choose the right option -18"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity17", 
       "id": "activity17", 
-      "title": "Choose the right option Quiz-17"
+      "title": "Choose the right option -17"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity16", 
       "id": "activity16", 
-      "title": "Choose the right option Quiz-16"
+      "title": "Choose the right option -16"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity15", 
       "id": "activity15", 
-      "title": "Choose the right option Quiz-15"
+      "title": "Choose the right option -15"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity14", 
       "id": "activity14", 
-      "title": "Choose the right option Quiz-14"
+      "title": "Choose the right option -14"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity13", 
       "id": "activity13", 
-      "title": "Choose the right option Quiz-13"
+      "title": "Choose the right option -13"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity12", 
       "id": "activity12", 
-      "title": "Choose the right option Quiz-12"
+      "title": "Choose the right option -12"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity11", 
       "id": "activity11", 
-      "title": "Choose the right option Quiz-11"
+      "title": "Choose the right option -11"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity9", 
       "id": "activity9", 
-      "title": "Choose the right option Quiz-9"
+      "title": "Choose the right option -9"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity8", 
       "id": "activity8", 
-      "title": "Choose the right option Quiz-8"
+      "title": "Choose the right option -8"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity7", 
       "id": "activity7", 
-      "title": "Choose the right option Quiz-7"
+      "title": "Choose the right option -7"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity6", 
       "id": "activity6", 
-      "title": "Choose the right option Quiz-6"
+      "title": "Choose the right option -6"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity5", 
       "id": "activity5", 
-      "title": "Choose the right option Quiz-5"
+      "title": "Choose the right option -5"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity4", 
       "id": "activity4", 
-      "title": "Choose the right option Quiz-4"
+      "title": "Choose the right option -4"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity3", 
       "id": "activity3", 
-      "title": "Choose the right option Quiz-3"
+      "title": "Choose the right option -3"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity2", 
       "id": "activity2", 
-      "title": "Choose the right option Quiz-2"
+      "title": "Choose the right option -2"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html", 
       "id": "activity1", 
-      "title": "Choose the right option Quiz-1"
+      "title": "Choose the right option -1"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/John.webp", 
       "description": "Fill in the blanks to get the right answer", 
       "route": "blankquiz/activity3.html", 
       "id": "fill", 
-      "title": "Fill in the blanks Quiz"
+      "title": "Fill in the blanks"
     }, 
 
     {
