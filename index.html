@@ -267,7 +267,7 @@
   .about-card .about-card-img {
     width: 150px;
     height: 180px;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 24px;
     display: block;
     margin: 0 auto 16px;
@@ -275,12 +275,29 @@
   .about-card h3 { font-family: 'Fredoka One', cursive; color: #0056B3; font-size: 1.5rem; }
   .about-card p { color: #555; margin-top: 8px; font-weight: 600; font-size: 0.95rem; }
   .about-text { flex: 1; min-width: 280px; }
-  .about-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
-  .about-list li { display: flex; align-items: flex-start; gap: 12px; font-weight: 600; font-size: 1rem; }
+  .about-list {
+    list-style: none;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 520px;
+    align-items: stretch;
+  }
+  .about-list li {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: left;
+  }
   .about-list li .check {
     background: var(--green); color: var(--white); width: 26px; height: 26px;
     border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem; flex-shrink: 0; margin-top: 2px;
+    font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; margin-left: 2px;
   }
 
   /* ── PRICING ── */
@@ -327,7 +344,7 @@
   
  
   /* ── FOOTER ── */
-  footer { background: var(--cream); color: rgba(45,45,45,0.65); text-align: center; padding: 64px 5% 40px; margin-top: 36px; font-size: 0.9rem; }
+  footer { background: var(--cream); color: rgba(45,45,45,0.65); text-align: center; padding: 64px 5% 0px; margin-top: 36px; font-size: 0.9rem; }
   footer .footer-logo { font-family: 'Fredoka One', cursive; font-size: 1.5rem; color: #0056B3; display: block; margin-bottom: 8px; }
 
   /* ── ANIMATIONS ── */
@@ -347,7 +364,7 @@
     #hero { flex-direction: column; text-align: center; padding-bottom: 260px; }
     .hero-image { left: 50%; bottom: 8px; transform: translateX(-50%); }
     #about { flex-direction: column; text-align: center; }
-    .about-list li { justify-content: center; }
+    .about-list { margin-left: auto; margin-right: auto; }
   }
 </style>
 </head>
@@ -444,22 +461,21 @@
 <section id="about">
   <div class="about-visual reveal">
     <div class="about-card">
-      <img class="about-card-img" src="app/Images/dashboard%20thumbnails/about.jpg" alt="Voice learning">
+      <img class="about-card-img" src="app/Images/dashboard%20thumbnails/about1.jpg" alt="Voice learning">
       <h3>Made by a Voice Pro</h3>
-      <p>Created by a British English voice artist with years of teaching experience.</p>
+      <p>Created by Ramesh Voice, the professional English and Mlayalam voice artist.</p>
     </div>
   </div>
   <div class="about-text reveal">
     <span class="section-tag">💛 Our Story</span>
     <h2 class="section-title">Built to Help Kids Speak with Confidence</h2>
-    <p style="color:#666;line-height:1.7;font-size:1.05rem;">
-      SpeakUp App was built on a simple belief: children learn best when English feels playful, natural, and part of everyday life.
-    </p>
+ 
     <ul class="about-list">
-      <li><span class="check">✓</span><span>Lessons designed by professional voice and language experts</span></li>
       <li><span class="check">✓</span><span>Safe, ad-free environment for children</span></li>
       <li><span class="check">✓</span><span>Works offline with no internet needed for lessons</span></li>
-      <li><span class="check">✓</span><span>Fun practice built around songs, stories, and games</span></li>
+      <li><span class="check">✓</span><span>No boring rules. Just fun games</span></li>
+      <li><span class="check">✓</span><span>Rich images for easy understanding</span></li>
+      <li><span class="check">✓</span><span>Fun activites like games</span></li>
       <li><span class="check">✓</span><span>Simple progress tracking for families</span></li>
     </ul>
   </div>
@@ -467,9 +483,9 @@
 
 <!-- PRICING -->
 <section id="pricing">
-  <span class="section-tag reveal">💰 Simple Pricing</span>
-  <h2 class="section-title reveal">Choose the Right Plan</h2>
-  <p class="section-sub reveal">Start free, upgrade anytime. No hidden fees — just happy learning!</p>
+  <span class="section-tag reveal"></span>
+  <h2 class="section-title reveal"></h2>
+
   <div class="pricing-grid">
     <div class="pricing-card reveal">
       <div class="pricing-plan">🌱 Starter</div>
@@ -481,10 +497,10 @@
       <a href="https://ramrishi59.github.io/SpeakUpApp/app/dashboard.html" target="_blank" class="btn-plan btn-plan-light">Start Free Trial</a>
     </div>
     <div class="pricing-card featured reveal">
-      <div class="popular-badge">⭐ Most Popular</div>
+      <div class="popular-badge">⭐ Complete Course</div>
       <div class="pricing-plan">🚀 Explorer</div>
       <div class="pricing-price">₹499</div>
-      <div class="pricing-period">per month</div>
+      <div class="pricing-period">For 3 months</div>
       <ul class="pricing-features">
         <li>All 100 lessons</li>
         <li>All Units and activites</li>
