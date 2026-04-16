@@ -47,6 +47,7 @@ const nextBtn = document.getElementById("nextBtn");
 const resetBtn = document.getElementById("resetBtn");
 
 const wordGrid = document.querySelector(".word-grid");
+const answerSlot = document.getElementById("answerSlot");
 const answerTextEl = document.getElementById("answerText");
 let wordBtns = [];
 
@@ -124,6 +125,66 @@ function updateAnswerText(words, indices) {
   }
   const parts = indices.map(i => words[i]);
   answerTextEl.textContent = parts.join(" ");
+}
+
+function popAnswerSlot() {
+  if (!answerSlot) return;
+  answerSlot.classList.remove("word-landed");
+  void answerSlot.offsetWidth;
+  answerSlot.classList.add("word-landed");
+}
+
+function animateWordToAnswer(btn, label, onDone) {
+  if (!btn || !answerSlot || prefersReduced) {
+    if (typeof onDone === "function") onDone();
+    return;
+  }
+
+  const from = btn.getBoundingClientRect();
+  const to = answerSlot.getBoundingClientRect();
+  const flyWord = document.createElement("span");
+
+  flyWord.className = "fly-word";
+  flyWord.textContent = label;
+  flyWord.style.left = `${from.left}px`;
+  flyWord.style.top = `${from.top}px`;
+  flyWord.style.width = `${from.width}px`;
+  flyWord.style.height = `${from.height}px`;
+
+  document.body.appendChild(flyWord);
+
+  const targetX = to.left + (to.width / 2) - (from.width / 2);
+  const targetY = to.top + (to.height / 2) - (from.height / 2);
+  const lift = Math.min(72, Math.max(36, from.top - to.top));
+
+  const flight = flyWord.animate(
+    [
+      {
+        transform: "translate3d(0, 0, 0) scale(1)",
+        opacity: 1
+      },
+      {
+        transform: `translate3d(${(targetX - from.left) * 0.5}px, ${targetY - from.top - lift}px, 0) scale(1.08)`,
+        opacity: 1,
+        offset: 0.55
+      },
+      {
+        transform: `translate3d(${targetX - from.left}px, ${targetY - from.top}px, 0) scale(0.86)`,
+        opacity: 0.18
+      }
+    ],
+    {
+      duration: 430,
+      easing: "cubic-bezier(.2,.82,.2,1)",
+      fill: "forwards"
+    }
+  );
+
+  flight.onfinish = () => {
+    flyWord.remove();
+    if (typeof onDone === "function") onDone();
+    popAnswerSlot();
+  };
 }
 
 function updateWordGridDensity(words) {
@@ -206,6 +267,7 @@ function updateProgressUI() {
 function resetWordUI(it) {
   selectionIndices = [];
   answered = false;
+  answerSlot?.classList.remove("word-landed");
   updateAnswerText(it?.words || [], selectionIndices);
   wordBtns.forEach(btn => {
     btn.disabled = false;
@@ -282,7 +344,12 @@ function handleWordTap(slot) {
   btn.classList.add("selected");
 
   selectionIndices.push(wordIndex);
-  updateAnswerText(it.words || [], selectionIndices);
+  const visibleSelection = [...selectionIndices];
+  const tappedAtIndex = idx;
+  animateWordToAnswer(btn, it.words?.[wordIndex] || "", () => {
+    if (tappedAtIndex !== idx) return;
+    updateAnswerText(it.words || [], visibleSelection);
+  });
 
   const totalWords = it.words?.length || 0;
   if (selectionIndices.length < totalWords) return;
