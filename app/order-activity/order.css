@@ -263,6 +263,12 @@ main#app {
   background: #ffe1dd;
 }
 
+.word-btn.wrong-shake {
+  border-color: var(--danger);
+  background: linear-gradient(180deg, #fff4f2, #ffe1dd);
+  animation: wrongShake .34s ease;
+}
+
 .word-btn[disabled] {
   opacity: 0.78;
   cursor: not-allowed;
@@ -336,8 +342,35 @@ main#app {
   }
 }
 
+@keyframes wrongShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  18% {
+    transform: translateX(-8px) rotate(-1deg);
+  }
+
+  36% {
+    transform: translateX(8px) rotate(1deg);
+  }
+
+  54% {
+    transform: translateX(-6px) rotate(-1deg);
+  }
+
+  72% {
+    transform: translateX(5px) rotate(1deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .answer-slot.word-landed {
+    animation: none;
+  }
+
+  .word-btn.wrong-shake {
     animation: none;
   }
 

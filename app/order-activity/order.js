@@ -187,6 +187,13 @@ function animateWordToAnswer(btn, label, onDone) {
   };
 }
 
+function shakeWrongWord(btn) {
+  if (!btn) return;
+  btn.classList.remove("wrong-shake");
+  void btn.offsetWidth;
+  btn.classList.add("wrong-shake");
+}
+
 function updateWordGridDensity(words) {
   if (!wordGrid) return;
   const totalWords = words?.length || 0;
@@ -271,7 +278,7 @@ function resetWordUI(it) {
   updateAnswerText(it?.words || [], selectionIndices);
   wordBtns.forEach(btn => {
     btn.disabled = false;
-    btn.classList.remove("selected", "correct", "incorrect");
+    btn.classList.remove("selected", "correct", "incorrect", "wrong-shake");
   });
 }
 
@@ -333,6 +340,7 @@ function handleWordTap(slot) {
   const expectedIndex = selectionIndices.length;
   if (wordIndex !== expectedIndex) {
     hadWrongAttempt = true;
+    shakeWrongWord(btn);
     vibrate([40, 60, 40]);
     playAudio(WRONG_SFX, () => {
       if (it.audioWrong) playAudio(it.audioWrong);
