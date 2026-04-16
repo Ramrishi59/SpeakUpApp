@@ -41,6 +41,7 @@ const progressFill = document.getElementById("progressFill");
 const progressStats = document.getElementById("progressStats");
 const introImgEl = document.getElementById("introImage");
 const introAudioEl = document.getElementById("introAudio");
+const mankuCorner = document.getElementById("mankuCorner");
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -189,9 +190,26 @@ function animateWordToAnswer(btn, label, onDone) {
 
 function shakeWrongWord(btn) {
   if (!btn) return;
+  const shakeId = String(Date.now());
+  btn.dataset.shakeId = shakeId;
   btn.classList.remove("wrong-shake");
   void btn.offsetWidth;
   btn.classList.add("wrong-shake");
+  btn.addEventListener("animationend", () => {
+    btn.classList.remove("wrong-shake");
+  }, { once: true });
+  setTimeout(() => {
+    if (btn.dataset.shakeId === shakeId) {
+      btn.classList.remove("wrong-shake");
+    }
+  }, 380);
+}
+
+function animateManku(mood) {
+  if (!mankuCorner || !mood) return;
+  mankuCorner.classList.remove("manku-happy", "manku-wrong", "manku-celebrate");
+  void mankuCorner.offsetWidth;
+  mankuCorner.classList.add(`manku-${mood}`);
 }
 
 function updateWordGridDensity(words) {
@@ -296,6 +314,7 @@ function render(i) {
       }
     });
     qEl.textContent = loadError ? "Could not load activity." : "Loading...";
+    mankuCorner?.classList.remove("manku-happy", "manku-wrong", "manku-celebrate");
     wordBtns.forEach(btn => btn.disabled = true);
     prevBtn.disabled = true;
     nextBtn.disabled = true;
@@ -307,6 +326,7 @@ function render(i) {
 
   hadWrongAttempt = false;
   nextBtn.disabled = false;
+  mankuCorner?.classList.remove("manku-happy", "manku-wrong", "manku-celebrate");
 
   qEl.textContent = it.question || "Tap the words in order to make the sentence.";
   pill.textContent = `${i + 1}/${ITEMS.length}`;
@@ -340,7 +360,9 @@ function handleWordTap(slot) {
   const expectedIndex = selectionIndices.length;
   if (wordIndex !== expectedIndex) {
     hadWrongAttempt = true;
+    btn.classList.add("incorrect");
     shakeWrongWord(btn);
+    animateManku("wrong");
     vibrate([40, 60, 40]);
     playAudio(WRONG_SFX, () => {
       if (it.audioWrong) playAudio(it.audioWrong);
@@ -349,7 +371,10 @@ function handleWordTap(slot) {
   }
 
   btn.disabled = true;
+  wordBtns.forEach(b => b.classList.remove("wrong-shake"));
+  btn.classList.remove("incorrect", "wrong-shake");
   btn.classList.add("selected");
+  animateManku("happy");
 
   selectionIndices.push(wordIndex);
   const visibleSelection = [...selectionIndices];
@@ -376,6 +401,7 @@ function handleWordTap(slot) {
   });
 
   answered = true;
+  animateManku("celebrate");
   vibrate(30);
 
   const advance = () => {

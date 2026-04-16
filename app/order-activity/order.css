@@ -89,7 +89,7 @@ main#app {
   box-shadow: var(--shadow);
   transform: translateY(-10px);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 @media (max-width: 720px) {
@@ -110,8 +110,15 @@ main#app {
     max-height: none;
   }
 
+  .manku-corner {
+    width: clamp(76px, 18svh, 118px);
+    right: -10px;
+    top: -56px;
+  }
+
   .question {
     font-size: clamp(18px, 3svh, 24px);
+    max-width: calc(100% - 74px);
   }
 
   .progress-bar {
@@ -121,6 +128,30 @@ main#app {
   .nav-row {
     gap: 10px;
   }
+}
+
+.manku-corner {
+  position: absolute;
+  top: -152px;
+  right: -18px;
+  width: clamp(108px, 16svh, 170px);
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+  filter: drop-shadow(0 16px 18px rgba(20, 79, 126, 0.22));
+  transform-origin: 58% 88%;
+}
+
+.manku-corner.manku-happy {
+  animation: mankuBounce .42s ease;
+}
+
+.manku-corner.manku-wrong {
+  animation: mankuNudge .34s ease;
+}
+
+.manku-corner.manku-celebrate {
+  animation: mankuCelebrate .68s ease;
 }
 
 /* Question */
@@ -365,6 +396,51 @@ main#app {
   }
 }
 
+@keyframes mankuBounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  42% {
+    transform: translateY(-12px) rotate(-3deg);
+  }
+
+  70% {
+    transform: translateY(2px) rotate(1deg);
+  }
+}
+
+@keyframes mankuNudge {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  28% {
+    transform: rotate(-5deg);
+  }
+
+  58% {
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes mankuCelebrate {
+  0%,
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+
+  32% {
+    transform: translateY(-14px) scale(1.06) rotate(-5deg);
+  }
+
+  64% {
+    transform: translateY(-4px) scale(1.03) rotate(5deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .answer-slot.word-landed {
     animation: none;
@@ -372,6 +448,10 @@ main#app {
 
   .word-btn.wrong-shake {
     animation: none;
+  }
+
+  .manku-corner {
+    animation: none !important;
   }
 
   .word-btn,
