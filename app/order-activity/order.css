@@ -169,7 +169,7 @@ main#app {
 
   .manku-corner {
     width: clamp(76px, 18svh, 118px);
-    right: -10px;
+    right: 18px;
     top: -56px;
   }
 
@@ -190,7 +190,7 @@ main#app {
 .manku-corner {
   position: absolute;
   top: -152px;
-  right: -18px;
+  right: 1px;
   width: clamp(108px, 16svh, 170px);
   height: auto;
   z-index: 3;
