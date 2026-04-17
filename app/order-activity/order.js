@@ -10,7 +10,6 @@ const DATA_URL = `json/${activityId}.json`;
 let ITEMS = [];
 let dataLoaded = false;
 let loadError = false;
-let introData = null;
 let outroData = null;
 
 const dataPromise = fetch(DATA_URL)
@@ -20,7 +19,6 @@ const dataPromise = fetch(DATA_URL)
       ITEMS = json;
     } else {
       ITEMS = json?.items || [];
-      introData = json?.intro || null;
       outroData = json?.outro || null;
     }
     dataLoaded = true;
@@ -42,6 +40,8 @@ const progressStats = document.getElementById("progressStats");
 const introImgEl = document.getElementById("introImage");
 const introAudioEl = document.getElementById("introAudio");
 const mankuCorner = document.getElementById("mankuCorner");
+const SHARED_INTRO_IMAGE = "Images/intro.png";
+const SHARED_INTRO_AUDIO = "Audio/01_Chapter 1.mp3";
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -520,15 +520,19 @@ window.addEventListener("keydown", (e) => {
   if (e.key === "ArrowRight") nextBtn.click();
 });
 
-// Intro media from JSON
+// Shared intro media for every order activity.
+if (introImgEl) {
+  introImgEl.src = SHARED_INTRO_IMAGE;
+  introImgEl.alt = "Manku introducing the sentence activity";
+}
+if (introAudioEl) {
+  introAudioEl.src = SHARED_INTRO_AUDIO;
+}
 dataPromise.then(() => {
-  if (introData) {
-    if (introImgEl && introData.image) {
-      introImgEl.src = introData.image;
-      introImgEl.alt = introData.alt || "Welcome";
-    }
-    if (introAudioEl && introData.audio) {
-      introAudioEl.src = introData.audio;
-    }
+  if (introImgEl) {
+    introImgEl.src = SHARED_INTRO_IMAGE;
+  }
+  if (introAudioEl) {
+    introAudioEl.src = SHARED_INTRO_AUDIO;
   }
 });
