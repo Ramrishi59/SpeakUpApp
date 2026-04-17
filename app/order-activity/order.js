@@ -41,7 +41,7 @@ const introImgEl = document.getElementById("introImage");
 const introAudioEl = document.getElementById("introAudio");
 const mankuCorner = document.getElementById("mankuCorner");
 const SHARED_INTRO_IMAGE = "Images/intro.png";
-const SHARED_INTRO_AUDIO = "Audio/01_Chapter 1.mp3";
+const SHARED_INTRO_AUDIO = "Audio/intro/intro.mp3";
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");

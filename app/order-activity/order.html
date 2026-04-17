@@ -22,11 +22,11 @@
     <!-- INTRO CARD -->
     <section id="introScreen" class="card intro-card" aria-live="polite">
       <div class="intro-image-wrap">
-        <img id="introImage" src="Images/1-2.webp" alt="Manku introducing the sentence activity" />
+        <img id="introImage" src="Images/intro.png" alt="Manku introducing the sentence activity" />
       </div>
 
       <audio id="introAudio" preload="auto">
-        <source src="Audio/01_Chapter 1.mp3" type="audio/mpeg" />
+        <source src="Audio/intro/intro.mp3" type="audio/mpeg" />
       </audio>
 
       <div class="intro-actions">
@@ -94,6 +94,7 @@
       const skipBtn = document.getElementById("skipBtn");
       const progressPill = document.getElementById("progressPill");
       const introAudio = document.getElementById("introAudio");
+      const sharedIntroAudio = "Audio/intro/intro.mp3";
 
       if (!intro || !quizCard || !startBtn) return;
 
@@ -119,11 +120,13 @@
         startBtn.disabled = true;
 
         if (introAudio) {
+          introAudio.pause();
+          introAudio.src = sharedIntroAudio;
           introAudio.currentTime = 0;
+          introAudio.load();
+          introAudio.addEventListener("ended", goToQuiz, { once: true });
           introAudio.play()
-            .then(() => {
-              introAudio.addEventListener("ended", goToQuiz, { once: true });
-            })
+            .then(() => {})
             .catch(() => {
               goToQuiz();
             });
