@@ -115,6 +115,24 @@ function getLessonProgressDisplay(lessonId) {
   return { percent: 0, label: '0%' };
 }
 
+function getLessonStarCount(progressDisplay) {
+  const percent = Number(progressDisplay?.percent) || 0;
+
+  if (percent >= 100) return 3;
+  if (percent >= 50) return 2;
+  if (percent > 0) return 1;
+  return 0;
+}
+
+function renderLessonStars(starCount) {
+  const normalizedStarCount = Math.max(0, Math.min(3, Number(starCount) || 0));
+
+  return Array.from({ length: 3 }, (_, index) => {
+    const isEarned = index < normalizedStarCount;
+    return `<span class="lesson-star ${isEarned ? 'earned' : ''}" aria-hidden="true">★</span>`;
+  }).join('');
+}
+
 function getDashboardProgressSummary() {
   return dashboardLessons.reduce((summary, lesson) => {
     if (!lesson?.id) return summary;
@@ -976,10 +994,13 @@ async function loadDashboardLessons() {
       const hasAccess = hasLessonAccess(lesson.id);
       const progress = getLessonProgressState(lesson.id);
       const progressDisplay = getLessonProgressDisplay(lesson.id);
+      const starCount = getLessonStarCount(progressDisplay);
       let badge = '';
 
+      card.classList.toggle('is-completed', progress.isCompleted);
+
       if (progress.isCompleted) {
-        badge = '<span class="lesson-badge completed">Completed</span>';
+        badge = '<span class="lesson-badge completed"><span aria-hidden="true">✓</span> Done!</span>';
       } else if (progress.isInProgress) {
         badge = '<span class="lesson-badge in-progress">In Progress</span>';
       } else if (!access.fullUnlock) {
@@ -1000,6 +1021,9 @@ async function loadDashboardLessons() {
               <div class="lesson-progress-track">
                 <span class="lesson-progress-fill" style="width: ${progressDisplay.percent}%"></span>
               </div>
+            </div>
+            <div class="lesson-stars" aria-label="${starCount} out of 3 stars">
+              ${renderLessonStars(starCount)}
             </div>
           </div>
           ${badge}
