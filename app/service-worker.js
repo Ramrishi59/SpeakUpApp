@@ -9,8 +9,7 @@ const urlsToCache = [
   './script.js',
   './manifest.json',
   './units/manifest.json',
-  './Images/Unit1/icon.png',
-  './Images/Unit1/icon-512x512.png',
+  './Images/Unit1/manku.webp',
   './Images/Unit1/newicon.png',
   './Images/Unit1/m.png'
 ];
