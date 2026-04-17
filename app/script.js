@@ -7,6 +7,16 @@ const ROUTE_OVERRIDES = {
   'and-practice': () => 'and-practice/and.html',
 };
 
+const PROFILE_CHARACTERS = [
+  { name: 'Ammu', src: 'Images/dashboard thumbnails/Ammu.jpg' },
+  { name: 'Anju', src: 'Images/dashboard thumbnails/Anju.jpg' },
+  { name: 'Saira', src: 'Images/dashboard thumbnails/Saira.webp' },
+  { name: 'John', src: 'Images/dashboard thumbnails/John.webp' },
+  { name: 'Manku', src: 'Images/dashboard thumbnails/Manku.webp' },
+  { name: 'Raju', src: 'Images/dashboard thumbnails/Raju.webp' },
+  { name: 'Reena', src: 'Images/dashboard thumbnails/Reena.webp' },
+];
+
 function isFreeLesson(lessonId) {
   // TODO: put your real free list here
   const FREE = new Set(["unit1", "unit2", "trial"]); 
@@ -58,10 +68,76 @@ function getLessonProgressState(lessonId) {
   const profile = getProfileState();
   const normalizedLessonId = String(lessonId);
   const completedUnits = Array.isArray(profile?.completedUnits) ? profile.completedUnits.map(String) : [];
+  const openedUnits = Array.isArray(profile?.openedUnits) ? profile.openedUnits.map(String) : [];
   const isCompleted = completedUnits.includes(normalizedLessonId);
-  const isInProgress = !isCompleted && String(profile?.lastOpenedUnit || '') === normalizedLessonId;
+  const isOpened = openedUnits.includes(normalizedLessonId) || String(profile?.lastOpenedUnit || '') === normalizedLessonId;
+  const isInProgress = !isCompleted && isOpened;
 
   return { isCompleted, isInProgress };
+}
+
+function getSavedLessonPercent(profile, lessonId) {
+  const normalizedLessonId = String(lessonId);
+  const savedProgress = profile?.lessonProgress?.[normalizedLessonId];
+  const explicitPercent = Number(savedProgress?.percent);
+
+  if (Number.isFinite(explicitPercent)) {
+    return Math.max(0, Math.min(100, Math.round(explicitPercent)));
+  }
+
+  const lastScreenIndex = Number(savedProgress?.lastScreenIndex);
+  const totalScreens = Number(savedProgress?.totalScreens);
+
+  if (!Number.isFinite(lastScreenIndex) || !Number.isFinite(totalScreens) || totalScreens <= 1) {
+    return null;
+  }
+
+  return Math.max(0, Math.min(99, Math.round((lastScreenIndex / (totalScreens - 1)) * 100)));
+}
+
+function getLessonProgressDisplay(lessonId) {
+  const profile = getProfileState();
+  const progress = getLessonProgressState(lessonId);
+
+  if (progress.isCompleted) {
+    return { percent: 100, label: 'Completed' };
+  }
+
+  const savedPercent = getSavedLessonPercent(profile, lessonId);
+  if (savedPercent !== null) {
+    return { percent: savedPercent, label: `${savedPercent}%` };
+  }
+
+  if (progress.isInProgress) {
+    return { percent: 1, label: 'Started' };
+  }
+
+  return { percent: 0, label: '0%' };
+}
+
+function getDashboardProgressSummary() {
+  return dashboardLessons.reduce((summary, lesson) => {
+    if (!lesson?.id) return summary;
+
+    const progress = getLessonProgressState(lesson.id);
+    if (progress.isCompleted) {
+      summary.completed += 1;
+    } else if (progress.isInProgress) {
+      summary.inProgress += 1;
+    }
+
+    return summary;
+  }, { completed: 0, inProgress: 0 });
+}
+
+function updateDashboardProgressSummary() {
+  const completedCount = document.getElementById('completed-count');
+  const inProgressCount = document.getElementById('in-progress-count');
+  if (!completedCount || !inProgressCount) return;
+
+  const summary = getDashboardProgressSummary();
+  completedCount.textContent = String(summary.completed);
+  inProgressCount.textContent = String(summary.inProgress);
 }
 
 function resolveRoute(card) {
@@ -84,6 +160,35 @@ function getTimeGreeting() {
   if (hour < 12) return 'Good morning';
   if (hour < 18) return 'Good afternoon';
   return 'Good evening';
+}
+
+function getProfileAvatarStorageKey(uid) {
+  return uid ? `speakup-profile-avatar:${uid}` : 'speakup-profile-avatar';
+}
+
+function getStoredProfileAvatar(uid) {
+  try {
+    const stored = localStorage.getItem(getProfileAvatarStorageKey(uid));
+    if (!stored) return null;
+    const parsed = JSON.parse(stored);
+    return PROFILE_CHARACTERS.find((character) => character.src === parsed?.src) || null;
+  } catch (error) {
+    console.warn('Could not read saved profile avatar.', error);
+    return null;
+  }
+}
+
+function saveStoredProfileAvatar(uid, avatar) {
+  try {
+    localStorage.setItem(getProfileAvatarStorageKey(uid), JSON.stringify(avatar));
+  } catch (error) {
+    console.warn('Could not save profile avatar locally.', error);
+  }
+}
+
+function getSelectedProfileAvatar(profile, auth) {
+  const profileAvatar = PROFILE_CHARACTERS.find((character) => character.src === profile?.avatarSrc);
+  return profileAvatar || getStoredProfileAvatar(auth?.uid) || PROFILE_CHARACTERS[4];
 }
 
 function hasLessonAccess(lessonId) {
@@ -364,6 +469,12 @@ function renderAccountStatus() {
       }
     });
 
+    document.getElementById('login-password')?.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      loginButton?.click();
+    });
+
     googleLoginButton?.addEventListener('click', async () => {
       if (!window.SUAuth?.loginWithGoogle) {
         if (message) message.textContent = 'Google sign in is unavailable right now. Refresh and try again.';
@@ -432,7 +543,7 @@ function renderAccountStatus() {
       ? license.unlockedUnits.join(', ')
       : 'None yet';
     const displayName = profile?.username || auth.email || 'Unknown user';
-    const profileInitial = String(displayName).trim().charAt(0).toUpperCase() || 'U';
+    const selectedAvatar = getSelectedProfileAvatar(profile, auth);
     const unlockedCount = unlocked
       ? getDashboardContentCount()
       : (Array.isArray(license?.unlockedUnits) ? license.unlockedUnits.length : 0);
@@ -446,7 +557,9 @@ function renderAccountStatus() {
       <section class="login-card" aria-labelledby="status-title">
         <div class="account-hero ${unlocked ? 'is-premium' : 'is-limited'}">
           <div class="account-hero-top">
-            <div class="profile-mark" aria-hidden="true">${profileInitial}</div>
+            <button type="button" class="profile-mark" id="profile-avatar-button" aria-label="Change profile character">
+              <img id="profile-avatar-image" src="${selectedAvatar.src}" alt="${selectedAvatar.name}" />
+            </button>
             <div class="card-header">
               <p class="eyebrow">SpeakUp Account</p>
               <h2 id="status-title">${greeting}, ${displayName}</h2>
@@ -457,6 +570,43 @@ function renderAccountStatus() {
           <div class="hero-chips">
             <span class="hero-chip">${license?.role || 'user'}</span>
             <span class="hero-chip">${unlocked ? 'Full access' : 'Limited access'}</span>
+          </div>
+        </div>
+
+        <div class="avatar-modal" id="avatar-modal" hidden>
+          <button type="button" class="avatar-modal-backdrop" id="avatar-modal-backdrop" aria-label="Close avatar chooser"></button>
+          <div class="premium-box avatar-picker-box" role="dialog" aria-modal="true" aria-labelledby="avatar-dialog-title">
+            <div class="avatar-prompt" id="avatar-prompt">
+              <img class="avatar-prompt-image" src="${selectedAvatar.src}" alt="${selectedAvatar.name}" />
+              <h3 class="premium-title" id="avatar-dialog-title">Want to change avatar?</h3>
+              <p class="premium-sub">Your character picture appears on your profile.</p>
+              <div class="avatar-modal-actions">
+                <button type="button" class="primary-btn" id="show-avatar-grid">Change Avatar</button>
+                <button type="button" class="ghost-btn" id="close-avatar-modal">Cancel</button>
+              </div>
+            </div>
+
+            <div class="avatar-grid-panel" id="avatar-grid-panel" hidden>
+              <h3 class="premium-title">Choose Your Character</h3>
+              <p class="premium-sub">Pick the picture that appears on your profile.</p>
+
+              <div class="avatar-picker" role="radiogroup" aria-label="Profile character">
+                ${PROFILE_CHARACTERS.map((character) => `
+                  <button
+                    type="button"
+                    class="avatar-choice ${character.src === selectedAvatar.src ? 'is-selected' : ''}"
+                    data-avatar-src="${character.src}"
+                    data-avatar-name="${character.name}"
+                    role="radio"
+                    aria-checked="${character.src === selectedAvatar.src ? 'true' : 'false'}"
+                  >
+                    <img src="${character.src}" alt="${character.name}" />
+                    <span>${character.name}</span>
+                  </button>
+                `).join('')}
+              </div>
+              <p class="avatar-save-status" id="avatar-save-status" aria-live="polite"></p>
+            </div>
           </div>
         </div>
 
@@ -558,6 +708,67 @@ function renderAccountStatus() {
       const baseRoute = getRouteForCard(savedCard);
       if (!baseRoute) return;
       window.location.href = appendQueryParam(baseRoute, 'from', 'dashboard');
+    });
+
+    const avatarModal = document.getElementById('avatar-modal');
+    const avatarPrompt = document.getElementById('avatar-prompt');
+    const avatarGridPanel = document.getElementById('avatar-grid-panel');
+    const openAvatarModal = () => {
+      if (!avatarModal || !avatarPrompt || !avatarGridPanel) return;
+      avatarModal.hidden = false;
+      avatarPrompt.hidden = false;
+      avatarGridPanel.hidden = true;
+      document.getElementById('show-avatar-grid')?.focus();
+    };
+    const closeAvatarModal = () => {
+      if (!avatarModal) return;
+      avatarModal.hidden = true;
+      document.getElementById('profile-avatar-button')?.focus();
+    };
+
+    document.getElementById('profile-avatar-button')?.addEventListener('click', openAvatarModal);
+    document.getElementById('avatar-modal-backdrop')?.addEventListener('click', closeAvatarModal);
+    document.getElementById('close-avatar-modal')?.addEventListener('click', closeAvatarModal);
+    document.getElementById('show-avatar-grid')?.addEventListener('click', () => {
+      if (!avatarPrompt || !avatarGridPanel) return;
+      avatarPrompt.hidden = true;
+      avatarGridPanel.hidden = false;
+      avatarGridPanel.querySelector('.avatar-choice.is-selected')?.focus();
+    });
+
+    document.querySelectorAll('.avatar-choice').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const avatar = PROFILE_CHARACTERS.find((character) => character.src === button.dataset.avatarSrc);
+        const status = document.getElementById('avatar-save-status');
+        const avatarImage = document.getElementById('profile-avatar-image');
+        if (!avatar) return;
+
+        document.querySelectorAll('.avatar-choice').forEach((choice) => {
+          const isSelected = choice === button;
+          choice.classList.toggle('is-selected', isSelected);
+          choice.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+        });
+
+        if (avatarImage) {
+          avatarImage.src = avatar.src;
+          avatarImage.alt = avatar.name;
+        }
+
+        saveStoredProfileAvatar(auth.uid, avatar);
+        if (status) status.textContent = 'Saving character...';
+
+        try {
+          if (typeof window.SUAuth?.saveProfileAvatar === 'function') {
+            await window.SUAuth.saveProfileAvatar(avatar);
+          }
+          if (status) status.textContent = `${avatar.name} selected.`;
+          window.setTimeout(closeAvatarModal, 450);
+        } catch (error) {
+          console.warn('Could not save profile avatar to Firestore.', error);
+          if (status) status.textContent = `${avatar.name} selected on this device.`;
+          window.setTimeout(closeAvatarModal, 700);
+        }
+      });
     });
   }
 
@@ -764,6 +975,7 @@ async function loadDashboardLessons() {
       const isFree = isFreeLesson(lesson.id);
       const hasAccess = hasLessonAccess(lesson.id);
       const progress = getLessonProgressState(lesson.id);
+      const progressDisplay = getLessonProgressDisplay(lesson.id);
       let badge = '';
 
       if (progress.isCompleted) {
@@ -780,6 +992,15 @@ async function loadDashboardLessons() {
           <img src="${lesson.thumbnail}" alt="${lesson.title}" class="lesson-thumbnail" loading="lazy">
           <div class="lesson-info">
             <h3>${lesson.title}</h3>
+            <div class="lesson-progress" aria-label="${lesson.title} progress: ${progressDisplay.label}">
+              <div class="lesson-progress-meta">
+                <span>Progress</span>
+                <strong>${progressDisplay.label}</strong>
+              </div>
+              <div class="lesson-progress-track">
+                <span class="lesson-progress-fill" style="width: ${progressDisplay.percent}%"></span>
+              </div>
+            </div>
           </div>
           ${badge}
           <span class="forward-arrow">›</span>
@@ -846,6 +1067,7 @@ async function loadDashboardLessons() {
   searchBar?.addEventListener('click', () => expandSearchBar());
 
   function renderCurrentView() {
+    updateDashboardProgressSummary();
     renderLessonCards(dashboardLessons);
     if (searchLabel) {
       searchLabel.textContent = 'Lessons';

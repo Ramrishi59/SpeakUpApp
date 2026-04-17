@@ -376,7 +376,7 @@ async function persistProgress(index = currentIndex) {
   if (!unitId) return;
 
   try {
-    await window.SUAuth?.saveProgress?.(unitId, index);
+    await window.SUAuth?.saveProgress?.(unitId, index, screens.length);
   } catch (error) {
     console.warn("Could not save lesson progress.", error);
   }

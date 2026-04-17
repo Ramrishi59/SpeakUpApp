@@ -167,9 +167,12 @@ async function loginWithGoogle() {
         fullUnlock: false,
         unlockedUnits: ["unit1", "unit2"],
         licenseExpiresAt: null,
+        avatarName: "Manku",
+        avatarSrc: "Images/dashboard thumbnails/Manku.webp",
 
         lastOpenedUnit: null,
         lastScreenIndex: 0,
+        openedUnits: [],
         completedUnits: [],
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp()
@@ -204,9 +207,12 @@ async function signupWithEmail(username, email, password) {
       fullUnlock: false,
       unlockedUnits: ["unit1", "unit2"],
       licenseExpiresAt: null,
+      avatarName: "Manku",
+      avatarSrc: "Images/dashboard thumbnails/Manku.webp",
 
       lastOpenedUnit: null,
       lastScreenIndex: 0,
+      openedUnits: [],
       completedUnits: [],
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp()
@@ -220,21 +226,50 @@ async function signupWithEmail(username, email, password) {
   return { ...authState, profileSynced };
 }
 
-async function saveProgress(unitId, screenIndex) {
+async function saveProgress(unitId, screenIndex, totalScreens) {
   const user = auth.currentUser;
   if (!user) return false;
+  const normalizedUnitId = String(unitId);
+  const normalizedScreenIndex = Math.max(0, Number(screenIndex) || 0);
+  const normalizedTotalScreens = Math.max(0, Number(totalScreens) || 0);
+  const lessonProgressUpdate = {
+    [`lessonProgress.${normalizedUnitId}.lastScreenIndex`]: normalizedScreenIndex,
+    [`lessonProgress.${normalizedUnitId}.updatedAt`]: serverTimestamp()
+  };
+
+  if (normalizedTotalScreens > 0) {
+    lessonProgressUpdate[`lessonProgress.${normalizedUnitId}.totalScreens`] = normalizedTotalScreens;
+  }
 
   await updateDoc(doc(db, "users", user.uid), {
-    lastOpenedUnit: String(unitId),
-    lastScreenIndex: Number(screenIndex) || 0,
+    lastOpenedUnit: normalizedUnitId,
+    lastScreenIndex: normalizedScreenIndex,
+    openedUnits: arrayUnion(normalizedUnitId),
+    ...lessonProgressUpdate,
     updatedAt: serverTimestamp()
   });
 
   if (currentProfile) {
+    const existingOpened = Array.isArray(currentProfile.openedUnits) ? currentProfile.openedUnits.map(String) : [];
+    const existingLessonProgress = currentProfile.lessonProgress || {};
+    const existingUnitProgress = existingLessonProgress[normalizedUnitId] || {};
     currentProfile = {
       ...currentProfile,
-      lastOpenedUnit: String(unitId),
-      lastScreenIndex: Number(screenIndex) || 0
+      lastOpenedUnit: normalizedUnitId,
+      lastScreenIndex: normalizedScreenIndex,
+      openedUnits: existingOpened.includes(normalizedUnitId)
+        ? existingOpened
+        : [...existingOpened, normalizedUnitId],
+      lessonProgress: {
+        ...existingLessonProgress,
+        [normalizedUnitId]: {
+          ...existingUnitProgress,
+          lastScreenIndex: normalizedScreenIndex,
+          totalScreens: normalizedTotalScreens > 0
+            ? normalizedTotalScreens
+            : existingUnitProgress.totalScreens
+        }
+      }
     };
   }
 
@@ -259,6 +294,29 @@ async function markUnitCompleted(unitId) {
       completedUnits: existingCompleted.includes(normalizedUnitId)
         ? existingCompleted
         : [...existingCompleted, normalizedUnitId]
+    };
+  }
+
+  return true;
+}
+
+async function saveProfileAvatar(avatar) {
+  const user = auth.currentUser;
+  if (!user || !avatar?.src) return false;
+
+  const avatarUpdate = {
+    avatarName: String(avatar.name || ""),
+    avatarSrc: String(avatar.src),
+    updatedAt: serverTimestamp()
+  };
+
+  await updateDoc(doc(db, "users", user.uid), avatarUpdate);
+
+  if (currentProfile) {
+    currentProfile = {
+      ...currentProfile,
+      avatarName: avatarUpdate.avatarName,
+      avatarSrc: avatarUpdate.avatarSrc
     };
   }
 
@@ -314,6 +372,7 @@ window.SUAuth = {
   signupWithEmail,
   saveProgress,
   markUnitCompleted,
+  saveProfileAvatar,
   logout,
   getAuth: getAuthState,
   getLicense,
