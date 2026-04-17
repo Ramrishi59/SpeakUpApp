@@ -155,13 +155,16 @@ main#app {
   }
 
   main#app {
-    padding: 8px;
+    padding: 46px 8px 8px;
+    overflow: visible;
+    place-items: center;
   }
 
   .card {
     row-gap: 10px;
     padding: 12px;
     max-height: none;
+    transform: translateY(-18px);
   }
 
   .manku-corner {
