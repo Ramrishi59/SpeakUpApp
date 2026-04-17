@@ -279,6 +279,32 @@ function renderAccountStatus() {
     const signupToggle = document.getElementById('show-signup');
     const backToLogin = document.getElementById('back-to-login');
 
+    function getAuthErrorMessage(error, fallbackMessage) {
+      const code = error?.code || '';
+
+      if (code === 'auth/unauthorized-domain') {
+        return 'Google sign in is blocked for this domain. Add this GitHub Pages domain in Firebase Authentication > Settings > Authorized domains.';
+      }
+
+      if (code === 'auth/popup-closed-by-user') {
+        return 'Google sign in was closed before it finished. Please try again and complete the Google prompt.';
+      }
+
+      if (code === 'auth/popup-blocked') {
+        return 'The browser blocked the Google sign in popup. Allow popups for this site and try again.';
+      }
+
+      if (code === 'auth/cancelled-popup-request') {
+        return 'A Google sign in popup is already open. Close it and try again.';
+      }
+
+      if (code === 'auth/account-exists-with-different-credential') {
+        return 'An account already exists with this email using another sign in method.';
+      }
+
+      return code ? `${fallbackMessage} (${code})` : fallbackMessage;
+    }
+
     function setAuthMode(mode) {
       const isLogin = mode === 'login';
       loginPanel.hidden = !isLogin;
@@ -329,7 +355,7 @@ function renderAccountStatus() {
         await finishLogin();
       } catch (error) {
         console.error(error);
-        if (message) message.textContent = 'Login failed. Check email and password.';
+        if (message) message.textContent = getAuthErrorMessage(error, 'Login failed. Check email and password.');
       }
     });
 
@@ -346,7 +372,7 @@ function renderAccountStatus() {
         await finishLogin(result?.profileSynced !== false);
       } catch (error) {
         console.error(error);
-        if (message) message.textContent = 'Google sign in failed. Please try again.';
+        if (message) message.textContent = getAuthErrorMessage(error, 'Google sign in failed. Please try again.');
       } finally {
         googleLoginButton.disabled = false;
       }
@@ -388,7 +414,7 @@ function renderAccountStatus() {
         }
       } catch (error) {
         console.error(error);
-        if (message) message.textContent = 'Sign up failed. Try a different email.';
+        if (message) message.textContent = getAuthErrorMessage(error, 'Sign up failed. Try a different email.');
       }
     });
   } else {
