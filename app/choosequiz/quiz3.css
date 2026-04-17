@@ -144,41 +144,130 @@ main#app {
 
 @media (max-width: 720px) {
   :root {
-    --header-h: 50px;
-    --gap: 10px;
-    --btn-h: 56px;
-    --btn-fs: 18px;
+    --header-h: 44px;
+    --gap: 6px;
+    --btn-h: 42px;
+    --btn-fs: 15px;
+  }
+
+  .topbar {
+    padding: 4px 12px 0;
+  }
+
+  .pill {
+    padding: 6px 22px;
+    font-size: 16px;
   }
 
   main#app {
-    padding: 8px;
+    padding: 4px 8px 8px;
+    place-items: start center;
   }
 
   .card {
-    row-gap: 10px;
-    padding: 10px;
-    max-height: calc(100dvh - var(--header-h) - 8px);
+    row-gap: 6px;
+    padding: 8px;
+    max-height: calc(100dvh - var(--header-h) - 12px);
+    border-radius: 18px;
+    transform: none;
+  }
+
+  .card::before {
+    inset: 5px;
+    border-radius: 14px;
+  }
+
+  .image-wrap {
+    padding: 5px;
+    border-radius: 16px;
   }
 
   #itemImage {
-    max-height: 32vh;
+    max-height: 24svh;
     width: 100%;
+    border-radius: 14px;
   }
 
   .question {
-    font-size: clamp(18px, 3svh, 24px);
+    font-size: clamp(15px, 2.5svh, 19px);
+    padding: 6px 12px;
+    line-height: 1.08;
+  }
+
+  .progress-wrap {
+    gap: 4px;
+    padding: 6px 8px;
+    border-radius: 12px;
   }
 
   .progress-bar {
-    height: 10px;
+    height: 8px;
+  }
+
+  .progress-stats {
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .choices {
+    gap: 6px;
+    padding: 6px;
+    border-radius: 16px;
   }
 
   .choice-btn {
     width: 100%;
+    min-height: 0;
+    padding: 0 10px;
+    border-radius: 13px;
+    line-height: 1.05;
   }
 
   .nav-row {
-    gap: 10px;
+    gap: 6px;
+    padding-bottom: 0;
+  }
+
+  .btn {
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 720px) and (max-height: 700px) {
+  :root {
+    --header-h: 40px;
+    --btn-h: 38px;
+    --btn-fs: 14px;
+  }
+
+  .card {
+    row-gap: 5px;
+    padding: 6px;
+  }
+
+  #itemImage {
+    max-height: 20svh;
+  }
+
+  .question {
+    font-size: 15px;
+    padding: 5px 10px;
+  }
+
+  .progress-stats {
+    display: none;
+  }
+
+  .choices {
+    padding: 5px;
+  }
+
+  .btn {
+    height: 34px;
+    font-size: 13px;
   }
 }
   
