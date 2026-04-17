@@ -391,6 +391,7 @@ main#app {
   gap: 6px;
   padding: 12px 16px;
   border-radius: 22px;
+  color: #5a3a00;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 232, 0.94));
   border: 2px dashed rgba(255, 138, 42, 0.54);
