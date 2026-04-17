@@ -4,6 +4,8 @@ import {
   onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
   signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import {
@@ -28,6 +30,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const googleProvider = new GoogleAuthProvider();
 
 let authState = {
   isLoggedIn: false,
@@ -137,6 +140,48 @@ async function loginWithEmail(email, password) {
     console.warn("Login succeeded, but the user profile could not be loaded.", error);
   }
   return authState;
+}
+
+async function loginWithGoogle() {
+  const cred = await signInWithPopup(auth, googleProvider);
+  const user = cred.user;
+
+  authState = {
+    isLoggedIn: true,
+    email: user.email || null,
+    uid: user.uid
+  };
+
+  let profileSynced = true;
+
+  try {
+    const existingProfile = await loadUserProfile(user.uid);
+
+    if (!existingProfile) {
+      const fallbackUsername = user.displayName || (user.email ? user.email.split("@")[0] : "Google User");
+
+      await setDoc(doc(db, "users", user.uid), {
+        username: fallbackUsername,
+        email: user.email || "",
+        role: "user",
+        fullUnlock: false,
+        unlockedUnits: ["unit1", "unit2"],
+        licenseExpiresAt: null,
+
+        lastOpenedUnit: null,
+        lastScreenIndex: 0,
+        completedUnits: [],
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp()
+      });
+      await loadUserProfile(user.uid);
+    }
+  } catch (error) {
+    profileSynced = false;
+    console.warn("Google login succeeded, but the user profile could not be loaded or saved.", error);
+  }
+
+  return { ...authState, profileSynced };
 }
 
 async function signupWithEmail(username, email, password) {
@@ -265,6 +310,7 @@ async function mockRevokeUnlock() {
 window.SUAuth = {
   ready,
   loginWithEmail,
+  loginWithGoogle,
   signupWithEmail,
   saveProgress,
   markUnitCompleted,

@@ -196,6 +196,10 @@ function renderAccountStatus() {
 
             <div class="button-row">
               <button type="button" class="primary-button" id="login-button">Log In</button>
+              <button type="button" class="google-button" id="google-login-button">
+                <span class="google-button-mark" aria-hidden="true">G</span>
+                <span>Continue with Google</span>
+              </button>
             </div>
           </div>
 
@@ -268,6 +272,7 @@ function renderAccountStatus() {
 
     const message = document.getElementById('login-message');
     const loginButton = document.getElementById('login-button');
+    const googleLoginButton = document.getElementById('google-login-button');
     const signupButton = document.getElementById('signup-button');
     const loginPanel = document.getElementById('login-panel');
     const signupPanel = document.getElementById('signup-panel');
@@ -287,6 +292,24 @@ function renderAccountStatus() {
     signupToggle?.addEventListener('click', () => setAuthMode('signup'));
     backToLogin?.addEventListener('click', () => setAuthMode('login'));
 
+    async function finishLogin(profileSynced = true) {
+      const updatedAuth = getLoginState();
+      const accessNow = getAccessState();
+      const hasSomeAccess = accessNow.fullUnlock || (Array.isArray(accessNow.unlockedUnits) && accessNow.unlockedUnits.length > 0);
+
+      if (updatedAuth.isLoggedIn && hasSomeAccess) {
+        renderAccountStatus();
+        showDashboardScreen();
+      } else if (updatedAuth.isLoggedIn && !hasSomeAccess) {
+        renderAccountStatus();
+        if (message) {
+          message.textContent = profileSynced
+            ? 'Logged in. Only free lessons are available right now.'
+            : 'Logged in, but profile setup is incomplete. Check Firestore rules.';
+        }
+      }
+    }
+
     loginButton?.addEventListener('click', async () => {
       if (!window.SUAuth?.loginWithEmail) {
         if (message) message.textContent = 'Authentication is unavailable right now. Refresh and try again.';
@@ -303,21 +326,29 @@ function renderAccountStatus() {
 
       try {
         await window.SUAuth.loginWithEmail(email, password);
-
-        const updatedAuth = getLoginState();
-        const accessNow = getAccessState();
-        const hasSomeAccess = accessNow.fullUnlock || (Array.isArray(accessNow.unlockedUnits) && accessNow.unlockedUnits.length > 0);
-
-        if (updatedAuth.isLoggedIn && hasSomeAccess) {
-          renderAccountStatus();
-          showDashboardScreen();
-        } else if (updatedAuth.isLoggedIn && !hasSomeAccess) {
-          renderAccountStatus();
-          if (message) message.textContent = 'Logged in. Only free lessons are available right now.';
-        }
+        await finishLogin();
       } catch (error) {
         console.error(error);
         if (message) message.textContent = 'Login failed. Check email and password.';
+      }
+    });
+
+    googleLoginButton?.addEventListener('click', async () => {
+      if (!window.SUAuth?.loginWithGoogle) {
+        if (message) message.textContent = 'Google sign in is unavailable right now. Refresh and try again.';
+        return;
+      }
+
+      try {
+        googleLoginButton.disabled = true;
+        if (message) message.textContent = '';
+        const result = await window.SUAuth.loginWithGoogle();
+        await finishLogin(result?.profileSynced !== false);
+      } catch (error) {
+        console.error(error);
+        if (message) message.textContent = 'Google sign in failed. Please try again.';
+      } finally {
+        googleLoginButton.disabled = false;
       }
     });
 
