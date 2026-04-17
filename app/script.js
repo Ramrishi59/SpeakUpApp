@@ -197,7 +197,12 @@ function renderAccountStatus() {
             <div class="button-row">
               <button type="button" class="primary-button" id="login-button">Log In</button>
               <button type="button" class="google-button" id="google-login-button">
-                <span class="google-button-mark" aria-hidden="true">G</span>
+                <svg class="google-button-logo" aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                  <path fill="#4285f4" d="M23.49 12.27c0-.79-.07-1.54-.2-2.27H12v4.32h6.47a5.54 5.54 0 0 1-2.4 3.63v2.96h3.88c2.27-2.09 3.54-5.17 3.54-8.64z" />
+                  <path fill="#34a853" d="M12 24c3.24 0 5.96-1.07 7.95-2.9l-3.88-2.96c-1.08.72-2.45 1.14-4.07 1.14-3.13 0-5.78-2.11-6.73-4.95H1.26v3.06A11.99 11.99 0 0 0 12 24z" />
+                  <path fill="#fbbc05" d="M5.27 14.33A7.2 7.2 0 0 1 4.89 12c0-.81.14-1.6.38-2.33V6.61H1.26A11.98 11.98 0 0 0 0 12c0 1.94.46 3.78 1.26 5.39l4.01-3.06z" />
+                  <path fill="#ea4335" d="M12 4.72c1.76 0 3.34.61 4.59 1.8l3.44-3.44A11.54 11.54 0 0 0 12 0 11.99 11.99 0 0 0 1.26 6.61l4.01 3.06C6.22 6.83 8.87 4.72 12 4.72z" />
+                </svg>
                 <span>Continue with Google</span>
               </button>
             </div>
