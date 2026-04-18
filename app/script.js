@@ -1,6 +1,14 @@
 let dashboardLessons = [];
 let rerenderDashboard = null;
 let dashboardLoadError = "";
+let activeDashboardFilter = "all";
+
+const DASHBOARD_FILTERS = [
+  { id: "all", label: "All" },
+  { id: "units", label: "Lessons" },
+  { id: "quiz", label: "Quiz" },
+  { id: "order", label: "Sentences" },
+];
 
 const ROUTE_OVERRIDES = {
   'unit1-practice': () => 'an-quiz/an-quiz.html',
@@ -245,6 +253,27 @@ function getDashboardContentCount() {
   return dashboardLessons.filter((card) => card?.id && card.id !== 'intro').length;
 }
 
+function getDashboardCategory(card) {
+  if (card?.category) return String(card.category);
+  if (String(card?.id || '').startsWith('activity') || String(card?.route || '').includes('choosequiz')) {
+    return 'quiz';
+  }
+  return 'units';
+}
+
+function getFilteredDashboardLessons() {
+  const query = document.querySelector('.search-input')?.value.toLowerCase().trim() || '';
+
+  return dashboardLessons.filter((lesson) => {
+    const matchesFilter = activeDashboardFilter === 'all' || getDashboardCategory(lesson) === activeDashboardFilter;
+    const matchesQuery = !query
+      || lesson.title.toLowerCase().includes(query)
+      || String(lesson.description || '').toLowerCase().includes(query);
+
+    return matchesFilter && matchesQuery;
+  });
+}
+
 function getLessonTitleById(lessonId) {
   if (!lessonId) return null;
   const lesson = dashboardLessons.find((card) => String(card?.id) === String(lessonId));
@@ -341,11 +370,13 @@ function getDashboardProgressSummary() {
 }
 
 function updateDashboardProgressSummary() {
+  const totalCount = document.getElementById('total-count');
   const completedCount = document.getElementById('completed-count');
   const inProgressCount = document.getElementById('in-progress-count');
   if (!completedCount || !inProgressCount) return;
 
   const summary = getDashboardProgressSummary();
+  if (totalCount) totalCount.textContent = String(getDashboardContentCount());
   completedCount.textContent = String(summary.completed);
   inProgressCount.textContent = String(summary.inProgress);
 }
@@ -1266,12 +1297,7 @@ async function loadDashboardLessons() {
 
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase().trim();
-      const filtered = dashboardLessons.filter(lesson =>
-        lesson.title.toLowerCase().includes(q) ||
-        String(lesson.description || '').toLowerCase().includes(q)
-      );
-      renderLessonCards(filtered);
+      renderLessonCards(getFilteredDashboardLessons());
     });
 
     searchInput.addEventListener('blur', () => collapseSearchBar());
@@ -1286,9 +1312,35 @@ async function loadDashboardLessons() {
 
   searchBar?.addEventListener('click', () => expandSearchBar());
 
+  function renderDashboardFilters() {
+    const filterRow = document.querySelector('.dashboard-filter-row');
+    if (!filterRow) return;
+
+    filterRow.innerHTML = DASHBOARD_FILTERS.map((filter) => {
+      const count = filter.id === 'all'
+        ? dashboardLessons.length
+        : dashboardLessons.filter((lesson) => getDashboardCategory(lesson) === filter.id).length;
+      const isActive = filter.id === activeDashboardFilter;
+      return `
+        <button type="button" class="dashboard-filter-chip ${isActive ? 'active' : ''}" data-filter="${filter.id}" aria-pressed="${isActive}">
+          <span>${filter.label}</span>
+          <strong>${count}</strong>
+        </button>
+      `;
+    }).join('');
+
+    filterRow.querySelectorAll('.dashboard-filter-chip').forEach((button) => {
+      button.addEventListener('click', () => {
+        activeDashboardFilter = button.dataset.filter || 'all';
+        renderCurrentView();
+      });
+    });
+  }
+
   function renderCurrentView() {
     updateDashboardProgressSummary();
-    renderLessonCards(dashboardLessons);
+    renderDashboardFilters();
+    renderLessonCards(getFilteredDashboardLessons());
     if (searchLabel) {
       searchLabel.textContent = 'Lessons';
     }

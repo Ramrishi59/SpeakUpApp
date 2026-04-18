@@ -20,9 +20,18 @@
 
         <main id="appRoot" class="main-content">
             <div id="dashboard-screen">
+                <section class="dashboard-hero" aria-label="Dashboard overview">
+                    <div class="dashboard-hero-copy">
+                        <p class="dashboard-eyebrow">SpeakUp lessons</p>
+                        <h1>Learn English step by step</h1>
+                        <p>Watch, listen, practise, and come back to where you stopped.</p>
+                    </div>
+                    <img src="Images/dashboard thumbnails/Manku.webp" alt="" class="dashboard-hero-character" aria-hidden="true">
+                </section>
+
                 <div class="options-section">
-                    <h2>Choose a Lesson</h2>
                     <div class="dashboard-progress-summary" aria-live="polite">
+                        <span><strong id="total-count">0</strong> lessons</span>
                         <span><strong id="completed-count">0</strong> completed</span>
                         <span><strong id="in-progress-count">0</strong> in progress</span>
                     </div>
@@ -30,6 +39,7 @@
                         <input type="text" placeholder="Search" class="search-input">
                         <span class="search-icon">🔍</span>
                     </div>
+                    <div class="dashboard-filter-row" aria-label="Lesson filters"></div>
                     <button class="refresh-button" type="button">Refresh</button>
                 </div>
 
