@@ -1270,11 +1270,12 @@ body {
 
     .avatar-modal {
         align-items: end;
-        padding: 14px;
+        padding: 14px 14px 38px;
     }
 
     .avatar-picker-box {
         width: 100%;
+        max-height: calc(100dvh - 52px);
         border-radius: 22px;
     }
 
