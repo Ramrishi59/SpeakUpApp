@@ -1045,11 +1045,36 @@ body {
     box-shadow: 0 16px 26px rgba(239, 68, 68, 0.24);
 }
 
+.primary-btn:disabled {
+    cursor: wait;
+    opacity: 0.72;
+}
+
 .ghost-btn {
     background: rgba(255, 255, 255, 0.9);
     color: #241d30;
     border: 1px solid rgba(36, 29, 48, 0.12);
     box-shadow: 0 10px 20px rgba(36, 29, 48, 0.06);
+}
+
+.payment-status {
+    min-height: 1.35em;
+    margin: 12px 2px 0;
+    color: #746969;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.payment-status[data-state="pending"] {
+    color: #8a5a00;
+}
+
+.payment-status[data-state="success"] {
+    color: #0f6a3f;
+}
+
+.payment-status[data-state="error"] {
+    color: #9f1239;
 }
 
 .account-note {

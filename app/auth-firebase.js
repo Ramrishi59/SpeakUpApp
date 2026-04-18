@@ -327,6 +327,16 @@ async function logout() {
   await signOut(auth);
 }
 
+async function refreshProfile() {
+  if (!auth.currentUser) return null;
+  return loadUserProfile(auth.currentUser.uid);
+}
+
+async function getIdToken() {
+  if (!auth.currentUser) return null;
+  return auth.currentUser.getIdToken();
+}
+
 function getAuthState() {
   return { ...authState };
 }
@@ -373,6 +383,8 @@ window.SUAuth = {
   saveProgress,
   markUnitCompleted,
   saveProfileAvatar,
+  refreshProfile,
+  getIdToken,
   logout,
   getAuth: getAuthState,
   getLicense,

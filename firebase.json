@@ -1,10 +1,48 @@
 {
+  "functions": [
+    {
+      "source": "functions",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    }
+  ],
   "hosting": {
     "public": ".",
     "ignore": [
       "firebase.json",
+      ".firebaserc",
+      ".firebase/**",
+      ".git/**",
+      ".gitignore",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/app",
+        "destination": "/app/dashboard.html"
+      },
+      {
+        "source": "/app/",
+        "destination": "/app/dashboard.html"
+      },
+      {
+        "source": "/api/create-order",
+        "function": "createOrder"
+      },
+      {
+        "source": "/api/verify-payment",
+        "function": "verifyPayment"
+      }
     ]
   }
 }

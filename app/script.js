@@ -49,6 +49,198 @@ function getProfileState() {
   return window.SUAuth.getProfile();
 }
 
+function getPaymentConfig() {
+  const configured = window.SUPaymentsConfig || {};
+  return {
+    enabled: configured.enabled === true,
+    keyId: String(configured.keyId || ''),
+    amount: Math.max(0, Number(configured.amount) || 0),
+    currency: String(configured.currency || 'INR').toUpperCase(),
+    name: String(configured.name || 'SpeakUp'),
+    description: String(configured.description || 'SpeakUp Premium Access'),
+    themeColor: String(configured.themeColor || '#ff7a59'),
+    orderEndpoint: String(configured.orderEndpoint || ''),
+    verifyEndpoint: String(configured.verifyEndpoint || ''),
+    paymentLink: String(configured.paymentLink || ''),
+    supportMessage: String(configured.supportMessage || 'Payment setup is almost ready. Please contact the SpeakUp team to activate premium access.')
+  };
+}
+
+function formatPaymentAmount(amount, currency) {
+  const majorAmount = (Number(amount) || 0) / 100;
+  try {
+    return new Intl.NumberFormat(undefined, {
+      style: 'currency',
+      currency,
+      minimumFractionDigits: majorAmount % 1 === 0 ? 0 : 2
+    }).format(majorAmount);
+  } catch (error) {
+    return `${currency} ${majorAmount.toFixed(majorAmount % 1 === 0 ? 0 : 2)}`;
+  }
+}
+
+function setPaymentMessage(messageNode, text, state = '') {
+  if (!messageNode) return;
+  messageNode.textContent = text;
+  messageNode.dataset.state = state;
+}
+
+async function postPaymentJson(url, body) {
+  const token = typeof window.SUAuth?.getIdToken === 'function'
+    ? await window.SUAuth.getIdToken()
+    : null;
+
+  if (!token) {
+    throw new Error('Please log in again before starting payment.');
+  }
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify(body)
+  });
+
+  let payload = null;
+  try {
+    payload = await response.json();
+  } catch (error) {
+    payload = null;
+  }
+
+  if (!response.ok) {
+    throw new Error(payload?.message || payload?.error || `Payment request failed (${response.status})`);
+  }
+
+  return payload || {};
+}
+
+async function startRazorpayCheckout(button, messageNode) {
+  const config = getPaymentConfig();
+  const auth = getLoginState();
+
+  if (!auth.isLoggedIn) {
+    setPaymentMessage(messageNode, 'Please log in before buying premium access.', 'error');
+    return;
+  }
+
+  if (!config.enabled) {
+    setPaymentMessage(messageNode, config.supportMessage, 'info');
+    return;
+  }
+
+  if (config.paymentLink) {
+    window.location.href = config.paymentLink;
+    return;
+  }
+
+  if (!config.keyId || !config.amount || !config.orderEndpoint || !config.verifyEndpoint) {
+    setPaymentMessage(messageNode, 'Payment configuration is incomplete. Add the Razorpay key, order endpoint, and verify endpoint.', 'error');
+    return;
+  }
+
+  if (typeof window.Razorpay !== 'function') {
+    setPaymentMessage(messageNode, 'Razorpay Checkout could not load. Check the network connection and try again.', 'error');
+    return;
+  }
+
+  const previousLabel = button?.textContent || 'Buy Now';
+
+  try {
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Preparing...';
+    }
+    setPaymentMessage(messageNode, 'Preparing secure checkout...', 'pending');
+
+    const order = await postPaymentJson(config.orderEndpoint, {
+      amount: config.amount,
+      currency: config.currency,
+      receipt: `speakup_${auth.uid}_${Date.now()}`,
+      plan: 'premium',
+      uid: auth.uid,
+      email: auth.email
+    });
+
+    const orderId = order.id || order.order_id || order.orderId;
+    if (!orderId) {
+      throw new Error('The payment server did not return a Razorpay order id.');
+    }
+
+    const checkout = new window.Razorpay({
+      key: config.keyId,
+      amount: order.amount || config.amount,
+      currency: order.currency || config.currency,
+      name: config.name,
+      description: config.description,
+      order_id: orderId,
+      prefill: {
+        email: auth.email || ''
+      },
+      notes: {
+        uid: auth.uid || '',
+        product: 'premium'
+      },
+      theme: {
+        color: config.themeColor
+      },
+      handler: async (response) => {
+        try {
+          if (button) button.textContent = 'Verifying...';
+          setPaymentMessage(messageNode, 'Payment received. Verifying access...', 'pending');
+
+          await postPaymentJson(config.verifyEndpoint, {
+            ...response,
+            orderId,
+            uid: auth.uid,
+            email: auth.email
+          });
+
+          if (typeof window.SUAuth?.refreshProfile === 'function') {
+            await window.SUAuth.refreshProfile();
+          }
+
+          setPaymentMessage(messageNode, 'Payment verified. Premium access is active.', 'success');
+          renderAccountStatus();
+        } catch (error) {
+          console.error(error);
+          setPaymentMessage(messageNode, error?.message || 'Payment was made, but verification failed. Contact support with your payment id.', 'error');
+        } finally {
+          if (button) {
+            button.disabled = false;
+            button.textContent = previousLabel;
+          }
+        }
+      },
+      modal: {
+        ondismiss: () => {
+          setPaymentMessage(messageNode, 'Checkout closed before payment was completed.', 'info');
+          if (button) {
+            button.disabled = false;
+            button.textContent = previousLabel;
+          }
+        }
+      }
+    });
+
+    checkout.on('payment.failed', (response) => {
+      const reason = response?.error?.description || response?.error?.reason || 'Payment failed. Please try again.';
+      setPaymentMessage(messageNode, reason, 'error');
+    });
+
+    checkout.open();
+  } catch (error) {
+    console.error(error);
+    setPaymentMessage(messageNode, error?.message || 'Could not start payment. Please try again.', 'error');
+    if (button) {
+      button.disabled = false;
+      button.textContent = previousLabel;
+    }
+  }
+}
+
 function getDashboardContentCount() {
   return dashboardLessons.filter((card) => card?.id && card.id !== 'intro').length;
 }
@@ -570,6 +762,8 @@ function renderAccountStatus() {
     const lastOpenedUnitId = profile?.lastOpenedUnit || null;
     const lastOpenedUnitLabel = getLessonTitleById(lastOpenedUnitId) || lastOpenedUnitId || 'No lesson opened yet';
     const completedUnitsCount = Array.isArray(profile?.completedUnits) ? profile.completedUnits.length : 0;
+    const paymentConfig = getPaymentConfig();
+    const premiumPriceText = formatPaymentAmount(paymentConfig.amount, paymentConfig.currency);
     
     accountScreen.innerHTML = `
       <section class="login-card" aria-labelledby="status-title">
@@ -685,23 +879,23 @@ function renderAccountStatus() {
           : `
             <div class="premium-box">
               <h3 class="premium-title">Current Access</h3>
-              <p class="premium-sub">Free lessons are always available. Extra units come from your Firestore profile.</p>
+              <p class="premium-sub">Free lessons are always available. Buy premium to unlock the full lesson library.</p>
     
               <ul class="premium-list">
-                <li>✔ Free lessons</li>
-                <li>✔ Individually unlocked units</li>
-                <li>✔ Expiry-ready access model</li>
+                <li>Free lessons stay open</li>
+                <li>Full lesson library after payment</li>
+                <li>Access is refreshed on your profile</li>
               </ul>
     
               <div class="price-row">
-                <span class="price-label">Unlocked units</span>
-                <span class="price-value">${unlockedUnitsText}</span>
+                <span class="price-label">Premium access</span>
+                <span class="price-value">${premiumPriceText}</span>
               </div>
 
               <div class="cta-row">
                 <button type="button" id="buy-button" class="primary-btn">Buy Now</button>
               </div>
-              <p class="footer-note">Tip: Sign in again anytime to refresh your granted units from Firestore.</p>
+              <p class="payment-status" id="payment-status" aria-live="polite">Current unlocked units: ${unlockedUnitsText}</p>
             </div>
           `
         }
@@ -716,8 +910,10 @@ function renderAccountStatus() {
     `;
 
     if (!unlocked) {
-      document.getElementById('buy-button')?.addEventListener('click', () => {
-        alert('Access will be enabled by the Speak Up team.');
+      const buyButton = document.getElementById('buy-button');
+      const paymentStatus = document.getElementById('payment-status');
+      buyButton?.addEventListener('click', () => {
+        startRazorpayCheckout(buyButton, paymentStatus);
       });
     }
 
