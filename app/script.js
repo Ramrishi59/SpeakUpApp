@@ -792,6 +792,10 @@ function renderAccountStatus() {
     const lastOpenedUnitId = profile?.lastOpenedUnit || null;
     const lastOpenedUnitLabel = getLessonTitleById(lastOpenedUnitId) || lastOpenedUnitId || 'No lesson opened yet';
     const completedUnitsCount = Array.isArray(profile?.completedUnits) ? profile.completedUnits.length : 0;
+    const progressTotal = Math.max(getDashboardContentCount(), completedUnitsCount, 1);
+    const progressPercent = Math.min(100, Math.round((completedUnitsCount / progressTotal) * 100));
+    const accessText = unlocked ? 'Full access' : 'Limited access';
+    const roleText = license?.role || 'Learner';
     const paymentConfig = getPaymentConfig();
     const premiumPriceText = formatPaymentAmount(paymentConfig.amount, paymentConfig.currency);
     
@@ -799,19 +803,22 @@ function renderAccountStatus() {
       <section class="login-card" aria-labelledby="status-title">
         <div class="account-hero ${unlocked ? 'is-premium' : 'is-limited'}">
           <div class="account-hero-top">
-            <button type="button" class="profile-mark" id="profile-avatar-button" aria-label="Change profile character">
-              <img id="profile-avatar-image" src="${selectedAvatar.src}" alt="${selectedAvatar.name}" />
-            </button>
+            <div class="profile-avatar-wrap">
+              <button type="button" class="profile-mark" id="profile-avatar-button" aria-label="Change profile character">
+                <img id="profile-avatar-image" src="${selectedAvatar.src}" alt="${selectedAvatar.name}" />
+              </button>
+              <span class="avatar-edit-label">Change</span>
+            </div>
             <div class="card-header">
               <p class="eyebrow">SpeakUp Account</p>
               <h2 id="status-title">${greeting}, ${displayName}</h2>
-              <p class="hero-subtitle">${unlocked ? 'Your premium access is active and ready to use.' : 'Your learning profile is active with free and granted lessons.'}</p>
+              <p class="hero-subtitle">${unlocked ? 'Premium is active.' : 'Free lessons and granted units are ready.'}</p>
             </div>
           </div>
 
-          <div class="hero-chips">
-            <span class="hero-chip">${license?.role || 'user'}</span>
-            <span class="hero-chip">${unlocked ? 'Full access' : 'Limited access'}</span>
+          <div class="account-access-row">
+            <span class="status-badge ${unlocked ? 'status-unlocked' : 'status-locked'}">${accessText}</span>
+            <span class="hero-chip">${roleText}</span>
           </div>
         </div>
 
@@ -852,49 +859,57 @@ function renderAccountStatus() {
           </div>
         </div>
 
-        <div class="status-badge ${unlocked ? 'status-unlocked' : 'status-locked'}">
-          ${unlocked ? 'Full Access ✅' : 'Limited Access 🔒'}
-        </div>
-
         <div class="account-stats">
           <div class="account-stat">
-            <span class="account-stat-label">Signed in as</span>
-            <strong class="account-stat-value">${displayName}</strong>
+            <span class="account-stat-label">Completed</span>
+            <strong class="account-stat-value">${completedUnitsCount}</strong>
           </div>
           <div class="account-stat">
-            <span class="account-stat-label">Email</span>
-            <strong class="account-stat-value">${auth.email || 'Not available'}</strong>
-          </div>
-          <div class="account-stat">
-            <span class="account-stat-label">${unlockedCountLabel}</span>
+            <span class="account-stat-label">Available</span>
             <strong class="account-stat-value">${unlockedCount}</strong>
+          </div>
+          <div class="account-stat account-stat-wide">
+            <span class="account-stat-label">Last opened</span>
+            <strong class="account-stat-value">${lastOpenedUnitLabel}</strong>
           </div>
         </div>
 
         <div class="premium-box progress-box">
-          <h3 class="premium-title">Progress Tracker</h3>
-          <p class="premium-sub">Your latest lesson and completed units are saved automatically while you learn.</p>
+          <div class="section-heading">
+            <div>
+              <h3 class="premium-title">Learning Progress</h3>
+              <p class="premium-sub">${completedUnitsCount ? `${completedUnitsCount} lesson${completedUnitsCount === 1 ? '' : 's'} completed` : 'Start a lesson to begin tracking progress.'}</p>
+            </div>
+            <strong class="progress-percent">${progressPercent}%</strong>
+          </div>
 
-          <div class="progress-grid">
-            <div class="progress-item">
-              <span class="progress-label">Last opened unit</span>
-              <strong class="progress-value">${lastOpenedUnitLabel}</strong>
-            </div>
-            <div class="progress-item">
-              <span class="progress-label">Completed units</span>
-              <strong class="progress-value">${completedUnitsCount}</strong>
-            </div>
+          <div class="profile-progress-bar" aria-label="Profile progress">
+            <span style="width: ${progressPercent}%"></span>
           </div>
 
           ${
             lastOpenedUnitId
               ? `
                 <div class="cta-row">
-                  <button type="button" id="continue-learning-button" class="primary-btn">Continue Learning</button>
+                  <button type="button" id="continue-learning-button" class="primary-btn">Continue ${lastOpenedUnitLabel}</button>
                 </div>
               `
               : ''
           }
+        </div>
+
+        <div class="premium-box account-details-box">
+          <h3 class="premium-title">Account Details</h3>
+          <div class="account-detail-list">
+            <div>
+              <span>Email</span>
+              <strong>${auth.email || 'Not available'}</strong>
+            </div>
+            <div>
+              <span>${unlockedCountLabel}</span>
+              <strong>${unlockedCount}</strong>
+            </div>
+          </div>
         </div>
 
         ${
@@ -902,14 +917,14 @@ function renderAccountStatus() {
           ? `
             <div class="premium-box">
               <h3 class="premium-title">Speak Up Premium</h3>
-              <p class="premium-sub">Every lesson is open on this device. Keep learning even when the internet is unstable.</p>
+              <p class="premium-sub">Every lesson is open on this device.</p>
               ${expText ? `<div class="price-row"><span class="price-label">Offline until</span><span class="price-value">${expText}</span></div>` : ''}
             </div>
           `
           : `
             <div class="premium-box">
               <h3 class="premium-title">Current Access</h3>
-              <p class="premium-sub">Free lessons are always available. Buy premium to unlock the full lesson library.</p>
+              <p class="premium-sub">Upgrade to open the full lesson library.</p>
     
               <ul class="premium-list">
                 <li>Free lessons stay open</li>
@@ -935,7 +950,7 @@ function renderAccountStatus() {
           <button type="button" id="signout-btn" class="ghost-btn">Sign out</button>
         </div>
     
-        <p class="footer-note account-note">Access expiry support is enabled.</p>
+        <p class="footer-note account-note">Your access is synced with this account.</p>
       </section>
     `;
 

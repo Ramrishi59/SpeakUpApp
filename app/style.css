@@ -799,12 +799,15 @@ body {
 }
 
 .status-badge {
-    margin: 10px 0 14px;
-    padding: 10px 14px;
-    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 8px 12px;
+    border-radius: 8px;
     font-weight: 700;
-    display: inline-block;
-    letter-spacing: 0.02em;
+    font-size: 0.88rem;
+    letter-spacing: 0;
   }
   
   .status-locked {
@@ -823,37 +826,34 @@ body {
     position: relative;
     overflow: hidden;
     background:
-      radial-gradient(circle at top left, rgba(255, 216, 186, 0.95), transparent 34%),
-      radial-gradient(circle at top right, rgba(193, 231, 255, 0.9), transparent 32%),
-      linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
-    border-radius: 28px;
-    padding: 22px 22px 110px;
-    border: 1px solid rgba(31, 30, 51, 0.08);
-    box-shadow: 0 22px 44px rgba(31, 30, 51, 0.14);
+      linear-gradient(180deg, rgba(255, 247, 237, 0.86) 0%, rgba(255, 255, 255, 0.92) 46%, rgba(248, 252, 255, 0.94) 100%);
+    border-radius: 0;
+    padding: 0 0 110px;
     min-height: calc(100dvh - 20px);
 }
 
 .account-hero {
     position: relative;
-    border-radius: 24px;
+    border-radius: 8px;
     padding: 18px;
     color: #1f1d2c;
     overflow: hidden;
+    border: 1px solid rgba(31, 30, 51, 0.08);
+    box-shadow: 0 18px 34px rgba(31, 30, 51, 0.13);
 }
 
 .account-hero::after {
     content: "";
     position: absolute;
-    inset: auto -40px -46px auto;
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.24);
-    filter: blur(2px);
+    inset: 0;
+    background:
+        radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.78), transparent 20%),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 42%);
+    pointer-events: none;
 }
 
 .account-hero.is-premium {
-    background: linear-gradient(135deg, #7bc8ff 0%, #b5e1ff 44%, #fff2cf 100%);
+    background: linear-gradient(135deg, #69c6ff 0%, #b9ebff 47%, #ffe08b 100%);
 }
 
 .account-hero.is-limited {
@@ -863,24 +863,31 @@ body {
 .account-hero-top {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
     position: relative;
     z-index: 1;
 }
 
+.profile-avatar-wrap {
+    display: grid;
+    justify-items: center;
+    gap: 7px;
+    flex: 0 0 auto;
+}
+
 .profile-mark {
     appearance: none;
-    width: 60px;
-    height: 60px;
-    flex: 0 0 60px;
+    width: 76px;
+    height: 76px;
+    flex: 0 0 76px;
     padding: 0;
-    border: 2px solid rgba(255, 255, 255, 0.78);
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.72);
+    border: 3px solid rgba(255, 255, 255, 0.86);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.78);
     backdrop-filter: blur(6px);
     overflow: hidden;
     cursor: pointer;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 14px 24px rgba(31, 30, 51, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
@@ -888,7 +895,7 @@ body {
 .profile-mark:focus-visible {
     transform: translateY(-2px);
     outline: none;
-    box-shadow: 0 12px 22px rgba(36, 29, 48, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 18px 30px rgba(36, 29, 48, 0.18), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 .profile-mark img {
@@ -898,9 +905,21 @@ body {
     object-fit: cover;
 }
 
+.avatar-edit-label {
+    min-height: 24px;
+    padding: 5px 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+    color: #2a2738;
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
 .card-header {
     position: relative;
     z-index: 1;
+    min-width: 0;
 }
 
 .eyebrow {
@@ -913,32 +932,35 @@ body {
 
 .card-header h2 {
     margin: 0;
-    font-size: 1.45rem;
+    font-size: clamp(1.34rem, 7vw, 1.9rem);
     line-height: 1.15;
+    overflow-wrap: anywhere;
 }
 
 .hero-subtitle {
     margin: 8px 0 0;
-    max-width: 28ch;
+    max-width: 30ch;
     color: rgba(31, 29, 44, 0.8);
     font-size: 0.95rem;
     line-height: 1.45;
 }
 
-.hero-chips {
+.account-access-row {
     position: relative;
     z-index: 1;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 16px;
+    margin-top: 18px;
 }
 
 .hero-chip {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    min-height: 34px;
     padding: 8px 12px;
-    border-radius: 999px;
+    border-radius: 8px;
     background: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.45);
     font-size: 0.84rem;
@@ -949,17 +971,21 @@ body {
 
 .account-stats {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     margin-top: 14px;
 }
 
 .account-stat {
     padding: 14px 12px;
-    border-radius: 18px;
-    background: linear-gradient(180deg, rgba(236, 247, 255, 0.98) 0%, rgba(248, 252, 255, 0.96) 100%);
-    border: 1px solid rgba(123, 200, 255, 0.24);
-    box-shadow: 0 16px 30px rgba(123, 200, 255, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(31, 30, 51, 0.08);
+    box-shadow: 0 12px 24px rgba(31, 30, 51, 0.08);
+}
+
+.account-stat-wide {
+    grid-column: 1 / -1;
 }
 
 .account-stat-label {
@@ -974,18 +1000,22 @@ body {
 .account-stat-value {
     display: block;
     color: #201d2d;
-    font-size: 0.98rem;
+    font-size: 1.28rem;
     line-height: 1.35;
     word-break: break-word;
+}
+
+.account-stat-wide .account-stat-value {
+    font-size: 1rem;
 }
 
 .premium-box {
     margin-top: 16px;
     padding: 18px;
-    border-radius: 22px;
-    background: linear-gradient(180deg, rgba(236, 247, 255, 0.98) 0%, rgba(248, 252, 255, 0.96) 100%);
-    border: 1px solid rgba(123, 200, 255, 0.24);
-    box-shadow: 0 16px 30px rgba(123, 200, 255, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(31, 30, 51, 0.08);
+    box-shadow: 0 12px 24px rgba(31, 30, 51, 0.08);
 }
 
 .avatar-modal[hidden],
@@ -1018,6 +1048,7 @@ body {
     max-height: calc(100dvh - 44px);
     overflow: auto;
     padding-bottom: 16px;
+    background: #fffdf8;
 }
 
 .avatar-prompt {
@@ -1029,7 +1060,7 @@ body {
     height: 104px;
     display: block;
     margin: 0 auto 14px;
-    border-radius: 18px;
+    border-radius: 8px;
     object-fit: cover;
     box-shadow: 0 14px 24px rgba(36, 29, 48, 0.12);
 }
@@ -1098,37 +1129,6 @@ body {
     font-size: 0.9rem;
 }
 
-.progress-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 14px;
-}
-
-.progress-item {
-    padding: 14px 12px;
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(123, 200, 255, 0.2);
-}
-
-.progress-label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.76rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #7a6c61;
-}
-
-.progress-value {
-    display: block;
-    color: #201d2d;
-    font-size: 0.98rem;
-    line-height: 1.35;
-    word-break: break-word;
-}
-
 .premium-title {
     margin: 0 0 8px 0;
     color: #2a2235;
@@ -1139,6 +1139,70 @@ body {
     margin: 0 0 12px 0;
     color: #5a4d45;
     line-height: 1.55;
+}
+
+.section-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.section-heading .premium-sub {
+    margin-bottom: 0;
+}
+
+.progress-percent {
+    min-width: 62px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: #fff3cf;
+    color: #563800;
+    text-align: center;
+}
+
+.profile-progress-bar {
+    height: 12px;
+    margin-top: 16px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: rgba(31, 30, 51, 0.08);
+}
+
+.profile-progress-bar span {
+    display: block;
+    height: 100%;
+    min-width: 8px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #43c59e 0%, #7bc8ff 100%);
+}
+
+.account-detail-list {
+    display: grid;
+    gap: 10px;
+}
+
+.account-detail-list div {
+    display: grid;
+    gap: 5px;
+    min-width: 0;
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(248, 252, 255, 0.9);
+    border: 1px solid rgba(31, 30, 51, 0.06);
+}
+
+.account-detail-list span {
+    color: #7a6c61;
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.account-detail-list strong {
+    color: #201d2d;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
 }
 
 .premium-list {
@@ -1187,7 +1251,7 @@ body {
 .primary-btn,
 .ghost-btn {
     width: 100%;
-    border-radius: 16px;
+    border-radius: 8px;
     padding: 13px 16px;
     font-size: 0.96rem;
     font-weight: 800;
@@ -1236,6 +1300,7 @@ body {
 .account-note {
     margin: 14px 2px 0;
     color: #746969;
+    text-align: center;
 }
 
 @media (max-width: 480px) {
@@ -1246,22 +1311,31 @@ body {
 
     .login-card {
         min-height: 100dvh;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        border-top: none;
-        box-shadow: none;
         padding: 18px 16px 110px;
     }
 
     .account-hero {
-        border-radius: 0 0 24px 24px;
+        border-radius: 0 0 8px 8px;
         margin: -18px -16px 0;
         padding: 20px 16px 18px;
     }
 
+    .account-hero-top {
+        align-items: flex-start;
+    }
+
+    .profile-mark {
+        width: 68px;
+        height: 68px;
+        flex-basis: 68px;
+    }
+
     .account-stats {
         grid-template-columns: 1fr;
+    }
+
+    .account-stat-wide {
+        grid-column: auto;
     }
 
     .account-actions {
@@ -1276,18 +1350,14 @@ body {
     .avatar-picker-box {
         width: 100%;
         max-height: calc(100dvh - 52px);
-        border-radius: 22px;
+        border-radius: 8px;
     }
 
     .avatar-modal-actions {
         grid-template-columns: 1fr;
     }
 
-    .progress-grid {
-        grid-template-columns: 1fr;
-    }
-
     .card-header h2 {
-        font-size: 1.28rem;
+        font-size: 1.32rem;
     }
 }
