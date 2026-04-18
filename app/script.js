@@ -676,7 +676,6 @@ function renderAccountStatus() {
 
       if (updatedAuth.isLoggedIn && hasSomeAccess) {
         renderAccountStatus();
-        showDashboardScreen();
       } else if (updatedAuth.isLoggedIn && !hasSomeAccess) {
         renderAccountStatus();
         if (message) {
