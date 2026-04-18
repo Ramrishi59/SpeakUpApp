@@ -68,6 +68,10 @@ async function authenticateRequest(req) {
   }
 }
 
+function getPaymentEmail(decodedToken, payment) {
+  return payment?.email || decodedToken.email || null;
+}
+
 function normalizeAmount(value) {
   const amount = Number(value);
   if (!Number.isInteger(amount) || amount < 100) {
@@ -94,12 +98,16 @@ function normalizeReceipt(value, uid) {
 }
 
 function sendError(res, error, fallbackStatus = 500) {
-  const status = error.status || fallbackStatus;
+  const status = error.status || error.statusCode || fallbackStatus;
+  const razorpayError = error.error || null;
+  const message = razorpayError?.description || error.message || "Request failed";
+
   if (status >= 500) {
     logger.error(error);
   }
   res.set(CORS_HEADERS).status(status).json({
-    error: error.message || "Request failed"
+    error: message,
+    code: razorpayError?.code || undefined
   });
 }
 
@@ -109,6 +117,7 @@ exports.createOrder = onRequest({ secrets: [razorpayKeySecret] }, async (req, re
 
   try {
     const decodedToken = await authenticateRequest(req);
+    const email = getPaymentEmail(decodedToken);
     const amount = normalizeAmount(req.body?.amount);
     const currency = normalizeCurrency(req.body?.currency);
     const receipt = normalizeReceipt(req.body?.receipt, decodedToken.uid);
@@ -126,6 +135,7 @@ exports.createOrder = onRequest({ secrets: [razorpayKeySecret] }, async (req, re
 
     await db.collection("payments").doc(order.id).set({
       uid: decodedToken.uid,
+      email,
       plan,
       amount,
       currency,
@@ -188,6 +198,7 @@ exports.verifyPayment = onRequest({ secrets: [razorpayKeySecret] }, async (req, 
 
     if (generatedSignature !== razorpaySignature) {
       await paymentRef.update({
+        email: getPaymentEmail(decodedToken, payment),
         razorpayPaymentId,
         status: "signature_mismatch",
         verifiedAt: admin.firestore.FieldValue.serverTimestamp()
@@ -208,6 +219,7 @@ exports.verifyPayment = onRequest({ secrets: [razorpayKeySecret] }, async (req, 
     }, { merge: true });
 
     batch.update(paymentRef, {
+      email: getPaymentEmail(decodedToken, payment),
       razorpayPaymentId,
       status: "verified",
       verifiedAt
