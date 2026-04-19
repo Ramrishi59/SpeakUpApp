@@ -5,6 +5,10 @@ const params = new URLSearchParams(window.location.search);
 const activityId = params.get("activity") || "activity1";
 const activityNumberMatch = activityId.match(/\d+/);
 const activityNumber = activityNumberMatch ? activityNumberMatch[0] : "1";
+const returnCategory = params.get("from");
+const returnUrl = returnCategory
+  ? `../dashboard.html?cat=${encodeURIComponent(returnCategory)}`
+  : "../dashboard.html";
 const DATA_URL = `json/${activityId}.json`;
 
 let ITEMS = [];
@@ -39,6 +43,7 @@ const progressFill = document.getElementById("progressFill");
 const progressStats = document.getElementById("progressStats");
 const introImgEl = document.getElementById("introImage");
 const introAudioEl = document.getElementById("introAudio");
+const homeBtn = document.getElementById("homeBtn");
 const mankuCorner = document.getElementById("mankuCorner");
 const SHARED_INTRO_IMAGE = "Images/intro.png";
 const SHARED_INTRO_AUDIO = "Audio/intro/intro.mp3";
@@ -59,6 +64,8 @@ const resultsImage = document.getElementById("resultsImage");
 const resultsScore = document.getElementById("resultsScore");
 const restartBtn = document.getElementById("restartBtn");
 const reviewBtn = document.getElementById("reviewBtn");
+
+if (homeBtn) homeBtn.href = returnUrl;
 
 // Confetti
 const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
@@ -503,7 +510,7 @@ resetBtn.addEventListener("click", () => {
 });
 
 restartBtn?.addEventListener("click", () => {
-  window.location.href = "../dashboard.html";
+  window.location.href = returnUrl;
 });
 
 reviewBtn?.addEventListener("click", () => {

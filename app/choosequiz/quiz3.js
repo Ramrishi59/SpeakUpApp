@@ -46,6 +46,7 @@ const progressFill = document.getElementById("progressFill");
 const progressStats = document.getElementById("progressStats");
 const introImgEl = document.getElementById("introImage");
 const introAudioEl = document.getElementById("introAudio");
+const homeBtn = document.getElementById("homeBtn");
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -58,6 +59,8 @@ const resultsOverlay = document.getElementById("resultsOverlay");
 const resultsText = document.getElementById("resultsText");
 const restartBtn = document.getElementById("restartBtn");
 const reviewBtn = document.getElementById("reviewBtn");
+
+if (homeBtn) homeBtn.href = returnUrl;
 
 // Confetti
 const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;

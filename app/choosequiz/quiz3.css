@@ -76,6 +76,30 @@ body::after {
     position: relative;
     z-index: 4;
   }
+
+.activity-home {
+  --home-size: calc(var(--btn-h) * 1.18);
+  flex: 0 0 var(--home-size);
+  width: var(--home-size);
+  height: var(--home-size);
+  border-radius: 50%;
+  background: center / 100% no-repeat url("../Images/buttons/27.png");
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, .22));
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.activity-home span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
   
   .pill {
     background: linear-gradient(180deg, #ffffff, #eaf7ff);
@@ -291,6 +315,7 @@ main#app {
   .nav-row {
     grid-area: nav;
     display: flex;
+    align-items: center;
     gap: var(--gap);
     justify-content: center;
     flex-wrap: wrap;
