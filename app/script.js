@@ -3,6 +3,9 @@ let rerenderDashboard = null;
 let dashboardLoadError = "";
 let activeDashboardFilter = "all";
 
+const INITIAL_THUMBNAIL_LOAD_COUNT = 6;
+const THUMBNAIL_PLACEHOLDER_SRC = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='68' height='68' viewBox='0 0 68 68'%3E%3Crect width='68' height='68' rx='8' fill='%23edf6ff'/%3E%3C/svg%3E";
+
 const DASHBOARD_FILTERS = [
   { id: "all", label: "All" },
   { id: "units", label: "Lessons" },
@@ -26,9 +29,7 @@ const PROFILE_CHARACTERS = [
 ];
 
 function isFreeLesson(lessonId) {
-  // TODO: put your real free list here
-  const FREE = new Set(["unit1", "unit2", "trial"]); 
-  return FREE.has(String(lessonId));
+  return false;
 }
 
 function getLoginState() {
@@ -44,6 +45,8 @@ function getAccessState() {
       fullUnlock: false,
       unlockedUnits: [],
       licenseExpiresAt: null,
+      trialExpiresAt: null,
+      trialActive: false,
       role: null
     };
   }
@@ -55,6 +58,36 @@ function getProfileState() {
     return null;
   }
   return window.SUAuth.getProfile();
+}
+
+function hydrateLazyThumbnails(root = document) {
+  const lazyImages = Array.from(root.querySelectorAll('.lesson-thumbnail[data-src]'));
+  if (!lazyImages.length) return;
+
+  const loadImage = (image) => {
+    const nextSrc = image.dataset.src;
+    if (!nextSrc) return;
+    image.src = nextSrc;
+    image.removeAttribute('data-src');
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    lazyImages.forEach(loadImage);
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      loadImage(entry.target);
+      currentObserver.unobserve(entry.target);
+    });
+  }, {
+    rootMargin: '240px 0px',
+    threshold: 0.01
+  });
+
+  lazyImages.forEach((image) => observer.observe(image));
 }
 
 function getPaymentConfig() {
@@ -433,12 +466,8 @@ function getSelectedProfileAvatar(profile, auth) {
 }
 
 function hasLessonAccess(lessonId) {
-  if (isFreeLesson(lessonId)) return true;
-
   const access = getAccessState();
-  if (access.fullUnlock) return true;
-
-  return Array.isArray(access.unlockedUnits) && access.unlockedUnits.includes(String(lessonId));
+  return access.fullUnlock === true;
 }
 
 function getAppRoot() {
@@ -672,7 +701,7 @@ function renderAccountStatus() {
     async function finishLogin(profileSynced = true) {
       const updatedAuth = getLoginState();
       const accessNow = getAccessState();
-      const hasSomeAccess = accessNow.fullUnlock || (Array.isArray(accessNow.unlockedUnits) && accessNow.unlockedUnits.length > 0);
+      const hasSomeAccess = accessNow.fullUnlock === true;
 
       if (updatedAuth.isLoggedIn && hasSomeAccess) {
         renderAccountStatus();
@@ -680,7 +709,7 @@ function renderAccountStatus() {
         renderAccountStatus();
         if (message) {
           message.textContent = profileSynced
-            ? 'Logged in. Only free lessons are available right now.'
+            ? 'Logged in. Your trial has ended. Buy premium to unlock lessons.'
             : 'Logged in, but profile setup is incomplete. Check Firestore rules.';
         }
       }
@@ -766,7 +795,7 @@ function renderAccountStatus() {
         if (message) {
           message.textContent = result?.profileSynced === false
             ? 'Account created, but profile setup is incomplete. Check Firestore rules.'
-            : 'Account created. You can now request access.';
+            : 'Account created. Your 24-hour full access trial is active.';
         }
       } catch (error) {
         console.error(error);
@@ -779,25 +808,53 @@ function renderAccountStatus() {
     const expText = (license && license.licenseExpiresAt)
       ? new Date(license.licenseExpiresAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
       : null;
-    const unlockedUnitsText = Array.isArray(license?.unlockedUnits) && license.unlockedUnits.length
-      ? license.unlockedUnits.join(', ')
-      : 'None yet';
+    const unlockedUnitsText = unlocked
+      ? 'All lessons'
+      : 'Locked until purchase';
     const displayName = profile?.username || auth.email || 'Unknown user';
     const selectedAvatar = getSelectedProfileAvatar(profile, auth);
-    const unlockedCount = unlocked
-      ? getDashboardContentCount()
-      : (Array.isArray(license?.unlockedUnits) ? license.unlockedUnits.length : 0);
-    const unlockedCountLabel = unlocked ? 'Available content' : 'Unlocked units';
+    const unlockedCount = unlocked ? getDashboardContentCount() : 0;
+    const unlockedCountLabel = unlocked ? 'Available content' : 'Unlocked lessons';
     const greeting = getTimeGreeting();
     const lastOpenedUnitId = profile?.lastOpenedUnit || null;
     const lastOpenedUnitLabel = getLessonTitleById(lastOpenedUnitId) || lastOpenedUnitId || 'No lesson opened yet';
     const completedUnitsCount = Array.isArray(profile?.completedUnits) ? profile.completedUnits.length : 0;
     const progressTotal = Math.max(getDashboardContentCount(), completedUnitsCount, 1);
     const progressPercent = Math.min(100, Math.round((completedUnitsCount / progressTotal) * 100));
-    const accessText = unlocked ? 'Full access' : 'Limited access';
+    const accessText = unlocked ? (license?.trialActive ? '24-hour trial' : 'Full access') : 'Locked';
     const roleText = license?.role || 'Learner';
     const paymentConfig = getPaymentConfig();
     const premiumPriceText = formatPaymentAmount(paymentConfig.amount, paymentConfig.currency);
+    const accessBoxHtml = unlocked
+      ? `
+        <div class="premium-box">
+          <h3 class="premium-title">Speak Up Premium</h3>
+          <p class="premium-sub">${license?.trialActive ? 'Your 24-hour trial is active.' : 'Every lesson is open on this account.'}</p>
+          ${expText ? `<div class="price-row"><span class="price-label">${license?.trialActive ? 'Trial ends' : 'Access until'}</span><span class="price-value">${expText}</span></div>` : ''}
+        </div>
+      `
+      : `
+        <div class="premium-box">
+          <h3 class="premium-title">Current Access</h3>
+          <p class="premium-sub">Your trial has ended. Buy premium to reopen the lesson library.</p>
+
+          <ul class="premium-list">
+            <li>All lessons unlock after payment</li>
+            <li>Full lesson library after payment</li>
+            <li>Access is refreshed on your profile</li>
+          </ul>
+
+          <div class="price-row">
+            <span class="price-label">Premium access</span>
+            <span class="price-value">${premiumPriceText}</span>
+          </div>
+
+          <div class="cta-row">
+            <button type="button" id="buy-button" class="primary-btn">Buy Now</button>
+          </div>
+          <p class="payment-status" id="payment-status" aria-live="polite">Current access: ${unlockedUnitsText}</p>
+        </div>
+      `;
     
     accountScreen.innerHTML = `
       <section class="login-card" aria-labelledby="status-title">
@@ -812,7 +869,7 @@ function renderAccountStatus() {
             <div class="card-header">
               <p class="eyebrow">SpeakUp Account</p>
               <h2 id="status-title">${greeting}, ${displayName}</h2>
-              <p class="hero-subtitle">${unlocked ? 'Premium is active.' : 'Free lessons and granted units are ready.'}</p>
+              <p class="hero-subtitle">${unlocked ? (license?.trialActive ? 'Your full-access trial is active.' : 'Premium is active.') : 'Lessons are locked until purchase.'}</p>
             </div>
           </div>
 
@@ -858,6 +915,8 @@ function renderAccountStatus() {
             </div>
           </div>
         </div>
+
+        ${unlocked ? '' : accessBoxHtml}
 
         <div class="account-stats">
           <div class="account-stat">
@@ -912,38 +971,7 @@ function renderAccountStatus() {
           </div>
         </div>
 
-        ${
-          unlocked
-          ? `
-            <div class="premium-box">
-              <h3 class="premium-title">Speak Up Premium</h3>
-              <p class="premium-sub">Every lesson is open on this device.</p>
-              ${expText ? `<div class="price-row"><span class="price-label">Offline until</span><span class="price-value">${expText}</span></div>` : ''}
-            </div>
-          `
-          : `
-            <div class="premium-box">
-              <h3 class="premium-title">Current Access</h3>
-              <p class="premium-sub">Upgrade to open the full lesson library.</p>
-    
-              <ul class="premium-list">
-                <li>Free lessons stay open</li>
-                <li>Full lesson library after payment</li>
-                <li>Access is refreshed on your profile</li>
-              </ul>
-    
-              <div class="price-row">
-                <span class="price-label">Premium access</span>
-                <span class="price-value">${premiumPriceText}</span>
-              </div>
-
-              <div class="cta-row">
-                <button type="button" id="buy-button" class="primary-btn">Buy Now</button>
-              </div>
-              <p class="payment-status" id="payment-status" aria-live="polite">Current unlocked units: ${unlockedUnitsText}</p>
-            </div>
-          `
-        }
+        ${unlocked ? accessBoxHtml : ''}
 
         <div class="account-actions">
           <button type="button" id="back-dashboard" class="ghost-btn">Back to Dashboard</button>
@@ -1064,8 +1092,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('B-ERROR: SUAuth.ready failed:', err);
   }
 
-  showDashboardScreen();
-  console.log('C: showDashboardScreen done');
+  if (window.location.hash === '#login') {
+    openAccountScreen();
+  } else {
+    showDashboardScreen();
+  }
+  console.log('C: initial screen rendered');
 
   const lessonsList = document.querySelector('.lessons-list');
   console.log('D: lessonsList =', lessonsList);
@@ -1224,7 +1256,7 @@ async function loadDashboardLessons() {
       return;
     }
 
-    lessonsToRender.forEach(lesson => {
+    lessonsToRender.forEach((lesson, index) => {
       const card = document.createElement('div');
       card.classList.add('lesson-card');
       card.dataset.lessonId = lesson.id;
@@ -1250,8 +1282,14 @@ async function loadDashboardLessons() {
           : '<span class="lesson-badge locked">Locked</span>';
       }
 
+      const shouldLoadThumbnailNow = index < INITIAL_THUMBNAIL_LOAD_COUNT;
+      const thumbnailSrc = shouldLoadThumbnailNow ? lesson.thumbnail : THUMBNAIL_PLACEHOLDER_SRC;
+      const lazyThumbnailAttr = shouldLoadThumbnailNow ? '' : ` data-src="${lesson.thumbnail}"`;
+      const thumbnailLoading = shouldLoadThumbnailNow ? 'eager' : 'lazy';
+      const thumbnailPriority = shouldLoadThumbnailNow ? 'high' : 'low';
+
       card.innerHTML = `
-          <img src="${lesson.thumbnail}" alt="${lesson.title}" class="lesson-thumbnail" loading="lazy">
+          <img src="${thumbnailSrc}"${lazyThumbnailAttr} alt="${lesson.title}" class="lesson-thumbnail" width="68" height="68" loading="${thumbnailLoading}" decoding="async" fetchpriority="${thumbnailPriority}">
           <div class="lesson-info">
             <h3>${lesson.title}</h3>
             <div class="lesson-progress" aria-label="${lesson.title} progress: ${progressDisplay.label}">
@@ -1287,6 +1325,8 @@ async function loadDashboardLessons() {
 
       lessonsList.appendChild(card);
     });
+
+    hydrateLazyThumbnails(lessonsList);
   }
 
   // initial render

@@ -31,6 +31,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
+const TRIAL_DURATION_MS = 24 * 60 * 60 * 1000;
 
 let authState = {
   isLoggedIn: false,
@@ -42,12 +43,49 @@ let licenseState = {
   fullUnlock: false,
   unlockedUnits: [],
   licenseExpiresAt: null,
+  trialExpiresAt: null,
+  trialActive: false,
   role: null
 };
 
 let currentProfile = null;
 let resolveReady;
 let readyResolved = false;
+
+function toMillis(value) {
+  if (!value) return null;
+  if (typeof value.toMillis === "function") return value.toMillis();
+  if (typeof value.toDate === "function") return value.toDate().getTime();
+  const millis = new Date(value).getTime();
+  return Number.isFinite(millis) ? millis : null;
+}
+
+function getTrialExpiryIso() {
+  return new Date(Date.now() + TRIAL_DURATION_MS).toISOString();
+}
+
+function buildNewUserProfile({ username, email }) {
+  const trialExpiresAt = getTrialExpiryIso();
+  return {
+    username,
+    email: email || "",
+    role: "user",
+    fullUnlock: true,
+    unlockedUnits: [],
+    licenseExpiresAt: trialExpiresAt,
+    trialStartedAt: new Date().toISOString(),
+    trialExpiresAt,
+    avatarName: "Manku",
+    avatarSrc: "Images/dashboard thumbnails/Manku.webp",
+
+    lastOpenedUnit: null,
+    lastScreenIndex: 0,
+    openedUnits: [],
+    completedUnits: [],
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
+  };
+}
 
 async function loadUserProfile(uid) {
   const ref = doc(db, "users", uid);
@@ -59,6 +97,8 @@ async function loadUserProfile(uid) {
       fullUnlock: false,
       unlockedUnits: [],
       licenseExpiresAt: null,
+      trialExpiresAt: null,
+      trialActive: false,
       role: null
     };
     return null;
@@ -66,13 +106,18 @@ async function loadUserProfile(uid) {
 
   currentProfile = snap.data();
   const expiresAt = currentProfile.licenseExpiresAt || null;
-  const expiresAtMs = expiresAt ? new Date(expiresAt).getTime() : null;
+  const expiresAtMs = toMillis(expiresAt);
   const hasValidExpiry = expiresAtMs == null || (Number.isFinite(expiresAtMs) && expiresAtMs > Date.now());
+  const trialExpiresAt = currentProfile.trialExpiresAt || null;
+  const trialExpiresAtMs = toMillis(trialExpiresAt);
+  const trialActive = expiresAtMs != null && Number.isFinite(trialExpiresAtMs) && trialExpiresAtMs > Date.now();
 
   licenseState = {
     fullUnlock: currentProfile.fullUnlock === true && hasValidExpiry,
-    unlockedUnits: Array.isArray(currentProfile.unlockedUnits) ? currentProfile.unlockedUnits.map(String) : [],
+    unlockedUnits: [],
     licenseExpiresAt: expiresAt,
+    trialExpiresAt,
+    trialActive,
     role: currentProfile.role || null
   };
 
@@ -99,6 +144,8 @@ onAuthStateChanged(auth, async (user) => {
         fullUnlock: false,
         unlockedUnits: [],
         licenseExpiresAt: null,
+        trialExpiresAt: null,
+        trialActive: false,
         role: null
       };
     }
@@ -114,6 +161,8 @@ onAuthStateChanged(auth, async (user) => {
       fullUnlock: false,
       unlockedUnits: [],
       licenseExpiresAt: null,
+      trialExpiresAt: null,
+      trialActive: false,
       role: null
     };
   }
@@ -160,23 +209,10 @@ async function loginWithGoogle() {
     if (!existingProfile) {
       const fallbackUsername = user.displayName || (user.email ? user.email.split("@")[0] : "Google User");
 
-      await setDoc(doc(db, "users", user.uid), {
+      await setDoc(doc(db, "users", user.uid), buildNewUserProfile({
         username: fallbackUsername,
-        email: user.email || "",
-        role: "user",
-        fullUnlock: false,
-        unlockedUnits: ["unit1", "unit2"],
-        licenseExpiresAt: null,
-        avatarName: "Manku",
-        avatarSrc: "Images/dashboard thumbnails/Manku.webp",
-
-        lastOpenedUnit: null,
-        lastScreenIndex: 0,
-        openedUnits: [],
-        completedUnits: [],
-        createdAt: serverTimestamp(),
-        updatedAt: serverTimestamp()
-      });
+        email: user.email || ""
+      }));
       await loadUserProfile(user.uid);
     }
   } catch (error) {
@@ -200,23 +236,10 @@ async function signupWithEmail(username, email, password) {
   let profileSynced = true;
 
   try {
-    await setDoc(doc(db, "users", user.uid), {
+    await setDoc(doc(db, "users", user.uid), buildNewUserProfile({
       username,
-      email: user.email || email,
-      role: "user",
-      fullUnlock: false,
-      unlockedUnits: ["unit1", "unit2"],
-      licenseExpiresAt: null,
-      avatarName: "Manku",
-      avatarSrc: "Images/dashboard thumbnails/Manku.webp",
-
-      lastOpenedUnit: null,
-      lastScreenIndex: 0,
-      openedUnits: [],
-      completedUnits: [],
-      createdAt: serverTimestamp(),
-      updatedAt: serverTimestamp()
-    });
+      email: user.email || email
+    }));
     await loadUserProfile(user.uid);
   } catch (error) {
     profileSynced = false;
@@ -370,7 +393,8 @@ async function mockRevokeUnlock() {
   await updateDoc(doc(db, "users", auth.currentUser.uid), {
     fullUnlock: false,
     unlockedUnits: [],
-    licenseExpiresAt: null
+    licenseExpiresAt: null,
+    trialExpiresAt: null
   });
   await loadUserProfile(auth.currentUser.uid);
 }

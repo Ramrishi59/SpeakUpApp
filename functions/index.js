@@ -215,6 +215,8 @@ exports.verifyPayment = onRequest({ secrets: [razorpayKeySecret] }, async (req, 
 
     batch.set(userRef, {
       fullUnlock: true,
+      licenseExpiresAt: null,
+      trialExpiresAt: null,
       updatedAt: verifiedAt
     }, { merge: true });
 

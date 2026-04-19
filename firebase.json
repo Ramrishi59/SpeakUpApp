@@ -43,6 +43,35 @@
         "source": "/api/verify-payment",
         "function": "verifyPayment"
       }
+    ],
+    "headers": [
+      {
+        "source": "**/*.{webp,jpg,jpeg,png,gif,svg,ico}",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=2592000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.{mp3,mp4,wav,ogg}",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=2592000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      }
     ]
   }
 }

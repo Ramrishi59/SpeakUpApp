@@ -401,8 +401,33 @@ document.getElementById('startoverGlobal')?.addEventListener('click', startOver)
 /* ---------- boot ---------- */
 function getUnitIdFromUrl(){ const p = new URLSearchParams(location.search); return p.get("unitId") || "unit1"; }
 async function loadUnit(id){ const r = await fetch(`units/${id}.json`, { cache: "no-store" }); if (!r.ok) throw new Error(id); return r.json(); }
+function showAccessLocked() {
+  document.body.innerHTML = `
+    <main style="min-height:100svh;display:grid;place-items:center;padding:24px;font-family:Fredoka,system-ui,sans-serif;background:#fff7ed;color:#312015;text-align:center;">
+      <section style="width:min(420px,100%);background:#fff;border:2px solid #f4c18f;border-radius:18px;padding:28px;box-shadow:0 16px 40px rgba(92,52,18,.16);">
+        <h1 style="margin:0 0 10px;font-size:clamp(28px,8vw,42px);">Lessons locked</h1>
+        <p style="margin:0 0 22px;font-size:18px;line-height:1.4;">Your 24-hour trial has ended. Buy premium to keep using SpeakUp.</p>
+        <a href="dashboard.html#login" style="display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;background:#ff7a59;color:#fff;text-decoration:none;font-weight:700;">Go to account</a>
+      </section>
+    </main>
+  `;
+}
+
+async function waitForAuthReady() {
+  for (let i = 0; i < 80 && !window.SUAuth; i += 1) {
+    await new Promise(resolve => setTimeout(resolve, 25));
+  }
+  if (window.SUAuth?.ready) await window.SUAuth.ready;
+}
 
 (async function(){
+  await waitForAuthReady();
+  const hasAccess = window.SUAuth?.getLicense?.().fullUnlock === true;
+  if (!hasAccess) {
+    showAccessLocked();
+    return;
+  }
+
   const unit = await loadUnit(getUnitIdFromUrl());
   document.body.classList.add(`unit-${unit.id}`);
 

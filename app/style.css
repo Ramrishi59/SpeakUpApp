@@ -972,16 +972,16 @@ body {
 .account-stats {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 14px;
+    gap: 14px;
+    margin-top: 18px;
 }
 
 .account-stat {
     padding: 14px 12px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(31, 30, 51, 0.08);
-    box-shadow: 0 12px 24px rgba(31, 30, 51, 0.08);
+    background: #fff9ef;
+    border: 1.5px solid rgba(255, 122, 89, 0.22);
+    box-shadow: 0 10px 22px rgba(31, 30, 51, 0.1);
 }
 
 .account-stat-wide {
@@ -1010,12 +1010,12 @@ body {
 }
 
 .premium-box {
-    margin-top: 16px;
+    margin-top: 18px;
     padding: 18px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.92);
-    border: 1px solid rgba(31, 30, 51, 0.08);
-    box-shadow: 0 12px 24px rgba(31, 30, 51, 0.08);
+    background: #ffffff;
+    border: 1.5px solid rgba(31, 30, 51, 0.14);
+    box-shadow: 0 10px 22px rgba(31, 30, 51, 0.1);
 }
 
 .avatar-modal[hidden],
