@@ -567,6 +567,15 @@ body {
     height: 48px;
 }
 
+.nav-emoji {
+    width: 51px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+    line-height: 1;
+}
+
 .nav-button.active {
     background: linear-gradient(135deg, rgba(255, 123, 93, 0.2), rgba(244, 86, 78, 0.2));
     color: var(--ink);
