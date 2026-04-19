@@ -1,4 +1,4 @@
-const CACHE_NAME = 'speakupapp-cache-v21';
+const CACHE_NAME = 'speakupapp-cache-v22';
 const APP_SHELL_CACHE = `${CACHE_NAME}-shell`;
 const MEDIA_CACHE = `${CACHE_NAME}-media`;
 const RUNTIME_CACHE = `${CACHE_NAME}-runtime`;
@@ -12,9 +12,8 @@ const APP_SHELL_URLS = [
   './script.js',
   './manifest.json',
   './units/manifest.json',
-  './Images/Unit1/m.png',
-  './Images/Unit1/icon-512.png',
-  './Images/Unit1/newicon.png',
+  './Images/Unit1/manku-icon-192.png',
+  './Images/Unit1/manku-icon-512.png',
   './Images/Unit1/manku.webp'
 ];
 
