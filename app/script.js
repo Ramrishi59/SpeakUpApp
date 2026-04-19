@@ -120,6 +120,44 @@ function formatPaymentAmount(amount, currency) {
   }
 }
 
+function getTimeRemainingText(expiresAt) {
+  const expiresAtMs = expiresAt ? new Date(expiresAt).getTime() : NaN;
+  if (!Number.isFinite(expiresAtMs)) return 'Not available';
+
+  const remainingMs = Math.max(0, expiresAtMs - Date.now());
+  const totalSeconds = Math.floor(remainingMs / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  if (hours > 0) {
+    return `${hours}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+  }
+
+  return `${minutes}m ${String(seconds).padStart(2, '0')}s`;
+}
+
+function startTrialCountdown() {
+  const node = document.getElementById('trial-countdown');
+  if (!node) return;
+
+  const expiresAt = node.dataset.expiresAt;
+  const update = () => {
+    node.textContent = getTimeRemainingText(expiresAt);
+    if (new Date(expiresAt).getTime() <= Date.now()) {
+      window.clearInterval(timerId);
+      if (typeof window.SUAuth?.refreshProfile === 'function') {
+        window.SUAuth.refreshProfile().finally(renderAccountStatus);
+      } else {
+        renderAccountStatus();
+      }
+    }
+  };
+
+  update();
+  const timerId = window.setInterval(update, 1000);
+}
+
 function setPaymentMessage(messageNode, text, state = '') {
   if (!messageNode) return;
   messageNode.textContent = text;
@@ -831,6 +869,7 @@ function renderAccountStatus() {
           <h3 class="premium-title">Speak Up Premium</h3>
           <p class="premium-sub">${license?.trialActive ? 'Your 24-hour trial is active.' : 'Every lesson is open on this account.'}</p>
           ${expText ? `<div class="price-row"><span class="price-label">${license?.trialActive ? 'Trial ends' : 'Access until'}</span><span class="price-value">${expText}</span></div>` : ''}
+          ${license?.trialActive && license?.trialExpiresAt ? `<div class="trial-countdown-row"><span>Time remaining</span><strong id="trial-countdown" data-expires-at="${license.trialExpiresAt}">${getTimeRemainingText(license.trialExpiresAt)}</strong></div>` : ''}
         </div>
       `
       : `
@@ -989,6 +1028,8 @@ function renderAccountStatus() {
         startRazorpayCheckout(buyButton, paymentStatus);
       });
     }
+
+    startTrialCountdown();
 
     document.getElementById('continue-learning-button')?.addEventListener('click', () => {
       const savedCard = getLessonCardById(lastOpenedUnitId) || { id: String(lastOpenedUnitId) };

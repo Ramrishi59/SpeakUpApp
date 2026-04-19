@@ -31,7 +31,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
-const TRIAL_DURATION_MS = 24 * 60 * 60 * 1000;
+const TRIAL_DURATION_MS = 5 * 60 * 1000;
 
 let authState = {
   isLoggedIn: false,
@@ -64,6 +64,13 @@ function getTrialExpiryIso() {
   return new Date(Date.now() + TRIAL_DURATION_MS).toISOString();
 }
 
+function getAuthTrialExpiresAt(user = auth.currentUser) {
+  const creationTime = user?.metadata?.creationTime;
+  const createdAtMs = toMillis(creationTime);
+  if (!Number.isFinite(createdAtMs)) return null;
+  return new Date(createdAtMs + TRIAL_DURATION_MS).toISOString();
+}
+
 function buildNewUserProfile({ username, email }) {
   const trialExpiresAt = getTrialExpiryIso();
   return {
@@ -92,13 +99,15 @@ async function loadUserProfile(uid) {
   const snap = await getDoc(ref);
 
   if (!snap.exists()) {
+    const authTrialExpiresAt = getAuthTrialExpiresAt();
+    const trialActive = Number.isFinite(toMillis(authTrialExpiresAt)) && toMillis(authTrialExpiresAt) > Date.now();
     currentProfile = null;
     licenseState = {
-      fullUnlock: false,
+      fullUnlock: trialActive,
       unlockedUnits: [],
-      licenseExpiresAt: null,
-      trialExpiresAt: null,
-      trialActive: false,
+      licenseExpiresAt: authTrialExpiresAt,
+      trialExpiresAt: authTrialExpiresAt,
+      trialActive,
       role: null
     };
     return null;
@@ -108,14 +117,17 @@ async function loadUserProfile(uid) {
   const expiresAt = currentProfile.licenseExpiresAt || null;
   const expiresAtMs = toMillis(expiresAt);
   const hasValidExpiry = expiresAtMs == null || (Number.isFinite(expiresAtMs) && expiresAtMs > Date.now());
-  const trialExpiresAt = currentProfile.trialExpiresAt || null;
+  const authTrialExpiresAt = getAuthTrialExpiresAt();
+  const trialExpiresAt = currentProfile.trialExpiresAt || authTrialExpiresAt || null;
   const trialExpiresAtMs = toMillis(trialExpiresAt);
-  const trialActive = expiresAtMs != null && Number.isFinite(trialExpiresAtMs) && trialExpiresAtMs > Date.now();
+  const trialActive = Number.isFinite(trialExpiresAtMs) && trialExpiresAtMs > Date.now();
+  const paidUnlock = currentProfile.fullUnlock === true && expiresAtMs == null;
+  const timedUnlock = currentProfile.fullUnlock === true && hasValidExpiry;
 
   licenseState = {
-    fullUnlock: currentProfile.fullUnlock === true && hasValidExpiry,
+    fullUnlock: paidUnlock || timedUnlock || trialActive,
     unlockedUnits: [],
-    licenseExpiresAt: expiresAt,
+    licenseExpiresAt: expiresAt || trialExpiresAt,
     trialExpiresAt,
     trialActive,
     role: currentProfile.role || null
@@ -372,6 +384,15 @@ function getProfile() {
   return currentProfile ? { ...currentProfile } : null;
 }
 
+function getDebugState() {
+  return {
+    auth: getAuthState(),
+    license: getLicense(),
+    profile: getProfile(),
+    authTrialExpiresAt: getAuthTrialExpiresAt()
+  };
+}
+
 function isEntitled() {
   return !!licenseState.fullUnlock;
 }
@@ -413,6 +434,7 @@ window.SUAuth = {
   getAuth: getAuthState,
   getLicense,
   getProfile,
+  getDebugState,
   isEntitled,
   mockGrantFullUnlock,
   mockRevokeUnlock

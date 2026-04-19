@@ -1233,6 +1233,29 @@ body {
     text-align: right;
 }
 
+.trial-countdown-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    margin: 10px 0 0;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff7de;
+    color: #5f3d00;
+}
+
+.trial-countdown-row span {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.trial-countdown-row strong {
+    color: #241d30;
+    font-size: 1.05rem;
+    text-align: right;
+}
+
 .cta-row,
 .account-actions {
     display: grid;
