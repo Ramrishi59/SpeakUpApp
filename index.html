@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SpeakUp App – Learn English the Fun Way!</title>
+<link rel="manifest" href="app/manifest.json">
+<meta name="theme-color" content="#007bff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SpeakUpApp">
+<link rel="apple-touch-icon" href="app/Images/Unit1/manku-icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -17,6 +23,7 @@
     --cream: #D0EBFF;
     --dark: #2D2D2D;
     --white: #FFFFFF;
+  }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -111,6 +118,26 @@
   .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #c94e1c !important; color: var(--white) !important; }
   .nav-cta-pink { background: var(--pink) !important; box-shadow: 0 4px 0 #c94e7a !important; }
   .nav-cta-pink:hover { box-shadow: 0 6px 0 #c94e7a !important; }
+  .nav-install-button {
+    width: 100%;
+    background: var(--green);
+    color: var(--white);
+    padding: 9px 18px;
+    border: none;
+    border-radius: 50px;
+    font: 800 0.93rem 'Nunito', sans-serif;
+    box-shadow: 0 4px 0 #049b76;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+  }
+  .nav-install-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #049b76;
+  }
+  .nav-install-button[hidden] {
+    display: none;
+  }
 
   /* ── HERO ── */
   #hero {
@@ -171,6 +198,22 @@
     cursor: pointer; transition: background 0.15s, color 0.15s; display: inline-block;
   }
   .btn-secondary:hover { background: var(--orange); color: var(--white); }
+  .install-message {
+    display: none;
+    width: min(100%, 520px);
+    margin-top: 18px;
+    padding: 14px 16px;
+    border: 2px solid var(--yellow);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--dark);
+    font-weight: 800;
+    line-height: 1.45;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+  .install-message.visible {
+    display: block;
+  }
   .hero-image {
     position: absolute;
     left: 50%;
@@ -182,7 +225,6 @@
     width: clamp(200px, 28vw, 380px);
     filter: drop-shadow(0 20px 40px rgba(255,107,53,0.3));
     animation: floatAnim 3s ease-in-out infinite;
-  }
   }
 
 
@@ -389,6 +431,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#testimonials">Reviews</a></li>
+      <li><button class="nav-install-button" type="button" data-install-button>Install App</button></li>
       <li><a href="#contact" class="nav-cta">Get Started 🚀</a></li>
       <li><a href="app/dashboard.html" target="_blank" class="nav-cta nav-cta-pink">Open App 📱</a></li>
     </ul>
@@ -407,8 +450,10 @@
     </h1>
     <p class="hero-subtitle">No boring rules. Just fun games and activities for kids aged 5 to 12.</p>
     <div class="hero-buttons">
+      <button class="btn-primary" type="button" data-install-button>Install App</button>
       <a href="#features" class="btn-secondary">See How It Works</a>
     </div>
+    <p class="install-message" id="install-message" role="status" aria-live="polite"></p>
   </div>
   <div class="hero-image">
     <img class="hero-mascot" src="app/Images/repeating_assets/flyingmanku.png" alt="Flying Manku mascot">
@@ -537,6 +582,89 @@
       mobileMenuToggle?.setAttribute('aria-label', 'Open menu');
     });
   });
+
+  document.querySelectorAll('[data-install-button]').forEach((button) => {
+    button.addEventListener('click', () => {
+      nav?.classList.remove('menu-open');
+      mobileMenuToggle?.setAttribute('aria-expanded', 'false');
+      mobileMenuToggle?.setAttribute('aria-label', 'Open menu');
+    });
+  });
+
+  let deferredInstallPrompt = null;
+  const installButtons = Array.from(document.querySelectorAll('[data-install-button]'));
+  const installMessage = document.getElementById('install-message');
+
+  function isIosDevice() {
+    return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  }
+
+  function isStandaloneApp() {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  }
+
+  function showInstallMessage(message) {
+    if (!installMessage) return;
+    installMessage.textContent = message;
+    installMessage.classList.add('visible');
+  }
+
+  function updateInstallButtons() {
+    if (!isStandaloneApp()) return;
+    installButtons.forEach((button) => {
+      button.textContent = 'App Installed';
+      button.disabled = true;
+    });
+  }
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+  });
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    showInstallMessage('SpeakUpApp is installed. Open it from your home screen.');
+    updateInstallButtons();
+  });
+
+  installButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+      if (isStandaloneApp()) {
+        showInstallMessage('SpeakUpApp is already installed. Open it from your home screen.');
+        return;
+      }
+
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        await deferredInstallPrompt.userChoice;
+        deferredInstallPrompt = null;
+        return;
+      }
+
+      if (isIosDevice()) {
+        showInstallMessage('On iPhone, tap the Share button in Safari, then choose Add to Home Screen.');
+        return;
+      }
+
+      showInstallMessage('If the install prompt does not appear, open the app menu in your browser and choose Install app or Add to Home screen.');
+    });
+  });
+
+  updateInstallButtons();
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
+      const isLocalDev = ["localhost", "127.0.0.1", ""].includes(location.hostname);
+      if (isLocalDev) return;
+
+      try {
+        await navigator.serviceWorker.register('app/service-worker.js', { scope: 'app/' });
+      } catch (error) {
+        console.error('Service Worker registration failed:', error);
+      }
+    });
+  }
 
   // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
