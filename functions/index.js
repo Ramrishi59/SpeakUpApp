@@ -10,6 +10,7 @@ admin.initializeApp();
 
 const razorpayKeySecret = defineSecret("RAZORPAY_KEY_SECRET");
 const db = admin.firestore();
+const PURCHASE_DURATION_MS = 5 * 60 * 1000;
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -215,7 +216,7 @@ exports.verifyPayment = onRequest({ secrets: [razorpayKeySecret] }, async (req, 
 
     batch.set(userRef, {
       fullUnlock: true,
-      licenseExpiresAt: null,
+      licenseExpiresAt: new Date(Date.now() + PURCHASE_DURATION_MS).toISOString(),
       trialExpiresAt: null,
       updatedAt: verifiedAt
     }, { merge: true });
