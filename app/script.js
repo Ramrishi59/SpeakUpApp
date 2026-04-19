@@ -371,10 +371,16 @@ function getLessonCardById(lessonId) {
 function getLessonProgressState(lessonId) {
   const profile = getProfileState();
   const normalizedLessonId = String(lessonId);
+  const legacyOrderId = normalizedLessonId.startsWith('order-')
+    ? normalizedLessonId.replace(/^order-/, '')
+    : null;
   const completedUnits = Array.isArray(profile?.completedUnits) ? profile.completedUnits.map(String) : [];
   const openedUnits = Array.isArray(profile?.openedUnits) ? profile.openedUnits.map(String) : [];
-  const isCompleted = completedUnits.includes(normalizedLessonId);
-  const isOpened = openedUnits.includes(normalizedLessonId) || String(profile?.lastOpenedUnit || '') === normalizedLessonId;
+  const isCompleted = completedUnits.includes(normalizedLessonId) || (legacyOrderId ? completedUnits.includes(legacyOrderId) : false);
+  const isOpened = openedUnits.includes(normalizedLessonId)
+    || (legacyOrderId ? openedUnits.includes(legacyOrderId) : false)
+    || String(profile?.lastOpenedUnit || '') === normalizedLessonId
+    || (legacyOrderId ? String(profile?.lastOpenedUnit || '') === legacyOrderId : false);
   const isInProgress = !isCompleted && isOpened;
 
   return { isCompleted, isInProgress };
@@ -382,7 +388,11 @@ function getLessonProgressState(lessonId) {
 
 function getSavedLessonPercent(profile, lessonId) {
   const normalizedLessonId = String(lessonId);
-  const savedProgress = profile?.lessonProgress?.[normalizedLessonId];
+  const legacyOrderId = normalizedLessonId.startsWith('order-')
+    ? normalizedLessonId.replace(/^order-/, '')
+    : null;
+  const savedProgress = profile?.lessonProgress?.[normalizedLessonId]
+    || (legacyOrderId ? profile?.lessonProgress?.[legacyOrderId] : null);
   const explicitPercent = Number(savedProgress?.percent);
 
   if (Number.isFinite(explicitPercent)) {

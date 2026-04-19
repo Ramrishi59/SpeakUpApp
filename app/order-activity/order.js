@@ -3,6 +3,7 @@
 // =====================
 const params = new URLSearchParams(window.location.search);
 const activityId = params.get("activity") || "activity1";
+const progressUnitId = `order-${activityId}`;
 const activityNumberMatch = activityId.match(/\d+/);
 const activityNumber = activityNumberMatch ? activityNumberMatch[0] : "1";
 const returnCategory = params.get("from");
@@ -100,6 +101,10 @@ let score = 0;
 let answered = false;
 let hadWrongAttempt = false;
 let pendingRenderIndex = null;
+let persistedProgressIndex = -1;
+let progressSaveChain = Promise.resolve();
+let completionSaved = false;
+let completionSavePromise = null;
 
 // mapping from button slot -> original word index
 let map = [];
@@ -298,6 +303,50 @@ function updateProgressUI() {
   }
 }
 
+async function persistActivityProgress(index = idx) {
+  if (index <= persistedProgressIndex || ITEMS.length === 0) return;
+  persistedProgressIndex = index;
+
+  progressSaveChain = progressSaveChain
+    .catch(() => {})
+    .then(async () => {
+      try {
+        await window.SUAuth?.ready;
+        if (!window.SUAuth?.saveProgress) return;
+        await window.SUAuth.saveProgress(progressUnitId, index, ITEMS.length);
+      } catch (error) {
+        console.warn("Could not save sentence activity progress.", error);
+      }
+    });
+
+  await progressSaveChain;
+}
+
+async function completeActivity() {
+  if (completionSaved) return;
+  if (completionSavePromise) return completionSavePromise;
+
+  completionSavePromise = (async () => {
+    try {
+      await window.SUAuth?.ready;
+      if (!window.SUAuth?.markUnitCompleted) {
+        throw new Error("Sentence activity completion tracking is unavailable.");
+      }
+      await progressSaveChain.catch(() => {});
+      if (window.SUAuth.saveProgress) {
+        await window.SUAuth.saveProgress(progressUnitId, Math.max(ITEMS.length - 1, 0), ITEMS.length);
+      }
+      await window.SUAuth.markUnitCompleted(progressUnitId);
+      completionSaved = true;
+    } catch (error) {
+      completionSavePromise = null;
+      console.warn("Could not save completed sentence activity.", error);
+    }
+  })();
+
+  return completionSavePromise;
+}
+
 function resetWordUI(it) {
   selectionIndices = [];
   answered = false;
@@ -340,6 +389,7 @@ function render(i) {
   qEl.textContent = it.question || "Tap the words in order to make the sentence.";
   pill.textContent = `${i + 1}/${ITEMS.length}`;
   updateProgressUI();
+  persistActivityProgress(i);
 
   const words = it.words || [];
   updateWordGridDensity(words);
@@ -439,6 +489,7 @@ function handleWordTap(slot) {
 function showResults() {
   const total = ITEMS.length || 1;
   const pct = Math.round((score / total) * 100);
+  completeActivity();
   if (resultsScore) {
     resultsScore.textContent = `${score}/${total}`;
   }
