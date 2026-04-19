@@ -1479,6 +1479,8 @@ async function loadDashboardLessons() {
           window.location.href = 'dashboard.html';
         } else if (target === 'login') {
           openAccountScreen();
+        } else if (target === 'voice-mode') {
+          window.location.href = 'voice-demo/';
         } else {
           alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
         }
