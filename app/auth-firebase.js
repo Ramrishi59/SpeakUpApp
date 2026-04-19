@@ -72,16 +72,15 @@ function getAuthTrialExpiresAt(user = auth.currentUser) {
 }
 
 function buildNewUserProfile({ username, email }) {
-  const trialExpiresAt = getTrialExpiryIso();
   return {
     username,
     email: email || "",
     role: "user",
-    fullUnlock: true,
+    fullUnlock: false,
     unlockedUnits: [],
-    licenseExpiresAt: trialExpiresAt,
+    licenseExpiresAt: null,
     trialStartedAt: new Date().toISOString(),
-    trialExpiresAt,
+    trialExpiresAt: getTrialExpiryIso(),
     avatarName: "Manku",
     avatarSrc: "Images/dashboard thumbnails/Manku.webp",
 
@@ -92,6 +91,32 @@ function buildNewUserProfile({ username, email }) {
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp()
   };
+}
+
+function buildMinimalUserProfile({ username, email }) {
+  return {
+    username,
+    email: email || "",
+    avatarName: "Manku",
+    avatarSrc: "Images/dashboard thumbnails/Manku.webp",
+    lastOpenedUnit: null,
+    lastScreenIndex: 0,
+    openedUnits: [],
+    completedUnits: [],
+    createdAt: serverTimestamp(),
+    updatedAt: serverTimestamp()
+  };
+}
+
+async function createUserProfile(uid, profileInput) {
+  const ref = doc(db, "users", uid);
+
+  try {
+    await setDoc(ref, buildNewUserProfile(profileInput));
+  } catch (error) {
+    console.warn("Full profile write failed; retrying with a minimal profile.", error);
+    await setDoc(ref, buildMinimalUserProfile(profileInput));
+  }
 }
 
 async function loadUserProfile(uid) {
@@ -221,10 +246,10 @@ async function loginWithGoogle() {
     if (!existingProfile) {
       const fallbackUsername = user.displayName || (user.email ? user.email.split("@")[0] : "Google User");
 
-      await setDoc(doc(db, "users", user.uid), buildNewUserProfile({
+      await createUserProfile(user.uid, {
         username: fallbackUsername,
         email: user.email || ""
-      }));
+      });
       await loadUserProfile(user.uid);
     }
   } catch (error) {
@@ -248,10 +273,10 @@ async function signupWithEmail(username, email, password) {
   let profileSynced = true;
 
   try {
-    await setDoc(doc(db, "users", user.uid), buildNewUserProfile({
+    await createUserProfile(user.uid, {
       username,
       email: user.email || email
-    }));
+    });
     await loadUserProfile(user.uid);
   } catch (error) {
     profileSynced = false;
