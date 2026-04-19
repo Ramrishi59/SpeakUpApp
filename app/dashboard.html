@@ -87,7 +87,24 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {
+          const isLocalDev = ["localhost", "127.0.0.1", ""].includes(location.hostname);
+
           try {
+            if (isLocalDev) {
+              const registrations = await navigator.serviceWorker.getRegistrations();
+              await Promise.all(registrations.map(registration => registration.unregister()));
+
+              if ("caches" in window) {
+                const cacheNames = await caches.keys();
+                await Promise.all(
+                  cacheNames
+                    .filter(name => name.startsWith("speakupapp-cache-"))
+                    .map(name => caches.delete(name))
+                );
+              }
+              return;
+            }
+
             await navigator.serviceWorker.register('./service-worker.js');
           } catch (error) {
             console.error('Service Worker registration failed:', error);

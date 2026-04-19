@@ -1,0 +1,96 @@
+{
+    "intro": {
+      "image": "Images/activity10/1.webp",
+      "audio": "Audio/activity10/01_Chapter 1.mp3",
+      "alt": "Manku introduces the You are / We are / They are choose-the-correct-option game"
+    },
+  
+    "outro": {
+      "image": "Images/activity10/12.webp",
+      "audio": "Audio/activity10/12_Chapter 1.mp3",
+      "alt": "Manku praises the learner for using You are, We are, and They are correctly"
+    },
+  
+    "items": [
+      {
+        "image": "Images/activity10/2.webp",
+        "choices": ["We are boys.", "We are girls.", "They are women."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity10/question.mp3",
+        "audioCorrect": "Audio/activity10/02_Chapter 1.mp3",
+        "audioWrong": "Audio/activity10/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity10/3.webp",
+        "choices": ["We are boys.", "We are girls.", "They are men."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity10/question.mp3",
+        "audioCorrect": "Audio/activity10/03_Chapter 1.mp3",
+        "audioWrong": "Audio/activity10/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity10/4.webp",
+        "choices": ["You are a girl.", "You are a boy.", "We are boys."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity10/question.mp3",
+        "audioCorrect": "Audio/activity10/04_Chapter 1.mp3",
+        "audioWrong": "Audio/activity10/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity10/5.webp",
+        "choices": ["You are a boy.", "You are a girl.", "They are girls."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity10/question.mp3",
+        "audioCorrect": "Audio/activity10/05_Chapter 1.mp3",
+        "audioWrong": "Audio/activity10/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity10/6.webp",
+        "choices": ["We are women.", "We are men.", "They are boys."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity10/question.mp3",
+        "audioCorrect": "Audio/activity10/06_Chapter 1.mp3",
+        "audioWrong": "Audio/activity10/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity10/7.webp",
+        "choices": ["We are girls.", "We are women.", "They are men."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity10/question.mp3",
+        "audioCorrect": "Audio/activity10/07_Chapter 1.mp3",
+        "audioWrong": "Audio/activity10/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity10/8.webp",
+        "choices": ["They are boys.", "We are boys.", "They are girls."],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity10/question.mp3",
+        "audioCorrect": "Audio/activity10/08_Chapter 1.mp3",
+        "audioWrong": "Audio/activity10/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity10/9.webp",
+        "choices": ["They are men.", "They are girls.", "We are girls."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity10/question.mp3",
+        "audioCorrect": "Audio/activity10/09_Chapter 1.mp3",
+        "audioWrong": "Audio/activity10/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity10/10.webp",
+        "choices": ["They are bees.", "They are butterflies.", "They are birds."],
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity10/question.mp3",
+        "audioCorrect": "Audio/activity10/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity10/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity10/11.webp",
+        "choices": ["They are apples.", "They are mangoes.", "They are pineapples."],
+        "correctIndex": 2,
+        "audioQuestion": "Audio/activity10/question.mp3",
+        "audioCorrect": "Audio/activity10/11_Chapter 1.mp3",
+        "audioWrong": "Audio/activity10/tryagain.mp3"
+      }
+    ]
+  }

@@ -94,6 +94,8 @@ let answered = false; // whether current item has been answered
 let score = 0;        // total correct answers
 let hadWrongAttempt = false; // track if user already missed this question
 let pendingRenderIndex = null;
+const creditedQuestions = new Set();
+const wrongAttemptQuestions = new Set();
 
 // mapping from visible buttons 0–2 to original choice indices
 let map = [0, 1, 2];
@@ -166,7 +168,7 @@ function render(i) {
   if (!it) return;
 
   answered = false;
-  hadWrongAttempt = false;
+  hadWrongAttempt = wrongAttemptQuestions.has(i);
   nextBtn.disabled = true;   // require a choice before moving ahead
 
   // image + question
@@ -205,7 +207,8 @@ function render(i) {
 }
 
 function updateProgressUI() {
-  const pct = Math.round(((idx) / ITEMS.length) * 100);
+  score = creditedQuestions.size;
+  const pct = ITEMS.length > 0 ? Math.round(((idx) / ITEMS.length) * 100) : 0;
   if (progressFill) {
     progressFill.style.width = `${pct}%`;
   }
@@ -226,10 +229,9 @@ function onChoose(slot) {
   const correct = (chosenOriginalIndex === it.correctIndex);
 
   if (correct) {
-    const earnedPoint = !hadWrongAttempt;
+    const earnedPoint = !hadWrongAttempt && !creditedQuestions.has(idx);
     if (earnedPoint) {
-      score += 1;
-    } else {
+      creditedQuestions.add(idx);
     }
     updateProgressUI();
 
@@ -262,6 +264,7 @@ function onChoose(slot) {
     answered = true;
   } else {
     hadWrongAttempt = true;
+    wrongAttemptQuestions.add(idx);
     choiceEls[slot].classList.add("incorrect");
     choiceEls[slot].disabled = true; // keep other options active
     playAudio(WRONG_SFX);
@@ -276,7 +279,8 @@ function onChoose(slot) {
 // =====================
 function showResults() {
   const total = ITEMS.length;
-  const pct = Math.round((score / total) * 100);
+  score = creditedQuestions.size;
+  const pct = total > 0 ? Math.round((score / total) * 100) : 0;
 
   resultsText.textContent = `You got ${score} out of ${total} correct (${pct}%).`;
 
@@ -357,6 +361,8 @@ nextBtn.addEventListener("click", () => {
 resetBtn.addEventListener("click", () => {
   idx = 0;
   score = 0;
+  creditedQuestions.clear();
+  wrongAttemptQuestions.clear();
   hideResults();
   render(idx);
 });

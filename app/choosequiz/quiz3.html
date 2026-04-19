@@ -29,14 +29,12 @@
     <!-- INTRO CARD -->
     <section id="introScreen" class="card intro-card" aria-live="polite">
       <div class="intro-image-wrap">
-        <!-- Update src to your actual intro image path -->
-        <img id="introImage" src="Images/1-2.webp" alt="Manku welcoming the learner" />
+        <img id="introImage" src="Images/activity1/1-2.webp" alt="Manku welcoming the learner" />
       </div>
 
       <!-- Intro audio: Manku saying the lines -->
       <audio id="introAudio" preload="auto">
-        <!-- Update src to your actual audio path -->
-        <source src="Audio/01_Chapter 1.mp3" type="audio/mpeg" />
+        <source src="Audio/activity1/01_Chapter 1.mp3" type="audio/mpeg" />
       </audio>
 
       <div class="intro-actions">
@@ -169,7 +167,24 @@
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', async () => {
+        const isLocalDev = ["localhost", "127.0.0.1", ""].includes(location.hostname);
+
         try {
+          if (isLocalDev) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            await Promise.all(registrations.map(registration => registration.unregister()));
+
+            if ("caches" in window) {
+              const cacheNames = await caches.keys();
+              await Promise.all(
+                cacheNames
+                  .filter(name => name.startsWith("speakupapp-cache-"))
+                  .map(name => caches.delete(name))
+              );
+            }
+            return;
+          }
+
           await navigator.serviceWorker.register('../service-worker.js');
         } catch (error) {
           console.error('Service Worker registration failed:', error);

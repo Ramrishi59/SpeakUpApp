@@ -167,23 +167,9 @@
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity11", 
-      "id": "activity11", 
-      "title": "Choose the right option -11"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity9", 
-      "id": "activity9", 
-      "title": "Choose the right option -9"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity8", 
-      "id": "activity8", 
-      "title": "Choose the right option -8"
+      "route": "choosequiz/quiz3.html?activity=activity6", 
+      "id": "activity6", 
+      "title": "Choose the right option -6"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
@@ -195,10 +181,35 @@
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity6", 
-      "id": "activity6", 
-      "title": "Choose the right option -6"
+      "route": "choosequiz/quiz3.html?activity=activity8", 
+      "id": "activity8", 
+      "title": "Choose the right option -8"
     }, 
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
+      "description": "activity", 
+      "route": "choosequiz/quiz3.html?activity=activity9", 
+      "id": "activity9", 
+      "title": "Choose the right option -9"
+    }, 
+
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
+      "description": "activity", 
+      "route": "choosequiz/quiz3.html?activity=activity10", 
+      "id": "activity10", 
+      "title": "Choose the right option -10"
+    }, 
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
+      "description": "activity", 
+      "route": "choosequiz/quiz3.html?activity=activity11", 
+      "id": "activity11", 
+      "title": "Choose the right option -11"
+    }, 
+
+
+
     
     {
       "category": "order", 
