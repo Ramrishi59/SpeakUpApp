@@ -44,6 +44,7 @@ const progressStats = document.getElementById("progressStats");
 const introImgEl = document.getElementById("introImage");
 const introAudioEl = document.getElementById("introAudio");
 const homeBtn = document.getElementById("homeBtn");
+const quizCard = document.getElementById("quizCard");
 const mankuCorner = document.getElementById("mankuCorner");
 const SHARED_INTRO_IMAGE = "Images/intro.png";
 const SHARED_INTRO_AUDIO = "Audio/intro/intro.mp3";
@@ -225,6 +226,7 @@ function updateWordGridDensity(words) {
   const totalChars = (words || []).join(" ").length;
   const compact = totalWords > 4 || totalChars > 20;
   wordGrid.classList.toggle("compact", compact);
+  quizCard?.classList.toggle("compact-words", compact);
 }
 
 function getSentenceAudio(it, index) {
