@@ -83,7 +83,7 @@ body::after {
 }
 
 .activity-home {
-  --home-size: calc(var(--btn-h) * 1.18);
+  --home-size: calc(var(--btn-h) * 1.32);
   flex: 0 0 var(--home-size);
   width: var(--home-size);
   height: var(--home-size);
