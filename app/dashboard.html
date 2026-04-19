@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css?v=3">
     <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="SpeakUpApp">
+    <link rel="apple-touch-icon" href="Images/Unit1/m.png">
 </head>
 <body>
 
@@ -83,15 +88,9 @@
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', async () => {
           try {
-            const registrations = await navigator.serviceWorker.getRegistrations();
-            await Promise.all(registrations.map((registration) => registration.unregister()));
-
-            if (window.caches?.keys) {
-              const cacheKeys = await caches.keys();
-              await Promise.all(cacheKeys.map((key) => caches.delete(key)));
-            }
+            await navigator.serviceWorker.register('./service-worker.js');
           } catch (error) {
-            console.error('Service Worker cleanup failed:', error);
+            console.error('Service Worker registration failed:', error);
           }
         });
       }
