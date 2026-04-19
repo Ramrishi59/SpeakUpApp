@@ -57,6 +57,8 @@ const choiceEls = [0, 1, 2].map(i => document.getElementById("c" + i));
 // Results overlay
 const resultsOverlay = document.getElementById("resultsOverlay");
 const resultsText = document.getElementById("resultsText");
+const resultsImage = document.getElementById("resultsImage");
+const resultsScore = document.getElementById("resultsScore");
 const restartBtn = document.getElementById("restartBtn");
 const reviewBtn = document.getElementById("reviewBtn");
 
@@ -96,6 +98,10 @@ let hadWrongAttempt = false; // track if user already missed this question
 let pendingRenderIndex = null;
 const creditedQuestions = new Set();
 const wrongAttemptQuestions = new Set();
+let persistedProgressIndex = -1;
+let progressSaveChain = Promise.resolve();
+let completionSaved = false;
+let completionSavePromise = null;
 
 // mapping from visible buttons 0–2 to original choice indices
 let map = [0, 1, 2];
@@ -119,6 +125,11 @@ correctAudio.preload = "auto";
 const RIGHT_SFX = "effects/Right.mp3";
 const WRONG_SFX = "effects/Wrong.mp3";
 const CLAP_SFX = "effects/Clap.mp3";
+const NICE_EFFORT_SFX = "../order-activity/Audio/effects/nice_effort.mp3";
+const EXCELLENT_SFX = "../order-activity/Audio/effects/excellent_above.mp3";
+const NICE_EFFORT_SCORE_CARD = "../order-activity/Images/score2.webp";
+const EXCELLENT_SCORE_CARD = "../order-activity/Images/score.webp";
+const EXCELLENT_SCORE_THRESHOLD = 0.8;
 
 function playAudio(path, onEnded) {
   if (!path) {
@@ -177,6 +188,7 @@ function render(i) {
   qEl.textContent = it.question || "";
   pill.textContent = `${i + 1}/${ITEMS.length}`;
   updateProgressUI();
+  persistActivityProgress(i);
 
   // shuffle choices for this render
   shuffle3();
@@ -217,6 +229,50 @@ function updateProgressUI() {
   }
 }
 
+async function persistActivityProgress(index = idx) {
+  if (index <= persistedProgressIndex || ITEMS.length === 0) return;
+  persistedProgressIndex = index;
+
+  progressSaveChain = progressSaveChain
+    .catch(() => {})
+    .then(async () => {
+      try {
+        await window.SUAuth?.ready;
+        if (!window.SUAuth?.saveProgress) return;
+        await window.SUAuth.saveProgress(activityId, index, ITEMS.length);
+      } catch (error) {
+        console.warn("Could not save quiz progress.", error);
+      }
+    });
+
+  await progressSaveChain;
+}
+
+async function completeActivity() {
+  if (completionSaved) return;
+  if (completionSavePromise) return completionSavePromise;
+
+  completionSavePromise = (async () => {
+    try {
+      await window.SUAuth?.ready;
+      if (!window.SUAuth?.markUnitCompleted) {
+        throw new Error("Quiz completion tracking is unavailable.");
+      }
+      await progressSaveChain.catch(() => {});
+      if (window.SUAuth.saveProgress) {
+        await window.SUAuth.saveProgress(activityId, Math.max(ITEMS.length - 1, 0), ITEMS.length);
+      }
+      await window.SUAuth.markUnitCompleted(activityId);
+      completionSaved = true;
+    } catch (error) {
+      completionSavePromise = null;
+      console.warn("Could not save completed quiz.", error);
+    }
+  })();
+
+  return completionSavePromise;
+}
+
 // =====================
 // CHOICE HANDLING
 // =====================
@@ -243,6 +299,7 @@ function onChoose(slot) {
       if (idx < ITEMS.length - 1) {
         idx += 1;
         render(idx);
+        persistActivityProgress(idx);
       } else {
         showResults();
       }
@@ -281,15 +338,29 @@ function showResults() {
   const total = ITEMS.length;
   score = creditedQuestions.size;
   const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+  const isExcellentScore = total > 0 && (score / total) >= EXCELLENT_SCORE_THRESHOLD;
+  completeActivity();
 
-  resultsText.textContent = `You got ${score} out of ${total} correct (${pct}%).`;
+  if (resultsScore) {
+    resultsScore.textContent = `${score}/${total}`;
+  }
+  if (resultsImage) {
+    resultsImage.src = isExcellentScore ? EXCELLENT_SCORE_CARD : NICE_EFFORT_SCORE_CARD;
+  }
+  if (resultsText) {
+    resultsText.textContent = `You got ${score} out of ${total} correct (${pct}%).`;
+  }
 
   const revealResults = () => {
     resultsOverlay.classList.remove("hidden");
     document.body.classList.add("overlay-open");
     reviewBtn?.focus();
-    playAudio(CLAP_SFX);
+    const resultSfx = isExcellentScore ? EXCELLENT_SFX : NICE_EFFORT_SFX;
+    playAudio(resultSfx, () => {
+      playAudio(CLAP_SFX);
+    });
     popConfetti();
+    pill?.classList.add("hidden");
   };
 
   if (outroData) {
@@ -311,13 +382,8 @@ function showResults() {
       revealResults();
     };
 
-    // Safety timer so we don't get stuck
-    const fallback = setTimeout(finalize, 3000);
     if (outroData.audio) {
-      playAudio(outroData.audio, () => {
-        clearTimeout(fallback);
-        finalize();
-      });
+      playAudio(outroData.audio, finalize);
     } else {
       setTimeout(finalize, 1000);
     }
@@ -330,6 +396,7 @@ function showResults() {
 function hideResults() {
   resultsOverlay.classList.add("hidden");
   document.body.classList.remove("overlay-open");
+  pill?.classList.remove("hidden");
 }
 
 // =====================
@@ -352,6 +419,7 @@ nextBtn.addEventListener("click", () => {
   if (idx < ITEMS.length - 1) {
     idx += 1;
     render(idx);
+    persistActivityProgress(idx);
   } else {
     // At the end → show results
     showResults();
@@ -363,12 +431,18 @@ resetBtn.addEventListener("click", () => {
   score = 0;
   creditedQuestions.clear();
   wrongAttemptQuestions.clear();
+  persistedProgressIndex = -1;
+  progressSaveChain = Promise.resolve();
+  completionSaved = false;
+  completionSavePromise = null;
   hideResults();
   render(idx);
+  persistActivityProgress(idx);
 });
 
 // Results overlay buttons
-restartBtn?.addEventListener("click", () => {
+restartBtn?.addEventListener("click", async () => {
+  await completeActivity();
   window.location.href = returnUrl;
 });
 
