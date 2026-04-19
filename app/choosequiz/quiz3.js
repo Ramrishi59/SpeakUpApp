@@ -327,7 +327,7 @@ function onChoose(slot) {
     playAudio(WRONG_SFX);
 
     // Keep answered false so user can keep choosing
-    nextBtn.disabled = false; // allow moving ahead after any choice
+    nextBtn.disabled = true;
   }
 }
 
