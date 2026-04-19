@@ -2,6 +2,7 @@ let dashboardLessons = [];
 let rerenderDashboard = null;
 let dashboardLoadError = "";
 let activeDashboardFilter = "all";
+let accessCountdownTimerId = null;
 
 const INITIAL_THUMBNAIL_LOAD_COUNT = 6;
 const THUMBNAIL_PLACEHOLDER_SRC = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='68' height='68' viewBox='0 0 68 68'%3E%3Crect width='68' height='68' rx='8' fill='%23edf6ff'/%3E%3C/svg%3E";
@@ -137,15 +138,26 @@ function getTimeRemainingText(expiresAt) {
   return `${minutes}m ${String(seconds).padStart(2, '0')}s`;
 }
 
-function startTrialCountdown() {
-  const node = document.getElementById('trial-countdown');
+function startAccessCountdown() {
+  if (accessCountdownTimerId) {
+    window.clearInterval(accessCountdownTimerId);
+    accessCountdownTimerId = null;
+  }
+
+  const node = document.getElementById('access-countdown');
   if (!node) return;
 
   const expiresAt = node.dataset.expiresAt;
+  const expiresAtMs = expiresAt ? new Date(expiresAt).getTime() : NaN;
+  if (!Number.isFinite(expiresAtMs)) return;
+
   const update = () => {
     node.textContent = getTimeRemainingText(expiresAt);
-    if (new Date(expiresAt).getTime() <= Date.now()) {
-      window.clearInterval(timerId);
+    if (expiresAtMs <= Date.now()) {
+      if (accessCountdownTimerId) {
+        window.clearInterval(accessCountdownTimerId);
+        accessCountdownTimerId = null;
+      }
       if (typeof window.SUAuth?.refreshProfile === 'function') {
         window.SUAuth.refreshProfile().finally(renderAccountStatus);
       } else {
@@ -155,7 +167,7 @@ function startTrialCountdown() {
   };
 
   update();
-  const timerId = window.setInterval(update, 1000);
+  accessCountdownTimerId = window.setInterval(update, 1000);
 }
 
 function setPaymentMessage(messageNode, text, state = '') {
@@ -869,7 +881,7 @@ function renderAccountStatus() {
           <h3 class="premium-title">Speak Up Premium</h3>
           <p class="premium-sub">${license?.trialActive ? 'Your 24-hour trial is active.' : 'Every lesson is open on this account.'}</p>
           ${expText ? `<div class="price-row"><span class="price-label">${license?.trialActive ? 'Trial ends' : 'Access until'}</span><span class="price-value">${expText}</span></div>` : ''}
-          ${license?.trialActive && license?.trialExpiresAt ? `<div class="trial-countdown-row"><span>Time remaining</span><strong id="trial-countdown" data-expires-at="${license.trialExpiresAt}">${getTimeRemainingText(license.trialExpiresAt)}</strong></div>` : ''}
+          ${license?.licenseExpiresAt ? `<div class="trial-countdown-row"><span>Time remaining</span><strong id="access-countdown" data-expires-at="${license.licenseExpiresAt}">${getTimeRemainingText(license.licenseExpiresAt)}</strong></div>` : ''}
         </div>
       `
       : `
@@ -1029,7 +1041,7 @@ function renderAccountStatus() {
       });
     }
 
-    startTrialCountdown();
+    startAccessCountdown();
 
     document.getElementById('continue-learning-button')?.addEventListener('click', () => {
       const savedCard = getLessonCardById(lastOpenedUnitId) || { id: String(lastOpenedUnitId) };
