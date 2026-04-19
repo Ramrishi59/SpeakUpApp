@@ -10,7 +10,7 @@ admin.initializeApp();
 
 const razorpayKeySecret = defineSecret("RAZORPAY_KEY_SECRET");
 const db = admin.firestore();
-const PURCHASE_DURATION_MS = 5 * 60 * 1000;
+const PURCHASE_DURATION_MS = 90 * 24 * 60 * 60 * 1000;
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",

@@ -31,7 +31,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
-const TRIAL_DURATION_MS = 5 * 60 * 1000;
+const TRIAL_DURATION_MS = 24 * 60 * 60 * 1000;
 
 let authState = {
   isLoggedIn: false,

@@ -334,7 +334,7 @@ function render(i) {
   if (!it) return;
 
   hadWrongAttempt = false;
-  nextBtn.disabled = false;
+  nextBtn.disabled = true;
   mankuCorner?.classList.remove("manku-happy", "manku-wrong", "manku-celebrate");
 
   qEl.textContent = it.question || "Tap the words in order to make the sentence.";
@@ -414,6 +414,7 @@ function handleWordTap(slot) {
   vibrate(30);
 
   const advance = () => {
+    nextBtn.disabled = false;
     if (idx < ITEMS.length - 1) {
       idx += 1;
       render(idx);
@@ -496,6 +497,7 @@ prevBtn.addEventListener("click", () => {
 });
 
 nextBtn.addEventListener("click", () => {
+  if (nextBtn.disabled) return;
   if (idx < ITEMS.length - 1) {
     idx += 1;
     render(idx);
