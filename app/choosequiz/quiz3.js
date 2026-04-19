@@ -13,18 +13,15 @@ let ITEMS = [];
 let dataLoaded = false;
 let loadError = false;
 let introData = null;
-let outroData = null;
 const dataPromise = fetch(DATA_URL)
   .then(res => res.json())
   .then(json => {
     if (Array.isArray(json)) {
       ITEMS = json;
       introData = json.intro || null;
-      outroData = json.outro || null;
     } else {
       ITEMS = json?.items || [];
       introData = json?.intro || null;
-      outroData = json?.outro || null;
     }
     dataLoaded = true;
   })
@@ -362,33 +359,6 @@ function showResults() {
     popConfetti();
     pill?.classList.add("hidden");
   };
-
-  if (outroData) {
-    // Swap main image to outro visual
-    if (outroData.image && imgEl) {
-      imgEl.src = outroData.image;
-      imgEl.alt = outroData.alt || "Great job!";
-    }
-
-    // Disable nav while outro plays
-    choiceEls.forEach(btn => btn.disabled = true);
-    nextBtn.disabled = true;
-    prevBtn.disabled = true;
-
-    let revealed = false;
-    const finalize = () => {
-      if (revealed) return;
-      revealed = true;
-      revealResults();
-    };
-
-    if (outroData.audio) {
-      playAudio(outroData.audio, finalize);
-    } else {
-      setTimeout(finalize, 1000);
-    }
-    return;
-  }
 
   revealResults();
 }
