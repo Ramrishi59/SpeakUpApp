@@ -103,7 +103,6 @@ const els = {
   transcriptText: document.getElementById("transcriptText"),
   askBtn: document.getElementById("askBtn"),
   micBtn: document.getElementById("micBtn"),
-  repeatBtn: document.getElementById("repeatBtn"),
   prevBtn: document.getElementById("prevBtn"),
   nextBtn: document.getElementById("nextBtn"),
   resetBtn: document.getElementById("resetBtn"),
@@ -374,7 +373,6 @@ function setSupportState() {
 
 els.askBtn.addEventListener("click", () => speak(questions[index].ask));
 els.micBtn.addEventListener("click", startListening);
-els.repeatBtn.addEventListener("click", () => speak(lastReply));
 els.prevBtn.addEventListener("click", () => {
   if (index > 0) {
     index -= 1;

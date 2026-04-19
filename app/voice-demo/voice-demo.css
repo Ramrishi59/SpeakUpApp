@@ -366,9 +366,14 @@ h2 {
   flex-wrap: wrap;
 }
 
+.action-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+}
+
 .btn {
   min-height: 54px;
-  flex: 1 1 150px;
+  width: 100%;
   border: 0;
   border-radius: 18px;
   padding: 0 18px;
@@ -572,6 +577,10 @@ h2 {
   .btn,
   .answer-chip {
     flex-basis: 0;
+  }
+
+  .action-row {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   }
 
   .btn {
