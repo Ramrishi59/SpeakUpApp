@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#00a6a6" />
+  <title>SpeakUp Voice Practice</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="apple-touch-icon" href="../Images/Unit1/manku-icon-192.png" />
+  <link rel="stylesheet" href="voice-demo.css?v=5" />
+</head>
+
+<body>
+  <main class="voice-app" aria-live="polite">
+    <section class="practice-shell">
+      <section class="stage" aria-label="Current speaking question">
+        <div class="character-panel">
+          <div class="top-strip">
+            <a class="home-link" href="../dashboard.html" aria-label="Go home">Home</a>
+            <div id="supportBadge" class="support-badge">Checking mic</div>
+          </div>
+          <img src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
+          <div id="mankuBubble" class="speech-bubble">Tap Ask, then answer with your voice.</div>
+        </div>
+
+        <div class="question-panel">
+          <div class="progress-row">
+            <span id="questionCounter">1/5</span>
+            <span id="scoreCounter">0 correct</span>
+          </div>
+
+          <div class="question-card">
+            <p id="promptType" class="prompt-type">Say the answer</p>
+            <h2 id="questionText">What is this?</h2>
+            <div id="visualCue" class="visual-cue" aria-hidden="true">📘</div>
+          </div>
+
+          <div class="feedback-row">
+            <div class="listen-status">
+              <span id="listenDot" class="listen-dot" aria-hidden="true"></span>
+              <span id="statusText">Ready</span>
+            </div>
+
+            <div class="transcript-box">
+              <span>Heard:</span>
+              <strong id="transcriptText">Nothing yet</strong>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button id="askBtn" class="btn secondary" type="button">Ask</button>
+            <button id="micBtn" class="btn primary" type="button">Speak</button>
+            <button id="repeatBtn" class="btn secondary" type="button">Repeat reply</button>
+          </div>
+
+          <div class="choice-row" aria-label="Tap fallback answers">
+            <button class="answer-chip" type="button" data-answer="0"></button>
+            <button class="answer-chip" type="button" data-answer="1"></button>
+            <button class="answer-chip" type="button" data-answer="2"></button>
+          </div>
+
+          <div class="nav-row">
+            <button id="prevBtn" class="text-btn" type="button">Previous</button>
+            <button id="nextBtn" class="text-btn" type="button">Next</button>
+            <button id="resetBtn" class="text-btn" type="button">Reset</button>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="voice-demo.js" defer></script>
+</body>
+
+</html>
