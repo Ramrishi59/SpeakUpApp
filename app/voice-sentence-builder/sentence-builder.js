@@ -100,6 +100,7 @@ let recognition = null;
 let silenceTimer = null;
 let isListening = false;
 let shouldAutoListen = false;
+let advanceTimer = null;
 const credited = new Set();
 
 function normalizeSpeech(value) {
@@ -143,6 +144,16 @@ function setStatus(text, state = "ready") {
 
 function updateScore() {
   els.scoreCounter.textContent = `${score} correct`;
+}
+
+function scheduleNextStep() {
+  window.clearTimeout(advanceTimer);
+  if (index >= steps.length - 1) return;
+
+  advanceTimer = window.setTimeout(() => {
+    index += 1;
+    renderStep();
+  }, 650);
 }
 
 function setResultBadge(text, state) {
@@ -202,7 +213,7 @@ function handleClassification(result) {
     setResultBadge("Correct!", "correct");
     updateScore();
     setStatus("Sentence correct", "correct");
-    speak(step.replies.correct);
+    speak(step.replies.correct, scheduleNextStep);
     return;
   }
 
@@ -334,17 +345,20 @@ els.askBtn.addEventListener("click", () => {
 els.micBtn.addEventListener("click", startListening);
 els.prevBtn.addEventListener("click", () => {
   if (index > 0) {
+    window.clearTimeout(advanceTimer);
     index -= 1;
     renderStep();
   }
 });
 els.nextBtn.addEventListener("click", () => {
   if (index < steps.length - 1) {
+    window.clearTimeout(advanceTimer);
     index += 1;
     renderStep();
   }
 });
 els.resetBtn.addEventListener("click", () => {
+  window.clearTimeout(advanceTimer);
   index = 0;
   score = 0;
   credited.clear();

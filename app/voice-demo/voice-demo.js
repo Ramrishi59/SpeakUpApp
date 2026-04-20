@@ -116,6 +116,7 @@ let recognition = null;
 let silenceTimer = null;
 let isListening = false;
 let shouldAutoListen = false;
+let advanceTimer = null;
 const answeredCorrectly = new Set();
 
 function normalizeSpeech(value) {
@@ -221,7 +222,7 @@ function answerFromClassification(classification) {
     setStatus("Correct answer", "correct");
     markChip(0, "correct");
     updateScore();
-    speak(question.replies.correct);
+    speak(question.replies.correct, scheduleNextQuestion);
     return;
   }
 
@@ -263,6 +264,16 @@ function markChip(chipIndex, result) {
 
 function updateScore() {
   els.scoreCounter.textContent = `${score} correct`;
+}
+
+function scheduleNextQuestion() {
+  window.clearTimeout(advanceTimer);
+  if (index >= questions.length - 1) return;
+
+  advanceTimer = window.setTimeout(() => {
+    index += 1;
+    renderQuestion();
+  }, 650);
 }
 
 function renderQuestion() {
@@ -398,17 +409,20 @@ els.askBtn.addEventListener("click", () => {
 els.micBtn.addEventListener("click", startListening);
 els.prevBtn.addEventListener("click", () => {
   if (index > 0) {
+    window.clearTimeout(advanceTimer);
     index -= 1;
     renderQuestion();
   }
 });
 els.nextBtn.addEventListener("click", () => {
   if (index < questions.length - 1) {
+    window.clearTimeout(advanceTimer);
     index += 1;
     renderQuestion();
   }
 });
 els.resetBtn.addEventListener("click", () => {
+  window.clearTimeout(advanceTimer);
   index = 0;
   score = 0;
   answeredCorrectly.clear();
