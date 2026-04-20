@@ -16,7 +16,7 @@ const questions = [
     replies: {
       correct: "Great. It is a book.",
       wrong: "That was a clear answer, but this picture is a book.",
-      silence: "I did not hear you. Tap Speak and try again.",
+      silence: "I did not hear you. Try again.",
       unclear: "I heard your voice, but I could not match the answer. Try saying, it is a book."
     }
   },
@@ -67,7 +67,7 @@ const questions = [
     replies: {
       correct: "Correct. A cat says meow.",
       wrong: "That animal makes a different sound. A cat says meow.",
-      silence: "Say the animal name after you tap Speak.",
+      silence: "I did not hear the animal name. Try again.",
       unclear: "I could not match that animal. Say cat."
     }
   },
@@ -115,6 +115,7 @@ let lastReply = "Tap Ask, then answer with your voice.";
 let recognition = null;
 let silenceTimer = null;
 let isListening = false;
+let shouldAutoListen = false;
 const answeredCorrectly = new Set();
 
 function normalizeSpeech(value) {
@@ -133,17 +134,28 @@ function normalizeList(list) {
   return list.map(normalizeSpeech).filter(Boolean);
 }
 
-function speak(text) {
+function speak(text, onDone) {
   lastReply = text;
   els.mankuBubble.textContent = text;
 
-  if (!("speechSynthesis" in window)) return;
+  if (!("speechSynthesis" in window)) {
+    if (typeof onDone === "function") {
+      window.setTimeout(onDone, 250);
+    }
+    return;
+  }
 
   window.speechSynthesis.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "en-US";
   utterance.rate = 0.88;
   utterance.pitch = 1.05;
+  utterance.onend = () => {
+    if (typeof onDone === "function") onDone();
+  };
+  utterance.onerror = () => {
+    if (typeof onDone === "function") onDone();
+  };
   window.speechSynthesis.speak(utterance);
 }
 
@@ -255,6 +267,7 @@ function updateScore() {
 
 function renderQuestion() {
   const question = questions[index];
+  shouldAutoListen = true;
   clearChipStates();
   window.speechSynthesis?.cancel();
 
@@ -272,7 +285,9 @@ function renderQuestion() {
   });
 
   setStatus("Ready", "ready");
-  speak(question.ask);
+  speak(question.ask, () => {
+    if (shouldAutoListen) startListening();
+  });
 }
 
 function ensureRecognition() {
@@ -330,6 +345,7 @@ function ensureRecognition() {
 }
 
 function startListening() {
+  shouldAutoListen = false;
   const recognizer = ensureRecognition();
   if (!recognizer) {
     setStatus("Speech recognition unavailable", "unclear");
@@ -371,7 +387,14 @@ function setSupportState() {
   els.micBtn.disabled = true;
 }
 
-els.askBtn.addEventListener("click", () => speak(questions[index].ask));
+els.askBtn.addEventListener("click", () => {
+  shouldAutoListen = true;
+  clearChipStates();
+  els.transcriptText.textContent = "Nothing yet";
+  speak(questions[index].ask, () => {
+    if (shouldAutoListen) startListening();
+  });
+});
 els.micBtn.addEventListener("click", startListening);
 els.prevBtn.addEventListener("click", () => {
   if (index > 0) {

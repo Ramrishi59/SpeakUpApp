@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#007bff">
     <meta name="mobile-web-app-capable" content="yes">
@@ -67,6 +67,34 @@
                 <span>Voice Mode</span>
             </button>
         </nav>
+
+        <section id="voiceModeMenu" class="voice-mode-menu hidden" role="dialog" aria-modal="true" aria-labelledby="voiceModeTitle">
+            <div class="voice-mode-card">
+                <div class="voice-mode-header">
+                    <div>
+                        <p>Voice Mode</p>
+                        <h2 id="voiceModeTitle">Choose a speaking game</h2>
+                    </div>
+                    <button id="closeVoiceModeMenu" class="voice-mode-close" type="button" aria-label="Close voice mode menu">×</button>
+                </div>
+                <div class="voice-mode-options">
+                    <a class="voice-mode-option" href="voice-demo/">
+                        <span class="voice-mode-option-icon" aria-hidden="true">🎙️</span>
+                        <span>
+                            <strong>Speak and Answer</strong>
+                            <small>Answer short questions with your voice.</small>
+                        </span>
+                    </a>
+                    <a class="voice-mode-option" href="voice-sentence-builder/">
+                        <span class="voice-mode-option-icon" aria-hidden="true">🧩</span>
+                        <span>
+                            <strong>Sentence Builder</strong>
+                            <small>Put words in order and say the full sentence.</small>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script type="module" src="./auth-firebase.js?v=7"></script>
@@ -82,7 +110,7 @@
     </script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="./payment-config.js?v=2"></script>
-    <script src="./script.js?v=6"></script>
+    <script src="./script.js?v=7"></script>
 
     <script>
       if ('serviceWorker' in navigator) {

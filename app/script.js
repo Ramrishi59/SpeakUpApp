@@ -1171,6 +1171,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const searchIcon = document.querySelector('.search-icon');
   const refreshButton = document.querySelector('.refresh-button');
   const mainContent = document.querySelector('.main-content');
+  const voiceModeMenu = document.getElementById('voiceModeMenu');
+  const closeVoiceModeMenuButton = document.getElementById('closeVoiceModeMenu');
 
   await loadDashboardLessons();
   console.log('E: dashboardLessons after load =', dashboardLessons);
@@ -1186,6 +1188,30 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
   const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
+
+  function openVoiceModeMenu() {
+    if (!voiceModeMenu) return;
+    voiceModeMenu.classList.remove('hidden');
+    closeVoiceModeMenuButton?.focus();
+  }
+
+  function closeVoiceModeMenu() {
+    if (!voiceModeMenu) return;
+    voiceModeMenu.classList.add('hidden');
+  }
+
+  closeVoiceModeMenuButton?.addEventListener('click', closeVoiceModeMenu);
+  voiceModeMenu?.addEventListener('click', (event) => {
+    if (event.target === voiceModeMenu) {
+      closeVoiceModeMenu();
+    }
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && voiceModeMenu && !voiceModeMenu.classList.contains('hidden')) {
+      closeVoiceModeMenu();
+    }
+  });
   
   // -------------------------------
 // Load dashboard lessons from manifest.json
@@ -1480,7 +1506,7 @@ async function loadDashboardLessons() {
         } else if (target === 'login') {
           openAccountScreen();
         } else if (target === 'voice-mode') {
-          window.location.href = 'voice-demo/';
+          openVoiceModeMenu();
         } else {
           alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
         }

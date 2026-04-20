@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0fa1db" />
+  <title>SpeakUp Sentence Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="../manifest.json" />
+  <link rel="apple-touch-icon" href="../Images/Unit1/manku-icon-192.png" />
+  <link rel="stylesheet" href="sentence-builder.css?v=2" />
+</head>
+
+<body>
+  <main class="sentence-app" aria-live="polite">
+    <section class="builder-card">
+      <header class="top-row">
+        <a class="home-link" href="../dashboard.html" aria-label="Go home">Home</a>
+        <div class="score-pill">
+          <span id="stepCounter">1/5</span>
+          <strong id="scoreCounter">0 correct</strong>
+        </div>
+      </header>
+
+      <section class="hero-row">
+        <div class="coach">
+          <img src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
+          <div id="coachBubble" class="coach-bubble">Put the words in order, then say the sentence.</div>
+        </div>
+
+        <div class="sentence-stage">
+          <p id="promptType" class="prompt-type">Build the sentence</p>
+          <div id="resultBadge" class="result-badge hidden" aria-live="polite">Correct!</div>
+          <div id="pictureCue" class="picture-cue" aria-hidden="true">📘</div>
+          <div id="wordBank" class="word-bank" aria-label="Words to use"></div>
+          <div id="targetHint" class="target-hint">Say the full sentence.</div>
+        </div>
+      </section>
+
+      <section class="feedback-row">
+        <div class="listen-status">
+          <span class="listen-dot" aria-hidden="true"></span>
+          <span id="statusText">Ready</span>
+        </div>
+        <div class="transcript-box">
+          <span>Heard:</span>
+          <strong id="transcriptText">Nothing yet</strong>
+        </div>
+      </section>
+
+      <section class="action-row">
+        <button id="askBtn" class="btn secondary" type="button">Ask</button>
+        <button id="micBtn" class="btn primary" type="button">Try Again</button>
+      </section>
+
+      <nav class="nav-row">
+        <button id="prevBtn" class="text-btn" type="button">Previous</button>
+        <button id="nextBtn" class="text-btn" type="button">Next</button>
+        <button id="resetBtn" class="text-btn" type="button">Reset</button>
+      </nav>
+    </section>
+  </main>
+
+  <script src="sentence-builder.js" defer></script>
+</body>
+
+</html>
