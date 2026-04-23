@@ -8,125 +8,171 @@ const imagePath = (number) => `Images/${number}.webp`;
 const scenes = [
   {
     id: "intro",
-    label: "Intro",
     image: 1,
     audio: 1,
+    prompt: "Hey! I'm Manku! Come on, let's talk together!",
+    sceneKind: "intro",
     next: 1
   },
   {
     id: "hi",
-    label: "Hello",
     image: 2,
     audio: 2,
-    acceptAny: true,
+    prompt: "Can you say, Hi Manku!",
     accepted: ["hi manku", "hi", "hello manku", "hello"],
+    helpPrompt: "Say: Hi Manku.",
     feedback: {
       image: 3,
-      audio: 3,
-      label: "Great"
+      audio: null,
+      prompt: "Hi! I'm happy to hear you!"
     }
   },
   {
     id: "book",
-    label: "1/7",
     image: 4,
-    audio: 4,
-    accepted: ["a book", "book"],
+    audio: 3,
+    prompt: "Look! I have a book. Say, a book..",
+    accepted: ["a book", "book", "it is a book", "this is a book"],
+    helpPrompt: "Say: a book.",
     feedback: {
       image: 5,
-      audio: 5,
-      label: "Nice"
+      audio: 4,
+      prompt: "Nice! A book!"
     }
   },
   {
     id: "apple",
-    label: "2/7",
     image: 6,
     audio: 6,
-    accepted: ["an apple", "apple"],
+    prompt: "Oh, here is an apple. You say it!",
+    accepted: ["an apple", "apple", "it is an apple", "this is an apple"],
+    helpPrompt: "Say: an apple.",
     feedback: {
       image: 7,
       audio: 7,
-      label: "Very good"
+      prompt: "Very good! An apple!"
     }
   },
   {
     id: "pen-pencil",
-    label: "3/7",
     image: 8,
     audio: 8,
-    accepted: ["a pen and a pencil", "pen and pencil"],
+    prompt: "Now I have two things... a pen and a pencil. Can you say it?",
+    promptAudio: 9,
+    accepted: [
+      "a pen and a pencil",
+      "pen and pencil",
+      "a pencil and a pen",
+      "pencil and pen",
+      "pen and a pencil",
+      "a pen and pencil"
+    ],
+    helpPrompt: "Say: a pen and a pencil.",
     feedback: {
       image: 9,
-      audio: 9,
-      label: "Super"
+      audio: 10,
+      prompt: "Super talking!"
     }
   },
   {
     id: "orange-egg",
-    label: "4/7",
     image: 10,
-    audio: 10,
-    accepted: ["an orange and an egg", "orange and egg"],
+    audio: 11,
+    prompt: "Yummy! I see an orange and an egg. Say it slowly?",
+    accepted: [
+      "an orange and an egg",
+      "orange and egg",
+      "an egg and an orange",
+      "egg and orange",
+      "orange and an egg",
+      "an orange and egg"
+    ],
+    helpPrompt: "Say: an orange and an egg.",
     feedback: {
       image: 11,
-      audio: 11,
-      label: "Excellent"
+      audio: 12,
+      prompt: "Excellent speaking!"
     }
   },
   {
     id: "chair-table",
-    label: "5/7",
     image: 12,
-    audio: 12,
-    accepted: ["i see a chair and a table", "a chair and a table", "chair and table"],
+    audio: 13,
+    prompt: "Look in the room... a chair and a table. You try!",
+    accepted: [
+      "a chair and a table",
+      "chair and table",
+      "a table and a chair",
+      "table and chair",
+      "chair and a table",
+      "a chair and table",
+      "i see a chair and a table"
+    ],
+    helpPrompt: "Say: a chair and a table.",
     feedback: {
       image: 13,
-      audio: 13,
-      label: "Well done"
+      audio: 14,
+      prompt: "Well done!"
     }
   },
   {
     id: "dolphin-shark",
-    label: "6/7",
     image: 14,
-    audio: 14,
-    accepted: ["wow a dolphin and a shark", "a dolphin and a shark", "dolphin and shark"],
+    audio: 15,
+    prompt: "Wow! In the sea... a dolphin and a shark! Can you say it?",
+    accepted: [
+      "a dolphin and a shark",
+      "dolphin and shark",
+      "a shark and a dolphin",
+      "shark and dolphin",
+      "dolphin and a shark",
+      "a dolphin and shark",
+      "wow a dolphin and a shark"
+    ],
+    helpPrompt: "Say: a dolphin and a shark.",
     feedback: {
       image: 15,
-      audio: 15,
-      label: "Great job"
+      audio: 16,
+      prompt: "Great job!"
     }
   },
   {
     id: "umbrella-eraser",
-    label: "7/7",
     image: 16,
-    audio: 16,
-    accepted: ["an umbrella and an eraser", "umbrella and eraser"],
+    audio: 17,
+    prompt: "Last one... an umbrella and an eraser. Say it with me!",
+    accepted: [
+      "an umbrella and an eraser",
+      "umbrella and eraser",
+      "an eraser and an umbrella",
+      "eraser and umbrella",
+      "umbrella and an eraser",
+      "an umbrella and eraser"
+    ],
+    helpPrompt: "Say: an umbrella and an eraser.",
     feedback: {
       image: 17,
-      audio: 17,
-      label: "Fantastic"
+      audio: 18,
+      prompt: "Fantastic talking!"
     }
   },
   {
     id: "outro",
-    label: "Outro",
     image: 18,
-    audio: 18,
+    audio: null,
+    prompt: "You said so many words! I loved talking with you!",
     done: true
   }
 ];
 
 const els = {
+  practicePanel: document.querySelector(".practice-panel"),
+  promptText: document.getElementById("promptText"),
+  artCard: document.querySelector(".art-card"),
   sceneImage: document.getElementById("sceneImage"),
-  progressPill: document.getElementById("progressPill"),
-  controlTray: document.querySelector(".control-tray"),
   statusText: document.getElementById("statusText"),
   heardText: document.getElementById("heardText"),
   fallbackRow: document.getElementById("fallbackRow"),
-  playBtn: document.getElementById("playBtn"),
   micBtn: document.getElementById("micBtn"),
   replayBtn: document.getElementById("replayBtn")
 };
@@ -138,20 +184,25 @@ let silenceTimer = null;
 let currentAudio = null;
 let hasStarted = false;
 let acceptingSpeech = false;
+let retryTimer = null;
 
 function normalizeSpeech(value) {
   return String(value || "")
     .toLowerCase()
     .replace(/[’']/g, "")
     .replace(/[^a-z0-9 ]+/g, " ")
-    .replace(/\band\b/g, "and")
     .replace(/\s+/g, " ")
     .trim();
 }
 
 function setState(text, state = "ready") {
   els.statusText.textContent = text;
-  els.controlTray.dataset.state = state;
+  els.practicePanel.dataset.state = state;
+}
+
+function clearRetryTimer() {
+  window.clearTimeout(retryTimer);
+  retryTimer = null;
 }
 
 function stopAudio() {
@@ -162,7 +213,6 @@ function stopAudio() {
 }
 
 function stopListening() {
-  acceptingSpeech = false;
   window.clearTimeout(silenceTimer);
   silenceTimer = null;
   if (!recognition || !isListening) return;
@@ -170,14 +220,16 @@ function stopListening() {
   try {
     recognition.stop();
   } catch (error) {
-    // The recognizer can already be stopped by the browser.
+    // Browser may already have stopped recognition.
   }
 }
 
-function showScene(scene) {
+function showScene(scene, overridePrompt = scene.prompt) {
+  els.promptText.textContent = overridePrompt;
   els.sceneImage.src = imagePath(scene.image);
-  els.sceneImage.alt = `Let's Speak ${scene.label}`;
-  els.progressPill.textContent = scene.label;
+  els.sceneImage.alt = overridePrompt;
+  els.sceneImage.dataset.sceneKind = scene.sceneKind || "practice";
+  els.artCard.dataset.mode = scene.sceneKind === "intro" ? "title" : "image";
   els.heardText.textContent = "Nothing yet";
   els.micBtn.disabled = true;
   renderFallback(scene);
@@ -187,7 +239,7 @@ function renderFallback(scene) {
   els.fallbackRow.replaceChildren();
   if (scene.done || !scene.accepted) return;
 
-  const labels = scene.acceptAny ? ["Hi Manku"] : scene.accepted.slice(0, 2);
+  const labels = scene.accepted.slice(0, 2);
   labels.forEach((label) => {
     const button = document.createElement("button");
     button.className = "phrase-chip";
@@ -202,6 +254,14 @@ function renderFallback(scene) {
 }
 
 function playAudio(number, onDone) {
+  if (!number) {
+    if (typeof onDone === "function") {
+      window.setTimeout(onDone, 50);
+    }
+    return;
+  }
+
+  clearRetryTimer();
   stopAudio();
   setState("Manku speaking", "ready");
   els.micBtn.disabled = true;
@@ -221,7 +281,8 @@ function playAudio(number, onDone) {
   if (playPromise && typeof playPromise.catch === "function") {
     playPromise.catch(() => {
       currentAudio = null;
-      setState("Tap play", "try");
+      setState("Tap the mic", "try");
+      els.micBtn.disabled = false;
     });
   }
 }
@@ -229,24 +290,36 @@ function playAudio(number, onDone) {
 function playCurrentScene() {
   const scene = scenes[sceneIndex];
   hasStarted = true;
+  clearRetryTimer();
+  acceptingSpeech = false;
   stopListening();
   showScene(scene);
   playAudio(scene.audio, () => {
-    if (scene.next !== undefined) {
-      sceneIndex = scene.next;
-      playCurrentScene();
+    if (scene.promptAudio) {
+      playAudio(scene.promptAudio, () => {
+        startSceneInteraction(scene);
+      });
       return;
     }
 
-    if (scene.done) {
-      setState("All done", "correct");
-      els.playBtn.disabled = false;
-      els.micBtn.disabled = true;
-      return;
-    }
-
-    startListening();
+    startSceneInteraction(scene);
   });
+}
+
+function startSceneInteraction(scene) {
+  if (scene.next !== undefined) {
+    sceneIndex = scene.next;
+    playCurrentScene();
+    return;
+  }
+
+  if (scene.done) {
+    setState("Replay anytime", "correct");
+    els.micBtn.disabled = true;
+    return;
+  }
+
+  startListening();
 }
 
 function ensureRecognition() {
@@ -264,10 +337,7 @@ function ensureRecognition() {
     acceptingSpeech = true;
     setState("Listening", "listening");
     els.micBtn.disabled = true;
-    window.clearTimeout(silenceTimer);
-    silenceTimer = window.setTimeout(() => {
-      handleSilence();
-    }, 5600);
+    silenceTimer = window.setTimeout(handleSilence, 5600);
   };
 
   recognition.onresult = (event) => {
@@ -293,9 +363,9 @@ function ensureRecognition() {
     isListening = false;
     window.clearTimeout(silenceTimer);
     silenceTimer = null;
-    if (acceptingSpeech && els.controlTray.dataset.state === "listening") {
+    if (acceptingSpeech && els.practicePanel.dataset.state === "listening") {
       els.micBtn.disabled = false;
-      setState("Ready", "ready");
+      setState("Tap the mic", "ready");
     }
   };
 
@@ -304,12 +374,13 @@ function ensureRecognition() {
 
 function startListening() {
   stopAudio();
+  clearRetryTimer();
   const scene = scenes[sceneIndex];
   if (scene.done) return;
 
   const recognizer = ensureRecognition();
   if (!recognizer) {
-    setState("Tap an answer", "try");
+    setState("Use the chip below", "try");
     els.micBtn.disabled = true;
     return;
   }
@@ -320,14 +391,14 @@ function startListening() {
     recognizer.start();
   } catch (error) {
     els.micBtn.disabled = false;
-    setState("Ready", "ready");
+    setState("Tap the mic", "ready");
   }
 }
 
 function classifyTranscripts(transcripts) {
   const scene = scenes[sceneIndex];
-  if (scene.acceptAny) {
-    handleAcceptedAnswer();
+  if (!transcripts.length) {
+    handleTryAgain();
     return;
   }
 
@@ -347,14 +418,8 @@ function classifyTranscripts(transcripts) {
 }
 
 function handleSilence() {
-  const scene = scenes[sceneIndex];
+  acceptingSpeech = false;
   stopListening();
-
-  if (scene.acceptAny) {
-    els.heardText.textContent = "Voice turn";
-    handleAcceptedAnswer();
-    return;
-  }
 
   els.heardText.textContent = "Nothing yet";
   handleTryAgain();
@@ -364,21 +429,35 @@ function handleTryAgain() {
   acceptingSpeech = false;
   setState("Try again", "try");
   els.micBtn.disabled = false;
-  window.setTimeout(() => {
+  clearRetryTimer();
+  retryTimer = window.setTimeout(() => {
     if (scenes[sceneIndex]?.done) return;
-    playAudio(scenes[sceneIndex].audio, startListening);
+    const scene = scenes[sceneIndex];
+    els.promptText.textContent = scene.helpPrompt || scene.prompt;
+    playAudio(scene.audio, () => {
+      if (scene.promptAudio) {
+        playAudio(scene.promptAudio, startListening);
+        return;
+      }
+
+      startListening();
+    });
   }, 450);
 }
 
 function handleAcceptedAnswer() {
   const scene = scenes[sceneIndex];
   acceptingSpeech = false;
+  clearRetryTimer();
   stopListening();
-  setState(scene.feedback.label, "correct");
+  setState("Good speaking", "correct");
   els.micBtn.disabled = true;
   els.fallbackRow.replaceChildren();
+  els.promptText.textContent = scene.feedback.prompt;
   els.sceneImage.src = imagePath(scene.feedback.image);
-  els.progressPill.textContent = scene.feedback.label;
+  els.sceneImage.alt = scene.feedback.prompt;
+  els.sceneImage.dataset.sceneKind = "practice";
+  els.artCard.dataset.mode = "image";
 
   playAudio(scene.feedback.audio, () => {
     sceneIndex += 1;
@@ -386,22 +465,31 @@ function handleAcceptedAnswer() {
   });
 }
 
-els.playBtn.addEventListener("click", () => {
+els.micBtn.addEventListener("click", () => {
+  if (!hasStarted || scenes[sceneIndex]?.done) {
+    sceneIndex = scenes[sceneIndex]?.done ? 0 : sceneIndex;
+    playCurrentScene();
+    return;
+  }
+
+  startListening();
+});
+
+els.replayBtn.addEventListener("click", () => {
+  clearRetryTimer();
+  acceptingSpeech = false;
+  stopListening();
+  if (!hasStarted) {
+    playCurrentScene();
+    return;
+  }
+
   if (scenes[sceneIndex]?.done) {
     sceneIndex = 0;
   }
   playCurrentScene();
 });
 
-els.micBtn.addEventListener("click", startListening);
-
-els.replayBtn.addEventListener("click", () => {
-  if (!hasStarted) {
-    playCurrentScene();
-    return;
-  }
-  playCurrentScene();
-});
-
 showScene(scenes[0]);
-setState(SpeechRecognition ? "Tap play" : "Tap play", "ready");
+setState(SpeechRecognition ? "Tap the mic" : "Use the chips below", "ready");
+els.micBtn.disabled = false;

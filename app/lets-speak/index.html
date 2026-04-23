@@ -4,55 +4,58 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#7fc8ee" />
+  <meta name="theme-color" content="#79c1ea" />
   <title>Let's Speak</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="manifest" href="../manifest.json" />
   <link rel="apple-touch-icon" href="../Images/Unit1/manku-icon-192.png" />
-  <link rel="stylesheet" href="lets-speak.css?v=3" />
+  <link rel="stylesheet" href="lets-speak.css?v=8" />
 </head>
 
 <body>
   <main class="lets-speak-app" aria-live="polite">
-    <section class="phone-stage" aria-label="Let's Speak activity">
-      <img id="sceneImage" class="scene-image" src="Images/1.webp" alt="Manku says let's talk together" />
+    <section class="activity-shell">
+      <header class="hero-panel">
+        <img class="manku-avatar" src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
+        <h1 id="promptText" class="prompt-text">Hey! I'm Manku! Come on, let's talk together!</h1>
+      </header>
 
-      <div class="top-actions">
-        <a class="home-link" href="../dashboard.html" aria-label="Go home">Home</a>
-        <div id="progressPill" class="progress-pill">Intro</div>
-      </div>
-
-      <section class="control-tray" aria-label="Speaking controls">
-        <div class="status-row">
-          <span id="listenDot" class="listen-dot" aria-hidden="true"></span>
-          <span id="statusText">Tap play</span>
+      <section class="practice-panel">
+        <div class="art-card">
+          <div id="titleCard" class="title-card" aria-hidden="true">
+            <span>Let's</span>
+            <span>Talk</span>
+          </div>
+          <img id="sceneImage" class="scene-image" src="Images/1.webp" alt="Let's Talk" />
         </div>
 
-        <div class="primary-row">
-          <button id="playBtn" class="icon-btn play-btn" type="button" aria-label="Play">
-            <span aria-hidden="true">▶</span>
-          </button>
-          <button id="micBtn" class="icon-btn mic-btn" type="button" aria-label="Speak" disabled>
-            <span aria-hidden="true">🎤</span>
-          </button>
-          <button id="replayBtn" class="icon-btn replay-btn" type="button" aria-label="Replay">
-            <span aria-hidden="true">↻</span>
+        <div class="mic-slot">
+          <button id="micBtn" class="mic-button" type="button" aria-label="Speak">
+            <span class="mic-shadow" aria-hidden="true"></span>
+            <span class="mic-face" aria-hidden="true">🎤</span>
           </button>
         </div>
 
-        <div class="heard-row">
-          <span>Heard</span>
-          <strong id="heardText">Nothing yet</strong>
+        <div class="status-strip">
+          <span id="listenDot" class="listen-dot"></span>
+          <span id="statusText">Tap the mic</span>
         </div>
 
         <div id="fallbackRow" class="fallback-row" aria-label="Practice answer choices"></div>
+
+        <p class="heard-line"><span>Heard:</span> <strong id="heardText">Nothing yet</strong></p>
       </section>
+
+      <nav class="bottom-bar" aria-label="Activity controls">
+        <a class="nav-icon home-icon" href="../dashboard.html" aria-label="Go home">⌂</a>
+        <button id="replayBtn" class="nav-icon replay-icon" type="button" aria-label="Replay">↻</button>
+      </nav>
     </section>
   </main>
 
-  <script src="lets-speak.js?v=2" defer></script>
+  <script src="lets-speak.js?v=3" defer></script>
 </body>
 
 </html>
