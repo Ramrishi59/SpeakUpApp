@@ -191,8 +191,33 @@ function normalizeSpeech(value) {
     .toLowerCase()
     .replace(/[’']/g, "")
     .replace(/[^a-z0-9 ]+/g, " ")
+    .replace(/\bits\b/g, "it is")
+    .replace(/\bim\b/g, "i am")
+    .replace(/\bi m\b/g, "i am")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function keywordTokens(value) {
+  return normalizeSpeech(value)
+    .split(" ")
+    .filter(Boolean)
+    .filter((token) => !["a", "an", "the", "is", "this", "it", "i"].includes(token));
+}
+
+function phraseMatchesTranscript(phrase, transcript) {
+  const normalizedPhrase = normalizeSpeech(phrase);
+  const normalizedTranscript = normalizeSpeech(transcript);
+
+  if (!normalizedPhrase || !normalizedTranscript) return false;
+  if (normalizedTranscript === normalizedPhrase) return true;
+  if (normalizedTranscript.includes(normalizedPhrase)) return true;
+
+  const phraseTokens = keywordTokens(normalizedPhrase);
+  const transcriptTokens = keywordTokens(normalizedTranscript);
+  if (!phraseTokens.length || !transcriptTokens.length) return false;
+
+  return phraseTokens.every((token) => transcriptTokens.includes(token));
 }
 
 function setState(text, state = "ready") {
@@ -327,9 +352,9 @@ function ensureRecognition() {
   if (recognition) return recognition;
 
   recognition = new SpeechRecognition();
-  recognition.lang = "en-US";
+  recognition.lang = "en-IN";
   recognition.interimResults = false;
-  recognition.maxAlternatives = 5;
+  recognition.maxAlternatives = 8;
   recognition.continuous = false;
 
   recognition.onstart = () => {
@@ -352,6 +377,12 @@ function ensureRecognition() {
   recognition.onerror = (event) => {
     window.clearTimeout(silenceTimer);
     silenceTimer = null;
+    if (event.error === "not-allowed" || event.error === "audio-capture") {
+      acceptingSpeech = false;
+      els.micBtn.disabled = false;
+      setState("Mic permission needed", "try");
+      return;
+    }
     if (event.error === "no-speech") {
       handleSilence();
       return;
@@ -402,14 +433,11 @@ function classifyTranscripts(transcripts) {
     return;
   }
 
-  const accepted = scene.accepted.map(normalizeSpeech);
-  const normalizedTranscripts = transcripts.map(normalizeSpeech).filter(Boolean);
-  const exactMatch = normalizedTranscripts.some((text) => accepted.includes(text));
-  const looseMatch = normalizedTranscripts.some((text) => {
-    return accepted.some((phrase) => phrase.length > 3 && text.includes(phrase));
+  const matched = transcripts.some((transcript) => {
+    return scene.accepted.some((phrase) => phraseMatchesTranscript(phrase, transcript));
   });
 
-  if (exactMatch || looseMatch) {
+  if (matched) {
     handleAcceptedAnswer();
     return;
   }
