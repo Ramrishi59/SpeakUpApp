@@ -387,9 +387,9 @@ function ensureRecognition() {
   if (recognition) return recognition;
 
   recognition = new SpeechRecognition();
-  recognition.lang = "en-IN";
+  recognition.lang = "en-US";
   recognition.interimResults = false;
-  recognition.maxAlternatives = 8;
+  recognition.maxAlternatives = 3;
   recognition.continuous = false;
 
   recognition.onstart = () => {
@@ -403,10 +403,9 @@ function ensureRecognition() {
   recognition.onresult = (event) => {
     window.clearTimeout(silenceTimer);
     silenceTimer = null;
-    const alternatives = Array.from(event.results?.[0] || []);
-    const transcripts = alternatives.map((item) => item.transcript || "").filter(Boolean);
-    els.heardText.textContent = transcripts[0] || "Voice heard";
-    classifyTranscripts(transcripts);
+    const best = Array.from(event.results?.[0] || [])[0]?.transcript || "";
+    els.heardText.textContent = best || "Voice heard";
+    classifyTranscripts(best ? [best] : []);
   };
 
   recognition.onerror = (event) => {
