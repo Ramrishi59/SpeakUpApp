@@ -220,6 +220,41 @@ function phraseMatchesTranscript(phrase, transcript) {
   return phraseTokens.every((token) => transcriptTokens.includes(token));
 }
 
+function sceneSpecificMatch(scene, transcript) {
+  const normalizedTranscript = normalizeSpeech(transcript);
+  const tokens = keywordTokens(normalizedTranscript);
+
+  if (scene.id === "hi") {
+    const hasGreeting = tokens.includes("hi") || tokens.includes("hello") || normalizedTranscript.startsWith("hi ") || normalizedTranscript.startsWith("hello ");
+    const hasMankuLikeWord =
+      tokens.includes("manku") ||
+      tokens.includes("manku!") ||
+      tokens.includes("mancoo") ||
+      tokens.includes("manku?") ||
+      tokens.includes("manko") ||
+      tokens.includes("monkey") ||
+      tokens.includes("mancu") ||
+      normalizedTranscript.includes("manku") ||
+      normalizedTranscript.includes("manko") ||
+      normalizedTranscript.includes("monkey");
+
+    return hasGreeting || (hasGreeting && hasMankuLikeWord);
+  }
+
+  if (scene.id === "book") {
+    return (
+      tokens.includes("book") ||
+      tokens.includes("buck") ||
+      normalizedTranscript.includes("a book") ||
+      normalizedTranscript.includes("the book") ||
+      normalizedTranscript.includes("this is a book") ||
+      normalizedTranscript.includes("it is a book")
+    );
+  }
+
+  return false;
+}
+
 function setState(text, state = "ready") {
   els.statusText.textContent = text;
   els.practicePanel.dataset.state = state;
@@ -430,6 +465,12 @@ function classifyTranscripts(transcripts) {
   const scene = scenes[sceneIndex];
   if (!transcripts.length) {
     handleTryAgain();
+    return;
+  }
+
+  const sceneMatched = transcripts.some((transcript) => sceneSpecificMatch(scene, transcript));
+  if (sceneMatched) {
+    handleAcceptedAnswer();
     return;
   }
 
