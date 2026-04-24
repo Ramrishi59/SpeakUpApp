@@ -20,7 +20,7 @@ const scenes = [
     audio: 2,
     prompt: "Can you say, Hi Manku!",
     sceneKind: "no-card",
-    accepted: ["hi manku", "hi", "hello manku", "hello"],
+    accepted: ["hi manku", "hi manu", "hi", "hello manku", "hello manu", "hello"],
     helpPrompt: "Say: Hi Manku.",
     feedback: {
       image: 1,
@@ -230,6 +230,7 @@ function sceneSpecificMatch(scene, transcript) {
     const hasGreeting = tokens.includes("hi") || tokens.includes("hello") || normalizedTranscript.startsWith("hi ") || normalizedTranscript.startsWith("hello ");
     const hasMankuLikeWord =
       tokens.includes("manku") ||
+      tokens.includes("manu") ||
       tokens.includes("manku!") ||
       tokens.includes("mancoo") ||
       tokens.includes("manku?") ||
@@ -237,6 +238,7 @@ function sceneSpecificMatch(scene, transcript) {
       tokens.includes("monkey") ||
       tokens.includes("mancu") ||
       normalizedTranscript.includes("manku") ||
+      normalizedTranscript.includes("manu") ||
       normalizedTranscript.includes("manko") ||
       normalizedTranscript.includes("monkey");
 
