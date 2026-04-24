@@ -592,7 +592,7 @@ body {
     z-index: 12;
     display: grid;
     place-items: end center;
-    padding: 18px 14px calc(92px + env(safe-area-inset-bottom));
+    padding: 18px 10px calc(env(safe-area-inset-bottom) + 6px);
     background: rgba(34, 48, 65, 0.28);
     backdrop-filter: blur(6px);
 }
@@ -604,12 +604,12 @@ body {
 .voice-mode-card {
     width: min(430px, 100%);
     padding: 18px;
-    border-radius: 22px;
+    border-radius: 22px 22px 12px 12px;
     background:
         radial-gradient(circle at 0% 0%, rgba(255, 196, 57, 0.24), transparent 36%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 246, 0.96));
     border: 2px solid rgba(255, 255, 255, 0.86);
-    box-shadow: 0 20px 46px rgba(25, 76, 120, 0.22);
+    box-shadow: 0 10px 34px rgba(25, 76, 120, 0.2);
 }
 
 .voice-mode-header {
