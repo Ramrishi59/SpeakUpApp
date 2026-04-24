@@ -1,4 +1,5 @@
 :root {
+  --app-height: 100dvh;
   --cream: #f5ddb0;
   --blue: #79c1ea;
   --card: #fbf3f1;
@@ -34,14 +35,16 @@ a {
 .lets-speak-app {
   min-height: 100svh;
   min-height: 100dvh;
+  min-height: var(--app-height);
   display: grid;
   place-items: center;
 }
 
 .activity-shell {
-  width: min(100vw, calc(100dvh * 0.5625));
+  width: min(100vw, calc(var(--app-height) * 0.5625));
   height: 100svh;
   height: 100dvh;
+  height: var(--app-height);
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   overflow: hidden;
@@ -309,86 +312,46 @@ a {
   }
 
   .hero-panel {
-    min-height: clamp(148px, 22svh, 220px);
-    gap: 10px;
-    padding: 14px 18px 8px;
+    min-height: clamp(184px, 28svh, 270px);
   }
 
   .prompt-text {
-    font-size: clamp(17px, 3.2vh, 25px);
-    line-height: 1.16;
+    font-size: clamp(20px, 4.2vh, 31px);
   }
 
   .art-card {
     width: 68%;
-    max-height: 18vh;
+    max-height: 24vh;
     border-radius: 20px;
-    margin-bottom: 20px;
   }
 
   .mic-slot {
-    min-height: 88px;
-    padding-top: 12px;
+    min-height: 112px;
   }
 
   .mic-button {
-    width: 58px;
-    height: 58px;
-  }
-
-  .status-strip,
-  .heard-line {
-    font-size: 13px;
-  }
-
-  .practice-panel {
-    gap: 10px;
-    padding: 14px 14px 10px;
+    width: clamp(64px, 8.6vh, 76px);
+    height: clamp(64px, 8.6vh, 76px);
   }
 
   .bottom-bar {
-    min-height: 68px;
-  }
-
-  .home-icon,
-  .replay-icon {
-    font-size: 56px;
+    min-height: 88px;
   }
 }
 
 @media (max-height: 760px) {
   .hero-panel {
-    min-height: 150px;
-    gap: 10px;
-    padding: 14px 18px 8px;
+    min-height: clamp(184px, 28svh, 270px);
   }
+}
 
-  .prompt-text {
-    font-size: clamp(17px, 3.1vh, 24px);
-    line-height: 1.14;
-  }
-
-  .art-card {
-    max-height: 18vh;
-    margin-bottom: 18px;
-  }
-
-  .mic-slot {
-    min-height: 86px;
-    padding-top: 10px;
-  }
-
-  .mic-button {
-    width: 56px;
-    height: 56px;
+@media (display-mode: standalone) and (max-width: 520px) {
+  .activity-shell {
+    width: min(100vw, calc(var(--app-height) * 0.5625));
+    height: var(--app-height);
   }
 
   .bottom-bar {
-    min-height: 66px;
-  }
-
-  .home-icon,
-  .replay-icon {
-    font-size: 52px;
+    padding-bottom: max(env(safe-area-inset-bottom, 0), 6px);
   }
 }

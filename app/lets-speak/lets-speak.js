@@ -188,6 +188,10 @@ let hasStarted = false;
 let acceptingSpeech = false;
 let retryTimer = null;
 
+function syncAppHeight() {
+  document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+}
+
 function normalizeSpeech(value) {
   return String(value || "")
     .toLowerCase()
@@ -562,6 +566,10 @@ els.replayBtn.addEventListener("click", () => {
   }
   playCurrentScene();
 });
+
+syncAppHeight();
+window.addEventListener("resize", syncAppHeight);
+window.addEventListener("orientationchange", syncAppHeight);
 
 showScene(scenes[0]);
 setState(SpeechRecognition ? "Tap the mic" : "Use the chips below", "ready");
