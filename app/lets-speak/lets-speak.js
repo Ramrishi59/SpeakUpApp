@@ -191,6 +191,7 @@ let hasStarted = false;
 let acceptingSpeech = false;
 let retryTimer = null;
 let fitPromptFrame = null;
+let retryCount = 0;
 
 function syncAppHeight() {
   document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
@@ -371,6 +372,7 @@ function playCurrentScene() {
   hasStarted = true;
   clearRetryTimer();
   acceptingSpeech = false;
+  retryCount = 0;
   stopListening();
   showScene(scene);
   playAudio(scene.audio, () => {
@@ -513,8 +515,14 @@ function handleSilence() {
 }
 
 function handleTryAgain() {
+  retryCount += 1;
+  if (retryCount >= 3) {
+    handleAdvanceAfterRetries();
+    return;
+  }
+
   acceptingSpeech = false;
-  setState("Try again", "try");
+  setState(retryCount === 1 ? "Say it again" : "One more time", "try");
   els.micBtn.disabled = false;
   clearRetryTimer();
   retryTimer = window.setTimeout(() => {
@@ -532,24 +540,51 @@ function handleTryAgain() {
   }, 450);
 }
 
+function handleAdvanceAfterRetries() {
+  const scene = scenes[sceneIndex];
+
+  acceptingSpeech = false;
+  clearRetryTimer();
+  stopListening();
+  stopAudio();
+  els.micBtn.disabled = true;
+  setState("Right!", "correct");
+  els.heardText.textContent = "Moving on";
+  els.promptText.textContent = scene.prompt;
+  els.sceneImage.src = scene.imageSrc || imagePath(scene.image);
+  els.sceneImage.alt = scene.prompt;
+  els.sceneImage.dataset.sceneKind = scene.sceneKind || "practice";
+  els.artCard.dataset.mode = scene.sceneKind === "no-card" ? "hidden" : "image";
+  schedulePromptFit();
+
+  window.setTimeout(() => {
+    sceneIndex += 1;
+    playCurrentScene();
+  }, 850);
+}
+
 function handleAcceptedAnswer() {
   const scene = scenes[sceneIndex];
   const feedback = scene.feedback || {};
   acceptingSpeech = false;
   clearRetryTimer();
   stopListening();
-  setState("Good speaking", "correct");
+  retryCount = 0;
+  setState("Great job!", "correct");
   els.micBtn.disabled = true;
   els.promptText.textContent = feedback.prompt || scene.prompt;
   els.sceneImage.src = imagePath(feedback.image || scene.image);
   els.sceneImage.alt = feedback.prompt || scene.prompt;
   els.sceneImage.dataset.sceneKind = feedback.sceneKind || "practice";
   els.artCard.dataset.mode = feedback.sceneKind === "no-card" ? "hidden" : "image";
+  schedulePromptFit();
 
-  playAudio(feedback.audio, () => {
-    sceneIndex += 1;
-    playCurrentScene();
-  });
+  window.setTimeout(() => {
+    playAudio(feedback.audio, () => {
+      sceneIndex += 1;
+      playCurrentScene();
+    });
+  }, 420);
 }
 
 els.micBtn.addEventListener("click", () => {
