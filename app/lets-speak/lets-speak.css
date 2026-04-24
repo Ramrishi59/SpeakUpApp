@@ -32,6 +32,7 @@ a {
 }
 
 .lets-speak-app {
+  min-height: 100svh;
   min-height: 100dvh;
   display: grid;
   place-items: center;
@@ -39,9 +40,10 @@ a {
 
 .activity-shell {
   width: min(100vw, calc(100dvh * 0.5625));
+  height: 100svh;
   height: 100dvh;
   display: grid;
-  grid-template-rows: 35% 51% 14%;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   overflow: hidden;
   background: var(--cream);
 }
@@ -54,6 +56,7 @@ a {
   gap: clamp(12px, 2.4vh, 22px);
   padding: clamp(18px, 3.2vh, 34px) clamp(18px, 5vw, 34px) clamp(10px, 2vh, 18px);
   background: var(--cream);
+  min-height: clamp(200px, 30svh, 310px);
 }
 
 .build-tag {
@@ -103,6 +106,7 @@ a {
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
   min-height: 0;
+  overflow: hidden;
 }
 
 .art-card {
@@ -277,6 +281,8 @@ a {
   align-items: center;
   justify-items: center;
   background: #f9f2f2;
+  min-height: clamp(82px, 12svh, 108px);
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 .nav-icon {
@@ -302,6 +308,10 @@ a {
     width: 100vw;
   }
 
+  .hero-panel {
+    min-height: clamp(184px, 28svh, 270px);
+  }
+
   .prompt-text {
     font-size: clamp(20px, 4.2vh, 31px);
   }
@@ -314,5 +324,9 @@ a {
 
   .mic-slot {
     min-height: 112px;
+  }
+
+  .bottom-bar {
+    min-height: 88px;
   }
 }
