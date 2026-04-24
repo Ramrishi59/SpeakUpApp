@@ -103,7 +103,7 @@ a {
   justify-items: center;
   grid-template-rows: auto minmax(0, 1fr) auto auto;
   align-content: stretch;
-  gap: clamp(8px, 1.4vh, 14px);
+  gap: 0;
   padding: clamp(14px, 2vh, 18px) clamp(8px, 2.2vw, 12px) clamp(10px, 1.6vh, 14px);
   background: var(--blue);
 
@@ -116,7 +116,7 @@ a {
   aspect-ratio: 1.28;
   flex: 0 0 auto;
   max-height: min(44vh, 346px);
-  margin-bottom: 0;
+  margin-bottom: clamp(14px, 2.2vh, 24px);
   position: relative;
   overflow: hidden;
   border-radius: 24px;
@@ -140,6 +140,7 @@ a {
   box-shadow: none !important;
   border-radius: 0;
   overflow: visible;
+  margin-bottom: clamp(10px, 1.6vh, 18px);
 }
 
 .art-card[data-mode="title-card"] .scene-image {
@@ -163,8 +164,8 @@ a {
   justify-items: center;
   align-items: end;
   align-self: stretch;
-  padding-top: clamp(12px, 1.8vh, 18px);
-  padding-bottom: clamp(6px, 1vh, 12px);
+  padding-top: 0;
+  padding-bottom: clamp(12px, 1.8vh, 20px);
   margin-top: 0;
 }
 
@@ -219,6 +220,7 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 7px;
+  margin-top: clamp(6px, 1vh, 10px);
   color: rgba(255, 255, 255, 0.92);
   font-size: clamp(13px, 1.8vh, 16px);
   font-weight: 600;
@@ -258,7 +260,7 @@ a {
 }
 
 .heard-line {
-  margin: 0;
+  margin: clamp(4px, 0.7vh, 8px) 0 0;
   min-height: 20px;
   color: rgba(255, 255, 255, 0.95);
   font-size: clamp(13px, 1.8vh, 16px);
@@ -319,8 +321,7 @@ a {
   }
 
   .mic-slot {
-    padding-top: 12px;
-    padding-bottom: 16px;
+    padding-bottom: 14px;
   }
 
   .mic-button {
