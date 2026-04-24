@@ -11,14 +11,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="manifest" href="../manifest.json" />
   <link rel="apple-touch-icon" href="../Images/Unit1/manku-icon-192.png" />
-  <link rel="stylesheet" href="lets-speak.css?v=15" />
+  <link rel="stylesheet" href="lets-speak.css?v=22" />
 </head>
 
 <body>
   <main class="lets-speak-app" aria-live="polite">
     <section class="activity-shell">
       <header class="hero-panel">
-        <div class="build-tag">v15</div>
+        <div class="build-tag">v22</div>
         <img class="manku-avatar" src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
         <h1 id="promptText" class="prompt-text">Hey! I'm Manku! Come on, let's talk together!</h1>
       </header>
@@ -31,7 +31,9 @@
         <div class="mic-slot">
           <button id="micBtn" class="mic-button" type="button" aria-label="Speak">
             <span class="mic-shadow" aria-hidden="true"></span>
-            <span class="mic-face" aria-hidden="true">🎤</span>
+            <span class="mic-face" aria-hidden="true">
+              <img class="mic-icon-image" src="Images/mic.webp" alt="" />
+            </span>
           </button>
         </div>
 
@@ -40,19 +42,21 @@
           <span id="statusText">Tap the mic</span>
         </div>
 
-        <div id="fallbackRow" class="fallback-row" aria-label="Practice answer choices"></div>
-
         <p class="heard-line"><span>Heard:</span> <strong id="heardText">Nothing yet</strong></p>
       </section>
 
       <nav class="bottom-bar" aria-label="Activity controls">
-        <a class="nav-icon home-icon" href="../dashboard.html" aria-label="Go home">⌂</a>
-        <button id="replayBtn" class="nav-icon replay-icon" type="button" aria-label="Replay">↻</button>
+        <a class="nav-icon home-icon" href="../dashboard.html" aria-label="Go home">
+          <img class="nav-icon-image" src="../Images/buttons/27.png" alt="" />
+        </a>
+        <button id="replayBtn" class="nav-icon replay-icon" type="button" aria-label="Replay">
+          <img class="nav-icon-image" src="../Images/buttons/startover.png" alt="" />
+        </button>
       </nav>
     </section>
   </main>
 
-  <script src="lets-speak.js?v=7" defer></script>
+  <script src="lets-speak.js?v=8" defer></script>
 </body>
 
 </html>

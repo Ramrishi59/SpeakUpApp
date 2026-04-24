@@ -4,14 +4,16 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 
 const audioPath = (number) => `Audio/${String(number).padStart(2, "0")}_Chapter 1.mp3`;
 const imagePath = (number) => `Images/${number}.webp`;
+const assetImagePath = (name) => `Images/${name}`;
 
 const scenes = [
   {
     id: "intro",
+    imageSrc: assetImagePath("title.png"),
     image: 1,
     audio: 1,
     prompt: "Hey! I'm Manku! Come on, let's talk together!",
-    sceneKind: "no-card",
+    sceneKind: "title-card",
     next: 1
   },
   {
@@ -174,7 +176,6 @@ const els = {
   sceneImage: document.getElementById("sceneImage"),
   statusText: document.getElementById("statusText"),
   heardText: document.getElementById("heardText"),
-  fallbackRow: document.getElementById("fallbackRow"),
   micBtn: document.getElementById("micBtn"),
   replayBtn: document.getElementById("replayBtn")
 };
@@ -294,31 +295,12 @@ function stopListening() {
 
 function showScene(scene, overridePrompt = scene.prompt) {
   els.promptText.textContent = overridePrompt;
-  els.sceneImage.src = imagePath(scene.image);
+  els.sceneImage.src = scene.imageSrc || imagePath(scene.image);
   els.sceneImage.alt = overridePrompt;
   els.sceneImage.dataset.sceneKind = scene.sceneKind || "practice";
   els.artCard.dataset.mode = scene.sceneKind === "no-card" ? "hidden" : "image";
   els.heardText.textContent = "Nothing yet";
   els.micBtn.disabled = true;
-  renderFallback(scene);
-}
-
-function renderFallback(scene) {
-  els.fallbackRow.replaceChildren();
-  if (scene.done || !scene.accepted) return;
-
-  const labels = scene.accepted.slice(0, 2);
-  labels.forEach((label) => {
-    const button = document.createElement("button");
-    button.className = "phrase-chip";
-    button.type = "button";
-    button.textContent = label;
-    button.addEventListener("click", () => {
-      els.heardText.textContent = label;
-      handleAcceptedAnswer();
-    });
-    els.fallbackRow.append(button);
-  });
 }
 
 function playAudio(number, onDone) {
@@ -453,7 +435,7 @@ function startListening() {
 
   const recognizer = ensureRecognition();
   if (!recognizer) {
-    setState("Use the chip below", "try");
+    setState("Speech recognition unavailable", "try");
     els.micBtn.disabled = true;
     return;
   }
@@ -529,7 +511,6 @@ function handleAcceptedAnswer() {
   stopListening();
   setState("Good speaking", "correct");
   els.micBtn.disabled = true;
-  els.fallbackRow.replaceChildren();
   els.promptText.textContent = feedback.prompt || scene.prompt;
   els.sceneImage.src = imagePath(feedback.image || scene.image);
   els.sceneImage.alt = feedback.prompt || scene.prompt;

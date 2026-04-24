@@ -101,9 +101,9 @@ a {
 .practice-panel {
   display: grid;
   justify-items: center;
-  grid-template-rows: auto auto auto auto auto;
-  align-content: start;
-  gap: clamp(12px, 2vh, 20px);
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  align-content: stretch;
+  gap: clamp(10px, 1.7vh, 18px);
   padding: clamp(18px, 2.6vh, 24px) clamp(16px, 4vw, 28px) clamp(12px, 1.8vh, 18px);
   background: var(--blue);
   border-top-left-radius: 18px;
@@ -113,16 +113,16 @@ a {
 }
 
 .art-card {
-  width: min(58%, 240px);
-  aspect-ratio: 1;
+  width: min(84%, 336px);
+  aspect-ratio: 1.18;
   flex: 0 0 auto;
-  max-height: min(22vh, 190px);
-  margin-bottom: clamp(38px, 5.2vh, 58px);
+  max-height: min(29vh, 252px);
+  margin-bottom: 0;
   position: relative;
   overflow: hidden;
   border-radius: 24px;
-  background: #050505;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
 .scene-image {
@@ -134,6 +134,17 @@ a {
   visibility: hidden;
   box-shadow: none;
   background: transparent;
+}
+
+.art-card[data-mode="title-card"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.art-card[data-mode="title-card"] .scene-image {
+  padding: 0;
 }
 
 .scene-image {
@@ -148,18 +159,20 @@ a {
 
 .mic-slot {
   width: 100%;
-  min-height: clamp(140px, 19vh, 180px);
+  min-height: 0;
   display: grid;
   justify-items: center;
-  align-items: start;
-  padding-top: clamp(28px, 4vh, 42px);
+  align-items: end;
+  align-self: stretch;
+  padding-top: clamp(20px, 3vh, 28px);
+  padding-bottom: clamp(10px, 1.8vh, 20px);
   margin-top: 0;
 }
 
 .mic-button {
   position: relative;
-  width: clamp(64px, 8.6vh, 76px);
-  height: clamp(64px, 8.6vh, 76px);
+  width: clamp(84px, 11vh, 108px);
+  height: clamp(84px, 11vh, 108px);
   border: 0;
   background: transparent;
   padding: 0;
@@ -176,18 +189,24 @@ a {
 }
 
 .mic-shadow {
-  transform: translateY(6px);
-  background: rgba(204, 28, 35, 0.7);
+  display: none;
 }
 
 .mic-face {
-  background: linear-gradient(180deg, #ff5b64, #ff3943);
-  color: var(--white);
-  font-size: clamp(22px, 3vh, 28px);
-  box-shadow: var(--shadow);
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-.mic-button:active .mic-face {
+.mic-icon-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.18));
+}
+
+.mic-button:active .mic-icon-image {
   transform: translateY(4px);
 }
 
@@ -239,32 +258,6 @@ a {
   }
 }
 
-.fallback-row {
-  width: min(92%, 540px);
-  min-height: 36px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: flex-start;
-}
-
-.fallback-row:empty {
-  visibility: hidden;
-}
-
-.phrase-chip {
-  min-height: 36px;
-  padding: 0 14px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #8a4709;
-  font-size: clamp(13px, 1.75vh, 16px);
-  font-weight: 700;
-  cursor: pointer;
-}
-
 .heard-line {
   margin: 0;
   min-height: 20px;
@@ -283,7 +276,7 @@ a {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-items: center;
-  background: #f9f2f2;
+  background: #f5ddb0;
   min-height: clamp(82px, 12svh, 108px);
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
@@ -294,16 +287,17 @@ a {
   text-decoration: none;
   line-height: 1;
   cursor: pointer;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
 }
 
-.home-icon {
-  color: #2b8de5;
-  font-size: clamp(64px, 10vh, 88px);
-}
-
-.replay-icon {
-  color: var(--orange);
-  font-size: clamp(66px, 10.5vh, 92px);
+.nav-icon-image {
+  display: block;
+  width: clamp(58px, 8.8vh, 88px);
+  height: auto;
+  max-height: clamp(58px, 8.8vh, 88px);
+  object-fit: contain;
 }
 
 @media (max-width: 420px) {
@@ -320,18 +314,19 @@ a {
   }
 
   .art-card {
-    width: 68%;
-    max-height: 24vh;
+    width: 88%;
+    max-height: 30vh;
     border-radius: 20px;
   }
 
   .mic-slot {
-    min-height: 112px;
+    padding-top: 12px;
+    padding-bottom: 16px;
   }
 
   .mic-button {
-    width: clamp(64px, 8.6vh, 76px);
-    height: clamp(64px, 8.6vh, 76px);
+    width: clamp(84px, 10.8vh, 100px);
+    height: clamp(84px, 10.8vh, 100px);
   }
 
   .bottom-bar {
