@@ -18,10 +18,11 @@ const scenes = [
   },
   {
     id: "hi",
+    imageSrc: assetImagePath("title.png"),
     image: 2,
     audio: 2,
     prompt: "Can you say, Hi Manku!",
-    sceneKind: "no-card",
+    sceneKind: "title-card",
     accepted: ["hi manku", "hi manu", "hi", "hello manku", "hello manu", "hello"],
     helpPrompt: "Say: Hi Manku.",
     feedback: {
@@ -553,5 +554,5 @@ window.addEventListener("resize", syncAppHeight);
 window.addEventListener("orientationchange", syncAppHeight);
 
 showScene(scenes[0]);
-setState(SpeechRecognition ? "Tap the mic" : "Use the chips below", "ready");
+setState(SpeechRecognition ? "Tap the mic" : "Speech recognition unavailable", "ready");
 els.micBtn.disabled = false;

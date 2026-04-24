@@ -171,8 +171,8 @@ a {
 
 .mic-button {
   position: relative;
-  width: clamp(84px, 11vh, 108px);
-  height: clamp(84px, 11vh, 108px);
+  width: clamp(104px, 13.5vh, 132px);
+  height: clamp(104px, 13.5vh, 132px);
   border: 0;
   background: transparent;
   padding: 0;
@@ -325,8 +325,8 @@ a {
   }
 
   .mic-button {
-    width: clamp(84px, 10.8vh, 100px);
-    height: clamp(84px, 10.8vh, 100px);
+    width: clamp(100px, 13vh, 124px);
+    height: clamp(100px, 13vh, 124px);
   }
 
   .bottom-bar {
