@@ -11,7 +11,7 @@ const scenes = [
     image: 1,
     audio: 1,
     prompt: "Hey! I'm Manku! Come on, let's talk together!",
-    sceneKind: "intro",
+    sceneKind: "no-card",
     next: 1
   },
   {
@@ -19,6 +19,7 @@ const scenes = [
     image: 2,
     audio: 2,
     prompt: "Can you say, Hi Manku!",
+    sceneKind: "no-card",
     accepted: ["hi manku", "hi", "hello manku", "hello"],
     helpPrompt: "Say: Hi Manku.",
     feedback: {
@@ -289,7 +290,7 @@ function showScene(scene, overridePrompt = scene.prompt) {
   els.sceneImage.src = imagePath(scene.image);
   els.sceneImage.alt = overridePrompt;
   els.sceneImage.dataset.sceneKind = scene.sceneKind || "practice";
-  els.artCard.dataset.mode = scene.sceneKind === "intro" ? "title" : "image";
+  els.artCard.dataset.mode = scene.sceneKind === "no-card" ? "hidden" : "image";
   els.heardText.textContent = "Nothing yet";
   els.micBtn.disabled = true;
   renderFallback(scene);

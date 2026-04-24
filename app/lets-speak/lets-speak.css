@@ -89,8 +89,8 @@ a {
 }
 
 .art-card {
-  width: min(70%, 360px);
-  aspect-ratio: 1.58;
+  width: min(84%, 420px);
+  aspect-ratio: 1;
   flex: 0 0 auto;
   margin-bottom: clamp(26px, 3.6vh, 38px);
   position: relative;
@@ -100,52 +100,24 @@ a {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
 }
 
-.title-card,
 .scene-image {
   position: absolute;
   inset: 0;
 }
 
-.title-card {
-  display: none;
-  align-content: center;
-  justify-items: center;
-  gap: clamp(2px, 0.6vh, 8px);
-  padding: clamp(18px, 4vh, 34px);
-  background: var(--card);
-  text-align: center;
-}
-
-.title-card span {
-  display: block;
-  color: var(--orange);
-  font-size: clamp(40px, 6.8vh, 68px);
-  line-height: 0.9;
-  font-weight: 800;
-  text-shadow: 0 5px 0 rgba(255, 255, 255, 0.9), 6px 8px 12px rgba(0, 0, 0, 0.18);
-}
-
-.art-card[data-mode="title"] .title-card {
-  display: grid;
-}
-
-.art-card[data-mode="title"] .scene-image {
-  display: none;
+.art-card[data-mode="hidden"] {
+  visibility: hidden;
+  box-shadow: none;
+  background: transparent;
 }
 
 .scene-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 43%;
-  transform: scale(1.56);
-  transform-origin: center;
+  object-fit: contain;
+  object-position: center;
+  transform: none;
   display: block;
-}
-
-.scene-image[data-scene-kind="intro"] {
-  object-position: center 44%;
-  transform: scale(1.62);
 }
 
 .mic-slot {
@@ -316,12 +288,8 @@ a {
   }
 
   .art-card {
-    width: 74%;
+    width: 88%;
     border-radius: 20px;
-  }
-
-  .title-card span {
-    font-size: clamp(52px, 9.5vh, 82px);
   }
 
   .mic-slot {
