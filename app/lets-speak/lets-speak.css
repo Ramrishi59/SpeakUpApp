@@ -54,12 +54,14 @@ a {
 .hero-panel {
   position: relative;
   display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
   justify-items: center;
-  align-content: center;
-  gap: clamp(12px, 2.4vh, 22px);
-  padding: clamp(18px, 3.2vh, 34px) clamp(18px, 5vw, 34px) clamp(10px, 2vh, 18px);
+  align-content: start;
+  gap: clamp(10px, 1.8vh, 18px);
+  padding: clamp(18px, 3vh, 30px) clamp(18px, 5vw, 34px) clamp(10px, 1.8vh, 16px);
   background: var(--cream);
-  min-height: clamp(200px, 30svh, 310px);
+  min-height: clamp(200px, 29svh, 286px);
+  max-height: clamp(220px, 32svh, 300px);
 }
 
 .build-tag {
@@ -89,12 +91,15 @@ a {
 .prompt-text {
   margin: 0;
   color: var(--text);
-  max-width: 92%;
-  font-size: clamp(23px, 4.2vh, 38px);
-  line-height: 1.22;
+  max-width: min(94%, 12ch);
+  min-height: clamp(74px, 10.5vh, 108px);
+  max-height: clamp(92px, 13vh, 126px);
+  overflow: hidden;
+  font-size: clamp(21px, 3.6vh, 32px);
+  line-height: 1.18;
   text-align: center;
   letter-spacing: 0;
-  font-weight: 700;
+  font-weight: 500;
   text-wrap: balance;
 }
 
@@ -307,11 +312,14 @@ a {
   }
 
   .hero-panel {
-    min-height: clamp(184px, 28svh, 270px);
+    min-height: clamp(184px, 27svh, 254px);
+    max-height: clamp(204px, 30svh, 270px);
   }
 
   .prompt-text {
-    font-size: clamp(20px, 4.2vh, 31px);
+    min-height: clamp(68px, 10vh, 96px);
+    max-height: clamp(84px, 12vh, 110px);
+    font-size: clamp(19px, 3.2vh, 28px);
   }
 
   .art-card {

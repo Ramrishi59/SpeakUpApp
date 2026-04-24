@@ -171,6 +171,7 @@ const scenes = [
 ];
 
 const els = {
+  heroPanel: document.querySelector(".hero-panel"),
   practicePanel: document.querySelector(".practice-panel"),
   promptText: document.getElementById("promptText"),
   artCard: document.querySelector(".art-card"),
@@ -189,9 +190,34 @@ let currentAudio = null;
 let hasStarted = false;
 let acceptingSpeech = false;
 let retryTimer = null;
+let fitPromptFrame = null;
 
 function syncAppHeight() {
   document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
+  schedulePromptFit();
+}
+
+function fitPromptText() {
+  const prompt = els.promptText;
+  if (!prompt) return;
+
+  prompt.style.fontSize = "";
+
+  const computed = window.getComputedStyle(prompt);
+  let fontSize = parseFloat(computed.fontSize) || 28;
+  const minFontSize = 16;
+
+  while (prompt.scrollHeight > prompt.clientHeight + 1 && fontSize > minFontSize) {
+    fontSize -= 1;
+    prompt.style.fontSize = `${fontSize}px`;
+  }
+}
+
+function schedulePromptFit() {
+  window.cancelAnimationFrame(fitPromptFrame);
+  fitPromptFrame = window.requestAnimationFrame(() => {
+    fitPromptText();
+  });
 }
 
 function normalizeSpeech(value) {
@@ -295,6 +321,7 @@ function stopListening() {
 }
 
 function showScene(scene, overridePrompt = scene.prompt) {
+  els.heroPanel.dataset.scene = scene.id;
   els.promptText.textContent = overridePrompt;
   els.sceneImage.src = scene.imageSrc || imagePath(scene.image);
   els.sceneImage.alt = overridePrompt;
@@ -302,6 +329,7 @@ function showScene(scene, overridePrompt = scene.prompt) {
   els.artCard.dataset.mode = scene.sceneKind === "no-card" ? "hidden" : "image";
   els.heardText.textContent = "Nothing yet";
   els.micBtn.disabled = true;
+  schedulePromptFit();
 }
 
 function playAudio(number, onDone) {
