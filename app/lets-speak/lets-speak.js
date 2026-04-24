@@ -23,40 +23,41 @@ const scenes = [
     accepted: ["hi manku", "hi", "hello manku", "hello"],
     helpPrompt: "Say: Hi Manku.",
     feedback: {
-      image: 3,
-      audio: null,
+      image: 1,
+      audio: 4,
+      sceneKind: "no-card",
       prompt: "Hi! I'm happy to hear you!"
     }
   },
   {
     id: "book",
-    image: 4,
+    image: 1,
     audio: 3,
     prompt: "Look! I have a book. Say, a book..",
     accepted: ["a book", "book", "it is a book", "this is a book"],
     helpPrompt: "Say: a book.",
     feedback: {
-      image: 5,
+      image: 1,
       audio: 4,
       prompt: "Nice! A book!"
     }
   },
   {
     id: "apple",
-    image: 6,
+    image: 2,
     audio: 6,
     prompt: "Oh, here is an apple. You say it!",
     accepted: ["an apple", "apple", "it is an apple", "this is an apple"],
     helpPrompt: "Say: an apple.",
     feedback: {
-      image: 7,
+      image: 2,
       audio: 7,
       prompt: "Very good! An apple!"
     }
   },
   {
     id: "pen-pencil",
-    image: 8,
+    image: 3,
     audio: 8,
     prompt: "Now I have two things... a pen and a pencil. Can you say it?",
     promptAudio: 9,
@@ -70,14 +71,14 @@ const scenes = [
     ],
     helpPrompt: "Say: a pen and a pencil.",
     feedback: {
-      image: 9,
+      image: 3,
       audio: 10,
       prompt: "Super talking!"
     }
   },
   {
     id: "orange-egg",
-    image: 10,
+    image: 4,
     audio: 11,
     prompt: "Yummy! I see an orange and an egg. Say it slowly?",
     accepted: [
@@ -90,14 +91,14 @@ const scenes = [
     ],
     helpPrompt: "Say: an orange and an egg.",
     feedback: {
-      image: 11,
+      image: 4,
       audio: 12,
       prompt: "Excellent speaking!"
     }
   },
   {
     id: "chair-table",
-    image: 12,
+    image: 5,
     audio: 13,
     prompt: "Look in the room... a chair and a table. You try!",
     accepted: [
@@ -111,14 +112,14 @@ const scenes = [
     ],
     helpPrompt: "Say: a chair and a table.",
     feedback: {
-      image: 13,
+      image: 5,
       audio: 14,
       prompt: "Well done!"
     }
   },
   {
     id: "dolphin-shark",
-    image: 14,
+    image: 6,
     audio: 15,
     prompt: "Wow! In the sea... a dolphin and a shark! Can you say it?",
     accepted: [
@@ -132,14 +133,14 @@ const scenes = [
     ],
     helpPrompt: "Say: a dolphin and a shark.",
     feedback: {
-      image: 15,
+      image: 6,
       audio: 16,
       prompt: "Great job!"
     }
   },
   {
     id: "umbrella-eraser",
-    image: 16,
+    image: 7,
     audio: 17,
     prompt: "Last one... an umbrella and an eraser. Say it with me!",
     accepted: [
@@ -152,14 +153,14 @@ const scenes = [
     ],
     helpPrompt: "Say: an umbrella and an eraser.",
     feedback: {
-      image: 17,
+      image: 7,
       audio: 18,
       prompt: "Fantastic talking!"
     }
   },
   {
     id: "outro",
-    image: 18,
+    image: 7,
     audio: null,
     prompt: "You said so many words! I loved talking with you!",
     done: true
@@ -516,19 +517,20 @@ function handleTryAgain() {
 
 function handleAcceptedAnswer() {
   const scene = scenes[sceneIndex];
+  const feedback = scene.feedback || {};
   acceptingSpeech = false;
   clearRetryTimer();
   stopListening();
   setState("Good speaking", "correct");
   els.micBtn.disabled = true;
   els.fallbackRow.replaceChildren();
-  els.promptText.textContent = scene.feedback.prompt;
-  els.sceneImage.src = imagePath(scene.feedback.image);
-  els.sceneImage.alt = scene.feedback.prompt;
-  els.sceneImage.dataset.sceneKind = "practice";
-  els.artCard.dataset.mode = "image";
+  els.promptText.textContent = feedback.prompt || scene.prompt;
+  els.sceneImage.src = imagePath(feedback.image || scene.image);
+  els.sceneImage.alt = feedback.prompt || scene.prompt;
+  els.sceneImage.dataset.sceneKind = feedback.sceneKind || "practice";
+  els.artCard.dataset.mode = feedback.sceneKind === "no-card" ? "hidden" : "image";
 
-  playAudio(scene.feedback.audio, () => {
+  playAudio(feedback.audio, () => {
     sceneIndex += 1;
     playCurrentScene();
   });
