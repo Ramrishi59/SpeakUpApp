@@ -206,7 +206,7 @@ function fitPromptText() {
 
   const computed = window.getComputedStyle(prompt);
   let fontSize = parseFloat(computed.fontSize) || 28;
-  const minFontSize = 16;
+  const minFontSize = 22;
 
   while (prompt.scrollHeight > prompt.clientHeight + 1 && fontSize > minFontSize) {
     fontSize -= 1;

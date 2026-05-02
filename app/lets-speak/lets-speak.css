@@ -81,7 +81,7 @@ a {
 }
 
 .manku-avatar {
-  width: clamp(92px, 13vh, 128px);
+  width: clamp(84px, 11.5vh, 112px);
   aspect-ratio: 1;
   object-fit: contain;
   border-radius: 50%;
@@ -91,12 +91,12 @@ a {
 .prompt-text {
   margin: 0;
   color: var(--text);
-  max-width: min(94%, 12ch);
-  min-height: clamp(74px, 10.5vh, 108px);
-  max-height: clamp(92px, 13vh, 126px);
+  width: min(96%, 360px);
+  min-height: clamp(82px, 11.5vh, 116px);
+  max-height: clamp(104px, 15vh, 138px);
   overflow: hidden;
-  font-size: clamp(21px, 3.6vh, 32px);
-  line-height: 1.18;
+  font-size: clamp(24px, 3.25vh, 30px);
+  line-height: 1.14;
   text-align: center;
   letter-spacing: 0;
   font-weight: 500;
@@ -365,9 +365,10 @@ a {
   }
 
   .prompt-text {
-    min-height: clamp(68px, 10vh, 96px);
-    max-height: clamp(84px, 12vh, 110px);
-    font-size: clamp(19px, 3.2vh, 28px);
+    width: min(96%, 342px);
+    min-height: clamp(78px, 11vh, 106px);
+    max-height: clamp(96px, 14vh, 126px);
+    font-size: clamp(23px, 3vh, 28px);
   }
 
   .art-card {
