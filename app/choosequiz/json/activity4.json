@@ -11,7 +11,7 @@
     },
     "items": [
       {
-        "image": "Images/activity4/2.webp",
+        "image": "Images/activity4/1.webp",
         "choices": [
           "Yes, it's a balloon.",
           "No, it's not a balloon.",
@@ -22,7 +22,7 @@
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
       {
-        "image": "Images/activity4/3.webp",
+        "image": "Images/activity4/2.webp",
         "choices": [
           "No, it's not a mango.",
           "Yes, it's a mango.",
@@ -33,7 +33,7 @@
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
       {
-        "image": "Images/activity4/4.webp",
+        "image": "Images/activity4/3.webp",
         "choices": [
           "Yes, that's an umbrella.",
           "No, it's not a umbrella.",
@@ -44,7 +44,7 @@
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
       {
-        "image": "Images/activity4/5.webp",
+        "image": "Images/activity4/4.webp",
         "choices": [
           "Yes, it's a robot.",
           "No, it's not a robot.",
@@ -55,7 +55,7 @@
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
       {
-        "image": "Images/activity4/6.webp",
+        "image": "Images/activity4/5.webp",
         "choices": [
           "No, it's not a raincoat.",
           "Yes, it's a raincoat.",
@@ -66,7 +66,7 @@
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
       {
-        "image": "Images/activity4/7.webp",
+        "image": "Images/activity4/6.webp",
         "choices": [
           "Yes, it's a duster.",
           "No, it's not a duster.",
@@ -77,7 +77,7 @@
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
       {
-        "image": "Images/activity4/8.webp",
+        "image": "Images/activity4/7.webp",
         "choices": [
           "Yes, it's an atlas.",
           "No, it's not an atlas.",
@@ -88,7 +88,7 @@
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
       {
-        "image": "Images/activity4/9.webp",
+        "image": "Images/activity4/8.webp",
         "choices": [
           "Yes, that's a bat.",
           "No, it's not a bat.",
@@ -98,19 +98,9 @@
         "audioCorrect": "Audio/activity4/09_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
+
       {
         "image": "Images/activity4/10.webp",
-        "choices": [
-          "No, it's not a doll.",
-          "Yes, it's a doll.",
-          "Yes, it's the doll."
-        ],
-        "correctIndex": 0,
-        "audioCorrect": "Audio/activity4/10_Chapter 1.mp3",
-        "audioWrong": "Audio/activity4/tryagain.mp3"
-      },
-      {
-        "image": "Images/activity4/11.webp",
         "choices": [
           "No, it's not an eraser.",
           "Yes, it's an eraser.",
@@ -121,7 +111,7 @@
         "audioWrong": "Audio/activity4/tryagain.mp3"
       },
       {
-        "image": "Images/activity4/12.webp",
+        "image": "Images/activity4/9.webp",
         "choices": [
           "No, that's not a top.",
           "Yes, that's a top.",
@@ -129,17 +119,6 @@
         ],
         "correctIndex": 0,
         "audioCorrect": "Audio/activity4/12_Chapter 1.mp3",
-        "audioWrong": "Audio/activity4/tryagain.mp3"
-      },
-      {
-        "image": "Images/activity4/13.webp",
-        "choices": [
-          "Yes, that's a balloon.",
-          "No, that's not a balloon.",
-          "Yes, this balloon is."
-        ],
-        "correctIndex": 0,
-        "audioCorrect": "Audio/activity4/13_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       }
     ]

@@ -11,7 +11,7 @@
     },
     "items": [
         {
-            "image": "Images/activity3/2.webp",
+            "image": "Images/activity3/1.webp",
             "choices": [
                 "This is a bird.",
                 "That’s a bird.",
@@ -22,7 +22,7 @@
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
         {
-            "image": "Images/activity3/3.webp",
+            "image": "Images/activity3/2.webp",
             "choices": [
                 "This is a frog.",
                 "That’s a frog.",
@@ -33,7 +33,7 @@
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
         {
-            "image": "Images/activity3/4.webp",
+            "image": "Images/activity3/3.webp",
             "choices": [
                 "That’s an owl.",
                 "This is owl.",
@@ -44,7 +44,7 @@
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
         {
-            "image": "Images/activity3/5.webp",
+            "image": "Images/activity3/4.webp",
             "choices": [
                 "That’s a butterfly.",
                 "This is a butterfly.",
@@ -55,7 +55,7 @@
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
         {
-            "image": "Images/activity3/6.webp",
+            "image": "Images/activity3/5.webp",
             "choices": [
                 "This is a cat.",
                 "That’s cat.",
@@ -66,7 +66,7 @@
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
         {
-            "image": "Images/activity3/7.webp",
+            "image": "Images/activity3/6.webp",
             "choices": [
                 "That snake this.",
                 "That’s a snake.",
@@ -77,7 +77,7 @@
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
         {
-            "image": "Images/activity3/8.webp",
+            "image": "Images/activity3/7.webp",
             "choices": [
                 "That’s a dog.",
                 "This is dog.",
@@ -88,7 +88,7 @@
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
         {
-            "image": "Images/activity3/9.webp",
+            "image": "Images/activity3/8.webp",
             "choices": [
                 "This are a tortoise.",
                 "That’s a tortoise.",
@@ -99,7 +99,7 @@
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
         {
-            "image": "Images/activity3/10.webp",
+            "image": "Images/activity3/9.webp",
             "choices": [
                 "That’s a tiger.",
                 "This is tiger.",
@@ -110,7 +110,7 @@
             "audioWrong": "Audio/activity3/tryagain.mp3"
         },
         {
-            "image": "Images/activity3/11.webp",
+            "image": "Images/activity3/10.webp",
             "choices": [
                 "That’s a bee.",
                 "This is a bee.",
