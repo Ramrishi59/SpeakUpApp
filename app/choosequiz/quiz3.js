@@ -9,6 +9,7 @@ const returnUrl = returnCategory
   ? `../dashboard.html?cat=${encodeURIComponent(returnCategory)}`
   : "../dashboard.html";
 const DATA_URL = `json/${activityId}.json`;
+const ASSET_VERSION = "43";
 let ITEMS = [];
 let dataLoaded = false;
 let loadError = false;
@@ -126,6 +127,11 @@ function getActivityTitle() {
   return match ? `Tap the right one ${match[0]}` : "Tap the right one";
 }
 
+function versionedAsset(path) {
+  if (!path || /^(?:https?:|data:|blob:)/i.test(path)) return path;
+  return `${path}${path.includes("?") ? "&" : "?"}v=${ASSET_VERSION}`;
+}
+
 
 // Single shared audio for SFX (question / correct / wrong)
 const sfx = new Audio();
@@ -192,7 +198,7 @@ function render(i) {
   nextBtn.disabled = true;   // require a choice before moving ahead
 
   // image + question
-  imgEl.src = it.image;
+  imgEl.src = versionedAsset(it.image);
   imgEl.alt = it.question || "Question image";
   if (activityTitleEl) {
     activityTitleEl.textContent = getActivityTitle();
@@ -448,6 +454,6 @@ window.addEventListener("keydown", (e) => {
 dataPromise.then(() => {
   ITEMS.forEach(it => {
     const im = new Image();
-    im.src = it.image;
+    im.src = versionedAsset(it.image);
   });
 });

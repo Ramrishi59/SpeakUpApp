@@ -1,4 +1,4 @@
-const CACHE_NAME = 'speakupapp-cache-v22';
+const CACHE_NAME = 'speakupapp-cache-v23';
 const APP_SHELL_CACHE = `${CACHE_NAME}-shell`;
 const MEDIA_CACHE = `${CACHE_NAME}-media`;
 const RUNTIME_CACHE = `${CACHE_NAME}-runtime`;
@@ -73,7 +73,7 @@ self.addEventListener('fetch', event => {
   }
 
   if (isMediaRequest(request, url)) {
-    event.respondWith(cacheFirst(request, MEDIA_CACHE));
+    event.respondWith(networkFirst(request, MEDIA_CACHE));
     return;
   }
 

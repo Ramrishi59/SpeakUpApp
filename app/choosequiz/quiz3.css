@@ -16,7 +16,7 @@
   --btn-h: clamp(56px, 8.4svh, 78px);
   --btn-fs: clamp(23px, 3.5svh, 34px);
   --coin-size: clamp(72px, 10.5svh, 104px);
-  --nav-h: clamp(112px, 15svh, 148px);
+  --nav-h: clamp(104px, 14svh, 132px);
 }
 
 * {
@@ -60,6 +60,24 @@ a {
   background: var(--cream);
   position: relative;
   z-index: 3;
+}
+
+.build-tag {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 5;
+  min-height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.76);
+  color: rgba(18, 63, 147, 0.88);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .pill {
@@ -312,7 +330,7 @@ main#app {
   justify-items: center;
   justify-content: center;
   gap: clamp(5px, 1.4vw, 12px);
-  padding: clamp(10px, 1.6svh, 14px) clamp(14px, 5vw, 26px) max(env(safe-area-inset-bottom, 0px), 10px);
+  padding: clamp(6px, 1svh, 10px) clamp(14px, 5vw, 26px) max(env(safe-area-inset-bottom, 0px), 6px);
   background:
     radial-gradient(circle at 16% 22%, rgba(255, 255, 255, 0.44) 0 24%, transparent 25%),
     linear-gradient(180deg, var(--cream-light) 0%, var(--cream) 100%);
@@ -349,8 +367,8 @@ main#app {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: calc(var(--coin-size) * 1.02);
-  height: calc(var(--coin-size) * 1.42);
+  width: calc(var(--coin-size) * 1.12);
+  height: calc(var(--coin-size) * 1.12);
   transform: translate(-50%, -50%);
   background: center / contain no-repeat;
   filter: drop-shadow(0 5px 6px rgba(0, 0, 0, 0.22));
@@ -373,24 +391,21 @@ main#app {
 }
 
 #prevBtn::before {
-  background-image: url("buttons/11.webp");
+  background-image: url("buttons/11.webp?v=43");
 }
 
 #nextBtn::before {
-  background-image: url("buttons/12.webp");
-  top: 48%;
+  background-image: url("buttons/12.webp?v=43");
 }
 
 #startBtn::before {
-  background-image: url("buttons/12.webp");
-  top: 48%;
+  background-image: url("buttons/12.webp?v=43");
 }
 
 #resetBtn::before,
 #skipBtn::before,
 #restartBtn::before {
-  background-image: url("buttons/13.webp");
-  top: 48%;
+  background-image: url("buttons/13.webp?v=43");
 }
 
 .overlay-nav .btn,
@@ -438,7 +453,7 @@ main#app {
 }
 
 .activity-home::before {
-  background-image: url("buttons/10.webp");
+  background-image: url("buttons/10.webp?v=43");
 }
 
 .activity-home span {
