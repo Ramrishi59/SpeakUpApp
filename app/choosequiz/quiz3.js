@@ -123,7 +123,7 @@ function shuffle3() {
 function getActivityTitle() {
   if (activityTitle) return activityTitle;
   const match = activityId.match(/\d+/);
-  return match ? `Choose the right option ${match[0]}` : "Choose the right option";
+  return match ? `Tap the right one ${match[0]}` : "Tap the right one";
 }
 
 
@@ -450,9 +450,4 @@ dataPromise.then(() => {
     const im = new Image();
     im.src = it.image;
   });
-  if (introData) {
-    if (introAudioEl && introData.audio) {
-      introAudioEl.src = introData.audio;
-    }
-  }
 });
