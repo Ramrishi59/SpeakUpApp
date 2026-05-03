@@ -22,6 +22,7 @@
 <body>
   <header id="quizTopbar" class="topbar hidden">
     <div class="build-tag">v44</div>
+    <button id="jumpResultsBtn" class="jump-results-btn" type="button">Finish</button>
     <img class="manku-avatar" src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
     <div id="activityTitle" class="activity-title">Tap the right one</div>
     <div id="question" class="question">
@@ -81,16 +82,25 @@
     </section>
 
 
-    <!-- RESULTS OVERLAY -->
-    <section id="resultsOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-label="Quiz results">
-      <div class="overlay-bg" aria-hidden="true">
-        <img id="resultsImage" src="../order-activity/Images/score.webp" alt="">
+    <!-- RESULTS SCREEN -->
+    <section id="resultsOverlay" class="overlay results-card hidden" role="dialog" aria-modal="true" aria-label="Quiz results">
+      <div class="results-hero">
+        <div class="build-tag results-build-tag">v44</div>
+        <img class="intro-avatar" src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
       </div>
-      <div id="resultsScore" class="results-score" aria-live="polite"></div>
-      <div class="overlay-card"></div>
-      <div class="nav-row overlay-nav">
-        <button id="reviewBtn" class="btn secondary">Review Answers</button>
-        <button id="restartBtn" class="btn primary">Go Home</button>
+
+      <div class="results-image-wrap">
+        <img id="resultsImage" src="../order-activity/Images/score.webp" alt="">
+        <div id="resultsScore" class="results-score" aria-live="polite"></div>
+      </div>
+
+      <div class="results-actions">
+        <button id="reviewBtn" class="btn secondary results-review" type="button" aria-label="Review Answers">
+          Review Answers
+        </button>
+        <button id="restartBtn" class="activity-home results-home" type="button" aria-label="Go Home">
+          <span>Go Home</span>
+        </button>
       </div>
     </section>
   </main>

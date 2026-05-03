@@ -80,6 +80,44 @@ a {
   line-height: 1;
 }
 
+.topbar > .build-tag {
+  left: 10px;
+  right: auto;
+}
+
+.jump-results-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 6;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border: 3px solid rgba(255, 255, 255, 0.92);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff8dc 0%, var(--cream-light) 46%, #f3d28c 100%);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: clamp(13px, 1.8svh, 16px);
+  font-weight: 700;
+  line-height: 1;
+  box-shadow:
+    0 5px 8px rgba(0, 71, 137, 0.18),
+    inset 0 -4px 0 rgba(198, 138, 42, 0.2);
+  transition: transform 0.08s ease, filter 0.12s ease;
+}
+
+.jump-results-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.jump-results-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
 .pill {
   display: none;
 }
@@ -403,35 +441,9 @@ main#app {
 }
 
 #resetBtn::before,
-#skipBtn::before,
-#restartBtn::before {
+#skipBtn::before {
   background-image: url("buttons/13.webp?v=44");
 }
-
-.overlay-nav .btn,
-.overlay-nav .btn {
-  width: auto;
-  min-width: 160px;
-  height: 58px;
-  border-radius: 999px;
-  padding: 0 28px;
-  border: 4px solid rgba(255, 255, 255, 0.92);
-  color: var(--ink);
-  font-size: clamp(18px, 2.8svh, 24px);
-  font-weight: 700;
-  box-shadow:
-    0 8px 14px rgba(0, 71, 137, 0.2),
-    inset 0 -5px 0 rgba(232, 126, 0, 0.24);
-}
-
-.overlay-nav .btn::before,
-.overlay-nav .btn::before {
-  content: none;
-}
-
-
-
-
 
 .btn.danger {
   background: transparent;
@@ -445,10 +457,15 @@ main#app {
   align-self: center;
   justify-self: center;
   position: relative;
+  border: 0;
   border-radius: 50%;
   background: transparent;
   text-decoration: none;
+  color: transparent;
+  font-size: 0;
   cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
   transition: transform 0.08s ease;
 }
 
@@ -558,55 +575,73 @@ main#app {
 
 .overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: var(--shell-w);
+  transform: translateX(-50%);
   display: grid;
-  place-items: center;
-  background: rgba(0, 0, 0, 0.18);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "resultsHero"
+    "resultsImage"
+    "resultsActions";
+  align-items: stretch;
+  justify-items: center;
+  background: var(--blue);
   z-index: 50;
   overflow: hidden;
 }
 
-.overlay-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.results-hero {
+  grid-area: resultsHero;
+  width: 100%;
+  min-height: clamp(116px, 18svh, 168px);
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 2.2svh, 22px);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.42) 0 30%, transparent 31%),
+    linear-gradient(180deg, var(--cream-light) 0%, var(--cream) 100%);
+  box-shadow: 0 5px 0 rgba(26, 159, 219, 0.32);
 }
 
-.overlay-bg img {
-  width: min(95%, 680px);
-  max-height: 88vh;
+.results-image-wrap {
+  grid-area: resultsImage;
+  width: min(96%, 520px);
+  aspect-ratio: 1.05;
+  max-height: min(54vh, 460px);
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  position: relative;
+  padding: clamp(8px, 1.2svh, 12px);
+  border-radius: clamp(22px, 6vw, 36px);
+  background: #fff;
+  box-shadow: 0 14px 24px rgba(0, 74, 140, 0.24);
+  overflow: hidden;
+}
+
+.results-image-wrap img {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  transform: scale(1.04);
-}
-
-.overlay-card {
-  position: absolute;
-  left: 50%;
-  top: 54%;
-  transform: translate(-50%, -50%);
-  width: min(65%, 520px);
-  background: transparent;
-  border-radius: 18px;
-  padding: 12px 16px;
-  text-align: center;
-  box-shadow: none;
-  color: #b84c00;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  object-position: center;
+  filter: drop-shadow(0 10px 12px rgba(0, 69, 128, 0.14));
 }
 
 .results-score {
   position: absolute;
-  right: 12%;
+  right: clamp(34px, 12%, 72px);
   top: 33%;
   transform: translateY(-50%);
   font-size: clamp(24px, 4svh, 40px);
   font-weight: 900;
   color: #b84c00;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  z-index: 2;
+  z-index: 1;
 }
 
 .results-text {
@@ -614,29 +649,24 @@ main#app {
   font-size: clamp(18px, 2.6svh, 22px);
 }
 
-.overlay-nav {
-  position: absolute;
-  bottom: 14%;
-  left: 50%;
-  transform: translateX(-50%);
-  min-height: auto;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: nowrap;
-  width: auto;
-  padding: 0;
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
-  z-index: 2;
+.results-actions {
+  grid-area: resultsActions;
+  width: 100%;
+  min-height: clamp(86px, 13svh, 116px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: clamp(18px, 8vw, 52px);
+  padding: clamp(10px, 1.6svh, 14px) clamp(70px, 18vw, 132px) max(env(safe-area-inset-bottom, 0px), 10px);
+  background:
+    radial-gradient(circle at 16% 22%, rgba(255, 255, 255, 0.44) 0 24%, transparent 25%),
+    linear-gradient(180deg, var(--cream-light) 0%, var(--cream) 100%);
+  box-shadow: 0 -5px 0 rgba(26, 159, 219, 0.18);
 }
 
-.overlay-nav .btn {
-  height: 46px;
-  min-width: 112px;
-  padding: 0 14px;
-  font-size: 15px;
+#reviewBtn::before {
+  background-image: url("buttons/11.webp?v=44");
 }
 
 body.overlay-open #app > *:not(.overlay) {
@@ -805,6 +835,7 @@ body.overlay-open #app > *:not(.overlay) {
   .choice-btn,
   .btn,
   .activity-home,
+  .jump-results-btn,
   .progress-fill {
     transition: none;
   }

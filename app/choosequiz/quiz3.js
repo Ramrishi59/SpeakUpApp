@@ -65,6 +65,7 @@ const introHomeBtn = document.getElementById("introHomeBtn");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const resetBtn = document.getElementById("resetBtn");
+const jumpResultsBtn = document.getElementById("jumpResultsBtn");
 
 const choiceEls = [0, 1, 2].map(i => document.getElementById("c" + i));
 
@@ -450,6 +451,10 @@ restartBtn?.addEventListener("click", async () => {
 
 reviewBtn?.addEventListener("click", () => {
   hideResults(); // keep idx where it is, let user go back/forward
+});
+
+jumpResultsBtn?.addEventListener("click", () => {
+  showResults();
 });
 
 // Keyboard shortcuts: 1/2/3 for options, arrows for nav

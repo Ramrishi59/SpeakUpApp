@@ -119,28 +119,6 @@
             "correctIndex": 1,
             "audioCorrect": "Audio/activity3/12_Chapter 1.mp3",
             "audioWrong": "Audio/activity3/tryagain.mp3"
-        },
-        {
-            "image": "Images/activity3/12.webp",
-            "choices": [
-                "This is a kite.",
-                "That’s kite.",
-                "This kite that."
-            ],
-            "correctIndex": 0,
-            "audioCorrect": "Audio/activity3/13_Chapter 1.mp3",
-            "audioWrong": "Audio/activity3/tryagain.mp3"
-        },
-        {
-            "image": "Images/activity3/13.webp",
-            "choices": [
-                "This is duck.",
-                "This is a duck.",
-                "That’s a duck."
-            ],
-            "correctIndex": 2,
-            "audioCorrect": "Audio/activity3/14_Chapter 1.mp3",
-            "audioWrong": "Audio/activity3/tryagain.mp3"
         }
     ]
 }
