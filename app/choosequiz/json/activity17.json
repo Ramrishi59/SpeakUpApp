@@ -7,7 +7,7 @@
   
     "items": [
       {
-        "image": "Images/activity17/2.webp",
+        "image": "Images/activity17/1.webp",
         "choices": [
           "He is at the school gate.",
           "He is in the school gate.",
@@ -19,7 +19,7 @@
         "audioWrong": "Audio/activity17/tryagain.mp3"
       },
       {
-        "image": "Images/activity17/3.webp",
+        "image": "Images/activity17/2.webp",
         "choices": [
           "She is at the classroom.",
           "She is in the classroom.",
@@ -31,7 +31,7 @@
         "audioWrong": "Audio/activity17/tryagain.mp3"
       },
       {
-        "image": "Images/activity17/4.webp",
+        "image": "Images/activity17/3.webp",
         "choices": [
           "They are at the hospital.",
           "They are in the hospital.",
@@ -43,7 +43,7 @@
         "audioWrong": "Audio/activity17/tryagain.mp3"
       },
       {
-        "image": "Images/activity17/5.webp",
+        "image": "Images/activity17/4.webp",
         "choices": [
           "She is at the hospital.",
           "She is in the hospital.",
@@ -55,7 +55,7 @@
         "audioWrong": "Audio/activity17/tryagain.mp3"
       },
       {
-        "image": "Images/activity17/6.webp",
+        "image": "Images/activity17/5.webp",
         "choices": [
           "She is at the ATM.",
           "She is in the ATM",
@@ -67,7 +67,7 @@
         "audioWrong": "Audio/activity17/tryagain.mp3"
       },
       {
-        "image": "Images/activity17/7.webp",
+        "image": "Images/activity17/6.webp",
         "choices": [
           "She is at the office.",
           "She is in the office.",
@@ -79,7 +79,7 @@
         "audioWrong": "Audio/activity17/tryagain.mp3"
       },
       {
-        "image": "Images/activity17/8.webp",
+        "image": "Images/activity17/7.webp",
         "choices": [
           "He is at home.",
           "He is in home.",
@@ -91,7 +91,7 @@
         "audioWrong": "Audio/activity17/tryagain.mp3"
       },
       {
-        "image": "Images/activity17/9.webp",
+        "image": "Images/activity17/8.webp",
         "choices": [
           "He is at the kitchen.",
           "He is in the kitchen.",
@@ -103,7 +103,7 @@
         "audioWrong": "Audio/activity17/tryagain.mp3"
       },
       {
-        "image": "Images/activity17/10.webp",
+        "image": "Images/activity17/9.webp",
         "choices": [
           "We are at the door.",
           "We are in the door.",
@@ -115,7 +115,7 @@
         "audioWrong": "Audio/activity17/tryagain.mp3"
       },
       {
-        "image": "Images/activity17/11.webp",
+        "image": "Images/activity17/10.webp",
         "choices": [
           "They are at the car.",
           "They are in the car.",

@@ -6,7 +6,7 @@
   },
   "items": [
     {
-      "image": "Images/activity27/2.webp",
+      "image": "Images/activity27/1.webp",
       "choices": ["I can writes.", "I write can.", "I can write."],
       "correctIndex": 2,
       "audioQuestion": "Audio/activity27/question.mp3",
@@ -14,7 +14,7 @@
       "audioWrong": "Audio/activity27/tryagain.mp3"
     },
     {
-      "image": "Images/activity27/3.webp",
+      "image": "Images/activity27/2.webp",
       "choices": ["Fish swim can.", "Fish can swim.", "Fish can swimming."],
       "correctIndex": 1,
       "audioQuestion": "Audio/activity27/question.mp3",
@@ -22,7 +22,7 @@
       "audioWrong": "Audio/activity27/tryagain.mp3"
     },
     {
-      "image": "Images/activity27/4.webp",
+      "image": "Images/activity27/3.webp",
       "choices": ["They can read.", "They can reading.", "They read can."],
       "correctIndex": 0,
       "audioQuestion": "Audio/activity27/question.mp3",
@@ -30,7 +30,7 @@
       "audioWrong": "Audio/activity27/tryagain.mp3"
     },
     {
-      "image": "Images/activity27/5.webp",
+      "image": "Images/activity27/4.webp",
       "choices": [
         "Snakes don’t can walk.",
         "Snakes can’t walk.",
@@ -42,7 +42,7 @@
       "audioWrong": "Audio/activity27/tryagain.mp3"
     },
     {
-      "image": "Images/activity27/6.webp",
+      "image": "Images/activity27/5.webp",
       "choices": ["He speak can?", "Can he speaking?", "Can he speak?"],
       "correctIndex": 2,
       "audioQuestion": "Audio/activity27/question.mp3",
@@ -50,7 +50,7 @@
       "audioWrong": "Audio/activity27/tryagain.mp3"
     },
     {
-      "image": "Images/activity27/7.webp",
+      "image": "Images/activity27/6.webp",
       "choices": ["She can dancing.", "She can dance.", "She dance can."],
       "correctIndex": 1,
       "audioQuestion": "Audio/activity27/question.mp3",
@@ -58,7 +58,7 @@
       "audioWrong": "Audio/activity27/tryagain.mp3"
     },
     {
-      "image": "Images/activity27/8.webp",
+      "image": "Images/activity27/7.webp",
       "choices": ["It can jump.", "It can jumping.", "It jump can."],
       "correctIndex": 0,
       "audioQuestion": "Audio/activity27/question.mp3",
@@ -66,7 +66,7 @@
       "audioWrong": "Audio/activity27/tryagain.mp3"
     },
     {
-      "image": "Images/activity27/9.webp",
+      "image": "Images/activity27/8.webp",
       "choices": ["Dogs can run.", "Dogs run can.", "Dogs can running."],
       "correctIndex": 0,
       "audioQuestion": "Audio/activity27/question.mp3",
@@ -74,7 +74,7 @@
       "audioWrong": "Audio/activity27/tryagain.mp3"
     },
     {
-      "image": "Images/activity27/10.webp",
+      "image": "Images/activity27/9.webp",
       "choices": ["Wolves sing can.", "Wolves can’t singing.", "Wolves can’t sing."],
       "correctIndex": 2,
       "audioQuestion": "Audio/activity27/question.mp3",
@@ -82,7 +82,7 @@
       "audioWrong": "Audio/activity27/tryagain.mp3"
     },
     {
-      "image": "Images/activity27/11.webp",
+      "image": "Images/activity27/10.webp",
       "choices": ["Can he cook?", "Can cook he ?", "Can he cooking?"],
       "correctIndex": 0,
       "audioQuestion": "Audio/activity27/question.mp3",

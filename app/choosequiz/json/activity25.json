@@ -7,7 +7,7 @@
 
   "items": [
     {
-      "image": "Images/activity25/2.webp",
+      "image": "Images/activity25/1.webp",
       "choices": [
         "The second one is blue.",
         "The two one is blue.",
@@ -19,7 +19,7 @@
       "audioWrong": "Audio/activity25/tryagain.mp3"
     },
     {
-      "image": "Images/activity25/3.webp",
+      "image": "Images/activity25/2.webp",
       "choices": [
         "The end one is pink.",
         "The last is pink one.",
@@ -31,7 +31,7 @@
       "audioWrong": "Audio/activity25/tryagain.mp3"
     },
     {
-      "image": "Images/activity25/4.webp",
+      "image": "Images/activity25/3.webp",
       "choices": [
         "The blue one is small.",
         "The blue is small one.",
@@ -43,7 +43,7 @@
       "audioWrong": "Audio/activity25/tryagain.mp3"
     },
     {
-      "image": "Images/activity25/5.webp",
+      "image": "Images/activity25/4.webp",
       "choices": [
         "Which is blue one?",
         "Which one blue is?",
@@ -55,7 +55,7 @@
       "audioWrong": "Audio/activity25/tryagain.mp3"
     },
     {
-      "image": "Images/activity25/6.webp",
+      "image": "Images/activity25/5.webp",
       "choices": [
         "Which one is Reena’s?",
         "Which is Reena one?",
@@ -67,7 +67,7 @@
       "audioWrong": "Audio/activity25/tryagain.mp3"
     },
     {
-      "image": "Images/activity25/7.webp",
+      "image": "Images/activity25/6.webp",
       "choices": [
         "How many cat are there?",
         "How many cats are there?",
@@ -79,7 +79,7 @@
       "audioWrong": "Audio/activity25/tryagain.mp3"
     },
     {
-      "image": "Images/activity25/8.webp",
+      "image": "Images/activity25/7.webp",
       "choices": [
         "There is five bottles.",
         "There are five bottle.",
@@ -91,7 +91,7 @@
       "audioWrong": "Audio/activity25/tryagain.mp3"
     },
     {
-      "image": "Images/activity25/9.webp",
+      "image": "Images/activity25/8.webp",
       "choices": [
         "The last one is the oil bottle.",
         "The last is oil bottle.",
@@ -103,7 +103,7 @@
       "audioWrong": "Audio/activity25/tryagain.mp3"
     },
     {
-      "image": "Images/activity25/10.webp",
+      "image": "Images/activity25/9.webp",
       "choices": [
         "The white is on chair.",
         "The white one is on the chair.",
@@ -115,7 +115,7 @@
       "audioWrong": "Audio/activity25/tryagain.mp3"
     },
     {
-      "image": "Images/activity25/11.webp",
+      "image": "Images/activity25/10.webp",
       "choices": [
         "The three one is small.",
         "The third is small one.",

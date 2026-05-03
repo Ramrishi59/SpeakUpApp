@@ -13,7 +13,7 @@
   
     "items": [
       {
-        "image": "Images/activity12/2.webp",
+        "image": "Images/activity12/1.webp",
         "choices": ["It’s red.", "It’s blue.", "It’s yellow."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity12/question.mp3",
@@ -21,7 +21,7 @@
         "audioWrong": "Audio/activity12/tryagain.mp3"
       },
       {
-        "image": "Images/activity12/3.webp",
+        "image": "Images/activity12/2.webp",
         "choices": ["It’s green.", "It’s blue.", "It’s black."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity12/question.mp3",
@@ -29,7 +29,7 @@
         "audioWrong": "Audio/activity12/tryagain.mp3"
       },
       {
-        "image": "Images/activity12/4.webp",
+        "image": "Images/activity12/3.webp",
         "choices": ["It’s pink.", "It’s yellow.", "It’s red."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity12/question.mp3",
@@ -37,7 +37,7 @@
         "audioWrong": "Audio/activity12/tryagain.mp3"
       },
       {
-        "image": "Images/activity12/5.webp",
+        "image": "Images/activity12/4.webp",
         "choices": ["It’s green.", "It’s black.", "It’s blue."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity12/question.mp3",
@@ -45,7 +45,7 @@
         "audioWrong": "Audio/activity12/tryagain.mp3"
       },
       {
-        "image": "Images/activity12/6.webp",
+        "image": "Images/activity12/5.webp",
         "choices": ["That’s yellow.", "That’s red.", "That’s green."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity12/question.mp3",
@@ -53,7 +53,7 @@
         "audioWrong": "Audio/activity12/tryagain.mp3"
       },
       {
-        "image": "Images/activity12/7.webp",
+        "image": "Images/activity12/6.webp",
         "choices": ["That’s blue.", "That’s yellow.", "That’s black."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity12/question.mp3",
@@ -61,7 +61,7 @@
         "audioWrong": "Audio/activity12/tryagain.mp3"
       },
       {
-        "image": "Images/activity12/8.webp",
+        "image": "Images/activity12/7.webp",
         "choices": ["They are blue and yellow.", "They are pink and green.", "They are red and black."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity12/question.mp3",
@@ -69,7 +69,7 @@
         "audioWrong": "Audio/activity12/tryagain.mp3"
       },
       {
-        "image": "Images/activity12/9.webp",
+        "image": "Images/activity12/8.webp",
         "choices": ["They are red and black.", "They are green and yellow.", "They are brown and yellow."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity12/question.mp3",
@@ -77,7 +77,7 @@
         "audioWrong": "Audio/activity12/tryagain.mp3"
       },
       {
-        "image": "Images/activity12/10.webp",
+        "image": "Images/activity12/9.webp",
         "choices": ["It’s green.", "It’s red.", "It’s blue."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity12/question.mp3",
@@ -85,7 +85,7 @@
         "audioWrong": "Audio/activity12/tryagain.mp3"
       },
       {
-        "image": "Images/activity12/11.webp",
+        "image": "Images/activity12/10.webp",
         "choices": ["They are red.", "They are yellow.", "They are blue."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity12/question.mp3",

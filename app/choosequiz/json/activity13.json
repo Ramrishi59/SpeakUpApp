@@ -13,7 +13,7 @@
   
     "items": [
       {
-        "image": "Images/activity13/2.webp",
+        "image": "Images/activity13/1.webp",
         "choices": ["This is my car.", "That’s my car.", "These are my cars."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity13/question.mp3",
@@ -21,7 +21,7 @@
         "audioWrong": "Audio/activity13/tryagain.mp3"
       },
       {
-        "image": "Images/activity13/3.webp",
+        "image": "Images/activity13/2.webp",
         "choices": ["That’s your backpack.", "This is my backpack.", "Those are their backpacks."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity13/question.mp3",
@@ -29,7 +29,7 @@
         "audioWrong": "Audio/activity13/tryagain.mp3"
       },
       {
-        "image": "Images/activity13/4.webp",
+        "image": "Images/activity13/3.webp",
         "choices": ["That’s your water bottle.", "This is my water bottle.", "These are our water bottles."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity13/question.mp3",
@@ -37,7 +37,7 @@
         "audioWrong": "Audio/activity13/tryagain.mp3"
       },
       {
-        "image": "Images/activity13/5.webp",
+        "image": "Images/activity13/4.webp",
         "choices": ["This is my pen.", "Is this your pen?", "Are these your pens?"],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity13/question.mp3",
@@ -45,7 +45,7 @@
         "audioWrong": "Audio/activity13/tryagain.mp3"
       },
       {
-        "image": "Images/activity13/6.webp",
+        "image": "Images/activity13/5.webp",
         "choices": ["Is that your house?", "Is this our house?", "Are those their houses?"],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity13/question.mp3",
@@ -53,7 +53,7 @@
         "audioWrong": "Audio/activity13/tryagain.mp3"
       },
       {
-        "image": "Images/activity13/7.webp",
+        "image": "Images/activity13/6.webp",
         "choices": ["These are our cats.", "Those are their cats.", "These are my cats."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity13/question.mp3",
@@ -61,7 +61,7 @@
         "audioWrong": "Audio/activity13/tryagain.mp3"
       },
       {
-        "image": "Images/activity13/8.webp",
+        "image": "Images/activity13/7.webp",
         "choices": ["These are our bicycles.", "Those are their bicycles.", "That is her bicycle."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity13/question.mp3",
@@ -69,7 +69,7 @@
         "audioWrong": "Audio/activity13/tryagain.mp3"
       },
       {
-        "image": "Images/activity13/9.webp",
+        "image": "Images/activity13/8.webp",
         "choices": ["It's her cap.", "It's his cap.", "It's my caps."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity13/question.mp3",
@@ -77,7 +77,7 @@
         "audioWrong": "Audio/activity13/tryagain.mp3"
       },
       {
-        "image": "Images/activity13/10.webp",
+        "image": "Images/activity13/9.webp",
         "choices": ["It's his hat.", "It's her hat.", "It's my hats."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity13/question.mp3",
@@ -85,7 +85,7 @@
         "audioWrong": "Audio/activity13/tryagain.mp3"
       },
       {
-        "image": "Images/activity13/11.webp",
+        "image": "Images/activity13/10.webp",
         "choices": ["These dogs are me", "These are my dogs", "This are my dogs"],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity13/question.mp3",

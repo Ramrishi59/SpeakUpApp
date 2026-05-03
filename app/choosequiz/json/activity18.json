@@ -7,7 +7,7 @@
   
     "items": [
       {
-        "image": "Images/activity18/2.webp",
+        "image": "Images/activity18/1.webp",
         "choices": [
           "Anju’s bangles are blue.",
           "Ammu’s bangles are red.",
@@ -19,7 +19,7 @@
         "audioWrong": "Audio/activity18/tryagain.mp3"
       },
       {
-        "image": "Images/activity18/3.webp",
+        "image": "Images/activity18/2.webp",
         "choices": [
           "Raju’s car is pink.",
           "Reena’s car is pink.",
@@ -31,7 +31,7 @@
         "audioWrong": "Audio/activity18/tryagain.mp3"
       },
       {
-        "image": "Images/activity18/4.webp",
+        "image": "Images/activity18/3.webp",
         "choices": [
           "Anju’s umbrella is blue.",
           "Ammu’s umbrella is red.",
@@ -43,7 +43,7 @@
         "audioWrong": "Audio/activity18/tryagain.mp3"
       },
       {
-        "image": "Images/activity18/5.webp",
+        "image": "Images/activity18/4.webp",
         "choices": [
           "Nithin speaker yellow",
           "Nithin's speaker is yellow.",
@@ -55,7 +55,7 @@
         "audioWrong": "Audio/activity18/tryagain.mp3"
       },
       {
-        "image": "Images/activity18/6.webp",
+        "image": "Images/activity18/5.webp",
         "choices": [
           "Yes, it's red.",
           "No, John’s kite is green.",
@@ -67,7 +67,7 @@
         "audioWrong": "Audio/activity18/tryagain.mp3"
       },
       {
-        "image": "Images/activity18/7.webp",
+        "image": "Images/activity18/6.webp",
         "choices": ["It’s green.", "It’s pink.", "It’s yellow."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity18/question.mp3",
@@ -75,7 +75,7 @@
         "audioWrong": "Audio/activity18/tryagain.mp3"
       },
       {
-        "image": "Images/activity18/8.webp",
+        "image": "Images/activity18/7.webp",
         "choices": ["It’s yellow.", "It’s blue.", "It’s black."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity18/question.mp3",
@@ -83,7 +83,7 @@
         "audioWrong": "Audio/activity18/tryagain.mp3"
       },
       {
-        "image": "Images/activity18/9.webp",
+        "image": "Images/activity18/8.webp",
         "choices": ["It’s Saira’s.", "It’s John’s.", "It’s Meera’s."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity18/question.mp3",
@@ -91,7 +91,7 @@
         "audioWrong": "Audio/activity18/tryagain.mp3"
       },
       {
-        "image": "Images/activity18/10.webp",
+        "image": "Images/activity18/9.webp",
         "choices": ["It's Sunaina's.", "It's Jameela's.", "It's  Reena’s."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity18/question.mp3",
@@ -99,7 +99,7 @@
         "audioWrong": "Audio/activity18/tryagain.mp3"
       },
       {
-        "image": "Images/activity18/11.webp",
+        "image": "Images/activity18/10.webp",
         "choices": ["They are Anju’s.", "They are Meera’s.", "They are Raju’s."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity18/question.mp3",

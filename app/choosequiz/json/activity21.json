@@ -7,7 +7,7 @@
 
   "items": [
     {
-      "image": "Images/activity22/2.webp",
+      "image": "Images/activity22/1.webp",
       "choices": [
         "How many bottle are there?",
         "How many bottles is there?",
@@ -19,7 +19,7 @@
       "audioWrong": "Audio/activity22/tryagain.mp3"
     },
     {
-      "image": "Images/activity22/3.webp",
+      "image": "Images/activity22/2.webp",
       "choices": [
         "How many candles are there?",
         "How many candles is there?",
@@ -31,7 +31,7 @@
       "audioWrong": "Audio/activity22/tryagain.mp3"
     },
     {
-      "image": "Images/activity22/4.webp",
+      "image": "Images/activity22/3.webp",
       "choices": [
         "There are three headphones.",
         "There is three headphones.",
@@ -43,7 +43,7 @@
       "audioWrong": "Audio/activity22/tryagain.mp3"
     },
     {
-      "image": "Images/activity22/5.webp",
+      "image": "Images/activity22/4.webp",
       "choices": [
         "Is there any boxes?",
         "Are there box?",
@@ -55,7 +55,7 @@
       "audioWrong": "Audio/activity22/tryagain.mp3"
     },
     {
-      "image": "Images/activity22/6.webp",
+      "image": "Images/activity22/5.webp",
       "choices": [
         "There aren’t pineapples any.",
         "There aren’t any pineapples.",
@@ -67,7 +67,7 @@
       "audioWrong": "Audio/activity22/tryagain.mp3"
     },
     {
-      "image": "Images/activity22/7.webp",
+      "image": "Images/activity22/6.webp",
       "choices": [
         "How many flower is there?",
         "How many flowers are there?",
@@ -79,7 +79,7 @@
       "audioWrong": "Audio/activity22/tryagain.mp3"
     },
     {
-      "image": "Images/activity22/8.webp",
+      "image": "Images/activity22/7.webp",
       "choices": [
         "Is there green bag?",
         "Are there a green bag?",
@@ -91,7 +91,7 @@
       "audioWrong": "Audio/activity22/tryagain.mp3"
     },
     {
-      "image": "Images/activity22/9.webp",
+      "image": "Images/activity22/8.webp",
       "choices": [
         "What colour is the T-shirt?",
         "What colour are the T-shirt?",
@@ -103,7 +103,7 @@
       "audioWrong": "Audio/activity22/tryagain.mp3"
     },
     {
-      "image": "Images/activity22/10.webp",
+      "image": "Images/activity22/9.webp",
       "choices": [
         "Is there a watch?",
         "Is there watch?",
@@ -115,7 +115,7 @@
       "audioWrong": "Audio/activity22/tryagain.mp3"
     },
     {
-      "image": "Images/activity22/11.webp",
+      "image": "Images/activity22/10.webp",
       "choices": [
         "Are there any birds?",
         "Is there any birds?",

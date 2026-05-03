@@ -7,7 +7,7 @@
 
   "items": [
     {
-      "image": "Images/activity23/2.webp",
+      "image": "Images/activity23/1.webp",
       "choices": [
         "What’s the weather like?",
         "What weather is it?",
@@ -19,7 +19,7 @@
       "audioWrong": "Audio/activity23/tryagain.mp3"
     },
     {
-      "image": "Images/activity23/3.webp",
+      "image": "Images/activity23/2.webp",
       "choices": [
         "It’s a windy day.",
         "It’s wind day.",
@@ -31,7 +31,7 @@
       "audioWrong": "Audio/activity23/tryagain.mp3"
     },
     {
-      "image": "Images/activity23/4.webp",
+      "image": "Images/activity23/3.webp",
       "choices": [
         "The sun is shining.",
         "The sun are shining.",
@@ -43,7 +43,7 @@
       "audioWrong": "Audio/activity23/tryagain.mp3"
     },
     {
-      "image": "Images/activity23/5.webp",
+      "image": "Images/activity23/4.webp",
       "choices": [
         "It’s raining.",
         "It’s raining day.",
@@ -55,7 +55,7 @@
       "audioWrong": "Audio/activity23/tryagain.mp3"
     },
     {
-      "image": "Images/activity23/6.webp",
+      "image": "Images/activity23/5.webp",
       "choices": [
         "What month is it?",
         "What is the month today?",
@@ -67,7 +67,7 @@
       "audioWrong": "Audio/activity23/tryagain.mp3"
     },
     {
-      "image": "Images/activity23/7.webp",
+      "image": "Images/activity23/6.webp",
       "choices": [
         "It’s December.",
         "It December is.",
@@ -79,7 +79,7 @@
       "audioWrong": "Audio/activity23/tryagain.mp3"
     },
     {
-      "image": "Images/activity23/8.webp",
+      "image": "Images/activity23/7.webp",
       "choices": [
         "What day is it today?",
         "What is today day?",
@@ -91,7 +91,7 @@
       "audioWrong": "Audio/activity23/tryagain.mp3"
     },
     {
-      "image": "Images/activity23/9.webp",
+      "image": "Images/activity23/8.webp",
       "choices": [
         "It’s Friday.",
         "It Friday is.",
@@ -103,7 +103,7 @@
       "audioWrong": "Audio/activity23/tryagain.mp3"
     },
     {
-      "image": "Images/activity23/10.webp",
+      "image": "Images/activity23/9.webp",
       "choices": [
         "What is today’s date?",
         "What date is today's?",
@@ -115,7 +115,7 @@
       "audioWrong": "Audio/activity23/tryagain.mp3"
     },
     {
-      "image": "Images/activity23/11.webp",
+      "image": "Images/activity23/10.webp",
       "choices": [
         "It’s the sixth of November.",
         "It’s six November.",

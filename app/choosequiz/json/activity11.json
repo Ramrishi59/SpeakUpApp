@@ -13,7 +13,7 @@
   
     "items": [
       {
-        "image": "Images/activity11/2.webp",
+        "image": "Images/activity11/1.webp",
         "choices": ["Are you a boy?", "Are you boys?", "Is you a boy?"],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity11/question.mp3",
@@ -21,7 +21,7 @@
         "audioWrong": "Audio/activity11/tryagain.mp3"
       },
       {
-        "image": "Images/activity11/3.webp",
+        "image": "Images/activity11/2.webp",
         "choices": ["Are you a boy?", "Are you a girl?", "Is you a girl?"],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity11/question.mp3",
@@ -29,7 +29,7 @@
         "audioWrong": "Audio/activity11/tryagain.mp3"
       },
       {
-        "image": "Images/activity11/4.webp",
+        "image": "Images/activity11/3.webp",
         "choices": ["Are you boys?", "Are you a boy?", "Is you boys?"],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity11/question.mp3",
@@ -37,7 +37,7 @@
         "audioWrong": "Audio/activity11/tryagain.mp3"
       },
       {
-        "image": "Images/activity11/5.webp",
+        "image": "Images/activity11/4.webp",
         "choices": ["Are you girl?", "Are you girls?", "Is you girls?"],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity11/question.mp3",
@@ -45,7 +45,7 @@
         "audioWrong": "Audio/activity11/tryagain.mp3"
       },
       {
-        "image": "Images/activity11/6.webp",
+        "image": "Images/activity11/5.webp",
         "choices": ["Are they boys?", "Are they boy?", "Is they boys?"],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity11/question.mp3",
@@ -53,7 +53,7 @@
         "audioWrong": "Audio/activity11/tryagain.mp3"
       },
       {
-        "image": "Images/activity11/7.webp",
+        "image": "Images/activity11/6.webp",
         "choices": ["Are they girl?", "Are they girls?", "Is they girls?"],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity11/question.mp3",
@@ -61,7 +61,7 @@
         "audioWrong": "Audio/activity11/tryagain.mp3"
       },
       {
-        "image": "Images/activity11/8.webp",
+        "image": "Images/activity11/7.webp",
         "choices": ["Are they men?", "Are they man?", "Is they men?"],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity11/question.mp3",
@@ -69,7 +69,7 @@
         "audioWrong": "Audio/activity11/tryagain.mp3"
       },
       {
-        "image": "Images/activity11/9.webp",
+        "image": "Images/activity11/8.webp",
         "choices": ["Are they woman?", "Are they women?", "Is they women?"],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity11/question.mp3",
@@ -77,7 +77,7 @@
         "audioWrong": "Audio/activity11/tryagain.mp3"
       },
       {
-        "image": "Images/activity11/10.webp",
+        "image": "Images/activity11/9.webp",
         "choices": ["Are they monkeys?", "Are they monkey?", "Is they monkeys?"],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity11/question.mp3",
@@ -85,7 +85,7 @@
         "audioWrong": "Audio/activity11/tryagain.mp3"
       },
       {
-        "image": "Images/activity11/11.webp",
+        "image": "Images/activity11/10.webp",
         "choices": ["Are they elephants?", "Is it an elephant?", "Is this elephant?"],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity11/question.mp3",

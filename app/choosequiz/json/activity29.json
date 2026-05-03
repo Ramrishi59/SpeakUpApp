@@ -7,7 +7,7 @@
 
   "items": [
     {
-      "image": "Images/activity29/2.webp",
+      "image": "Images/activity29/1.webp",
       "choices": [
         "The parrots is flying.",
         "The parrots are fly.",
@@ -19,7 +19,7 @@
       "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity29/3.webp",
+      "image": "Images/activity29/2.webp",
       "choices": [
         "They is eating.",
         "They are eating.",
@@ -31,7 +31,7 @@
       "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity29/4.webp",
+      "image": "Images/activity29/3.webp",
       "choices": [
         "He are juggling.",
         "He is juggling.",
@@ -43,7 +43,7 @@
       "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity29/5.webp",
+      "image": "Images/activity29/4.webp",
       "choices": [
         "What you are doing?",
         "What is you doing?",
@@ -55,7 +55,7 @@
       "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity29/6.webp",
+      "image": "Images/activity29/5.webp",
       "choices": [
         "The cat is sleeping.",
         "The cat are sleeping.",
@@ -67,7 +67,7 @@
       "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity29/7.webp",
+      "image": "Images/activity29/6.webp",
       "choices": [
         "It raining is.",
         "It’s rain.",
@@ -79,7 +79,7 @@
       "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity29/8.webp",
+      "image": "Images/activity29/7.webp",
       "choices": [
         "Are you reading?",
         "Do you reading?",
@@ -91,7 +91,7 @@
       "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity29/9.webp",
+      "image": "Images/activity29/8.webp",
       "choices": [
         "They is fighting.",
         "They are fighting.",
@@ -103,7 +103,7 @@
       "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity29/10.webp",
+      "image": "Images/activity29/9.webp",
       "choices": [
         "What they are doing?",
         "What they doing are?",
@@ -115,7 +115,7 @@
       "audioWrong": "Audio/activity29/tryagain.mp3"
     },
     {
-      "image": "Images/activity29/11.webp",
+      "image": "Images/activity29/10.webp",
       "choices": [
         "Is talking he?",
         "Is he talking?",

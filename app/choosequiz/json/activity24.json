@@ -6,7 +6,7 @@
   },
   "items": [
     {
-      "image": "Images/activity24/2.webp",
+      "image": "Images/activity24/1.webp",
       "choices": [
         "She is short a woman.",
         "She a short woman.",
@@ -18,7 +18,7 @@
       "audioWrong": "Audio/activity24/tryagain.mp3"
     },
     {
-      "image": "Images/activity24/3.webp",
+      "image": "Images/activity24/2.webp",
       "choices": [
         "The yellow ruler is long.",
         "The yellow ruler are long.",
@@ -30,7 +30,7 @@
       "audioWrong": "Audio/activity24/tryagain.mp3"
     },
     {
-      "image": "Images/activity24/4.webp",
+      "image": "Images/activity24/3.webp",
       "choices": [
         "The brown dog is big.",
         "The brown dog are big.",
@@ -42,7 +42,7 @@
       "audioWrong": "Audio/activity24/tryagain.mp3"
     },
     {
-      "image": "Images/activity24/5.webp",
+      "image": "Images/activity24/4.webp",
       "choices": [
         "He is a old man.",
         "He are an old man.",
@@ -54,7 +54,7 @@
       "audioWrong": "Audio/activity24/tryagain.mp3"
     },
     {
-      "image": "Images/activity24/6.webp",
+      "image": "Images/activity24/5.webp",
       "choices": [
         "She is not pretty.",
         "She is no pretty.",
@@ -66,7 +66,7 @@
       "audioWrong": "Audio/activity24/tryagain.mp3"
     },
     {
-      "image": "Images/activity24/7.webp",
+      "image": "Images/activity24/6.webp",
       "choices": [
         "He is strong a boy.",
         "He are a strong boy.",
@@ -78,7 +78,7 @@
       "audioWrong": "Audio/activity24/tryagain.mp3"
     },
     {
-      "image": "Images/activity24/8.webp",
+      "image": "Images/activity24/7.webp",
       "choices": [
         "The yellow T-shirt is dirty.",
         "The yellow T-shirt are dirty.",
@@ -90,7 +90,7 @@
       "audioWrong": "Audio/activity24/tryagain.mp3"
     },
     {
-      "image": "Images/activity24/9.webp",
+      "image": "Images/activity24/8.webp",
       "choices": [
         "It’s a little dog.",
         "It is little a dog.",
@@ -102,7 +102,7 @@
       "audioWrong": "Audio/activity24/tryagain.mp3"
     },
     {
-      "image": "Images/activity24/10.webp",
+      "image": "Images/activity24/9.webp",
       "choices": [
         "The tea are hot.",
         "Tea is the hot.",
@@ -114,7 +114,7 @@
       "audioWrong": "Audio/activity24/tryagain.mp3"
     },
     {
-      "image": "Images/activity24/11.webp",
+      "image": "Images/activity24/10.webp",
       "choices": [
         "He is movie a star.",
         "He is a movie star.",

@@ -7,7 +7,7 @@
 
   "items": [
     {
-      "image": "Images/activity28/2.webp",
+      "image": "Images/activity28/1.webp",
       "choices": [
         "It’s seven clock.",
         "It’s seven hours.",
@@ -19,7 +19,7 @@
       "audioWrong": "Audio/activity28/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/3.webp",
+      "image": "Images/activity28/2.webp",
       "choices": [
         "It’s quarter to four.",
         "It’s quarter past four.",
@@ -31,7 +31,7 @@
       "audioWrong": "Audio/activity28/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/4.webp",
+      "image": "Images/activity28/3.webp",
       "choices": [
         "It’s thirty twelve.",
         "It’s half to twelve.",
@@ -43,7 +43,7 @@
       "audioWrong": "Audio/activity28/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/5.webp",
+      "image": "Images/activity28/4.webp",
       "choices": [
         "It’s quarter to nine.",
         "It’s quarter past nine.",
@@ -55,7 +55,7 @@
       "audioWrong": "Audio/activity28/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/6.webp",
+      "image": "Images/activity28/5.webp",
       "choices": [
         "It’s an afternoon.",
         "It’s afternoon.",
@@ -67,7 +67,7 @@
       "audioWrong": "Audio/activity28/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/7.webp",
+      "image": "Images/activity28/6.webp",
       "choices": [
         "It’s ten thirty at night.",
         "It’s ten thirty in night.",
@@ -79,7 +79,7 @@
       "audioWrong": "Audio/activity28/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/8.webp",
+      "image": "Images/activity28/7.webp",
       "choices": [
         "It’s five thirty.",
         "It’s thirty five.",
@@ -91,7 +91,7 @@
       "audioWrong": "Audio/activity28/tryagain.mp3"
     },
     {
-      "image": "Images/activity28/9.webp",
+      "image": "Images/activity28/8.webp",
       "choices": [
         "It’s half to seven.",
         "It’s half past seven.",
@@ -100,6 +100,30 @@
       "correctIndex": 1,
       "audioQuestion": "Audio/activity28/question.mp3",
       "audioCorrect": "Audio/activity28/09_Chapter 1.mp3",
+      "audioWrong": "Audio/activity28/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity28/9.webp",
+      "choices": [
+        "It’s seven fifteen.",
+        "It’s fifteen seven.",
+        "It’s quarter to seven."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity28/question.mp3",
+      "audioCorrect": "Audio/activity28/10_Chapter 1.mp3",
+      "audioWrong": "Audio/activity28/tryagain.mp3"
+    },
+    {
+      "image": "Images/activity28/10.webp",
+      "choices": [
+        "It’s eight forty-five",
+        "It’s forty-five eight.",
+        "It’s quarter past eight."
+      ],
+      "correctIndex": 0,
+      "audioQuestion": "Audio/activity28/question.mp3",
+      "audioCorrect": "Audio/activity28/11_Chapter 1.mp3",
       "audioWrong": "Audio/activity28/tryagain.mp3"
     }
   ]
