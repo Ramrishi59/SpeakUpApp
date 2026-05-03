@@ -13,7 +13,7 @@
   
     "items": [
       {
-        "image": "Images/activity8/2.webp",
+        "image": "Images/activity8/1.webp",
         "choices": [
           "Yes, they are.",
           "No, they are grapes.",
@@ -25,7 +25,7 @@
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
-        "image": "Images/activity8/3.webp",
+        "image": "Images/activity8/2.webp",
         "choices": [
           "Yes, they are.",
           "No, they are watermelons.",
@@ -37,7 +37,7 @@
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
-        "image": "Images/activity8/4.webp",
+        "image": "Images/activity8/3.webp",
         "choices": [
           "Yes, they are.",
           "No, they are strawberries.",
@@ -49,7 +49,7 @@
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
-        "image": "Images/activity8/5.webp",
+        "image": "Images/activity8/4.webp",
         "choices": [
           "Yes, they are.",
           "No, they are potatoes.",
@@ -61,7 +61,7 @@
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
-        "image": "Images/activity8/6.webp",
+        "image": "Images/activity8/5.webp",
         "choices": [
           "No, they are onions.",
           "Yes, they are.",
@@ -73,7 +73,7 @@
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
-        "image": "Images/activity8/7.webp",
+        "image": "Images/activity8/6.webp",
         "choices": [
           "Yes, they are.",
           "No, they are beans.",
@@ -85,7 +85,7 @@
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
-        "image": "Images/activity8/8.webp",
+        "image": "Images/activity8/7.webp",
         "choices": [
           "Yes, they are.",
           "No, they are tomatoes.",
@@ -97,7 +97,7 @@
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
-        "image": "Images/activity8/9.webp",
+        "image": "Images/activity8/8.webp",
         "choices": [
           "No, they are stars.",
           "No, they are bees.",
@@ -109,7 +109,7 @@
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
-        "image": "Images/activity8/10.webp",
+        "image": "Images/activity8/9.webp",
         "choices": [
           "No, they are bees.",
           "Yes, they are.",
@@ -121,7 +121,7 @@
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
-        "image": "Images/activity8/11.webp",
+        "image": "Images/activity8/10.webp",
         "choices": [
           "No, they are birds.",
           "No, they are butterflies.",
@@ -131,67 +131,6 @@
         "audioQuestion": "Audio/activity8/arethese.mp3",
         "audioCorrect": "Audio/activity8/11_Chapter 1.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
-      },
-      {
-        "image": "Images/activity8/12.webp",
-        "choices": [
-          "Yes, they are.",
-          "No, they are mugs.",
-          "No, they are bottles."
-        ],
-        "correctIndex": 1,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/12_Chapter 1.mp3",
-        "audioWrong": "Audio/activity8/tryagain.mp3"
-      },
-      {
-        "image": "Images/activity8/13.webp",
-        "choices": [
-          "Yes, they are.",
-          "No, they are horses.",
-          "No, they are ships."
-        ],
-        "correctIndex": 1,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/13_Chapter 1.mp3",
-        "audioWrong": "Audio/activity8/tryagain.mp3"
-      },
-      {
-        "image": "Images/activity8/14.webp",
-        "choices": [
-          "No, they are cars.",
-          "No, they are butterflies.",
-          "Yes, they are."
-        ],
-        "correctIndex": 0,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/14_Chapter 1.mp3",
-        "audioWrong": "Audio/activity8/tryagain.mp3"
-      },
-      {
-        "image": "Images/activity8/15.webp",
-        "choices": [
-          "No, they are dolphins.",
-          "No, they are bees.",
-          "Yes, they are."
-        ],
-        "correctIndex": 0,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/15_Chapter 1.mp3",
-        "audioWrong": "Audio/activity8/tryagain.mp3"
-      },
-      {
-        "image": "Images/activity8/16.webp",
-        "choices": [
-          "No, they are ships.",
-          "No, they are mugs.",
-          "Yes, they are."
-        ],
-        "correctIndex": 0,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/16_Chapter 1.mp3",
-        "audioWrong": "Audio/activity8/tryagain.mp3"
-      }
-    ]
+      }  ]
   }
   

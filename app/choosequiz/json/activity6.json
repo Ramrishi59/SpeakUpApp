@@ -13,7 +13,7 @@
   
     "items": [
       {
-        "image": "Images/activity6/2.webp",
+        "image": "Images/activity6/1.webp",
         "choices": [
           "These are books.",
           "Those are books.",
@@ -26,7 +26,7 @@
       },
   
       {
-        "image": "Images/activity6/3.webp",
+        "image": "Images/activity6/2.webp",
         "choices": [
           "These are ships.",
           "Those are ships.",
@@ -39,7 +39,7 @@
       },
   
       {
-        "image": "Images/activity6/4.webp",
+        "image": "Images/activity6/3.webp",
         "choices": [
           "Those are pencils.",
           "This are pencils.",
@@ -52,7 +52,7 @@
       },
   
       {
-        "image": "Images/activity6/5.webp",
+        "image": "Images/activity6/4.webp",
         "choices": [
           "These are bees.",
           "Those are bees.",
@@ -65,7 +65,7 @@
       },
   
       {
-        "image": "Images/activity6/6.webp",
+        "image": "Images/activity6/5.webp",
         "choices": [
           "These are backpacks.",
           "These backpacks are.",
@@ -78,7 +78,7 @@
       },
   
       {
-        "image": "Images/activity6/7.webp",
+        "image": "Images/activity6/6.webp",
         "choices": [
           "These are cars.",
           "This are cars.",
@@ -91,7 +91,7 @@
       },
   
       {
-        "image": "Images/activity6/8.webp",
+        "image": "Images/activity6/7.webp",
         "choices": [
           "These are apples.",
           "These apple are.",
@@ -104,7 +104,7 @@
       },
   
       {
-        "image": "Images/activity6/9.webp",
+        "image": "Images/activity6/8.webp",
         "choices": [
           "This are stars.",
           "These are stars.",
@@ -117,7 +117,7 @@
       },
   
       {
-        "image": "Images/activity6/10.webp",
+        "image": "Images/activity6/9.webp",
         "choices": [
           "Those are oranges.",
           "These are oranges.",
@@ -130,7 +130,7 @@
       },
   
       {
-        "image": "Images/activity6/11.webp",
+        "image": "Images/activity6/10.webp",
         "choices": [
           "Those are butterflies.",
           "These are butterflies.",

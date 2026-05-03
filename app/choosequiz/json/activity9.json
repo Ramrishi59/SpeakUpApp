@@ -13,7 +13,7 @@
   
     "items": [
       {
-        "image": "Images/activity9/2.webp",
+        "image": "Images/activity9/1.webp",
         "choices": ["He is a boy.", "She is a girl.", "He a boy is."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity9/question.mp3",
@@ -21,7 +21,7 @@
         "audioWrong": "Audio/activity9/tryagain.mp3"
       },
       {
-        "image": "Images/activity9/3.webp",
+        "image": "Images/activity9/2.webp",
         "choices": ["He is a man.", "She is a girl.", "She is a monkey."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity9/question.mp3",
@@ -29,7 +29,7 @@
         "audioWrong": "Audio/activity9/tryagain.mp3"
       },
       {
-        "image": "Images/activity9/4.webp",
+        "image": "Images/activity9/3.webp",
         "choices": ["He is a man.", "He is a boy.", "She is a woman."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity9/question.mp3",
@@ -37,7 +37,7 @@
         "audioWrong": "Audio/activity9/tryagain.mp3"
       },
       {
-        "image": "Images/activity9/5.webp",
+        "image": "Images/activity9/4.webp",
         "choices": ["He is a boy.", "She is a woman.", "She is a girl."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity9/question.mp3",
@@ -45,7 +45,7 @@
         "audioWrong": "Audio/activity9/tryagain.mp3"
       },
       {
-        "image": "Images/activity9/6.webp",
+        "image": "Images/activity9/5.webp",
         "choices": ["I am a boy.", "I am a man.", "I am a monkey."],
         "correctIndex": 2,
         "audioQuestion": "Audio/activity9/question.mp3",
@@ -53,7 +53,7 @@
         "audioWrong": "Audio/activity9/tryagain.mp3"
       },
       {
-        "image": "Images/activity9/7.webp",
+        "image": "Images/activity9/6.webp",
         "choices": ["He is John", "He John is.", "John is he."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity9/question.mp3",
@@ -61,7 +61,7 @@
         "audioWrong": "Audio/activity9/tryagain.mp3"
       },
       {
-        "image": "Images/activity9/8.webp",
+        "image": "Images/activity9/7.webp",
         "choices": ["Is girl Saira", "Saira is a girl?", "She is a boy."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity9/question.mp3",
@@ -69,7 +69,7 @@
         "audioWrong": "Audio/activity9/tryagain.mp3"
       },
       {
-        "image": "Images/activity9/9.webp",
+        "image": "Images/activity9/8.webp",
         "choices": ["Is she Reena?", "Is Reena she?", "Reena is she?"],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity9/question.mp3",
@@ -77,7 +77,7 @@
         "audioWrong": "Audio/activity9/tryagain.mp3"
       },
       {
-        "image": "Images/activity9/10.webp",
+        "image": "Images/activity9/9.webp",
         "choices": ["He is not John", "He is John not?", "John is not he"],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity9/question.mp3",
@@ -85,7 +85,7 @@
         "audioWrong": "Audio/activity9/tryagain.mp3"
       },
       {
-        "image": "Images/activity9/11.webp",
+        "image": "Images/activity9/10.webp",
         "choices": ["A girl she is", "She is a boy", "She is a girl"],
         "correctIndex": 2,
         "audioQuestion": "Audio/activity9/question.mp3",

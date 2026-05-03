@@ -13,7 +13,7 @@
   
     "items": [
       {
-        "image": "Images/activity7/2.webp",
+        "image": "Images/activity7/1.webp",
         "choices": [
           "This is a cat.",
           "These are cats.",
@@ -25,7 +25,7 @@
         "audioWrong": "Audio/activity7/tryagain.mp3"
       },
       {
-        "image": "Images/activity7/3.webp",
+        "image": "Images/activity7/2.webp",
         "choices": [
           "This is an apple.",
           "Those are apples.",
@@ -37,7 +37,7 @@
         "audioWrong": "Audio/activity7/tryagain.mp3"
       },
       {
-        "image": "Images/activity7/4.webp",
+        "image": "Images/activity7/3.webp",
         "choices": [
           "These are cars.",
           "Those are cars.",
@@ -49,7 +49,7 @@
         "audioWrong": "Audio/activity7/tryagain.mp3"
       },
       {
-        "image": "Images/activity7/5.webp",
+        "image": "Images/activity7/4.webp",
         "choices": [
           "That's an umbrella.",
           "This is an umbrella.",
@@ -61,7 +61,7 @@
         "audioWrong": "Audio/activity7/tryagain.mp3"
       },
       {
-        "image": "Images/activity7/6.webp",
+        "image": "Images/activity7/5.webp",
         "choices": [
           "These are dogs.",
           "This is a dog.",
@@ -73,7 +73,7 @@
         "audioWrong": "Audio/activity7/tryagain.mp3"
       },
       {
-        "image": "Images/activity7/7.webp",
+        "image": "Images/activity7/6.webp",
         "choices": [
           "These are butterflies.",
           "Those are butterflies.",
@@ -85,7 +85,7 @@
         "audioWrong": "Audio/activity7/tryagain.mp3"
       },
       {
-        "image": "Images/activity7/8.webp",
+        "image": "Images/activity7/7.webp",
         "choices": [
           "This is a pencil.",
           "These are pencils.",
@@ -97,7 +97,7 @@
         "audioWrong": "Audio/activity7/tryagain.mp3"
       },
       {
-        "image": "Images/activity7/9.webp",
+        "image": "Images/activity7/8.webp",
         "choices": [
           "These are stars.",
           "This is a star.",
@@ -109,7 +109,7 @@
         "audioWrong": "Audio/activity7/tryagain.mp3"
       },
       {
-        "image": "Images/activity7/10.webp",
+        "image": "Images/activity7/9.webp",
         "choices": [
           "These are water bottles.",
           "This is a water bottle.",
@@ -121,7 +121,7 @@
         "audioWrong": "Audio/activity7/tryagain.mp3"
       },
       {
-        "image": "Images/activity7/11.webp",
+        "image": "Images/activity7/10.webp",
         "choices": [
           "That's a horse.",
           "These are horses.",

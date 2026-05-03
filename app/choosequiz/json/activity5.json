@@ -11,7 +11,7 @@
     },
     "items": [
       {
-        "image": "Images/activity5/2.webp",
+        "image": "Images/activity5/1.webp",
         "choices": [
           "What's this?",
           "What's that?",
@@ -22,7 +22,7 @@
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
       {
-        "image": "Images/activity5/3.webp",
+        "image": "Images/activity5/2.webp",
         "choices": [
           "What's this?",
           "What's that?",
@@ -33,7 +33,7 @@
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
       {
-        "image": "Images/activity5/4.webp",
+        "image": "Images/activity5/3.webp",
         "choices": [
           "Is that a fox?",
           "Is fox that?",
@@ -44,7 +44,7 @@
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
       {
-        "image": "Images/activity5/5.webp",
+        "image": "Images/activity5/4.webp",
         "choices": [
           "What's that?",
           "What that?",
@@ -55,7 +55,7 @@
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
       {
-        "image": "Images/activity5/6.webp",
+        "image": "Images/activity5/5.webp",
         "choices": [
           "Is that a kangaroo?",
           "That a kangaroo is?",
@@ -66,7 +66,7 @@
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
       {
-        "image": "Images/activity5/7.webp",
+        "image": "Images/activity5/6.webp",
         "choices": [
           "Is a peacock that?",
           "Is that a peacock?",
@@ -77,7 +77,7 @@
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
       {
-        "image": "Images/activity5/8.webp",
+        "image": "Images/activity5/7.webp",
         "choices": [
           "Is this backpack?",
           "Is this a backpack?",
@@ -88,7 +88,7 @@
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
       {
-        "image": "Images/activity5/9.webp",
+        "image": "Images/activity5/8.webp",
         "choices": [
           "That a lion?",
           "Is that a lion?",
@@ -99,7 +99,7 @@
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
       {
-        "image": "Images/activity5/10.webp",
+        "image": "Images/activity5/9.webp",
         "choices": [
           "Parrot is this?",
           "Is a parrot this?",
@@ -110,7 +110,7 @@
         "audioWrong": "Audio/activity5/tryagain.mp3"
       },
       {
-        "image": "Images/activity5/11.webp",
+        "image": "Images/activity5/10.webp",
         "choices": [
           "Buffalo is that?",
           "Is that a buffalo?",
