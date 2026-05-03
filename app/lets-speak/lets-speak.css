@@ -64,10 +64,16 @@ a {
   max-height: clamp(220px, 32svh, 300px);
 }
 
-.build-tag {
+.build-tools {
   position: absolute;
   top: clamp(10px, 1.4vh, 16px);
   right: clamp(10px, 3vw, 18px);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.build-tag {
   min-height: 24px;
   display: inline-flex;
   align-items: center;
@@ -78,6 +84,24 @@ a {
   color: rgba(30, 92, 158, 0.92);
   font-size: 12px;
   font-weight: 700;
+}
+
+.debug-jump-btn {
+  min-height: 24px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0 10px;
+  background: rgba(30, 92, 158, 0.9);
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(30, 92, 158, 0.18);
+}
+
+.debug-jump-btn:active {
+  transform: translateY(1px);
 }
 
 .manku-avatar {

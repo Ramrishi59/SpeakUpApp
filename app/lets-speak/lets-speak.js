@@ -239,7 +239,8 @@ const els = {
   statusText: document.getElementById("statusText"),
   heardText: document.getElementById("heardText"),
   micBtn: document.getElementById("micBtn"),
-  replayBtn: document.getElementById("replayBtn")
+  replayBtn: document.getElementById("replayBtn"),
+  jumpToEndBtn: document.getElementById("jumpToEndBtn")
 };
 
 let sceneIndex = 0;
@@ -252,6 +253,7 @@ let acceptingSpeech = false;
 let retryTimer = null;
 let fitPromptFrame = null;
 let retryCount = 0;
+const outroSceneIndex = scenes.findIndex((scene) => scene.done);
 
 function syncAppHeight() {
   document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
@@ -678,6 +680,19 @@ function handleAcceptedAnswer() {
   }, 420);
 }
 
+function jumpToOutroScene() {
+  if (outroSceneIndex < 0) return;
+
+  clearRetryTimer();
+  acceptingSpeech = false;
+  retryCount = 0;
+  stopListening();
+  stopAudio();
+  sceneIndex = outroSceneIndex;
+  hasStarted = true;
+  playCurrentScene();
+}
+
 els.micBtn.addEventListener("click", () => {
   if (!hasStarted || scenes[sceneIndex]?.done) {
     sceneIndex = scenes[sceneIndex]?.done ? 0 : sceneIndex;
@@ -702,6 +717,10 @@ els.replayBtn.addEventListener("click", () => {
   }
   playCurrentScene();
 });
+
+if (els.jumpToEndBtn) {
+  els.jumpToEndBtn.addEventListener("click", jumpToOutroScene);
+}
 
 syncAppHeight();
 window.addEventListener("resize", syncAppHeight);
