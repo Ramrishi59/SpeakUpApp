@@ -199,6 +199,8 @@ main#app {
   max-height: 94%;
   object-fit: contain;
   object-position: center;
+  border-radius: 30px;
+  background: white;
   filter: drop-shadow(0 9px 9px rgba(0, 69, 128, 0.16));
 }
 
@@ -681,7 +683,8 @@ body.overlay-open #app > *:not(.overlay) {
   }
 
   .activity-title {
-    font-size: clamp(17px, 2.2vh, 21px);
+    font-size: 26px;
+    margin-top: 14px;
   }
 
   .image-wrap {
