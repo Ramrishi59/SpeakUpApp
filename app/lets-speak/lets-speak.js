@@ -2,16 +2,23 @@
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-const audioPath = (number) => `Audio/${String(number).padStart(2, "0")}_Chapter 1.mp3`;
+const audioPath = (fileName) => `Audio/${fileName}`;
 const imagePath = (number) => `Images/${number}.webp`;
 const assetImagePath = (name) => `Images/${name}`;
+const fallbackAudioPaths = [
+  "Audio/fallback/01_Chapter 1.mp3",
+  "Audio/fallback/02_Chapter 1.mp3",
+  "Audio/fallback/03_Chapter 1.mp3",
+  "Audio/fallback/04_Chapter 1.mp3",
+  "Audio/fallback/05_Chapter 1.mp3"
+];
 
 const scenes = [
   {
     id: "intro",
     imageSrc: assetImagePath("title.png"),
     image: 1,
-    audio: 1,
+    audio: "01_Chapter 1-1.mp3",
     prompt: "Hey! I'm Manku! Come on, let's talk together!",
     sceneKind: "title-card",
     next: 1
@@ -20,145 +27,139 @@ const scenes = [
     id: "hi",
     imageSrc: assetImagePath("title.png"),
     image: 2,
-    audio: 2,
-    prompt: "Can you say, Hi Manku!",
+    audio: "02_Chapter 1-1.mp3",
+    prompt: "Can you say, “Hi Manku!”",
     sceneKind: "title-card",
-    accepted: ["hi manku", "hi manu", "hi", "hello manku", "hello manu", "hello"],
+    accepted: ["hi manku", "hi", "hello manku", "hello"],
     helpPrompt: "Say: Hi Manku.",
     feedback: {
       image: 1,
-      audio: 4,
+      audio: "03_Chapter 1-1.mp3",
       sceneKind: "no-card",
-      prompt: "Hi! I'm happy to hear you!"
+      prompt: "I'm happy to hear you!"
     }
   },
   {
     id: "book",
     image: 1,
-    audio: 3,
-    prompt: "Look! I have a book. Say, a book..",
-    accepted: ["a book", "book", "it is a book", "this is a book"],
-    helpPrompt: "Say: a book.",
+    audio: "04_Chapter 1-1.mp3",
+    retryAudio: "05_Chapter 1-1.mp3",
+    prompt: "Look! I have a book. Can you say it?",
+    accepted: ["a book", "book", "it is a book", "this is a book", "it's a book"],
+    helpPrompt: "Say: a book",
     feedback: {
       image: 1,
-      audio: 4,
-      prompt: "Nice! A book!"
+      audio: "06_Chapter 1-1.mp3",
+      prompt: "a book — nice!"
     }
   },
   {
     id: "apple",
     image: 2,
-    audio: 6,
+    audio: "07_Chapter 1-1.mp3",
+    retryAudio: "08_Chapter 1-1.mp3",
     prompt: "Oh, here is an apple. You say it!",
     accepted: ["an apple", "apple", "it is an apple", "this is an apple"],
-    helpPrompt: "Say: an apple.",
+    helpPrompt: "Say: an apple",
     feedback: {
       image: 2,
-      audio: 7,
-      prompt: "Very good! An apple!"
+      audio: "09_Chapter 1-1.mp3",
+      prompt: "an apple — very good!"
     }
   },
   {
     id: "pen-pencil",
     image: 3,
-    audio: 8,
-    prompt: "Now I have two things... a pen and a pencil. Can you say it?",
-    promptAudio: 9,
+    audio: "010_Chapter 1-1.mp3",
+    retryAudio: "11_Chapter 1.mp3",
+    prompt: "Now I have two things… a pen and a pencil. Can you say it?",
     accepted: [
       "a pen and a pencil",
       "pen and pencil",
       "a pencil and a pen",
-      "pencil and pen",
-      "pen and a pencil",
-      "a pen and pencil"
+      "pencil and pen"
     ],
-    helpPrompt: "Say: a pen and a pencil.",
+    helpPrompt: "Say: a pen and a pencil",
     feedback: {
       image: 3,
-      audio: 10,
-      prompt: "Super talking!"
+      audio: "12_Chapter 1.mp3",
+      prompt: "a pen and a pencil — super!"
     }
   },
   {
     id: "orange-egg",
     image: 4,
-    audio: 11,
-    prompt: "Yummy! I see an orange and an egg. Say it slowly?",
+    audio: "13_Chapter 1.mp3",
+    retryAudio: "14_Chapter 1.mp3",
+    prompt: "Yummy! I see an orange and an egg. Can you say it?",
     accepted: [
       "an orange and an egg",
       "orange and egg",
       "an egg and an orange",
-      "egg and orange",
-      "orange and an egg",
-      "an orange and egg"
+      "egg and orange"
     ],
-    helpPrompt: "Say: an orange and an egg.",
+    helpPrompt: "Say: an orange and an egg",
     feedback: {
       image: 4,
-      audio: 12,
-      prompt: "Excellent speaking!"
+      audio: "15_Chapter 1.mp3",
+      prompt: "an orange and an egg — excellent!"
     }
   },
   {
     id: "chair-table",
     image: 5,
-    audio: 13,
-    prompt: "Look in the room... a chair and a table. You try!",
+    audio: "16_Chapter 1.mp3",
+    retryAudio: "17_Chapter 1.mp3",
+    prompt: "Look, a chair and a table. You try!",
     accepted: [
       "a chair and a table",
       "chair and table",
       "a table and a chair",
-      "table and chair",
-      "chair and a table",
-      "a chair and table",
-      "i see a chair and a table"
+      "table and chair"
     ],
-    helpPrompt: "Say: a chair and a table.",
+    helpPrompt: "Say: a chair and a table",
     feedback: {
       image: 5,
-      audio: 14,
-      prompt: "Well done!"
+      audio: "18_Chapter 1.mp3",
+      prompt: "a chair and a table — well done!"
     }
   },
   {
     id: "dolphin-shark",
     image: 6,
-    audio: 15,
-    prompt: "Wow! In the sea... a dolphin and a shark! Can you say it?",
+    audio: "19_Chapter 1.mp3",
+    retryAudio: "20_Chapter 1.mp3",
+    prompt: "Wow! a dolphin and a shark! Can you say it?",
     accepted: [
       "a dolphin and a shark",
       "dolphin and shark",
       "a shark and a dolphin",
-      "shark and dolphin",
-      "dolphin and a shark",
-      "a dolphin and shark",
-      "wow a dolphin and a shark"
+      "shark and dolphin"
     ],
-    helpPrompt: "Say: a dolphin and a shark.",
+    helpPrompt: "Say: a dolphin and a shark",
     feedback: {
       image: 6,
-      audio: 16,
-      prompt: "Great job!"
+      audio: "21_Chapter 1.mp3",
+      prompt: "a dolphin and a shark — great!"
     }
   },
   {
     id: "umbrella-eraser",
     image: 7,
-    audio: 17,
-    prompt: "Last one... an umbrella and an eraser. Say it with me!",
+    audio: "22_Chapter 1.mp3",
+    retryAudio: "23_Chapter 1.mp3",
+    prompt: "Last one… an umbrella and an eraser. Say it!",
     accepted: [
       "an umbrella and an eraser",
       "umbrella and eraser",
       "an eraser and an umbrella",
-      "eraser and umbrella",
-      "umbrella and an eraser",
-      "an umbrella and eraser"
+      "eraser and umbrella"
     ],
-    helpPrompt: "Say: an umbrella and an eraser.",
+    helpPrompt: "Say: an umbrella and an eraser",
     feedback: {
       image: 7,
-      audio: 18,
-      prompt: "Fantastic talking!"
+      audio: "24_Chapter 1.mp3",
+      prompt: "an umbrella and an eraser — fantastic!"
     }
   },
   {
@@ -333,8 +334,8 @@ function showScene(scene, overridePrompt = scene.prompt) {
   schedulePromptFit();
 }
 
-function playAudio(number, onDone) {
-  if (!number) {
+function playAudioSource(src, onDone) {
+  if (!src) {
     if (typeof onDone === "function") {
       window.setTimeout(onDone, 50);
     }
@@ -346,7 +347,7 @@ function playAudio(number, onDone) {
   setState("Manku speaking", "ready");
   els.micBtn.disabled = true;
 
-  currentAudio = new Audio(audioPath(number));
+  currentAudio = new Audio(src);
   currentAudio.preload = "auto";
   currentAudio.addEventListener("ended", () => {
     currentAudio = null;
@@ -365,6 +366,15 @@ function playAudio(number, onDone) {
       els.micBtn.disabled = false;
     });
   }
+}
+
+function playAudio(fileName, onDone) {
+  playAudioSource(fileName ? audioPath(fileName) : null, onDone);
+}
+
+function playRandomFallbackAudio(onDone) {
+  const fallbackPath = fallbackAudioPaths[Math.floor(Math.random() * fallbackAudioPaths.length)];
+  playAudioSource(fallbackPath, onDone);
 }
 
 function playCurrentScene() {
@@ -529,14 +539,8 @@ function handleTryAgain() {
     if (scenes[sceneIndex]?.done) return;
     const scene = scenes[sceneIndex];
     els.promptText.textContent = scene.helpPrompt || scene.prompt;
-    playAudio(scene.audio, () => {
-      if (scene.promptAudio) {
-        playAudio(scene.promptAudio, startListening);
-        return;
-      }
-
-      startListening();
-    });
+    schedulePromptFit();
+    playAudio(scene.retryAudio, startListening);
   }, 450);
 }
 
@@ -548,7 +552,7 @@ function handleAdvanceAfterRetries() {
   stopListening();
   stopAudio();
   els.micBtn.disabled = true;
-  setState("Right!", "correct");
+  setState("Let's move on", "try");
   els.heardText.textContent = "Moving on";
   els.promptText.textContent = scene.prompt;
   els.sceneImage.src = scene.imageSrc || imagePath(scene.image);
@@ -558,9 +562,11 @@ function handleAdvanceAfterRetries() {
   schedulePromptFit();
 
   window.setTimeout(() => {
-    sceneIndex += 1;
-    playCurrentScene();
-  }, 850);
+    playRandomFallbackAudio(() => {
+      sceneIndex += 1;
+      playCurrentScene();
+    });
+  }, 350);
 }
 
 function handleAcceptedAnswer() {
