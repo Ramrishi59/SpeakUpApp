@@ -302,9 +302,11 @@ main#app {
   grid-area: nav;
   min-height: clamp(84px, 12.5svh, 112px);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
+  align-content: center;
   justify-items: center;
+  justify-content: center;
   gap: clamp(5px, 1.4vw, 12px);
   padding: clamp(10px, 1.6svh, 14px) clamp(14px, 5vw, 26px) max(env(safe-area-inset-bottom, 0px), 10px);
   background:
@@ -318,6 +320,10 @@ main#app {
   height: var(--coin-size);
   min-width: var(--coin-size);
   width: var(--coin-size);
+  display: grid;
+  place-items: center;
+  align-self: center;
+  justify-self: center;
   border: 0;
   border-radius: 50%;
   padding: 0;
@@ -337,8 +343,12 @@ main#app {
 .activity-home::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: center / 100% no-repeat;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--coin-size) * 1.02);
+  height: calc(var(--coin-size) * 1.82);
+  transform: translate(-50%, -50%);
+  background: center / contain no-repeat;
   filter: drop-shadow(0 5px 6px rgba(0, 0, 0, 0.22));
   pointer-events: none;
 }
@@ -359,17 +369,19 @@ main#app {
 }
 
 #prevBtn::before {
-  background-image: url("../Images/buttons/24.png");
+  background-image: url("buttons/11.png");
 }
 
 #nextBtn::before {
-  background-image: url("../Images/buttons/25.png");
+  background-image: url("buttons/12.png");
+  top: 45%;
 }
 
 #resetBtn::before,
 #skipBtn::before,
 #restartBtn::before {
-  background-image: url("../Images/buttons/28.png");
+  background-image: url("buttons/13.png");
+  top: 45%;
 }
 
 #startBtn,
@@ -397,17 +409,9 @@ main#app {
   content: none;
 }
 
-.btn.primary,
-#startBtn {
-  background: linear-gradient(180deg, #fff47a 0%, var(--yellow) 38%, #ffb817 100%);
-}
 
-.btn.secondary,
-#skipBtn,
-#reviewBtn {
-  background: linear-gradient(180deg, #ffffff 0%, #dff4ff 100%);
-  color: #17405f;
-}
+
+
 
 .btn.danger {
   background: transparent;
@@ -416,7 +420,10 @@ main#app {
 .activity-home {
   width: var(--coin-size);
   height: var(--coin-size);
-  display: block;
+  display: grid;
+  place-items: center;
+  align-self: center;
+  justify-self: center;
   position: relative;
   border-radius: 50%;
   background: transparent;
@@ -426,7 +433,7 @@ main#app {
 }
 
 .activity-home::before {
-  background-image: url("../Images/buttons/27.png");
+  background-image: url("buttons/10.png");
 }
 
 .activity-home span {
