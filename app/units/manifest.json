@@ -63,21 +63,21 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html", 
       "id": "activity1", 
-      "title": "Choose the right option -1"
+      "title": "Tap the Right One -1"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity2", 
       "id": "activity2", 
-      "title": "Choose the right option -2"
+      "title": "Tap the Right One -2"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity3", 
       "id": "activity3", 
-      "title": "Choose the right option -3"
+      "title": "Tap the Right One -3"
     }, 
 
     {
@@ -85,7 +85,7 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity4", 
       "id": "activity4", 
-      "title": "Choose the right option -4"
+      "title": "Tap the Right One -4"
     }, 
 
 
@@ -94,7 +94,7 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity5", 
       "id": "activity5", 
-      "title": "Choose the right option -5"
+      "title": "Tap the Right One -5"
     }, 
 
     {
@@ -169,28 +169,28 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity6", 
       "id": "activity6", 
-      "title": "Choose the right option -6"
+      "title": "Tap the Right One -6"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity7", 
       "id": "activity7", 
-      "title": "Choose the right option -7"
+      "title": "Tap the Right One -7"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity8", 
       "id": "activity8", 
-      "title": "Choose the right option -8"
+      "title": "Tap the Right One -8"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity9", 
       "id": "activity9", 
-      "title": "Choose the right option -9"
+      "title": "Tap the Right One -9"
     }, 
 
     {
@@ -198,14 +198,14 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity10", 
       "id": "activity10", 
-      "title": "Choose the right option -10"
+      "title": "Tap the Right One -10"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity11", 
       "id": "activity11", 
-      "title": "Choose the right option -11"
+      "title": "Tap the Right One -11"
     }, 
 
 
@@ -289,7 +289,7 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity12", 
       "id": "activity12", 
-      "title": "Choose the right option -12"
+      "title": "Tap the Right One -12"
     }, 
 
     {
@@ -297,7 +297,7 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity13", 
       "id": "activity13", 
-      "title": "Choose the right option -13"
+      "title": "Tap the Right One -13"
     }, 
 
     {
@@ -305,7 +305,7 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity14", 
       "id": "activity14", 
-      "title": "Choose the right option -14"
+      "title": "Tap the Right One -14"
     }, 
 
     {
@@ -313,14 +313,14 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity15", 
       "id": "activity15", 
-      "title": "Choose the right option -15"
+      "title": "Tap the Right One -15"
     }, 
         {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity16", 
       "id": "activity16", 
-      "title": "Choose the right option -16"
+      "title": "Tap the Right One -16"
     }, 
 
     {
@@ -411,28 +411,28 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity17", 
       "id": "activity17", 
-      "title": "Choose the right option -17"
+      "title": "Tap the Right One -17"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity18", 
       "id": "activity18", 
-      "title": "Choose the right option -18"
+      "title": "Tap the Right One -18"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity19", 
       "id": "activity19", 
-      "title": "Choose the right option -19"
+      "title": "Tap the Right One -19"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity20", 
       "id": "activity20", 
-      "title": "Choose the right option -20"
+      "title": "Tap the Right One -20"
     }, 
 
     {
@@ -440,7 +440,7 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity21", 
       "id": "activity21", 
-      "title": "Choose the right option -21"
+      "title": "Tap the Right One -21"
     }, 
 
   
@@ -544,14 +544,14 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity22", 
       "id": "activity22", 
-      "title": "Choose the right option -22"
+      "title": "Tap the Right One -22"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity23", 
       "id": "activity23", 
-      "title": "Choose the right option -23"
+      "title": "Tap the Right One -23"
     }, 
 
     {
@@ -559,7 +559,7 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity24", 
       "id": "activity24", 
-      "title": "Choose the right option -24"
+      "title": "Tap the Right One -24"
     }, 
 
  
@@ -663,14 +663,14 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity25", 
       "id": "activity25", 
-      "title": "Choose the right option -25"
+      "title": "Tap the Right One -25"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity26", 
       "id": "activity26", 
-      "title": "Choose the right option -26"
+      "title": "Tap the Right One -26"
   
     }, 
     {
@@ -678,21 +678,21 @@
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity27", 
       "id": "activity27", 
-      "title": "Choose the right option -27"
+      "title": "Tap the Right One -27"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity28", 
       "id": "activity28", 
-      "title": "Choose the right option -28"
+      "title": "Tap the Right One -28"
     }, 
     {
       "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
       "description": "activity", 
       "route": "choosequiz/quiz3.html?activity=activity29", 
       "id": "activity29", 
-      "title": "Choose the right option -29"
+      "title": "Tap the Right One -29"
     }, 
  
 
