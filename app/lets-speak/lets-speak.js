@@ -49,12 +49,27 @@ const fallbackAudios = [
     prompt: "Good try! Let's continue."
   }
 ];
-const outroAudioFiles = [
-  "01_Chapter 1.mp3",
-  "02_Chapter 1.mp3",
-  "03_Chapter 1.mp3",
-  "04_Chapter 1.mp3",
-  "05_Chapter 1.mp3"
+const outroAudios = [
+  {
+    fileName: "01_Chapter 1.mp3",
+    prompt: "That was fun, you spoke really well."
+  },
+  {
+    fileName: "02_Chapter 1.mp3",
+    prompt: "I loved talking with you"
+  },
+  {
+    fileName: "03_Chapter 1.mp3",
+    prompt: "Great talking, let's do more!"
+  },
+  {
+    fileName: "04_Chapter 1.mp3",
+    prompt: "You're getting better and better!"
+  },
+  {
+    fileName: "05_Chapter 1.mp3",
+    prompt: "Nice speaking. See you again!"
+  }
 ];
 
 const scenes = [
@@ -432,8 +447,18 @@ function playRandomFallbackAudio(onDone) {
 }
 
 function playRandomOutroAudio(onDone) {
-  const fileName = outroAudioFiles[Math.floor(Math.random() * outroAudioFiles.length)];
-  playAudioSource(fileName ? outroAudioPath(fileName) : null, onDone);
+  const outro = outroAudios[Math.floor(Math.random() * outroAudios.length)];
+  if (!outro) {
+    if (typeof onDone === "function") {
+      window.setTimeout(onDone, 50);
+    }
+    return;
+  }
+
+  els.promptText.textContent = outro.prompt;
+  els.sceneImage.alt = outro.prompt;
+  schedulePromptFit();
+  playAudioSource(outroAudioPath(outro.fileName), onDone);
 }
 
 function playCurrentScene() {
