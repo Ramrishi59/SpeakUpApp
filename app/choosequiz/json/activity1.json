@@ -93,22 +93,6 @@
       "audioQuestion": "Audio/activity1/20_Chapter 1.mp3",
       "audioCorrect": "Audio/activity1/21_Chapter 1.mp3",
       "audioWrong": "Audio/activity1/tryagain.mp3"
-    },
-    {
-      "image": "Images/activity1/11.webp",
-      "choices": ["It’s a chair", "It’s the chair", "It’s an chair"],
-      "correctIndex": 0,
-      "audioQuestion": "Audio/activity1/22_Chapter 1.mp3",
-      "audioCorrect": "Audio/activity1/23_Chapter 1.mp3",
-      "audioWrong": "Audio/activity1/tryagain.mp3"
-    },
-    {
-      "image": "Images/activity1/12.webp",
-      "choices": ["A torch", "The torch", "It’s a torch"],
-      "correctIndex": 2,
-      "audioQuestion": "Audio/activity1/24_Chapter 1.mp3",
-      "audioCorrect": "Audio/activity1/25_Chapter 1.mp3",
-      "audioWrong": "Audio/activity1/tryagain.mp3"
     }
   ]
 }

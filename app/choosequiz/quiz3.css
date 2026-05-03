@@ -634,7 +634,7 @@ main#app {
 
 .results-score {
   position: absolute;
-  right: clamp(34px, 12%, 72px);
+  right: 30px;
   top: 33%;
   transform: translateY(-50%);
   font-size: clamp(24px, 4svh, 40px);
