@@ -549,6 +549,8 @@ body {
     border: none;
     background: transparent;
     border: none;
+    flex: 1 1 0;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -565,6 +567,13 @@ body {
 .nav-button img {
     width: 51px;
     height: 48px;
+    object-fit: contain;
+    display: block;
+}
+
+.nav-button[data-nav-target="voice-mode"] img {
+    transform: scale(1.35);
+    transform-origin: center;
 }
 
 .nav-emoji {
@@ -1138,43 +1147,24 @@ body {
     box-shadow: 0 10px 22px rgba(31, 30, 51, 0.1);
 }
 
-.avatar-modal[hidden],
-.avatar-grid-panel[hidden] {
+.avatar-panel[hidden] {
     display: none;
 }
 
-.avatar-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 20;
-    display: grid;
-    place-items: center;
-    padding: 22px;
-}
-
-.avatar-modal-backdrop {
-    position: absolute;
-    inset: 0;
-    border: none;
-    background: rgba(31, 29, 44, 0.42);
-    cursor: pointer;
-}
-
-.avatar-picker-box {
-    position: relative;
-    z-index: 1;
-    width: min(520px, 100%);
-    max-height: calc(100dvh - 44px);
-    overflow: auto;
-    padding-bottom: 16px;
+.avatar-panel {
     background: #fffdf8;
 }
 
-.avatar-modal-actions {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-top: 16px;
+.avatar-panel .section-heading {
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.avatar-panel-close {
+    width: auto;
+    min-width: 84px;
+    flex: 0 0 auto;
+    padding: 10px 12px;
 }
 
 .avatar-picker {
@@ -1476,19 +1466,12 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .avatar-modal {
-        align-items: end;
-        padding: 14px 14px 38px;
+    .avatar-panel .section-heading {
+        display: grid;
     }
 
-    .avatar-picker-box {
+    .avatar-panel-close {
         width: 100%;
-        max-height: calc(100dvh - 52px);
-        border-radius: 8px;
-    }
-
-    .avatar-modal-actions {
-        grid-template-columns: 1fr;
     }
 
     .card-header h2 {

@@ -945,34 +945,31 @@ function renderAccountStatus() {
           </div>
         </div>
 
-        <div class="avatar-modal" id="avatar-modal" hidden>
-          <button type="button" class="avatar-modal-backdrop" id="avatar-modal-backdrop" aria-label="Close avatar chooser"></button>
-          <div class="premium-box avatar-picker-box" role="dialog" aria-modal="true" aria-labelledby="avatar-dialog-title">
-            <div class="avatar-grid-panel" id="avatar-grid-panel">
-              <h3 class="premium-title" id="avatar-dialog-title">Choose Your Character</h3>
+        <div class="premium-box avatar-panel" id="avatar-panel" hidden>
+          <div class="section-heading">
+            <div>
+              <h3 class="premium-title" id="avatar-panel-title">Choose Your Character</h3>
               <p class="premium-sub">Pick the picture that appears on your profile.</p>
-
-              <div class="avatar-picker" role="radiogroup" aria-label="Profile character">
-                ${PROFILE_CHARACTERS.map((character) => `
-                  <button
-                    type="button"
-                    class="avatar-choice ${character.src === selectedAvatar.src ? 'is-selected' : ''}"
-                    data-avatar-src="${character.src}"
-                    data-avatar-name="${character.name}"
-                    role="radio"
-                    aria-checked="${character.src === selectedAvatar.src ? 'true' : 'false'}"
-                  >
-                    <img src="${character.src}" alt="${character.name}" />
-                    <span>${character.name}</span>
-                  </button>
-                `).join('')}
-              </div>
-              <p class="avatar-save-status" id="avatar-save-status" aria-live="polite"></p>
-              <div class="avatar-modal-actions">
-                <button type="button" class="ghost-btn" id="close-avatar-modal">Cancel</button>
-              </div>
             </div>
+            <button type="button" class="ghost-btn avatar-panel-close" id="close-avatar-panel">Close</button>
           </div>
+
+          <div class="avatar-picker" role="radiogroup" aria-labelledby="avatar-panel-title">
+            ${PROFILE_CHARACTERS.map((character) => `
+              <button
+                type="button"
+                class="avatar-choice ${character.src === selectedAvatar.src ? 'is-selected' : ''}"
+                data-avatar-src="${character.src}"
+                data-avatar-name="${character.name}"
+                role="radio"
+                aria-checked="${character.src === selectedAvatar.src ? 'true' : 'false'}"
+              >
+                <img src="${character.src}" alt="${character.name}" />
+                <span>${character.name}</span>
+              </button>
+            `).join('')}
+          </div>
+          <p class="avatar-save-status" id="avatar-save-status" aria-live="polite"></p>
         </div>
 
         ${unlocked ? '' : accessBoxHtml}
@@ -1058,23 +1055,20 @@ function renderAccountStatus() {
       window.location.href = appendQueryParam(baseRoute, 'from', 'dashboard');
     });
 
-    const avatarModal = document.getElementById('avatar-modal');
-    const avatarGridPanel = document.getElementById('avatar-grid-panel');
-    const openAvatarModal = () => {
-      if (!avatarModal || !avatarGridPanel) return;
-      avatarModal.hidden = false;
-      avatarGridPanel.hidden = false;
-      avatarGridPanel.querySelector('.avatar-choice.is-selected, .avatar-choice')?.focus();
+    const avatarPanel = document.getElementById('avatar-panel');
+    const openAvatarPanel = () => {
+      if (!avatarPanel) return;
+      avatarPanel.hidden = false;
+      avatarPanel.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     };
-    const closeAvatarModal = () => {
-      if (!avatarModal) return;
-      avatarModal.hidden = true;
+    const closeAvatarPanel = () => {
+      if (!avatarPanel) return;
+      avatarPanel.hidden = true;
       document.getElementById('profile-avatar-button')?.focus();
     };
 
-    document.getElementById('profile-avatar-button')?.addEventListener('click', openAvatarModal);
-    document.getElementById('avatar-modal-backdrop')?.addEventListener('click', closeAvatarModal);
-    document.getElementById('close-avatar-modal')?.addEventListener('click', closeAvatarModal);
+    document.getElementById('profile-avatar-button')?.addEventListener('click', openAvatarPanel);
+    document.getElementById('close-avatar-panel')?.addEventListener('click', closeAvatarPanel);
 
     document.querySelectorAll('.avatar-choice').forEach((button) => {
       button.addEventListener('click', async () => {
@@ -1106,11 +1100,9 @@ function renderAccountStatus() {
             await window.SUAuth.saveProfileAvatar(avatar);
           }
           if (status) status.textContent = `${avatar.name} selected.`;
-          window.setTimeout(closeAvatarModal, 450);
         } catch (error) {
           console.warn('Could not save profile avatar to Firestore.', error);
           if (status) status.textContent = `${avatar.name} selected on this device.`;
-          window.setTimeout(closeAvatarModal, 700);
         } finally {
           avatarChoices.forEach((choice) => {
             choice.disabled = false;
