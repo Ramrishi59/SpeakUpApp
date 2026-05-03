@@ -19,7 +19,7 @@ const scenes = [
     imageSrc: assetImagePath("title.png"),
     image: 1,
     audio: "01_Chapter 1-1.mp3",
-    prompt: "Hey! I'm Manku! Come on, let's talk together!",
+    prompt: "Hey! I’m Manku! Come on, let’s talk together!",
     sceneKind: "title-card",
     next: 1
   },
@@ -36,7 +36,7 @@ const scenes = [
       image: 1,
       audio: "03_Chapter 1-1.mp3",
       sceneKind: "no-card",
-      prompt: "I'm happy to hear you!"
+      prompt: "I’m happy to hear you!"
     }
   },
   {
