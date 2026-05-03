@@ -372,23 +372,23 @@ main#app {
 }
 
 #prevBtn::before {
-  background-image: url("buttons/11.png");
+  background-image: url("buttons/11.webp");
 }
 
 #nextBtn::before {
-  background-image: url("buttons/12.png");
+  background-image: url("buttons/12.webp");
   top: 45%;
 }
 
 #startBtn::before {
-  background-image: url("buttons/12.png");
+  background-image: url("buttons/12.webp");
   top: 45%;
 }
 
 #resetBtn::before,
 #skipBtn::before,
 #restartBtn::before {
-  background-image: url("buttons/13.png");
+  background-image: url("buttons/13.webp");
   top: 45%;
 }
 
@@ -437,7 +437,7 @@ main#app {
 }
 
 .activity-home::before {
-  background-image: url("buttons/10.png");
+  background-image: url("buttons/10.webp");
 }
 
 .activity-home span {
