@@ -5,12 +5,27 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 const audioPath = (fileName) => `Audio/${fileName}`;
 const imagePath = (number) => `Images/${number}.webp`;
 const assetImagePath = (name) => `Images/${name}`;
-const fallbackAudioPaths = [
-  "Audio/fallback/01_Chapter 1.mp3",
-  "Audio/fallback/02_Chapter 1.mp3",
-  "Audio/fallback/03_Chapter 1.mp3",
-  "Audio/fallback/04_Chapter 1.mp3",
-  "Audio/fallback/05_Chapter 1.mp3"
+const fallbackAudios = [
+  {
+    fileName: "01_Chapter 1.mp3",
+    prompt: "That was fun, you spoke really well."
+  },
+  {
+    fileName: "02_Chapter 1.mp3",
+    prompt: "I loved talking with you"
+  },
+  {
+    fileName: "03_Chapter 1.mp3",
+    prompt: "Great talking, let's do more!"
+  },
+  {
+    fileName: "04_Chapter 1.mp3",
+    prompt: "You're getting better and better!"
+  },
+  {
+    fileName: "05_Chapter 1.mp3",
+    prompt: "Nice speaking. See you again!"
+  }
 ];
 
 const scenes = [
@@ -373,8 +388,18 @@ function playAudio(fileName, onDone) {
 }
 
 function playRandomFallbackAudio(onDone) {
-  const fallbackPath = fallbackAudioPaths[Math.floor(Math.random() * fallbackAudioPaths.length)];
-  playAudioSource(fallbackPath, onDone);
+  const fallback = fallbackAudios[Math.floor(Math.random() * fallbackAudios.length)];
+  if (!fallback) {
+    if (typeof onDone === "function") {
+      window.setTimeout(onDone, 50);
+    }
+    return;
+  }
+
+  els.promptText.textContent = fallback.prompt;
+  els.sceneImage.alt = fallback.prompt;
+  schedulePromptFit();
+  playAudioSource(`Audio/fallback/${fallback.fileName}`, onDone);
 }
 
 function playCurrentScene() {
@@ -553,13 +578,11 @@ function handleAdvanceAfterRetries() {
   stopAudio();
   els.micBtn.disabled = true;
   setState("Let's move on", "try");
-  els.heardText.textContent = "Moving on";
-  els.promptText.textContent = scene.prompt;
+  els.heardText.textContent = "";
   els.sceneImage.src = scene.imageSrc || imagePath(scene.image);
-  els.sceneImage.alt = scene.prompt;
+  els.sceneImage.alt = "";
   els.sceneImage.dataset.sceneKind = scene.sceneKind || "practice";
   els.artCard.dataset.mode = scene.sceneKind === "no-card" ? "hidden" : "image";
-  schedulePromptFit();
 
   window.setTimeout(() => {
     playRandomFallbackAudio(() => {
