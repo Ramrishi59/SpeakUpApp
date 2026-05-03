@@ -465,7 +465,7 @@ main#app {
   z-index: 1;
   font-weight: 800;
   font-size: clamp(22px, 3.2svh, 30px);
-  color: #5a3a00;
+  color: #123f93;
   overflow-wrap: anywhere;
 }
 
