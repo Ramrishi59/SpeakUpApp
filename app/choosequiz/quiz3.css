@@ -782,6 +782,25 @@ body.overlay-open #app > *:not(.overlay) {
   }
 }
 
+@media (max-width: 480px) and (min-height: 760px) {
+  .image-wrap {
+    width: calc(100% - 42px);
+    margin-top: 4px;
+    margin-bottom: 22px;
+  }
+
+  #itemImage {
+    width: 86%;
+    height: 86%;
+    max-height: 86%;
+  }
+
+  .choices {
+    gap: 9px;
+    padding-top: 14px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .choice-btn,
   .btn,
