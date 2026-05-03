@@ -222,7 +222,7 @@ main#app {
   padding: 8px clamp(18px, 5vw, 30px) 13px;
   border: 5px solid rgba(255, 255, 255, 0.95);
   border-radius: 999px;
-  background: linear-gradient(180deg, #fff47a 0%, var(--yellow) 38%, #ffb817 100%);
+  background: linear-gradient(180deg, #fff8dc 0%, var(--cream-light) 48%, #f3d28c 100%);
   color: var(--ink);
   cursor: pointer;
   font-size: var(--btn-fs);
@@ -233,20 +233,20 @@ main#app {
   overflow-wrap: anywhere;
   box-shadow:
     0 8px 12px rgba(0, 71, 137, 0.28),
-    inset 0 -7px 0 rgba(232, 126, 0, 0.28),
+    inset 0 -7px 0 rgba(198, 138, 42, 0.24),
     inset 0 5px 0 rgba(255, 255, 255, 0.24);
   transition: transform 0.08s ease, filter 0.12s ease, box-shadow 0.12s ease;
 }
 
 .choice-btn:nth-child(2) {
-  background: linear-gradient(180deg, #ffc33a 0%, var(--orange) 58%, #ff7410 100%);
+  background: linear-gradient(180deg, #fff8dc 0%, var(--cream-light) 48%, #f3d28c 100%);
 }
 
 .choice-btn:nth-child(3) {
-  background: linear-gradient(180deg, #a9ff3a 0%, var(--green) 55%, #28b600 100%);
+  background: linear-gradient(180deg, #fff8dc 0%, var(--cream-light) 48%, #f3d28c 100%);
   box-shadow:
     0 8px 12px rgba(0, 71, 137, 0.28),
-    inset 0 -7px 0 rgba(22, 137, 0, 0.28),
+    inset 0 -7px 0 rgba(198, 138, 42, 0.24),
     inset 0 5px 0 rgba(255, 255, 255, 0.24);
 }
 
