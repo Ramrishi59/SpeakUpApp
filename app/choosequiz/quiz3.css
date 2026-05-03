@@ -235,8 +235,8 @@ main#app {
 
 .image-wrap {
   grid-area: image;
-  width: calc(100% - clamp(28px, 7vw, 52px));
-  max-width: 460px;
+  width: calc(100% - clamp(16px, 4vw, 32px));
+  max-width: 520px;
   min-height: 0;
   align-self: stretch;
   justify-self: center;
@@ -251,9 +251,9 @@ main#app {
 
 #itemImage {
   display: block;
-  width: 90%;
-  height: 90%;
-  max-height: 90%;
+  width: 98%;
+  height: 98%;
+  max-height: 98%;
   object-fit: contain;
   object-position: center;
   border-radius: 30px;
@@ -814,15 +814,15 @@ body.overlay-open #app > *:not(.overlay) {
 
 @media (max-width: 480px) and (min-height: 760px) {
   .image-wrap {
-    width: calc(100% - 42px);
+    width: calc(100% - 20px);
     margin-top: 4px;
-    margin-bottom: 22px;
+    margin-bottom: 16px;
   }
 
   #itemImage {
-    width: 86%;
-    height: 86%;
-    max-height: 86%;
+    width: 96%;
+    height: 96%;
+    max-height: 96%;
   }
 
   .choices {
