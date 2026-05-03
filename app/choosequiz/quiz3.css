@@ -30,8 +30,8 @@ body {
 }
 
 body {
-  min-height: 100svh;
-  min-height: var(--app-height);
+  height: 100svh;
+  height: var(--app-height);
   display: grid;
   grid-template-rows: auto minmax(0, 1fr);
   justify-items: center;
@@ -106,7 +106,7 @@ main#app {
   min-height: 0;
   place-self: stretch;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto auto;
+  grid-template-rows: minmax(0, 1fr) auto var(--nav-h, clamp(84px, 12.5svh, 112px));
   grid-template-areas:
     "image"
     "choices"
@@ -300,7 +300,8 @@ main#app {
 
 .nav-row {
   grid-area: nav;
-  min-height: clamp(84px, 12.5svh, 112px);
+  height: var(--nav-h, clamp(84px, 12.5svh, 112px));
+  min-height: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
@@ -664,6 +665,7 @@ body.overlay-open #app > *:not(.overlay) {
     --btn-h: clamp(52px, 7.7svh, 66px);
     --btn-fs: clamp(20px, 3svh, 28px);
     --coin-size: clamp(66px, 9.5svh, 88px);
+    --nav-h: clamp(86px, 12svh, 100px);
   }
 
   .topbar {
@@ -694,7 +696,7 @@ body.overlay-open #app > *:not(.overlay) {
   }
 
   .nav-row {
-    min-height: 86px;
+    height: var(--nav-h);
     padding-left: 12px;
     padding-right: 12px;
   }
@@ -706,6 +708,7 @@ body.overlay-open #app > *:not(.overlay) {
     --btn-h: clamp(48px, 7.2svh, 60px);
     --btn-fs: clamp(18px, 2.9svh, 25px);
     --coin-size: clamp(58px, 8.8svh, 74px);
+    --nav-h: clamp(74px, 11svh, 88px);
   }
 
   .pill {
@@ -752,7 +755,7 @@ body.overlay-open #app > *:not(.overlay) {
   }
 
   .nav-row {
-    min-height: 72px;
+    height: var(--nav-h);
     padding-top: 6px;
     padding-bottom: max(env(safe-area-inset-bottom, 0px), 6px);
   }
