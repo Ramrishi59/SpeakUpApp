@@ -15,7 +15,7 @@
   --shell-w: min(100vw, calc(var(--app-height) * 0.5625));
   --btn-h: clamp(56px, 8.4svh, 78px);
   --btn-fs: clamp(23px, 3.5svh, 34px);
-  --coin-size: clamp(58px, 8.8svh, 86px);
+  --coin-size: clamp(72px, 10.5svh, 104px);
 }
 
 * {
@@ -312,7 +312,7 @@ main#app {
   background:
     radial-gradient(circle at 16% 22%, rgba(255, 255, 255, 0.44) 0 24%, transparent 25%),
     linear-gradient(180deg, var(--cream-light) 0%, var(--cream) 100%);
-  border-radius: clamp(30px, 9vw, 54px) clamp(30px, 9vw, 54px) 0 0;
+
   box-shadow: 0 -5px 0 rgba(26, 159, 219, 0.18);
 }
 
@@ -377,6 +377,11 @@ main#app {
   top: 45%;
 }
 
+#startBtn::before {
+  background-image: url("buttons/12.png");
+  top: 45%;
+}
+
 #resetBtn::before,
 #skipBtn::before,
 #restartBtn::before {
@@ -384,10 +389,8 @@ main#app {
   top: 45%;
 }
 
-#startBtn,
-#skipBtn,
 .overlay-nav .btn,
-.intro-actions .btn {
+.overlay-nav .btn {
   width: auto;
   min-width: 160px;
   height: 58px;
@@ -402,10 +405,8 @@ main#app {
     inset 0 -5px 0 rgba(232, 126, 0, 0.24);
 }
 
-#startBtn::before,
-#skipBtn::before,
 .overlay-nav .btn::before,
-.intro-actions .btn::before {
+.overlay-nav .btn::before {
   content: none;
 }
 
@@ -449,51 +450,91 @@ main#app {
 }
 
 .intro-card {
-  place-self: center;
-  align-self: center;
-  justify-self: center;
-  width: min(92%, 500px);
-  height: auto;
-  max-height: calc(100svh - 32px);
+  place-self: stretch;
+  width: 100%;
+  height: 100%;
+  max-height: none;
   min-height: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(16px, 2.6svh, 24px);
-  padding: clamp(18px, 3svh, 28px);
-  margin: auto;
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(255, 245, 215, 0.98), rgba(248, 230, 189, 0.98));
-  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    "introHero"
+    "introImage"
+    "introActions";
+  align-items: stretch;
+  justify-items: center;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background: var(--blue);
+  box-shadow: none;
   overflow: hidden;
 }
 
-.intro-image-wrap {
+.intro-hero {
+  grid-area: introHero;
   width: 100%;
+  min-height: clamp(116px, 18svh, 168px);
   display: grid;
   place-items: center;
-  padding: clamp(10px, 1.8svh, 16px);
-  border-radius: 24px;
+  padding: clamp(14px, 2.2svh, 22px);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.42) 0 30%, transparent 31%),
+    linear-gradient(180deg, var(--cream-light) 0%, var(--cream) 100%);
+  box-shadow: 0 5px 0 rgba(26, 159, 219, 0.32);
+}
+
+.intro-avatar {
+  width: clamp(84px, 13svh, 122px);
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.18));
+}
+
+.intro-image-wrap {
+  grid-area: introImage;
+  width: min(88%, 520px);
+  aspect-ratio: 1.45;
+  max-height: min(48vh, 360px);
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  padding: clamp(8px, 1.2svh, 12px);
+  border-radius: clamp(22px, 6vw, 36px);
   background: #fff;
-  box-shadow: 0 10px 20px rgba(0, 74, 140, 0.18);
+  box-shadow: 0 14px 24px rgba(0, 74, 140, 0.24);
+  overflow: hidden;
 }
 
 .intro-image-wrap img {
   display: block;
-  width: 100%;
-  max-height: min(46svh, 420px);
+  width: auto;
+  height: 92%;
+  max-width: 100%;
+  max-height: 92%;
   object-fit: contain;
+  object-position: center;
+  padding: 0;
   filter: drop-shadow(0 10px 12px rgba(0, 69, 128, 0.14));
 }
 
 .intro-actions {
+  grid-area: introActions;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  min-height: clamp(86px, 13svh, 116px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: clamp(10px, 3vw, 24px);
+  padding: clamp(10px, 1.6svh, 14px) clamp(30px, 9vw, 62px) max(env(safe-area-inset-bottom, 0px), 10px);
+  background:
+    radial-gradient(circle at 16% 22%, rgba(255, 255, 255, 0.44) 0 24%, transparent 25%),
+    linear-gradient(180deg, var(--cream-light) 0%, var(--cream) 100%);
+  box-shadow: 0 -5px 0 rgba(26, 159, 219, 0.18);
 }
 
 .overlay {
@@ -622,7 +663,7 @@ body.overlay-open #app > *:not(.overlay) {
     --header-h: 48px;
     --btn-h: clamp(52px, 7.7svh, 66px);
     --btn-fs: clamp(20px, 3svh, 28px);
-    --coin-size: clamp(54px, 8svh, 72px);
+    --coin-size: clamp(66px, 9.5svh, 88px);
   }
 
   .topbar {
@@ -664,7 +705,7 @@ body.overlay-open #app > *:not(.overlay) {
     --header-h: 44px;
     --btn-h: clamp(48px, 7.2svh, 60px);
     --btn-fs: clamp(18px, 2.9svh, 25px);
-    --coin-size: clamp(48px, 7.4svh, 62px);
+    --coin-size: clamp(58px, 8.8svh, 74px);
   }
 
   .pill {

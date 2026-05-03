@@ -33,8 +33,12 @@
 
     <!-- INTRO CARD -->
     <section id="introScreen" class="card intro-card" aria-live="polite">
+      <div class="intro-hero">
+        <img class="intro-avatar" src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
+      </div>
+
       <div class="intro-image-wrap">
-        <img id="introImage" src="Images/activity1/1-2.webp" alt="Manku welcoming the learner" />
+        <img id="introImage" src="Images/title.png" alt="Tap the right one" />
       </div>
 
       <!-- Intro audio: Manku saying the lines -->
@@ -43,6 +47,9 @@
       </audio>
 
       <div class="intro-actions">
+        <a id="introHomeBtn" class="activity-home" href="../dashboard.html" aria-label="Home">
+          <span>Home</span>
+        </a>
         <button id="startBtn" class="btn primary">Let’s start!</button>
         <button id="skipBtn" class="btn secondary">Skip Intro</button>
       </div>

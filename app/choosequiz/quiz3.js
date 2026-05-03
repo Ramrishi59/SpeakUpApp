@@ -48,6 +48,7 @@ const progressStats = document.getElementById("progressStats");
 const introImgEl = document.getElementById("introImage");
 const introAudioEl = document.getElementById("introAudio");
 const homeBtn = document.getElementById("homeBtn");
+const introHomeBtn = document.getElementById("introHomeBtn");
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -64,6 +65,7 @@ const restartBtn = document.getElementById("restartBtn");
 const reviewBtn = document.getElementById("reviewBtn");
 
 if (homeBtn) homeBtn.href = returnUrl;
+if (introHomeBtn) introHomeBtn.href = returnUrl;
 
 // Confetti
 const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
@@ -449,10 +451,6 @@ dataPromise.then(() => {
     im.src = it.image;
   });
   if (introData) {
-    if (introImgEl && introData.image) {
-      introImgEl.src = introData.image;
-      introImgEl.alt = introData.alt || "Welcome";
-    }
     if (introAudioEl && introData.audio) {
       introAudioEl.src = introData.audio;
     }
