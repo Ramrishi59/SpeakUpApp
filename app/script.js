@@ -542,6 +542,8 @@ function setActiveBottomNav(target) {
 
 function updateAccountNavLabel() {
   const auth = getLoginState();
+  const profile = getProfileState();
+  const selectedAvatar = getSelectedProfileAvatar(profile, auth);
   const accountNavButton = document.querySelector('.bottom-nav .nav-button[data-nav-target="login"]');
   if (!accountNavButton) return;
 
@@ -550,7 +552,10 @@ function updateAccountNavLabel() {
   const iconNode = accountNavButton.querySelector('img');
 
   if (labelNode) labelNode.textContent = label;
-  if (iconNode) iconNode.alt = label;
+  if (iconNode) {
+    iconNode.src = selectedAvatar.src;
+    iconNode.alt = label;
+  }
 }
 
 function showDashboardScreen() {
@@ -1105,6 +1110,7 @@ function renderAccountStatus() {
         }
 
         saveStoredProfileAvatar(auth.uid, avatar);
+        updateAccountNavLabel();
         if (status) status.textContent = 'Saving character...';
 
         try {
