@@ -495,7 +495,7 @@ main#app {
 
 .intro-image-wrap {
   grid-area: introImage;
-  width: min(88%, 520px);
+  width: min(96%, 520px);
   aspect-ratio: 1.45;
   max-height: min(48vh, 360px);
   align-self: center;
