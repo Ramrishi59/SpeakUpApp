@@ -84,8 +84,9 @@ a {
 
 main#app {
   width: var(--shell-w);
-  height: 100%;
+  height: auto;
   min-height: 0;
+  align-self: stretch;
   display: grid;
   place-items: center;
   overflow: hidden;
