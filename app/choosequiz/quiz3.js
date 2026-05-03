@@ -1,6 +1,17 @@
 // =====================
 // DATA
 // =====================
+function setAppHeight() {
+  const height = window.visualViewport?.height || window.innerHeight;
+  if (height) {
+    document.documentElement.style.setProperty("--app-height", `${height}px`);
+  }
+}
+
+setAppHeight();
+window.visualViewport?.addEventListener("resize", setAppHeight);
+window.addEventListener("resize", setAppHeight);
+
 // Choose data file based on query param (?activity=activity2), default to activity1
 const params = new URLSearchParams(window.location.search);
 const activityId = params.get("activity") || "activity1";
@@ -9,7 +20,7 @@ const returnUrl = returnCategory
   ? `../dashboard.html?cat=${encodeURIComponent(returnCategory)}`
   : "../dashboard.html";
 const DATA_URL = `json/${activityId}.json`;
-const ASSET_VERSION = "43";
+const ASSET_VERSION = "44";
 let ITEMS = [];
 let dataLoaded = false;
 let loadError = false;
