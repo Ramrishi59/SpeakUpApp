@@ -20,7 +20,12 @@
 </head>
 
 <body>
-  <header class="topbar">
+  <header id="quizTopbar" class="topbar hidden">
+    <img class="manku-avatar" src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
+    <div id="activityTitle" class="activity-title">Choose the right option</div>
+    <div id="question" class="question">
+      What is shown?
+    </div>
     <div id="progressPill" class="pill hidden">1/3</div>
   </header>
 
@@ -47,17 +52,6 @@
     <section id="quizCard" class="card hidden" aria-live="polite">
       <div class="image-wrap">
         <img id="itemImage" alt="" />
-      </div>
-
-      <div id="question" class="question">
-        What is shown?
-      </div>
-
-      <div class="progress-wrap" aria-label="Progress">
-        <div class="progress-bar">
-          <div id="progressFill" class="progress-fill"></div>
-        </div>
-        <div id="progressStats" class="progress-stats">0 correct so far</div>
       </div>
 
       <div class="choices" role="group" aria-label="Answer choices">
@@ -107,6 +101,7 @@
       const startBtn = document.getElementById("startBtn");
       const skipBtn = document.getElementById("skipBtn");
       const progressPill = document.getElementById("progressPill");
+      const quizTopbar = document.getElementById("quizTopbar");
       const introAudio = document.getElementById("introAudio");
 
       if (!intro || !quizCard || !startBtn) return;
@@ -119,9 +114,7 @@
         }
         intro.classList.add("hidden");
         quizCard.classList.remove("hidden");
-        if (progressPill) {
-          progressPill.classList.remove("hidden");
-        }
+        quizTopbar?.classList.remove("hidden");
 
         // 👇 VERY IMPORTANT: re-render first question *after* intro,
         // so the question audio plays with a user gesture context

@@ -13,15 +13,18 @@ let ITEMS = [];
 let dataLoaded = false;
 let loadError = false;
 let introData = null;
+let activityTitle = "";
 const dataPromise = fetch(DATA_URL)
   .then(res => res.json())
   .then(json => {
     if (Array.isArray(json)) {
       ITEMS = json;
       introData = json.intro || null;
+      activityTitle = "";
     } else {
       ITEMS = json?.items || [];
       introData = json?.intro || null;
+      activityTitle = json?.title || json?.activityTitle || "";
     }
     dataLoaded = true;
   })
@@ -38,6 +41,7 @@ const dataPromise = fetch(DATA_URL)
 // =====================
 const imgEl = document.getElementById("itemImage");
 const qEl = document.getElementById("question");
+const activityTitleEl = document.getElementById("activityTitle");
 const pill = document.getElementById("progressPill");
 const progressFill = document.getElementById("progressFill");
 const progressStats = document.getElementById("progressStats");
@@ -114,6 +118,12 @@ function shuffle3() {
   }
 }
 
+function getActivityTitle() {
+  if (activityTitle) return activityTitle;
+  const match = activityId.match(/\d+/);
+  return match ? `Choose the right option ${match[0]}` : "Choose the right option";
+}
+
 
 // Single shared audio for SFX (question / correct / wrong)
 const sfx = new Audio();
@@ -182,6 +192,9 @@ function render(i) {
   // image + question
   imgEl.src = it.image;
   imgEl.alt = it.question || "Question image";
+  if (activityTitleEl) {
+    activityTitleEl.textContent = getActivityTitle();
+  }
   qEl.textContent = it.question || "";
   pill.textContent = `${i + 1}/${ITEMS.length}`;
   updateProgressUI();
