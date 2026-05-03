@@ -5,27 +5,56 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 const audioPath = (fileName) => `Audio/${fileName}`;
 const imagePath = (number) => `Images/${number}.webp`;
 const assetImagePath = (name) => `Images/${name}`;
+const fallbackAudioPath = (fileName) => `Audio/fallback/${fileName}`;
+const outroAudioPath = (fileName) => `Audio/outro/${fileName}`;
 const fallbackAudios = [
   {
     fileName: "01_Chapter 1.mp3",
-    prompt: "That was fun, you spoke really well."
+    prompt: "Good try! Let's go to the next one."
   },
   {
     fileName: "02_Chapter 1.mp3",
-    prompt: "I loved talking with you"
+    prompt: "That's okay. Let's try another one."
   },
   {
     fileName: "03_Chapter 1.mp3",
-    prompt: "Great talking, let's do more!"
+    prompt: "Nice try! Let's keep going."
   },
   {
     fileName: "04_Chapter 1.mp3",
-    prompt: "You're getting better and better!"
+    prompt: "Don't worry. Let's move on."
   },
   {
     fileName: "05_Chapter 1.mp3",
-    prompt: "Nice speaking. See you again!"
+    prompt: "That's fine. Let's go ahead."
+  },
+  {
+    fileName: "06_Chapter 1.mp3",
+    prompt: "Good effort! Next one."
+  },
+  {
+    fileName: "07_Chapter 1.mp3",
+    prompt: "It's okay. Let's continue."
+  },
+  {
+    fileName: "08_Chapter 1.mp3",
+    prompt: "No problem. Let's try the next one."
+  },
+  {
+    fileName: "09_Chapter 1.mp3",
+    prompt: "That's alright. Keep going."
+  },
+  {
+    fileName: "10_Chapter 1.mp3",
+    prompt: "Good try! Let's continue."
   }
+];
+const outroAudioFiles = [
+  "01_Chapter 1.mp3",
+  "02_Chapter 1.mp3",
+  "03_Chapter 1.mp3",
+  "04_Chapter 1.mp3",
+  "05_Chapter 1.mp3"
 ];
 
 const scenes = [
@@ -399,7 +428,12 @@ function playRandomFallbackAudio(onDone) {
   els.promptText.textContent = fallback.prompt;
   els.sceneImage.alt = fallback.prompt;
   schedulePromptFit();
-  playAudioSource(`Audio/fallback/${fallback.fileName}`, onDone);
+  playAudioSource(fallbackAudioPath(fallback.fileName), onDone);
+}
+
+function playRandomOutroAudio(onDone) {
+  const fileName = outroAudioFiles[Math.floor(Math.random() * outroAudioFiles.length)];
+  playAudioSource(fileName ? outroAudioPath(fileName) : null, onDone);
 }
 
 function playCurrentScene() {
@@ -430,8 +464,11 @@ function startSceneInteraction(scene) {
   }
 
   if (scene.done) {
-    setState("Replay anytime", "correct");
-    els.micBtn.disabled = true;
+    els.heardText.textContent = "";
+    playRandomOutroAudio(() => {
+      setState("Replay anytime", "correct");
+      els.micBtn.disabled = true;
+    });
     return;
   }
 
