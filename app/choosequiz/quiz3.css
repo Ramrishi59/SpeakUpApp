@@ -432,20 +432,20 @@ main#app {
 }
 
 #prevBtn::before {
-  background-image: url("buttons/11.webp?v=45");
+  background-image: url("buttons/11.webp?v=46");
 }
 
 #nextBtn::before {
-  background-image: url("buttons/12.webp?v=45");
+  background-image: url("buttons/12.webp?v=46");
 }
 
 #startBtn::before {
-  background-image: url("buttons/12.webp?v=45");
+  background-image: url("buttons/12.webp?v=46");
 }
 
 #resetBtn::before,
 #skipBtn::before {
-  background-image: url("buttons/13.webp?v=45");
+  background-image: url("buttons/13.webp?v=46");
 }
 
 .btn.danger {
@@ -473,7 +473,7 @@ main#app {
 }
 
 .activity-home::before {
-  background-image: url("buttons/10.webp?v=45");
+  background-image: url("buttons/10.webp?v=46");
 }
 
 .activity-home span {
@@ -669,11 +669,11 @@ main#app {
 }
 
 #reviewBtn::before {
-  background-image: url("buttons/11.webp?v=45");
+  background-image: url("buttons/11.webp?v=46");
 }
 
 #resultsResetBtn::before {
-  background-image: url("buttons/13.webp?v=45");
+  background-image: url("buttons/13.webp?v=46");
 }
 
 body.overlay-open #app > *:not(.overlay) {
