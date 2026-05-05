@@ -169,7 +169,7 @@ main#app {
     "choices"
     "nav";
   align-items: stretch;
-  gap: 0;
+  row-gap: clamp(6px, 1svh, 12px);
   padding: 0;
   background: var(--blue);
   border: 0;
@@ -242,18 +242,19 @@ main#app {
   justify-self: center;
   display: grid;
   place-items: center;
-  margin: clamp(4px, 0.8svh, 8px) 0 clamp(16px, 2.4svh, 24px);
+  margin: clamp(4px, 0.8svh, 8px) 0 0;
   padding: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
+  overflow: hidden;
 }
 
 #itemImage {
   display: block;
-  width: 98%;
-  height: 98%;
-  max-height: 98%;
+  width: 94%;
+  height: 94%;
+  max-height: 94%;
   object-fit: contain;
   object-position: center;
   border-radius: 30px;
@@ -736,7 +737,7 @@ body.overlay-open #app > *:not(.overlay) {
   .image-wrap {
     width: calc(100% - 30px);
     margin-top: 6px;
-    margin-bottom: 16px;
+    margin-bottom: 0;
   }
 
   .choices {
@@ -789,13 +790,13 @@ body.overlay-open #app > *:not(.overlay) {
 
   .image-wrap {
     margin-top: 4px;
-    margin-bottom: 14px;
+    margin-bottom: 0;
     padding: 0;
   }
 
   .choices {
     gap: 7px;
-    padding-top: 8px;
+    padding-top: 12px;
     padding-bottom: 10px;
   }
 
@@ -816,18 +817,18 @@ body.overlay-open #app > *:not(.overlay) {
   .image-wrap {
     width: calc(100% - 20px);
     margin-top: 4px;
-    margin-bottom: 16px;
+    margin-bottom: 0;
   }
 
   #itemImage {
-    width: 96%;
-    height: 96%;
-    max-height: 96%;
+    width: 94%;
+    height: 94%;
+    max-height: 94%;
   }
 
   .choices {
     gap: 9px;
-    padding-top: 14px;
+    padding-top: 16px;
   }
 }
 
