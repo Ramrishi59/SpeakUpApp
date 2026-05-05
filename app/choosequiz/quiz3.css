@@ -257,7 +257,7 @@ main#app {
   max-height: 94%;
   object-fit: contain;
   object-position: center;
-  border-radius: 30px;
+
   background: white;
   filter: drop-shadow(0 9px 9px rgba(0, 69, 128, 0.16));
 }
