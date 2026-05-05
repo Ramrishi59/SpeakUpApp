@@ -15,8 +15,8 @@
   --shell-w: min(100vw, calc(var(--app-height) * 0.5625));
   --btn-h: clamp(56px, 8.4svh, 78px);
   --btn-fs: clamp(23px, 3.5svh, 34px);
-  --coin-size: clamp(72px, 10.5svh, 104px);
-  --nav-h: clamp(104px, 14svh, 132px);
+  --coin-size: clamp(64px, 9.2svh, 88px);
+  --nav-h: clamp(70px, 9.5svh, 86px);
 }
 
 * {
@@ -163,7 +163,7 @@ main#app {
   min-height: 0;
   place-self: stretch;
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto var(--nav-h, clamp(84px, 12.5svh, 112px));
+  grid-template-rows: minmax(0, 1fr) auto var(--nav-h, clamp(70px, 9.5svh, 86px));
   grid-template-areas:
     "image"
     "choices"
@@ -360,7 +360,8 @@ main#app {
 
 .nav-row {
   grid-area: nav;
-  height: var(--nav-h, clamp(84px, 12.5svh, 112px));
+  --coin-size: clamp(46px, 6.8svh, 64px);
+  height: var(--nav-h, clamp(70px, 9.5svh, 86px));
   min-height: 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -368,13 +369,13 @@ main#app {
   align-content: center;
   justify-items: center;
   justify-content: center;
-  gap: clamp(5px, 1.4vw, 12px);
-  padding: clamp(6px, 1svh, 10px) clamp(14px, 5vw, 26px) max(env(safe-area-inset-bottom, 0px), 6px);
+  gap: clamp(4px, 1vw, 9px);
+  padding: clamp(3px, 0.6svh, 6px) clamp(12px, 4vw, 20px) max(env(safe-area-inset-bottom, 0px), 4px);
   background:
     radial-gradient(circle at 16% 22%, rgba(255, 255, 255, 0.44) 0 24%, transparent 25%),
     linear-gradient(180deg, var(--cream-light) 0%, var(--cream) 100%);
 
-  box-shadow: 0 -5px 0 rgba(26, 159, 219, 0.18);
+  box-shadow: 0 -3px 0 rgba(26, 159, 219, 0.18);
 }
 
 .btn {
@@ -717,8 +718,8 @@ body.overlay-open #app > *:not(.overlay) {
     --header-h: 48px;
     --btn-h: clamp(52px, 7.7svh, 66px);
     --btn-fs: clamp(20px, 3svh, 28px);
-    --coin-size: clamp(66px, 9.5svh, 88px);
-    --nav-h: clamp(108px, 14svh, 128px);
+    --coin-size: clamp(60px, 8.5svh, 78px);
+    --nav-h: clamp(68px, 9svh, 82px);
   }
 
   .topbar {
@@ -752,8 +753,8 @@ body.overlay-open #app > *:not(.overlay) {
 
   .nav-row {
     height: var(--nav-h);
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
@@ -762,8 +763,8 @@ body.overlay-open #app > *:not(.overlay) {
     --header-h: 44px;
     --btn-h: clamp(48px, 7.2svh, 60px);
     --btn-fs: clamp(18px, 2.9svh, 25px);
-    --coin-size: clamp(58px, 8.8svh, 74px);
-    --nav-h: clamp(92px, 13svh, 108px);
+    --coin-size: clamp(54px, 7.8svh, 68px);
+    --nav-h: clamp(64px, 9svh, 78px);
   }
 
   .pill {
@@ -795,12 +796,12 @@ body.overlay-open #app > *:not(.overlay) {
   .image-wrap {
     margin-top: 4px;
     margin-bottom: 10px;
-    padding: 0;
+    padding-bottom: 12px;
   }
 
   .choices {
     gap: 7px;
-    padding-top: 10px;
+    padding-top: 14px;
     padding-bottom: 10px;
   }
 
@@ -812,8 +813,8 @@ body.overlay-open #app > *:not(.overlay) {
 
   .nav-row {
     height: var(--nav-h);
-    padding-top: 6px;
-    padding-bottom: max(env(safe-area-inset-bottom, 0px), 6px);
+    padding-top: 2px;
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 4px);
   }
 }
 
@@ -825,14 +826,15 @@ body.overlay-open #app > *:not(.overlay) {
   }
 
   #itemImage {
-    width: 92%;
-    height: 92%;
-    max-height: 92%;
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 100%;
   }
 
   .choices {
     gap: 9px;
-    padding-top: 12px;
+    padding-top: 22px;
   }
 }
 
