@@ -16,12 +16,12 @@
   <link rel="manifest" href="../manifest.json" />
   <link rel="apple-touch-icon" href="../Images/Unit1/manku-icon-192.png" />
 
-  <link rel="stylesheet" href="quiz3.css?v=44">
+  <link rel="stylesheet" href="quiz3.css?v=45">
 </head>
 
 <body>
   <header id="quizTopbar" class="topbar hidden">
-    <div class="build-tag">v44</div>
+    <div class="build-tag">v45</div>
     <button id="jumpResultsBtn" class="jump-results-btn" type="button">Finish</button>
     <img class="manku-avatar" src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
     <div id="activityTitle" class="activity-title">Tap the right one</div>
@@ -36,17 +36,17 @@
     <!-- INTRO CARD -->
     <section id="introScreen" class="card intro-card" aria-live="polite">
       <div class="intro-hero">
-        <div class="build-tag intro-build-tag">v44</div>
+        <div class="build-tag intro-build-tag">v45</div>
         <img class="intro-avatar" src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
       </div>
 
       <div class="intro-image-wrap">
-        <img id="introImage" src="Images/title1.webp?v=44" alt="Tap the right one" />
+        <img id="introImage" src="Images/title1.webp?v=45" alt="Tap the right one" />
       </div>
 
       <!-- Intro audio: Manku saying the lines -->
       <audio id="introAudio" preload="auto">
-        <source src="Audio/intro/intro2.mp3?v=44" type="audio/mpeg" />
+        <source src="Audio/intro/intro2.mp3?v=45" type="audio/mpeg" />
       </audio>
 
       <div class="intro-actions">
@@ -85,7 +85,7 @@
     <!-- RESULTS SCREEN -->
     <section id="resultsOverlay" class="overlay results-card hidden" role="dialog" aria-modal="true" aria-label="Quiz results">
       <div class="results-hero">
-        <div class="build-tag results-build-tag">v44</div>
+        <div class="build-tag results-build-tag">v45</div>
         <img class="intro-avatar" src="../Images/dashboard thumbnails/Manku.webp" alt="Manku" />
       </div>
 
@@ -97,6 +97,9 @@
       <div class="results-actions">
         <button id="reviewBtn" class="btn secondary results-review" type="button" aria-label="Review Answers">
           Review Answers
+        </button>
+        <button id="resultsResetBtn" class="btn danger results-reset" type="button" aria-label="Start Over">
+          Start Over
         </button>
         <button id="restartBtn" class="activity-home results-home" type="button" aria-label="Go Home">
           <span>Go Home</span>
@@ -173,7 +176,7 @@
     });
   </script>
 
-  <script src="quiz3.js?v=44" defer></script>
+  <script src="quiz3.js?v=45" defer></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', async () => {

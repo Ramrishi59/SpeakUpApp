@@ -76,6 +76,7 @@ const resultsImage = document.getElementById("resultsImage");
 const resultsScore = document.getElementById("resultsScore");
 const restartBtn = document.getElementById("restartBtn");
 const reviewBtn = document.getElementById("reviewBtn");
+const resultsResetBtn = document.getElementById("resultsResetBtn");
 
 if (homeBtn) homeBtn.href = returnUrl;
 if (introHomeBtn) introHomeBtn.href = returnUrl;
@@ -402,6 +403,20 @@ function hideResults() {
   pill?.classList.remove("hidden");
 }
 
+function resetQuiz() {
+  idx = 0;
+  score = 0;
+  creditedQuestions.clear();
+  wrongAttemptQuestions.clear();
+  persistedProgressIndex = -1;
+  progressSaveChain = Promise.resolve();
+  completionSaved = false;
+  completionSavePromise = null;
+  hideResults();
+  render(idx);
+  persistActivityProgress(idx);
+}
+
 // =====================
 // EVENT WIRES
 // =====================
@@ -429,19 +444,7 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
-resetBtn.addEventListener("click", () => {
-  idx = 0;
-  score = 0;
-  creditedQuestions.clear();
-  wrongAttemptQuestions.clear();
-  persistedProgressIndex = -1;
-  progressSaveChain = Promise.resolve();
-  completionSaved = false;
-  completionSavePromise = null;
-  hideResults();
-  render(idx);
-  persistActivityProgress(idx);
-});
+resetBtn.addEventListener("click", resetQuiz);
 
 // Results overlay buttons
 restartBtn?.addEventListener("click", async () => {
@@ -452,6 +455,8 @@ restartBtn?.addEventListener("click", async () => {
 reviewBtn?.addEventListener("click", () => {
   hideResults(); // keep idx where it is, let user go back/forward
 });
+
+resultsResetBtn?.addEventListener("click", resetQuiz);
 
 jumpResultsBtn?.addEventListener("click", () => {
   showResults();
