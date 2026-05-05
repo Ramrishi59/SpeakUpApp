@@ -256,6 +256,7 @@ main#app {
   height: 92%;
   max-height: 92%;
   object-fit: contain;
+  margin-top: 16px;
   object-position: center;
   border-radius: 22px;
   background: white;
