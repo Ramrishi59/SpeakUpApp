@@ -242,19 +242,19 @@ main#app {
   justify-self: center;
   display: grid;
   place-items: center;
-  margin: clamp(4px, 0.8svh, 8px) 0 0;
+  margin: clamp(4px, 0.8svh, 8px) 0 clamp(10px, 1.6svh, 18px);
   padding: 0;
-  border-radius: 24px;
+  border-radius: 0;
   background: transparent;
   box-shadow: none;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #itemImage {
   display: block;
-  width: 94%;
-  height: 94%;
-  max-height: 94%;
+  width: 92%;
+  height: 92%;
+  max-height: 92%;
   object-fit: contain;
   object-position: center;
   border-radius: 22px;
@@ -741,7 +741,7 @@ body.overlay-open #app > *:not(.overlay) {
   .image-wrap {
     width: calc(100% - 30px);
     margin-top: 6px;
-    margin-bottom: 0;
+    margin-bottom: 12px;
   }
 
   .choices {
@@ -794,13 +794,13 @@ body.overlay-open #app > *:not(.overlay) {
 
   .image-wrap {
     margin-top: 4px;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     padding: 0;
   }
 
   .choices {
     gap: 7px;
-    padding-top: 12px;
+    padding-top: 10px;
     padding-bottom: 10px;
   }
 
@@ -821,18 +821,18 @@ body.overlay-open #app > *:not(.overlay) {
   .image-wrap {
     width: calc(100% - 20px);
     margin-top: 4px;
-    margin-bottom: 0;
+    margin-bottom: 12px;
   }
 
   #itemImage {
-    width: 94%;
-    height: 94%;
-    max-height: 94%;
+    width: 92%;
+    height: 92%;
+    max-height: 92%;
   }
 
   .choices {
     gap: 9px;
-    padding-top: 16px;
+    padding-top: 12px;
   }
 }
 
