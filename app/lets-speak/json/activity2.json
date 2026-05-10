@@ -1,0 +1,200 @@
+{
+  "title": "Let's Speak - 2",
+  "presenter": {
+    "id": "reena",
+    "name": "Reena",
+    "avatar": "../Images/dashboard thumbnails/Reena.webp",
+    "fallbackAudioBase": "Audio/fallback/reena/",
+    "outroAudioBase": "Audio/outro/reena/"
+  },
+  "fallbackAudios": [
+    {
+      "fileName": "01_Chapter 1.mp3",
+      "prompt": "Good try! Let's go to the next one."
+    },
+    {
+      "fileName": "02_Chapter 1.mp3",
+      "prompt": "That's okay. Let's try another one."
+    },
+    {
+      "fileName": "03_Chapter 1.mp3",
+      "prompt": "Nice try! Let's keep going."
+    },
+    {
+      "fileName": "04_Chapter 1.mp3",
+      "prompt": "Don't worry. Let's move on."
+    },
+    {
+      "fileName": "05_Chapter 1.mp3",
+      "prompt": "That's fine. Let's go ahead."
+    },
+    {
+      "fileName": "06_Chapter 1.mp3",
+      "prompt": "Good effort! Next one."
+    },
+    {
+      "fileName": "07_Chapter 1.mp3",
+      "prompt": "It's okay. Let's continue."
+    },
+    {
+      "fileName": "08_Chapter 1.mp3",
+      "prompt": "No problem. Let's try the next one."
+    },
+    {
+      "fileName": "09_Chapter 1.mp3",
+      "prompt": "That's alright. Keep going."
+    },
+    {
+      "fileName": "10_Chapter 1.mp3",
+      "prompt": "Good try! Let's continue."
+    }
+  ],
+  "outroAudios": [
+    {
+      "fileName": "01_Chapter 1.mp3",
+      "prompt": "That was fun, you spoke really well."
+    },
+    {
+      "fileName": "02_Chapter 1.mp3",
+      "prompt": "I loved talking with you."
+    },
+    {
+      "fileName": "03_Chapter 1.mp3",
+      "prompt": "Great talking, let's do more!"
+    },
+    {
+      "fileName": "04_Chapter 1.mp3",
+      "prompt": "You're getting better and better!"
+    },
+    {
+      "fileName": "05_Chapter 1.mp3",
+      "prompt": "Nice speaking. See you again!"
+    },
+    {
+      "fileName": "06_Chapter 1.mp3",
+      "prompt": "You did a great job talking."
+    },
+    {
+      "fileName": "07_Chapter 1.mp3",
+      "prompt": "That was lovely speaking."
+    },
+    {
+      "fileName": "08_Chapter 1.mp3",
+      "prompt": "Keep practicing your speaking."
+    },
+    {
+      "fileName": "09_Chapter 1.mp3",
+      "prompt": "I liked hearing your words."
+    },
+    {
+      "fileName": "10_Chapter 1.mp3",
+      "prompt": "See you next time!"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "intro",
+      "image": "Images/1/title.png",
+      "audio": "Audio/2/01_Chapter 1.mp3",
+      "prompt": "Hi! I'm Reena. Let's look and talk!",
+      "sceneKind": "title-card",
+      "next": 1
+    },
+    {
+      "id": "hi-reena",
+      "image": "Images/2/1.webp",
+      "audio": null,
+      "prompt": "Say, \"Hi Reena!\"",
+      "sceneKind": "title-card",
+      "accepted": ["hi reena", "hi", "hello reena", "hello"],
+      "helpPrompt": "Say: Hi Reena.",
+      "feedback": {
+        "image": "Images/2/1.webp",
+        "audio": "Audio/2/02_Chapter 1.mp3",
+        "sceneKind": "no-card",
+        "prompt": "Fantastic! Let's start."
+      }
+    },
+    {
+      "id": "cat",
+      "image": "Images/2/1.webp",
+      "audio": "Audio/2/03_Chapter 1.mp3",
+      "promptAudio": "Audio/2/04_Chapter 1.mp3",
+      "prompt": "Look here... a cat. What's this?",
+      "accepted": ["it's a cat", "it is a cat", "a cat", "cat", "this is a cat"],
+      "helpPrompt": "Say: it's a cat",
+      "feedback": {
+        "image": "Images/2/1.webp",
+        "audio": "Audio/2/05_Chapter 1.mp3.mp3",
+        "prompt": "it's a cat - so cute!"
+      }
+    },
+    {
+      "id": "helicopter",
+      "image": "Images/2/2.webp",
+      "audio": "Audio/2/06_Chapter 1.mp3",
+      "promptAudio": "Audio/2/07_Chapter 1.mp3",
+      "prompt": "Look there... what's that?",
+      "accepted": [
+        "that's a helicopter",
+        "that is a helicopter",
+        "it's a helicopter",
+        "a helicopter",
+        "helicopter"
+      ],
+      "helpPrompt": "Say: that's a helicopter",
+      "feedback": {
+        "image": "Images/2/2.webp",
+        "audio": "Audio/2/08_Chapter 1.mp3",
+        "prompt": "that's a helicopter - wow!"
+      }
+    },
+    {
+      "id": "umbrella",
+      "image": "Images/2/3.webp",
+      "audio": "Audio/2/09_Chapter 1.mp3",
+      "promptAudio": "Audio/2/10_Chapter 1.mp3",
+      "prompt": "It may rain. What's this?",
+      "accepted": [
+        "it's an umbrella",
+        "it is an umbrella",
+        "an umbrella",
+        "umbrella",
+        "this is an umbrella"
+      ],
+      "helpPrompt": "Say: it's an umbrella",
+      "feedback": {
+        "image": "Images/2/3.webp",
+        "audio": "Audio/2/11_Chapter 1.mp3",
+        "prompt": "it's an umbrella - good!"
+      }
+    },
+    {
+      "id": "tiger",
+      "image": "Images/2/4.webp",
+      "audio": "Audio/2/12_Chapter 1.mp3",
+      "promptAudio": "Audio/2/13_Chapter 1.mp3",
+      "prompt": "Look far... what's that?",
+      "accepted": [
+        "that's a tiger",
+        "that is a tiger",
+        "it's a tiger",
+        "a tiger",
+        "tiger"
+      ],
+      "helpPrompt": "Say: that's a tiger",
+      "feedback": {
+        "image": "Images/2/4.webp",
+        "audio": "Audio/2/14_Chapter 1.mp3",
+        "prompt": "that's a tiger - careful!"
+      }
+    },
+    {
+      "id": "outro",
+      "image": "Images/2/4.webp",
+      "audio": null,
+      "prompt": "You said so many words! I loved talking with you!",
+      "done": true
+    }
+  ]
+}

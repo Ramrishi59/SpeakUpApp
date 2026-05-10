@@ -2,237 +2,30 @@
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-const audioPath = (fileName) => `Audio/${fileName}`;
-const imagePath = (number) => `Images/${number}.webp`;
-const assetImagePath = (name) => `Images/${name}`;
-const fallbackAudioPath = (fileName) => `Audio/fallback/${fileName}`;
-const outroAudioPath = (fileName) => `Audio/outro/${fileName}`;
-const fallbackAudios = [
-  {
-    fileName: "01_Chapter 1.mp3",
-    prompt: "Good try! Let's go to the next one."
-  },
-  {
-    fileName: "02_Chapter 1.mp3",
-    prompt: "That's okay. Let's try another one."
-  },
-  {
-    fileName: "03_Chapter 1.mp3",
-    prompt: "Nice try! Let's keep going."
-  },
-  {
-    fileName: "04_Chapter 1.mp3",
-    prompt: "Don't worry. Let's move on."
-  },
-  {
-    fileName: "05_Chapter 1.mp3",
-    prompt: "That's fine. Let's go ahead."
-  },
-  {
-    fileName: "06_Chapter 1.mp3",
-    prompt: "Good effort! Next one."
-  },
-  {
-    fileName: "07_Chapter 1.mp3",
-    prompt: "It's okay. Let's continue."
-  },
-  {
-    fileName: "08_Chapter 1.mp3",
-    prompt: "No problem. Let's try the next one."
-  },
-  {
-    fileName: "09_Chapter 1.mp3",
-    prompt: "That's alright. Keep going."
-  },
-  {
-    fileName: "10_Chapter 1.mp3",
-    prompt: "Good try! Let's continue."
-  }
-];
-const outroAudios = [
-  {
-    fileName: "01_Chapter 1.mp3",
-    prompt: "That was fun, you spoke really well."
-  },
-  {
-    fileName: "02_Chapter 1.mp3",
-    prompt: "I loved talking with you"
-  },
-  {
-    fileName: "03_Chapter 1.mp3",
-    prompt: "Great talking, let's do more!"
-  },
-  {
-    fileName: "04_Chapter 1.mp3",
-    prompt: "You're getting better and better!"
-  },
-  {
-    fileName: "05_Chapter 1.mp3",
-    prompt: "Nice speaking. See you again!"
-  }
-];
+const params = new URLSearchParams(window.location.search);
+const activityId = params.get("activity") || "activity1";
+const DATA_URL = `json/${activityId}.json`;
+const DEFAULT_SCENE = {
+  id: "load-error",
+  image: "Images/1/title.png",
+  audio: null,
+  prompt: "Could not load this activity.",
+  sceneKind: "title-card",
+  done: true
+};
 
-const scenes = [
-  {
-    id: "intro",
-    imageSrc: assetImagePath("title.png"),
-    image: 1,
-    audio: "01_Chapter 1-1.mp3",
-    prompt: "Hey! I’m Manku! Come on, let’s talk together!",
-    sceneKind: "title-card",
-    next: 1
-  },
-  {
-    id: "hi",
-    imageSrc: assetImagePath("title.png"),
-    image: 2,
-    audio: "02_Chapter 1-1.mp3",
-    prompt: "Can you say, “Hi Manku!”",
-    sceneKind: "title-card",
-    accepted: ["hi manku", "hi", "hello manku", "hello"],
-    helpPrompt: "Say: Hi Manku.",
-    feedback: {
-      image: 1,
-      audio: "03_Chapter 1-1.mp3",
-      sceneKind: "no-card",
-      prompt: "I’m happy to hear you!"
-    }
-  },
-  {
-    id: "book",
-    image: 1,
-    audio: "04_Chapter 1-1.mp3",
-    retryAudio: "05_Chapter 1-1.mp3",
-    prompt: "Look! I have a book. Can you say it?",
-    accepted: ["a book", "book", "it is a book", "this is a book", "it's a book"],
-    helpPrompt: "Say: a book",
-    feedback: {
-      image: 1,
-      audio: "06_Chapter 1-1.mp3",
-      prompt: "a book — nice!"
-    }
-  },
-  {
-    id: "apple",
-    image: 2,
-    audio: "07_Chapter 1-1.mp3",
-    retryAudio: "08_Chapter 1-1.mp3",
-    prompt: "Oh, here is an apple. You say it!",
-    accepted: ["an apple", "apple", "it is an apple", "this is an apple"],
-    helpPrompt: "Say: an apple",
-    feedback: {
-      image: 2,
-      audio: "09_Chapter 1-1.mp3",
-      prompt: "an apple — very good!"
-    }
-  },
-  {
-    id: "pen-pencil",
-    image: 3,
-    audio: "010_Chapter 1-1.mp3",
-    retryAudio: "11_Chapter 1.mp3",
-    prompt: "Now I have two things… a pen and a pencil. Can you say it?",
-    accepted: [
-      "a pen and a pencil",
-      "pen and pencil",
-      "a pencil and a pen",
-      "pencil and pen"
-    ],
-    helpPrompt: "Say: a pen and a pencil",
-    feedback: {
-      image: 3,
-      audio: "12_Chapter 1.mp3",
-      prompt: "a pen and a pencil — super!"
-    }
-  },
-  {
-    id: "orange-egg",
-    image: 4,
-    audio: "13_Chapter 1.mp3",
-    retryAudio: "14_Chapter 1.mp3",
-    prompt: "Yummy! I see an orange and an egg. Can you say it?",
-    accepted: [
-      "an orange and an egg",
-      "orange and egg",
-      "an egg and an orange",
-      "egg and orange"
-    ],
-    helpPrompt: "Say: an orange and an egg",
-    feedback: {
-      image: 4,
-      audio: "15_Chapter 1.mp3",
-      prompt: "an orange and an egg — excellent!"
-    }
-  },
-  {
-    id: "chair-table",
-    image: 5,
-    audio: "16_Chapter 1.mp3",
-    retryAudio: "17_Chapter 1.mp3",
-    prompt: "Look, a chair and a table. You try!",
-    accepted: [
-      "a chair and a table",
-      "chair and table",
-      "a table and a chair",
-      "table and chair"
-    ],
-    helpPrompt: "Say: a chair and a table",
-    feedback: {
-      image: 5,
-      audio: "18_Chapter 1.mp3",
-      prompt: "a chair and a table — well done!"
-    }
-  },
-  {
-    id: "dolphin-shark",
-    image: 6,
-    audio: "19_Chapter 1.mp3",
-    retryAudio: "20_Chapter 1.mp3",
-    prompt: "Wow! a dolphin and a shark! Can you say it?",
-    accepted: [
-      "a dolphin and a shark",
-      "dolphin and shark",
-      "a shark and a dolphin",
-      "shark and dolphin"
-    ],
-    helpPrompt: "Say: a dolphin and a shark",
-    feedback: {
-      image: 6,
-      audio: "21_Chapter 1.mp3",
-      prompt: "a dolphin and a shark — great!"
-    }
-  },
-  {
-    id: "umbrella-eraser",
-    image: 7,
-    audio: "22_Chapter 1.mp3",
-    retryAudio: "23_Chapter 1.mp3",
-    prompt: "Last one… an umbrella and an eraser. Say it!",
-    accepted: [
-      "an umbrella and an eraser",
-      "umbrella and eraser",
-      "an eraser and an umbrella",
-      "eraser and umbrella"
-    ],
-    helpPrompt: "Say: an umbrella and an eraser",
-    feedback: {
-      image: 7,
-      audio: "24_Chapter 1.mp3",
-      prompt: "an umbrella and an eraser — fantastic!"
-    }
-  },
-  {
-    id: "outro",
-    image: 7,
-    audio: null,
-    prompt: "You said so many words! I loved talking with you!",
-    done: true
-  }
-];
+let scenes = [];
+let fallbackAudios = [];
+let outroAudios = [];
+let presenter = {};
+let fallbackAudioBase = "Audio/fallback/";
+let outroAudioBase = "Audio/outro/";
+let dataLoaded = false;
 
 const els = {
   heroPanel: document.querySelector(".hero-panel"),
   practicePanel: document.querySelector(".practice-panel"),
+  avatar: document.querySelector(".manku-avatar"),
   promptText: document.getElementById("promptText"),
   artCard: document.querySelector(".art-card"),
   sceneImage: document.getElementById("sceneImage"),
@@ -253,7 +46,68 @@ let acceptingSpeech = false;
 let retryTimer = null;
 let fitPromptFrame = null;
 let retryCount = 0;
-const outroSceneIndex = scenes.findIndex((scene) => scene.done);
+
+function hasPathPrefix(value) {
+  return /^(?:https?:|data:|blob:|\.{0,2}\/|Audio\/|Images\/)/i.test(String(value || ""));
+}
+
+function resolveAudioSource(src, basePath = "Audio/") {
+  if (!src) return null;
+  return hasPathPrefix(src) ? src : `${basePath}${src}`;
+}
+
+function resolveImageSource(sceneOrImage) {
+  const image = typeof sceneOrImage === "object"
+    ? (sceneOrImage.imageSrc || sceneOrImage.image)
+    : sceneOrImage;
+
+  if (!image) return "Images/1/title.png";
+  if (typeof image === "number") return `Images/${image}.webp`;
+  if (hasPathPrefix(image) || /\.[a-z0-9]+(?:\?|$)/i.test(image)) return image;
+  return `Images/${image}.webp`;
+}
+
+function normalizeBasePath(path) {
+  if (!path) return "";
+  return path.endsWith("/") ? path : `${path}/`;
+}
+
+async function loadActivityData() {
+  const res = await fetch(DATA_URL, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load ${DATA_URL}`);
+
+  const json = await res.json();
+  scenes = Array.isArray(json) ? json : (json?.scenes || json?.items || []);
+  fallbackAudios = Array.isArray(json?.fallbackAudios) ? json.fallbackAudios : [];
+  outroAudios = Array.isArray(json?.outroAudios) ? json.outroAudios : [];
+  presenter = json?.presenter || {};
+  fallbackAudioBase = normalizeBasePath(
+    presenter.fallbackAudioBase ||
+    json?.fallbackAudioBase ||
+    (presenter.id ? `Audio/fallback/${presenter.id}/` : "Audio/fallback/")
+  );
+  outroAudioBase = normalizeBasePath(
+    presenter.outroAudioBase ||
+    json?.outroAudioBase ||
+    (presenter.id ? `Audio/outro/${presenter.id}/` : "Audio/outro/")
+  );
+
+  if (!scenes.length) {
+    throw new Error(`${DATA_URL} does not contain scenes`);
+  }
+
+  dataLoaded = true;
+}
+
+function applyPresenter() {
+  if (!els.avatar || !presenter.avatar) return;
+  els.avatar.src = resolveImageSource(presenter.avatar);
+  els.avatar.alt = presenter.name || "Presenter";
+}
+
+function getOutroSceneIndex() {
+  return scenes.findIndex((scene) => scene.done);
+}
 
 function syncAppHeight() {
   document.documentElement.style.setProperty("--app-height", `${window.innerHeight}px`);
@@ -386,7 +240,7 @@ function stopListening() {
 function showScene(scene, overridePrompt = scene.prompt) {
   els.heroPanel.dataset.scene = scene.id;
   els.promptText.textContent = overridePrompt;
-  els.sceneImage.src = scene.imageSrc || imagePath(scene.image);
+  els.sceneImage.src = resolveImageSource(scene);
   els.sceneImage.alt = overridePrompt;
   els.sceneImage.dataset.sceneKind = scene.sceneKind || "practice";
   els.artCard.dataset.mode = scene.sceneKind === "no-card" ? "hidden" : "image";
@@ -430,7 +284,7 @@ function playAudioSource(src, onDone) {
 }
 
 function playAudio(fileName, onDone) {
-  playAudioSource(fileName ? audioPath(fileName) : null, onDone);
+  playAudioSource(resolveAudioSource(fileName), onDone);
 }
 
 function playRandomFallbackAudio(onDone) {
@@ -445,7 +299,7 @@ function playRandomFallbackAudio(onDone) {
   els.promptText.textContent = fallback.prompt;
   els.sceneImage.alt = fallback.prompt;
   schedulePromptFit();
-  playAudioSource(fallbackAudioPath(fallback.fileName), onDone);
+  playAudioSource(resolveAudioSource(fallback.audio || fallback.fileName, fallbackAudioBase), onDone);
 }
 
 function playRandomOutroAudio(onDone) {
@@ -460,11 +314,13 @@ function playRandomOutroAudio(onDone) {
   els.promptText.textContent = outro.prompt;
   els.sceneImage.alt = outro.prompt;
   schedulePromptFit();
-  playAudioSource(outroAudioPath(outro.fileName), onDone);
+  playAudioSource(resolveAudioSource(outro.audio || outro.fileName, outroAudioBase), onDone);
 }
 
 function playCurrentScene() {
+  if (!dataLoaded || !scenes.length) return;
   const scene = scenes[sceneIndex];
+  if (!scene) return;
   hasStarted = true;
   clearRetryTimer();
   acceptingSpeech = false;
@@ -558,6 +414,7 @@ function ensureRecognition() {
 }
 
 function startListening() {
+  if (!dataLoaded || !scenes.length) return;
   stopAudio();
   clearRetryTimer();
   const scene = scenes[sceneIndex];
@@ -594,7 +451,7 @@ function classifyTranscripts(transcripts) {
   }
 
   const matched = transcripts.some((transcript) => {
-    return scene.accepted.some((phrase) => phraseMatchesTranscript(phrase, transcript));
+    return Array.isArray(scene.accepted) && scene.accepted.some((phrase) => phraseMatchesTranscript(phrase, transcript));
   });
 
   if (matched) {
@@ -643,7 +500,7 @@ function handleAdvanceAfterRetries() {
   els.micBtn.disabled = true;
   setState("Let's move on", "try");
   els.heardText.textContent = "";
-  els.sceneImage.src = scene.imageSrc || imagePath(scene.image);
+  els.sceneImage.src = resolveImageSource(scene);
   els.sceneImage.alt = "";
   els.sceneImage.dataset.sceneKind = scene.sceneKind || "practice";
   els.artCard.dataset.mode = scene.sceneKind === "no-card" ? "hidden" : "image";
@@ -666,7 +523,7 @@ function handleAcceptedAnswer() {
   setState("Great job!", "correct");
   els.micBtn.disabled = true;
   els.promptText.textContent = feedback.prompt || scene.prompt;
-  els.sceneImage.src = imagePath(feedback.image || scene.image);
+  els.sceneImage.src = resolveImageSource(feedback.image || scene.image);
   els.sceneImage.alt = feedback.prompt || scene.prompt;
   els.sceneImage.dataset.sceneKind = feedback.sceneKind || "practice";
   els.artCard.dataset.mode = feedback.sceneKind === "no-card" ? "hidden" : "image";
@@ -681,6 +538,7 @@ function handleAcceptedAnswer() {
 }
 
 function jumpToOutroScene() {
+  const outroSceneIndex = getOutroSceneIndex();
   if (outroSceneIndex < 0) return;
 
   clearRetryTimer();
@@ -694,6 +552,7 @@ function jumpToOutroScene() {
 }
 
 els.micBtn.addEventListener("click", () => {
+  if (!dataLoaded) return;
   if (!hasStarted || scenes[sceneIndex]?.done) {
     sceneIndex = scenes[sceneIndex]?.done ? 0 : sceneIndex;
     playCurrentScene();
@@ -704,6 +563,7 @@ els.micBtn.addEventListener("click", () => {
 });
 
 els.replayBtn.addEventListener("click", () => {
+  if (!dataLoaded) return;
   clearRetryTimer();
   acceptingSpeech = false;
   stopListening();
@@ -726,6 +586,23 @@ syncAppHeight();
 window.addEventListener("resize", syncAppHeight);
 window.addEventListener("orientationchange", syncAppHeight);
 
-showScene(scenes[0]);
-setState(SpeechRecognition ? "Tap the mic" : "Speech recognition unavailable", "ready");
-els.micBtn.disabled = false;
+setState("Loading activity", "ready");
+els.micBtn.disabled = true;
+
+loadActivityData()
+  .catch((error) => {
+    console.error(error);
+    scenes = [DEFAULT_SCENE];
+    fallbackAudios = [];
+    outroAudios = [];
+    fallbackAudioBase = "Audio/fallback/";
+    outroAudioBase = "Audio/outro/";
+    dataLoaded = true;
+  })
+  .then(() => {
+    sceneIndex = 0;
+    applyPresenter();
+    showScene(scenes[0]);
+    setState(SpeechRecognition ? "Tap the mic" : "Speech recognition unavailable", "ready");
+    els.micBtn.disabled = false;
+  });

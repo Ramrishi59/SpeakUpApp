@@ -48,7 +48,7 @@
         "choices": [
           "Yes, it's a robot.",
           "No, it's not a robot.",
-          "That robot yes."
+          "Yes, a Robot it."
         ],
         "correctIndex": 0,
         "audioCorrect": "Audio/activity4/05_Chapter 1.mp3",
@@ -113,9 +113,9 @@
       {
         "image": "Images/activity4/9.webp",
         "choices": [
-          "No, that's not a top.",
-          "Yes, that's a top.",
-          "Yes, this is top."
+          "Yes, it a doll.",
+          "Yes, it's a doll.",
+          "Yes, it's a dog."
         ],
         "correctIndex": 0,
         "audioCorrect": "Audio/activity4/12_Chapter 1.mp3",

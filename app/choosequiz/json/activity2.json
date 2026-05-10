@@ -90,20 +90,6 @@
         "correctIndex": 1,
         "audioCorrect": "Audio/activity2/11_Chapter 1.mp3",
         "audioWrong": "Audio/activity2/tryagain.mp3"
-      },
-      {
-        "image": "Images/activity2/11.webp",
-        "choices": ["A apple, orange, mug", "An apple, an orange and a mug","A apple and orange and mug"],
-        "correctIndex": 1,
-        "audioCorrect": "Audio/activity2/12_Chapter 1.mp3",
-        "audioWrong": "Audio/activity2/tryagain.mp3"
-      },
-      {
-        "image": "Images/activity2/12.webp",
-        "choices": ["An umbrella, an iron and a torch", "Umbrella, iron torch","A umbrella an iron torch"],
-        "correctIndex": 0,
-        "audioCorrect": "Audio/activity2/13_Chapter 1.mp3",
-        "audioWrong": "Audio/activity2/tryagain.mp3"
       }
     ]
   }

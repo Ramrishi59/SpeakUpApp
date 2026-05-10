@@ -1,0 +1,229 @@
+{
+  "title": "Let's Speak - 1",
+  "presenter": {
+    "id": "manku",
+    "name": "Manku",
+    "avatar": "../Images/dashboard thumbnails/Manku.webp",
+    "fallbackAudioBase": "Audio/fallback/manku/",
+    "outroAudioBase": "Audio/outro/manku/"
+  },
+  "fallbackAudios": [
+    {
+      "fileName": "01_Chapter 1.mp3",
+      "prompt": "Good try! Let's go to the next one."
+    },
+    {
+      "fileName": "02_Chapter 1.mp3",
+      "prompt": "That's okay. Let's try another one."
+    },
+    {
+      "fileName": "03_Chapter 1.mp3",
+      "prompt": "Nice try! Let's keep going."
+    },
+    {
+      "fileName": "04_Chapter 1.mp3",
+      "prompt": "Don't worry. Let's move on."
+    },
+    {
+      "fileName": "05_Chapter 1.mp3",
+      "prompt": "That's fine. Let's go ahead."
+    },
+    {
+      "fileName": "06_Chapter 1.mp3",
+      "prompt": "Good effort! Next one."
+    },
+    {
+      "fileName": "07_Chapter 1.mp3",
+      "prompt": "It's okay. Let's continue."
+    },
+    {
+      "fileName": "08_Chapter 1.mp3",
+      "prompt": "No problem. Let's try the next one."
+    },
+    {
+      "fileName": "09_Chapter 1.mp3",
+      "prompt": "That's alright. Keep going."
+    },
+    {
+      "fileName": "10_Chapter 1.mp3",
+      "prompt": "Good try! Let's continue."
+    }
+  ],
+  "outroAudios": [
+    {
+      "fileName": "01_Chapter 1.mp3",
+      "prompt": "That was fun, you spoke really well."
+    },
+    {
+      "fileName": "02_Chapter 1.mp3",
+      "prompt": "I loved talking with you"
+    },
+    {
+      "fileName": "03_Chapter 1.mp3",
+      "prompt": "Great talking, let's do more!"
+    },
+    {
+      "fileName": "04_Chapter 1.mp3",
+      "prompt": "You're getting better and better!"
+    },
+    {
+      "fileName": "05_Chapter 1.mp3",
+      "prompt": "Nice speaking. See you again!"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "intro",
+      "image": "Images/1/title.png",
+      "audio": "Audio/1/01_Chapter 1-1.mp3",
+      "prompt": "Hey! I'm Manku! Come on, let's talk together!",
+      "sceneKind": "title-card",
+      "next": 1
+    },
+    {
+      "id": "hi",
+      "image": "Images/1/title.png",
+      "audio": "Audio/1/02_Chapter 1-1.mp3",
+      "prompt": "Can you say, \"Hi Manku!\"",
+      "sceneKind": "title-card",
+      "accepted": ["hi manku", "hi", "hello manku", "hello"],
+      "helpPrompt": "Say: Hi Manku.",
+      "feedback": {
+        "image": "Images/1/title.png",
+        "audio": "Audio/1/03_Chapter 1-1.mp3",
+        "sceneKind": "no-card",
+        "prompt": "I'm happy to hear you!"
+      }
+    },
+    {
+      "id": "book",
+      "image": "Images/1/1.webp",
+      "audio": "Audio/1/04_Chapter 1-1.mp3",
+      "retryAudio": "Audio/1/05_Chapter 1-1.mp3",
+      "prompt": "Look! I have a book. Can you say it?",
+      "accepted": ["a book", "book", "it is a book", "this is a book", "it's a book"],
+      "helpPrompt": "Say: a book",
+      "feedback": {
+        "image": "Images/1/1.webp",
+        "audio": "Audio/1/06_Chapter 1-1.mp3",
+        "prompt": "a book - nice!"
+      }
+    },
+    {
+      "id": "apple",
+      "image": "Images/1/2.webp",
+      "audio": "Audio/1/07_Chapter 1-1.mp3",
+      "retryAudio": "Audio/1/08_Chapter 1-1.mp3",
+      "prompt": "Oh, here is an apple. You say it!",
+      "accepted": ["an apple", "apple", "it is an apple", "this is an apple"],
+      "helpPrompt": "Say: an apple",
+      "feedback": {
+        "image": "Images/1/2.webp",
+        "audio": "Audio/1/09_Chapter 1-1.mp3",
+        "prompt": "an apple - very good!"
+      }
+    },
+    {
+      "id": "pen-pencil",
+      "image": "Images/1/3.webp",
+      "audio": "Audio/1/010_Chapter 1-1.mp3",
+      "retryAudio": "Audio/1/11_Chapter 1.mp3",
+      "prompt": "Now I have two things... a pen and a pencil. Can you say it?",
+      "accepted": [
+        "a pen and a pencil",
+        "pen and pencil",
+        "a pencil and a pen",
+        "pencil and pen"
+      ],
+      "helpPrompt": "Say: a pen and a pencil",
+      "feedback": {
+        "image": "Images/1/3.webp",
+        "audio": "Audio/1/12_Chapter 1.mp3",
+        "prompt": "a pen and a pencil - super!"
+      }
+    },
+    {
+      "id": "orange-egg",
+      "image": "Images/1/4.webp",
+      "audio": "Audio/1/13_Chapter 1.mp3",
+      "retryAudio": "Audio/1/14_Chapter 1.mp3",
+      "prompt": "Yummy! I see an orange and an egg. Can you say it?",
+      "accepted": [
+        "an orange and an egg",
+        "orange and egg",
+        "an egg and an orange",
+        "egg and orange"
+      ],
+      "helpPrompt": "Say: an orange and an egg",
+      "feedback": {
+        "image": "Images/1/4.webp",
+        "audio": "Audio/1/15_Chapter 1.mp3",
+        "prompt": "an orange and an egg - excellent!"
+      }
+    },
+    {
+      "id": "chair-table",
+      "image": "Images/1/5.webp",
+      "audio": "Audio/1/16_Chapter 1.mp3",
+      "retryAudio": "Audio/1/17_Chapter 1.mp3",
+      "prompt": "Look, a chair and a table. You try!",
+      "accepted": [
+        "a chair and a table",
+        "chair and table",
+        "a table and a chair",
+        "table and chair"
+      ],
+      "helpPrompt": "Say: a chair and a table",
+      "feedback": {
+        "image": "Images/1/5.webp",
+        "audio": "Audio/1/18_Chapter 1.mp3",
+        "prompt": "a chair and a table - well done!"
+      }
+    },
+    {
+      "id": "dolphin-shark",
+      "image": "Images/1/6.webp",
+      "audio": "Audio/1/19_Chapter 1.mp3",
+      "retryAudio": "Audio/1/20_Chapter 1.mp3",
+      "prompt": "Wow! a dolphin and a shark! Can you say it?",
+      "accepted": [
+        "a dolphin and a shark",
+        "dolphin and shark",
+        "a shark and a dolphin",
+        "shark and dolphin"
+      ],
+      "helpPrompt": "Say: a dolphin and a shark",
+      "feedback": {
+        "image": "Images/1/6.webp",
+        "audio": "Audio/1/21_Chapter 1.mp3",
+        "prompt": "a dolphin and a shark - great!"
+      }
+    },
+    {
+      "id": "umbrella-eraser",
+      "image": "Images/1/7.webp",
+      "audio": "Audio/1/22_Chapter 1.mp3",
+      "retryAudio": "Audio/1/23_Chapter 1.mp3",
+      "prompt": "Last one... an umbrella and an eraser. Say it!",
+      "accepted": [
+        "an umbrella and an eraser",
+        "umbrella and eraser",
+        "an eraser and an umbrella",
+        "eraser and umbrella"
+      ],
+      "helpPrompt": "Say: an umbrella and an eraser",
+      "feedback": {
+        "image": "Images/1/7.webp",
+        "audio": "Audio/1/24_Chapter 1.mp3",
+        "prompt": "an umbrella and an eraser - fantastic!"
+      }
+    },
+    {
+      "id": "outro",
+      "image": "Images/1/7.webp",
+      "audio": null,
+      "prompt": "You said so many words! I loved talking with you!",
+      "done": true
+    }
+  ]
+}
