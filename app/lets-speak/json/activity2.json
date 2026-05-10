@@ -102,7 +102,7 @@
     },
     {
       "id": "hi-reena",
-      "image": "Images/2/1.webp",
+      "image": "Images/1/title.png",
       "audio": null,
       "prompt": "Say, \"Hi Reena!\"",
       "sceneKind": "title-card",
