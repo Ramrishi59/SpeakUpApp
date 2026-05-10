@@ -1,4 +1,4 @@
-const CACHE_NAME = 'speakupapp-cache-v25';
+const CACHE_NAME = 'speakupapp-cache-v26';
 const APP_SHELL_CACHE = `${CACHE_NAME}-shell`;
 const MEDIA_CACHE = `${CACHE_NAME}-media`;
 const RUNTIME_CACHE = `${CACHE_NAME}-runtime`;

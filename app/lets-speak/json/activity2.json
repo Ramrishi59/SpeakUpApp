@@ -131,8 +131,8 @@
       "id": "cat",
       "image": "Images/2/1.webp",
       "audio": "Audio/2/03_Chapter 1.mp3",
-      "promptAudio": "Audio/2/04_Chapter 1.mp3",
-      "prompt": "Look here... a cat. What's this?",
+      "retryAudio": "Audio/2/04_Chapter 1.mp3",
+      "prompt": "Look here... What's this?",
       "accepted": ["it's a cat", "it is a cat", "a cat", "cat", "this is a cat"],
       "helpPrompt": "Say: it's a cat",
       "feedback": {
@@ -145,7 +145,7 @@
       "id": "helicopter",
       "image": "Images/2/2.webp",
       "audio": "Audio/2/06_Chapter 1.mp3",
-      "promptAudio": "Audio/2/07_Chapter 1.mp3",
+      "retryAudio": "Audio/2/07_Chapter 1.mp3",
       "prompt": "Look there... what's that?",
       "accepted": [
         "that's a helicopter",
@@ -165,7 +165,7 @@
       "id": "umbrella",
       "image": "Images/2/3.webp",
       "audio": "Audio/2/09_Chapter 1.mp3",
-      "promptAudio": "Audio/2/10_Chapter 1.mp3",
+      "retryAudio": "Audio/2/10_Chapter 1.mp3",
       "prompt": "It may rain. What's this?",
       "accepted": [
         "it's an umbrella",
@@ -185,7 +185,7 @@
       "id": "tiger",
       "image": "Images/2/4.webp",
       "audio": "Audio/2/12_Chapter 1.mp3",
-      "promptAudio": "Audio/2/13_Chapter 1.mp3",
+      "retryAudio": "Audio/2/13_Chapter 1.mp3",
       "prompt": "Look far... what's that?",
       "accepted": [
         "that's a tiger",
@@ -205,7 +205,7 @@
       "id": "pencil",
       "image": "Images/2/5.webp",
       "audio": "Audio/2/15_Chapter 1.mp3",
-      "promptAudio": "Audio/2/16_Chapter 1.mp3",
+      "retryAudio": "Audio/2/16_Chapter 1.mp3",
       "prompt": "Say the full sentence... this is a pencil.",
       "accepted": [
         "this is a pencil",
@@ -225,7 +225,7 @@
       "id": "bridge",
       "image": "Images/2/6.webp",
       "audio": "Audio/2/18_Chapter 1.mp3",
-      "promptAudio": "Audio/2/19_Chapter 1.mp3",
+      "retryAudio": "Audio/2/19_Chapter 1.mp3",
       "prompt": "Look there... what's that?",
       "accepted": [
         "that's a bridge",
@@ -245,7 +245,7 @@
       "id": "egg",
       "image": "Images/2/7.webp",
       "audio": "Audio/2/21_Chapter 1.mp3",
-      "promptAudio": "Audio/2/22_Chapter 1.mp3",
+      "retryAudio": "Audio/2/22_Chapter 1.mp3",
       "prompt": "Breakfast time! What's this?",
       "accepted": [
         "it's an egg",
