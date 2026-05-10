@@ -300,21 +300,25 @@ function playAudioSource(src, onDone) {
 
   currentAudio = new Audio(src);
   currentAudio.preload = "auto";
-  currentAudio.addEventListener("ended", () => {
+  let finished = false;
+  const finish = (delay = 0) => {
+    if (finished) return;
+    finished = true;
     currentAudio = null;
-    if (typeof onDone === "function") onDone();
-  }, { once: true });
-  currentAudio.addEventListener("error", () => {
-    currentAudio = null;
-    if (typeof onDone === "function") window.setTimeout(onDone, 250);
-  }, { once: true });
+    if (typeof onDone === "function") {
+      window.setTimeout(onDone, delay);
+    }
+  };
+
+  currentAudio.addEventListener("ended", () => finish(), { once: true });
+  currentAudio.addEventListener("error", () => finish(250), { once: true });
+  currentAudio.addEventListener("stalled", () => finish(250), { once: true });
+  currentAudio.addEventListener("abort", () => finish(250), { once: true });
 
   const playPromise = currentAudio.play();
   if (playPromise && typeof playPromise.catch === "function") {
     playPromise.catch(() => {
-      currentAudio = null;
-      setState("Tap the mic", "try");
-      els.micBtn.disabled = false;
+      finish(250);
     });
   }
 }
