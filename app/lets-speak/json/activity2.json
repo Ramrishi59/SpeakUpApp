@@ -202,8 +202,68 @@
       }
     },
     {
+      "id": "pencil",
+      "image": "Images/2/5.webp",
+      "audio": "Audio/2/15_Chapter 1.mp3",
+      "promptAudio": "Audio/2/16_Chapter 1.mp3",
+      "prompt": "Say the full sentence... this is a pencil.",
+      "accepted": [
+        "this is a pencil",
+        "it's a pencil",
+        "it is a pencil",
+        "a pencil",
+        "pencil"
+      ],
+      "helpPrompt": "Say: this is a pencil",
+      "feedback": {
+        "image": "Images/2/5.webp",
+        "audio": "Audio/2/17_Chapter 1.mp3",
+        "prompt": "this is a pencil - nice and clear!"
+      }
+    },
+    {
+      "id": "bridge",
+      "image": "Images/2/6.webp",
+      "audio": "Audio/2/18_Chapter 1.mp3",
+      "promptAudio": "Audio/2/19_Chapter 1.mp3",
+      "prompt": "Look there... what's that?",
+      "accepted": [
+        "that's a bridge",
+        "that is a bridge",
+        "it's a bridge",
+        "a bridge",
+        "bridge"
+      ],
+      "helpPrompt": "Say: that's a bridge",
+      "feedback": {
+        "image": "Images/2/6.webp",
+        "audio": "Audio/2/20_Chapter 1.mp3",
+        "prompt": "that's a bridge - very nice!"
+      }
+    },
+    {
+      "id": "egg",
+      "image": "Images/2/7.webp",
+      "audio": "Audio/2/21_Chapter 1.mp3",
+      "promptAudio": "Audio/2/22_Chapter 1.mp3",
+      "prompt": "Breakfast time! What's this?",
+      "accepted": [
+        "it's an egg",
+        "it is an egg",
+        "an egg",
+        "egg",
+        "this is an egg"
+      ],
+      "helpPrompt": "Say: it's an egg",
+      "feedback": {
+        "image": "Images/2/7.webp",
+        "audio": "Audio/2/23_Chapter 1.mp3",
+        "prompt": "it's an egg - yummy!"
+      }
+    },
+    {
       "id": "outro",
-      "image": "Images/2/4.webp",
+      "image": "Images/2/7.webp",
       "audio": null,
       "prompt": "You said so many words! I loved talking with you!",
       "done": true
