@@ -10,19 +10,31 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="order.css">
+  <link rel="stylesheet" href="order.css?v=3">
 </head>
 
 <body>
   <header class="topbar">
-    <div id="progressPill" class="pill hidden">1/3</div>
+    <a id="homeBtn" class="activity-home" href="../dashboard.html" aria-label="Home">
+      <span>Home</span>
+    </a>
+    <div class="progress-wrap" aria-label="Progress">
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+      <div id="progressPill" class="pill hidden">1/3</div>
+      <div id="progressStats" class="progress-stats">0 correct so far</div>
+    </div>
+    <button id="resetBtn" class="activity-replay" type="button" aria-label="Start over">
+      <span>Start Over</span>
+    </button>
   </header>
 
   <main id="app">
     <!-- INTRO CARD -->
     <section id="introScreen" class="card intro-card" aria-live="polite">
       <div class="intro-image-wrap">
-        <img id="introImage" src="Images/intro.png" alt="Manku introducing the sentence activity" />
+        <img id="introImage" src="Images/intro-make-sentence.webp" alt="Make the sentence" />
       </div>
 
       <audio id="introAudio" preload="auto">
@@ -35,37 +47,23 @@
       </div>
     </section>
 
-    <!-- MAIN CARD (NO IMAGE) -->
+    <!-- MAIN CARD -->
     <section id="quizCard" class="card hidden" aria-live="polite">
-      <img id="mankuCorner" class="manku-corner" src="../Images/dashboard thumbnails/corner.webp" alt="Manku sitting on the activity card">
-
-      <div id="question" class="question">
-        Tap the words in order to make the sentence
-      </div>
-
-      <div class="progress-wrap" aria-label="Progress">
-        <div class="progress-bar">
-          <div id="progressFill" class="progress-fill"></div>
-        </div>
-        <div id="progressStats" class="progress-stats">0 correct so far</div>
-      </div>
-
-      <!-- 4 word boxes -->
-      <div class="word-grid" role="group" aria-label="Tap the words in order"></div>
+      <img id="mankuCorner" class="manku-corner" src="Images/28.webp" alt="Manku pointing to the sentence">
 
       <!-- Built sentence preview -->
       <div id="answerSlot" class="answer-slot" aria-live="polite">
         <span id="answerText"></span>
       </div>
 
+      <!-- Word boxes -->
+      <div class="word-grid" role="group" aria-label="Tap the words in order"></div>
+
+      <img class="student-helper" src="Images/27.webp" alt="" aria-hidden="true">
 
       <div class="nav-row">
         <button id="prevBtn" class="btn secondary">Prev</button>
-        <a id="homeBtn" class="activity-home" href="../dashboard.html" aria-label="Home">
-          <span>Home</span>
-        </a>
         <button id="nextBtn" class="btn primary">Next</button>
-        <button id="resetBtn" class="btn danger">Start Over</button>
       </div>
     </section>
 
@@ -145,6 +143,7 @@
         skipBtn.disabled = true;
         goToQuiz();
       });
+
     });
   </script>
 

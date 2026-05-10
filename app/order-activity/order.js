@@ -47,7 +47,8 @@ const introAudioEl = document.getElementById("introAudio");
 const homeBtn = document.getElementById("homeBtn");
 const quizCard = document.getElementById("quizCard");
 const mankuCorner = document.getElementById("mankuCorner");
-const SHARED_INTRO_IMAGE = "Images/intro.png";
+const studentHelper = document.querySelector(".student-helper");
+const SHARED_INTRO_IMAGE = "Images/intro-make-sentence.webp";
 const SHARED_INTRO_AUDIO = "Audio/intro/intro.mp3";
 
 const prevBtn = document.getElementById("prevBtn");
@@ -133,12 +134,32 @@ function shuffleWords(count) {
 
 
 function updateAnswerText(words, indices) {
-  if (!words || indices.length === 0) {
-    answerTextEl.textContent = "";
+  if (!answerTextEl) return;
+  answerTextEl.innerHTML = "";
+
+  if (!words || words.length === 0) {
+    answerSlot?.style.removeProperty("--answer-tray-width");
     return;
   }
-  const parts = indices.map(i => words[i]);
-  answerTextEl.textContent = parts.join(" ");
+
+  const selectedWords = indices.map(i => words[i]);
+  let trayWidth = 0;
+  words.forEach((word, slotIndex) => {
+    const wordSlot = document.createElement("span");
+    wordSlot.className = "answer-word-slot";
+    const slotWidth = Math.max(68, Math.min(156, String(word || "").length * 16 + 34));
+    trayWidth += slotWidth;
+    wordSlot.style.setProperty("--answer-slot-width", `${slotWidth}px`);
+    if (slotIndex < selectedWords.length) {
+      wordSlot.textContent = selectedWords[slotIndex];
+      wordSlot.classList.add("filled");
+    } else {
+      wordSlot.setAttribute("aria-label", `Empty word ${slotIndex + 1}`);
+    }
+    answerTextEl.appendChild(wordSlot);
+  });
+  trayWidth += Math.max(0, words.length - 1) * 12 + 42;
+  answerSlot?.style.setProperty("--answer-tray-width", `${trayWidth}px`);
 }
 
 function popAnswerSlot() {
@@ -225,6 +246,16 @@ function animateManku(mood) {
   mankuCorner.classList.add(`manku-${mood}`);
 }
 
+function celebrateStudentHelper() {
+  if (!studentHelper) return;
+  studentHelper.classList.remove("student-helper-celebrate");
+  void studentHelper.offsetWidth;
+  studentHelper.classList.add("student-helper-celebrate");
+  studentHelper.addEventListener("animationend", () => {
+    studentHelper.classList.remove("student-helper-celebrate");
+  }, { once: true });
+}
+
 function updateWordGridDensity(words) {
   if (!wordGrid) return;
   const totalWords = words?.length || 0;
@@ -232,6 +263,7 @@ function updateWordGridDensity(words) {
   const compact = totalWords > 4 || totalChars > 20;
   wordGrid.classList.toggle("compact", compact);
   quizCard?.classList.toggle("compact-words", compact);
+  answerSlot?.style.setProperty("--answer-columns", String(Math.min(Math.max(totalWords, 1), 5)));
 }
 
 function getSentenceAudio(it, index) {
@@ -296,7 +328,7 @@ function playAudio(path, onEnded) {
 
 function updateProgressUI() {
   const total = ITEMS.length || 1;
-  const pct = Math.round((idx / total) * 100);
+  const pct = Math.round(((idx + 1) / total) * 100);
   if (progressFill) progressFill.style.width = `${pct}%`;
   if (progressStats) {
     progressStats.textContent = `${score} correct so far`;
@@ -371,7 +403,7 @@ function render(i) {
         render(target);
       }
     });
-    qEl.textContent = loadError ? "Could not load activity." : "Loading...";
+    if (qEl) qEl.textContent = loadError ? "Could not load activity." : "Loading...";
     mankuCorner?.classList.remove("manku-happy", "manku-wrong", "manku-celebrate");
     wordBtns.forEach(btn => btn.disabled = true);
     prevBtn.disabled = true;
@@ -386,7 +418,7 @@ function render(i) {
   nextBtn.disabled = true;
   mankuCorner?.classList.remove("manku-happy", "manku-wrong", "manku-celebrate");
 
-  qEl.textContent = it.question || "Tap the words in order to make the sentence.";
+  if (qEl) qEl.textContent = it.question || "Tap the words in order to make the sentence.";
   pill.textContent = `${i + 1}/${ITEMS.length}`;
   updateProgressUI();
   persistActivityProgress(i);
@@ -461,6 +493,7 @@ function handleWordTap(slot) {
 
   answered = true;
   animateManku("celebrate");
+  celebrateStudentHelper();
   vibrate(30);
 
   const advance = () => {
@@ -585,7 +618,7 @@ window.addEventListener("keydown", (e) => {
 // Shared intro media for every order activity.
 if (introImgEl) {
   introImgEl.src = SHARED_INTRO_IMAGE;
-  introImgEl.alt = "Manku introducing the sentence activity";
+  introImgEl.alt = "Make the sentence";
 }
 if (introAudioEl) {
   introAudioEl.src = SHARED_INTRO_AUDIO;
