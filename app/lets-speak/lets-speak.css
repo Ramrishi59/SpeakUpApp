@@ -142,10 +142,10 @@ a {
 }
 
 .art-card {
-  width: min(98%, 402px);
-  aspect-ratio: 1.28;
+  width: min(99%, 430px);
+  aspect-ratio: 1.18;
   flex: 0 0 auto;
-  max-height: min(44vh, 346px);
+  max-height: min(48vh, 372px);
   margin-bottom: clamp(14px, 2.2vh, 24px);
   position: relative;
   overflow: hidden;
@@ -230,7 +230,21 @@ a {
   border-radius: 0;
 }
 
+.mic-face::before {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border-radius: 999px;
+  background: rgba(24, 168, 99, 0);
+  box-shadow: 0 0 0 0 rgba(24, 168, 99, 0);
+  opacity: 0;
+  transform: scale(0.84);
+  transition: opacity 160ms ease, transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+}
+
 .mic-icon-image {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 120%;
   height: 100%;
@@ -293,8 +307,25 @@ a {
 }
 
 .practice-panel[data-state="listening"] .status-strip {
-  background: rgba(255, 57, 67, 0.18);
-  box-shadow: inset 0 0 0 1px rgba(255, 110, 118, 0.3);
+  background: rgba(24, 168, 99, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(175, 255, 214, 0.42), 0 10px 22px rgba(24, 168, 99, 0.18);
+}
+
+.practice-panel[data-state="listening"] .mic-face::before {
+  background: rgba(24, 168, 99, 0.24);
+  box-shadow:
+    0 0 0 8px rgba(24, 168, 99, 0.16),
+    0 0 34px 10px rgba(24, 168, 99, 0.35);
+  opacity: 1;
+  transform: scale(1);
+  animation: micGlow 1s ease-in-out infinite;
+}
+
+.practice-panel[data-state="listening"] .mic-icon-image {
+  transform: scale(1.06);
+  filter:
+    drop-shadow(0 0 16px rgba(24, 168, 99, 0.7))
+    drop-shadow(0 12px 18px rgba(0, 0, 0, 0.16));
 }
 
 .practice-panel[data-state="correct"] .status-strip {
@@ -318,6 +349,21 @@ a {
 
   50% {
     transform: scale(1.35);
+  }
+}
+
+@keyframes micGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 8px rgba(24, 168, 99, 0.14),
+      0 0 28px 8px rgba(24, 168, 99, 0.3);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 14px rgba(24, 168, 99, 0.08),
+      0 0 40px 14px rgba(24, 168, 99, 0.46);
   }
 }
 
@@ -396,8 +442,8 @@ a {
   }
 
   .art-card {
-    width: 88%;
-    max-height: 30vh;
+    width: 94%;
+    max-height: 34vh;
     border-radius: 20px;
   }
 
