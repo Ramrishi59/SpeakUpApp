@@ -175,8 +175,44 @@ function sceneSpecificMatch(scene, transcript) {
   const normalizedTranscript = normalizeSpeech(transcript);
   const tokens = keywordTokens(normalizedTranscript);
 
+  if (scene.id === "hi-reena") {
+    const hasGreeting =
+      tokens.includes("hi") ||
+      tokens.includes("hello") ||
+      tokens.includes("hey") ||
+      tokens.includes("hay") ||
+      tokens.includes("high") ||
+      normalizedTranscript.startsWith("hi ") ||
+      normalizedTranscript.startsWith("hello ") ||
+      normalizedTranscript.startsWith("hey ") ||
+      normalizedTranscript.startsWith("hay ") ||
+      normalizedTranscript.startsWith("high ");
+    const hasReenaLikeWord =
+      tokens.includes("reena") ||
+      tokens.includes("rina") ||
+      tokens.includes("rena") ||
+      tokens.includes("arena") ||
+      tokens.includes("ree na") ||
+      normalizedTranscript.includes("reena") ||
+      normalizedTranscript.includes("rina") ||
+      normalizedTranscript.includes("rena") ||
+      normalizedTranscript.includes("arena");
+
+    return hasGreeting || hasReenaLikeWord;
+  }
+
   if (scene.id === "hi") {
-    const hasGreeting = tokens.includes("hi") || tokens.includes("hello") || normalizedTranscript.startsWith("hi ") || normalizedTranscript.startsWith("hello ");
+    const hasGreeting =
+      tokens.includes("hi") ||
+      tokens.includes("hello") ||
+      tokens.includes("hey") ||
+      tokens.includes("hay") ||
+      tokens.includes("high") ||
+      normalizedTranscript.startsWith("hi ") ||
+      normalizedTranscript.startsWith("hello ") ||
+      normalizedTranscript.startsWith("hey ") ||
+      normalizedTranscript.startsWith("hay ") ||
+      normalizedTranscript.startsWith("high ");
     const hasMankuLikeWord =
       tokens.includes("manku") ||
       tokens.includes("manu") ||
@@ -191,7 +227,7 @@ function sceneSpecificMatch(scene, transcript) {
       normalizedTranscript.includes("manko") ||
       normalizedTranscript.includes("monkey");
 
-    return hasGreeting || (hasGreeting && hasMankuLikeWord);
+    return hasGreeting || hasMankuLikeWord;
   }
 
   if (scene.id === "book") {
@@ -379,9 +415,12 @@ function ensureRecognition() {
   recognition.onresult = (event) => {
     window.clearTimeout(silenceTimer);
     silenceTimer = null;
-    const best = Array.from(event.results?.[0] || [])[0]?.transcript || "";
+    const transcripts = Array.from(event.results?.[0] || [])
+      .map((result) => result?.transcript || "")
+      .filter(Boolean);
+    const best = transcripts[0] || "";
     els.heardText.textContent = best || "Voice heard";
-    classifyTranscripts(best ? [best] : []);
+    classifyTranscripts(transcripts);
   };
 
   recognition.onerror = (event) => {

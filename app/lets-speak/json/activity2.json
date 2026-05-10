@@ -106,7 +106,19 @@
       "audio": null,
       "prompt": "Say, \"Hi Reena!\"",
       "sceneKind": "title-card",
-      "accepted": ["hi reena", "hi", "hello reena", "hello"],
+      "accepted": [
+        "hi reena",
+        "hi rina",
+        "hi rena",
+        "hi arena",
+        "hey reena",
+        "hello reena",
+        "hello rina",
+        "hello rena",
+        "hi",
+        "hello",
+        "hey"
+      ],
       "helpPrompt": "Say: Hi Reena.",
       "feedback": {
         "image": "Images/2/1.webp",
