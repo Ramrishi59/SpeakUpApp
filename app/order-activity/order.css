@@ -1024,9 +1024,9 @@ main#app {
 
 .answer-slot {
   grid-area: answer;
-  min-height: clamp(82px, 12svh, 116px);
-  width: min(96%, var(--answer-tray-width, 430px));
-  max-width: 520px;
+  min-height: 96px;
+  width: min(96%, 430px);
+  max-width: 430px;
   justify-self: center;
   padding: clamp(10px, 1.4svh, 14px) clamp(12px, 3vw, 18px);
   border: 3px dashed #2d77d8;
@@ -1040,27 +1040,27 @@ main#app {
 }
 
 #answerText {
-  width: max-content;
-  max-width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  gap: clamp(8px, 2vw, 14px);
-  font-size: clamp(18px, 2.8svh, 28px);
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--answer-columns, 4), minmax(0, 1fr));
+  align-items: stretch;
+  gap: 10px;
+  font-size: 24px;
 }
 
 .answer-word-slot {
-  flex: 0 0 var(--answer-slot-width, 88px);
   min-width: 0;
-  min-height: clamp(50px, 7svh, 72px);
+  min-height: 58px;
   display: grid;
   place-items: center;
-  padding: 4px 8px;
-  border: 3px dashed rgba(45, 119, 216, 0.86);
+  padding: 7px 6px;
+  border: 0;
   border-radius: 16px;
   color: #ffffff;
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.02;
+  overflow-wrap: anywhere;
+  text-align: center;
   text-shadow:
     -2px -2px 0 rgba(129, 63, 0, 0.48),
     2px -2px 0 rgba(129, 63, 0, 0.48),
@@ -1069,20 +1069,18 @@ main#app {
 }
 
 .answer-word-slot.filled {
-  border-style: solid;
-  border-color: #fff06d;
-  background: linear-gradient(180deg, #ffc928, #f49a00);
-  box-shadow: 0 5px 0 #cd7100, inset 0 3px 0 rgba(255, 255, 255, 0.48);
+  border: 3px solid rgba(255, 255, 255, 0.78);
+  box-shadow: 0 6px 0 rgba(0, 85, 164, 0.42), 0 10px 12px rgba(10, 79, 139, 0.18), inset 0 4px 0 rgba(255, 255, 255, 0.34);
 }
 
 .word-grid {
   grid-area: choices;
-  width: min(96%, 410px);
+  width: min(94%, 390px);
   justify-self: center;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(10px, 1.8svh, 16px) clamp(12px, 3vw, 18px);
-  padding: 0 clamp(10px, 3vw, 18px);
+  gap: 12px;
+  padding: 0;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -1091,18 +1089,19 @@ main#app {
 
 .word-grid.compact {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(8px, 1.4svh, 12px) clamp(10px, 2.5vw, 14px);
-  padding: 0 clamp(8px, 2vw, 14px);
+  gap: 10px;
+  padding: 0;
 }
 
 .word-btn,
 .word-grid.compact .word-btn {
-  min-height: clamp(62px, 10svh, 94px);
+  min-width: 0;
+  min-height: 64px;
   padding: 8px 10px;
   border: 3px solid rgba(255, 255, 255, 0.78);
   border-radius: 18px;
   color: #ffffff;
-  font-size: clamp(22px, 4svh, 37px);
+  font-size: 24px;
   font-weight: 900;
   line-height: 1;
   text-shadow:
@@ -1113,6 +1112,8 @@ main#app {
     0 3px 0 rgba(0, 0, 0, 0.16);
   box-shadow: 0 8px 0 rgba(0, 85, 164, 0.42), 0 12px 14px rgba(10, 79, 139, 0.2), inset 0 4px 0 rgba(255, 255, 255, 0.34);
   white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .word-btn::before {
@@ -1130,7 +1131,15 @@ main#app {
   background: linear-gradient(180deg, #b75bff, #7426d7);
 }
 
+.answer-word-slot.word-color-1 {
+  background: linear-gradient(180deg, #b75bff, #7426d7);
+}
+
 .word-btn:nth-child(6n+2) {
+  background: linear-gradient(180deg, #7eea2d, #31b40d);
+}
+
+.answer-word-slot.word-color-2 {
   background: linear-gradient(180deg, #7eea2d, #31b40d);
 }
 
@@ -1138,7 +1147,15 @@ main#app {
   background: linear-gradient(180deg, #27b6ff, #066fdc);
 }
 
+.answer-word-slot.word-color-3 {
+  background: linear-gradient(180deg, #27b6ff, #066fdc);
+}
+
 .word-btn:nth-child(6n+4) {
+  background: linear-gradient(180deg, #ff5d83, #e61f50);
+}
+
+.answer-word-slot.word-color-4 {
   background: linear-gradient(180deg, #ff5d83, #e61f50);
 }
 
@@ -1146,7 +1163,15 @@ main#app {
   background: linear-gradient(180deg, #ffb422, #f27600);
 }
 
+.answer-word-slot.word-color-5 {
+  background: linear-gradient(180deg, #ffb422, #f27600);
+}
+
 .word-btn:nth-child(6n) {
+  background: linear-gradient(180deg, #32d8dc, #0b9aa7);
+}
+
+.answer-word-slot.word-color-6 {
   background: linear-gradient(180deg, #32d8dc, #0b9aa7);
 }
 
@@ -1252,20 +1277,25 @@ main#app {
   }
 
   .answer-slot {
-    min-height: clamp(72px, 10svh, 92px);
+    min-height: 82px;
     border-radius: 18px;
   }
 
+  #answerText {
+    gap: 8px;
+    font-size: 19px;
+  }
+
   .answer-word-slot {
-    min-height: clamp(42px, 6svh, 58px);
+    min-height: 48px;
     border-radius: 13px;
   }
 
   .word-btn,
   .word-grid.compact .word-btn {
-    min-height: clamp(52px, 8.2svh, 72px);
+    min-height: 56px;
     border-radius: 15px;
-    font-size: clamp(18px, 3.4svh, 28px);
+    font-size: 19px;
   }
 
   .student-helper {

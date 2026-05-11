@@ -138,28 +138,23 @@ function updateAnswerText(words, indices) {
   answerTextEl.innerHTML = "";
 
   if (!words || words.length === 0) {
-    answerSlot?.style.removeProperty("--answer-tray-width");
     return;
   }
 
   const selectedWords = indices.map(i => words[i]);
-  let trayWidth = 0;
   words.forEach((word, slotIndex) => {
     const wordSlot = document.createElement("span");
     wordSlot.className = "answer-word-slot";
-    const slotWidth = Math.max(68, Math.min(156, String(word || "").length * 16 + 34));
-    trayWidth += slotWidth;
-    wordSlot.style.setProperty("--answer-slot-width", `${slotWidth}px`);
     if (slotIndex < selectedWords.length) {
+      const originalWordIndex = indices[slotIndex];
+      const sourceSlot = Math.max(0, map.indexOf(originalWordIndex));
       wordSlot.textContent = selectedWords[slotIndex];
-      wordSlot.classList.add("filled");
+      wordSlot.classList.add("filled", `word-color-${(sourceSlot % 6) + 1}`);
     } else {
       wordSlot.setAttribute("aria-label", `Empty word ${slotIndex + 1}`);
     }
     answerTextEl.appendChild(wordSlot);
   });
-  trayWidth += Math.max(0, words.length - 1) * 12 + 42;
-  answerSlot?.style.setProperty("--answer-tray-width", `${trayWidth}px`);
 }
 
 function popAnswerSlot() {
