@@ -809,6 +809,10 @@ main#app {
   padding: clamp(10px, 1.6svh, 16px) clamp(14px, 4vw, 24px) 0;
 }
 
+body.quiz-active .topbar {
+  display: grid;
+}
+
 .activity-home,
 .activity-replay {
   width: clamp(56px, 8svh, 82px);

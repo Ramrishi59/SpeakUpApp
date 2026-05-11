@@ -107,6 +107,7 @@
           introAudio.pause();
           introAudio.currentTime = 0;
         }
+        document.body.classList.add("quiz-active");
         intro.classList.add("hidden");
         quizCard.classList.remove("hidden");
         if (progressPill) {
