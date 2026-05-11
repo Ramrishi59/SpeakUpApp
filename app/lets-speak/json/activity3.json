@@ -4,8 +4,8 @@
       "id": "raju",
       "name": "Raju",
       "avatar": "../Images/dashboard thumbnails/Raju.webp",
-      "fallbackAudioBase": "Audio/fallback/raju/",
-      "outroAudioBase": "Audio/outro/raju/"
+      "fallbackAudioBase": "Audio/fallback/manku/",
+      "outroAudioBase": "Audio/outro/manku/"
     },
   
     "fallbackAudios": [
@@ -223,7 +223,7 @@
         "helpPrompt": "Say: Yes, it is",
         "feedback": {
           "image": "Images/3/7.webp",
-          "audio": "Audio/3/24_Chapter 1.mp3",
+          "audio": null,
           "prompt": "Yes it is a doll! Fantastic!"
         }
       },
