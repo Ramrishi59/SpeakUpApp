@@ -115,6 +115,15 @@ body {
     filter: drop-shadow(0 16px 18px rgba(31, 30, 51, 0.18));
 }
 
+.voice-dashboard .dashboard-hero-character {
+    right: 22px;
+    bottom: 18px;
+    width: 104px;
+    height: 104px;
+    object-fit: contain;
+    border-radius: 0;
+}
+
 .options-section {
     margin-bottom: 18px;
     position: relative; /* For positioning the add button */

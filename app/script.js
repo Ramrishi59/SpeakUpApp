@@ -1,7 +1,10 @@
 let dashboardLessons = [];
+let voiceModeLessons = [];
 let rerenderDashboard = null;
 let dashboardLoadError = "";
+let voiceModeLoadError = "";
 let activeDashboardFilter = "all";
+let activeDashboardMode = "lessons";
 let accessCountdownTimerId = null;
 
 const INITIAL_THUMBNAIL_LOAD_COUNT = 6;
@@ -18,6 +21,8 @@ const ROUTE_OVERRIDES = {
   'unit1-practice': () => 'an-quiz/an-quiz.html',
   'and-practice': () => 'and-practice/and.html',
 };
+
+const LETS_SPEAK_ACTIVITY_IDS = ['activity1', 'activity2', 'activity3'];
 
 const PROFILE_CHARACTERS = [
   { name: 'Ammu', src: 'Images/dashboard thumbnails/Ammu.jpg' },
@@ -333,7 +338,15 @@ async function startRazorpayCheckout(button, messageNode) {
 }
 
 function getDashboardContentCount() {
-  return dashboardLessons.filter((card) => card?.id && card.id !== 'intro').length;
+  return getCurrentDashboardLessons().filter((card) => card?.id && card.id !== 'intro').length;
+}
+
+function getCurrentDashboardLessons() {
+  return activeDashboardMode === 'voice' ? voiceModeLessons : dashboardLessons;
+}
+
+function getCurrentDashboardLoadError() {
+  return activeDashboardMode === 'voice' ? voiceModeLoadError : dashboardLoadError;
 }
 
 function getDashboardCategory(card) {
@@ -346,9 +359,12 @@ function getDashboardCategory(card) {
 
 function getFilteredDashboardLessons() {
   const query = document.querySelector('.search-input')?.value.toLowerCase().trim() || '';
+  const lessons = getCurrentDashboardLessons();
 
-  return dashboardLessons.filter((lesson) => {
-    const matchesFilter = activeDashboardFilter === 'all' || getDashboardCategory(lesson) === activeDashboardFilter;
+  return lessons.filter((lesson) => {
+    const matchesFilter = activeDashboardMode === 'voice'
+      || activeDashboardFilter === 'all'
+      || getDashboardCategory(lesson) === activeDashboardFilter;
     const matchesQuery = !query
       || lesson.title.toLowerCase().includes(query)
       || String(lesson.description || '').toLowerCase().includes(query);
@@ -359,13 +375,13 @@ function getFilteredDashboardLessons() {
 
 function getLessonTitleById(lessonId) {
   if (!lessonId) return null;
-  const lesson = dashboardLessons.find((card) => String(card?.id) === String(lessonId));
+  const lesson = getCurrentDashboardLessons().find((card) => String(card?.id) === String(lessonId));
   return lesson?.title || null;
 }
 
 function getLessonCardById(lessonId) {
   if (!lessonId) return null;
-  return dashboardLessons.find((card) => String(card?.id) === String(lessonId)) || null;
+  return getCurrentDashboardLessons().find((card) => String(card?.id) === String(lessonId)) || null;
 }
 
 function getLessonProgressState(lessonId) {
@@ -448,7 +464,7 @@ function renderLessonStars(starCount) {
 }
 
 function getDashboardProgressSummary() {
-  return dashboardLessons.reduce((summary, lesson) => {
+  return getCurrentDashboardLessons().reduce((summary, lesson) => {
     if (!lesson?.id) return summary;
 
     const progress = getLessonProgressState(lesson.id);
@@ -463,13 +479,19 @@ function getDashboardProgressSummary() {
 }
 
 function updateDashboardProgressSummary() {
+  const totalSummary = document.getElementById('total-summary');
   const totalCount = document.getElementById('total-count');
   const completedCount = document.getElementById('completed-count');
   const inProgressCount = document.getElementById('in-progress-count');
   if (!completedCount || !inProgressCount) return;
 
   const summary = getDashboardProgressSummary();
-  if (totalCount) totalCount.textContent = String(getDashboardContentCount());
+  const totalLabel = activeDashboardMode === 'voice' ? 'voice' : 'lessons';
+  if (totalSummary) {
+    totalSummary.innerHTML = `<strong id="total-count">${getDashboardContentCount()}</strong> ${totalLabel}`;
+  } else if (totalCount) {
+    totalCount.textContent = String(getDashboardContentCount());
+  }
   completedCount.textContent = String(summary.completed);
   inProgressCount.textContent = String(summary.inProgress);
 }
@@ -1146,7 +1168,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.error('B-ERROR: SUAuth.ready failed:', err);
   }
 
-  if (window.location.hash === '#login') {
+  if (window.location.hash === '#voice-mode') {
+    activeDashboardMode = 'voice';
+    showDashboardScreen();
+  } else if (window.location.hash === '#login') {
     openAccountScreen();
   } else {
     showDashboardScreen();
@@ -1166,6 +1191,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const closeVoiceModeMenuButton = document.getElementById('closeVoiceModeMenu');
 
   await loadDashboardLessons();
+  await loadVoiceModeLessons();
   console.log('E: dashboardLessons after load =', dashboardLessons);
 
   refreshButton?.addEventListener('click', () => {
@@ -1230,12 +1256,42 @@ async function loadDashboardLessons() {
     dashboardLoadError = `${e?.message || e}`;
   }
 }
+
+async function loadVoiceModeLessons() {
+  try {
+    const cards = await Promise.all(LETS_SPEAK_ACTIVITY_IDS.map(async (activityId, index) => {
+      const jsonUrl = new URL(`./lets-speak/json/${activityId}.json?v=1`, window.location.href);
+      const res = await fetch(jsonUrl, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`Failed to load lets-speak/json/${activityId}.json`);
+      const data = await res.json();
+      const presenterName = data?.presenter?.name || 'Manku';
+      const rawAvatar = data?.presenter?.avatar || '../Images/dashboard thumbnails/Manku.webp';
+      const thumbnail = rawAvatar.replace(/^\.\.\//, '');
+
+      return {
+        id: `lets-speak-${activityId}`,
+        title: data?.title || `Let's Speak - ${index + 1}`,
+        description: `Talk with ${presenterName} using your voice.`,
+        thumbnail,
+        category: 'voice',
+        route: `lets-speak/?activity=${encodeURIComponent(activityId)}`
+      };
+    }));
+
+    voiceModeLessons = cards;
+    voiceModeLoadError = "";
+  } catch (e) {
+    console.error("Could not load Let's Speak activities:", e);
+    voiceModeLessons = [];
+    voiceModeLoadError = `${e?.message || e}`;
+  }
+}
   function getScrollKey() {
-    return 'scroll:dashboard';
+    return activeDashboardMode === 'voice' ? 'scroll:dashboard:voice' : 'scroll:dashboard';
   }
 
   function getLastLessonKey() {
-    return 'scroll:dashboard:last-lesson';
+    return activeDashboardMode === 'voice' ? 'scroll:dashboard:voice:last-lesson' : 'scroll:dashboard:last-lesson';
   }
 
   function saveScrollPosition() {
@@ -1283,7 +1339,7 @@ async function loadDashboardLessons() {
 
   async function navigateToLesson(id) {
     // find the full card so resolveRoute can honour overrides and future per-card routes
-    const card = dashboardLessons.find(c => c.id === id);
+    const card = getCurrentDashboardLessons().find(c => c.id === id);
     if (!card) {
       console.warn('No card found for id:', id);
       return;
@@ -1311,13 +1367,14 @@ async function loadDashboardLessons() {
     if (!lessonsList) return;
     lessonsList.innerHTML = '';
 
-    if (dashboardLoadError) {
+    const currentLoadError = getCurrentDashboardLoadError();
+
+    if (currentLoadError) {
       lessonsList.innerHTML = `
         <div class="lesson-card" style="cursor: default;">
           <div class="lesson-info">
-            <h3>Could not load dashboard items</h3>
-            <p>${dashboardLoadError}</p>
-            <p>Expected file: app/units/manifest.json</p>
+            <h3>Could not load ${activeDashboardMode === 'voice' ? 'voice activities' : 'dashboard items'}</h3>
+            <p>${currentLoadError}</p>
             <p>Current page: ${window.location.href}</p>
           </div>
         </div>
@@ -1329,7 +1386,7 @@ async function loadDashboardLessons() {
       lessonsList.innerHTML = `
         <div class="lesson-card" style="cursor: default;">
           <div class="lesson-info">
-            <h3>No dashboard items found</h3>
+            <h3>No ${activeDashboardMode === 'voice' ? 'voice activities' : 'dashboard items'} found</h3>
           </div>
         </div>
       `;
@@ -1450,6 +1507,12 @@ async function loadDashboardLessons() {
     const filterRow = document.querySelector('.dashboard-filter-row');
     if (!filterRow) return;
 
+    filterRow.hidden = activeDashboardMode === 'voice';
+    if (activeDashboardMode === 'voice') {
+      filterRow.innerHTML = '';
+      return;
+    }
+
     filterRow.innerHTML = DASHBOARD_FILTERS.map((filter) => {
       const count = filter.id === 'all'
         ? dashboardLessons.length
@@ -1472,11 +1535,32 @@ async function loadDashboardLessons() {
   }
 
   function renderCurrentView() {
+    const dashboardScreen = document.getElementById('dashboard-screen');
+    const heroEyebrow = document.querySelector('.dashboard-eyebrow');
+    const heroTitle = document.querySelector('.dashboard-hero h1');
+    const heroCopy = document.querySelector('.dashboard-hero-copy > p:not(.dashboard-eyebrow)');
+    const heroCharacter = document.querySelector('.dashboard-hero-character');
+    const refreshButtonNode = document.querySelector('.refresh-button');
+    const isVoiceMode = activeDashboardMode === 'voice';
+
+    setActiveBottomNav(isVoiceMode ? 'voice-mode' : 'lessons');
+    dashboardScreen?.classList.toggle('voice-dashboard', isVoiceMode);
+    if (heroEyebrow) heroEyebrow.textContent = isVoiceMode ? 'SpeakUp voice mode' : 'SpeakUp lessons';
+    if (heroTitle) heroTitle.textContent = isVoiceMode ? 'Choose a speaking activity' : 'Learn English step by step';
+    if (heroCopy) heroCopy.textContent = isVoiceMode
+      ? 'Practise speaking with Manku, Reena, and Raju.'
+      : 'Learn, listen, practise, and come back to where you stopped.';
+    if (heroCharacter) {
+      heroCharacter.src = isVoiceMode ? 'Images/dashboard thumbnails/mic.webp' : 'Images/dashboard thumbnails/Manku.webp';
+      heroCharacter.alt = '';
+    }
+    if (refreshButtonNode) refreshButtonNode.hidden = isVoiceMode;
+
     updateDashboardProgressSummary();
     renderDashboardFilters();
     renderLessonCards(getFilteredDashboardLessons());
     if (searchLabel) {
-      searchLabel.textContent = 'Lessons';
+      searchLabel.textContent = isVoiceMode ? 'Voice Mode' : 'Lessons';
     }
     restoreScrollPosition();
   }
@@ -1493,11 +1577,22 @@ async function loadDashboardLessons() {
         const target = btn.dataset.navTarget;
         if (target === 'lessons') {
           // Always return to the dashboard
-          window.location.href = 'dashboard.html';
+          activeDashboardMode = 'lessons';
+          activeDashboardFilter = 'all';
+          closeVoiceModeMenu();
+          showDashboardScreen();
+          history.replaceState(null, '', 'dashboard.html');
+          renderCurrentView();
+          if (mainContent) mainContent.scrollTop = 0;
         } else if (target === 'login') {
           openAccountScreen();
         } else if (target === 'voice-mode') {
-          openVoiceModeMenu();
+          activeDashboardMode = 'voice';
+          closeVoiceModeMenu();
+          showDashboardScreen();
+          history.replaceState(null, '', 'dashboard.html#voice-mode');
+          renderCurrentView();
+          if (mainContent) mainContent.scrollTop = 0;
         } else {
           alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
         }
