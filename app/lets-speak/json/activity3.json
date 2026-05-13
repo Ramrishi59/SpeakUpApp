@@ -150,7 +150,7 @@
         "id": "atlas",
         "image": "Images/3/4.webp",
         "audio": "Audio/3/13_Chapter 1.mp3",
-        "retryAudio": "Audio/3/14_Chapter 1.mp3",
+        "retryAudio": "Audio/3/13_Chapter 1.mp3",
         "prompt": "Is this a globe?",
         "accepted": [
           "no it's not it's an atlas",
@@ -162,7 +162,7 @@
         "helpPrompt": "Say: No, it's not. It's an atlas",
         "feedback": {
           "image": "Images/3/4.webp",
-          "audio": "Audio/3/15_Chapter 1.mp3",
+          "audio": "Audio/3/14_Chapter 1.mp3",
           "prompt": "No, it's not. It's an atlas! You got it!"
         }
       },
@@ -170,8 +170,8 @@
       {
         "id": "robot",
         "image": "Images/3/5.webp",
-        "audio": "Audio/3/16_Chapter 1.mp3",
-        "retryAudio": "Audio/3/17_Chapter 1.mp3",
+        "audio": "Audio/3/15_Chapter 1.mp3",
+        "retryAudio": "Audio/3/16_Chapter 1.mp3",
         "prompt": "Is this a robot?",
         "accepted": [
           "yes it is",
@@ -182,7 +182,7 @@
         "helpPrompt": "Say: Yes, it is",
         "feedback": {
           "image": "Images/3/5.webp",
-          "audio": "Audio/3/18_Chapter 1.mp3",
+          "audio": "Audio/3/17_Chapter 1.mp3",
           "prompt": "Yes, it is a robot! Super!"
         }
       },
@@ -190,8 +190,8 @@
       {
         "id": "bat",
         "image": "Images/3/6.webp",
-        "audio": "Audio/3/19_Chapter 1.mp3",
-        "retryAudio": "Audio/3/20_Chapter 1.mp3",
+        "audio": "Audio/3/18_Chapter 1.mp3",
+        "retryAudio": "Audio/3/19_Chapter 1.mp3",
         "prompt": "Is this a ball?",
         "accepted": [
           "no it's not it's a bat",
@@ -203,7 +203,7 @@
         "helpPrompt": "Say: No, it's not... it's a bat",
         "feedback": {
           "image": "Images/3/6.webp",
-          "audio": "Audio/3/21_Chapter 1.mp3",
+          "audio": "Audio/3/20_Chapter 1.mp3",
           "prompt": "No, it's not. It's a bat! Well spotted!"
         }
       },
@@ -211,8 +211,8 @@
       {
         "id": "doll",
         "image": "Images/3/7.webp",
-        "audio": "Audio/3/22_Chapter 1.mp3",
-        "retryAudio": "Audio/3/23_Chapter 1.mp3",
+        "audio": "Audio/3/21_Chapter 1.mp3",
+        "retryAudio": "Audio/3/22_Chapter 1.mp3",
         "prompt": "Is this a doll?",
         "accepted": [
           "yes it is",
@@ -223,7 +223,7 @@
         "helpPrompt": "Say: Yes, it is",
         "feedback": {
           "image": "Images/3/7.webp",
-          "audio": null,
+          "audio": "Audio/3/23_Chapter 1.mp3",
           "prompt": "Yes it is a doll! Fantastic!"
         }
       },
