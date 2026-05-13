@@ -941,12 +941,15 @@ body.quiz-active .topbar {
   display: block;
 }
 
-.intro-overlay-image {
+.intro-image-wrap > img.intro-overlay-image {
   position: absolute;
   left: 50%;
-  top: 50%;
-  width: 1px;
-  height: 1px;
+  top: 60%;
+  width: 454px !important;
+  max-width: 454px !important;
+  height: auto !important;
+  max-height: 254px !important;
+  object-fit: contain !important;
   transform: translate(-50%, -50%);
   z-index: 2;
   pointer-events: none;
