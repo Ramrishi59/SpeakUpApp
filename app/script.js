@@ -586,7 +586,7 @@ function showDashboardScreen() {
   if (dashboard) dashboard.style.display = '';
   if (account) account.style.display = 'none';
   updateAccountNavLabel();
-  setActiveBottomNav('lessons');
+  setActiveBottomNav(activeDashboardMode === 'voice' ? 'voice-mode' : 'lessons');
   rerenderDashboard?.();
 }
 
@@ -1189,10 +1189,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const mainContent = document.querySelector('.main-content');
   const voiceModeMenu = document.getElementById('voiceModeMenu');
   const closeVoiceModeMenuButton = document.getElementById('closeVoiceModeMenu');
-
-  await loadDashboardLessons();
-  await loadVoiceModeLessons();
-  console.log('E: dashboardLessons after load =', dashboardLessons);
+  const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
 
   refreshButton?.addEventListener('click', () => {
     saveScrollPosition();
@@ -1203,8 +1200,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   window.addEventListener('pagehide', saveScrollPosition);
   window.addEventListener('beforeunload', saveScrollPosition);
 
-
-  const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
+  function isAccountScreenVisible() {
+    const accountScreen = document.getElementById('account-screen');
+    return !!accountScreen && accountScreen.style.display !== 'none';
+  }
 
   function openVoiceModeMenu() {
     if (!voiceModeMenu) return;
@@ -1216,6 +1215,48 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (!voiceModeMenu) return;
     voiceModeMenu.classList.add('hidden');
   }
+
+  function handleBottomNavClick(btn) {
+    const target = btn.dataset.navTarget;
+
+    if (target === 'lessons') {
+      activeDashboardMode = 'lessons';
+      activeDashboardFilter = 'all';
+      closeVoiceModeMenu();
+      showDashboardScreen();
+      history.replaceState(null, '', 'dashboard.html');
+      renderCurrentView();
+      if (mainContent) mainContent.scrollTop = 0;
+    } else if (target === 'login') {
+      closeVoiceModeMenu();
+      openAccountScreen();
+      history.replaceState(null, '', 'dashboard.html#login');
+    } else if (target === 'voice-mode') {
+      activeDashboardMode = 'voice';
+      closeVoiceModeMenu();
+      showDashboardScreen();
+      history.replaceState(null, '', 'dashboard.html#voice-mode');
+      renderCurrentView();
+      if (mainContent) mainContent.scrollTop = 0;
+    } else {
+      alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
+    }
+  }
+
+  navButtons.forEach((btn) => {
+    btn.addEventListener('click', () => handleBottomNavClick(btn));
+  });
+
+  window.addEventListener('su-auth-changed', () => {
+    updateAccountNavLabel();
+
+    if (isAccountScreenVisible()) {
+      renderAccountStatus();
+      return;
+    }
+
+    renderCurrentView();
+  });
 
   closeVoiceModeMenuButton?.addEventListener('click', closeVoiceModeMenu);
   voiceModeMenu?.addEventListener('click', (event) => {
@@ -1467,7 +1508,9 @@ async function loadVoiceModeLessons() {
   }
 
   // initial render
-  renderCurrentView();
+  if (!isAccountScreenVisible()) {
+    renderCurrentView();
+  }
 
   // -------- Search --------
   function collapseSearchBar() {
@@ -1567,38 +1610,14 @@ async function loadVoiceModeLessons() {
 
   rerenderDashboard = renderCurrentView;
 
-  // -------- Bottom nav --------
-  if (navButtons) {
-    navButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        navButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const target = btn.dataset.navTarget;
-        if (target === 'lessons') {
-          // Always return to the dashboard
-          activeDashboardMode = 'lessons';
-          activeDashboardFilter = 'all';
-          closeVoiceModeMenu();
-          showDashboardScreen();
-          history.replaceState(null, '', 'dashboard.html');
-          renderCurrentView();
-          if (mainContent) mainContent.scrollTop = 0;
-        } else if (target === 'login') {
-          openAccountScreen();
-        } else if (target === 'voice-mode') {
-          activeDashboardMode = 'voice';
-          closeVoiceModeMenu();
-          showDashboardScreen();
-          history.replaceState(null, '', 'dashboard.html#voice-mode');
-          renderCurrentView();
-          if (mainContent) mainContent.scrollTop = 0;
-        } else {
-          alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
-        }
-      });
-    });
+  await loadDashboardLessons();
+  await loadVoiceModeLessons();
+  if (isAccountScreenVisible()) {
+    renderAccountStatus();
+  } else {
+    renderCurrentView();
   }
+  console.log('E: dashboardLessons after load =', dashboardLessons);
 
   console.log("Dashboard ready.");
 });

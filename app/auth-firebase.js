@@ -52,6 +52,39 @@ let currentProfile = null;
 let resolveReady;
 let readyResolved = false;
 
+function delay(ms) {
+  return new Promise((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
+}
+
+function notifyAuthChanged() {
+  window.dispatchEvent(new CustomEvent("su-auth-changed", {
+    detail: {
+      auth: getAuthState(),
+      license: getLicense(),
+      profile: getProfile()
+    }
+  }));
+}
+
+async function loadUserProfileWithRetry(uid, attempts = 3) {
+  let lastError = null;
+
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      return await loadUserProfile(uid);
+    } catch (error) {
+      lastError = error;
+      if (attempt < attempts) {
+        await delay(350 * attempt);
+      }
+    }
+  }
+
+  throw lastError;
+}
+
 function toMillis(value) {
   if (!value) return null;
   if (typeof value.toMillis === "function") return value.toMillis();
@@ -173,7 +206,7 @@ onAuthStateChanged(auth, async (user) => {
       uid: user.uid
     };
     try {
-      await loadUserProfile(user.uid);
+      await loadUserProfileWithRetry(user.uid);
     } catch (error) {
       console.warn("Could not load user profile from Firestore.", error);
       currentProfile = null;
@@ -208,6 +241,8 @@ onAuthStateChanged(auth, async (user) => {
     readyResolved = true;
     resolveReady();
   }
+
+  notifyAuthChanged();
 });
 
 async function loginWithEmail(email, password) {
@@ -221,10 +256,11 @@ async function loginWithEmail(email, password) {
   };
 
   try {
-    await loadUserProfile(user.uid);
+    await loadUserProfileWithRetry(user.uid);
   } catch (error) {
     console.warn("Login succeeded, but the user profile could not be loaded.", error);
   }
+  notifyAuthChanged();
   return authState;
 }
 
@@ -241,7 +277,7 @@ async function loginWithGoogle() {
   let profileSynced = true;
 
   try {
-    const existingProfile = await loadUserProfile(user.uid);
+    const existingProfile = await loadUserProfileWithRetry(user.uid);
 
     if (!existingProfile) {
       const fallbackUsername = user.displayName || (user.email ? user.email.split("@")[0] : "Google User");
@@ -250,13 +286,14 @@ async function loginWithGoogle() {
         username: fallbackUsername,
         email: user.email || ""
       });
-      await loadUserProfile(user.uid);
+      await loadUserProfileWithRetry(user.uid);
     }
   } catch (error) {
     profileSynced = false;
     console.warn("Google login succeeded, but the user profile could not be loaded or saved.", error);
   }
 
+  notifyAuthChanged();
   return { ...authState, profileSynced };
 }
 
@@ -277,12 +314,13 @@ async function signupWithEmail(username, email, password) {
       username,
       email: user.email || email
     });
-    await loadUserProfile(user.uid);
+    await loadUserProfileWithRetry(user.uid);
   } catch (error) {
     profileSynced = false;
     console.warn("Account was created, but the profile could not be saved to Firestore.", error);
   }
 
+  notifyAuthChanged();
   return { ...authState, profileSynced };
 }
 
@@ -389,7 +427,9 @@ async function logout() {
 
 async function refreshProfile() {
   if (!auth.currentUser) return null;
-  return loadUserProfile(auth.currentUser.uid);
+  const profile = await loadUserProfileWithRetry(auth.currentUser.uid);
+  notifyAuthChanged();
+  return profile;
 }
 
 async function getIdToken() {
