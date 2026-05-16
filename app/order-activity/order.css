@@ -1349,8 +1349,55 @@ main#app {
   }
 
   .student-helper {
-    width: 190px;
-    --student-helper-y: 128px;
+    width: 170px;
+    --student-helper-y: 42px;
+  }
+}
+
+@media (max-height: 700px) {
+  .card {
+    grid-template-rows: minmax(118px, 20svh) auto auto minmax(88px, 1fr) auto;
+    row-gap: 7px;
+  }
+
+  .manku-corner {
+    width: 150px;
+    top: 8px;
+  }
+
+  .answer-slot {
+    min-height: 72px;
+    padding-block: 8px;
+  }
+
+  #answerText {
+    gap: 6px;
+    font-size: 17px;
+  }
+
+  .answer-word-slot {
+    min-height: 42px;
+    min-width: clamp(52px, 17%, 72px);
+    padding: 5px 9px;
+    border-radius: 12px;
+  }
+
+  .word-grid,
+  .word-grid.compact {
+    gap: 8px;
+  }
+
+  .word-btn,
+  .word-grid.compact .word-btn {
+    min-height: 50px;
+    padding: 7px 8px;
+    font-size: 17px;
+    border-radius: 14px;
+  }
+
+  .student-helper {
+    width: 140px;
+    --student-helper-y: 16px;
   }
 }
 
