@@ -78,7 +78,7 @@
         ],
         "helpPrompt": "Say: Hi Raju!",
         "feedback": {
-          "image": "Images/3/title.png",
+          "image": "Images/1/title.png",
           "audio": "Audio/3/03_Chapter 1.mp3",
           "sceneKind": "no-card",
           "prompt": "Hey! Let's play!"

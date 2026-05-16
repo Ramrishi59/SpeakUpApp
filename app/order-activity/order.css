@@ -959,7 +959,7 @@ body.quiz-active .topbar {
 .intro-actions {
   position: absolute;
   left: 50%;
-  bottom: max(112px, calc(env(safe-area-inset-bottom) + 88px));
+  bottom: max(156px, calc(env(safe-area-inset-bottom) + 124px));
   transform: translateX(-50%);
   width: min(100%, 330px);
   display: grid;

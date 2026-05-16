@@ -40,7 +40,8 @@ let sceneIndex = 0;
 let recognition = null;
 let isListening = false;
 let silenceTimer = null;
-let currentAudio = null;
+let currentAudio = new Audio();
+currentAudio.preload = "auto";
 let hasStarted = false;
 let acceptingSpeech = false;
 let retryTimer = null;
@@ -258,7 +259,10 @@ function stopAudio() {
   if (!currentAudio) return;
   currentAudio.pause();
   currentAudio.currentTime = 0;
-  currentAudio = null;
+  currentAudio.onended = null;
+  currentAudio.onerror = null;
+  currentAudio.onstalled = null;
+  currentAudio.onabort = null;
 }
 
 function stopListening() {
@@ -298,22 +302,25 @@ function playAudioSource(src, onDone) {
   setState("Manku speaking", "ready");
   els.micBtn.disabled = true;
 
-  currentAudio = new Audio(src);
-  currentAudio.preload = "auto";
   let finished = false;
   const finish = (delay = 0) => {
     if (finished) return;
     finished = true;
-    currentAudio = null;
+    currentAudio.onended = null;
+    currentAudio.onerror = null;
+    currentAudio.onstalled = null;
+    currentAudio.onabort = null;
     if (typeof onDone === "function") {
       window.setTimeout(onDone, delay);
     }
   };
 
-  currentAudio.addEventListener("ended", () => finish(), { once: true });
-  currentAudio.addEventListener("error", () => finish(250), { once: true });
-  currentAudio.addEventListener("stalled", () => finish(250), { once: true });
-  currentAudio.addEventListener("abort", () => finish(250), { once: true });
+  currentAudio.onended = () => finish();
+  currentAudio.onerror = () => finish(250);
+  currentAudio.onstalled = () => finish(250);
+  currentAudio.onabort = () => finish(250);
+  currentAudio.src = src;
+  currentAudio.load();
 
   const playPromise = currentAudio.play();
   if (playPromise && typeof playPromise.catch === "function") {

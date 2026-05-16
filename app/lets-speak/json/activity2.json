@@ -137,7 +137,7 @@
       "helpPrompt": "Say: it's a cat",
       "feedback": {
         "image": "Images/2/1.webp",
-        "audio": "Audio/2/05_Chapter 1.mp3.mp3",
+        "audio": "Audio/2/05_Chapter 1.mp3",
         "prompt": "it's a cat - so cute!"
       }
     },
