@@ -944,7 +944,7 @@ body.quiz-active .topbar {
 .intro-image-wrap > img.intro-overlay-image {
   position: absolute;
   left: 50%;
-  top: 60%;
+  top: 52%;
   width: 454px !important;
   max-width: 454px !important;
   height: auto !important;
@@ -965,7 +965,7 @@ body.quiz-active .topbar {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-top: -30px;
+  margin-top: -80px;
   padding: 0 12px;
 }
 
