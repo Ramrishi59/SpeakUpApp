@@ -562,6 +562,13 @@ function setActiveBottomNav(target) {
   });
 }
 
+function keepBottomNavClickable() {
+  const bottomNav = document.querySelector('.bottom-nav');
+  if (!bottomNav) return;
+  bottomNav.style.zIndex = '30';
+  bottomNav.style.pointerEvents = 'auto';
+}
+
 function updateAccountNavLabel() {
   const auth = getLoginState();
   const profile = getProfileState();
@@ -1156,6 +1163,7 @@ function appendQueryParam(url, key, value) {
 
 document.addEventListener('DOMContentLoaded', async () => {
   console.log('A: DOM loaded');
+  keepBottomNavClickable();
 
   try {
     if (window.SUAuth?.ready) {

@@ -551,7 +551,8 @@ body {
     justify-content: space-around;
     gap: 12px;
     box-shadow: 0 -10px 24px rgba(31, 30, 51, 0.08);
-    z-index: 2;
+    z-index: 30;
+    pointer-events: auto;
 }
 
 .nav-button {
