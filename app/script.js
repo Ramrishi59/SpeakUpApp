@@ -1249,13 +1249,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   window.addEventListener('su-auth-changed', () => {
     updateAccountNavLabel();
-
-    if (isAccountScreenVisible()) {
-      renderAccountStatus();
-      return;
+    if (!isAccountScreenVisible()) {
+      renderCurrentView();
     }
-
-    renderCurrentView();
   });
 
   closeVoiceModeMenuButton?.addEventListener('click', closeVoiceModeMenu);
