@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=6">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#007bff">
     <meta name="mobile-web-app-capable" content="yes">
@@ -36,7 +36,7 @@
 
                 <div class="options-section">
                     <div class="dashboard-progress-summary" aria-live="polite">
-                        <span id="total-summary"><strong id="total-count">0</strong> lessons</span>
+                        <span><strong id="total-count">0</strong> lessons</span>
                         <span><strong id="completed-count">0</strong> completed</span>
                         <span><strong id="in-progress-count">0</strong> in progress</span>
                     </div>
@@ -118,7 +118,7 @@
         </section>
     </div>
 
-    <script type="module" src="./auth-firebase.js?v=8"></script>
+    <script type="module" src="./auth-firebase.js?v=7"></script>
     <script>
       window.addEventListener("load", async () => {
         if (!window.SUAuth?.ready) return;
@@ -131,7 +131,7 @@
     </script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="./payment-config.js?v=2"></script>
-    <script src="./script.js?v=9"></script>
+    <script src="./script.js?v=7"></script>
 
     <script>
       if ('serviceWorker' in navigator) {

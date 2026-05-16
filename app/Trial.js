@@ -128,6 +128,10 @@ function isLookListenMarker(item) {
     || audioSrc.includes("Audio/intro2/looklistenrepeat.mp3");
 }
 
+function isRepeatingAssetImage(item) {
+  return String(item?.image || "").includes("Images/repeating_assets/looklisten.webp");
+}
+
 function showOutroFromLegacyItem(item) {
   SpeakUpOutro.render({ image: item.image || "", audio: item.audio || "", text: "" });
   document.body.classList.add('outro-active');
@@ -229,6 +233,7 @@ function lockIntroWords(container) {
 async function render(i) {
   const item = screens[i];
   if (!item) return;
+  document.body.classList.toggle('repeating-asset-slide', isRepeatingAssetImage(item));
 
   // Prefer the explicit look/listen/repeat card as the intro boundary when present.
   const isImageOnlySlide = !!(item?.image && !item?.text && !item?.video);
