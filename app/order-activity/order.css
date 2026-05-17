@@ -725,7 +725,7 @@ main#app {
 .results-score {
   position: absolute;
   left: 50%;
-  bottom: calc(clamp(18px, 5svh, 44px) + 204px);
+  bottom: calc(clamp(18px, 5svh, 44px) + 200px);
   transform: translateX(-50%);
   width: min(88vw, 460px);
   font-size: clamp(24px, 4.2svh, 42px);
