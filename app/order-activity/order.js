@@ -54,6 +54,7 @@ const SHARED_INTRO_AUDIO = "Audio/intro/intro.mp3";
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const resetBtn = document.getElementById("resetBtn");
+const finishTestBtn = document.getElementById("finishTestBtn");
 
 const wordGrid = document.querySelector(".word-grid");
 const answerSlot = document.getElementById("answerSlot");
@@ -531,7 +532,7 @@ function showResults() {
   const revealResults = () => {
     resultsOverlay.classList.remove("hidden");
     document.body.classList.add("overlay-open");
-    reviewBtn?.focus();
+    restartBtn?.focus();
     const resultSfx = score >= 8 ? EXCELLENT_SFX : NICE_EFFORT_SFX;
     playAudio(resultSfx, () => {
       playAudio(CLAP_SFX);
@@ -590,6 +591,18 @@ resetBtn.addEventListener("click", () => {
   score = 0;
   hideResults();
   if (ITEMS.length > 0) render(idx);
+});
+
+finishTestBtn?.addEventListener("click", () => {
+  dataPromise.finally(() => {
+    if (!ITEMS.length) return;
+    hideResults();
+    document.body.classList.add("quiz-active");
+    document.getElementById("introScreen")?.classList.add("hidden");
+    quizCard?.classList.remove("hidden");
+    idx = ITEMS.length - 1;
+    render(idx);
+  });
 });
 
 restartBtn?.addEventListener("click", () => {

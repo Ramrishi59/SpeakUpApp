@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="order.css?v=4">
+  <link rel="stylesheet" href="order.css?v=6">
 </head>
 
 <body>
@@ -28,6 +28,7 @@
     <button id="resetBtn" class="activity-replay" type="button" aria-label="Start over">
       <span>Start Over</span>
     </button>
+    <button id="finishTestBtn" class="finish-test-btn" type="button">Finish</button>
   </header>
 
   <main id="app">
@@ -78,8 +79,8 @@
       <div class="overlay-card">
       </div>
       <div class="nav-row overlay-nav">
-        <button id="reviewBtn" class="btn secondary">Review Answers</button>
-        <button id="restartBtn" class="btn primary">Go Home</button>
+       
+        <button id="restartBtn" class="btn primary results-keep-going">Keep going</button>
       </div>
     </section>
   </main>
@@ -150,7 +151,7 @@
     });
   </script>
 
-  <script src="order.js?v=2" defer></script>
+  <script src="order.js?v=3" defer></script>
 </body>
 
 </html>
