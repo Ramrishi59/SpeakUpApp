@@ -692,8 +692,8 @@ main#app {
 }
 
 .overlay-bg img {
-  width: 100vw;
-  height: 100dvh;
+  width: 120vw;
+  height: 120dvh;
   max-width: none;
   max-height: none;
   object-fit: cover;
@@ -724,7 +724,7 @@ main#app {
 .results-score {
   position: absolute;
   left: 50%;
-  bottom: calc(clamp(18px, 5svh, 44px) + 222px);
+  bottom: calc(clamp(18px, 5svh, 44px) + 196px);
   transform: translateX(-50%);
   font-size: clamp(30px, 5svh, 48px);
   font-weight: 900;
