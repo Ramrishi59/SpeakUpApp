@@ -2,6 +2,7 @@ let screens = [];
 let firstTextIndex = 0;
 let introMascotEndIndex = -1;
 let currentIndex = 0;
+let currentUnitName = "";
 
 let userInteracted = false;
 ['click','touchstart','keydown'].forEach(evt => {
@@ -132,6 +133,21 @@ function isRepeatingAssetImage(item) {
   return String(item?.image || "").includes("Images/repeating_assets/looklisten.webp");
 }
 
+function escapeHtml(value) {
+  return String(value || "").replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;"
+  }[char]));
+}
+
+function formatIntroUnitTitle(title) {
+  const safeTitle = escapeHtml(title || "Speak Up");
+  return safeTitle.replace(/:\s*/, ":<br>");
+}
+
 function showOutroFromLegacyItem(item) {
   SpeakUpOutro.render({ image: item.image || "", audio: item.audio || "", text: "" });
   document.body.classList.add('outro-active');
@@ -233,10 +249,12 @@ function lockIntroWords(container) {
 async function render(i) {
   const item = screens[i];
   if (!item) return;
-  document.body.classList.toggle('repeating-asset-slide', isRepeatingAssetImage(item));
 
   // Prefer the explicit look/listen/repeat card as the intro boundary when present.
   const isImageOnlySlide = !!(item?.image && !item?.text && !item?.video);
+  const isFirstIntroSlide = i === 0 && isImageOnlySlide && !isRepeatingAssetImage(item);
+  document.body.classList.toggle('repeating-asset-slide', isRepeatingAssetImage(item));
+  document.body.classList.toggle('first-intro-slide', isFirstIntroSlide);
   let isIntroMascot = false;
   if (introMascotEndIndex >= 0) {
     isIntroMascot = isImageOnlySlide && i <= introMascotEndIndex;
@@ -273,9 +291,15 @@ async function render(i) {
   if (item.image && !item.video) {
     leaveOutro();
     els.wordScreen.style.display = "grid";
-    els.word.innerHTML = (item.text || "").replace(/ (?!.* )/, "&nbsp;");
-    els.image.src = item.image;
-    els.image.alt = item.text || "Lesson image";
+    els.title.innerHTML = isFirstIntroSlide ? formatIntroUnitTitle(currentUnitName) : "";
+    els.word.innerHTML = isFirstIntroSlide ? "" : (item.text || "").replace(/ (?!.* )/, "&nbsp;");
+    if (isFirstIntroSlide) {
+      els.image.removeAttribute("src");
+      els.image.alt = "";
+    } else {
+      els.image.src = item.image;
+      els.image.alt = item.text || "Lesson image";
+    }
     els.prev.style.display = i === 0 ? "none" : "";
     els.next.style.display = i === screens.length - 1 ? "none" : "";
     if (item.audio) { playScreenAudio(item.audio); }
@@ -435,6 +459,7 @@ async function waitForAuthReady() {
 
   const unit = await loadUnit(getUnitIdFromUrl());
   document.body.classList.add(`unit-${unit.id}`);
+  currentUnitName = unit.name || "";
 
   const titleEl = document.getElementById("unitTitle");
   if (titleEl && unit.name) titleEl.textContent = unit.name;

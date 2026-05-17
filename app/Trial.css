@@ -703,6 +703,79 @@ body.repeating-asset-slide .nav-row{
   z-index: 30;
 }
 
+/* First intro slide: reusable unit title card with thought bubble + Manku. */
+body.first-intro-slide .word-display{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  max-width: none;
+  min-height: 100svh;
+  margin: 0;
+  padding: 0;
+  display: block !important;
+  overflow: hidden;
+  background: #29bfff;
+}
+
+body.first-intro-slide .word-display::before{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: clamp(86px, 15svh, 138px);
+  width: min(94vw, 600px);
+  aspect-ratio: 1.5 / 1;
+  transform: translateX(-50%);
+  background: center / contain no-repeat url("Images/repeating_assets/13.png");
+  filter: drop-shadow(0 8px 10px rgba(0, 58, 154, 0.24));
+  z-index: 1;
+}
+
+body.first-intro-slide .word-display::after{
+  content: "";
+  position: absolute;
+  right: max(-12px, 1vw);
+  bottom: calc(var(--next-coin-size) * .72 + max(128px, env(safe-area-inset-bottom)));
+  width: min(68vw, 280px);
+  aspect-ratio: 1 / 1.25;
+  background: center bottom / contain no-repeat url("Images/repeating_assets/11.webp");
+  filter: drop-shadow(0 10px 12px rgba(0, 58, 154, 0.28));
+  z-index: 2;
+}
+
+body.first-intro-slide #lessonText{
+  display: block !important;
+  position: absolute;
+  left: 50%;
+  top: clamp(148px, 24svh, 230px);
+  width: min(58vw, 400px);
+  margin: 0;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: #ef1608;
+  font-size: clamp(42px, 8.5vw, 80px);
+  font-weight: 500;
+  line-height: .98;
+  text-align: center;
+  text-shadow:
+    0 3px 0 #aa0902,
+    0 5px 10px rgba(0, 0, 0, .18);
+}
+
+body.first-intro-slide .image-wrap,
+body.first-intro-slide .word-block{
+  display: none !important;
+}
+
+body.first-intro-slide #lessonActions .nav-btn.next{
+  left: 50%;
+  right: auto;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: clamp(220px, 58vw, 340px);
+  height: clamp(220px, 58vw, 340px);
+  transform: translateX(-50%);
+}
+
 /* Lesson controls: utilities at the top, large prev/next at the bottom. */
 #lessonActions.footer-actions{
   position: fixed;
@@ -769,6 +842,11 @@ body.has-dock .image-wrap{
 
 body.has-dock.repeating-asset-slide .word-display,
 body.has-dock.repeating-asset-slide .image-wrap{
+  padding: 0;
+  height: 100svh;
+}
+
+body.has-dock.first-intro-slide .word-display{
   padding: 0;
   height: 100svh;
 }
