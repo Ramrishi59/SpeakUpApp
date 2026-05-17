@@ -724,7 +724,7 @@ main#app {
 .results-score {
   position: absolute;
   left: 50%;
-  bottom: calc(clamp(18px, 5svh, 44px) + 209px);
+  bottom: calc(clamp(18px, 5svh, 44px) + 218px);
   transform: translateX(-50%);
   width: min(88vw, 460px);
   font-size: clamp(24px, 4.2svh, 42px);
@@ -767,17 +767,20 @@ main#app {
 }
 
 .overlay-nav .results-keep-going {
-  width: clamp(128px, 20svh, 176px);
-  height: clamp(70px, 11svh, 96px);
-  min-width: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: center / contain no-repeat url("Images/keepgoing.webp");
-  color: transparent;
-  font-size: 0;
-  line-height: 0;
-  box-shadow: none;
+  width: 112px;
+  height: 68px;
+  min-width: 112px;
+  padding: 12px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffe36a 0%, #ffc21a 55%, #f0a400 100%);
+  border: 4px solid #fff7b8;
+  color: #6b3d00;
+  font-size: 20px;
+  line-height: 1.05;
+  font-weight: 900;
+  box-shadow:
+    0 14px 24px rgba(96, 57, 0, 0.26),
+    inset 0 -6px 0 rgba(176, 102, 0, 0.22);
 }
 
 .overlay-nav .results-keep-going:hover {
