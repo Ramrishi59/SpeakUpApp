@@ -692,10 +692,12 @@ main#app {
 }
 
 .overlay-bg img {
-  width: min(95%, 680px);
-  max-height: 88vh;
-  object-fit: fill;
-  transform: scale(1.04);
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  transform: none;
 }
 
 .overlay-card {
@@ -721,14 +723,14 @@ main#app {
 
 .results-score {
   position: absolute;
-  right: 12%;
-  top: 33%;
-  transform: translateY(-50%);
-  font-size: clamp(24px, 4svh, 40px);
+  left: 50%;
+  bottom: calc(clamp(18px, 5svh, 44px) + 222px);
+  transform: translateX(-50%);
+  font-size: clamp(30px, 5svh, 48px);
   font-weight: 900;
-  color: #b84c00;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  z-index: 2;
+  color: #ffffff;
+  text-shadow: 0 3px 10px rgba(76, 38, 0, 0.46);
+  z-index: 3;
 }
 
 .results-text {
@@ -764,7 +766,6 @@ main#app {
   width: 112px;
   height: 68px;
   min-width: 112px;
-  margin-top: 90px;
   padding: 12px;
   border-radius: 8px;
   background: linear-gradient(180deg, #ffe36a 0%, #ffc21a 55%, #f0a400 100%);
