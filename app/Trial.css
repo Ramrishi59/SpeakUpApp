@@ -28,7 +28,8 @@
   --img-cap: 40svh;
   --img-scale: 1;
   --img-nudge: 0svh;
-  --img-shift: 12px;          /* visual downward shift for the image */
+  --word-image-y: 62px;       /* increase this to move regular word images down */
+  --img-shift: var(--word-image-y);
   /* unified transform inputs so we can animate without clobbering */
   --base-shift: calc(var(--img-nudge) + var(--img-shift));
   --base-scale: var(--img-scale);
@@ -45,6 +46,10 @@
 
   /* Coins: single source of truth */
   --coin-size: 96px;
+  --prev-coin-size: clamp(150px, 34vw, 210px);
+  --next-coin-size: clamp(160px, 36vw, 220px);
+  --nav-coin-size: var(--prev-coin-size);
+  --utility-coin-size: clamp(64px, 16vw, 86px);
   --coin-gap: clamp(28px, 8vw, calc(var(--coin-size) * 0.6));
     /* space reserved when the footer is visible */
     --footer-pad: calc(var(--coin-size) + 24px);
@@ -143,15 +148,19 @@ main{
 }
 
 #wordImage{
-  width:150%;
-  height:170%;
-  object-fit:cover;
+  width:160%;
+  height:190%;
+
+  object-fit:contain;
+  object-position:center;
+
+  border-radius: 30px;
   display:block;
   filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
-  /* border-radius:16px; */
+
 
   /* KEY: combine tiny nudge + safe visual shift using unified vars */
-  transform: translateY(var(--base-shift)) scale(var(--base-scale));
+  transform: translateY(var(--word-image-y)) scale(var(--base-scale));
   transform-origin:center;
   will-change: transform;
 }
@@ -160,7 +169,7 @@ main{
 #wordImage{ margin-top: 0 !important; }
 
 /* Nudge the word image down a tiny bit without changing layout/scroll */
-.word-display.has-image{ --img-nudge:1px; }
+.word-display.has-image{ --img-nudge:0px; }
 
 /* Tiny float animation for intro mascot images; respects reduced motion */
 body.intro-mascot #wordImage{
@@ -169,8 +178,8 @@ body.intro-mascot #wordImage{
   width: 125%;
 }
 @keyframes mascotFloat{
-  0%,100% { transform: translateY(calc(var(--base-shift) - 2px)) scale(var(--base-scale)); }
-  50%     { transform: translateY(calc(var(--base-shift) + 4px))  scale(var(--base-scale)); }
+  0%,100% { transform: translateY(calc(var(--word-image-y) - 2px)) scale(var(--base-scale)); }
+  50%     { transform: translateY(calc(var(--word-image-y) + 4px))  scale(var(--base-scale)); }
 }
 @media (prefers-reduced-motion: reduce){
   body.intro-mascot #wordImage{ animation: none !important; }
@@ -267,8 +276,8 @@ body.last-slide #wordText{
 .nav-btn:active::before{ transform: scale(.96); }
 
 /* coin artwork (paths are case-sensitive!) */
-.nav-btn.prev::before{ background-image:url("Images/buttons/24.png"); }
-.nav-btn.next::before{ background-image:url("Images/buttons/25.png"); }
+.nav-btn.prev::before{ background-image:url("Images/buttons/24.webp"); }
+.nav-btn.next::before{ background-image:url("Images/buttons/25.webp"); }
 
 /* center the pair; 1 coin will auto-center when Prev is hidden */
 .word-display .nav-row{
@@ -399,8 +408,8 @@ body.video-active { overflow:hidden; }
   filter: drop-shadow(0 4px 6px rgba(0,0,0,.22));
   pointer-events:none;
 }
-.secondary-btn.home::before{     background-image: url("Images/buttons/27.png"); }
-.secondary-btn.startover::before{ background-image: url("Images/buttons/28.png"); }
+.secondary-btn.home::before{     background-image: url("Images/buttons/27.webp"); }
+.secondary-btn.startover::before{ background-image: url("Images/buttons/28.webp"); }
 
 #lessonActions.footer-actions{
   display: grid;
@@ -643,6 +652,7 @@ body.intro-mascot .image-wrap{
 /* When in intro mascot mode, switch the unified vars for transform */
 body.intro-mascot{
   --base-shift: var(--intro-mascot-shift);
+  --word-image-y: var(--intro-mascot-shift);
   --base-scale: var(--intro-mascot-scale);
 }
 
@@ -691,6 +701,76 @@ body.repeating-asset-slide #wordImage{
 body.repeating-asset-slide #lessonActions.footer-actions,
 body.repeating-asset-slide .nav-row{
   z-index: 30;
+}
+
+/* Lesson controls: utilities at the top, large prev/next at the bottom. */
+#lessonActions.footer-actions{
+  position: fixed;
+  inset: 0;
+  left: 0;
+  bottom: auto;
+  transform: none;
+  z-index: 30;
+  display: block;
+  width: 100vw;
+  height: 100svh;
+  padding: 0;
+  pointer-events: none;
+}
+
+#lessonActions.footer-actions > *{
+  pointer-events: auto;
+}
+
+#lessonActions .secondary-btn{
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  height: var(--utility-coin-size);
+  width: var(--utility-coin-size);
+}
+
+#lessonActions .secondary-btn.home{
+  left: max(12px, env(safe-area-inset-left));
+}
+
+#lessonActions .secondary-btn.startover{
+  right: max(12px, env(safe-area-inset-right));
+}
+
+#lessonActions .nav-btn{
+  position: fixed;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: var(--nav-coin-size);
+  height: var(--nav-coin-size);
+}
+
+#lessonActions .nav-btn.prev{
+  left: max(4px, env(safe-area-inset-left));
+  width: var(--prev-coin-size);
+  height: var(--prev-coin-size);
+}
+
+#lessonActions .nav-btn.next{
+  right: max(4px, env(safe-area-inset-right));
+  width: var(--next-coin-size);
+  height: var(--next-coin-size);
+}
+
+body.has-dock .word-display,
+body.has-dock .intro-screen,
+body.has-dock #outroScreen{
+  padding-top: calc(var(--utility-coin-size) + 18px + env(safe-area-inset-top));
+  padding-bottom: calc(var(--next-coin-size) + 20px + env(safe-area-inset-bottom));
+}
+
+body.has-dock .image-wrap{
+  height: clamp(180px, 31svh, 390px);
+}
+
+body.has-dock.repeating-asset-slide .word-display,
+body.has-dock.repeating-asset-slide .image-wrap{
+  padding: 0;
+  height: 100svh;
 }
 
 /* Dock-aware: bias a tad more when the fixed footer is visible */
