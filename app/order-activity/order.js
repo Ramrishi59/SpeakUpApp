@@ -520,7 +520,7 @@ function showResults() {
   const pct = Math.round((score / total) * 100);
   completeActivity();
   if (resultsScore) {
-    resultsScore.textContent = `${score}/${total}`;
+    resultsScore.textContent = `${score} Out of ${total}`;
   }
   if (resultsImage) {
     resultsImage.src = score <= 8 ? "Images/score2.webp" : "Images/score.webp";
