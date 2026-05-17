@@ -394,8 +394,9 @@ main#app {
 
 
 .word-btn.long-word {
-  padding: 12px 18px;
-  grid-column: span 2;
+  min-height: calc(var(--btn-h) + 20px);
+  padding: 14px 18px;
+  grid-column: auto;
 }
 
 .word-grid.compact .word-btn.long-word {
@@ -724,7 +725,7 @@ main#app {
 .results-score {
   position: absolute;
   left: 50%;
-  bottom: calc(clamp(18px, 5svh, 44px) + 218px);
+  bottom: calc(clamp(18px, 5svh, 44px) + 204px);
   transform: translateX(-50%);
   width: min(88vw, 460px);
   font-size: clamp(24px, 4.2svh, 42px);
@@ -1186,6 +1187,7 @@ main#app {
   justify-self: center;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   gap: 12px;
   padding: 0;
   border: 0;
@@ -1219,8 +1221,11 @@ main#app {
     0 3px 0 rgba(0, 0, 0, 0.16);
   box-shadow: 0 8px 0 rgba(0, 85, 164, 0.42), 0 12px 14px rgba(10, 79, 139, 0.2), inset 0 4px 0 rgba(255, 255, 255, 0.34);
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: normal;
+  word-break: keep-all;
+  hyphens: none;
   text-align: center;
+  overflow: visible;
 }
 
 .word-btn::before {
@@ -1285,6 +1290,9 @@ main#app {
 .word-btn.long-word,
 .word-grid.compact .word-btn.long-word {
   grid-column: auto;
+  min-height: 82px;
+  font-size: 21px;
+  line-height: 1.08;
 }
 
 .word-btn.selected,
@@ -1407,6 +1415,13 @@ main#app {
     font-size: 19px;
   }
 
+  .word-btn.long-word,
+  .word-grid.compact .word-btn.long-word {
+    min-height: 72px;
+    font-size: 17px;
+    line-height: 1.08;
+  }
+
   .student-helper {
     width: 170px;
     --student-helper-y: 42px;
@@ -1452,6 +1467,13 @@ main#app {
     padding: 7px 8px;
     font-size: 17px;
     border-radius: 14px;
+  }
+
+  .word-btn.long-word,
+  .word-grid.compact .word-btn.long-word {
+    min-height: 66px;
+    font-size: 15px;
+    line-height: 1.08;
   }
 
   .student-helper {
