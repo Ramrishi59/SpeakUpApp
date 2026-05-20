@@ -1,0 +1,237 @@
+{
+    "title": "Activity 4 - Final",
+    "presenter": {
+      "id": "manku",
+      "name": "Manku",
+      "avatar": "../Images/dashboard thumbnails/Manku.webp",
+      "fallbackAudioBase": "Audio/fallback/manku/",
+      "outroAudioBase": "Audio/outro/manku/"
+    },
+    "fallbackAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "Good try! Let's go to the next one."
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "That's okay. Let's try another one."
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Nice try! Let's keep going."
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "Don't worry. Let's move on."
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "That's fine. Let's go ahead."
+      },
+      {
+        "fileName": "06_Chapter 1.mp3",
+        "prompt": "Good effort! Next one."
+      },
+      {
+        "fileName": "07_Chapter 1.mp3",
+        "prompt": "It's okay. Let's continue."
+      },
+      {
+        "fileName": "08_Chapter 1.mp3",
+        "prompt": "No problem. Let's try the next one."
+      },
+      {
+        "fileName": "09_Chapter 1.mp3",
+        "prompt": "That's alright. Keep going."
+      },
+      {
+        "fileName": "10_Chapter 1.mp3",
+        "prompt": "Good try! Let's continue."
+      }
+    ],
+    "outroAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "That was fun, you spoke really well."
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "I loved talking with you"
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Great talking, let's do more!"
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "You're getting better and better!"
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "Nice speaking. See you again!"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "intro",
+        "image": "Images/1/title.png",
+        "audio": "Audio/4/01_Chapter 1.mp3",
+        "retryAudio": "Audio/4/02_Chapter 1.mp3",
+        "prompt": "Hey! Let's play and talk together! Are you ready?",
+        "sceneKind": "title-card",
+        "accepted": [
+          "ready",
+          "yes",
+          "sure",
+          "okay",
+          "let's go",
+          "yeah"
+        ],
+        "helpPrompt": "Say: Ready",
+        "feedback": {
+          "image": "Images/1/title.png",
+          "audio": "Audio/4/03_Chapter 1.mp3",
+          "sceneKind": "no-card",
+          "prompt": "Great! Let's begin!"
+        }
+      },
+      {
+        "id": "books",
+        "image": "Images/4/1.webp",
+        "audio": "Audio/4/04_Chapter 1.mp3",
+        "retryAudio": "Audio/4/05_Chapter 1.mp3",
+        "prompt": "Look! What are these?",
+        "accepted": [
+          "they are books",
+          "books",
+          "book"
+        ],
+        "helpPrompt": "Say: They are books",
+        "feedback": {
+          "image": "Images/4/1.webp",
+          "audio": "Audio/4/06_Chapter 1.mp3",
+          "prompt": "They are books…two books! Nice talking!"
+        }
+      },
+      {
+        "id": "erasers",
+        "image": "Images/4/2.webp",
+        "audio": "Audio/4/07_Chapter 1.mp3",
+        "retryAudio": "Audio/4/08_Chapter 1.mp3",
+        "prompt": "These you know. What are these?",
+        "accepted": [
+          "they are erasers",
+          "erasers",
+          "eraser"
+        ],
+        "helpPrompt": "Say: They are erasers",
+        "feedback": {
+          "image": "Images/4/2.webp",
+          "audio": "Audio/4/09_Chapter 1.mp3",
+          "prompt": "They are erasers. You are doing well!"
+        }
+      },
+      {
+        "id": "apples-oranges",
+        "image": "Images/4/3.webp",
+        "audio": "Audio/4/10_Chapter 1.mp3",
+        "retryAudio": "Audio/4/11_Chapter 1.mp3",
+        "prompt": "I see some fruits. What are they?",
+        "accepted": [
+          "they are apples and oranges",
+          "apples and oranges",
+          "apple and orange",
+          "oranges and apples"
+        ],
+        "helpPrompt": "Say: They are apples and oranges",
+        "feedback": {
+          "image": "Images/4/3.webp",
+          "audio": "Audio/4/12_Chapter 1.mp3",
+          "prompt": "They are apples and oranges. Fresh and tasty!"
+        }
+      },
+      {
+        "id": "ships-boats",
+        "image": "Images/4/4.webp",
+        "audio": "Audio/4/13_Chapter 1.mp3",
+        "retryAudio": "Audio/4/14_Chapter 1.mp3",
+        "prompt": "Look there... What are they?",
+        "accepted": [
+          "they are ships and boats",
+          "ships and boats",
+          "ship and boat",
+          "boats and ships"
+        ],
+        "helpPrompt": "Say: They are ships and boats",
+        "feedback": {
+          "image": "Images/4/4.webp",
+          "audio": "Audio/4/15_Chapter 1.mp3",
+          "prompt": "They are ships and boats. Great talking!"
+        }
+      },
+      {
+        "id": "bees-butterflies",
+        "image": "Images/4/5.webp",
+        "audio": "Audio/4/16_Chapter 1.mp3",
+        "retryAudio": "Audio/4/17_Chapter 1.mp3",
+        "prompt": "Here... what are they?",
+        "accepted": [
+          "they are bees and butterflies",
+          "bees and butterflies",
+          "bee and butterfly",
+          "butterflies and bees"
+        ],
+        "helpPrompt": "Say: They are bees and butterflies",
+        "feedback": {
+          "image": "Images/4/5.webp",
+          "audio": "Audio/4/18_Chapter 1.mp3",
+          "prompt": "They are bees and butterflies. So lively!"
+        }
+      },
+      {
+        "id": "umbrellas-backpacks",
+        "image": "Images/4/6.webp",
+        "audio": "Audio/4/19_Chapter 1.mp3",
+        "retryAudio": "Audio/4/20_Chapter 1.mp3",
+        "prompt": "These ones you know. What are they?",
+        "accepted": [
+          "they are umbrellas and backpacks",
+          "umbrellas and backpacks",
+          "umbrella and backpack",
+          "backpacks and umbrellas"
+        ],
+        "helpPrompt": "Say: They are umbrellas and backpacks",
+        "feedback": {
+          "image": "Images/4/6.webp",
+          "audio": "Audio/4/21_Chapter 1.mp3",
+          "prompt": "They are umbrellas and backpacks. Very nice!"
+        }
+      },
+      {
+        "id": "dolphins-horses",
+        "image": "Images/4/7.webp",
+        "audio": "Audio/4/22_Chapter 1.mp3",
+        "retryAudio": "Audio/4/23_Chapter 1.mp3",
+        "prompt": "Last one... what are they?",
+        "accepted": [
+          "they are dolphins and horses",
+          "dolphins and horses",
+          "dolphin and horse",
+          "horses and dolphins"
+        ],
+        "helpPrompt": "Say: They are dolphins and horses",
+        "feedback": {
+          "image": "Images/4/7.webp",
+          "audio": "Audio/4/24_Chapter 1.mp3",
+          "prompt": "They are dolphins and horses. Fantastic speaking!"
+        }
+      },
+      {
+        "id": "outro",
+        "image": "Images/4/7.webp",
+        "audio": null,
+        "prompt": "You spoke so well today! I loved talking with you!",
+        "done": true
+      }
+    ]
+  }

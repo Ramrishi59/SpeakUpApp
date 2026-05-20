@@ -1,0 +1,233 @@
+{
+    "title": "Activity 5",
+    "presenter": {
+      "id": "reena",
+      "name": "Reena",
+      "avatar": "../Images/dashboard thumbnails/Reena.webp",
+      "fallbackAudioBase": "Audio/fallback/reena/",
+      "outroAudioBase": "Audio/outro/reena/"
+    },
+    "fallbackAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "Good try! Let's go to the next one."
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "That's okay. Let's try another one."
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Nice try! Let's keep going."
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "Don't worry. Let's move on."
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "That's fine. Let's go ahead."
+      },
+      {
+        "fileName": "06_Chapter 1.mp3",
+        "prompt": "Good effort! Next one."
+      },
+      {
+        "fileName": "07_Chapter 1.mp3",
+        "prompt": "It's okay. Let's continue."
+      },
+      {
+        "fileName": "08_Chapter 1.mp3",
+        "prompt": "No problem. Let's try the next one."
+      },
+      {
+        "fileName": "09_Chapter 1.mp3",
+        "prompt": "That's alright. Keep going."
+      },
+      {
+        "fileName": "10_Chapter 1.mp3",
+        "prompt": "Good try! Let's continue."
+      }
+    ],
+    "outroAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "That was fun talking together!"
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "You spoke so well today!"
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Great job! Let's talk again soon!"
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "You are becoming a wonderful speaker!"
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "I loved learning with you today!"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "intro",
+        "image": "Images/1/title.png",
+        "audio": "Audio/5/01_Chapter 1.mp3",
+        "retryAudio": "Audio/5/02_Chapter 1.mp3",
+        "prompt": "Hi! I'm Reena. Let's look around and talk together! Shall we start?",
+        "sceneKind": "title-card",
+        "accepted": [
+          "yes",
+          "ready",
+          "sure",
+          "okay",
+          "let's go",
+          "yeah"
+        ],
+        "helpPrompt": "Say: Yes",
+        "feedback": {
+          "image": "Images/1/title.png",
+          "audio": "Audio/5/03_Chapter 1.mp3",
+          "sceneKind": "no-card",
+          "prompt": "Wonderful! Let's go exploring!"
+        }
+      },
+      {
+        "id": "bananas",
+        "image": "Images/5/1.webp",
+        "audio": "Audio/5/04_Chapter 1.mp3",
+        "retryAudio": "Audio/5/05_Chapter 1.mp3",
+        "prompt": "I am so hungry today. Look near me. What are these?",
+        "accepted": [
+          "these are bananas",
+          "bananas",
+          "these bananas"
+        ],
+        "helpPrompt": "Say: These are bananas",
+        "feedback": {
+          "image": "Images/5/1.webp",
+          "audio": "Audio/5/06_Chapter 1.mp3",
+          "prompt": "These are bananas! My favourite snack! Yummy!"
+        }
+      },
+      {
+        "id": "stars",
+        "image": "Images/5/2.webp",
+        "audio": "Audio/5/07_Chapter 1.mp3",
+        "retryAudio": "Audio/5/08_Chapter 1.mp3",
+        "prompt": "Wow, it is getting dark. Look up high. What are those?",
+        "accepted": [
+          "those are stars",
+          "stars",
+          "those stars"
+        ],
+        "helpPrompt": "Say: Those are stars",
+        "feedback": {
+          "image": "Images/5/2.webp",
+          "audio": "Audio/5/09_Chapter 1.mp3",
+          "prompt": "Those are stars! They are shining so bright!"
+        }
+      },
+      {
+        "id": "crayons",
+        "image": "Images/5/3.webp",
+        "audio": "Audio/5/10_Chapter 1.mp3",
+        "retryAudio": "Audio/5/11_Chapter 1.mp3",
+        "prompt": "Let's draw a picture! I have my paper. But what are these?",
+        "accepted": [
+          "they are crayons",
+          "crayons",
+          "these are crayons"
+        ],
+        "helpPrompt": "Say: They are crayons",
+        "feedback": {
+          "image": "Images/5/3.webp",
+          "audio": "Audio/5/12_Chapter 1.mp3",
+          "prompt": "They are crayons! So many lovely colours!"
+        }
+      },
+      {
+        "id": "birds",
+        "image": "Images/5/4.webp",
+        "audio": "Audio/5/13_Chapter 1.mp3",
+        "retryAudio": "Audio/5/14_Chapter 1.mp3",
+        "prompt": "Shhh, listen! Look at the tree. What are they?",
+        "accepted": [
+          "they are birds",
+          "birds",
+          "those are birds"
+        ],
+        "helpPrompt": "Say: They are birds",
+        "feedback": {
+          "image": "Images/5/4.webp",
+          "audio": "Audio/5/15_Chapter 1.mp3",
+          "prompt": "They are birds! Flying so high!"
+        }
+      },
+      {
+        "id": "carrots",
+        "image": "Images/5/5.webp",
+        "audio": "Audio/5/16_Chapter 1.mp3",
+        "retryAudio": "Audio/5/17_Chapter 1.mp3",
+        "prompt": "Look at these orange vegetables! Are these potatoes?",
+        "accepted": [
+          "no they are carrots",
+          "they are carrots",
+          "carrots",
+          "no"
+        ],
+        "helpPrompt": "Say: No, they are carrots",
+        "feedback": {
+          "image": "Images/5/5.webp",
+          "audio": "Audio/5/18_Chapter 1.mp3",
+          "prompt": "Oh, haha! Yes, they are carrots! So fresh!"
+        }
+      },
+      {
+        "id": "pomegranates",
+        "image": "Images/5/6.webp",
+        "audio": "Audio/5/19_Chapter 1.mp3",
+        "retryAudio": "Audio/5/20_Chapter 1.mp3",
+        "prompt": "Look far away at that tree. They look so red! What are those?",
+        "accepted": [
+          "those are pomegranates",
+          "pomegranates",
+          "they are pomegranates"
+        ],
+        "helpPrompt": "Say: Those are pomegranates",
+        "feedback": {
+          "image": "Images/5/6.webp",
+          "audio": "Audio/5/21_Chapter 1.mp3",
+          "prompt": "Those are pomegranates! We should eat them!"
+        }
+      },
+      {
+        "id": "cabbages",
+        "image": "Images/5/7.webp",
+        "audio": "Audio/5/22_Chapter 1.mp3",
+        "retryAudio": "Audio/5/23_Chapter 1.mp3",
+        "prompt": "Last one! Look here. What are these?",
+        "accepted": [
+          "they are cabbages",
+          "cabbages",
+          "these are cabbages"
+        ],
+        "helpPrompt": "Say: They are cabbages",
+        "feedback": {
+          "image": "Images/5/7.webp",
+          "audio": "Audio/5/24_Chapter 1.mp3",
+          "prompt": "They are cabbages! You have such good eyes!"
+        }
+      },
+      {
+        "id": "outro",
+        "image": "Images/5/7.webp",
+        "audio": null,
+        "prompt": "You did such a wonderful job talking with me today!",
+        "done": true
+      }
+    ]
+  }
