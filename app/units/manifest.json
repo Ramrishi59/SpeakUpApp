@@ -761,6 +761,54 @@
       "route": "an-quiz/an-quiz.html", 
       "id": "unit1-practice", 
       "thumbnail": "an-quiz/Images/introquiz.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Manku",
+      "title": "Let's Talk - 1",
+      "route": "lets-speak/index.html?activity=activity1",
+      "id": "lets-speak-activity1",
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Reena",
+      "title": "Let's Talk - 2",
+      "route": "lets-speak/index.html?activity=activity2",
+      "id": "lets-speak-activity2",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Raju",
+      "title": "Let's Talk - 3",
+      "route": "lets-speak/index.html?activity=activity3",
+      "id": "lets-speak-activity3",
+      "thumbnail": "Images/dashboard thumbnails/Raju.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Manku",
+      "title": "Let's Talk - 4",
+      "route": "lets-speak/index.html?activity=activity4",
+      "id": "lets-speak-activity4",
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Reena",
+      "title": "Let's Talk - 5",
+      "route": "lets-speak/index.html?activity=activity5",
+      "id": "lets-speak-activity5",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Raju",
+      "title": "Let's Talk - 6",
+      "route": "lets-speak/index.html?activity=activity6",
+      "id": "lets-speak-activity6",
+      "thumbnail": "Images/dashboard thumbnails/Raju.webp"
     }
   ], 
   "version": 1
