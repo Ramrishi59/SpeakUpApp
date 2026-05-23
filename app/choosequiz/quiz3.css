@@ -738,9 +738,10 @@ main#app {
   letter-spacing: 0;
   text-align: center;
   text-transform: uppercase;
-  -webkit-text-stroke: clamp(4px, 0.9svh, 8px) #ff2f38;
+  -webkit-text-stroke: clamp(6px, 1.25svh, 11px) #ff2f38;
   paint-order: stroke fill;
   text-shadow:
+    0 0 0 #ff2f38,
     0 clamp(4px, 0.8svh, 7px) 0 #1f7bd7,
     0 clamp(8px, 1.3svh, 13px) 10px rgba(0, 63, 135, 0.25);
   white-space: nowrap;
