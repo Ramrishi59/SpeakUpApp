@@ -648,8 +648,7 @@ main#app {
   pointer-events: none;
 }
 
-.result-star,
-.result-ribbon {
+.result-star {
   position: absolute;
   display: block;
 }
@@ -697,57 +696,32 @@ main#app {
   transform: rotate(24deg);
 }
 
-.result-ribbon {
-  width: clamp(72px, 18svh, 132px);
-  height: clamp(24px, 5.4svh, 42px);
-  border-radius: 999px 10px 999px 10px;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.45), transparent 36% 100%),
-    linear-gradient(135deg, #ff6b62 0%, #ff3e7d 100%);
-  box-shadow: 0 7px 8px rgba(0, 71, 137, 0.18);
+.star-five {
+  top: 33%;
+  left: 5%;
+  width: clamp(18px, 4.2svh, 32px);
+  transform: rotate(12deg);
 }
 
-.result-ribbon::before,
-.result-ribbon::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  width: 16%;
-  aspect-ratio: 1;
-  background: inherit;
-  transform: translateY(-50%) rotate(45deg);
+.star-six {
+  top: 38%;
+  right: 6%;
+  width: clamp(20px, 4.6svh, 34px);
+  transform: rotate(-18deg);
 }
 
-.result-ribbon::before {
-  left: -5%;
-}
-
-.result-ribbon::after {
-  right: -5%;
-}
-
-.ribbon-one {
-  top: 20%;
-  left: -8%;
-  transform: rotate(-21deg);
-}
-
-.ribbon-two {
-  top: 24%;
-  right: -11%;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.44), transparent 38% 100%),
-    linear-gradient(135deg, #35b9ff 0%, #2edb8f 100%);
-  transform: rotate(20deg);
-}
-
-.ribbon-three {
+.star-seven {
+  left: 18%;
   bottom: 12%;
-  left: -10%;
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.46), transparent 38% 100%),
-    linear-gradient(135deg, #ffcd32 0%, #ff8d16 100%);
-  transform: rotate(18deg);
+  width: clamp(20px, 4.8svh, 36px);
+  transform: rotate(-8deg);
+}
+
+.star-eight {
+  right: 20%;
+  bottom: 10%;
+  width: clamp(18px, 4.2svh, 32px);
+  transform: rotate(21deg);
 }
 
 .results-title {
