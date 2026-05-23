@@ -373,7 +373,7 @@ function showResults() {
   completeActivity();
 
   if (resultsScore) {
-    resultsScore.textContent = `${score}/${total}`;
+    resultsScore.textContent = `${score} Out of ${total}`;
   }
   if (resultsImage) {
     resultsImage.src = isExcellentScore ? EXCELLENT_SCORE_CARD : NICE_EFFORT_SCORE_CARD;
