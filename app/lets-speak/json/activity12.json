@@ -1,0 +1,229 @@
+{
+    "title": "Let's Speak - 12",
+    "presenter": {
+      "id": "raju",
+      "name": "Raju",
+      "avatar": "../Images/dashboard thumbnails/Raju.webp",
+      "fallbackAudioBase": "Audio/fallback/raju/",
+      "outroAudioBase": "Audio/outro/raju/"
+    },
+    "fallbackAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "Good try! Let's go to the next one."
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "That's okay. Let's try another one."
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Nice try! Let's keep going."
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "Don't worry. Let's move on."
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "That's fine. Let's go ahead."
+      },
+      {
+        "fileName": "06_Chapter 1.mp3",
+        "prompt": "Good effort! Next one."
+      },
+      {
+        "fileName": "07_Chapter 1.mp3",
+        "prompt": "It's okay. Let's continue."
+      },
+      {
+        "fileName": "08_Chapter 1.mp3",
+        "prompt": "No problem. Let's try the next one."
+      },
+      {
+        "fileName": "09_Chapter 1.mp3",
+        "prompt": "That's alright. Keep going."
+      },
+      {
+        "fileName": "10_Chapter 1.mp3",
+        "prompt": "Good try! Let's continue."
+      }
+    ],
+    "outroAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "That was fun! You spoke really well!"
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "I loved helping in the kitchen with you!"
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Great job today! Let’s help again soon!"
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "You are getting so good at speaking!"
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "Bye! See you again soon!"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "intro",
+        "image": "Images/12/title.png",
+        "audio": "Audio/12/1_Chapter 1.mp3",
+        "prompt": "Hey! I'm Raju! I am helping my mother in the kitchen today. Let's look around and talk! Are you ready?",
+        "sceneKind": "title-card",
+        "accepted": [
+          "yes",
+          "ready",
+          "sure",
+          "okay",
+          "let's go",
+          "yeah"
+        ],
+        "helpPrompt": "Say: Yes.",
+        "retryAudio": "Audio/12/2_Chapter 1.mp3",
+        "feedback": {
+          "image": "Images/12/title.png",
+          "audio": "Audio/12/3_Chapter 1.mp3",
+          "sceneKind": "no-card",
+          "prompt": "Awesome! Let’s help mother!"
+        }
+      },
+      {
+        "id": "spoons",
+        "image": "Images/12/1.webp",
+        "audio": "Audio/12/4_Chapter 1.mp3",
+        "retryAudio": "Audio/12/5_Chapter 1.mp3",
+        "prompt": "I need to stir the curry. Look in that cup. What is in it?",
+        "accepted": [
+          "there are spoons",
+          "spoons"
+        ],
+        "helpPrompt": "Say: There are spoons.",
+        "feedback": {
+          "image": "Images/12/1.webp",
+          "audio": "Audio/12/6_Chapter 1.mp3",
+          "prompt": "There are spoons! Thank you!"
+        }
+      },
+      {
+        "id": "banana-empty",
+        "image": "Images/12/2.webp",
+        "audio": "Audio/12/7_Chapter 1.mp3",
+        "retryAudio": "Audio/12/8_Chapter 1.mp3",
+        "prompt": "I am looking for a snack. Look at that empty plate. Is there a banana?",
+        "accepted": [
+          "no there isn't",
+          "no",
+          "there isn't"
+        ],
+        "helpPrompt": "Say: No, there isn't.",
+        "feedback": {
+          "image": "Images/12/2.webp",
+          "audio": "Audio/12/9_Chapter 1.mp3",
+          "prompt": "No, there isn't! The plate is empty!"
+        }
+      },
+      {
+        "id": "glasses",
+        "image": "Images/12/3.webp",
+        "audio": "Audio/12/10_Chapter 1.mp3",
+        "retryAudio": "Audio/12/11_Chapter 1.mp3",
+        "prompt": "We need to serve drinking water. Look at the glasses. How many glasses are there?",
+        "accepted": [
+          "there are four glasses",
+          "four glasses",
+          "four"
+        ],
+        "helpPrompt": "Say: There are four glasses.",
+        "feedback": {
+          "image": "Images/12/3.webp",
+          "audio": "Audio/12/12_Chapter 1.mp3",
+          "prompt": "There are four glasses! Perfect!"
+        }
+      },
+      {
+        "id": "pressure-cooker",
+        "image": "Images/12/4.webp",
+        "audio": "Audio/12/13_Chapter 1.mp3",
+        "retryAudio": "Audio/12/14_Chapter 1.mp3",
+        "prompt": "Mother is making rice. Look at the stove. Is there a pressure cooker?",
+        "accepted": [
+          "yes there is",
+          "yes"
+        ],
+        "helpPrompt": "Say: Yes, there is.",
+        "feedback": {
+          "image": "Images/12/4.webp",
+          "audio": "Audio/12/15_Chapter 1.mp3",
+          "prompt": "Yes, there is! It is very hot!"
+        }
+      },
+      {
+        "id": "onions",
+        "image": "Images/12/5.webp",
+        "audio": "Audio/12/16_Chapter 1.mp3",
+        "retryAudio": "Audio/12/17_Chapter 1.mp3",
+        "prompt": "We need to make a tasty curry. Look in the vegetable basket. Are there any onions?",
+        "accepted": [
+          "yes there are",
+          "yes"
+        ],
+        "helpPrompt": "Say: Yes, there are.",
+        "feedback": {
+          "image": "Images/12/5.webp",
+          "audio": "Audio/12/18_Chapter 1.mp3",
+          "prompt": "Yes, there are! Good finding!"
+        }
+      },
+      {
+        "id": "tomatoes",
+        "image": "Images/12/6.webp",
+        "audio": "Audio/12/19_Chapter 1.mp3",
+        "retryAudio": "Audio/12/20_Chapter 1.mp3",
+        "prompt": "Let's help mother count. Look at those red tomatoes. How many tomatoes are there?",
+        "accepted": [
+          "there are five tomatoes",
+          "five tomatoes",
+          "five"
+        ],
+        "helpPrompt": "Say: There are five tomatoes.",
+        "feedback": {
+          "image": "Images/12/6.webp",
+          "audio": "Audio/12/21_Chapter 1.mp3",
+          "prompt": "There are five tomatoes! Excellent counting!"
+        }
+      },
+      {
+        "id": "mugs",
+        "image": "Images/12/7.webp",
+        "audio": "Audio/12/22_Chapter 1.mp3",
+        "retryAudio": "Audio/12/23_Chapter 1.mp3",
+        "prompt": "Last one! We need to wash the mugs. Look near the water tap. How many mugs are there?",
+        "accepted": [
+          "there are three mugs",
+          "three mugs",
+          "three"
+        ],
+        "helpPrompt": "Say: There are three mugs.",
+        "feedback": {
+          "image": "Images/12/7.webp",
+          "audio": "Audio/12/24_Chapter 1.mp3",
+          "prompt": "Correct! There are three mugs! We did a great job helping today!"
+        }
+      },
+      {
+        "id": "outro",
+        "image": "Images/12/7.webp",
+        "audio": null,
+        "prompt": "You helped so much in the kitchen and spoke wonderfully today!",
+        "done": true
+      }
+    ]
+  }

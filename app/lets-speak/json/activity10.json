@@ -1,0 +1,233 @@
+{
+    "title": "Let's Speak - 10",
+    "presenter": {
+      "id": "raju",
+      "name": "Raju",
+      "avatar": "../Images/dashboard thumbnails/Raju.webp",
+      "fallbackAudioBase": "Audio/fallback/raju/",
+      "outroAudioBase": "Audio/outro/raju/"
+    },
+    "fallbackAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "Good try! Let's go to the next one."
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "That's okay. Let's try another one."
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Nice try! Let's keep going."
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "Don't worry. Let's move on."
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "That's fine. Let's go ahead."
+      },
+      {
+        "fileName": "06_Chapter 1.mp3",
+        "prompt": "Good effort! Next one."
+      },
+      {
+        "fileName": "07_Chapter 1.mp3",
+        "prompt": "It's okay. Let's continue."
+      },
+      {
+        "fileName": "08_Chapter 1.mp3",
+        "prompt": "No problem. Let's try the next one."
+      },
+      {
+        "fileName": "09_Chapter 1.mp3",
+        "prompt": "That's alright. Keep going."
+      },
+      {
+        "fileName": "10_Chapter 1.mp3",
+        "prompt": "Good try! Let's continue."
+      }
+    ],
+    "outroAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "That was fun! You spoke really well!"
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "I loved talking and searching with you!"
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Great job today! Let’s play again!"
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "You are getting so good at speaking!"
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "Bye! See you again soon!"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "intro",
+        "image": "Images/10/title.png",
+        "audio": "Audio/10/1_Chapter 1.mp3",
+        "prompt": "Hey! I'm Raju! Let’s look for things and talk together! Are you ready?",
+        "sceneKind": "title-card",
+        "accepted": [
+          "yes",
+          "ready",
+          "sure",
+          "okay",
+          "let's go",
+          "yeah"
+        ],
+        "helpPrompt": "Say: Yes.",
+        "retryAudio": "Audio/10/2_Chapter 1.mp3",
+        "feedback": {
+          "image": "Images/10/title.png",
+          "audio": "Audio/10/3_Chapter 1.mp3",
+          "sceneKind": "no-card",
+          "prompt": "Great! Let’s begin!"
+        }
+      },
+      {
+        "id": "computer",
+        "image": "Images/10/1.webp",
+        "audio": "Audio/10/4_Chapter 1.mp3",
+        "retryAudio": "Audio/10/5_Chapter 1.mp3",
+        "prompt": "I need to do my homework. Where is the computer?",
+        "accepted": [
+          "the computer is on the table",
+          "on the table",
+          "computer is on the table"
+        ],
+        "helpPrompt": "Say: The computer is on the table.",
+        "feedback": {
+          "image": "Images/10/1.webp",
+          "audio": "Audio/10/6_Chapter 1.mp3",
+          "prompt": "The computer is on the table! Nice finding!"
+        }
+      },
+      {
+        "id": "camera",
+        "image": "Images/10/2.webp",
+        "audio": "Audio/10/7_Chapter 1.mp3",
+        "retryAudio": "Audio/10/8_Chapter 1.mp3",
+        "prompt": "I want to take a photo. Where is the camera?",
+        "accepted": [
+          "the camera is in the bag",
+          "in the bag",
+          "camera is in the bag"
+        ],
+        "helpPrompt": "Say: The camera is in the bag.",
+        "feedback": {
+          "image": "Images/10/2.webp",
+          "audio": "Audio/10/9_Chapter 1.mp3",
+          "prompt": "The camera is in the bag! Good job!"
+        }
+      },
+      {
+        "id": "sandals",
+        "image": "Images/10/3.webp",
+        "audio": "Audio/10/10_Chapter 1.mp3",
+        "retryAudio": "Audio/10/11_Chapter 1.mp3",
+        "prompt": "I need to go out! Are my sandals on the table?",
+        "accepted": [
+          "no the sandals are under the table",
+          "the sandals are under the table",
+          "under the table",
+          "no"
+        ],
+        "helpPrompt": "Say: No, the sandals are under the table.",
+        "feedback": {
+          "image": "Images/10/3.webp",
+          "audio": "Audio/10/12_Chapter 1.mp3",
+          "prompt": "Haha, no! The sandals are under the table! Good looking!"
+        }
+      },
+      {
+        "id": "birds",
+        "image": "Images/10/4.webp",
+        "audio": "Audio/10/13_Chapter 1.mp3",
+        "retryAudio": "Audio/10/14_Chapter 1.mp3",
+        "prompt": "Listen to that beautiful singing! Where are the birds?",
+        "accepted": [
+          "the birds are in the cage",
+          "in the cage",
+          "birds are in the cage"
+        ],
+        "helpPrompt": "Say: The birds are in the cage.",
+        "feedback": {
+          "image": "Images/10/4.webp",
+          "audio": "Audio/10/15_Chapter 1.mp3",
+          "prompt": "The birds are in the cage! Well spotted!"
+        }
+      },
+      {
+        "id": "pillows",
+        "image": "Images/10/5.webp",
+        "audio": "Audio/10/16_Chapter 1.mp3",
+        "retryAudio": "Audio/10/17_Chapter 1.mp3",
+        "prompt": "I am so tired today. Where are the pillows?",
+        "accepted": [
+          "the pillows are on the bed",
+          "on the bed",
+          "pillows are on the bed"
+        ],
+        "helpPrompt": "Say: The pillows are on the bed.",
+        "feedback": {
+          "image": "Images/10/5.webp",
+          "audio": "Audio/10/18_Chapter 1.mp3",
+          "prompt": "The pillows are on the bed! Time to rest!"
+        }
+      },
+      {
+        "id": "fish",
+        "image": "Images/10/6.webp",
+        "audio": "Audio/10/19_Chapter 1.mp3",
+        "retryAudio": "Audio/10/20_Chapter 1.mp3",
+        "prompt": "Look at that pretty fish! Where is it?",
+        "accepted": [
+          "the fish is in the bowl",
+          "in the bowl",
+          "fish is in the bowl"
+        ],
+        "helpPrompt": "Say: The fish is in the bowl.",
+        "feedback": {
+          "image": "Images/10/6.webp",
+          "audio": "Audio/10/21_Chapter 1.mp3",
+          "prompt": "The fish is in the bowl! Great talking!"
+        }
+      },
+      {
+        "id": "coconuts",
+        "image": "Images/10/7.webp",
+        "audio": "Audio/10/22_Chapter 1.mp3",
+        "retryAudio": "Audio/10/23_Chapter 1.mp3",
+        "prompt": "Last one! Let's drink some coconut water. Where are the coconuts?",
+        "accepted": [
+          "the coconuts are in the basket",
+          "in the basket",
+          "coconuts are in the basket"
+        ],
+        "helpPrompt": "Say: The coconuts are in the basket.",
+        "feedback": {
+          "image": "Images/10/7.webp",
+          "audio": "Audio/10/24_Chapter 1.mp3",
+          "prompt": "The coconuts are in the basket! Fantastic speaking!"
+        }
+      },
+      {
+        "id": "outro",
+        "image": "Images/10/7.webp",
+        "audio": null,
+        "prompt": "You found everything and spoke so well today!",
+        "done": true
+      }
+    ]
+  }

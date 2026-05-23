@@ -809,6 +809,70 @@
       "route": "lets-speak/index.html?activity=activity6",
       "id": "lets-speak-activity6",
       "thumbnail": "Images/dashboard thumbnails/Raju.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Manku",
+      "title": "Let's Talk - 7",
+      "route": "lets-speak/index.html?activity=activity7",
+      "id": "lets-speak-activity7",
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Reena",
+      "title": "Let's Talk - 8",
+      "route": "lets-speak/index.html?activity=activity8",
+      "id": "lets-speak-activity8",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Manku",
+      "title": "Let's Talk - 9",
+      "route": "lets-speak/index.html?activity=activity9",
+      "id": "lets-speak-activity9",
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Raju",
+      "title": "Let's Talk - 10",
+      "route": "lets-speak/index.html?activity=activity10",
+      "id": "lets-speak-activity10",
+      "thumbnail": "Images/dashboard thumbnails/Raju.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Reena",
+      "title": "Let's Talk - 11",
+      "route": "lets-speak/index.html?activity=activity11",
+      "id": "lets-speak-activity11",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Raju",
+      "title": "Let's Talk - 12",
+      "route": "lets-speak/index.html?activity=activity12",
+      "id": "lets-speak-activity12",
+      "thumbnail": "Images/dashboard thumbnails/Raju.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Manku",
+      "title": "Let's Talk - 13",
+      "route": "lets-speak/index.html?activity=activity13",
+      "id": "lets-speak-activity13",
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Reena",
+      "title": "Let's Talk - 14",
+      "route": "lets-speak/index.html?activity=activity14",
+      "id": "lets-speak-activity14",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }
   ], 
   "version": 1

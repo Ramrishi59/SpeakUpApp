@@ -1,0 +1,236 @@
+{
+    "title": "Let's Speak - 7",
+    "presenter": {
+      "id": "manku",
+      "name": "Manku",
+      "avatar": "../Images/dashboard thumbnails/Manku.webp",
+      "fallbackAudioBase": "Audio/fallback/manku/",
+      "outroAudioBase": "Audio/outro/manku/"
+    },
+    "fallbackAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "Good try! Let's go to the next one."
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "That's okay. Let's try another one."
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Nice try! Let's keep going."
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "Don't worry. Let's move on."
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "That's fine. Let's go ahead."
+      },
+      {
+        "fileName": "06_Chapter 1.mp3",
+        "prompt": "Good effort! Next one."
+      },
+      {
+        "fileName": "07_Chapter 1.mp3",
+        "prompt": "It's okay. Let's continue."
+      },
+      {
+        "fileName": "08_Chapter 1.mp3",
+        "prompt": "No problem. Let's try the next one."
+      },
+      {
+        "fileName": "09_Chapter 1.mp3",
+        "prompt": "That's alright. Keep going."
+      },
+      {
+        "fileName": "10_Chapter 1.mp3",
+        "prompt": "Good try! Let's continue."
+      }
+    ],
+    "outroAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "That was fun, you spoke really well."
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "I loved talking with you."
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Great talking, let's do more!"
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "You're getting better and better!"
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "Nice speaking. See you again!"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "intro",
+        "image": "Images/7/title.png",
+        "audio": "Audio/7/01_Chapter 1.mp3",
+        "prompt": "Hey! Let’s meet some friends and talk together! Ready to start?",
+        "sceneKind": "title-card",
+        "accepted": [
+          "ready",
+          "yes",
+          "sure",
+          "okay",
+          "let's go",
+          "yeah"
+        ],
+        "helpPrompt": "Say: Ready",
+        "retryAudio": "Audio/7/02_Chapter 1.mp3",
+        "feedback": {
+          "image": "Images/7/title.png",
+          "audio": "Audio/7/03_Chapter 1.mp3",
+          "sceneKind": "no-card",
+          "prompt": "Awesome! Let’s begin!"
+        }
+      },
+      {
+        "id": "raju",
+        "image": "Images/7/1.webp",
+        "audio": "Audio/7/04_Chapter 1.mp3",
+        "retryAudio": "Audio/7/05_Chapter 1.mp3",
+        "prompt": "Look here! He is our friend. Who is he?",
+        "accepted": [
+          "he is raju",
+          "raju",
+          "it is raju"
+        ],
+        "helpPrompt": "Say: He is Raju",
+        "feedback": {
+          "image": "Images/7/1.webp",
+          "audio": "Audio/7/06_Chapter 1.mp3",
+          "prompt": "He is Raju! Nice talking!"
+        }
+      },
+      {
+        "id": "boy",
+        "image": "Images/7/2.webp",
+        "audio": "Audio/7/07_Chapter 1.mp3",
+        "retryAudio": "Audio/7/08_Chapter 1.mp3",
+        "prompt": "Raju is smiling so much today! Is he a boy?",
+        "accepted": [
+          "yes he is",
+          "yes",
+          "he is",
+          "a boy"
+        ],
+        "helpPrompt": "Say: Yes, he is",
+        "feedback": {
+          "image": "Images/7/2.webp",
+          "audio": "Audio/7/09_Chapter 1.mp3",
+          "prompt": "Yes, he is! Great answer!"
+        }
+      },
+      {
+        "id": "reena",
+        "image": "Images/7/3.webp",
+        "audio": "Audio/7/10_Chapter 1.mp3",
+        "retryAudio": "Audio/7/11_Chapter 1.mp3",
+        "prompt": "Oh, here comes another friend! Who is she?",
+        "accepted": [
+          "she is reena",
+          "reena",
+          "it is reena"
+        ],
+        "helpPrompt": "Say: She is Reena",
+        "feedback": {
+          "image": "Images/7/3.webp",
+          "audio": "Audio/7/12_Chapter 1.mp3",
+          "prompt": "She is Reena! Very good!"
+        }
+      },
+      {
+        "id": "girl",
+        "image": "Images/7/4.webp",
+        "audio": "Audio/7/13_Chapter 1.mp3",
+        "retryAudio": "Audio/7/14_Chapter 1.mp3",
+        "prompt": "Wait a minute. Is Reena a boy?",
+        "accepted": [
+          "no she is a girl",
+          "she is a girl",
+          "girl",
+          "no"
+        ],
+        "helpPrompt": "Say: No, she is a girl",
+        "feedback": {
+          "image": "Images/7/4.webp",
+          "audio": "Audio/7/15_Chapter 1.mp3",
+          "prompt": "Haha, no! She is a girl! Good thinking!"
+        }
+      },
+      {
+        "id": "boys-group",
+        "image": "Images/7/5.webp",
+        "audio": "Audio/7/16_Chapter 1.mp3",
+        "retryAudio": "Audio/7/17_Chapter 1.mp3",
+        "prompt": "Look at that group playing football. Are they boys?",
+        "accepted": [
+          "yes they are",
+          "they are boys",
+          "boys",
+          "those are boys"
+        ],
+        "helpPrompt": "Say: Yes, they are",
+        "feedback": {
+          "image": "Images/7/5.webp",
+          "audio": "Audio/7/18_Chapter 1.mp3",
+          "prompt": "Yes, they are boys! Super speaking!"
+        }
+      },
+      {
+        "id": "girls-group",
+        "image": "Images/7/6.webp",
+        "audio": "Audio/7/19_Chapter 1.mp3",
+        "retryAudio": "Audio/7/20_Chapter 1.mp3",
+        "prompt": "And look at them, reading books. Are they girls?",
+        "accepted": [
+          "yes they are girls",
+          "girls",
+          "those are girls",
+          "they are girls"
+        ],
+        "helpPrompt": "Say: Yes, they are",
+        "feedback": {
+          "image": "Images/7/6.webp",
+          "audio": "Audio/7/21_Chapter 1.mp3",
+          "prompt": "Yes, they are girls! Wonderful!"
+        }
+      },
+      {
+        "id": "monkeys",
+        "image": "Images/7/7.webp",
+        "audio": "Audio/7/22_Chapter 1.mp3",
+        "retryAudio": "Audio/7/23_Chapter 1.mp3",
+        "prompt": "Haha, look up in the tree! What are they?",
+        "accepted": [
+          "they are monkeys",
+          "monkeys",
+          "those are monkeys"
+        ],
+        "helpPrompt": "Say: They are monkeys",
+        "feedback": {
+          "image": "Images/7/7.webp",
+          "audio": "Audio/7/24_Chapter 1.mp3",
+          "prompt": "They are monkeys! Fantastic talking!"
+        }
+      },
+      {
+        "id": "outro",
+        "image": "Images/7/7.webp",
+        "audio": null,
+        "prompt": "You did such a great job talking about everyone today!",
+        "done": true
+      }
+    ]
+  }
