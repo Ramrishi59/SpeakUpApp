@@ -693,12 +693,13 @@ main#app {
 }
 
 .overlay-bg img {
-  width: 120vw;
-  height: 120dvh;
+  width: min(96vw, 96dvh);
+  height: auto;
   max-width: none;
-  max-height: none;
-  object-fit: cover;
+  max-height: 96dvh;
+  object-fit: contain;
   transform: none;
+  display: block;
 }
 
 .overlay-card {
