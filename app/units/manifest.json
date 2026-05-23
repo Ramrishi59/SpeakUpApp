@@ -873,6 +873,14 @@
       "route": "lets-speak/index.html?activity=activity14",
       "id": "lets-speak-activity14",
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Reena",
+      "title": "Let's Talk - 15",
+      "route": "lets-speak/index.html?activity=activity15",
+      "id": "lets-speak-activity15",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }
   ], 
   "version": 1

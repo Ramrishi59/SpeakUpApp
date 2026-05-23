@@ -89,7 +89,7 @@
         "helpPrompt": "Say: Yes.",
         "retryAudio": "Audio/15/02_Chapter 1.mp3",
         "feedback": {
-          "image": "Images/15/title.png",
+          "image": "Images/1/title.png",
           "audio": "Audio/15/03_Chapter 1.mp3",
           "sceneKind": "no-card",
           "prompt": "Awesome! Let’s look at the first picture!"

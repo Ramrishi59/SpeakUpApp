@@ -145,7 +145,7 @@
     ],
     "helpPrompt": "Say: He is there.",
     "feedback": {
-      "image": "Images/1/title.png",
+      "image": "Images/11/3.webp",
       "audio": "Audio/11/12_Chapter 1.mp3",
       "prompt": "He is there! Let's go say hello!"
     }
@@ -163,7 +163,7 @@
     ],
     "helpPrompt": "Say: The alarm clock is on the fridge.",
     "feedback": {
-      "image": "Images/1/title.png",
+      "image": "Images/11/4.webp",
       "audio": "Audio/11/15_Chapter 1.mp3",
       "prompt": "The alarm clock is on the fridge! Good finding!"
     }
@@ -182,7 +182,7 @@
     ],
     "helpPrompt": "Say: No, the puppy is on the chair.",
     "feedback": {
-      "image": "Images/1/title.png",
+      "image": "Images/11/5.webp",
       "audio": "Audio/11/18_Chapter 1.mp3",
       "prompt": "Haha, No! The puppy is on the chair! Well done!"
     }
@@ -219,7 +219,7 @@
     ],
     "helpPrompt": "Say: The clothes are in the suitcase.",
     "feedback": {
-      "image": "Images/1/title.png",
+      "image": "Images/11/7.webp",
       "audio": "Audio/11/24_Chapter 1.mp3",
       "prompt": "The clothes are in the suitcase! You are a great finder!"
     }
