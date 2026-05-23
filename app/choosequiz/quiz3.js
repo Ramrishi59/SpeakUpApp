@@ -155,8 +155,8 @@ const WRONG_SFX = "effects/Wrong.mp3";
 const CLAP_SFX = "effects/Clap.mp3";
 const NICE_EFFORT_SFX = "../order-activity/Audio/effects/nice_effort.mp3";
 const EXCELLENT_SFX = "../order-activity/Audio/effects/excellent_above.mp3";
-const NICE_EFFORT_SCORE_CARD = "../order-activity/Images/score2.webp";
-const EXCELLENT_SCORE_CARD = "../order-activity/Images/score.webp";
+const NICE_EFFORT_SCORE_CARD = "Images/score/score3.webp";
+const EXCELLENT_SCORE_CARD = "Images/score/score3.webp";
 const EXCELLENT_SCORE_THRESHOLD = 0.8;
 
 function playAudio(path, onEnded) {
