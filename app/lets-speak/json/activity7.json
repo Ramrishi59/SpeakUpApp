@@ -74,7 +74,7 @@
     "scenes": [
       {
         "id": "intro",
-        "image": "Images/7/title.png",
+        "image": "Images/1/title.png",
         "audio": "Audio/7/01_Chapter 1.mp3",
         "prompt": "Hey! Let’s meet some friends and talk together! Ready to start?",
         "sceneKind": "title-card",

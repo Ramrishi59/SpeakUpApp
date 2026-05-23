@@ -1,0 +1,234 @@
+{
+    "title": "Let's Speak - 15",
+    "presenter": {
+      "id": "reena",
+      "name": "Reena",
+      "avatar": "../Images/dashboard thumbnails/Reena.webp",
+      "fallbackAudioBase": "Audio/fallback/reena/",
+      "outroAudioBase": "Audio/outro/reena/"
+    },
+    "fallbackAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "Good try! Let's go to the next one."
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "That's okay. Let's try another one."
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Nice try! Let's keep going."
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "Don't worry. Let's move on."
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "That's fine. Let's go ahead."
+      },
+      {
+        "fileName": "06_Chapter 1.mp3",
+        "prompt": "Good effort! Next one."
+      },
+      {
+        "fileName": "07_Chapter 1.mp3",
+        "prompt": "It's okay. Let's continue."
+      },
+      {
+        "fileName": "08_Chapter 1.mp3",
+        "prompt": "No problem. Let's try the next one."
+      },
+      {
+        "fileName": "09_Chapter 1.mp3",
+        "prompt": "That's alright. Keep going."
+      },
+      {
+        "fileName": "10_Chapter 1.mp3",
+        "prompt": "Good try! Let's continue."
+      }
+    ],
+    "outroAudios": [
+      {
+        "fileName": "01_Chapter 1.mp3",
+        "prompt": "That was so much fun talking with you!"
+      },
+      {
+        "fileName": "02_Chapter 1.mp3",
+        "prompt": "You spoke wonderfully today!"
+      },
+      {
+        "fileName": "03_Chapter 1.mp3",
+        "prompt": "Great job! Let’s talk again soon!"
+      },
+      {
+        "fileName": "04_Chapter 1.mp3",
+        "prompt": "You are getting better every day!"
+      },
+      {
+        "fileName": "05_Chapter 1.mp3",
+        "prompt": "Bye for now! Keep speaking!"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "intro",
+        "image": "Images/1/title.png",
+        "audio": "Audio/15/01_Chapter 1.mp3",
+        "prompt": "Hi! I'm Reena! Let’s look at some simple pictures and talk together! Are you ready?",
+        "sceneKind": "title-card",
+        "accepted": [
+          "yes",
+          "ready",
+          "sure",
+          "okay",
+          "let's go",
+          "yeah"
+        ],
+        "helpPrompt": "Say: Yes.",
+        "retryAudio": "Audio/15/02_Chapter 1.mp3",
+        "feedback": {
+          "image": "Images/15/title.png",
+          "audio": "Audio/15/03_Chapter 1.mp3",
+          "sceneKind": "no-card",
+          "prompt": "Awesome! Let’s look at the first picture!"
+        }
+      },
+      {
+        "id": "tshirts-dirty",
+        "image": "Images/15/1.webp",
+        "audio": "Audio/15/04_Chapter 1.mp3",
+        "retryAudio": "Audio/15/05_Chapter 1.mp3",
+        "prompt": "Look at these T shirts. The first one is clean. But look at the second one. What is the second one like?",
+        "accepted": [
+          "the second one is dirty",
+          "it is dirty",
+          "dirty"
+        ],
+        "helpPrompt": "Say: The second one is dirty.",
+        "feedback": {
+          "image": "Images/15/1.webp",
+          "audio": "Audio/15/06_Chapter 1.mp3",
+          "prompt": "The second one is dirty! It needs a wash!"
+        }
+      },
+      {
+        "id": "dogs-big",
+        "image": "Images/15/2.webp",
+        "audio": "Audio/15/07_Chapter 1.mp3",
+        "retryAudio": "Audio/15/08_Chapter 1.mp3",
+        "prompt": "Now look at these dogs. The first one is small. But look at the second one. What is the second one like?",
+        "accepted": [
+          "the second one is big",
+          "it is big",
+          "big"
+        ],
+        "helpPrompt": "Say: The second one is big.",
+        "feedback": {
+          "image": "Images/15/2.webp",
+          "audio": "Audio/15/09_Chapter 1.mp3",
+          "prompt": "The second one is big! What a huge dog!"
+        }
+      },
+      {
+        "id": "books-thick",
+        "image": "Images/15/3.webp",
+        "audio": "Audio/15/10_Chapter 1.mp3",
+        "retryAudio": "Audio/15/11_Chapter 1.mp3",
+        "prompt": "Here are two books. The brown one is thin. What is the green one like?",
+        "accepted": [
+          "the green one is thick",
+          "it is thick",
+          "thick"
+        ],
+        "helpPrompt": "Say: The green one is thick.",
+        "feedback": {
+          "image": "Images/15/3.webp",
+          "audio": "Audio/15/12_Chapter 1.mp3",
+          "prompt": "The green one is thick! Good answer!"
+        }
+      },
+      {
+        "id": "cups-hot",
+        "image": "Images/15/4.webp",
+        "audio": "Audio/15/13_Chapter 1.mp3",
+        "retryAudio": "Audio/15/14_Chapter 1.mp3",
+        "prompt": "Let's look at those cups. The red one is ice coffee and the black one is tea. Which one is hot, the red one or the black one?",
+        "accepted": [
+          "the black one",
+          "black one",
+          "black",
+          "the tea"
+        ],
+        "helpPrompt": "Say: The black one.",
+        "feedback": {
+          "image": "Images/15/4.webp",
+          "audio": "Audio/15/15_Chapter 1.mp3",
+          "prompt": "The black one is hot! We can see the steam."
+        }
+      },
+      {
+        "id": "men-old",
+        "image": "Images/15/5.webp",
+        "audio": "Audio/15/16_Chapter 1.mp3",
+        "retryAudio": "Audio/15/17_Chapter 1.mp3",
+        "prompt": "Look at these men. The first three are young. But look at the fourth one. What is the fourth one like?",
+        "accepted": [
+          "the fourth one is old",
+          "he is old",
+          "old"
+        ],
+        "helpPrompt": "Say: The fourth one is old.",
+        "feedback": {
+          "image": "Images/15/5.webp",
+          "audio": "Audio/15/18_Chapter 1.mp3",
+          "prompt": "The fourth one is old! Nice speaking!"
+        }
+      },
+      {
+        "id": "pencils-short",
+        "image": "Images/15/6.webp",
+        "audio": "Audio/15/19_Chapter 1.mp3",
+        "retryAudio": "Audio/15/20_Chapter 1.mp3",
+        "prompt": "Look at these two pencils! Is the yellow one long?",
+        "accepted": [
+          "no the yellow one is short",
+          "the yellow one is short",
+          "it is short",
+          "no"
+        ],
+        "helpPrompt": "Say: No, the yellow one is short.",
+        "feedback": {
+          "image": "Images/15/6.webp",
+          "audio": "Audio/15/21_Chapter 1.mp3",
+          "prompt": "Oh, right! The yellow one is short! Well spotted!"
+        }
+      },
+      {
+        "id": "bags-small",
+        "image": "Images/15/7.webp",
+        "audio": "Audio/15/22_Chapter 1.mp3",
+        "retryAudio": "Audio/15/23_Chapter 1.mp3",
+        "prompt": "Last picture! Look at the bags. The first two are big. But look at the last one. What is the last one like?",
+        "accepted": [
+          "the last one is small",
+          "it is small",
+          "small"
+        ],
+        "helpPrompt": "Say: The last one is small.",
+        "feedback": {
+          "image": "Images/15/7.webp",
+          "audio": "Audio/15/24_Chapter 1.mp3",
+          "prompt": "The last one is small! Correct! That is the yellow one. You are so good at this game!"
+        }
+      },
+      {
+        "id": "outro",
+        "image": "Images/15/7.webp",
+        "audio": null,
+        "prompt": "Great job! You looked at all the pictures and spoke very well today!",
+        "done": true
+      }
+    ]
+  }

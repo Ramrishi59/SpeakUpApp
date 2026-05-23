@@ -71,166 +71,166 @@
         "prompt": "Nice speaking. See you again!"
       }
     ],
-    "scenes": [
-      {
-        "id": "intro",
-        "image": "Images/13/title.png",
-        "audio": "Audio/13/1_Chapter 1.mp3",
-        "prompt": "Hey! I'm Manku! Let's look outside and talk about the weather! Are you ready?",
-        "sceneKind": "title-card",
-        "accepted": [
-          "yes",
-          "ready",
-          "sure",
-          "okay",
-          "let's go",
-          "yeah"
-        ],
-        "helpPrompt": "Say: Yes.",
-        "retryAudio": "Audio/13/2_Chapter 1.mp3",
-        "feedback": {
-          "image": "Images/13/title.png",
-          "audio": "Audio/13/3_Chapter 1.mp3",
-          "sceneKind": "no-card",
-          "prompt": "Awesome! Let’s look at the sky!"
-        }
-      },
-      {
-        "id": "sunny",
-        "image": "Images/13/1.webp",
-        "audio": "Audio/13/4_Chapter 1.mp3",
-        "retryAudio": "Audio/13/5_Chapter 1.mp3",
-        "prompt": "Look out the first window! What's the weather like?",
-        "accepted": [
-          "it is sunny",
-          "it's sunny",
-          "sunny"
-        ],
-        "helpPrompt": "Say: It's sunny.",
-        "feedback": {
-          "image": "Images/13/1.webp",
-          "audio": "Audio/13/6_Chapter 1.mp3",
-          "prompt": "It's sunny! A beautiful day to play!"
-        }
-      },
-      {
-        "id": "hot",
-        "image": "Images/13/2.webp",
-        "audio": "Audio/13/7_Chapter 1.mp3",
-        "retryAudio": "Audio/13/8_Chapter 1.mp3",
-        "prompt": "Oh! he is sweating so much! Is it a cold day?",
-        "accepted": [
-          "no it is hot",
-          "it's hot",
-          "hot",
-          "no"
-        ],
-        "helpPrompt": "Say: No, it's hot.",
-        "feedback": {
-          "image": "Images/13/2.webp",
-          "audio": "Audio/13/9_Chapter 1.mp3",
-          "prompt": "Yes, you are right. It's hot! It's a hot day."
-        }
-      },
-      {
-        "id": "cloudy",
-        "image": "Images/13/3.webp",
-        "audio": "Audio/13/10_Chapter 1.mp3",
-        "retryAudio": "Audio/13/11_Chapter 1.mp3",
-        "prompt": "Look at the next window. The sky is all grey now. What's the weather like?",
-        "accepted": [
-          "it is cloudy",
-          "it's cloudy",
-          "cloudy"
-        ],
-        "helpPrompt": "Say: It's cloudy.",
-        "feedback": {
-          "image": "Images/13/3.webp",
-          "audio": "Audio/13/12_Chapter 1.mp3",
-          "prompt": "It's cloudy! The sun is hiding behind the clouds."
-        }
-      },
-      {
-        "id": "raining",
-        "image": "Images/13/4.webp",
-        "audio": "Audio/13/13_Chapter 1.mp3",
-        "retryAudio": "Audio/13/14_Chapter 1.mp3",
-        "prompt": "Oh, I see water falling! What's the weather like?",
-        "accepted": [
-          "it's raining",
-          "it is raining",
-          "raining"
-        ],
-        "helpPrompt": "Say: It's raining.",
-        "feedback": {
-          "image": "Images/13/4.webp",
-          "audio": "Audio/13/15_Chapter 1.mp3",
-          "prompt": "It's raining! We need an umbrella!"
-        }
-      },
-      {
-        "id": "windy",
-        "image": "Images/13/5.webp",
-        "audio": "Audio/13/16_Chapter 1.mp3",
-        "retryAudio": "Audio/13/17_Chapter 1.mp3",
-        "prompt": "Listen to that loud sound! Look at the trees! Is it raining?",
-        "accepted": [
-          "no it is windy",
-          "it's windy",
-          "windy",
-          "no"
-        ],
-        "helpPrompt": "Say: No, it's windy.",
-        "feedback": {
-          "image": "Images/13/5.webp",
-          "audio": "Audio/13/18_Chapter 1.mp3",
-          "prompt": "Oh, you are right! It's not raining. It's windy!"
-        }
-      },
-      {
-        "id": "sun-shining",
-        "image": "Images/13/6.webp",
-        "audio": "Audio/13/19_Chapter 1.mp3",
-        "retryAudio": "Audio/13/20_Chapter 1.mp3",
-        "prompt": "The sky is clear again! Look at the sun. Is the sun shining?",
-        "accepted": [
-          "yes the sun is shining",
-          "the sun is shining",
-          "sun is shining",
-          "yes"
-        ],
-        "helpPrompt": "Say: Yes, the sun is shining.",
-        "feedback": {
-          "image": "Images/13/6.webp",
-          "audio": "Audio/13/21_Chapter 1.mp3",
-          "prompt": "Yes, the sun is shining! It is so bright!"
-        }
-      },
-      {
-        "id": "wind-blowing",
-        "image": "Images/13/7.webp",
-        "audio": "Audio/13/22_Chapter 1.mp3",
-        "retryAudio": "Audio/13/23_Chapter 1.mp3",
-        "prompt": "Last one! Look at those leaves flying away. What is happening? Is the wind blowing?",
-        "accepted": [
-          "yes it is",
-          "wind is blowing",
-          "blowing",
-          "wind"
-        ],
-        "helpPrompt": "Say: Yes, it is.",
-        "feedback": {
-          "image": "Images/13/7.webp",
-          "audio": "Audio/13/24_Chapter 1.mp3",
-          "prompt": "Yes, it is. The wind is blowing! You are so good at this game!"
-        }
-      },
-      {
-        "id": "outro",
-        "image": "Images/13/7.webp",
-        "audio": null,
-        "prompt": "You talked about the weather so well today!",
-        "done": true
-      }
-    ]
+  "scenes": [
+  {
+    "id": "intro",
+    "image": "Images/1/title.png",
+    "audio": "Audio/13/01_Chapter 1.mp3",
+    "prompt": "Hey! I'm Manku! Let's look outside and talk about the weather! Are you ready?",
+    "sceneKind": "title-card",
+    "accepted": [
+      "yes",
+      "ready",
+      "sure",
+      "okay",
+      "let's go",
+      "yeah"
+    ],
+    "helpPrompt": "Say: Yes.",
+    "retryAudio": "Audio/13/02_Chapter 1.mp3",
+    "feedback": {
+      "image": "Images/1/title.png",
+      "audio": "Audio/13/03_Chapter 1.mp3",
+      "sceneKind": "no-card",
+      "prompt": "Awesome! Let’s look at the sky!"
+    }
+  },
+  {
+    "id": "sunny",
+    "image": "Images/13/1.webp",
+    "audio": "Audio/13/04_Chapter 1.mp3",
+    "retryAudio": "Audio/13/05_Chapter 1.mp3",
+    "prompt": "Look out the first window! What's the weather like?",
+    "accepted": [
+      "it is sunny",
+      "it's sunny",
+      "sunny"
+    ],
+    "helpPrompt": "Say: It's sunny.",
+    "feedback": {
+      "image": "Images/13/1.webp",
+      "audio": "Audio/13/06_Chapter 1.mp3",
+      "prompt": "It's sunny! A beautiful day to play!"
+    }
+  },
+  {
+    "id": "hot",
+    "image": "Images/13/2.webp",
+    "audio": "Audio/13/07_Chapter 1.mp3",
+    "retryAudio": "Audio/13/08_Chapter 1.mp3",
+    "prompt": "Oh! he is sweating so much! Is it a cold day?",
+    "accepted": [
+      "no it is hot",
+      "it's hot",
+      "hot",
+      "no"
+    ],
+    "helpPrompt": "Say: No, it's hot.",
+    "feedback": {
+      "image": "Images/13/2.webp",
+      "audio": "Audio/13/09_Chapter 1.mp3",
+      "prompt": "Yes, you are right. It's hot! It's a hot day."
+    }
+  },
+  {
+    "id": "cloudy",
+    "image": "Images/13/3.webp",
+    "audio": "Audio/13/10_Chapter 1.mp3",
+    "retryAudio": "Audio/13/11_Chapter 1.mp3",
+    "prompt": "Look at the next window. The sky is all grey now. What's the weather like?",
+    "accepted": [
+      "it is cloudy",
+      "it's cloudy",
+      "cloudy"
+    ],
+    "helpPrompt": "Say: It's cloudy.",
+    "feedback": {
+      "image": "Images/13/3.webp",
+      "audio": "Audio/13/12_Chapter 1.mp3",
+      "prompt": "It's cloudy! The sun is hiding behind the clouds."
+    }
+  },
+  {
+    "id": "raining",
+    "image": "Images/13/4.webp",
+    "audio": "Audio/13/13_Chapter 1.mp3",
+    "retryAudio": "Audio/13/14_Chapter 1.mp3",
+    "prompt": "Oh, I see water falling! What's the weather like?",
+    "accepted": [
+      "it's raining",
+      "it is raining",
+      "raining"
+    ],
+    "helpPrompt": "Say: It's raining.",
+    "feedback": {
+      "image": "Images/13/4.webp",
+      "audio": "Audio/13/15_Chapter 1.mp3",
+      "prompt": "It's raining! We need an umbrella!"
+    }
+  },
+  {
+    "id": "windy",
+    "image": "Images/13/5.webp",
+    "audio": "Audio/13/16_Chapter 1.mp3",
+    "retryAudio": "Audio/13/17_Chapter 1.mp3",
+    "prompt": "Listen to that loud sound! Look at the trees! Is it raining?",
+    "accepted": [
+      "no it is windy",
+      "it's windy",
+      "windy",
+      "no"
+    ],
+    "helpPrompt": "Say: No, it's windy.",
+    "feedback": {
+      "image": "Images/13/5.webp",
+      "audio": "Audio/13/18_Chapter 1.mp3",
+      "prompt": "Oh, you are right! It's not raining. It's windy!"
+    }
+  },
+  {
+    "id": "sun-shining",
+    "image": "Images/13/6.webp",
+    "audio": "Audio/13/19_Chapter 1.mp3",
+    "retryAudio": "Audio/13/20_Chapter 1.mp3",
+    "prompt": "The sky is clear again! Look at the sun. Is the sun shining?",
+    "accepted": [
+      "yes the sun is shining",
+      "the sun is shining",
+      "sun is shining",
+      "yes"
+    ],
+    "helpPrompt": "Say: Yes, the sun is shining.",
+    "feedback": {
+      "image": "Images/13/6.webp",
+      "audio": "Audio/13/21_Chapter 1.mp3",
+      "prompt": "Yes, the sun is shining! It is so bright!"
+    }
+  },
+  {
+    "id": "wind-blowing",
+    "image": "Images/13/7.webp",
+    "audio": "Audio/13/22_Chapter 1.mp3",
+    "retryAudio": "Audio/13/23_Chapter 1.mp3",
+    "prompt": "Last one! Look at those leaves flying away. What is happening? Is the wind blowing?",
+    "accepted": [
+      "yes it is",
+      "wind is blowing",
+      "blowing",
+      "wind"
+    ],
+    "helpPrompt": "Say: Yes, it is.",
+    "feedback": {
+      "image": "Images/13/7.webp",
+      "audio": "Audio/13/24_Chapter 1.mp3",
+      "prompt": "Yes, it is. The wind is blowing! You are so good at this game!"
+    }
+  },
+  {
+    "id": "outro",
+    "image": "Images/13/7.webp",
+    "audio": null,
+    "prompt": "You talked about the weather so well today!",
+    "done": true
+  }
+]
   }
