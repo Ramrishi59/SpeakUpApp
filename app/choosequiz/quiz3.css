@@ -611,38 +611,6 @@ main#app {
   overflow: hidden;
 }
 
-.results-hero::before,
-.results-actions::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 8% 26%, #ff5b55 0 5px, transparent 6px),
-    radial-gradient(circle at 19% 66%, #ffd91f 0 6px, transparent 7px),
-    radial-gradient(circle at 35% 20%, #56db18 0 5px, transparent 6px),
-    radial-gradient(circle at 58% 72%, #ff8d16 0 7px, transparent 8px),
-    radial-gradient(circle at 76% 24%, #39aee8 0 5px, transparent 6px),
-    radial-gradient(circle at 91% 58%, #ff5b55 0 6px, transparent 7px);
-  opacity: 0.9;
-  z-index: 0;
-}
-
-.results-hero::after,
-.results-actions::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(135deg, transparent 0 9%, #ff5b55 9% 16%, transparent 16% 100%) 4% 18% / 78px 34px no-repeat,
-    linear-gradient(45deg, transparent 0 12%, #ffd91f 12% 20%, transparent 20% 100%) 74% 13% / 92px 38px no-repeat,
-    linear-gradient(135deg, transparent 0 10%, #39aee8 10% 18%, transparent 18% 100%) 12% 74% / 86px 34px no-repeat,
-    linear-gradient(45deg, transparent 0 10%, #56db18 10% 18%, transparent 18% 100%) 83% 72% / 82px 34px no-repeat;
-  opacity: 0.82;
-  z-index: 0;
-}
-
 .results-hero > *,
 .results-actions > * {
   position: relative;
@@ -661,6 +629,8 @@ main#app {
 }
 
 .results-image-wrap img {
+  position: relative;
+  z-index: 0;
   display: block;
   width: 100%;
   height: 100%;
@@ -669,6 +639,115 @@ main#app {
   object-fit: cover;
   object-position: center;
   filter: drop-shadow(0 10px 12px rgba(0, 69, 128, 0.14));
+}
+
+.results-decor {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.result-star,
+.result-ribbon {
+  position: absolute;
+  display: block;
+}
+
+.result-star {
+  width: clamp(30px, 7svh, 54px);
+  aspect-ratio: 1;
+  background: linear-gradient(180deg, #fff6a6 0%, var(--yellow) 62%, #ffae17 100%);
+  clip-path: polygon(50% 0%, 62% 34%, 98% 35%, 69% 56%, 79% 91%, 50% 70%, 21% 91%, 31% 56%, 2% 35%, 38% 34%);
+  filter: drop-shadow(0 5px 4px rgba(0, 71, 137, 0.22));
+}
+
+.result-star::after {
+  content: "";
+  position: absolute;
+  inset: 23% 30% 52% 30%;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.star-one {
+  top: 10%;
+  left: 11%;
+  transform: rotate(-14deg);
+}
+
+.star-two {
+  top: 17%;
+  right: 9%;
+  width: clamp(24px, 5.5svh, 42px);
+  transform: rotate(17deg);
+}
+
+.star-three {
+  right: 13%;
+  bottom: 21%;
+  width: clamp(28px, 6.4svh, 48px);
+  transform: rotate(-22deg);
+}
+
+.star-four {
+  left: 8%;
+  bottom: 25%;
+  width: clamp(22px, 5.2svh, 38px);
+  transform: rotate(24deg);
+}
+
+.result-ribbon {
+  width: clamp(72px, 18svh, 132px);
+  height: clamp(24px, 5.4svh, 42px);
+  border-radius: 999px 10px 999px 10px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.45), transparent 36% 100%),
+    linear-gradient(135deg, #ff6b62 0%, #ff3e7d 100%);
+  box-shadow: 0 7px 8px rgba(0, 71, 137, 0.18);
+}
+
+.result-ribbon::before,
+.result-ribbon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 16%;
+  aspect-ratio: 1;
+  background: inherit;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.result-ribbon::before {
+  left: -5%;
+}
+
+.result-ribbon::after {
+  right: -5%;
+}
+
+.ribbon-one {
+  top: 7%;
+  left: -8%;
+  transform: rotate(-21deg);
+}
+
+.ribbon-two {
+  top: 29%;
+  right: -11%;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.44), transparent 38% 100%),
+    linear-gradient(135deg, #35b9ff 0%, #2edb8f 100%);
+  transform: rotate(20deg);
+}
+
+.ribbon-three {
+  bottom: 12%;
+  left: -10%;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.46), transparent 38% 100%),
+    linear-gradient(135deg, #ffcd32 0%, #ff8d16 100%);
+  transform: rotate(18deg);
 }
 
 .results-score {
@@ -684,7 +763,7 @@ main#app {
   text-align: center;
   white-space: nowrap;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 2;
 }
 
 .results-text {
