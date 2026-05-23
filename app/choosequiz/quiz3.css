@@ -750,6 +750,28 @@ main#app {
   transform: rotate(18deg);
 }
 
+.results-title {
+  position: absolute;
+  left: 50%;
+  top: clamp(18px, 5.2svh, 48px);
+  z-index: 2;
+  width: min(96%, 460px);
+  transform: translateX(-50%) ;
+  color: #fff;
+  font-size: clamp(28px, 7.4svh, 62px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: 0;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-text-stroke: clamp(4px, 0.9svh, 8px) #ff2f38;
+  paint-order: stroke fill;
+  text-shadow:
+    0 clamp(4px, 0.8svh, 7px) 0 #1f7bd7,
+    0 clamp(8px, 1.3svh, 13px) 10px rgba(0, 63, 135, 0.25);
+  white-space: nowrap;
+}
+
 .results-score {
   position: absolute;
   left: 50%;
@@ -764,6 +786,27 @@ main#app {
   white-space: nowrap;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   z-index: 2;
+}
+
+.results-message {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(38px, 8.5svh, 78px);
+  z-index: 2;
+  width: min(88%, 380px);
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: clamp(28px, 5.1svh, 48px);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: 0;
+  text-align: center;
+  text-shadow:
+    -3px -3px 0 #1e65bd,
+    3px -3px 0 #1e65bd,
+    -3px 3px 0 #1e65bd,
+    3px 3px 0 #1e65bd,
+    0 6px 8px rgba(0, 65, 137, 0.22);
 }
 
 .results-text {

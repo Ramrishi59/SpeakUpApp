@@ -74,6 +74,8 @@ const resultsOverlay = document.getElementById("resultsOverlay");
 const resultsText = document.getElementById("resultsText");
 const resultsImage = document.getElementById("resultsImage");
 const resultsScore = document.getElementById("resultsScore");
+const resultsTitle = document.querySelector(".results-title");
+const resultsMessage = document.querySelector(".results-message");
 const restartBtn = document.getElementById("restartBtn");
 const reviewBtn = document.getElementById("reviewBtn");
 const resultsResetBtn = document.getElementById("resultsResetBtn");
@@ -157,7 +159,7 @@ const NICE_EFFORT_SFX = "../order-activity/Audio/effects/nice_effort.mp3";
 const EXCELLENT_SFX = "../order-activity/Audio/effects/excellent_above.mp3";
 const NICE_EFFORT_SCORE_CARD = "Images/score/score3.webp";
 const EXCELLENT_SCORE_CARD = "Images/score/score3.webp";
-const EXCELLENT_SCORE_THRESHOLD = 0.8;
+const EXCELLENT_MIN_SCORE = 9;
 
 function playAudio(path, onEnded) {
   if (!path) {
@@ -369,9 +371,17 @@ function showResults() {
   const total = ITEMS.length;
   score = creditedQuestions.size;
   const pct = total > 0 ? Math.round((score / total) * 100) : 0;
-  const isExcellentScore = total > 0 && (score / total) >= EXCELLENT_SCORE_THRESHOLD;
+  const isExcellentScore = score >= EXCELLENT_MIN_SCORE;
   completeActivity();
 
+  if (resultsTitle) {
+    resultsTitle.textContent = isExcellentScore ? "Excellent!" : "Nice Effort!";
+  }
+  if (resultsMessage) {
+    resultsMessage.innerHTML = isExcellentScore
+      ? "You made<br>great sentences!"
+      : "Let's practise<br>a little more.";
+  }
   if (resultsScore) {
     resultsScore.textContent = `${score} Out of ${total}`;
   }
