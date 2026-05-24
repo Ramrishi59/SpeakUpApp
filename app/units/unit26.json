@@ -6,7 +6,7 @@
   "words": [
     { "image": "Images/Unit26/1.webp", "audio": "Audio/Unit26/01_Chapter 1.mp3", "text": "" },
     { "image": "Images/Unit26/2.webp", "audio": "Audio/Unit26/02_Chapter 1.mp3" },
-    { "image": "Images/Unit26/3.webp", "audio": "Audio/Unit26/03_Chapter 1.mp3" },
+    { "image": "Images/repeating_assets/looklisten.webp", "audio": "Audio/Unit26/03_Chapter 1.mp3" },
 
     { "image": "Images/Unit26/4.webp", "audio": "Audio/Unit26/04_Chapter 1.mp3", "text": "Is there a banana? Yes, there is." },
     { "image": "Images/Unit26/5.webp", "audio": "Audio/Unit26/05_Chapter 1.mp3", "text": "Is there a banana? No, there isn't." },
