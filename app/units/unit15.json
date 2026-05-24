@@ -1,12 +1,12 @@
 {
   "id": "unit15",
-  "name": "Unit 15",
+  "name": "Unit 15: My, your, our, their, his and her.",
   "description": "Let’s learn how to say my, your, our, their, his and her.",
   "thumbnail": "Images/Unit15/unit15_thumbnail.jpg",
   "words": [
     { "image": "Images/Unit15/1.webp", "audio": "Audio/Unit15/01_Chapter 1.mp3" },
     { "image": "Images/Unit15/2.webp", "audio": "Audio/Unit15/02_Chapter 1.mp3" },
-    { "image": "Images/Unit15/3.webp", "audio": "Audio/Unit15/03_Chapter 1.mp3" },
+    { "image": "Images/repeating_assets/looklisten.webp",  "audio": "Audio/Unit15/03_Chapter 1.mp3" },
     { "image": "Images/Unit15/4.webp", "audio": "Audio/Unit15/04_Chapter 1.mp3" },
     { "image": "Images/Unit15/5.webp", "audio": "Audio/Unit15/05_Chapter 1.mp3" },
     { "image": "Images/Unit15/6.webp", "audio": "Audio/Unit15/06_Chapter 1.mp3" },

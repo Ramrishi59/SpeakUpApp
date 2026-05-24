@@ -145,7 +145,7 @@ function escapeHtml(value) {
 
 function formatIntroUnitTitle(title) {
   const safeTitle = escapeHtml(title || "Speak Up");
-  return safeTitle.replace(/:\s*/, ":<br>");
+  return safeTitle.replace(/:\s*/, ":<br>").replace(/\n/g, "<br>");
 }
 
 function showOutroFromLegacyItem(item) {

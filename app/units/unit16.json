@@ -1,6 +1,6 @@
 {
   "id": "unit16",
-  "name": "Unit 16",
+  "name": "Unit 16: Whose\nT-shirt is blue?",
   "description": "Let’s learn how to ask questions using \"Whose\". Look, listen, and repeat.",
   "thumbnail": "Images/Unit16/unit16_thumbnail.jpg",
   "words": [
@@ -14,7 +14,7 @@
 
     },
     { 
-      "image": "Images/Unit16/3.webp", 
+      "image": "Images/repeating_assets/looklisten.webp", 
       "audio": "Audio/Unit16/03_Chapter 1.mp3"
     },
     { 

@@ -7,7 +7,7 @@
 
     { "image": "Images/Unit14/1.webp",  "audio": "Audio/Unit14/01_Chapter 1.mp3" },
     { "image": "Images/Unit14/2.webp",  "audio": "Audio/Unit14/02_Chapter 1.mp3" },
-    { "image": "Images/Unit14/3.webp",  "audio": "Audio/Unit14/03_Chapter 1.mp3" },
+    { "image": "Images/repeating_assets/looklisten.webp",  "audio": "Audio/Unit14/03_Chapter 1.mp3" },
 
     { "text": "What colour is this?", "image": "Images/Unit14/4.webp",  "audio": "Audio/Unit14/04_Chapter 1.mp3" },
     { "text": "It's red.",            "image": "Images/Unit14/5.webp",  "audio": "Audio/Unit14/05_Chapter 1.mp3" },

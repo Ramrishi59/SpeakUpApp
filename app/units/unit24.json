@@ -6,7 +6,7 @@
   "words": [
     { "image": "Images/Unit24/1.webp", "audio": "Audio/Unit24/01_Chapter 1.mp3", "text": "" },
     { "image": "Images/Unit24/2.webp", "audio": "Audio/Unit24/02_Chapter 1.mp3" },
-    { "image": "Images/Unit24/3.webp", "audio": "Audio/Unit24/03_Chapter 1.mp3" },
+    {  "image": "Images/repeating_assets/looklisten.webp", "audio": "Audio/Unit24/03_Chapter 1.mp3" },
 
     { "image": "Images/Unit24/4.webp", "audio": "Audio/Unit24/04_Chapter 1.mp3", "text": "I'm ten years old. I'm ten." },
     { "image": "Images/Unit24/5.webp", "audio": "Audio/Unit24/05_Chapter 1.mp3", "text": "I'm seven years old. I'm seven." },

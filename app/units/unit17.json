@@ -1,12 +1,12 @@
 {
   "id": "unit17",
-  "name": "Unit 17",
+  "name": "Unit 17: Mine, Yours, Theirs, Ours, His...",
   "description": "Welcome to Unit 17. Mine, Yours, Theirs, Ours, His and Hers.",
   "thumbnail": "Images/Unit17/unit17_thumbnail.jpg",
   "words": [
     { "image": "Images/Unit17/1.webp", "audio": "Audio/Unit17/01_Chapter 1.mp3" },
     { "image": "Images/Unit17/2.webp", "audio": "Audio/Unit17/02_Chapter 1.mp3" },
-    { "image": "Images/Unit17/3.webp", "audio": "Audio/Unit17/03_Chapter 1.mp3" },
+    { "image": "Images/repeating_assets/looklisten.webp", "audio": "Audio/Unit17/03_Chapter 1.mp3" },
     { "image": "Images/Unit17/4.webp", "audio": "Audio/Unit17/04_Chapter 1.mp3" },
     { "image": "Images/Unit17/5.webp", "audio": "Audio/Unit17/05_Chapter 1.mp3" },
     { "image": "Images/Unit17/6.webp", "audio": "Audio/Unit17/06_Chapter 1.mp3" },
