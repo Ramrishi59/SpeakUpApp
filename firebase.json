@@ -46,6 +46,15 @@
     ],
     "headers": [
       {
+        "source": "**/*.{html,css,js}",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
         "source": "**/*.{webp,jpg,jpeg,png,gif,svg,ico}",
         "headers": [
           {
