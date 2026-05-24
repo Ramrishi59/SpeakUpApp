@@ -1,0 +1,4 @@
+{
+  "liveServer.settings.CustomBrowser": "chrome",
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-cache --disable-application-cache --disk-cache-size=0 --media-cache-size=0"
+}

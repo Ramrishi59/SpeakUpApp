@@ -721,9 +721,9 @@ body.first-intro-slide .word-display{
 body.first-intro-slide .word-display::before{
   content: "";
   position: absolute;
-  left: 50%;
-  top: clamp(86px, 15svh, 138px);
-  width: min(94vw, 600px);
+  left: 52%;
+  top: 11%;
+  width: min(160vw, 624px);
   aspect-ratio: 1.5 / 1;
   transform: translateX(-50%);
   background: center / contain no-repeat url("Images/repeating_assets/13.png");

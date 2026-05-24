@@ -34,8 +34,8 @@
         "image": "Images/activity17/3.webp",
         "choices": [
           "They are at the hospital.",
-          "They are in the hospital.",
-          "They are at the classroom."
+          "They are the hospital.",
+          "They are in the hospital."
         ],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity17/question.mp3",
@@ -47,7 +47,7 @@
         "choices": [
           "She is at the hospital.",
           "She is in the hospital.",
-          "She is at the bank."
+          "She is the hospital."
         ],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity17/question.mp3",
@@ -59,7 +59,7 @@
         "choices": [
           "She is at the ATM.",
           "She is in the ATM",
-          "She is at the school."
+          "She is at the ATM."
         ],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity17/question.mp3",
@@ -107,7 +107,7 @@
         "choices": [
           "We are at the door.",
           "We are in the door.",
-          "We are at the door."
+          "We are the door."
         ],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity17/question.mp3",
@@ -119,7 +119,7 @@
         "choices": [
           "They are at the car.",
           "They are in the car.",
-          "They are in the bus."
+          "They are on the car."
         ],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity17/question.mp3",

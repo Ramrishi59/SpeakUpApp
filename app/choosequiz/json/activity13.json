@@ -38,7 +38,7 @@
       },
       {
         "image": "Images/activity13/4.webp",
-        "choices": ["This is my pen.", "Is this your pen?", "Are these your pens?"],
+        "choices": ["Is it your pens?.", "Is it your pen?", "Is it your pencil?"],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity13/question.mp3",
         "audioCorrect": "Audio/activity13/05_Chapter 1.mp3",
@@ -54,7 +54,7 @@
       },
       {
         "image": "Images/activity13/6.webp",
-        "choices": ["These are our cats.", "Those are their cats.", "These are my cats."],
+        "choices": ["These are our cats.", "These are out cat.", "These cats my are."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity13/question.mp3",
         "audioCorrect": "Audio/activity13/07_Chapter 1.mp3",
@@ -62,7 +62,7 @@
       },
       {
         "image": "Images/activity13/7.webp",
-        "choices": ["These are our bicycles.", "Those are their bicycles.", "That is her bicycle."],
+        "choices": ["Those is our bicycles.", "Those are their bicycles.", "Those is her bicycles."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity13/question.mp3",
         "audioCorrect": "Audio/activity13/08_Chapter 1.mp3",

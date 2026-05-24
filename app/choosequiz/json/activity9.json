@@ -22,7 +22,7 @@
       },
       {
         "image": "Images/activity9/2.webp",
-        "choices": ["He is a man.", "She is a girl.", "She is a monkey."],
+        "choices": ["He is a man.", "She is a girl.", "She is a woman."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity9/question.mp3",
         "audioCorrect": "Audio/activity9/03_Chapter 1.mp3",

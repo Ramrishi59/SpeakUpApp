@@ -117,7 +117,7 @@
           "Yes, it's a doll.",
           "Yes, it's a dog."
         ],
-        "correctIndex": 0,
+        "correctIndex": 1,
         "audioCorrect": "Audio/activity4/12_Chapter 1.mp3",
         "audioWrong": "Audio/activity4/tryagain.mp3"
       }

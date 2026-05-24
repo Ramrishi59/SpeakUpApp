@@ -1348,9 +1348,14 @@ async function loadDashboardLessons() {
       const progress = getLessonProgressState(lesson.id);
       const progressDisplay = getLessonProgressDisplay(lesson.id);
       const starCount = getLessonStarCount(progressDisplay);
+      const isTapRightLesson = String(lesson?.route || '').includes('choosequiz/quiz3.html');
+      const isNotStarted = !progress.isCompleted && !progress.isInProgress;
       let badge = '';
 
       card.classList.toggle('is-completed', progress.isCompleted);
+      card.classList.toggle('is-in-progress', progress.isInProgress);
+      card.classList.toggle('is-not-started', isNotStarted);
+      card.classList.toggle('is-tap-right', isTapRightLesson);
 
       if (progress.isCompleted) {
         badge = '<span class="lesson-badge completed"><span aria-hidden="true">✓</span> Done!</span>';

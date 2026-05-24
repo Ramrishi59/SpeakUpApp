@@ -10,7 +10,7 @@
         "image": "Images/activity19/1.webp",
         "choices": [
           "I’m seven years old.",
-          "I’m seven years.",
+          "I’m seven year.",
           "I’m seven year old."
         ],
         "correctIndex": 0,
@@ -58,8 +58,8 @@
         "image": "Images/activity19/5.webp",
         "choices": [
           "He is forty years old.",
-          "He is fourty years old.",
-          "He are forty years old."
+          "He forty years old.",
+          "He forty years old is."
         ],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity19/question.mp3",
@@ -112,6 +112,18 @@
         "correctIndex": 1,
         "audioQuestion": "Audio/activity19/question.mp3",
         "audioCorrect": "Audio/activity19/10_Chapter 1.mp3",
+        "audioWrong": "Audio/activity19/tryagain.mp3"
+      },
+      {
+        "image": "Images/activity19/10.webp",
+        "choices": [
+          "I'm twelve years old",
+          "I'm twelve year old.",
+          "I'm twelve years"
+        ],
+        "correctIndex": 0,
+        "audioQuestion": "Audio/activity19/question.mp3",
+        "audioCorrect": "Audio/activity19/11_Chapter 1.mp3",
         "audioWrong": "Audio/activity19/tryagain.mp3"
       }
     ]

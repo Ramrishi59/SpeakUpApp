@@ -86,7 +86,7 @@
       },
       {
         "image": "Images/activity11/10.webp",
-        "choices": ["Are they elephants?", "Is it an elephant?", "Is this elephant?"],
+        "choices": ["Are they elephants?", "Is this an elephant?", "Is this elephant?"],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity11/question.mp3",
         "audioCorrect": "Audio/activity11/11_Chapter 1.mp3",

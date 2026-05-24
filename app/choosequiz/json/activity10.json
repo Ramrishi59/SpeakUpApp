@@ -62,7 +62,7 @@
       },
       {
         "image": "Images/activity10/7.webp",
-        "choices": ["They are boys.", "We are boys.", "They are girls."],
+        "choices": ["They are boys.", "We are girls.", "They are men."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity10/question.mp3",
         "audioCorrect": "Audio/activity10/08_Chapter 1.mp3",
@@ -70,7 +70,7 @@
       },
       {
         "image": "Images/activity10/8.webp",
-        "choices": ["They are men.", "They are girls.", "We are girls."],
+        "choices": ["They are women.", "They are girls.", "We are boys."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity10/question.mp3",
         "audioCorrect": "Audio/activity10/09_Chapter 1.mp3",

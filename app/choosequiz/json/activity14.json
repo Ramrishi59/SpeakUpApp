@@ -24,15 +24,15 @@
       },
       {
         "image": "Images/activity14/3.webp",
-        "choices": ["That backpack is hers.", "That backpack is his.", "That backpack is mine."],
-        "correctIndex": 1,
+        "choices": ["That backpack is hers.", "That backpack her is.", "That backpack is her."],
+        "correctIndex": 0,
         "audioQuestion": "Audio/activity14/question.mp3",
         "audioCorrect": "Audio/activity14/04_Chapter 1.mp3",
         "audioWrong": "Audio/activity14/tryagain.mp3"
       },
       {
         "image": "Images/activity14/4.webp",
-        "choices": ["This computer is mine.", "This computer is his.", "This computer is hers."],
+        "choices": ["This computer is mine.", "This computer mine is.", "This mine is computer."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity14/question.mp3",
         "audioCorrect": "Audio/activity14/05_Chapter 1.mp3",
@@ -56,7 +56,7 @@
       },
       {
         "image": "Images/activity14/7.webp",
-        "choices": ["Those cats are their.", "Those cats are theirs.", "Those cat are thiers."],
+        "choices": ["Those toys are their.", "Those toys are theirs.", "Those their are toys."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity14/question.mp3",
         "audioCorrect": "Audio/activity14/08_Chapter 1.mp3",
@@ -80,7 +80,7 @@
       },
       {
         "image": "Images/activity14/10.webp",
-        "choices": ["These cats is ours.", "These cat are ours.", "These cats are ours."],
+        "choices": ["These shoes is mine.", "These mine shoe is.", "These shoes are mine."],
         "correctIndex": 2,
         "audioQuestion": "Audio/activity14/question.mp3",
         "audioCorrect": "Audio/activity14/11_Chapter 1.mp3",
