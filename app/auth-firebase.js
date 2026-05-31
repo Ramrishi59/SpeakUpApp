@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
+  getIdTokenResult,
   signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import {
@@ -36,7 +37,8 @@ const TRIAL_DURATION_MS = 24 * 60 * 60 * 1000;
 let authState = {
   isLoggedIn: false,
   email: null,
-  uid: null
+  uid: null,
+  isAdmin: false
 };
 
 let licenseState = {
@@ -102,6 +104,17 @@ function getAuthTrialExpiresAt(user = auth.currentUser) {
   const createdAtMs = toMillis(creationTime);
   if (!Number.isFinite(createdAtMs)) return null;
   return new Date(createdAtMs + TRIAL_DURATION_MS).toISOString();
+}
+
+async function readAdminClaim(user, forceRefresh = false) {
+  if (!user) return false;
+  try {
+    const tokenResult = await getIdTokenResult(user, forceRefresh);
+    return tokenResult.claims?.admin === true;
+  } catch (error) {
+    console.warn("Could not read admin claim.", error);
+    return false;
+  }
 }
 
 function buildNewUserProfile({ username, email }) {
@@ -203,7 +216,8 @@ onAuthStateChanged(auth, async (user) => {
     authState = {
       isLoggedIn: true,
       email: user.email || null,
-      uid: user.uid
+      uid: user.uid,
+      isAdmin: await readAdminClaim(user, true)
     };
     try {
       await loadUserProfileWithRetry(user.uid);
@@ -223,7 +237,8 @@ onAuthStateChanged(auth, async (user) => {
     authState = {
       isLoggedIn: false,
       email: null,
-      uid: null
+      uid: null,
+      isAdmin: false
     };
 
     currentProfile = null;
@@ -252,7 +267,8 @@ async function loginWithEmail(email, password) {
   authState = {
     isLoggedIn: true,
     email: user.email || null,
-    uid: user.uid
+    uid: user.uid,
+    isAdmin: await readAdminClaim(user, true)
   };
 
   try {
@@ -271,7 +287,8 @@ async function loginWithGoogle() {
   authState = {
     isLoggedIn: true,
     email: user.email || null,
-    uid: user.uid
+    uid: user.uid,
+    isAdmin: await readAdminClaim(user, true)
   };
 
   let profileSynced = true;
@@ -304,7 +321,8 @@ async function signupWithEmail(username, email, password) {
   authState = {
     isLoggedIn: true,
     email: user.email || null,
-    uid: user.uid
+    uid: user.uid,
+    isAdmin: await readAdminClaim(user, true)
   };
 
   let profileSynced = true;

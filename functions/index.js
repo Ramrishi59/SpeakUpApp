@@ -112,6 +112,166 @@ function sendError(res, error, fallbackStatus = 500) {
   });
 }
 
+function toPlainData(data) {
+  if (!data || typeof data !== "object") return data || null;
+  return Object.fromEntries(Object.entries(data).map(([key, value]) => {
+    if (value && typeof value.toDate === "function") {
+      return [key, value.toDate().toISOString()];
+    }
+    if (Array.isArray(value)) {
+      return [key, value.map((item) => toPlainData(item))];
+    }
+    if (value && typeof value === "object") {
+      return [key, toPlainData(value)];
+    }
+    return [key, value];
+  }));
+}
+
+function requireAdminPost(req, res) {
+  if (handleOptions(req, res) || !requirePost(req, res)) return false;
+  return true;
+}
+
+async function authenticateAdminRequest(req) {
+  const decodedToken = await authenticateRequest(req);
+  if (decodedToken.admin !== true) {
+    const error = new Error("Admin access is required.");
+    error.status = 403;
+    throw error;
+  }
+  return decodedToken;
+}
+
+function normalizeSearch(value) {
+  return String(value || "").trim().toLowerCase().slice(0, 120);
+}
+
+function matchesUserSearch(uid, profile, query) {
+  if (!query) return true;
+  return [
+    uid,
+    profile?.email,
+    profile?.username
+  ].some((value) => String(value || "").toLowerCase().includes(query));
+}
+
+function getUserSummary(doc) {
+  const profile = toPlainData(doc.data());
+  const completedUnits = Array.isArray(profile?.completedUnits) ? profile.completedUnits : [];
+  const openedUnits = Array.isArray(profile?.openedUnits) ? profile.openedUnits : [];
+
+  return {
+    uid: doc.id,
+    username: profile?.username || "",
+    email: profile?.email || "",
+    fullUnlock: profile?.fullUnlock === true,
+    licenseExpiresAt: profile?.licenseExpiresAt || null,
+    trialExpiresAt: profile?.trialExpiresAt || null,
+    lastOpenedUnit: profile?.lastOpenedUnit || null,
+    completedCount: completedUnits.length,
+    openedCount: openedUnits.length,
+    updatedAt: profile?.updatedAt || null,
+    createdAt: profile?.createdAt || null
+  };
+}
+
+async function getUserSummaryByUid(uid) {
+  const snap = await db.collection("users").doc(uid).get();
+  return snap.exists ? getUserSummary(snap) : null;
+}
+
+function addUniqueUserSummary(results, user) {
+  if (!user || results.some((item) => item.uid === user.uid)) return;
+  results.push(user);
+}
+
+function getProgressSummary(profile) {
+  const completedUnits = Array.isArray(profile?.completedUnits) ? profile.completedUnits.map(String) : [];
+  const openedUnits = Array.isArray(profile?.openedUnits) ? profile.openedUnits.map(String) : [];
+  const completedSet = new Set(completedUnits);
+  const inProgressUnits = openedUnits.filter((unitId) => !completedSet.has(unitId));
+
+  return {
+    completedUnits,
+    openedUnits,
+    inProgressUnits,
+    lessonProgress: profile?.lessonProgress || {},
+    lastOpenedUnit: profile?.lastOpenedUnit || null,
+    lastScreenIndex: profile?.lastScreenIndex ?? null
+  };
+}
+
+function normalizeTargetUid(value) {
+  const uid = String(value || "").trim();
+  if (!uid) {
+    const error = new Error("targetUid is required.");
+    error.status = 400;
+    throw error;
+  }
+  return uid;
+}
+
+function normalizeReason(value) {
+  const reason = String(value || "").trim();
+  if (reason.length < 3) {
+    const error = new Error("A reason is required before saving admin changes.");
+    error.status = 400;
+    throw error;
+  }
+  return reason.slice(0, 500);
+}
+
+function normalizeAccessAction(value) {
+  const action = String(value || "").trim();
+  const allowed = new Set(["grant", "revoke", "extend30", "extend90", "extend365", "setExpiry"]);
+  if (!allowed.has(action)) {
+    const error = new Error("Unsupported admin access action.");
+    error.status = 400;
+    throw error;
+  }
+  return action;
+}
+
+function getAccessAfter(action, before, expiresAtInput) {
+  if (action === "revoke") {
+    return {
+      fullUnlock: false,
+      licenseExpiresAt: null,
+      trialExpiresAt: null
+    };
+  }
+
+  if (action === "setExpiry") {
+    const expiryMs = new Date(expiresAtInput || "").getTime();
+    if (!Number.isFinite(expiryMs)) {
+      const error = new Error("A valid expiresAt date is required.");
+      error.status = 400;
+      throw error;
+    }
+    return {
+      fullUnlock: true,
+      licenseExpiresAt: new Date(expiryMs).toISOString(),
+      trialExpiresAt: null
+    };
+  }
+
+  const daysByAction = {
+    grant: 90,
+    extend30: 30,
+    extend90: 90,
+    extend365: 365
+  };
+  const baseMs = Math.max(Date.now(), new Date(before?.licenseExpiresAt || 0).getTime() || 0);
+  const expiresAt = new Date(baseMs + daysByAction[action] * 24 * 60 * 60 * 1000).toISOString();
+
+  return {
+    fullUnlock: true,
+    licenseExpiresAt: expiresAt,
+    trialExpiresAt: null
+  };
+}
+
 exports.createOrder = onRequest({ secrets: [razorpayKeySecret] }, async (req, res) => {
   res.set(CORS_HEADERS);
   if (handleOptions(req, res) || !requirePost(req, res)) return;
@@ -234,6 +394,171 @@ exports.verifyPayment = onRequest({ secrets: [razorpayKeySecret] }, async (req, 
       success: true,
       status: "verified"
     });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+exports.adminListUsers = onRequest(async (req, res) => {
+  res.set(CORS_HEADERS);
+  if (!requireAdminPost(req, res)) return;
+
+  try {
+    await authenticateAdminRequest(req);
+    const query = normalizeSearch(req.body?.query);
+    const limit = Math.max(1, Math.min(200, Number(req.body?.limit) || 100));
+    const users = [];
+
+    if (query) {
+      addUniqueUserSummary(users, await getUserSummaryByUid(query));
+
+      if (query.includes("@")) {
+        try {
+          const authUser = await admin.auth().getUserByEmail(query);
+          addUniqueUserSummary(users, await getUserSummaryByUid(authUser.uid));
+        } catch (error) {
+          if (error.code !== "auth/user-not-found") throw error;
+        }
+      }
+    }
+
+    const snap = await db.collection("users").limit(query ? 500 : limit).get();
+    snap.docs
+      .filter((doc) => matchesUserSearch(doc.id, doc.data(), query))
+      .map(getUserSummary)
+      .forEach((user) => addUniqueUserSummary(users, user));
+
+    res.json({ users });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+exports.adminGetUser = onRequest(async (req, res) => {
+  res.set(CORS_HEADERS);
+  if (!requireAdminPost(req, res)) return;
+
+  try {
+    await authenticateAdminRequest(req);
+    const targetUid = normalizeTargetUid(req.body?.targetUid);
+    const snap = await db.collection("users").doc(targetUid).get();
+
+    if (!snap.exists) {
+      const error = new Error("User profile was not found.");
+      error.status = 404;
+      throw error;
+    }
+
+    const profile = toPlainData(snap.data());
+    res.json({
+      uid: targetUid,
+      profile,
+      progress: getProgressSummary(profile)
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+exports.adminGetUserProgress = onRequest(async (req, res) => {
+  res.set(CORS_HEADERS);
+  if (!requireAdminPost(req, res)) return;
+
+  try {
+    await authenticateAdminRequest(req);
+    const targetUid = normalizeTargetUid(req.body?.targetUid);
+    const snap = await db.collection("users").doc(targetUid).get();
+
+    if (!snap.exists) {
+      const error = new Error("User profile was not found.");
+      error.status = 404;
+      throw error;
+    }
+
+    res.json({
+      uid: targetUid,
+      progress: getProgressSummary(toPlainData(snap.data()))
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+exports.adminUpdateAccess = onRequest(async (req, res) => {
+  res.set(CORS_HEADERS);
+  if (!requireAdminPost(req, res)) return;
+
+  try {
+    const adminToken = await authenticateAdminRequest(req);
+    const targetUid = normalizeTargetUid(req.body?.targetUid);
+    const action = normalizeAccessAction(req.body?.action);
+    const reason = normalizeReason(req.body?.reason);
+    const userRef = db.collection("users").doc(targetUid);
+    const beforeSnap = await userRef.get();
+
+    if (!beforeSnap.exists) {
+      const error = new Error("User profile was not found.");
+      error.status = 404;
+      throw error;
+    }
+
+    const beforeProfile = toPlainData(beforeSnap.data());
+    const afterAccess = getAccessAfter(action, beforeProfile, req.body?.expiresAt);
+    const now = admin.firestore.FieldValue.serverTimestamp();
+    const afterUpdate = {
+      ...afterAccess,
+      updatedAt: now
+    };
+
+    const auditRef = db.collection("adminAuditLogs").doc();
+    const batch = db.batch();
+
+    batch.set(userRef, afterUpdate, { merge: true });
+    batch.set(auditRef, {
+      adminUid: adminToken.uid,
+      adminEmail: adminToken.email || null,
+      targetUid,
+      action,
+      reason,
+      before: {
+        fullUnlock: beforeProfile.fullUnlock === true,
+        licenseExpiresAt: beforeProfile.licenseExpiresAt || null,
+        trialExpiresAt: beforeProfile.trialExpiresAt || null
+      },
+      after: afterAccess,
+      createdAt: now
+    });
+
+    await batch.commit();
+
+    const afterSnap = await userRef.get();
+    res.json({
+      success: true,
+      uid: targetUid,
+      profile: toPlainData(afterSnap.data())
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+exports.adminListPayments = onRequest(async (req, res) => {
+  res.set(CORS_HEADERS);
+  if (!requireAdminPost(req, res)) return;
+
+  try {
+    await authenticateAdminRequest(req);
+    const limit = Math.max(1, Math.min(100, Number(req.body?.limit) || 50));
+    const snap = await db.collection("payments")
+      .orderBy("createdAt", "desc")
+      .limit(limit)
+      .get();
+    const payments = snap.docs.map((doc) => ({
+      id: doc.id,
+      ...toPlainData(doc.data())
+    }));
+
+    res.json({ payments });
   } catch (error) {
     sendError(res, error);
   }

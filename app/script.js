@@ -556,6 +556,34 @@ function updateAccountNavLabel() {
     iconNode.src = selectedAvatar.src;
     iconNode.alt = label;
   }
+
+  updateAdminNavLabel();
+}
+
+function updateAdminNavLabel() {
+  const auth = getLoginState();
+  const adminNavButton = document.querySelector('.bottom-nav .nav-button[data-nav-target="admin"], .bottom-nav .nav-button[data-nav-target="voice-mode"]');
+  if (!adminNavButton) return;
+
+  const labelNode = adminNavButton.querySelector('span');
+  const iconNode = adminNavButton.querySelector('img');
+
+  if (auth.isAdmin === true) {
+    adminNavButton.dataset.navTarget = 'admin';
+    if (labelNode) labelNode.textContent = 'Admin';
+    if (iconNode) {
+      iconNode.src = 'Images/dashboard thumbnails/Manku.webp';
+      iconNode.alt = 'Admin';
+    }
+    return;
+  }
+
+  adminNavButton.dataset.navTarget = 'voice-mode';
+  if (labelNode) labelNode.textContent = 'Voice Mode';
+  if (iconNode) {
+    iconNode.src = 'Images/dashboard thumbnails/mic.webp';
+    iconNode.alt = 'Voice Mode';
+  }
 }
 
 function showDashboardScreen() {
@@ -1338,7 +1366,7 @@ async function loadDashboardLessons() {
 
     lessonsToRender.forEach((lesson, index) => {
       const card = document.createElement('div');
-      card.classList.add('lesson-card');
+      card.classList.add('lesson-card', 'has-thumbnail');
       card.dataset.lessonId = lesson.id;
       card.tabIndex = 0; // keyboard focusable
 
@@ -1374,7 +1402,7 @@ async function loadDashboardLessons() {
       const thumbnailPriority = shouldLoadThumbnailNow ? 'high' : 'low';
 
       card.innerHTML = `
-          <img src="${thumbnailSrc}"${lazyThumbnailAttr} alt="${lesson.title}" class="lesson-thumbnail" width="68" height="68" loading="${thumbnailLoading}" decoding="async" fetchpriority="${thumbnailPriority}">
+          <img src="${thumbnailSrc}"${lazyThumbnailAttr} alt="${lesson.title}" class="lesson-thumbnail" width="76" height="116" loading="${thumbnailLoading}" decoding="async" fetchpriority="${thumbnailPriority}">
           <div class="lesson-info">
             <h3>${lesson.title}</h3>
             <div class="lesson-progress" aria-label="${lesson.title} progress: ${progressDisplay.label}">
@@ -1501,6 +1529,8 @@ async function loadDashboardLessons() {
           window.location.href = 'dashboard.html';
         } else if (target === 'login') {
           openAccountScreen();
+        } else if (target === 'admin') {
+          window.location.href = 'admin.html';
         } else if (target === 'voice-mode') {
           openVoiceModeMenu();
         } else {

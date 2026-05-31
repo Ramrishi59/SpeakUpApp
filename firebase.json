@@ -11,6 +11,9 @@
       ]
     }
   ],
+  "firestore": {
+    "rules": "firestore.rules"
+  },
   "hosting": {
     "public": ".",
     "ignore": [
@@ -43,15 +46,62 @@
       {
         "source": "/api/verify-payment",
         "function": "verifyPayment"
+      },
+      {
+        "source": "/api/admin/list-users",
+        "function": "adminListUsers"
+      },
+      {
+        "source": "/api/admin/get-user",
+        "function": "adminGetUser"
+      },
+      {
+        "source": "/api/admin/update-access",
+        "function": "adminUpdateAccess"
+      },
+      {
+        "source": "/api/admin/list-payments",
+        "function": "adminListPayments"
+      },
+      {
+        "source": "/api/admin/get-user-progress",
+        "function": "adminGetUserProgress"
       }
     ],
     "headers": [
       {
-        "source": "**",
+        "source": "**/*.{html,css,js}",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "no-store, no-cache, max-age=0, must-revalidate"
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
+        "source": "**/*.{webp,jpg,jpeg,png,gif,svg,ico}",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.{mp3,mp4,wav,ogg}",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      },
+      {
+        "source": "**/*.json",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
           }
         ]
       }
