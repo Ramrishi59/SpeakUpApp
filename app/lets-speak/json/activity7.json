@@ -7,70 +7,8 @@
       "fallbackAudioBase": "Audio/fallback/manku/",
       "outroAudioBase": "Audio/outro/manku/"
     },
-    "fallbackAudios": [
-      {
-        "fileName": "01_Chapter 1.mp3",
-        "prompt": "Good try! Let's go to the next one."
-      },
-      {
-        "fileName": "02_Chapter 1.mp3",
-        "prompt": "That's okay. Let's try another one."
-      },
-      {
-        "fileName": "03_Chapter 1.mp3",
-        "prompt": "Nice try! Let's keep going."
-      },
-      {
-        "fileName": "04_Chapter 1.mp3",
-        "prompt": "Don't worry. Let's move on."
-      },
-      {
-        "fileName": "05_Chapter 1.mp3",
-        "prompt": "That's fine. Let's go ahead."
-      },
-      {
-        "fileName": "06_Chapter 1.mp3",
-        "prompt": "Good effort! Next one."
-      },
-      {
-        "fileName": "07_Chapter 1.mp3",
-        "prompt": "It's okay. Let's continue."
-      },
-      {
-        "fileName": "08_Chapter 1.mp3",
-        "prompt": "No problem. Let's try the next one."
-      },
-      {
-        "fileName": "09_Chapter 1.mp3",
-        "prompt": "That's alright. Keep going."
-      },
-      {
-        "fileName": "10_Chapter 1.mp3",
-        "prompt": "Good try! Let's continue."
-      }
-    ],
-    "outroAudios": [
-      {
-        "fileName": "01_Chapter 1.mp3",
-        "prompt": "That was fun, you spoke really well."
-      },
-      {
-        "fileName": "02_Chapter 1.mp3",
-        "prompt": "I loved talking with you."
-      },
-      {
-        "fileName": "03_Chapter 1.mp3",
-        "prompt": "Great talking, let's do more!"
-      },
-      {
-        "fileName": "04_Chapter 1.mp3",
-        "prompt": "You're getting better and better!"
-      },
-      {
-        "fileName": "05_Chapter 1.mp3",
-        "prompt": "Nice speaking. See you again!"
-      }
-    ],
+    "fallbackAudios": "fallbacks/manku.json",
+    "outroAudios": "outros/manku.json",
     "scenes": [
       {
         "id": "intro",

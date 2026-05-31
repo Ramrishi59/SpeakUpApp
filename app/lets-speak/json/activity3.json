@@ -4,55 +4,13 @@
       "id": "raju",
       "name": "Raju",
       "avatar": "../Images/dashboard thumbnails/Raju.webp",
-      "fallbackAudioBase": "Audio/fallback/manku/",
-      "outroAudioBase": "Audio/outro/manku/"
+      "fallbackAudioBase": "Audio/fallback/raju/",
+      "outroAudioBase": "Audio/outro/raju/"
     },
   
-    "fallbackAudios": [
-      {
-        "fileName": "01_Chapter 1.mp3",
-        "prompt": "Good try! Let's go to the next one."
-      },
-      {
-        "fileName": "02_Chapter 1.mp3",
-        "prompt": "That's okay. Let's try another one."
-      },
-      {
-        "fileName": "03_Chapter 1.mp3",
-        "prompt": "Nice try! Let's keep going."
-      },
-      {
-        "fileName": "04_Chapter 1.mp3",
-        "prompt": "Don't worry. Let's move on."
-      },
-      {
-        "fileName": "05_Chapter 1.mp3",
-        "prompt": "That's fine. Let's go ahead."
-      }
-    ],
+    "fallbackAudios": "fallbacks/raju.json",
   
-    "outroAudios": [
-      {
-        "fileName": "01_Chapter 1.mp3",
-        "prompt": "That was fun, you spoke really well."
-      },
-      {
-        "fileName": "02_Chapter 1.mp3",
-        "prompt": "I loved talking with you."
-      },
-      {
-        "fileName": "03_Chapter 1.mp3",
-        "prompt": "Great talking, let's do more!"
-      },
-      {
-        "fileName": "04_Chapter 1.mp3",
-        "prompt": "You're getting better and better!"
-      },
-      {
-        "fileName": "05_Chapter 1.mp3",
-        "prompt": "See you next time!"
-      }
-    ],
+    "outroAudios": "outros/raju.json",
   
     "scenes": [
       {

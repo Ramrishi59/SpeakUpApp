@@ -7,70 +7,8 @@
       "fallbackAudioBase": "Audio/fallback/reena/",
       "outroAudioBase": "Audio/outro/reena/"
     },
-    "fallbackAudios": [
-      {
-        "fileName": "01_Chapter 1.mp3",
-        "prompt": "Good try! Let's go to the next one."
-      },
-      {
-        "fileName": "02_Chapter 1.mp3",
-        "prompt": "That's okay. Let's try another one."
-      },
-      {
-        "fileName": "03_Chapter 1.mp3",
-        "prompt": "Nice try! Let's keep going."
-      },
-      {
-        "fileName": "04_Chapter 1.mp3",
-        "prompt": "Don't worry. Let's move on."
-      },
-      {
-        "fileName": "05_Chapter 1.mp3",
-        "prompt": "That's fine. Let's go ahead."
-      },
-      {
-        "fileName": "06_Chapter 1.mp3",
-        "prompt": "Good effort! Next one."
-      },
-      {
-        "fileName": "07_Chapter 1.mp3",
-        "prompt": "It's okay. Let's continue."
-      },
-      {
-        "fileName": "08_Chapter 1.mp3",
-        "prompt": "No problem. Let's try the next one."
-      },
-      {
-        "fileName": "09_Chapter 1.mp3",
-        "prompt": "That's alright. Keep going."
-      },
-      {
-        "fileName": "10_Chapter 1.mp3",
-        "prompt": "Good try! Let's continue."
-      }
-    ],
-    "outroAudios": [
-      {
-        "fileName": "01_Chapter 1.mp3",
-        "prompt": "That was so much fun talking with you!"
-      },
-      {
-        "fileName": "02_Chapter 1.mp3",
-        "prompt": "You spoke wonderfully today!"
-      },
-      {
-        "fileName": "03_Chapter 1.mp3",
-        "prompt": "Great job! Let’s talk again soon!"
-      },
-      {
-        "fileName": "04_Chapter 1.mp3",
-        "prompt": "You are getting better every day!"
-      },
-      {
-        "fileName": "05_Chapter 1.mp3",
-        "prompt": "Bye for now! Keep speaking!"
-      }
-    ],
+    "fallbackAudios": "fallbacks/reena.json",
+    "outroAudios": "outros/reena.json",
     "scenes": [
       {
         "id": "intro",

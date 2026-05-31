@@ -74,25 +74,38 @@ function normalizeBasePath(path) {
   return path.endsWith("/") ? path : `${path}/`;
 }
 
+function presenterAudioBase(folderName, configuredBase) {
+  if (presenter.id) return `Audio/${folderName}/${presenter.id}/`;
+  return normalizeBasePath(configuredBase || `Audio/${folderName}/`);
+}
+
+function resolveJsonReference(src) {
+  return new URL(src, new URL(DATA_URL, window.location.href)).toString();
+}
+
+async function loadAudioList(value, listName) {
+  if (Array.isArray(value)) return value;
+  if (typeof value !== "string") return [];
+
+  const res = await fetch(resolveJsonReference(value), { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load ${listName} ${value}`);
+
+  const json = await res.json();
+  if (Array.isArray(json)) return json;
+  return Array.isArray(json?.items) ? json.items : [];
+}
+
 async function loadActivityData() {
   const res = await fetch(DATA_URL, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load ${DATA_URL}`);
 
   const json = await res.json();
   scenes = Array.isArray(json) ? json : (json?.scenes || json?.items || []);
-  fallbackAudios = Array.isArray(json?.fallbackAudios) ? json.fallbackAudios : [];
-  outroAudios = Array.isArray(json?.outroAudios) ? json.outroAudios : [];
   presenter = json?.presenter || {};
-  fallbackAudioBase = normalizeBasePath(
-    presenter.fallbackAudioBase ||
-    json?.fallbackAudioBase ||
-    (presenter.id ? `Audio/fallback/${presenter.id}/` : "Audio/fallback/")
-  );
-  outroAudioBase = normalizeBasePath(
-    presenter.outroAudioBase ||
-    json?.outroAudioBase ||
-    (presenter.id ? `Audio/outro/${presenter.id}/` : "Audio/outro/")
-  );
+  fallbackAudios = await loadAudioList(json?.fallbackAudios, "fallback audios");
+  outroAudios = await loadAudioList(json?.outroAudios, "outro audios");
+  fallbackAudioBase = presenterAudioBase("fallback", presenter.fallbackAudioBase || json?.fallbackAudioBase);
+  outroAudioBase = presenterAudioBase("outro", presenter.outroAudioBase || json?.outroAudioBase);
 
   if (!scenes.length) {
     throw new Error(`${DATA_URL} does not contain scenes`);
