@@ -156,10 +156,20 @@ function matchesUserSearch(uid, profile, query) {
   ].some((value) => String(value || "").toLowerCase().includes(query));
 }
 
+function valueToMillis(value) {
+  if (!value) return null;
+  if (typeof value.toMillis === "function") return value.toMillis();
+  if (typeof value.toDate === "function") return value.toDate().getTime();
+  const millis = new Date(value).getTime();
+  return Number.isFinite(millis) ? millis : null;
+}
+
 function getUserSummary(doc) {
   const profile = toPlainData(doc.data());
   const completedUnits = Array.isArray(profile?.completedUnits) ? profile.completedUnits : [];
   const openedUnits = Array.isArray(profile?.openedUnits) ? profile.openedUnits : [];
+  const lastSeenAtMs = valueToMillis(profile?.lastSeenAt);
+  const isOnline = Number.isFinite(lastSeenAtMs) && Date.now() - lastSeenAtMs <= 2 * 60 * 1000;
 
   return {
     uid: doc.id,
@@ -169,6 +179,10 @@ function getUserSummary(doc) {
     licenseExpiresAt: profile?.licenseExpiresAt || null,
     trialExpiresAt: profile?.trialExpiresAt || null,
     lastOpenedUnit: profile?.lastOpenedUnit || null,
+    lastSeenAt: profile?.lastSeenAt || null,
+    activePath: profile?.activePath || null,
+    activePage: profile?.activePage || null,
+    isOnline,
     completedCount: completedUnits.length,
     openedCount: openedUnits.length,
     updatedAt: profile?.updatedAt || null,
@@ -238,7 +252,7 @@ function getAccessAfter(action, before, expiresAtInput) {
     return {
       fullUnlock: false,
       licenseExpiresAt: null,
-      trialExpiresAt: null
+      trialExpiresAt: new Date(Date.now() - 1000).toISOString()
     };
   }
 
@@ -406,7 +420,7 @@ exports.adminListUsers = onRequest(async (req, res) => {
   try {
     await authenticateAdminRequest(req);
     const query = normalizeSearch(req.body?.query);
-    const limit = Math.max(1, Math.min(200, Number(req.body?.limit) || 100));
+    const limit = Math.max(1, Math.min(500, Number(req.body?.limit) || 200));
     const users = [];
 
     if (query) {

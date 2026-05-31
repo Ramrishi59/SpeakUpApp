@@ -32,6 +32,9 @@ service cloud.firestore {
         "openedUnits",
         "completedUnits",
         "lessonProgress",
+        "lastSeenAt",
+        "activePath",
+        "activePage",
         "updatedAt"
       ]);
     }

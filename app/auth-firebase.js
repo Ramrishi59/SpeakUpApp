@@ -33,6 +33,7 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 const TRIAL_DURATION_MS = 24 * 60 * 60 * 1000;
+const PRESENCE_HEARTBEAT_MS = 60 * 1000;
 
 let authState = {
   isLoggedIn: false,
@@ -53,6 +54,7 @@ let licenseState = {
 let currentProfile = null;
 let resolveReady;
 let readyResolved = false;
+let presenceTimerId = null;
 
 function delay(ms) {
   return new Promise((resolve) => {
@@ -104,6 +106,42 @@ function getAuthTrialExpiresAt(user = auth.currentUser) {
   const createdAtMs = toMillis(creationTime);
   if (!Number.isFinite(createdAtMs)) return null;
   return new Date(createdAtMs + TRIAL_DURATION_MS).toISOString();
+}
+
+function getPresencePageLabel() {
+  const path = window.location.pathname.split("/").pop() || "dashboard.html";
+  if (path === "dashboard.html") return "Dashboard";
+  if (path === "admin.html") return "Admin";
+  return path.replace(/\.html$/i, "") || "App";
+}
+
+async function savePresence() {
+  const user = auth.currentUser;
+  if (!user) return false;
+
+  try {
+    await updateDoc(doc(db, "users", user.uid), {
+      lastSeenAt: serverTimestamp(),
+      activePath: window.location.pathname + window.location.search,
+      activePage: getPresencePageLabel()
+    });
+    return true;
+  } catch (error) {
+    console.warn("Could not update presence.", error);
+    return false;
+  }
+}
+
+function stopPresenceHeartbeat() {
+  if (!presenceTimerId) return;
+  window.clearInterval(presenceTimerId);
+  presenceTimerId = null;
+}
+
+function startPresenceHeartbeat() {
+  stopPresenceHeartbeat();
+  savePresence();
+  presenceTimerId = window.setInterval(savePresence, PRESENCE_HEARTBEAT_MS);
 }
 
 async function readAdminClaim(user, forceRefresh = false) {
@@ -221,6 +259,7 @@ onAuthStateChanged(auth, async (user) => {
     };
     try {
       await loadUserProfileWithRetry(user.uid);
+      startPresenceHeartbeat();
     } catch (error) {
       console.warn("Could not load user profile from Firestore.", error);
       currentProfile = null;
@@ -234,6 +273,7 @@ onAuthStateChanged(auth, async (user) => {
       };
     }
   } else {
+    stopPresenceHeartbeat();
     authState = {
       isLoggedIn: false,
       email: null,
@@ -511,6 +551,7 @@ window.SUAuth = {
   saveProgress,
   markUnitCompleted,
   saveProfileAvatar,
+  savePresence,
   refreshProfile,
   getIdToken,
   logout,

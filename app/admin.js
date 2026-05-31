@@ -24,6 +24,8 @@ const googleProvider = new GoogleAuthProvider();
 let selectedUid = null;
 let selectedUser = null;
 let selectedProgress = null;
+let loadedUsers = [];
+let activeUserFilter = "all";
 
 const els = {
   adminIdentity: document.getElementById("adminIdentity"),
@@ -64,6 +66,23 @@ function formatDate(value) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return String(value);
   return date.toLocaleString();
+}
+
+function formatRelativeTime(value) {
+  if (!value) return "Never seen";
+  const date = new Date(value);
+  const millis = date.getTime();
+  if (!Number.isFinite(millis)) return String(value);
+
+  const diffSeconds = Math.max(0, Math.round((Date.now() - millis) / 1000));
+  if (diffSeconds < 10) return "just now";
+  if (diffSeconds < 60) return `${diffSeconds}s ago`;
+  const diffMinutes = Math.round(diffSeconds / 60);
+  if (diffMinutes < 60) return `${diffMinutes}m ago`;
+  const diffHours = Math.round(diffMinutes / 60);
+  if (diffHours < 24) return `${diffHours}h ago`;
+  const diffDays = Math.round(diffHours / 24);
+  return `${diffDays}d ago`;
 }
 
 function formatAmount(amount, currency) {
@@ -130,15 +149,23 @@ function setSignedInView(user) {
 
 function renderUserList(users) {
   if (!els.userList) return;
-  if (!users.length) {
+  const visibleUsers = activeUserFilter === "online"
+    ? users.filter((user) => user.isOnline === true)
+    : users;
+
+  if (!visibleUsers.length) {
     els.userList.innerHTML = `<p class="muted">No matching users found.</p>`;
     return;
   }
 
-  els.userList.innerHTML = users.map((user) => `
+  els.userList.innerHTML = visibleUsers.map((user) => `
     <button type="button" class="user-button ${user.uid === selectedUid ? "active" : ""}" data-uid="${escapeHtml(user.uid)}">
-      <strong>${escapeHtml(user.username || "Unnamed user")}</strong><br>
-      <span class="muted">${escapeHtml(user.email || "No email")}</span><br>
+      <span class="user-topline">
+        <strong>${escapeHtml(user.username || "Unnamed user")}</strong>
+        <span class="online-dot ${user.isOnline ? "is-online" : ""}">${user.isOnline ? "Online" : "Away"}</span>
+      </span>
+      <span class="muted user-meta-line">${escapeHtml(user.email || "No email")}</span>
+      <span class="muted user-meta-line">${escapeHtml(user.activePage || "Last seen")} · ${escapeHtml(formatRelativeTime(user.lastSeenAt))}</span>
       <small>${escapeHtml(user.uid)}</small>
     </button>
   `).join("");
@@ -186,12 +213,9 @@ function renderProgress(progress) {
       <div class="detail"><span>In-progress units</span><strong>${inProgressUnits.length}</strong></div>
       <div class="detail"><span>Last opened</span><strong>${escapeHtml(progress?.lastOpenedUnit || "Not set")}</strong></div>
     </div>
-    <h3>Completed Units</h3>
-    <pre>${escapeHtml(JSON.stringify(completedUnits, null, 2))}</pre>
-    <h3>In-progress Units</h3>
-    <pre>${escapeHtml(JSON.stringify(inProgressUnits, null, 2))}</pre>
-    <h3>Lesson Progress</h3>
-    <pre>${escapeHtml(JSON.stringify(lessonProgress, null, 2))}</pre>
+    ${renderUnitList("Completed Units", completedUnits, "completed")}
+    ${renderUnitList("In-progress Units", inProgressUnits, "progress")}
+    ${renderLessonProgressCards(lessonProgress)}
   `;
 }
 
@@ -199,15 +223,115 @@ function renderRawProfile(profile) {
   els.rawTab.textContent = JSON.stringify(profile || {}, null, 2);
 }
 
+function getReadableUnitName(unitId) {
+  const value = String(unitId || "").trim();
+  if (!value) return "Unknown lesson";
+  return value
+    .replace(/^order-activity/i, "Sentence Activity ")
+    .replace(/^order-/i, "Sentence Activity ")
+    .replace(/^activity/i, "Quiz Activity ")
+    .replace(/^unit/i, "Unit ")
+    .replace(/-/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function getLessonProgressPercent(item) {
+  const explicitPercent = Number(item?.percent);
+  if (Number.isFinite(explicitPercent)) {
+    return Math.max(0, Math.min(100, Math.round(explicitPercent)));
+  }
+
+  const lastScreenIndex = Number(item?.lastScreenIndex);
+  const totalScreens = Number(item?.totalScreens);
+  if (!Number.isFinite(lastScreenIndex) || !Number.isFinite(totalScreens) || totalScreens <= 1) {
+    return 0;
+  }
+
+  return Math.max(0, Math.min(99, Math.round((lastScreenIndex / (totalScreens - 1)) * 100)));
+}
+
+function renderUnitList(title, values, stateClass) {
+  if (!values.length) {
+    return `
+      <section class="progress-section">
+        <h3>${escapeHtml(title)} <span class="progress-count">0</span></h3>
+        <p class="empty-state">No ${escapeHtml(title.toLowerCase())} saved for this user yet.</p>
+      </section>
+    `;
+  }
+
+  return `
+    <section class="progress-section">
+      <h3>${escapeHtml(title)} <span class="progress-count">${values.length}</span></h3>
+      <div class="unit-chip-list">
+        ${values.map((unitId) => `
+          <span class="unit-chip ${stateClass}" title="${escapeHtml(unitId)}">${escapeHtml(getReadableUnitName(unitId))}</span>
+        `).join("")}
+      </div>
+    </section>
+  `;
+}
+
+function renderLessonProgressCards(lessonProgress) {
+  const entries = Object.entries(lessonProgress || {});
+  if (!entries.length) {
+    return `
+      <section class="progress-section">
+        <h3>Lesson Progress <span class="progress-count">0</span></h3>
+        <p class="empty-state">No lesson progress saved for this user yet.</p>
+      </section>
+    `;
+  }
+
+  return `
+    <section class="progress-section">
+      <h3>Lesson Progress <span class="progress-count">${entries.length}</span></h3>
+      <div class="lesson-progress-list">
+        ${entries.map(([unitId, item]) => {
+          const percent = getLessonProgressPercent(item);
+          const lastScreenIndex = Number.isFinite(Number(item?.lastScreenIndex))
+            ? Number(item.lastScreenIndex)
+            : null;
+          const totalScreens = Number.isFinite(Number(item?.totalScreens))
+            ? Number(item.totalScreens)
+            : null;
+          const screenText = totalScreens
+            ? `Screen ${lastScreenIndex === null ? 1 : lastScreenIndex + 1} of ${totalScreens}`
+            : "Started";
+
+          return `
+            <article class="lesson-progress-card">
+              <div class="lesson-progress-card-top">
+                <div>
+                  <div class="lesson-progress-name">${escapeHtml(getReadableUnitName(unitId))}</div>
+                  <div class="lesson-progress-meta">${escapeHtml(screenText)}</div>
+                </div>
+                <span class="pill">${percent}%</span>
+              </div>
+              <div class="mini-progress-track" aria-label="${escapeHtml(getReadableUnitName(unitId))} progress ${percent}%">
+                <span class="mini-progress-fill" style="width: ${percent}%"></span>
+              </div>
+            </article>
+          `;
+        }).join("")}
+      </div>
+    </section>
+  `;
+}
+
 async function searchUsers() {
   setStatus(els.userSearchStatus, "Loading users...");
   try {
     const payload = await adminPost("/api/admin/list-users", {
       query: els.userSearch?.value || "",
-      limit: 200
+      limit: 500
     });
-    renderUserList(payload.users || []);
-    setStatus(els.userSearchStatus, `${(payload.users || []).length} user(s) loaded.`, "success");
+    loadedUsers = payload.users || [];
+    renderUserList(loadedUsers);
+    const onlineCount = loadedUsers.filter((user) => user.isOnline === true).length;
+    setStatus(els.userSearchStatus, `${loadedUsers.length} user(s) loaded. ${onlineCount} active now.`, "success");
   } catch (error) {
     console.error(error);
     setStatus(els.userSearchStatus, error.message, "error");
@@ -264,6 +388,7 @@ async function updateAccess(action) {
     selectedUser = payload.profile || selectedUser;
     renderDetails(selectedUser);
     renderRawProfile(selectedUser);
+    await loadUser(selectedUid);
     els.accessReason.value = "";
     setStatus(els.accessStatus, "Access updated and audit log created.", "success");
   } catch (error) {
@@ -338,6 +463,16 @@ els.userSearch?.addEventListener("keydown", (event) => {
   if (event.key === "Enter") searchUsers();
 });
 els.refreshPaymentsButton?.addEventListener("click", loadPayments);
+
+document.querySelectorAll("[data-user-filter]").forEach((button) => {
+  button.addEventListener("click", () => {
+    activeUserFilter = button.dataset.userFilter || "all";
+    document.querySelectorAll("[data-user-filter]").forEach((filterButton) => {
+      filterButton.classList.toggle("active", filterButton === button);
+    });
+    renderUserList(loadedUsers);
+  });
+});
 
 document.querySelectorAll("[data-action]").forEach((button) => {
   button.addEventListener("click", () => updateAccess(button.dataset.action));

@@ -106,6 +106,10 @@ function applyPresenter() {
   els.avatar.alt = presenter.name || "Presenter";
 }
 
+function presenterName() {
+  return presenter.name || "Presenter";
+}
+
 function getOutroSceneIndex() {
   return scenes.findIndex((scene) => scene.done);
 }
@@ -250,6 +254,12 @@ function setState(text, state = "ready") {
   els.practicePanel.dataset.state = state;
 }
 
+function setHeardText(text) {
+  if (els.heardText) {
+    els.heardText.textContent = text;
+  }
+}
+
 function clearRetryTimer() {
   window.clearTimeout(retryTimer);
   retryTimer = null;
@@ -284,7 +294,7 @@ function showScene(scene, overridePrompt = scene.prompt) {
   els.sceneImage.alt = overridePrompt;
   els.sceneImage.dataset.sceneKind = scene.sceneKind || "practice";
   els.artCard.dataset.mode = scene.sceneKind === "no-card" ? "hidden" : "image";
-  els.heardText.textContent = "Nothing yet";
+  setHeardText("Nothing yet");
   els.micBtn.disabled = true;
   schedulePromptFit();
 }
@@ -299,7 +309,7 @@ function playAudioSource(src, onDone) {
 
   clearRetryTimer();
   stopAudio();
-  setState("Manku speaking", "ready");
+  setState(`${presenterName()} speaking`, "ready");
   els.micBtn.disabled = true;
 
   let finished = false;
@@ -394,7 +404,7 @@ function startSceneInteraction(scene) {
   }
 
   if (scene.done) {
-    els.heardText.textContent = "";
+    setHeardText("");
     playRandomOutroAudio(() => {
       setState("Replay anytime", "correct");
       els.micBtn.disabled = true;
@@ -418,7 +428,7 @@ function ensureRecognition() {
   recognition.onstart = () => {
     isListening = true;
     acceptingSpeech = true;
-    setState("Listening", "listening");
+    setState(`${presenterName()} listening`, "listening");
     els.micBtn.disabled = true;
     silenceTimer = window.setTimeout(handleSilence, 5600);
   };
@@ -430,7 +440,7 @@ function ensureRecognition() {
       .map((result) => result?.transcript || "")
       .filter(Boolean);
     const best = transcripts[0] || "";
-    els.heardText.textContent = best || "Voice heard";
+    setHeardText(best || "Voice heard");
     classifyTranscripts(transcripts);
   };
 
@@ -516,7 +526,7 @@ function handleSilence() {
   acceptingSpeech = false;
   stopListening();
 
-  els.heardText.textContent = "Nothing yet";
+  setHeardText("Nothing yet");
   handleTryAgain();
 }
 
@@ -549,7 +559,7 @@ function handleAdvanceAfterRetries() {
   stopAudio();
   els.micBtn.disabled = true;
   setState("Let's move on", "try");
-  els.heardText.textContent = "";
+  setHeardText("");
   els.sceneImage.src = resolveImageSource(scene);
   els.sceneImage.alt = "";
   els.sceneImage.dataset.sceneKind = scene.sceneKind || "practice";
