@@ -47,6 +47,7 @@ let acceptingSpeech = false;
 let retryTimer = null;
 let fitPromptFrame = null;
 let retryCount = 0;
+const READY_STATUS_TEXT = "Tap the Mic, say something";
 
 function hasPathPrefix(value) {
   return /^(?:https?:|data:|blob:|\.{0,2}\/|Audio\/|Images\/)/i.test(String(value || ""));
@@ -466,7 +467,7 @@ function ensureRecognition() {
     silenceTimer = null;
     if (acceptingSpeech && els.practicePanel.dataset.state === "listening") {
       els.micBtn.disabled = false;
-      setState("Tap the mic", "ready");
+      setState(READY_STATUS_TEXT, "ready");
     }
   };
 
@@ -493,7 +494,7 @@ function startListening() {
     recognizer.start();
   } catch (error) {
     els.micBtn.disabled = false;
-    setState("Tap the mic", "ready");
+    setState(READY_STATUS_TEXT, "ready");
   }
 }
 
@@ -663,6 +664,6 @@ loadActivityData()
     sceneIndex = 0;
     applyPresenter();
     showScene(scenes[0]);
-    setState(SpeechRecognition ? "Tap the mic" : "Speech recognition unavailable", "ready");
+    setState(SpeechRecognition ? READY_STATUS_TEXT : "Speech recognition unavailable", "ready");
     els.micBtn.disabled = false;
   });

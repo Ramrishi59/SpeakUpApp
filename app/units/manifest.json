@@ -2,7 +2,7 @@
   "cards": [
     { 
       "description": "Intro", 
-      "title": "Introduction", 
+      "title": "Welcome to 'SpeakUp'", 
       "route": "", 
       "id": "intro", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
