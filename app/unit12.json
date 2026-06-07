@@ -1,0 +1,158 @@
+{
+  "id": "unit12",
+  "name": "Unit 12: I am a girl",
+  "description": "Learn to say 'I am', 'He is', and 'She is' in simple sentences.",
+  "thumbnail": "Images/Unit12/i_am_a_girl_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit12/1.webp",
+      "audio": "Audio/Unit12/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/repeating_assets/looklisten.webp",
+      "audio": "Audio/intro2/looklistenrepeat.mp3"
+    },
+    {
+      "text": "I am Raju.",
+      "image": "Images/Unit12/4.webp",
+      "audio": "Audio/Unit12/04_Chapter 1.mp3"
+    },
+    {
+      "text": "I am a boy.",
+      "image": "Images/Unit12/4.webp",
+      "audio": "Audio/Unit12/05_Chapter 1.mp3"
+    },
+
+    {
+      "text": "I am Reena.",
+      "image": "Images/Unit12/5.webp",
+      "audio": "Audio/Unit12/06_Chapter 1.mp3"
+    },
+    {
+      "text": "I am a girl.",
+      "image": "Images/Unit12/5.webp",
+      "audio": "Audio/Unit12/07_Chapter 1.mp3"
+    },
+
+    {
+      "text": "I am Nithin.",
+      "image": "Images/Unit12/6.webp",
+      "audio": "Audio/Unit12/08_Chapter 1.mp3"
+    },
+    {
+      "text": "I am a man.",
+      "image": "Images/Unit12/6.webp",
+      "audio": "Audio/Unit12/09_Chapter 1.mp3"
+    },
+
+    {
+      "text": "I am Meera.",
+      "image": "Images/Unit12/7.webp",
+      "audio": "Audio/Unit12/10_Chapter 1.mp3"
+    },
+    {
+      "text": "I am a woman.",
+      "image": "Images/Unit12/7.webp",
+      "audio": "Audio/Unit12/11_Chapter 1.mp3"
+    },
+
+    {
+      "text": "I am Manku.",
+      "image": "Images/Unit12/8.webp",
+      "audio": "Audio/Unit12/12_Chapter 1.mp3"
+    },
+    {
+      "text": "I am a monkey.",
+      "image": "Images/Unit12/8.webp",
+      "audio": "Audio/Unit12/13_Chapter 1.mp3"
+    },
+
+    {
+      "text": "He is Raju. He is a boy.",
+      "image": "Images/Unit12/9.webp",
+      "audio": "Audio/Unit12/14_Chapter 1.mp3"
+    },
+
+    {
+      "text": "She is Reena. She is a girl.",
+      "image": "Images/Unit12/10.webp",
+      "audio": "Audio/Unit12/15_Chapter 1.mp3"
+    },
+
+    {
+      "text": "He is Nithin uncle. He is a man.",
+      "image": "Images/Unit12/11.webp",
+      "audio": "Audio/Unit12/16_Chapter 1.mp3"
+    },
+    {
+      "text": "She is Meera aunty. She is a woman.",
+      "image": "Images/Unit12/12.webp",
+      "audio": "Audio/Unit12/17_Chapter 1.mp3"
+    },
+
+    {
+      "text": "He is John.",
+      "image": "Images/Unit12/13.webp",
+      "audio": "Audio/Unit12/18_Chapter 1.mp3"
+    },
+    {
+      "text": "Is he a boy?",
+      "image": "Images/Unit12/13.webp",
+      "audio": "Audio/Unit12/19_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, he is.",
+      "image": "Images/Unit12/13.webp",
+      "audio": "Audio/Unit12/20_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Is Saira a boy?",
+      "image": "Images/Unit12/14.webp",
+      "audio": "Audio/Unit12/21_Chapter 1.mp3"
+    },
+    {
+      "text": "No, she is a girl.",
+      "image": "Images/Unit12/14.webp",
+      "audio": "Audio/Unit12/22_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Is she Reena?",
+      "image": "Images/Unit12/15.webp",
+      "audio": "Audio/Unit12/23_Chapter 1.mp3"
+    },
+    {
+      "text": "Yes, she is.",
+      "image": "Images/Unit12/15.webp",
+      "audio": "Audio/Unit12/24_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Is he John?",
+      "image": "Images/Unit12/16.webp",
+      "audio": "Audio/Unit12/25_Chapter 1.mp3"
+    },
+    {
+      "text": "No, he is Raju.",
+      "image": "Images/Unit12/16.webp",
+      "audio": "Audio/Unit12/26_Chapter 1.mp3"
+    },
+
+    {
+      "text": "Is she Reena?",
+      "image": "Images/Unit12/17.webp",
+      "audio": "Audio/Unit12/27_Chapter 1.mp3"
+    },
+    {
+      "text": "No, she is Saira.",
+      "image": "Images/Unit12/17.webp",
+      "audio": "Audio/Unit12/28_Chapter 1.mp3"
+    },
+
+    {
+      "image": "Images/outros/outro6.webp",
+      "audio": "Audio/outros/outro6.mp3"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "unit1",
+  "name": "Unit 1: a, an",
+  "description": "Learn about indefinite articles with common objects.",
+  "thumbnail": "Images/Unit1/a_an_thumbnail.jpg",
+  "words": [
+    
+
+    {
+      "image": "Images/Unit1/1.webp",
+      "audio": "Audio/Unit1/01_Chapter 1.mp3"
+    },
+
+    {
+      "image": "Images/Unit1/2.webp",
+      "audio": "Audio/Unit1/02_Chapter 1.mp3"
+    },
+
+    {
+      "image": "Images/repeating_assets/looklisten.webp",
+      "audio": "Audio/intro2/looklistenrepeat.mp3"
+    },
+
+    { "text": "a book", "image": "Images/Unit1/4.webp", "audio": "Audio/Unit1/04_Chapter 1.mp3" },
+    { "text": "a pencil", "image": "Images/Unit1/5.webp", "audio": "Audio/Unit1/05_Chapter 1.mp3" },
+    { "text": "a pen", "image": "Images/Unit1/6.webp", "audio": "Audio/Unit1/06_Chapter 1.mp3" },
+    { "text": "a crayon", "image": "Images/Unit1/7.webp", "audio": "Audio/Unit1/07_Chapter 1.mp3" },
+    { "text": "a ruler", "image": "Images/Unit1/8.webp", "audio": "Audio/Unit1/08_Chapter 1.mp3" },
+
+    { "text": "a backpack", "image": "Images/Unit1/9.webp", "audio": "Audio/Unit1/09_Chapter 1.mp3" },
+    { "text": "a table", "image": "Images/Unit1/10.webp", "audio": "Audio/Unit1/10_Chapter 1.mp3" },
+    { "text": "a chair", "image": "Images/Unit1/11.webp", "audio": "Audio/Unit1/11_Chapter 1.mp3" },
+    { "text": "a torch", "image": "Images/Unit1/12.webp", "audio": "Audio/Unit1/12_Chapter 1.mp3" },
+    { "text": "a leaf", "image": "Images/Unit1/13.webp", "audio": "Audio/Unit1/13_Chapter 1.mp3" },
+    { "text": "a boat", "image": "Images/Unit1/15.webp", "audio": "Audio/Unit1/15_Chapter 1.mp3" },
+    { "text": "a ship", "image": "Images/Unit1/14.webp", "audio": "Audio/Unit1/14_Chapter 1.mp3" },
+    { "text": "a toothbrush", "image": "Images/Unit1/16.webp", "audio": "Audio/Unit1/16_Chapter 1.mp3" },
+    { "text": "a fly", "image": "Images/Unit1/17.webp", "audio": "Audio/Unit1/17_Chapter 1.mp3" },
+    { "text": "a shark", "image": "Images/Unit1/19.webp", "audio": "Audio/Unit1/19_Chapter 1.mp3" },
+    { "text": "a dolphin", "image": "Images/Unit1/18.webp", "audio": "Audio/Unit1/18_Chapter 1.mp3" },
+    { "text": "a horse", "image": "Images/Unit1/20.webp", "audio": "Audio/Unit1/20_Chapter 1.mp3" },
+    { "text": "a mug", "image": "Images/Unit1/21.webp", "audio": "Audio/Unit1/21_Chapter 1.mp3" },
+    { "text": "an apple", "image": "Images/Unit1/22.webp", "audio": "Audio/Unit1/22_Chapter 1.mp3" },
+    { "text": "an orange", "image": "Images/Unit1/23.webp", "audio": "Audio/Unit1/23_Chapter 1.mp3" },
+    { "text": "an egg", "image": "Images/Unit1/24.webp", "audio": "Audio/Unit1/24_Chapter 1.mp3" },
+    { "text": "an umbrella", "image": "Images/Unit1/25.webp", "audio": "Audio/Unit1/25_Chapter 1.mp3" },
+    { "text": "an eraser", "image": "Images/Unit1/26.webp", "audio": "Audio/Unit1/26_Chapter 1.mp3" },
+    { "text": "an elephant", "image": "Images/Unit1/27.webp", "audio": "Audio/Unit1/27_Chapter 1.mp3" },
+    { "text": "an iron", "image": "Images/Unit1/28.webp", "audio": "Audio/Unit1/28_Chapter 1.mp3" },
+    { "text": "an envelope", "image": "Images/Unit1/29.webp", "audio": "Audio/Unit1/29_Chapter 1.mp3" },
+    { "text": "an ant", "image": "Images/Unit1/30.webp", "audio": "Audio/Unit1/30_Chapter 1.mp3" },
+    { "text": "an eagle", "image": "Images/Unit1/31.webp", "audio": "Audio/Unit1/31_Chapter 1.mp3" },
+    { "text": "an octopus", "image": "Images/Unit1/32.webp", "audio": "Audio/Unit1/32_Chapter 1.mp3" },
+    { "text": "an alien", "image": "Images/Unit1/33.webp", "audio": "Audio/Unit1/33_Chapter 1.mp3" },
+
+    {
+      "image": "Images/outros/outro1.webp",
+      "audio": "Audio/outros/outro1.mp3"
+    }
+  ]
+}

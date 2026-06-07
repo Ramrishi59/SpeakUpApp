@@ -1,0 +1,161 @@
+{
+  "id": "unit28",
+  "name": "Unit 28: How many?",
+  "description": "Learn to count fruits and vegetables using 'How many?'",
+  "thumbnail": "Images/Unit28/unit28_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit28/1.webp",
+      "audio": "Audio/Unit28/01_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit28/2.webp",
+      "audio": "Audio/Unit28/02_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/repeating_assets/looklisten.webp",
+      "audio": "Audio/intro2/looklistenrepeat.mp3",
+      "text": ""
+    },
+
+    {
+      "image": "Images/Unit28/4.webp",
+      "audio": "Audio/Unit28/04_Chapter 1.mp3",
+      "text": "How many tomatoes?"
+    },
+    {
+      "image": "Images/Unit28/4.webp",
+      "audio": "Audio/Unit28/05_Chapter 1.mp3",
+      "text": "Three tomatoes."
+    },
+
+    {
+      "image": "Images/Unit28/6.webp",
+      "audio": "Audio/Unit28/06_Chapter 1.mp3",
+      "text": "How many potatoes?"
+    },
+    {
+      "image": "Images/Unit28/6.webp",
+      "audio": "Audio/Unit28/07_Chapter 1.mp3",
+      "text": "Five potatoes."
+    },
+
+    {
+      "image": "Images/Unit28/8.webp",
+      "audio": "Audio/Unit28/08_Chapter 1.mp3",
+      "text": "How many cabbages?"
+    },
+    {
+      "image": "Images/Unit28/8.webp",
+      "audio": "Audio/Unit28/09_Chapter 1.mp3",
+      "text": "Two cabbages."
+    },
+
+    {
+      "image": "Images/Unit28/10.webp",
+      "audio": "Audio/Unit28/10_Chapter 1.mp3",
+      "text": "How many brinjals?"
+    },
+    {
+      "image": "Images/Unit28/10.webp",
+      "audio": "Audio/Unit28/11_Chapter 1.mp3",
+      "text": "Four brinjals."
+    },
+
+    {
+      "image": "Images/Unit28/12.webp",
+      "audio": "Audio/Unit28/12_Chapter 1.mp3",
+      "text": "How many bitter gourds?"
+    },
+    {
+      "image": "Images/Unit28/12.webp",
+      "audio": "Audio/Unit28/13_Chapter 1.mp3",
+      "text": "Two bitter gourds."
+    },
+
+    {
+      "image": "Images/Unit28/14.webp",
+      "audio": "Audio/Unit28/14_Chapter 1.mp3",
+      "text": "How many pineapples?"
+    },
+    {
+      "image": "Images/Unit28/14.webp",
+      "audio": "Audio/Unit28/15_Chapter 1.mp3",
+      "text": "Four pineapples."
+    },
+
+    {
+      "image": "Images/Unit28/16.webp",
+      "audio": "Audio/Unit28/16_Chapter 1.mp3",
+      "text": "How many bananas?"
+    },
+    {
+      "image": "Images/Unit28/16.webp",
+      "audio": "Audio/Unit28/17_Chapter 1.mp3",
+      "text": "Seven bananas."
+    },
+
+    {
+      "image": "Images/Unit28/18.webp",
+      "audio": "Audio/Unit28/18_Chapter 1.mp3",
+      "text": "How many mangoes?"
+    },
+    {
+      "image": "Images/Unit28/18.webp",
+      "audio": "Audio/Unit28/19_Chapter 1.mp3",
+      "text": "Three mangoes."
+    },
+
+    {
+      "image": "Images/Unit28/20.webp",
+      "audio": "Audio/Unit28/20_Chapter 1.mp3",
+      "text": "How many pomegranates?"
+    },
+    {
+      "image": "Images/Unit28/20.webp",
+      "audio": "Audio/Unit28/21_Chapter 1.mp3",
+      "text": "Four pomegranates."
+    },
+
+    {
+      "image": "Images/Unit28/22.webp",
+      "audio": "Audio/Unit28/22_Chapter 1.mp3",
+      "text": "How many carrots?"
+    },
+    {
+      "image": "Images/Unit28/22.webp",
+      "audio": "Audio/Unit28/23_Chapter 1.mp3",
+      "text": "Two carrots."
+    },
+
+    {
+      "image": "Images/Unit28/24.webp",
+      "audio": "Audio/Unit28/24_Chapter 1.mp3",
+      "text": "How many onions?"
+    },
+    {
+      "image": "Images/Unit28/24.webp",
+      "audio": "Audio/Unit28/25_Chapter 1.mp3",
+      "text": "Two onions."
+    },
+
+    {
+      "image": "Images/Unit28/26.webp",
+      "audio": "Audio/Unit28/26_Chapter 1.mp3",
+      "text": "How many cucumbers?"
+    },
+    {
+      "image": "Images/Unit28/26.webp",
+      "audio": "Audio/Unit28/27_Chapter 1.mp3",
+      "text": "Five cucumbers."
+    },
+
+    {
+      "image": "Images/outros/outro4.webp",
+      "audio": "Audio/outros/outro4.mp3",
+      "text": ""
+    }
+  ]
+}

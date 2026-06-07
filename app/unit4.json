@@ -1,0 +1,135 @@
+{
+  "id": "unit4",
+  "name": "Unit 4: What's this?",
+  "description": "Let's find out! Look, Listen and Repeat.",
+  "thumbnail": "Images/Unit4/whats_this_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit4/1.webp",
+      "audio": "Audio/Unit4/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit4/2.webp",
+      "audio": "Audio/Unit4/02_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/repeating_assets/looklisten.webp",
+      "audio": "Audio/intro2/looklistenrepeat.mp3"
+    },
+
+    {
+      "text": "What's this?",
+      "image": "Images/Unit4/4.webp",
+      "audio": "Audio/Unit4/04_Chapter 1.mp3"
+    },
+    {
+      "text": "It's a pencil",
+      "image": "Images/Unit4/4.webp",
+      "audio": "Audio/Unit4/05_Chapter 1.mp3"
+    },
+
+    {
+      "text": "What's this?",
+      "image": "Images/Unit4/5.webp",
+      "audio": "Audio/Unit4/04_Chapter 1.mp3"
+    },
+    {
+      "text": "It's an umbrella",
+      "image": "Images/Unit4/5.webp",
+      "audio": "Audio/Unit4/07_Chapter 1.mp3"
+    },
+
+    {
+      "text": "What's this?",
+      "image": "Images/Unit4/6.webp",
+      "audio": "Audio/Unit4/04_Chapter 1.mp3"
+    },
+    {
+      "text": "It's a cat",
+      "image": "Images/Unit4/6.webp",
+      "audio": "Audio/Unit4/09_Chapter 1.mp3"
+    },
+
+    {
+      "text": "What's this?",
+      "image": "Images/Unit4/7.webp",
+      "audio": "Audio/Unit4/04_Chapter 1.mp3"
+    },
+    {
+      "text": "It's an orange",
+      "image": "Images/Unit4/7.webp",
+      "audio": "Audio/Unit4/11_Chapter 1.mp3"
+    },
+
+    {
+      "text": "What's this?",
+      "image": "Images/Unit4/8.webp",
+      "audio": "Audio/Unit4/04_Chapter 1.mp3"
+    },
+    {
+      "text": "It's an egg",
+      "image": "Images/Unit4/8.webp",
+      "audio": "Audio/Unit4/13_Chapter 1.mp3"
+    },
+
+    {
+      "text": "What's this?",
+      "image": "Images/Unit4/9.webp",
+      "audio": "Audio/Unit4/04_Chapter 1.mp3"
+    },
+    {
+      "text": "It's a waterbottle",
+      "image": "Images/Unit4/9.webp",
+      "audio": "Audio/Unit4/15_Chapter 1.mp3"
+    },
+
+    {
+      "text": "What's this?",
+      "image": "Images/Unit4/10.webp",
+      "audio": "Audio/Unit4/04_Chapter 1.mp3"
+    },
+    {
+      "text": "It's a teddy bear",
+      "image": "Images/Unit4/10.webp",
+      "audio": "Audio/Unit4/17_Chapter 1.mp3"
+    },
+
+    {
+      "text": "What's this?",
+      "image": "Images/Unit4/11.webp",
+      "audio": "Audio/Unit4/04_Chapter 1.mp3"
+    },
+    {
+      "text": "It's an eraser",
+      "image": "Images/Unit4/11.webp",
+      "audio": "Audio/Unit4/19_Chapter 1.mp3"
+    },
+
+    {
+      "text": "What's this?",
+      "image": "Images/Unit4/12.webp",
+      "audio": "Audio/Unit4/04_Chapter 1.mp3"
+    },
+    {
+      "text": "It's a backpack",
+      "image": "Images/Unit4/12.webp",
+      "audio": "Audio/Unit4/21_Chapter 1.mp3"
+    },
+
+    {
+      "text": "What's this?",
+      "image": "Images/Unit4/13.webp",
+      "audio": "Audio/Unit4/04_Chapter 1.mp3"
+    },
+    {
+      "text": "It's a ruler",
+      "image": "Images/Unit4/13.webp",
+      "audio": "Audio/Unit4/23_Chapter 1.mp3"
+    },
+
+    {
+      "image": "Images/outros/outro4.webp",
+      "audio": "Audio/outros/outro4.mp3"
+    }
+  ]
+}

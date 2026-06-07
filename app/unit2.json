@@ -1,0 +1,99 @@
+{
+  "id": "unit2",
+  "name": "Unit 2: And",
+  "description": "Let's learn 'And'... Look, Listen and Repeat.",
+  "thumbnail": "Images/Unit2/and_thumbnail.jpg",
+  "words": [
+    {
+      "image": "Images/Unit2/1.webp",
+      "audio": "Audio/Unit2/01_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/Unit2/2.webp",
+      "audio": "Audio/Unit2/02_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/repeating_assets/looklisten.webp",
+      "audio": "Audio/intro2/looklistenrepeat.mp3"
+    },
+    {
+      "text": "a book and a pen",
+      "image": "Images/Unit2/4.webp",
+      "audio": "Audio/Unit2/04_Chapter 1.mp3"
+    },
+    {
+      "text": "a pencil and a crayon",
+      "image": "Images/Unit2/5.webp",
+      "audio": "Audio/Unit2/05_Chapter 1.mp3"
+    },
+    {
+      "text": "an eraser and a ruler",
+      "image": "Images/Unit2/6.webp",
+      "audio": "Audio/Unit2/06_Chapter 1.mp3"
+    },
+    {
+      "text": "a table and a chair",
+      "image": "Images/Unit2/7.webp",
+      "audio": "Audio/Unit2/07_Chapter 1.mp3"
+    },
+    {
+      "text": "a backpack and a torch",
+      "image": "Images/Unit2/8.webp",
+      "audio": "Audio/Unit2/08_Chapter 1.mp3"
+    },
+    {
+      "text": "a leaf and an ant",
+      "image": "Images/Unit2/9.webp",
+      "audio": "Audio/Unit2/09_Chapter 1.mp3"
+    },
+    {
+      "text": "a ship and a boat",
+      "image": "Images/Unit2/10.webp",
+      "audio": "Audio/Unit2/10_Chapter 1.mp3"
+    },
+    {
+      "text": "a fly and an ant",
+      "image": "Images/Unit2/11.webp",
+      "audio": "Audio/Unit2/11_Chapter 1.mp3"
+    },
+    {
+      "text": "a dolphin and a shark",
+      "image": "Images/Unit2/12.webp",
+      "audio": "Audio/Unit2/12_Chapter 1.mp3"
+    },
+    {
+      "text": "an elephant and a horse",
+      "image": "Images/Unit2/13.webp",
+      "audio": "Audio/Unit2/13_Chapter 1.mp3"
+    },
+    {
+      "text": "an umbrella, an iron and a torch",
+      "image": "Images/Unit2/14.webp",
+      "audio": "Audio/Unit2/14_Chapter 1.mp3"
+    },
+    {
+      "text": "a book, an envelope and a pen",
+      "image": "Images/Unit2/15.webp",
+      "audio": "Audio/Unit2/15_Chapter 1.mp3"
+    },
+    {
+      "text": "an octopus, an eagle and a dolphin",
+      "image": "Images/Unit2/16.webp",
+      "audio": "Audio/Unit2/16_Chapter 1.mp3"
+    },
+    {
+      "text": "an apple, an orange and an egg",
+      "image": "Images/Unit2/17.webp",
+      "audio": "Audio/Unit2/17_Chapter 1.mp3"
+    },
+    {
+      "text": "a torch, a tooth brush and a mug",
+      "image": "Images/Unit2/18.webp",
+      "audio": "Audio/Unit2/18_Chapter 1.mp3"
+    },
+    {
+      "image": "Images/outros/outro2.webp",
+      "audio": "Audio/outros/outro2.mp3"
+    }
+  ]
+}

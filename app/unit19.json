@@ -1,0 +1,38 @@
+{
+  "id": "unit19",
+  "name": "Unit 19: In, On, Under",
+  "description": "Learn how to use in, on, and under in sentences.",
+  "thumbnail": "Images/Unit19/unit19_thumbnail.jpg",
+  "words": [
+    { "image": "Images/Unit19/1.webp", "audio": "Audio/Unit19/01_Chapter 1.mp3", "text": "" },
+    { "image": "Images/repeating_assets/looklisten.webp", "audio": "Audio/intro2/looklistenrepeat.mp3", "text": "" },
+    { "image": "Images/Unit19/3.webp", "audio": "Audio/Unit19/03_Chapter 1.mp3", "text": "" },
+    { "image": "Images/Unit19/4.webp", "audio": "Audio/Unit19/04_Chapter 1.mp3", "text": "" },
+    { "image": "Images/Unit19/5.webp", "audio": "Audio/Unit19/05_Chapter 1.mp3", "text": "" },
+
+    { "image": "Images/Unit19/6.webp", "audio": "Audio/Unit19/06_Chapter 1.mp3", "text": "Manku is in the box." },
+    { "image": "Images/Unit19/7.webp", "audio": "Audio/Unit19/07_Chapter 1.mp3", "text": "Manku is on the box." },
+    { "image": "Images/Unit19/8.webp", "audio": "Audio/Unit19/08_Chapter 1.mp3", "text": "Manku is under the table." },
+    { "image": "Images/Unit19/9.webp", "audio": "Audio/Unit19/09_Chapter 1.mp3", "text": "The computer is on the table." },
+    { "image": "Images/Unit19/10.webp", "audio": "Audio/Unit19/10_Chapter 1.mp3", "text": "The sandals are under the table." },
+
+    { "image": "Images/Unit19/11.webp", "audio": "Audio/Unit19/11_Chapter 1.mp3", "text": "The camera is in the bag." },
+    { "image": "Images/Unit19/12.webp", "audio": "Audio/Unit19/12_Chapter 1.mp3", "text": "The magazine is under the chair." },
+    { "image": "Images/Unit19/13.webp", "audio": "Audio/Unit19/13_Chapter 1.mp3", "text": "The pillows are on the bed." },
+    { "image": "Images/Unit19/14.webp", "audio": "Audio/Unit19/14_Chapter 1.mp3", "text": "Raju's pencils are in the pencil box." },
+    { "image": "Images/Unit19/15.webp", "audio": "Audio/Unit19/15_Chapter 1.mp3", "text": "The vegetables are in the bag." },
+
+    { "image": "Images/Unit19/16.webp", "audio": "Audio/Unit19/16_Chapter 1.mp3", "text": "The bag is on the table." },
+    { "image": "Images/Unit19/17.webp", "audio": "Audio/Unit19/17_Chapter 1.mp3", "text": "The birds are in the cage." },
+    { "image": "Images/Unit19/18.webp", "audio": "Audio/Unit19/18_Chapter 1.mp3", "text": "The cookies are in the jar." },
+    { "image": "Images/Unit19/19.webp", "audio": "Audio/Unit19/19_Chapter 1.mp3", "text": "The fish is in the bowl." },
+    { "image": "Images/Unit19/20.webp", "audio": "Audio/Unit19/20_Chapter 1.mp3", "text": "The coconuts are in the basket." },
+
+    { "image": "Images/Unit19/21.webp", "audio": "Audio/Unit19/21_Chapter 1.mp3", "text": "The basket is on the table." },
+    { "image": "Images/Unit19/22.webp", "audio": "Audio/Unit19/22_Chapter 1.mp3", "text": "The parrots are on the chair." },
+    { "image": "Images/Unit19/23.webp", "audio": "Audio/Unit19/23_Chapter 1.mp3", "text": "The girls are in the river." },
+    { "image": "Images/Unit19/24.webp", "audio": "Audio/Unit19/24_Chapter 1.mp3", "text": "The children are in the tree." },
+
+    { "image": "Images/outros/outro1.webp", "audio": "Audio/outros/outro1.mp3", "text": "" }
+  ]
+}
