@@ -130,7 +130,8 @@ function isLookListenMarker(item) {
 }
 
 function isRepeatingAssetImage(item) {
-  return String(item?.image || "").includes("Images/repeating_assets/looklisten.webp");
+  const img = String(item?.image || "");
+  return img.includes("Images/repeating_assets/looklisten.webp") || /\/2\.webp$/i.test(img);
 }
 
 function escapeHtml(value) {
