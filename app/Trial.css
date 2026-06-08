@@ -199,7 +199,7 @@ body.intro-mascot #wordImage{
   /* Lift above any overlapping image edges and push down a touch */
   position: relative;
   z-index: 2;
-  margin-top: clamp(24px, 9svh, 96px);
+  margin-top: clamp(8px, 3svh, 36px);
 }
 #wordText{
   font-family:var(--font-heading);
@@ -212,7 +212,7 @@ body.intro-mascot #wordImage{
     -1.2px -1.2px 0 rgb(245,242,242),
     2px 2px 0 rgba(0,0,0,.1);
   padding:2px 2px;
-  padding-top: 90px;
+  padding-top: clamp(10px, 2.5svh, 28px);
 
   border-radius:12px;
   display:block;
@@ -240,7 +240,7 @@ body.last-slide #wordText{
 
 /* Extra breathing room on small phones */
 @media (max-width: 480px){
-  .word-block{ margin-top: clamp(32px, 12svh, 120px); }
+  .word-block{ margin-top: clamp(8px, 3svh, 32px); }
 }
 
 /* ------------------------------
