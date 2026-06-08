@@ -47,7 +47,7 @@
   /* Coins: single source of truth */
   --coin-size: 96px;
   --prev-coin-size: clamp(150px, 34vw, 210px);
-  --next-coin-size: clamp(160px, 36vw, 220px);
+  --next-coin-size: clamp(150px, 34vw, 210px);
   --nav-coin-size: var(--prev-coin-size);
   --utility-coin-size: clamp(64px, 16vw, 86px);
   --coin-gap: clamp(28px, 8vw, calc(var(--coin-size) * 0.6));
@@ -118,6 +118,10 @@ main{
   justify-items: center;
 }
 
+.word-display > .word-block {
+  justify-self: stretch;
+}
+
 /* Title row */
 #lessonText{
   grid-area: title;
@@ -125,7 +129,7 @@ main{
   font-family:var(--font-heading);
   font-size: clamp(22px, 3.4svh, 38px);
   line-height:1.1;
-  text-align:center;
+  text-align:left;
   color: var(--salmon);
   text-shadow:
     0 0 0 rgb(236,226,226),
@@ -188,9 +192,10 @@ body.intro-mascot #wordImage{
 /* Word row */
 .word-block{
   grid-area: word;
-  display:flex; align-items:center; justify-content:center;
-  width:100%;
-  padding: 0 12px;
+  display:flex; align-items:center; justify-content:flex-start;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
   /* Lift above any overlapping image edges and push down a touch */
   position: relative;
   z-index: 2;
@@ -199,7 +204,7 @@ body.intro-mascot #wordImage{
 #wordText{
   font-family:var(--font-heading);
   font-weight:500;
-  font-size: clamp(24px, 4.8svh, 36px);
+  font-size: clamp(19px, 3.5svh, 28px);
   color: #000000ab;
   text-shadow:
     0 0 0 rgb(245,242,242),
@@ -210,12 +215,13 @@ body.intro-mascot #wordImage{
   padding-top: 90px;
 
   border-radius:12px;
-  display:inline-block;
-  max-width: 90%;
-  text-align:center;
-  white-space:nowrap;
-  text-wrap: balance;
-  line-height:1.2;
+  display:block;
+  width: 100%;
+  max-width: 100%;
+  text-align:left;
+  white-space:normal;
+  text-wrap: pretty;
+  line-height:1.3;
 }
 
 @media (max-width: 600px){
@@ -227,6 +233,9 @@ body.intro-mascot #wordImage{
 /* Exception: make word text smaller on the last slide (often used as an outro) */
 body.last-slide #wordText{
   font-size: clamp(20px, 3.4svh, 28px);
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
 }
 
 /* Extra breathing room on small phones */
@@ -476,8 +485,8 @@ body.outro-active #outroScreen{
 /* <- this is the missing bit */
 body.outro-active #outroScreen .mascot{
   display: block;
-  width: 125%;
-  height: 125%;
+  width: 100%;
+  height: 100%;
   /* max-width: min(78vw, 560px);     
   max-height: min(46svh, 420px);    */
   object-fit: contain;
