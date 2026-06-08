@@ -293,7 +293,7 @@ async function render(i) {
     leaveOutro();
     els.wordScreen.style.display = "grid";
     els.title.innerHTML = isFirstIntroSlide ? formatIntroUnitTitle(currentUnitName) : "";
-    els.word.innerHTML = isFirstIntroSlide ? "" : (item.text || "").replace(/ (?!.* )/, "&nbsp;");
+    els.word.textContent = isFirstIntroSlide ? "" : (item.text || "");
     if (isFirstIntroSlide) {
       els.image.removeAttribute("src");
       els.image.alt = "";
