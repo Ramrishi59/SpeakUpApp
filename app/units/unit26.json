@@ -38,6 +38,6 @@
     { "image": "Images/Unit26/22.webp", "audio": "Audio/Unit26/22_Chapter 1.mp3", "text": "Are there any pineapples? Yes, there are." },
     { "image": "Images/Unit26/23.webp", "audio": "Audio/Unit26/23_Chapter 1.mp3", "text": "Are there any pineapples? No, there aren't." },
 
-    { "image": "Images/Unit26/24.webp", "audio": "Audio/Unit26/24_Chapter 1.mp3", "text": "" }
+    { "image": "Images/outros/outro2.webp", "audio": "Audio/outros/outro2.mp3", "text": "" }
   ]
 }

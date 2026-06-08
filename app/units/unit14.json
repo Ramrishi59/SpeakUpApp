@@ -74,7 +74,7 @@
     { "text": "What colour are those mugs?",      "image": "Images/Unit14/46.webp", "audio": "Audio/Unit14/46_Chapter 1.mp3" },
     { "text": "They are red.",                    "image": "Images/Unit14/47.webp", "audio": "Audio/Unit14/47_Chapter 1.mp3" },
 
-    { "image": "Images/Unit14/48.webp", "audio": "Audio/Unit14/48_Chapter 1.mp3" }
+    { "image": "Images/outros/outro2.webp", "audio": "Audio/outros/outro2.mp3" }
 
   ]
 }

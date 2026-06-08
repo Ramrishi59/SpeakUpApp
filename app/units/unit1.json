@@ -54,8 +54,8 @@
     { "text": "an alien", "image": "Images/Unit1/33.webp", "audio": "Audio/Unit1/33_Chapter 1.mp3" },
 
     {
-      "image": "Images/Unit1/34.webp",
-      "audio": "Audio/Unit1/34_Chapter 1.mp3"
+      "image": "Images/outros/outro1.webp",
+      "audio": "Audio/outros/outro1.mp3"
     }
   ]
 }
