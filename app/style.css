@@ -111,6 +111,8 @@ body {
     height: 126px;
     object-fit: cover;
     border-radius: 18px;
+    border: 3px solid rgba(255, 255, 255, 0.86);
+    background: rgba(255, 255, 255, 0.78);
     filter: drop-shadow(0 16px 18px rgba(31, 30, 51, 0.18));
 }
 
@@ -1062,21 +1064,15 @@ body {
 }
 
 .account-hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 86% 18%, rgba(255, 255, 255, 0.78), transparent 20%),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.1), transparent 42%);
-    pointer-events: none;
+    content: none;
 }
 
 .account-hero.is-premium {
-    background: linear-gradient(135deg, #69c6ff 0%, #b9ebff 47%, #ffe08b 100%);
+    background: #a9e2d8;
 }
 
 .account-hero.is-limited {
-    background: linear-gradient(135deg, #7bc8ff 0%, #b5e1ff 44%, #fff2cf 100%);
+    background: #a9e2d8;
 }
 
 .account-hero-top {
