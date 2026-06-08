@@ -1387,8 +1387,10 @@ async function loadDashboardLessons() {
 
       if (progress.isCompleted) {
         badge = '<span class="lesson-badge completed"><span aria-hidden="true">✓</span> Done!</span>';
-      } else if (progress.isInProgress) {
+      } else if (progress.isInProgress && progressDisplay.percent > 0) {
         badge = '<span class="lesson-badge in-progress">In Progress</span>';
+      } else if (progress.isInProgress) {
+        badge = '<span class="lesson-badge start">Start</span>';
       } else if (!access.fullUnlock) {
         badge = hasAccess
           ? (isFree ? '<span class="lesson-badge free">Free</span>' : '')
@@ -1504,9 +1506,44 @@ async function loadDashboardLessons() {
     });
   }
 
+  function renderContinueCard() {
+    const slot = document.getElementById('continue-card-slot');
+    if (!slot) return;
+
+    const profile = getProfileState();
+    const lastId = profile?.lastOpenedUnit || null;
+    const card = lastId ? getLessonCardById(lastId) : null;
+    const progress = lastId ? getLessonProgressState(lastId) : null;
+
+    if (!card || !progress || progress.isCompleted) {
+      slot.innerHTML = '';
+      slot.style.display = 'none';
+      return;
+    }
+
+    const display = getLessonProgressDisplay(lastId);
+    slot.style.display = '';
+    slot.innerHTML = `
+      <p class="continue-label">Continue where you left off</p>
+      <button type="button" class="continue-card" aria-label="Continue ${card.title}">
+        <img src="${card.thumbnail}" alt="" class="continue-thumb" width="56" height="56" loading="eager" decoding="async">
+        <span class="continue-meta">
+          <span class="continue-title">${card.title}</span>
+          <span class="continue-percent">${display.label}</span>
+        </span>
+        <span class="continue-go">Continue ▶</span>
+      </button>
+    `;
+
+    slot.querySelector('.continue-card')?.addEventListener('click', () => {
+      navigateToLesson(lastId);
+    });
+  }
+
   function renderCurrentView() {
     updateDashboardProgressSummary();
     renderDashboardFilters();
+    renderContinueCard();
     renderLessonCards(getFilteredDashboardLessons());
     if (searchLabel) {
       searchLabel.textContent = 'Lessons';
