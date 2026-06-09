@@ -5,10 +5,10 @@
     "name": "Reena",
     "avatar": "../Images/dashboard thumbnails/Reena.webp",
     "fallbackAudioBase": "Audio/fallback/reena/",
-    "outroAudioBase": "Audio/outro/reena/"
+    "outroAudioBase": "Audio/outro/manku/"
   },
   "fallbackAudios": "fallbacks/reena.json",
-  "outroAudios": "outros/reena.json",
+  "outroAudios": "outros/manku.json",
   "scenes": [
     {
       "id": "intro",
