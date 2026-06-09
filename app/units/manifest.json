@@ -905,6 +905,22 @@
       "route": "lets-speak/index.html?activity=activity18",
       "id": "lets-speak-activity18",
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Raju",
+      "title": "Let's Talk - 19",
+      "route": "lets-speak/index.html?activity=activity19",
+      "id": "lets-speak-activity19",
+      "thumbnail": "Images/dashboard thumbnails/Raju.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Reena",
+      "title": "Let's Talk - 20",
+      "route": "lets-speak/index.html?activity=activity20",
+      "id": "lets-speak-activity20",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }
   ], 
   "version": 1
