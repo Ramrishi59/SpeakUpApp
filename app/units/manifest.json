@@ -881,6 +881,30 @@
       "route": "lets-speak/index.html?activity=activity15",
       "id": "lets-speak-activity15",
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Manku",
+      "title": "Let's Talk - 16",
+      "route": "lets-speak/index.html?activity=activity16",
+      "id": "lets-speak-activity16",
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Reena",
+      "title": "Let's Talk - 17",
+      "route": "lets-speak/index.html?activity=activity17",
+      "id": "lets-speak-activity17",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "voice",
+      "description": "Practice speaking with Reena",
+      "title": "Let's Talk - 18",
+      "route": "lets-speak/index.html?activity=activity18",
+      "id": "lets-speak-activity18",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     }
   ], 
   "version": 1
