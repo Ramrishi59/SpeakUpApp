@@ -1,0 +1,142 @@
+{
+  "title": "Let's Talk - 16",
+  "presenter": {
+    "id": "manku",
+    "name": "Manku",
+    "avatar": "../Images/dashboard thumbnails/Manku.webp",
+    "fallbackAudioBase": "Audio/fallback/manku/",
+    "outroAudioBase": "Audio/outro/manku/"
+  },
+  "fallbackAudios": "fallbacks/manku.json",
+  "outroAudios": "outros/manku.json",
+  "scenes": [
+    {
+      "id": "intro",
+      "image": "Images/1/title.webp",
+      "audio": "Audio/16/01_Chapter 1.mp3",
+      "prompt": "Hey! I'm Manku! Let's look at some simple pictures and talk together! Are you ready?",
+      "sceneKind": "title-card",
+      "next": 1
+    },
+    {
+      "id": "warmup",
+      "image": "Images/1/title.webp",
+      "audio": "Audio/16/02_Chapter 1.mp3",
+      "prompt": "Are you ready?",
+      "sceneKind": "title-card",
+      "accepted": ["yes", "ready", "sure", "okay", "let's go", "yeah"],
+      "helpPrompt": "Say: Yes.",
+      "feedback": {
+        "image": "Images/1/title.webp",
+        "audio": "Audio/16/03_Chapter 1.mp3",
+        "sceneKind": "no-card",
+        "prompt": "Great! Let's look at the first picture!"
+      }
+    },
+    {
+      "id": "dogs",
+      "image": "Images/16/1.webp",
+      "audio": "Audio/16/04_Chapter 1.mp3",
+      "retryAudio": "Audio/16/05_Chapter 1.mp3",
+      "prompt": "Look at these dogs! Can they bark?",
+      "accepted": ["yes they can", "they can bark", "bark", "yes"],
+      "helpPrompt": "Say: Yes, they can.",
+      "feedback": {
+        "image": "Images/16/1.webp",
+        "audio": "Audio/16/06_Chapter 1.mp3",
+        "prompt": "Yes, they can bark! Very good!"
+      }
+    },
+    {
+      "id": "birds",
+      "image": "Images/16/2.webp",
+      "audio": "Audio/16/07_Chapter 1.mp3",
+      "retryAudio": "Audio/16/08_Chapter 1.mp3",
+      "prompt": "Look up at the sky. What can birds do?",
+      "accepted": ["birds can fly", "they can fly", "fly"],
+      "helpPrompt": "Say: Birds can fly.",
+      "feedback": {
+        "image": "Images/16/2.webp",
+        "audio": "Audio/16/09_Chapter 1.mp3",
+        "prompt": "Birds can fly! Up, up, up!"
+      }
+    },
+    {
+      "id": "snakes",
+      "image": "Images/16/3.webp",
+      "audio": "Audio/16/10_Chapter 1.mp3",
+      "retryAudio": "Audio/16/11_Chapter 1.mp3",
+      "prompt": "Look at these snakes on the ground. Can snakes walk?",
+      "accepted": ["no snakes can't walk", "snakes can't walk", "no"],
+      "helpPrompt": "Say: No, snakes can't walk.",
+      "feedback": {
+        "image": "Images/16/3.webp",
+        "audio": "Audio/16/12_Chapter 1.mp3",
+        "prompt": "No, snakes can't walk! They can slither!"
+      }
+    },
+    {
+      "id": "girl-dance",
+      "image": "Images/16/4.webp",
+      "audio": "Audio/16/13_Chapter 1.mp3",
+      "retryAudio": "Audio/16/14_Chapter 1.mp3",
+      "prompt": "Look at this girl on the stage. What can she do?",
+      "accepted": ["she can dance", "dance"],
+      "helpPrompt": "Say: She can dance.",
+      "feedback": {
+        "image": "Images/16/4.webp",
+        "audio": "Audio/16/15_Chapter 1.mp3",
+        "prompt": "She can dance! Very nice!"
+      }
+    },
+    {
+      "id": "deer",
+      "image": "Images/16/5.webp",
+      "audio": "Audio/16/16_Chapter 1.mp3",
+      "retryAudio": "Audio/16/17_Chapter 1.mp3",
+      "prompt": "Look at these beautiful deer! Can they run?",
+      "accepted": ["yes they can", "yes they can run", "deer can run", "yes"],
+      "helpPrompt": "Say: Yes, they can.",
+      "feedback": {
+        "image": "Images/16/5.webp",
+        "audio": "Audio/16/18_Chapter 1.mp3",
+        "prompt": "You are right! Deer can run very fast."
+      }
+    },
+    {
+      "id": "ducks",
+      "image": "Images/16/6.webp",
+      "audio": "Audio/16/19_Chapter 1.mp3",
+      "retryAudio": "Audio/16/20_Chapter 1.mp3",
+      "prompt": "Look at these ducks in the pond. Can they swim?",
+      "accepted": ["yes they can", "ducks can swim", "yes they can swim", "yes"],
+      "helpPrompt": "Say: Yes, they can.",
+      "feedback": {
+        "image": "Images/16/6.webp",
+        "audio": "Audio/16/21_Chapter 1.mp3",
+        "prompt": "Yes, they can swim. Ducks can swim! You are wonderful!"
+      }
+    },
+    {
+      "id": "boy-jump",
+      "image": "Images/16/7.webp",
+      "audio": "Audio/16/22_Chapter 1.mp3",
+      "retryAudio": "Audio/16/23_Chapter 1.mp3",
+      "prompt": "Last picture! Look at that boy. Can he jump?",
+      "accepted": ["yes he can", "he can jump", "jump", "yes"],
+      "helpPrompt": "Say: Yes, he can.",
+      "feedback": {
+        "image": "Images/16/7.webp",
+        "audio": "Audio/16/24_Chapter 1.mp3",
+        "prompt": "Yes, he can jump! That's a smart answer!"
+      }
+    },
+    {
+      "id": "outro",
+      "image": "Images/16/7.webp",
+      "audio": null,
+      "prompt": "You answered so well! I loved talking with you!",
+      "done": true
+    }
+  ]
+}
