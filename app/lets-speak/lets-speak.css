@@ -1,7 +1,7 @@
 :root {
   --app-height: 100dvh;
   --cream: #f5ddb0;
-  --blue: #79c1ea;
+  --blue: #a9e2d8;
   --card: #fbf3f1;
   --text: #1e5c9e;
   --shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
@@ -24,7 +24,7 @@ body {
 
 body {
   font-family: "Fredoka", system-ui, sans-serif;
-  background: linear-gradient(180deg, #8ecbef 0%, #74bbe6 100%);
+  background: #a9e2d8;
 }
 
 button,
@@ -187,6 +187,10 @@ a {
   display: block;
   padding: clamp(8px, 1.2vh, 12px);
   transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.scene-image:not([data-scene-kind="title-card"]) {
+  transform: scale(1.18);
 }
 
 .mic-slot {
