@@ -1,0 +1,156 @@
+{
+  "title": "Let's Talk - 19",
+  "presenter": {
+    "id": "raju",
+    "name": "Raju",
+    "avatar": "../Images/dashboard thumbnails/Raju.webp",
+    "fallbackAudioBase": "Audio/fallback/raju/",
+    "outroAudioBase": "Audio/outro/raju/"
+  },
+  "fallbackAudios": "fallbacks/raju.json",
+  "outroAudios": "outros/raju.json",
+  "scenes": [
+    {
+      "id": "intro",
+      "image": "Images/1/title.webp",
+      "audio": "Audio/19/01_Chapter 1.mp3",
+      "prompt": "Hello! I'm Raju again! Let's look at some beautiful pictures and talk about everything we see!",
+      "sceneKind": "title-card",
+      "next": 1
+    },
+    {
+      "id": "warmup",
+      "image": "Images/1/title.webp",
+      "audio": "Audio/19/02_Chapter 1.mp3",
+      "prompt": "Are you ready?",
+      "sceneKind": "title-card",
+      "accepted": ["yes", "ready", "sure", "okay", "let's go", "yeah"],
+      "helpPrompt": "Say: Yes.",
+      "feedback": {
+        "image": "Images/1/title.webp",
+        "audio": "Audio/19/04_Chapter 1.mp3",
+        "sceneKind": "no-card",
+        "prompt": "Awesome! Let's look at the first picture!"
+      }
+    },
+    {
+      "id": "boy-reading",
+      "image": "Images/19/1.webp",
+      "audio": "Audio/19/05_Chapter 1.mp3",
+      "retryAudio": "Audio/19/06_Chapter 1.mp3",
+      "prompt": "Look at the boy at the desk. What is he doing?",
+      "accepted": ["he is reading", "reading"],
+      "helpPrompt": "Say: He is reading.",
+      "feedback": {
+        "image": "Images/19/1.webp",
+        "audio": "Audio/19/07_Chapter 1.mp3",
+        "prompt": "He is reading! He loves his book."
+      }
+    },
+    {
+      "id": "backpack-under",
+      "image": "Images/19/1.webp",
+      "audio": "Audio/19/08_Chapter 1.mp3",
+      "retryAudio": "Audio/19/09_Chapter 1.mp3",
+      "prompt": "Now look around the room. Where is the backpack?",
+      "accepted": ["the backpack is under the table", "under the table", "the backpack is under the desk", "under the desk"],
+      "helpPrompt": "Say: The backpack is under the table.",
+      "feedback": {
+        "image": "Images/19/1.webp",
+        "audio": "Audio/19/10_Chapter 1.mp3",
+        "prompt": "The backpack is under the table! Good finding!"
+      }
+    },
+    {
+      "id": "backpack-colour",
+      "image": "Images/19/1.webp",
+      "audio": "Audio/19/11_Chapter 1.mp3",
+      "retryAudio": "Audio/19/12_Chapter 1.mp3",
+      "prompt": "Let's look closer. What colour is it?",
+      "accepted": ["it is red", "it's red", "red"],
+      "helpPrompt": "Say: It is red.",
+      "feedback": {
+        "image": "Images/19/1.webp",
+        "audio": "Audio/19/13_Chapter 1.mp3",
+        "prompt": "It is red! It is a very nice bag."
+      }
+    },
+    {
+      "id": "pencils-count",
+      "image": "Images/19/1.webp",
+      "audio": "Audio/19/14_Chapter 1.mp3",
+      "retryAudio": "Audio/19/15_Chapter 1.mp3",
+      "prompt": "Look on top of the desk. How many pencils are there?",
+      "accepted": ["there are three pencils", "three pencils", "three"],
+      "helpPrompt": "Say: There are three pencils.",
+      "feedback": {
+        "image": "Images/19/1.webp",
+        "audio": "Audio/19/16_Chapter 1.mp3",
+        "prompt": "There are three pencils! Excellent counting!"
+      }
+    },
+    {
+      "id": "weather-raining",
+      "image": "Images/19/2.webp",
+      "audio": "Audio/19/17_Chapter 1.mp3",
+      "retryAudio": "Audio/19/18_Chapter 1.mp3",
+      "prompt": "Let's look outside at the park! What's the weather like?",
+      "accepted": ["it is raining", "it's raining", "raining"],
+      "helpPrompt": "Say: It is raining.",
+      "feedback": {
+        "image": "Images/19/2.webp",
+        "audio": "Audio/19/19_Chapter 1.mp3",
+        "prompt": "It is raining! Everything is getting wet."
+      }
+    },
+    {
+      "id": "umbrella-colour",
+      "image": "Images/19/2.webp",
+      "audio": "Audio/19/20_Chapter 1.mp3",
+      "retryAudio": "Audio/19/21_Chapter 1.mp3",
+      "prompt": "Look at the girl walking in the rain. What colour is her umbrella?",
+      "accepted": ["it is pink", "it's pink", "pink"],
+      "helpPrompt": "Say: It is pink.",
+      "feedback": {
+        "image": "Images/19/2.webp",
+        "audio": "Audio/19/22_Chapter 1.mp3",
+        "prompt": "It is pink! It keeps her dry."
+      }
+    },
+    {
+      "id": "dogs-jumping",
+      "image": "Images/19/3.webp",
+      "audio": "Audio/19/23_Chapter 1.mp3",
+      "retryAudio": "Audio/19/24_Chapter 1.mp3",
+      "prompt": "Let's look at a new picture! Look at those two dogs. What are they doing?",
+      "accepted": ["the dogs are jumping", "they are jumping", "jumping"],
+      "helpPrompt": "Say: The dogs are jumping.",
+      "feedback": {
+        "image": "Images/19/3.webp",
+        "audio": "Audio/19/25_Chapter 1.mp3",
+        "prompt": "The dogs are jumping! They want to catch that ball!"
+      }
+    },
+    {
+      "id": "dogs-cant-fly",
+      "image": "Images/19/3.webp",
+      "audio": "Audio/19/26_Chapter 1.mp3",
+      "retryAudio": "Audio/19/27_Chapter 1.mp3",
+      "prompt": "Last question! They are trying so hard to catch the ball. Tell me, can dogs fly?",
+      "accepted": ["no they can't", "no"],
+      "helpPrompt": "Say: No, they can't.",
+      "feedback": {
+        "image": "Images/19/3.webp",
+        "audio": "Audio/19/28_Chapter 1.mp3",
+        "prompt": "No, they can't! They just have to jump high! You are so good at this game!"
+      }
+    },
+    {
+      "id": "outro",
+      "image": "Images/19/3.webp",
+      "audio": null,
+      "prompt": "You talked about all the pictures so well!",
+      "done": true
+    }
+  ]
+}

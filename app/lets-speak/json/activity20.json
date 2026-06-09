@@ -1,0 +1,156 @@
+{
+  "title": "Let's Talk - 20",
+  "presenter": {
+    "id": "reena",
+    "name": "Reena",
+    "avatar": "../Images/dashboard thumbnails/Reena.webp",
+    "fallbackAudioBase": "Audio/fallback/reena/",
+    "outroAudioBase": "Audio/outro/reena/"
+  },
+  "fallbackAudios": "fallbacks/reena.json",
+  "outroAudios": "outros/reena.json",
+  "scenes": [
+    {
+      "id": "intro",
+      "image": "Images/1/title.webp",
+      "audio": "Audio/20/01_Chapter 1.mp3",
+      "prompt": "Hi! I'm Reena! Let's look at some simple pictures and talk together! Are you ready?",
+      "sceneKind": "title-card",
+      "next": 1
+    },
+    {
+      "id": "warmup",
+      "image": "Images/1/title.webp",
+      "audio": "Audio/20/02_Chapter 1.mp3",
+      "prompt": "Are you ready?",
+      "sceneKind": "title-card",
+      "accepted": ["yes", "ready", "sure", "okay", "let's go", "yeah"],
+      "helpPrompt": "Say: Yes.",
+      "feedback": {
+        "image": "Images/1/title.webp",
+        "audio": "Audio/20/03_Chapter 1.mp3",
+        "sceneKind": "no-card",
+        "prompt": "Awesome! Let's look at the first picture!"
+      }
+    },
+    {
+      "id": "laptop",
+      "image": "Images/20/1.webp",
+      "audio": "Audio/20/04_Chapter 1.mp3",
+      "retryAudio": "Audio/20/05_Chapter 1.mp3",
+      "prompt": "Look at the table! Is there a laptop?",
+      "accepted": ["yes", "yes there is", "there is a laptop", "a laptop"],
+      "helpPrompt": "Say: Yes, there is.",
+      "feedback": {
+        "image": "Images/20/1.webp",
+        "audio": "Audio/20/06_Chapter 1.mp3",
+        "prompt": "Yes, there is a laptop! Nice speaking!"
+      }
+    },
+    {
+      "id": "books",
+      "image": "Images/20/1.webp",
+      "audio": "Audio/20/07_Chapter 1.mp3",
+      "retryAudio": "Audio/20/08_Chapter 1.mp3",
+      "prompt": "Now look again. Are there any books?",
+      "accepted": ["yes there are", "yes", "there are"],
+      "helpPrompt": "Say: Yes, there are.",
+      "feedback": {
+        "image": "Images/20/1.webp",
+        "audio": "Audio/20/09_Chapter 1.mp3",
+        "prompt": "Yes, there are! Good spotting."
+      }
+    },
+    {
+      "id": "watch",
+      "image": "Images/20/1.webp",
+      "audio": "Audio/20/10_Chapter 1.mp3",
+      "retryAudio": "Audio/20/11_Chapter 1.mp3",
+      "prompt": "Look carefully at the table. Is there a watch?",
+      "accepted": ["no there isn't", "no"],
+      "helpPrompt": "Say: No, there isn't.",
+      "feedback": {
+        "image": "Images/20/1.webp",
+        "audio": "Audio/20/12_Chapter 1.mp3",
+        "prompt": "No, there isn't! You checked perfectly."
+      }
+    },
+    {
+      "id": "sofa",
+      "image": "Images/20/2.webp",
+      "audio": "Audio/20/13_Chapter 1.mp3",
+      "retryAudio": "Audio/20/14_Chapter 1.mp3",
+      "prompt": "Let's look at a new picture! Is there a sofa?",
+      "accepted": ["yes", "yes there is", "there is"],
+      "helpPrompt": "Say: Yes, there is.",
+      "feedback": {
+        "image": "Images/20/2.webp",
+        "audio": "Audio/20/15_Chapter 1.mp3",
+        "prompt": "Yes, there is a sofa! It looks comfortable."
+      }
+    },
+    {
+      "id": "flowers",
+      "image": "Images/20/2.webp",
+      "audio": "Audio/20/16_Chapter 1.mp3",
+      "retryAudio": "Audio/20/17_Chapter 1.mp3",
+      "prompt": "Look near the sofa. Are there any flowers?",
+      "accepted": ["yes there are", "yes", "there are"],
+      "helpPrompt": "Say: Yes, there are.",
+      "feedback": {
+        "image": "Images/20/2.webp",
+        "audio": "Audio/20/18_Chapter 1.mp3",
+        "prompt": "Yes, there are! Beautiful flowers."
+      }
+    },
+    {
+      "id": "cats",
+      "image": "Images/20/2.webp",
+      "audio": "Audio/20/19_Chapter 1.mp3",
+      "retryAudio": "Audio/20/20_Chapter 1.mp3",
+      "prompt": "Look around the room. Are there any cats?",
+      "accepted": ["no there aren't", "no"],
+      "helpPrompt": "Say: No, there aren't.",
+      "feedback": {
+        "image": "Images/20/2.webp",
+        "audio": "Audio/20/21_Chapter 1.mp3",
+        "prompt": "No, there aren't! Well done."
+      }
+    },
+    {
+      "id": "banana",
+      "image": "Images/20/3.webp",
+      "audio": "Audio/20/22_Chapter 1.mp3",
+      "retryAudio": "Audio/20/23_Chapter 1.mp3",
+      "prompt": "Last picture! Look in the basket. Is there a banana?",
+      "accepted": ["yes there is", "yes", "there is"],
+      "helpPrompt": "Say: Yes, there is.",
+      "feedback": {
+        "image": "Images/20/3.webp",
+        "audio": "Audio/20/24_Chapter 1.mp3",
+        "prompt": "Yes, there is! Yummy!"
+      }
+    },
+    {
+      "id": "pineapples",
+      "image": "Images/20/3.webp",
+      "audio": "Audio/20/25_Chapter 1.mp3",
+      "retryAudio": "Audio/20/26_Chapter 1.mp3",
+      "prompt": "Look one more time. Are there any pineapples?",
+      "accepted": ["no there aren't", "no"],
+      "helpPrompt": "Say: No, there aren't.",
+      "feedback": {
+        "image": "Images/20/3.webp",
+        "audio": "Audio/20/27_Chapter 1.mp3",
+        "prompt": "No, there aren't! You are so good at this game!"
+      }
+    },
+    {
+      "id": "outro",
+      "image": "Images/20/3.webp",
+      "audio": null,
+      "prompt": "You found what is there and what is not there so well!",
+      "done": true
+    }
+  ]
+}
