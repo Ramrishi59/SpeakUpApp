@@ -100,7 +100,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-1", 
+      "title": "Mix and Fix-1", 
       "route": "order-activity/order.html?activity=activity1", 
       "id": "order-activity1", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -108,7 +108,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-2", 
+      "title": "Mix and Fix-2", 
       "route": "order-activity/order.html?activity=activity2", 
       "id": "order-activity2", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -116,7 +116,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-3", 
+      "title": "Mix and Fix-3", 
       "route": "order-activity/order.html?activity=activity3", 
       "id": "order-activity3", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -214,7 +214,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-4", 
+      "title": "Mix and Fix-4", 
       "route": "order-activity/order.html?activity=activity4", 
       "id": "order-activity4", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -222,7 +222,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-5", 
+      "title": "Mix and Fix-5", 
       "route": "order-activity/order.html?activity=activity5", 
       "id": "order-activity5", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -326,7 +326,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-6", 
+      "title": "Mix and Fix-6", 
       "route": "order-activity/order.html?activity=activity6", 
       "id": "order-activity6", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -334,7 +334,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-7", 
+      "title": "Mix and Fix-7", 
       "route": "order-activity/order.html?activity=activity7", 
       "id": "order-activity7", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -342,7 +342,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-8", 
+      "title": "Mix and Fix-8", 
       "route": "order-activity/order.html?activity=activity8", 
       "id": "order-activity8", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -350,7 +350,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-9", 
+      "title": "Mix and Fix-9", 
       "route": "order-activity/order.html?activity=activity9", 
       "id": "order-activity9", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -358,7 +358,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-10", 
+      "title": "Mix and Fix-10", 
       "route": "order-activity/order.html?activity=activity10", 
       "id": "order-activity10", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -447,7 +447,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-11", 
+      "title": "Mix and Fix-11", 
       "route": "order-activity/order.html?activity=activity11", 
       "id": "order-activity11", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -455,7 +455,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-12", 
+      "title": "Mix and Fix-12", 
       "route": "order-activity/order.html?activity=activity12", 
       "id": "order-activity12", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -463,7 +463,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-13", 
+      "title": "Mix and Fix-13", 
       "route": "order-activity/order.html?activity=activity13", 
       "id": "order-activity13", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -471,7 +471,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-14", 
+      "title": "Mix and Fix-14", 
       "route": "order-activity/order.html?activity=activity14", 
       "id": "order-activity14", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -479,7 +479,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-15", 
+      "title": "Mix and Fix-15", 
       "route": "order-activity/order.html?activity=activity15", 
       "id": "order-activity15", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -567,7 +567,7 @@
     {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-16", 
+      "title": "Mix and Fix-16", 
       "route": "order-activity/order.html?activity=activity16", 
       "id": "order-activity16", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -575,7 +575,7 @@
       {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-17", 
+      "title": "Mix and Fix-17", 
       "route": "order-activity/order.html?activity=activity17", 
       "id": "order-activity17", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -583,7 +583,7 @@
       {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-18", 
+      "title": "Mix and Fix-18", 
       "route": "order-activity/order.html?activity=activity18", 
       "id": "order-activity18", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -699,7 +699,7 @@
       {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-19", 
+      "title": "Mix and Fix-19", 
       "route": "order-activity/order.html?activity=activity19", 
       "id": "order-activity19", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -707,7 +707,7 @@
       {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-20", 
+      "title": "Mix and Fix-20", 
       "route": "order-activity/order.html?activity=activity20", 
       "id": "order-activity20", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -715,7 +715,7 @@
       {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-21", 
+      "title": "Mix and Fix-21", 
       "route": "order-activity/order.html?activity=activity21", 
       "id": "order-activity21", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -723,7 +723,7 @@
       {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-22", 
+      "title": "Mix and Fix-22", 
       "route": "order-activity/order.html?activity=activity22", 
       "id": "order-activity22", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
@@ -731,7 +731,7 @@
       {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-23", 
+      "title": "Mix and Fix-23", 
       "route": "order-activity/order.html?activity=activity23", 
       "id": "order-activity23", 
       "thumbnail":"Images/dashboard thumbnails/Reena.webp"
@@ -739,7 +739,7 @@
       {
       "category": "order", 
       "description": "activity", 
-      "title": "Make the sentence-24", 
+      "title": "Mix and Fix-24", 
       "route": "order-activity/order.html?activity=activity24", 
       "id": "order-activity24", 
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
