@@ -35,8 +35,7 @@
     <!-- INTRO CARD -->
     <section id="introScreen" class="card intro-card" aria-live="polite">
       <div class="intro-image-wrap">
-        <img id="introImage" src="Images/intro1.webp" alt="Make the sentence" />
-        <img class="intro-overlay-image" src="Images/intro.webp" alt="" aria-hidden="true" />
+        <img id="introImage" src="Images/mixandfix.webp?v=2" alt="Mix and Fix" />
       </div>
 
       <audio id="introAudio" preload="auto">
@@ -44,9 +43,7 @@
       </audio>
 
       <div class="intro-actions">
-        <button id="startBtn" class="btn primary">Let’s start!</button>
-        <button id="skipBtn" class="btn secondary">Skip Intro</button>
-
+        <button id="startBtn" class="start-img-btn"><img src="Images/letsstart.webp" alt="Let's start!" /></button>
       </div>
     </section>
 
@@ -97,7 +94,6 @@
       const intro = document.getElementById("introScreen");
       const quizCard = document.getElementById("quizCard");
       const startBtn = document.getElementById("startBtn");
-      const skipBtn = document.getElementById("skipBtn");
       const progressPill = document.getElementById("progressPill");
       const introAudio = document.getElementById("introAudio");
       const sharedIntroAudio = "Audio/intro/intro.mp3";
@@ -140,12 +136,6 @@
         } else {
           goToQuiz();
         }
-      });
-
-      skipBtn?.addEventListener("click", () => {
-        startBtn.disabled = true;
-        skipBtn.disabled = true;
-        goToQuiz();
       });
 
     });

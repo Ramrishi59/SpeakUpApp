@@ -48,7 +48,7 @@ const homeBtn = document.getElementById("homeBtn");
 const quizCard = document.getElementById("quizCard");
 const mankuCorner = document.getElementById("mankuCorner");
 const studentHelper = document.querySelector(".student-helper");
-const SHARED_INTRO_IMAGE = "Images/intro1.webp";
+const SHARED_INTRO_IMAGE = "Images/mixandfix.webp";
 const SHARED_INTRO_AUDIO = "Audio/intro/intro.mp3";
 
 const prevBtn = document.getElementById("prevBtn");
