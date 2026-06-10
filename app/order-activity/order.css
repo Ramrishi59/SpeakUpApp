@@ -778,29 +778,20 @@ main#app {
   min-width: 104px;
 }
 
-.overlay-nav .results-keep-going {
-  width: 112px;
-  height: 68px;
-  min-width: 112px;
-  padding: 12px;
-  border-radius: 8px;
-  background: linear-gradient(180deg, #ffe36a 0%, #ffc21a 55%, #f0a400 100%);
-  border: 4px solid #fff7b8;
-  color: #6b3d00;
-  font-size: 20px;
-  line-height: 1.05;
-  font-weight: 900;
-  box-shadow:
-    0 14px 24px rgba(96, 57, 0, 0.26),
-    inset 0 -6px 0 rgba(176, 102, 0, 0.22);
+#restartBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 220px;
+  margin-top: 24px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.overlay-nav .results-keep-going:hover {
-  transform: translateY(-2px);
-}
-
-.overlay-nav .results-keep-going:active {
-  transform: translateY(1px);
+#restartBtn img {
+  width: 100%;
+  height: auto;
 }
 
 /* Blur underlying slide when results are shown */
@@ -1020,6 +1011,7 @@ body.quiz-active .topbar {
   gap: 10px;
   margin-top: 0;
   padding: 0 12px;
+  padding-bottom: 40px;
 }
 
 .intro-actions .btn {

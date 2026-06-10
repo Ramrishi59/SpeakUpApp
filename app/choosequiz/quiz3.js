@@ -159,7 +159,7 @@ const NICE_EFFORT_SFX = "../order-activity/Audio/effects/nice_effort.mp3";
 const EXCELLENT_SFX = "../order-activity/Audio/effects/excellent_above.mp3";
 const NICE_EFFORT_SCORE_CARD = "Images/score/score3.webp";
 const EXCELLENT_SCORE_CARD = "Images/score/score3.webp";
-const EXCELLENT_MIN_SCORE = 9;
+const EXCELLENT_MIN_SCORE = 10;
 
 function playAudio(path, onEnded) {
   if (!path) {
@@ -379,7 +379,7 @@ function showResults() {
   }
   if (resultsMessage) {
     resultsMessage.innerHTML = isExcellentScore
-      ? "You made<br>great sentences!"
+      ? "You got them right!"
       : "Let's practise<br>a little more.";
   }
   if (resultsScore) {
