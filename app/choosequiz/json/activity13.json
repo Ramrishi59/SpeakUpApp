@@ -22,7 +22,7 @@
       },
       {
         "image": "Images/activity13/2.webp",
-        "choices": ["That’s your backpack.", "This is my backpack.", "Those are their backpacks."],
+        "choices": ["This backpack his", "This is my backpack.", "This backpack my"],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity13/question.mp3",
         "audioCorrect": "Audio/activity13/03_Chapter 1.mp3",
@@ -54,7 +54,7 @@
       },
       {
         "image": "Images/activity13/6.webp",
-        "choices": ["These are our cats.", "These are out cat.", "These cats my are."],
+        "choices": ["These are our cats.", "These are our cat.", "These cats my are."],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity13/question.mp3",
         "audioCorrect": "Audio/activity13/07_Chapter 1.mp3",

@@ -45,7 +45,7 @@
       },
       {
         "question": "Make the sentence.",
-        "words": ["Is", "the", "ball", "on", "the", "table?"],
+        "words": ["The", "ball", "is", "on", "the", "table"],
         "audioQuestion": "Audio/activity10/q6.mp3",
         "audioCorrect": "Audio/activity10/c6.mp3",
         "audioWrong": "Audio/activity10/wrong.mp3"

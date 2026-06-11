@@ -16,7 +16,7 @@
       },
       {
         "image": "Images/activity14/2.webp",
-        "choices": ["That dog is hers.", "That dog is his.", "That dog is mine."],
+        "choices": ["That dog is hers.", "That dog is his.", "That is dog his."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity14/question.mp3",
         "audioCorrect": "Audio/activity14/03_Chapter 1.mp3",
@@ -56,7 +56,7 @@
       },
       {
         "image": "Images/activity14/7.webp",
-        "choices": ["Those toys are their.", "Those toys are theirs.", "Those their are toys."],
+        "choices": ["Those toys are their.", "Those toys are theirs.", "Those their toys are."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity14/question.mp3",
         "audioCorrect": "Audio/activity14/08_Chapter 1.mp3",

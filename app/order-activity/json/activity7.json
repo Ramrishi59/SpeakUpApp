@@ -10,14 +10,14 @@
   "items": [
     {
       "question": "Make the sentence.",
-      "words": ["They", "are", "red", "and", "black"],
+      "words": ["This", "pen", "is", "not", "red"],
       "audioQuestion": "Audio/activity7/q1.mp3",
       "audioCorrect": "Audio/activity7/c1.mp3",
       "audioWrong": "Audio/activity7/wrong.mp3"
     },
     {
       "question": "Make the sentence.",
-      "words": ["Are", "they", "pink", "and", "green?"],
+      "words": ["What", "colour", "is", "his", "watch?"],
       "audioQuestion": "Audio/activity7/q2.mp3",
       "audioCorrect": "Audio/activity7/c2.mp3",
       "audioWrong": "Audio/activity7/wrong.mp3"
