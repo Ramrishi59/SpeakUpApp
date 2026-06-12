@@ -16,7 +16,7 @@
     },
     {
       "image": "Images/repeating_assets/looklisten.webp",
-      "audio": "Audio/intro2/looklistenrepeat.mp3",
+      "audio": "Audio/Unit39/03_Chapter 1.mp3",
       "text": ""
     },
     {
@@ -85,8 +85,53 @@
       "text": ""
     },
     {
-      "image": "Images/outros/outro3.webp",
-      "audio": "Audio/outros/outro3.mp3",
+      "image": "Images/Unit39/17.webp",
+      "audio": "Audio/Unit39/17_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit39/18.webp",
+      "audio": "Audio/Unit39/18_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit39/19.webp",
+      "audio": "Audio/Unit39/19_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit39/20.webp",
+      "audio": "Audio/Unit39/20_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit39/21.webp",
+      "audio": "Audio/Unit39/21_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit39/22.webp",
+      "audio": "Audio/Unit39/22_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit39/23.webp",
+      "audio": "Audio/Unit39/23_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit39/24.webp",
+      "audio": "Audio/Unit39/24_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/Unit39/25.webp",
+      "audio": "Audio/Unit39/25_Chapter 1.mp3",
+      "text": ""
+    },
+    {
+      "image": "Images/outros/outro3.webp?v=20260612",
+      "audio": "Audio/outros/outro3.mp3?v=20260612",
       "text": ""
     }
   ]

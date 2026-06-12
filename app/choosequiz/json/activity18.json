@@ -76,7 +76,7 @@
       },
       {
         "image": "Images/activity18/7.webp",
-        "choices": ["It’s Meera's.", "It's Meera.", "It Meera is."],
+        "choices": ["It’s Meera.", "It's Meera's.", "It Meera is."],
         "correctIndex": 1,
         "audioQuestion": "Audio/activity18/question.mp3",
         "audioCorrect": "Audio/activity18/08_Chapter 1.mp3",

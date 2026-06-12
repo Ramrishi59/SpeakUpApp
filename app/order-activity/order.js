@@ -523,7 +523,7 @@ function showResults() {
     resultsScore.textContent = `${score} Out of ${total}`;
   }
   if (resultsImage) {
-    resultsImage.src = score <= 8 ? "Images/score2.webp" : "Images/score.webp";
+    resultsImage.src = score === total ? "Images/score.webp" : "Images/score2.webp";
   }
   if (resultsText) {
     resultsText.textContent = `You built ${score} out of ${total} sentences correctly (${pct}%).`;
@@ -533,7 +533,7 @@ function showResults() {
     resultsOverlay.classList.remove("hidden");
     document.body.classList.add("overlay-open");
     restartBtn?.focus();
-    const resultSfx = score >= 8 ? EXCELLENT_SFX : NICE_EFFORT_SFX;
+    const resultSfx = score === total ? EXCELLENT_SFX : NICE_EFFORT_SFX;
     playAudio(resultSfx, () => {
       playAudio(CLAP_SFX);
     });

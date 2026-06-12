@@ -66,14 +66,14 @@
       },
       {
         "question": "Make the sentence.",
-        "words": ["Are", "they", "black", "and", "white?"],
+        "words": ["Are", "they", "purple?"],
         "audioQuestion": "Audio/activity12/q9.mp3",
         "audioCorrect": "Audio/activity12/c9.mp3",
         "audioWrong": "Audio/activity12/wrong.mp3"
       },
       {
         "question": "Make the sentence.",
-        "words": ["They", "are", "black", "and", "blue"],
+        "words": ["Is", "your", "car", "white?"],
         "audioQuestion": "Audio/activity12/q10.mp3",
         "audioCorrect": "Audio/activity12/c10.mp3",
         "audioWrong": "Audio/activity12/wrong.mp3"

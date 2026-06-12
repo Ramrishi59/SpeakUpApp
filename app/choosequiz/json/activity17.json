@@ -59,7 +59,7 @@
         "choices": [
           "She is at the ATM.",
           "She is in the ATM",
-          "She is at the ATM."
+          "She is the ATM."
         ],
         "correctIndex": 0,
         "audioQuestion": "Audio/activity17/question.mp3",

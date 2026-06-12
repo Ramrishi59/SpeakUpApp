@@ -2,135 +2,135 @@
     "intro": {
       "image": "Images/activity8/1.webp",
       "audio": "Audio/activity8/01_Chapter 1.mp3",
-      "alt": "Manku introduces the Are these and Are they activity"
+      "alt": "Manku introduces the They are activity"
     },
   
     "outro": {
-      "image": "Images/activity8/17.webp",
-      "audio": "Audio/activity8/17_Chapter 1.mp3",
-      "alt": "Manku says excellent work on Are these and Are they"
+      "image": "Images/activity8/10.webp",
+      "audio": "Audio/activity8/10.mp3",
+      "alt": "Manku says excellent work on They are"
     },
   
     "items": [
       {
         "image": "Images/activity8/1.webp",
         "choices": [
-          "Yes, they are.",
-          "No, they are grapes.",
-          "No, they are pumpkins."
+          "They are papayas.",
+          "They is papayas.",
+          "They papayas are."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/02_Chapter 1.mp3",
+        "audioQuestion": "Audio/activity8/question.mp3",
+        "audioCorrect": "Audio/activity8/01_Chapter 1.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
         "image": "Images/activity8/2.webp",
         "choices": [
-          "Yes, they are.",
-          "No, they are watermelons.",
-          "No, they are papayas."
+          "They are pineapples.",
+          "They are watermelons.",
+          "They are pumpkins."
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/03_Chapter 1.mp3",
+        "audioQuestion": "Audio/activity8/question.mp3",
+        "audioCorrect": "Audio/activity8/02_Chapter 1.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
         "image": "Images/activity8/3.webp",
         "choices": [
-          "Yes, they are.",
-          "No, they are strawberries.",
-          "No, they are beans."
+          "Yes, they are grapes.",
+          "Yes, grapes they are.",
+          "Yes, they grapes are."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/04_Chapter 1.mp3",
+        "audioQuestion": "Audio/activity8/question.mp3",
+        "audioCorrect": "Audio/activity8/03_Chapter 1.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
         "image": "Images/activity8/4.webp",
         "choices": [
-          "Yes, they are.",
-          "No, they are potatoes.",
-          "No, they are papayas."
+          "They potatoes are.",
+          "They are potatoes.",
+          "Potatoes are they."
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/05_Chapter 1.mp3",
+        "audioQuestion": "Audio/activity8/question.mp3",
+        "audioCorrect": "Audio/activity8/04_Chapter 1.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
         "image": "Images/activity8/5.webp",
         "choices": [
-          "No, they are onions.",
-          "Yes, they are.",
-          "No, they are cucumbers."
+          "They are not tomatoes.",
+          "They are tomatoes.",
+          "They are apples."
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/06_Chapter 1.mp3",
+        "audioQuestion": "Audio/activity8/question.mp3",
+        "audioCorrect": "Audio/activity8/05_Chapter 1.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
         "image": "Images/activity8/6.webp",
         "choices": [
-          "Yes, they are.",
-          "No, they are beans.",
-          "No, they are grapes."
+          "They beans are.",
+          "They are beans.",
+          "They are not beans."
         ],
         "correctIndex": 1,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/07_Chapter 1.mp3",
+        "audioQuestion": "Audio/activity8/question.mp3",
+        "audioCorrect": "Audio/activity8/06_Chapter 1.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
         "image": "Images/activity8/7.webp",
         "choices": [
-          "Yes, they are.",
-          "No, they are tomatoes.",
-          "No, they are onions."
+          "They are cucumbers.",
+          "They are not cucumbers.",
+          "They cucumbers are."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/08_Chapter 1.mp3",
+        "audioQuestion": "Audio/activity8/question.mp3",
+        "audioCorrect": "Audio/activity8/07_Chapter 1.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
         "image": "Images/activity8/8.webp",
         "choices": [
-          "No, they are stars.",
-          "No, they are bees.",
-          "Yes, they are."
+          "They are stars.",
+          "They stars are.",
+          "They are not stars."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/09_Chapter 1.mp3",
+        "audioQuestion": "Audio/activity8/question.mp3",
+        "audioCorrect": "Audio/activity8/08_Chapter 1.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
         "image": "Images/activity8/9.webp",
         "choices": [
-          "No, they are bees.",
-          "Yes, they are.",
-          "No, they are birds."
+          "They are bees.",
+          "They bees are.",
+          "They are birds."
         ],
         "correctIndex": 0,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/10_Chapter 1.mp3",
+        "audioQuestion": "Audio/activity8/question.mp3",
+        "audioCorrect": "Audio/activity8/09.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
       },
       {
         "image": "Images/activity8/10.webp",
         "choices": [
-          "No, they are birds.",
-          "No, they are butterflies.",
-          "Yes, they are."
+          "They are not birds.",
+          "They are birds.",
+          "They birds are."
         ],
-        "correctIndex": 0,
-        "audioQuestion": "Audio/activity8/arethese.mp3",
-        "audioCorrect": "Audio/activity8/11_Chapter 1.mp3",
+        "correctIndex": 1,
+        "audioQuestion": "Audio/activity8/question.mp3",
+        "audioCorrect": "Audio/activity8/10.mp3",
         "audioWrong": "Audio/activity8/tryagain.mp3"
-      }  ]
+      }
+    ]
   }
-  
