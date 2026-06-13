@@ -24,7 +24,7 @@
     },
     {
       "question": "Make the sentence.",
-      "words": ["Are", "they", "drinking?"],
+      "words": ["Are", "they", "eating?"],
       "audioQuestion": "Audio/activity24/q3.mp3",
       "audioCorrect": "Audio/activity24/c3.mp3",
       "audioWrong": "Audio/activity24/wrong.mp3"

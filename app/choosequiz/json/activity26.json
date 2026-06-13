@@ -10,7 +10,7 @@
       "image": "Images/activity26/1.webp",
       "choices": [
         "I have a digital camera.",
-        "I a digital camera have.",
+        "I digital camera have.",
         "I have digital a camera."
       ],
       "correctIndex": 0,
