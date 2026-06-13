@@ -1,766 +1,119 @@
 {
   "cards": [
-    { 
-      "description": "Intro", 
-      "title": "Welcome to 'SpeakUp'", 
-      "route": "", 
-      "id": "intro", 
+    {
+      "description": "Intro",
+      "title": "Welcome to 'SpeakUp'",
+      "route": "",
+      "id": "intro",
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-
-    {
-      "category": "units", 
-      "thumbnail": "Images/unit1/5.webp", 
-      "description": "Learn A and An. Just watch, listen and repeat", 
-      "id": "unit1", 
-      "title": "Unit 1: A / An"
-    }, 
-
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit2/4.webp", 
-      "description": "Learn And. Just watch, listen and repeat", 
-      "id": "unit2", 
-      "title": "Unit 2: And"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit3/6.webp", 
-      "description": "This and that?", 
-      "id": "unit3", 
-      "title": "Unit 3: This and That"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit4/5.webp", 
-      "description": "Learn about This and That. Just watch, listen and repeat", 
-      "id": "unit4", 
-      "title": "Unit 4: What's this?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit15/4.webp", 
-      "description": "What is that?", 
-      "id": "unit5", 
-      "title": "Unit 5: What's that?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit6/7.webp", 
-      "description": "Is this a globe?", 
-      "id": "unit6", 
-      "title": "Unit 6: Is this a globe?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit7/9.webp", 
-      "description": "Is that a Zebra?", 
-      "id": "unit7", 
-      "title": "Unit 7: Is that a Zebra?"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html", 
-      "id": "activity1", 
-      "title": "Tap the Right One -1"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity2", 
-      "id": "activity2", 
-      "title": "Tap the Right One -2"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity3", 
-      "id": "activity3", 
-      "title": "Tap the Right One -3"
-    }, 
-
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity4", 
-      "id": "activity4", 
-      "title": "Tap the Right One -4"
-    }, 
-
-
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity5", 
-      "id": "activity5", 
-      "title": "Tap the Right One -5"
-    }, 
-
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-1", 
-      "route": "order-activity/order.html?activity=activity1", 
-      "id": "order-activity1", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-2", 
-      "route": "order-activity/order.html?activity=activity2", 
-      "id": "order-activity2", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-3", 
-      "route": "order-activity/order.html?activity=activity3", 
-      "id": "order-activity3", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit8/5.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit8", 
-      "title": "Unit 8: Books, Pencils"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit9/6.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit9", 
-      "title": "Unit 9: These are and Those are"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit10/7.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit10", 
-      "title": "Unit 10: Are these papayas?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit11/4.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit11", 
-      "title": "Unit 11: Are they Cars?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit12/5.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit12", 
-      "title": "Unit 12: I am a girl"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit13/6.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit13", 
-      "title": "Unit 13: You are a boy?"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity6", 
-      "id": "activity6", 
-      "title": "Tap the Right One -6"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity7", 
-      "id": "activity7", 
-      "title": "Tap the Right One -7"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity8", 
-      "id": "activity8", 
-      "title": "Tap the Right One -8"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity9", 
-      "id": "activity9", 
-      "title": "Tap the Right One -9"
-    }, 
-
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity10", 
-      "id": "activity10", 
-      "title": "Tap the Right One -10"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity11", 
-      "id": "activity11", 
-      "title": "Tap the Right One -11"
-    }, 
-
-
-
-    
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-4", 
-      "route": "order-activity/order.html?activity=activity4", 
-      "id": "order-activity4", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-5", 
-      "route": "order-activity/order.html?activity=activity5", 
-      "id": "order-activity5", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit14/7.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit14", 
-      "title": "Unit 14: What Colour?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit15/4.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit15", 
-      "title": "Unit 15: My, Your, Our, Their, His, Her"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit17/5.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit16", 
-      "title": "Unit 16: Whose T-shirt is blue?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit17/6.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit17", 
-      "title": "Unit 17: Mine, Yours, Our, Theirs, His, Her"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit18/7.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit18", 
-      "title": "Unit 18: I'm a Student"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit19/8.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit19", 
-      "title": "Unit 19: In, On, Under"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit20/4.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit20", 
-      "title": "Unit 20: Here and There"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit21/6.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit21", 
-      "title": "Unit 21: Unit 21: Where is the kite?"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity12", 
-      "id": "activity12", 
-      "title": "Tap the Right One -12"
-    }, 
-
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity13", 
-      "id": "activity13", 
-      "title": "Tap the Right One -13"
-    }, 
-
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity14", 
-      "id": "activity14", 
-      "title": "Tap the Right One -14"
-    }, 
-
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity15", 
-      "id": "activity15", 
-      "title": "Tap the Right One -15"
-    }, 
-        {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity16", 
-      "id": "activity16", 
-      "title": "Tap the Right One -16"
-    }, 
-
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-6", 
-      "route": "order-activity/order.html?activity=activity6", 
-      "id": "order-activity6", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-7", 
-      "route": "order-activity/order.html?activity=activity7", 
-      "id": "order-activity7", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-8", 
-      "route": "order-activity/order.html?activity=activity8", 
-      "id": "order-activity8", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-9", 
-      "route": "order-activity/order.html?activity=activity9", 
-      "id": "order-activity9", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-10", 
-      "route": "order-activity/order.html?activity=activity10", 
-      "id": "order-activity10", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit22/7.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit22", 
-      "title": "Unit 22: Nithin is at home"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit23/8.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit23", 
-      "title": "Unit 23: Whose Bangles are blue?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit24/4.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit24", 
-      "title": "Unit 24: How Old Are You?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit25/4.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit25", 
-      "title": "Unit 25: There is an old man"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit26/5.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit26", 
-      "title": "Unit 26: Is there a watch?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit27/6.webp", 
-      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).", 
-      "id": "unit27", 
-      "title": "Unit 27: My home"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity17", 
-      "id": "activity17", 
-      "title": "Tap the Right One -17"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity18", 
-      "id": "activity18", 
-      "title": "Tap the Right One -18"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity19", 
-      "id": "activity19", 
-      "title": "Tap the Right One -19"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity20", 
-      "id": "activity20", 
-      "title": "Tap the Right One -20"
-    }, 
-
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity21", 
-      "id": "activity21", 
-      "title": "Tap the Right One -21"
-    }, 
-
-  
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-11", 
-      "route": "order-activity/order.html?activity=activity11", 
-      "id": "order-activity11", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-12", 
-      "route": "order-activity/order.html?activity=activity12", 
-      "id": "order-activity12", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-13", 
-      "route": "order-activity/order.html?activity=activity13", 
-      "id": "order-activity13", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-14", 
-      "route": "order-activity/order.html?activity=activity14", 
-      "id": "order-activity14", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-15", 
-      "route": "order-activity/order.html?activity=activity15", 
-      "id": "order-activity15", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit28/7.webp", 
-      
-      "id": "unit28", 
-      "title": "Unit 28: How many?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit29/8.webp", 
-      
-      "id": "unit29", 
-      "title": "Unit 29: How many bottles are there?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit30/4.webp", 
-      "id": "unit30", 
-      "title": "Unit 30: What's the weather like?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit31/16.webp", 
-      "id": "unit31", 
-      "title": "Unit 31: Unit 31: What month is it?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit32/4.webp", 
-    
-      "id": "unit32", 
-      "title": "Unit 32: What day is it today?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit33/4.webp", 
-     
-      "id": "unit33", 
-      "title": "Unit 33: What is today's date?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit34/29.webp", 
-      
-      "id": "unit34", 
-      "title": "Unit 34: Mathew is Tall"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit35/6.webp", 
-     
-      "id": "unit35", 
-      "title": "Unit 35: The first, the second..."
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity22", 
-      "id": "activity22", 
-      "title": "Tap the Right One -22"
-    }, 
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity23", 
-      "id": "activity23", 
-      "title": "Tap the Right One -23"
-    }, 
-
-    {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity24", 
-      "id": "activity24", 
-      "title": "Tap the Right One -24"
-    }, 
-
- 
-   
-    {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-16", 
-      "route": "order-activity/order.html?activity=activity16", 
-      "id": "order-activity16", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-      {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-17", 
-      "route": "order-activity/order.html?activity=activity17", 
-      "id": "order-activity17", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-      {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-18", 
-      "route": "order-activity/order.html?activity=activity18", 
-      "id": "order-activity18", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit36/7.webp", 
-      
-      "id": "unit36", 
-      "title": "Unit 36: May is the fifth month"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit37/6.webp", 
-      
-      "id": "unit37", 
-      "title": "Unit 37: Which...? Which one...?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit38/8.webp", 
-     
-      "id": "unit38", 
-      "title": "Unit 38: Which one is old?"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit39/1.webp", 
-      
-      "id": "unit39", 
-      "title": "Unit 39: I have a Camera"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit40/5.webp", 
-      
-      "id": "unit40", 
-      "title": "Unit 40: I like Bananas"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit41/6.webp", 
-      
-      "id": "unit41", 
-      "title": "Unit 41: I can Read"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit42/4.webp", 
-      
-      "id": "unit42", 
-      "title": "Unit 42: I can't sing"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit43/14.webp", 
-      
-      "id": "unit43", 
-      "title": "Unit 43: What Time is it"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit44/4.webp", 
-       "id": "unit44", 
-      "title": "Unit 44: I'm reading"
-    }, 
-    {
-      "category": "units", 
-      "thumbnail": "Images/Unit45/24.webp", 
-     
-      "id": "unit45", 
-      "title": "Unit 45: What are you doing?"
     },
     {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity25", 
-      "id": "activity25", 
-      "title": "Tap the Right One -25"
-    }, 
+      "category": "units",
+      "thumbnail": "Images/unit1/5.webp",
+      "description": "Learn A and An. Just watch, listen and repeat",
+      "id": "unit1",
+      "title": "Unit 1: A / An"
+    },
     {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity26", 
-      "id": "activity26", 
-      "title": "Tap the Right One -26"
-  
-    }, 
+      "category": "units",
+      "thumbnail": "Images/Unit2/4.webp",
+      "description": "Learn And. Just watch, listen and repeat",
+      "id": "unit2",
+      "title": "Unit 2: And"
+    },
     {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity27", 
-      "id": "activity27", 
-      "title": "Tap the Right One -27"
-    }, 
+      "category": "units",
+      "thumbnail": "Images/Unit3/6.webp",
+      "description": "This and that?",
+      "id": "unit3",
+      "title": "Unit 3: This and That"
+    },
     {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity28", 
-      "id": "activity28", 
-      "title": "Tap the Right One -28"
-    }, 
+      "category": "units",
+      "thumbnail": "Images/Unit4/5.webp",
+      "description": "Learn about This and That. Just watch, listen and repeat",
+      "id": "unit4",
+      "title": "Unit 4: What's this?"
+    },
     {
-      "thumbnail": "Images/dashboard thumbnails/Manku.webp", 
-      "description": "activity", 
-      "route": "choosequiz/quiz3.html?activity=activity29", 
-      "id": "activity29", 
-      "title": "Tap the Right One -29"
-    }, 
- 
-
-      {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-19", 
-      "route": "order-activity/order.html?activity=activity19", 
-      "id": "order-activity19", 
+      "category": "units",
+      "thumbnail": "Images/Unit15/4.webp",
+      "description": "What is that?",
+      "id": "unit5",
+      "title": "Unit 5: What's that?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit6/7.webp",
+      "description": "Is this a globe?",
+      "id": "unit6",
+      "title": "Unit 6: Is this a globe?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit7/9.webp",
+      "description": "Is that a Zebra?",
+      "id": "unit7",
+      "title": "Unit 7: Is that a Zebra?"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html",
+      "id": "activity1",
+      "title": "Tap the Right One -1"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity2",
+      "id": "activity2",
+      "title": "Tap the Right One -2"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity3",
+      "id": "activity3",
+      "title": "Tap the Right One -3"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity4",
+      "id": "activity4",
+      "title": "Tap the Right One -4"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity5",
+      "id": "activity5",
+      "title": "Tap the Right One -5"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-1",
+      "route": "order-activity/order.html?activity=activity1",
+      "id": "order-activity1",
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-      {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-20", 
-      "route": "order-activity/order.html?activity=activity20", 
-      "id": "order-activity20", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-      {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-21", 
-      "route": "order-activity/order.html?activity=activity21", 
-      "id": "order-activity21", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-      {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-22", 
-      "route": "order-activity/order.html?activity=activity22", 
-      "id": "order-activity22", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-      {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-23", 
-      "route": "order-activity/order.html?activity=activity23", 
-      "id": "order-activity23", 
-      "thumbnail":"Images/dashboard thumbnails/Reena.webp"
-    }, 
-      {
-      "category": "order", 
-      "description": "activity", 
-      "title": "Mix and Fix-24", 
-      "route": "order-activity/order.html?activity=activity24", 
-      "id": "order-activity24", 
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
-    }, 
-    
-
+    },
     {
-      "thumbnail": "Images/dashboard thumbnails/John.webp", 
-      "description": "Fill in the blanks to get the right answer", 
-      "route": "blankquiz/activity3.html", 
-      "id": "fill", 
-      "title": "Fill in the blanks"
-    }, 
-   
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-2",
+      "route": "order-activity/order.html?activity=activity2",
+      "id": "order-activity2",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
     {
-      "category": "Practice", 
-      "description": "Practice", 
-      "title": "Practice Session- Unit 1", 
-      "route": "an-quiz/an-quiz.html", 
-      "id": "unit1-practice", 
-      "thumbnail": "an-quiz/Images/introquiz.webp"
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-3",
+      "route": "order-activity/order.html?activity=activity3",
+      "id": "order-activity3",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     },
     {
       "category": "voice",
@@ -785,6 +138,106 @@
       "route": "lets-speak/index.html?activity=activity3",
       "id": "lets-speak-activity3",
       "thumbnail": "Images/dashboard thumbnails/Raju.webp"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit8/5.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit8",
+      "title": "Unit 8: Books, Pencils"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit9/6.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit9",
+      "title": "Unit 9: These are and Those are"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit10/7.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit10",
+      "title": "Unit 10: Are these papayas?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit11/4.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit11",
+      "title": "Unit 11: Are they Cars?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit12/5.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit12",
+      "title": "Unit 12: I am a girl"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit13/6.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit13",
+      "title": "Unit 13: You are a boy?"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity6",
+      "id": "activity6",
+      "title": "Tap the Right One -6"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity7",
+      "id": "activity7",
+      "title": "Tap the Right One -7"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity8",
+      "id": "activity8",
+      "title": "Tap the Right One -8"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity9",
+      "id": "activity9",
+      "title": "Tap the Right One -9"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity10",
+      "id": "activity10",
+      "title": "Tap the Right One -10"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity11",
+      "id": "activity11",
+      "title": "Tap the Right One -11"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-4",
+      "route": "order-activity/order.html?activity=activity4",
+      "id": "order-activity4",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-5",
+      "route": "order-activity/order.html?activity=activity5",
+      "id": "order-activity5",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     },
     {
       "category": "voice",
@@ -819,6 +272,137 @@
       "thumbnail": "Images/dashboard thumbnails/Manku.webp"
     },
     {
+      "category": "units",
+      "thumbnail": "Images/Unit14/7.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit14",
+      "title": "Unit 14: What Colour?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit15/4.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit15",
+      "title": "Unit 15: My, Your, Our, Their, His, Her"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit17/5.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit16",
+      "title": "Unit 16: Whose T-shirt is blue?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit17/6.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit17",
+      "title": "Unit 17: Mine, Yours, Our, Theirs, His, Her"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit18/7.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit18",
+      "title": "Unit 18: I'm a Student"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit19/8.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit19",
+      "title": "Unit 19: In, On, Under"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit20/4.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit20",
+      "title": "Unit 20: Here and There"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit21/6.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit21",
+      "title": "Unit 21: Unit 21: Where is the kite?"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity12",
+      "id": "activity12",
+      "title": "Tap the Right One -12"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity13",
+      "id": "activity13",
+      "title": "Tap the Right One -13"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity14",
+      "id": "activity14",
+      "title": "Tap the Right One -14"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity15",
+      "id": "activity15",
+      "title": "Tap the Right One -15"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity16",
+      "id": "activity16",
+      "title": "Tap the Right One -16"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-6",
+      "route": "order-activity/order.html?activity=activity6",
+      "id": "order-activity6",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-7",
+      "route": "order-activity/order.html?activity=activity7",
+      "id": "order-activity7",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-8",
+      "route": "order-activity/order.html?activity=activity8",
+      "id": "order-activity8",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-9",
+      "route": "order-activity/order.html?activity=activity9",
+      "id": "order-activity9",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-10",
+      "route": "order-activity/order.html?activity=activity10",
+      "id": "order-activity10",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
       "category": "voice",
       "description": "Practice speaking with Reena",
       "title": "Let's Talk - 8",
@@ -843,6 +427,123 @@
       "thumbnail": "Images/dashboard thumbnails/Raju.webp"
     },
     {
+      "category": "units",
+      "thumbnail": "Images/Unit22/7.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit22",
+      "title": "Unit 22: Nithin is at home"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit23/8.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit23",
+      "title": "Unit 23: Whose Bangles are blue?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit24/4.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit24",
+      "title": "Unit 24: How Old Are You?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit25/4.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit25",
+      "title": "Unit 25: There is an old man"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit26/5.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit26",
+      "title": "Unit 26: Is there a watch?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit27/6.webp",
+      "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
+      "id": "unit27",
+      "title": "Unit 27: My home"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity17",
+      "id": "activity17",
+      "title": "Tap the Right One -17"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity18",
+      "id": "activity18",
+      "title": "Tap the Right One -18"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity19",
+      "id": "activity19",
+      "title": "Tap the Right One -19"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity20",
+      "id": "activity20",
+      "title": "Tap the Right One -20"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity21",
+      "id": "activity21",
+      "title": "Tap the Right One -21"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-11",
+      "route": "order-activity/order.html?activity=activity11",
+      "id": "order-activity11",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-12",
+      "route": "order-activity/order.html?activity=activity12",
+      "id": "order-activity12",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-13",
+      "route": "order-activity/order.html?activity=activity13",
+      "id": "order-activity13",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-14",
+      "route": "order-activity/order.html?activity=activity14",
+      "id": "order-activity14",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-15",
+      "route": "order-activity/order.html?activity=activity15",
+      "id": "order-activity15",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
       "category": "voice",
       "description": "Practice speaking with Reena",
       "title": "Let's Talk - 11",
@@ -859,6 +560,99 @@
       "thumbnail": "Images/dashboard thumbnails/Raju.webp"
     },
     {
+      "category": "units",
+      "thumbnail": "Images/Unit28/7.webp",
+      "id": "unit28",
+      "title": "Unit 28: How many?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit29/8.webp",
+      "id": "unit29",
+      "title": "Unit 29: How many bottles are there?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit30/4.webp",
+      "id": "unit30",
+      "title": "Unit 30: What's the weather like?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit31/16.webp",
+      "id": "unit31",
+      "title": "Unit 31: Unit 31: What month is it?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit32/4.webp",
+      "id": "unit32",
+      "title": "Unit 32: What day is it today?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit33/4.webp",
+      "id": "unit33",
+      "title": "Unit 33: What is today's date?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit34/29.webp",
+      "id": "unit34",
+      "title": "Unit 34: Mathew is Tall"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit35/6.webp",
+      "id": "unit35",
+      "title": "Unit 35: The first, the second..."
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity22",
+      "id": "activity22",
+      "title": "Tap the Right One -22"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity23",
+      "id": "activity23",
+      "title": "Tap the Right One -23"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity24",
+      "id": "activity24",
+      "title": "Tap the Right One -24"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-16",
+      "route": "order-activity/order.html?activity=activity16",
+      "id": "order-activity16",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-17",
+      "route": "order-activity/order.html?activity=activity17",
+      "id": "order-activity17",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-18",
+      "route": "order-activity/order.html?activity=activity18",
+      "id": "order-activity18",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
       "category": "voice",
       "description": "Practice speaking with Manku",
       "title": "Let's Talk - 13",
@@ -872,6 +666,149 @@
       "title": "Let's Talk - 14",
       "route": "lets-speak/index.html?activity=activity14",
       "id": "lets-speak-activity14",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit36/7.webp",
+      "id": "unit36",
+      "title": "Unit 36: May is the fifth month"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit37/6.webp",
+      "id": "unit37",
+      "title": "Unit 37: Which...? Which one...?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit38/8.webp",
+      "id": "unit38",
+      "title": "Unit 38: Which one is old?"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit39/1.webp",
+      "id": "unit39",
+      "title": "Unit 39: I have a Camera"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit40/5.webp",
+      "id": "unit40",
+      "title": "Unit 40: I like Bananas"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit41/6.webp",
+      "id": "unit41",
+      "title": "Unit 41: I can Read"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit42/4.webp",
+      "id": "unit42",
+      "title": "Unit 42: I can't sing"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit43/14.webp",
+      "id": "unit43",
+      "title": "Unit 43: What Time is it"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit44/4.webp",
+      "id": "unit44",
+      "title": "Unit 44: I'm reading"
+    },
+    {
+      "category": "units",
+      "thumbnail": "Images/Unit45/24.webp",
+      "id": "unit45",
+      "title": "Unit 45: What are you doing?"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity25",
+      "id": "activity25",
+      "title": "Tap the Right One -25"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity26",
+      "id": "activity26",
+      "title": "Tap the Right One -26"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity27",
+      "id": "activity27",
+      "title": "Tap the Right One -27"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity28",
+      "id": "activity28",
+      "title": "Tap the Right One -28"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity29",
+      "id": "activity29",
+      "title": "Tap the Right One -29"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-19",
+      "route": "order-activity/order.html?activity=activity19",
+      "id": "order-activity19",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-20",
+      "route": "order-activity/order.html?activity=activity20",
+      "id": "order-activity20",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-21",
+      "route": "order-activity/order.html?activity=activity21",
+      "id": "order-activity21",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-22",
+      "route": "order-activity/order.html?activity=activity22",
+      "id": "order-activity22",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-23",
+      "route": "order-activity/order.html?activity=activity23",
+      "id": "order-activity23",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-24",
+      "route": "order-activity/order.html?activity=activity24",
+      "id": "order-activity24",
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     },
     {
@@ -921,7 +858,22 @@
       "route": "lets-speak/index.html?activity=activity20",
       "id": "lets-speak-activity20",
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "thumbnail": "Images/dashboard thumbnails/John.webp",
+      "description": "Fill in the blanks to get the right answer",
+      "route": "blankquiz/activity3.html",
+      "id": "fill",
+      "title": "Fill in the blanks"
+    },
+    {
+      "category": "Practice",
+      "description": "Practice",
+      "title": "Practice Session- Unit 1",
+      "route": "an-quiz/an-quiz.html",
+      "id": "unit1-practice",
+      "thumbnail": "an-quiz/Images/introquiz.webp"
     }
-  ], 
+  ],
   "version": 1
 }
