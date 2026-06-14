@@ -23,6 +23,7 @@ let outroAudioBase = "Audio/outro/";
 let dataLoaded = false;
 
 const els = {
+  activityShell: document.querySelector(".activity-shell"),
   heroPanel: document.querySelector(".hero-panel"),
   practicePanel: document.querySelector(".practice-panel"),
   avatar: document.querySelector(".manku-avatar"),
@@ -266,6 +267,7 @@ function sceneSpecificMatch(scene, transcript) {
 function setState(text, state = "ready") {
   els.statusText.textContent = text;
   els.practicePanel.dataset.state = state;
+  els.activityShell.dataset.state = state;
 }
 
 function setHeardText(text) {
