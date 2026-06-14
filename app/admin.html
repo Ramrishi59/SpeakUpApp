@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SpeakUp Admin</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
   <style>
     :root {
       color-scheme: light;
@@ -30,9 +31,7 @@
       --shadow-soft: 0 12px 30px rgba(88, 72, 61, .10);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -61,22 +60,10 @@
       box-shadow: 0 10px 30px rgba(88, 72, 61, .08);
     }
 
-    h1, h2, h3 {
-      margin: 0;
-    }
-
-    h1 {
-      font-size: 24px;
-      letter-spacing: .01em;
-    }
-
-    h2 {
-      font-size: 18px;
-    }
-
-    h3 {
-      font-size: 15px;
-    }
+    h1, h2, h3 { margin: 0; }
+    h1 { font-size: 24px; letter-spacing: .01em; }
+    h2 { font-size: 18px; }
+    h3 { font-size: 15px; }
 
     main {
       width: min(1280px, 100%);
@@ -84,9 +71,7 @@
       padding: 28px 24px 40px;
     }
 
-    button, input, select, textarea {
-      font: inherit;
-    }
+    button, input, select, textarea { font: inherit; }
 
     button {
       border: 0;
@@ -97,17 +82,11 @@
       padding: 10px 14px;
       font-weight: 700;
       box-shadow: 0 8px 18px rgba(249, 115, 22, .24);
-      transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
 
-    button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 24px rgba(249, 115, 22, .28);
-    }
-
-    button:active {
-      transform: translateY(0);
-    }
+    button:hover { transform: translateY(-1px); box-shadow: 0 12px 24px rgba(249, 115, 22, .28); }
+    button:active { transform: translateY(0); }
 
     button.secondary {
       background: linear-gradient(135deg, #eef6ff, #f8f5ff);
@@ -121,10 +100,7 @@
       box-shadow: 0 8px 16px rgba(225, 29, 72, .18);
     }
 
-    button:disabled {
-      cursor: not-allowed;
-      opacity: .55;
-    }
+    button:disabled { cursor: not-allowed; opacity: .55; }
 
     input, select, textarea {
       width: 100%;
@@ -142,10 +118,7 @@
       box-shadow: 0 0 0 4px rgba(249, 115, 22, .15);
     }
 
-    textarea {
-      min-height: 76px;
-      resize: vertical;
-    }
+    textarea { min-height: 76px; resize: vertical; }
 
     label {
       display: grid;
@@ -163,10 +136,7 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .stack {
-      display: grid;
-      gap: 14px;
-    }
+    .stack { display: grid; gap: 14px; }
 
     .grid {
       display: grid;
@@ -182,13 +152,8 @@
       flex-wrap: wrap;
     }
 
-    .hidden {
-      display: none !important;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
+    .hidden { display: none !important; }
+    .muted { color: var(--muted); }
 
     #adminIdentity {
       display: inline-flex;
@@ -248,24 +213,10 @@
       padding: 12px;
     }
 
-    .user-button:hover {
-      transform: none;
-      border-color: #fdba74;
-      box-shadow: 0 8px 18px rgba(249, 115, 22, .12);
-    }
+    .user-button:hover { transform: none; border-color: #fdba74; box-shadow: 0 8px 18px rgba(249, 115, 22, .12); }
+    .user-button.active { border-color: var(--brand); background: var(--brand-soft); box-shadow: inset 4px 0 0 var(--brand), 0 8px 18px rgba(249, 115, 22, .12); }
 
-    .user-button.active {
-      border-color: var(--brand);
-      background: var(--brand-soft);
-      box-shadow: inset 4px 0 0 var(--brand), 0 8px 18px rgba(249, 115, 22, .12);
-    }
-
-    .user-topline {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-    }
+    .user-topline { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 
     .online-dot {
       display: inline-flex;
@@ -288,20 +239,10 @@
       background: #94a3b8;
     }
 
-    .online-dot.is-online {
-      background: var(--ok-soft);
-      color: var(--ok);
-    }
+    .online-dot.is-online { background: var(--ok-soft); color: var(--ok); }
+    .online-dot.is-online::before { background: var(--ok); box-shadow: 0 0 0 4px rgba(5, 150, 105, .14); }
 
-    .online-dot.is-online::before {
-      background: var(--ok);
-      box-shadow: 0 0 0 4px rgba(5, 150, 105, .14);
-    }
-
-    .user-meta-line {
-      display: block;
-      margin-top: 4px;
-    }
+    .user-meta-line { display: block; margin-top: 4px; }
 
     .user-filter-row {
       display: grid;
@@ -309,18 +250,8 @@
       gap: 8px;
     }
 
-    .user-filter-button {
-      background: linear-gradient(135deg, #ffffff, #f8fafc);
-      border: 1px solid var(--line);
-      color: var(--text);
-      box-shadow: none;
-    }
-
-    .user-filter-button.active {
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
-      border-color: transparent;
-      color: white;
-    }
+    .user-filter-button { background: linear-gradient(135deg, #ffffff, #f8fafc); border: 1px solid var(--line); color: var(--text); box-shadow: none; }
+    .user-filter-button.active { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border-color: transparent; color: white; }
 
     .pill {
       display: inline-flex;
@@ -334,15 +265,8 @@
       font-weight: 800;
     }
 
-    .pill.ok {
-      background: var(--ok-soft);
-      color: var(--ok);
-    }
-
-    .pill.warn {
-      background: var(--warn-soft);
-      color: var(--warn);
-    }
+    .pill.ok { background: var(--ok-soft); color: var(--ok); }
+    .pill.warn { background: var(--warn-soft); color: var(--warn); }
 
     .details {
       display: grid;
@@ -358,19 +282,8 @@
       background: linear-gradient(135deg, #ffffff, #fffaf5);
     }
 
-    .detail span {
-      display: block;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .detail strong {
-      display: block;
-      overflow-wrap: anywhere;
-      line-height: 1.35;
-    }
+    .detail span { display: block; color: var(--muted); font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+    .detail strong { display: block; overflow-wrap: anywhere; line-height: 1.35; }
 
     .tabs {
       display: flex;
@@ -380,17 +293,8 @@
       overflow-x: auto;
     }
 
-    .tab {
-      background: #f1f5f9;
-      color: var(--text);
-      box-shadow: none;
-      white-space: nowrap;
-    }
-
-      .tab.active {
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
-      color: white;
-    }
+    .tab { background: #f1f5f9; color: var(--text); box-shadow: none; white-space: nowrap; }
+    .tab.active { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; }
 
     .progress-section {
       display: grid;
@@ -401,26 +305,11 @@
       padding: 14px;
     }
 
-    .progress-section h3 {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: center;
-    }
+    .progress-section h3 { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
 
-    .progress-count {
-      border-radius: 999px;
-      padding: 4px 9px;
-      background: var(--blue-soft);
-      color: #0369a1;
-      font-size: 12px;
-    }
+    .progress-count { border-radius: 999px; padding: 4px 9px; background: var(--blue-soft); color: #0369a1; font-size: 12px; }
 
-    .unit-chip-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .unit-chip-list { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .unit-chip {
       display: inline-flex;
@@ -433,15 +322,8 @@
       font-weight: 800;
     }
 
-    .unit-chip.completed {
-      background: var(--ok-soft);
-      color: var(--ok);
-    }
-
-    .unit-chip.progress {
-      background: var(--blue-soft);
-      color: #0369a1;
-    }
+    .unit-chip.completed { background: var(--ok-soft); color: var(--ok); }
+    .unit-chip.progress { background: var(--blue-soft); color: #0369a1; }
 
     .empty-state {
       border: 1px dashed #f3cfa7;
@@ -452,10 +334,7 @@
       margin: 0;
     }
 
-    .lesson-progress-list {
-      display: grid;
-      gap: 10px;
-    }
+    .lesson-progress-list { display: grid; gap: 10px; }
 
     .lesson-progress-card {
       display: grid;
@@ -466,35 +345,23 @@
       padding: 12px;
     }
 
-    .lesson-progress-card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
+    .lesson-progress-card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .lesson-progress-name { font-weight: 850; overflow-wrap: anywhere; }
+    .lesson-progress-meta { color: var(--muted); font-size: 13px; }
 
-    .lesson-progress-name {
-      font-weight: 850;
-      overflow-wrap: anywhere;
-    }
-
-    .lesson-progress-meta {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .mini-progress-track {
-      height: 8px;
-      border-radius: 999px;
-      background: #e2e8f0;
-      overflow: hidden;
-    }
+    .mini-progress-track { height: 8px; border-radius: 999px; background: #e2e8f0; overflow: hidden; }
 
     .mini-progress-fill {
       display: block;
       height: 100%;
       border-radius: inherit;
       background: linear-gradient(90deg, var(--brand), var(--brand-2), var(--brand-3));
+      width: 0;
+      animation: barGrow .9s cubic-bezier(.22, 1, .36, 1) forwards;
+    }
+
+    @keyframes barGrow {
+      to { width: var(--w, 0%); }
     }
 
     pre {
@@ -522,30 +389,11 @@
       overflow: hidden;
     }
 
-    th, td {
-      border-bottom: 1px solid var(--line);
-      padding: 12px 10px;
-      text-align: left;
-      vertical-align: top;
-    }
+    th, td { border-bottom: 1px solid var(--line); padding: 12px 10px; text-align: left; vertical-align: top; }
+    th { background: #fff7ed; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+    tr:last-child td { border-bottom: 0; }
 
-    th {
-      background: #fff7ed;
-      color: var(--muted);
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    tr:last-child td {
-      border-bottom: 0;
-    }
-
-    #loginPanel {
-      width: min(460px, 100%);
-      margin: 36px auto 0;
-      box-shadow: var(--shadow);
-    }
+    #loginPanel { width: min(460px, 100%); margin: 36px auto 0; box-shadow: var(--shadow); }
 
     #loginPanel h2::before,
     #adminPanel aside h2::before,
@@ -560,15 +408,9 @@
       vertical-align: 2px;
     }
 
-    #adminPanel > aside {
-      position: sticky;
-      top: 88px;
-    }
+    .grid > aside { position: sticky; top: 88px; }
 
-    [data-action="grant"] {
-      background: linear-gradient(135deg, #34d399, #059669);
-      box-shadow: 0 8px 16px rgba(21, 128, 61, .16);
-    }
+    [data-action="grant"] { background: linear-gradient(135deg, #34d399, #059669); box-shadow: 0 8px 16px rgba(21, 128, 61, .16); }
 
     [data-action^="extend"],
     [data-action="setExpiry"] {
@@ -577,23 +419,142 @@
       border: 1px solid #bae6fd;
     }
 
+    /* ── Stats Bar ────────────────────────────────────────── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, .92);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 14px 14px 0 0;
+    }
+
+    .stat-card.total::before   { background: linear-gradient(90deg, var(--brand), var(--brand-2)); }
+    .stat-card.online::before  { background: linear-gradient(90deg, var(--ok), #34d399); }
+    .stat-card.today::before   { background: linear-gradient(90deg, var(--brand-2), var(--brand-3)); }
+    .stat-card.week::before    { background: linear-gradient(90deg, var(--brand-3), var(--brand)); }
+
+    .stat-card-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .stat-card-number {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stat-card.online .stat-card-number { color: var(--ok); }
+    .stat-card.today  .stat-card-number { color: #0369a1; }
+    .stat-card.week   .stat-card-number { color: #6d28d9; }
+
+    .stat-card-sublabel { font-size: 12px; color: var(--muted); }
+
+    /* ── Overview Panel ───────────────────────────────────── */
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .overview-charts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    /* ── Chart Boxes ──────────────────────────────────────── */
+    .chart-box {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      background: rgba(255, 255, 255, .70);
+    }
+
+    .chart-box-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+
+    .chart-container { position: relative; height: 200px; }
+    .chart-container-dynamic { position: relative; }
+
+    /* ── Analytics Tab ────────────────────────────────────── */
+    .analytics-charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .donut-legend { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+
+    .donut-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .donut-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Expiry Badge ─────────────────────────────────────── */
+    .expiry-badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-left: 6px;
+      vertical-align: 1px;
+    }
+
+    .expiry-badge.ok     { background: var(--ok-soft);     color: var(--ok); }
+    .expiry-badge.warn   { background: var(--warn-soft);   color: var(--warn); }
+    .expiry-badge.danger { background: var(--danger-soft); color: var(--danger); }
+
+    /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 900px) {
-      header {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+      header { align-items: flex-start; flex-direction: column; }
+      main { padding: 16px; }
 
-      main {
-        padding: 16px;
-      }
+      .grid, .details { grid-template-columns: 1fr; }
 
-      .grid, .details {
-        grid-template-columns: 1fr;
-      }
+      .grid > aside { position: static; }
 
-      #adminPanel > aside {
-        position: static;
-      }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .overview-charts-grid { grid-template-columns: 1fr; }
+      .analytics-charts-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -610,6 +571,7 @@
   </header>
 
   <main>
+    <!-- Login -->
     <section id="loginPanel" class="panel stack">
       <h2>Admin Sign In</h2>
       <p class="muted">Use an account with the Firebase custom claim <strong>admin: true</strong>.</p>
@@ -628,94 +590,172 @@
       <p id="loginStatus" class="status" aria-live="polite"></p>
     </section>
 
-    <section id="adminPanel" class="grid hidden">
-      <aside class="panel stack">
-        <h2>Users</h2>
-        <label>
-          Search by email, username, or uid
-          <input id="userSearch" type="search" placeholder="Search users">
-        </label>
-        <div class="row">
-          <button type="button" id="searchUsersButton">Search</button>
-          <button type="button" id="refreshUsersButton" class="secondary">Refresh</button>
-        </div>
-        <div class="user-filter-row" aria-label="User filters">
-          <button type="button" class="user-filter-button active" data-user-filter="all">All loaded</button>
-          <button type="button" class="user-filter-button" data-user-filter="online">Active now</button>
-        </div>
-        <p id="userSearchStatus" class="status" aria-live="polite"></p>
-        <div id="userList" class="user-list"></div>
-      </aside>
+    <!-- Admin Panel -->
+    <section id="adminPanel" class="stack hidden">
 
-      <div class="stack">
-        <section class="panel stack">
-          <div class="row">
-            <h2>User Profile</h2>
-            <span id="accessPill" class="pill">No user selected</span>
-          </div>
-          <div id="userDetails" class="details"></div>
-        </section>
+      <!-- Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-card total">
+          <div class="stat-card-label">Total Users</div>
+          <div class="stat-card-number" id="statTotal">—</div>
+          <div class="stat-card-sublabel">loaded</div>
+        </div>
+        <div class="stat-card online">
+          <div class="stat-card-label">Online Now</div>
+          <div class="stat-card-number" id="statOnline">—</div>
+          <div class="stat-card-sublabel">active users</div>
+        </div>
+        <div class="stat-card today">
+          <div class="stat-card-label">Active Today</div>
+          <div class="stat-card-number" id="statToday">—</div>
+          <div class="stat-card-sublabel">in last 24h</div>
+        </div>
+        <div class="stat-card week">
+          <div class="stat-card-label">Active This Week</div>
+          <div class="stat-card-number" id="statWeek">—</div>
+          <div class="stat-card-sublabel">in last 7 days</div>
+        </div>
+      </div>
 
-        <section class="panel stack">
-          <h2>Access Controls</h2>
-          <div class="row">
-            <button type="button" data-action="grant">Grant full unlock</button>
-            <button type="button" data-action="revoke" class="danger">Revoke full unlock</button>
-            <button type="button" data-action="extend30" class="secondary">Extend 30 days</button>
-            <button type="button" data-action="extend90" class="secondary">Extend 90 days</button>
-            <button type="button" data-action="extend365" class="secondary">Extend 365 days</button>
+      <!-- Overview Charts -->
+      <section id="overviewPanel" class="panel stack">
+        <div class="panel-header">
+          <h2>Overview</h2>
+          <button type="button" id="toggleOverviewBtn" class="secondary">Hide charts</button>
+        </div>
+        <div id="overviewChartsArea" class="overview-charts-grid">
+          <div class="chart-box">
+            <div class="chart-box-title">User Status</div>
+            <div class="chart-container"><canvas id="statusChart"></canvas></div>
           </div>
-          <div class="details">
-            <label>
-              Custom expiry date
-              <input id="customExpiry" type="date">
-            </label>
-            <div class="row" style="align-items: end;">
-              <button type="button" data-action="setExpiry" class="secondary">Set custom expiry</button>
-            </div>
+          <div class="chart-box">
+            <div class="chart-box-title">Last Activity</div>
+            <div class="chart-container"><canvas id="activityChart"></canvas></div>
           </div>
+        </div>
+      </section>
+
+      <!-- Two-column grid -->
+      <div class="grid">
+        <aside class="panel stack">
+          <h2>Users</h2>
           <label>
-            Reason for change
-            <textarea id="accessReason" placeholder="Required before saving access changes"></textarea>
+            Search by email, username, or uid
+            <input id="userSearch" type="search" placeholder="Search users">
           </label>
-          <p id="accessStatus" class="status" aria-live="polite"></p>
-        </section>
-
-        <section class="panel stack">
-          <div class="tabs">
-            <button type="button" class="tab active" data-tab="progress">Progress</button>
-            <button type="button" class="tab" data-tab="raw">Raw Profile</button>
-            <button type="button" class="tab" data-tab="payments">Payments</button>
+          <div class="row">
+            <button type="button" id="searchUsersButton">Search</button>
+            <button type="button" id="refreshUsersButton" class="secondary">Refresh</button>
           </div>
+          <div class="user-filter-row" aria-label="User filters">
+            <button type="button" class="user-filter-button active" data-user-filter="all">All loaded</button>
+            <button type="button" class="user-filter-button" data-user-filter="online">Active now</button>
+          </div>
+          <p id="userSearchStatus" class="status" aria-live="polite"></p>
+          <div id="userList" class="user-list"></div>
+        </aside>
 
-          <div id="progressTab" class="stack"></div>
-          <pre id="rawTab" class="hidden"></pre>
-          <div id="paymentsTab" class="hidden stack">
+        <div class="stack">
+          <!-- User Profile -->
+          <section class="panel stack">
             <div class="row">
-              <h2>Recent Payments</h2>
-              <button type="button" id="refreshPaymentsButton" class="secondary">Refresh payments</button>
+              <h2>User Profile</h2>
+              <span id="accessPill" class="pill">No user selected</span>
             </div>
-            <p id="paymentStatus" class="status" aria-live="polite"></p>
-            <div style="overflow:auto;">
-              <table>
-                <thead>
-                  <tr>
-                    <th>User</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th>Razorpay IDs</th>
-                    <th>Verified</th>
-                  </tr>
-                </thead>
-                <tbody id="paymentsBody"></tbody>
-              </table>
+            <div id="userDetails" class="details"></div>
+          </section>
+
+          <!-- Access Controls -->
+          <section class="panel stack">
+            <h2>Access Controls</h2>
+            <div class="row">
+              <button type="button" data-action="grant">Grant full unlock</button>
+              <button type="button" data-action="revoke" class="danger">Revoke full unlock</button>
+              <button type="button" data-action="extend30" class="secondary">Extend 30 days</button>
+              <button type="button" data-action="extend90" class="secondary">Extend 90 days</button>
+              <button type="button" data-action="extend365" class="secondary">Extend 365 days</button>
             </div>
-          </div>
-        </section>
+            <div class="details">
+              <label>
+                Custom expiry date
+                <input id="customExpiry" type="date">
+              </label>
+              <div class="row" style="align-items: end;">
+                <button type="button" data-action="setExpiry" class="secondary">Set custom expiry</button>
+              </div>
+            </div>
+            <label>
+              Reason for change
+              <textarea id="accessReason" placeholder="Required before saving access changes"></textarea>
+            </label>
+            <p id="accessStatus" class="status" aria-live="polite"></p>
+          </section>
+
+          <!-- Tabbed Detail Panel -->
+          <section class="panel stack">
+            <div class="tabs">
+              <button type="button" class="tab active" data-tab="progress">Progress</button>
+              <button type="button" class="tab" data-tab="analytics">Analytics</button>
+              <button type="button" class="tab" data-tab="raw">Raw Profile</button>
+              <button type="button" class="tab" data-tab="payments">Payments</button>
+            </div>
+
+            <!-- Progress Tab -->
+            <div id="progressTab" class="stack"></div>
+
+            <!-- Analytics Tab -->
+            <div id="analyticsTab" class="hidden stack">
+              <p id="analyticsEmpty" class="empty-state">Select a user from the list to see their analytics.</p>
+              <div id="analyticsCharts" class="analytics-charts-grid hidden">
+                <div class="chart-box">
+                  <div class="chart-box-title">Lesson Progress</div>
+                  <div id="lessonChartWrap" class="chart-container-dynamic">
+                    <canvas id="lessonBarChart"></canvas>
+                  </div>
+                </div>
+                <div class="chart-box">
+                  <div class="chart-box-title">Unit Completion</div>
+                  <div class="chart-container"><canvas id="unitDonutChart"></canvas></div>
+                  <div id="unitDonutLegend" class="donut-legend"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Raw Tab -->
+            <pre id="rawTab" class="hidden"></pre>
+
+            <!-- Payments Tab -->
+            <div id="paymentsTab" class="hidden stack">
+              <div class="row">
+                <h2>Recent Payments</h2>
+                <button type="button" id="refreshPaymentsButton" class="secondary">Refresh payments</button>
+              </div>
+              <p id="paymentStatus" class="status" aria-live="polite"></p>
+              <div class="chart-box" id="revenueChartBox" style="display:none">
+                <div class="chart-box-title">Revenue by Date</div>
+                <div class="chart-container"><canvas id="revenueChart"></canvas></div>
+              </div>
+              <div style="overflow:auto;">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>User</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Razorpay IDs</th>
+                      <th>Verified</th>
+                    </tr>
+                  </thead>
+                  <tbody id="paymentsBody"></tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
     </section>
   </main>
 
-  <script type="module" src="./admin.js?v=4"></script>
+  <script type="module" src="./admin.js?v=5"></script>
 </body>
 </html>
