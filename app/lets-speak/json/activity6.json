@@ -1,174 +1,173 @@
 {
-    "title": "Activity 6",
-    "presenter": {
-      "id": "raju",
-      "name": "Raju",
-      "avatar": "../Images/dashboard thumbnails/Raju.webp",
-      "fallbackAudioBase": "Audio/fallback/raju/",
-      "outroAudioBase": "Audio/outro/raju/"
-    },
-    "fallbackAudios": "fallbacks/raju.json",
-    "outroAudios": "outros/raju.json",
-    "scenes": [
-      {
-        "id": "intro",
-        "image": "Images/1/title.png",
-        "audio": "Audio/6/01_Chapter 1.mp3",
-        "retryAudio": "Audio/6/02_Chapter 1.mp3",
-        "prompt": "Hey! I'm Raju again! Let's play a guessing game together! Are you ready?",
-        "sceneKind": "title-card",
-        "accepted": [
-          "ready",
-          "yes",
-          "sure",
-          "okay",
-          "let's go",
-          "yeah"
-        ],
-        "helpPrompt": "Say: ready",
-        "feedback": {
-          "image": "Images/1/title.png",
-          "audio": "Audio/6/03_Chapter 1.mp3",
-          "sceneKind": "no-card",
-          "prompt": "Awesome! Let's play!"
-        }
-      },
-      {
-        "id": "grapes",
-        "image": "Images/6/1.webp",
-        "audio": "Audio/6/04_Chapter 1.mp3",
-        "retryAudio": "Audio/6/05_Chapter 1.mp3",
-        "prompt": "Look at these green fruits! Are these grapes?",
-        "accepted": [
-          "yes they are",
-          "yes",
-          "they are",
-          "grapes"
-        ],
-        "helpPrompt": "Say: yes they are",
-        "feedback": {
-          "image": "Images/6/1.webp",
-          "audio": "Audio/6/06_Chapter 1.mp3",
-          "prompt": "Yes, they are grapes! Great answer!"
-        }
-      },
-      {
-        "id": "pumpkins",
-        "image": "Images/6/2.webp",
-        "audio": "Audio/6/07_Chapter 1.mp3",
-        "retryAudio": "Audio/6/08_Chapter 1.mp3",
-        "prompt": "Wow, these are huge! Are these papayas?",
-        "accepted": [
-          "no they are pumpkins",
-          "they are pumpkins",
-          "pumpkins",
-          "no"
-        ],
-        "helpPrompt": "Say: no they are pumpkins",
-        "feedback": {
-          "image": "Images/6/2.webp",
-          "audio": "Audio/6/09_Chapter 1.mp3",
-          "prompt": "No, they are pumpkins! Good thinking!"
-        }
-      },
-      {
-        "id": "tomatoes",
-        "image": "Images/6/3.webp",
-        "audio": "Audio/6/10_Chapter 1.mp3",
-        "retryAudio": "Audio/6/11_Chapter 1.mp3",
-        "prompt": "I love red vegetables! Are these tomatoes?",
-        "accepted": [
-          "yes they are",
-          "yes",
-          "tomatoes"
-        ],
-        "helpPrompt": "Say: yes they are",
-        "feedback": {
-          "image": "Images/6/3.webp",
-          "audio": "Audio/6/12_Chapter 1.mp3",
-          "prompt": "Yes, they are tomatoes! Nice talking!"
-        }
-      },
-      {
-        "id": "onions",
-        "image": "Images/6/4.webp",
-        "audio": "Audio/6/13_Chapter 1.mp3",
-        "retryAudio": "Audio/6/14_Chapter 1.mp3",
-        "prompt": "Look at these brown ones. Are these potatoes?",
-        "accepted": [
-          "no they are onions",
-          "they are onions",
-          "onions",
-          "no"
-        ],
-        "helpPrompt": "Say: no they are onions",
-        "feedback": {
-          "image": "Images/6/4.webp",
-          "audio": "Audio/6/15_Chapter 1.mp3",
-          "prompt": "No, they are onions! You got it!"
-        }
-      },
-      {
-        "id": "parrots",
-        "image": "Images/6/5.webp",
-        "audio": "Audio/6/16_Chapter 1.mp3",
-        "retryAudio": "Audio/6/17_Chapter 1.mp3",
-        "prompt": "Listen to them! Are they parrots?",
-        "accepted": [
-          "yes they are",
-          "yes",
-          "parrots"
-        ],
-        "helpPrompt": "Say: yes they are",
-        "feedback": {
-          "image": "Images/6/5.webp",
-          "audio": "Audio/6/18_Chapter 1.mp3",
-          "prompt": "Yes, they are parrots! Super speaking!"
-        }
-      },
-      {
-        "id": "butterflies",
-        "image": "Images/6/6.webp",
-        "audio": "Audio/6/19_Chapter 1.mp3",
-        "retryAudio": "Audio/6/20_Chapter 1.mp3",
-        "prompt": "Look at those pretty wings! Are they bees?",
-        "accepted": [
-          "no they are butterflies",
-          "they are butterflies",
-          "butterflies",
-          "no"
-        ],
-        "helpPrompt": "Say: no they are butterflies",
-        "feedback": {
-          "image": "Images/6/6.webp",
-          "audio": "Audio/6/21_Chapter 1.mp3",
-          "prompt": "No, they are butterflies! Well spotted!"
-        }
-      },
-      {
-        "id": "cars",
-        "image": "Images/6/7.webp",
-        "audio": "Audio/6/22_Chapter 1.mp3",
-        "retryAudio": "Audio/6/23_Chapter 1.mp3",
-        "prompt": "Vroom vroom! Are they cars?",
-        "accepted": [
-          "yes they are",
-          "yes",
-          "cars"
-        ],
-        "helpPrompt": "Say: yes they are",
-        "feedback": {
-          "image": "Images/6/7.webp",
-          "audio": "Audio/6/24_Chapter 1.mp3",
-          "prompt": "Yes, they are cars! Fantastic talking!"
-        }
-      },
-      {
-        "id": "outro",
-        "image": "Images/6/7.webp",
-        "audio": null,
-        "prompt": "You played the guessing game so well today!",
-        "done": true
+  "title": "Activity 6",
+  "presenter": {
+    "id": "raju",
+    "name": "Raju",
+    "avatar": "../Images/dashboard thumbnails/Raju.webp",
+    "fallbackAudioBase": "Audio/fallback/raju/",
+    "outroAudioBase": "Audio/outro/raju/"
+  },
+  "fallbackAudios": "fallbacks/raju.json",
+  "outroAudios": "outros/raju.json",
+  "scenes": [
+    {
+      "id": "intro",
+      "image": "Images/1/raju.webp",
+      "audio": "Audio/6/01_Chapter 1.mp3",
+      "retryAudio": "Audio/6/02_Chapter 1.mp3",
+      "prompt": "Hey! I'm Raju again! Let's play a guessing game together! Are you ready?",
+      "sceneKind": "title-card",
+      "accepted": [
+        "ready",
+        "yes",
+        "sure",
+        "okay",
+        "let's go",
+        "yeah"
+      ],
+      "helpPrompt": "Say: ready",
+      "feedback": {
+        "image": "Images/1/raju.webp",
+        "audio": "Audio/6/03_Chapter 1.mp3",
+        "prompt": "Awesome! Let's play!"
       }
-    ]
-  }
+    },
+    {
+      "id": "grapes",
+      "image": "Images/6/1.webp",
+      "audio": "Audio/6/04_Chapter 1.mp3",
+      "retryAudio": "Audio/6/05_Chapter 1.mp3",
+      "prompt": "Look at these green fruits! Are these grapes?",
+      "accepted": [
+        "yes they are",
+        "yes",
+        "they are",
+        "grapes"
+      ],
+      "helpPrompt": "Say: yes they are",
+      "feedback": {
+        "image": "Images/6/1.webp",
+        "audio": "Audio/6/06_Chapter 1.mp3",
+        "prompt": "Yes, they are grapes! Great answer!"
+      }
+    },
+    {
+      "id": "pumpkins",
+      "image": "Images/6/2.webp",
+      "audio": "Audio/6/07_Chapter 1.mp3",
+      "retryAudio": "Audio/6/08_Chapter 1.mp3",
+      "prompt": "Wow, these are huge! Are these papayas?",
+      "accepted": [
+        "no they are pumpkins",
+        "they are pumpkins",
+        "pumpkins",
+        "no"
+      ],
+      "helpPrompt": "Say: no they are pumpkins",
+      "feedback": {
+        "image": "Images/6/2.webp",
+        "audio": "Audio/6/09_Chapter 1.mp3",
+        "prompt": "No, they are pumpkins! Good thinking!"
+      }
+    },
+    {
+      "id": "tomatoes",
+      "image": "Images/6/3.webp",
+      "audio": "Audio/6/10_Chapter 1.mp3",
+      "retryAudio": "Audio/6/11_Chapter 1.mp3",
+      "prompt": "I love red vegetables! Are these tomatoes?",
+      "accepted": [
+        "yes they are",
+        "yes",
+        "tomatoes"
+      ],
+      "helpPrompt": "Say: yes they are",
+      "feedback": {
+        "image": "Images/6/3.webp",
+        "audio": "Audio/6/12_Chapter 1.mp3",
+        "prompt": "Yes, they are tomatoes! Nice talking!"
+      }
+    },
+    {
+      "id": "onions",
+      "image": "Images/6/4.webp",
+      "audio": "Audio/6/13_Chapter 1.mp3",
+      "retryAudio": "Audio/6/14_Chapter 1.mp3",
+      "prompt": "Look at these brown ones. Are these potatoes?",
+      "accepted": [
+        "no they are onions",
+        "they are onions",
+        "onions",
+        "no"
+      ],
+      "helpPrompt": "Say: no they are onions",
+      "feedback": {
+        "image": "Images/6/4.webp",
+        "audio": "Audio/6/15_Chapter 1.mp3",
+        "prompt": "No, they are onions! You got it!"
+      }
+    },
+    {
+      "id": "parrots",
+      "image": "Images/6/5.webp",
+      "audio": "Audio/6/16_Chapter 1.mp3",
+      "retryAudio": "Audio/6/17_Chapter 1.mp3",
+      "prompt": "Listen to them! Are they parrots?",
+      "accepted": [
+        "yes they are",
+        "yes",
+        "parrots"
+      ],
+      "helpPrompt": "Say: yes they are",
+      "feedback": {
+        "image": "Images/6/5.webp",
+        "audio": "Audio/6/18_Chapter 1.mp3",
+        "prompt": "Yes, they are parrots! Super speaking!"
+      }
+    },
+    {
+      "id": "butterflies",
+      "image": "Images/6/6.webp",
+      "audio": "Audio/6/19_Chapter 1.mp3",
+      "retryAudio": "Audio/6/20_Chapter 1.mp3",
+      "prompt": "Look at those pretty wings! Are they bees?",
+      "accepted": [
+        "no they are butterflies",
+        "they are butterflies",
+        "butterflies",
+        "no"
+      ],
+      "helpPrompt": "Say: no they are butterflies",
+      "feedback": {
+        "image": "Images/6/6.webp",
+        "audio": "Audio/6/21_Chapter 1.mp3",
+        "prompt": "No, they are butterflies! Well spotted!"
+      }
+    },
+    {
+      "id": "cars",
+      "image": "Images/6/7.webp",
+      "audio": "Audio/6/22_Chapter 1.mp3",
+      "retryAudio": "Audio/6/23_Chapter 1.mp3",
+      "prompt": "Vroom vroom! Are they cars?",
+      "accepted": [
+        "yes they are",
+        "yes",
+        "cars"
+      ],
+      "helpPrompt": "Say: yes they are",
+      "feedback": {
+        "image": "Images/6/7.webp",
+        "audio": "Audio/6/24_Chapter 1.mp3",
+        "prompt": "Yes, they are cars! Fantastic talking!"
+      }
+    },
+    {
+      "id": "outro",
+      "image": "Images/6/7.webp",
+      "audio": null,
+      "prompt": "You played the guessing game so well today!",
+      "done": true
+    }
+  ]
+}

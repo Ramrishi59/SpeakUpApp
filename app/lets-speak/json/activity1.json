@@ -12,17 +12,21 @@
   "scenes": [
     {
       "id": "intro",
-      "image": "Images/1/title.png",
+      "image": "Images/1/manku.webp",
       "audio": "Audio/1/01_Chapter 1.mp3",
       "prompt": "Hey! I'm Manku! Come on, let's talk together! Can you say, \"Hi Manku!\"?",
       "sceneKind": "title-card",
-      "accepted": ["hi manku", "hi", "hello manku", "hello"],
+      "accepted": [
+        "hi manku",
+        "hi",
+        "hello manku",
+        "hello"
+      ],
       "retryAudio": "Audio/1/02_Chapter 1.mp3",
       "helpPrompt": "Say: Hi, Manku!",
       "feedback": {
-        "image": "Images/1/title.png",
+        "image": "Images/1/manku.webp",
         "audio": "Audio/1/03_Chapter 1.mp3",
-        "sceneKind": "no-card",
         "prompt": "I'm happy to hear you!"
       }
     },
@@ -32,7 +36,13 @@
       "audio": "Audio/1/04_Chapter 1.mp3",
       "retryAudio": "Audio/1/05_Chapter 1.mp3",
       "prompt": "Look! What's this?",
-      "accepted": ["a book", "book", "it is a book", "this is a book", "it's a book"],
+      "accepted": [
+        "a book",
+        "book",
+        "it is a book",
+        "this is a book",
+        "it's a book"
+      ],
       "helpPrompt": "Say: It's a book",
       "feedback": {
         "image": "Images/1/1.webp",
@@ -46,7 +56,12 @@
       "audio": "Audio/1/07_Chapter 1.mp3",
       "retryAudio": "Audio/1/08_Chapter 1.mp3",
       "prompt": "Now you can see something red. What's this?",
-      "accepted": ["an apple", "apple", "it is an apple", "it's an apple"],
+      "accepted": [
+        "an apple",
+        "apple",
+        "it is an apple",
+        "it's an apple"
+      ],
       "helpPrompt": "Say: It's an apple",
       "feedback": {
         "image": "Images/1/2.webp",
@@ -151,7 +166,7 @@
     },
     {
       "id": "outro",
-      "image": "Images/1/title.png",
+      "image": "Images/1/manku.webp",
       "audio": null,
       "prompt": "You said so many words! I loved talking with you!",
       "done": true

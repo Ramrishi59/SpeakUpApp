@@ -1,173 +1,172 @@
 {
-    "title": "Let's Speak - 11",
-    "presenter": {
-      "id": "reena",
-      "name": "Reena",
-      "avatar": "../Images/dashboard thumbnails/Reena.webp",
-      "fallbackAudioBase": "Audio/fallback/reena/",
-      "outroAudioBase": "Audio/outro/reena/"
+  "title": "Let's Speak - 11",
+  "presenter": {
+    "id": "reena",
+    "name": "Reena",
+    "avatar": "../Images/dashboard thumbnails/Reena.webp",
+    "fallbackAudioBase": "Audio/fallback/reena/",
+    "outroAudioBase": "Audio/outro/reena/"
+  },
+  "fallbackAudios": "fallbacks/reena.json",
+  "outroAudios": "outros/reena.json",
+  "scenes": [
+    {
+      "id": "intro",
+      "image": "Images/1/reena.webp",
+      "audio": "Audio/11/01_Chapter 1.mp3",
+      "prompt": "Hi! I'm Reena. Let’s play a finding game and talk together! Are you ready?",
+      "sceneKind": "title-card",
+      "accepted": [
+        "yes",
+        "ready",
+        "sure",
+        "okay",
+        "let's go",
+        "yeah"
+      ],
+      "helpPrompt": "Say: Yes.",
+      "retryAudio": "Audio/11/02_Chapter 1.mp3",
+      "feedback": {
+        "image": "Images/1/reena.webp",
+        "audio": "Audio/11/03_Chapter 1.mp3",
+        "prompt": "Great! Let’s find things!"
+      }
     },
-    "fallbackAudios": "fallbacks/reena.json",
-    "outroAudios": "outros/reena.json",
-"scenes": [
-  {
-    "id": "intro",
-    "image": "Images/1/title.png",
-    "audio": "Audio/11/01_Chapter 1.mp3",
-    "prompt": "Hi! I'm Reena. Let’s play a finding game and talk together! Are you ready?",
-    "sceneKind": "title-card",
-    "accepted": [
-      "yes",
-      "ready",
-      "sure",
-      "okay",
-      "let's go",
-      "yeah"
-    ],
-    "helpPrompt": "Say: Yes.",
-    "retryAudio": "Audio/11/02_Chapter 1.mp3",
-    "feedback": {
-      "image": "Images/1/title.png",
-      "audio": "Audio/11/03_Chapter 1.mp3",
-      "sceneKind": "no-card",
-      "prompt": "Great! Let’s find things!"
-    }
-  },
-  {
-    "id": "water-bottle",
-    "image": "Images/11/1.webp",
-    "audio": "Audio/11/04_Chapter 1.mp3",
-    "retryAudio": "Audio/11/05_Chapter 1.mp3",
-    "prompt": "I am so thirsty! My red water bottle is here. But where is the blue water bottle?",
-    "accepted": [
-      "the blue water bottle is there",
-      "it is there",
-      "there"
-    ],
-    "helpPrompt": "Say: The blue water bottle is there.",
-    "feedback": {
+    {
+      "id": "water-bottle",
       "image": "Images/11/1.webp",
-      "audio": "Audio/11/06_Chapter 1.mp3",
-      "prompt": "The blue water bottle is there! Thank you!"
-    }
-  },
-  {
-    "id": "kite-tree",
-    "image": "Images/11/2.webp",
-    "audio": "Audio/11/07_Chapter 1.mp3",
-    "retryAudio": "Audio/11/08_Chapter 1.mp3",
-    "prompt": "Oh no, I want to play, but I lost my kite! Is the kite under the tree?",
-    "accepted": [
-      "no the kite is in the tree",
-      "the kite is in the tree",
-      "in the tree",
-      "no"
-    ],
-    "helpPrompt": "Say: No, the kite is in the tree.",
-    "feedback": {
+      "audio": "Audio/11/04_Chapter 1.mp3",
+      "retryAudio": "Audio/11/05_Chapter 1.mp3",
+      "prompt": "I am so thirsty! My red water bottle is here. But where is the blue water bottle?",
+      "accepted": [
+        "the blue water bottle is there",
+        "it is there",
+        "there"
+      ],
+      "helpPrompt": "Say: The blue water bottle is there.",
+      "feedback": {
+        "image": "Images/11/1.webp",
+        "audio": "Audio/11/06_Chapter 1.mp3",
+        "prompt": "The blue water bottle is there! Thank you!"
+      }
+    },
+    {
+      "id": "kite-tree",
       "image": "Images/11/2.webp",
-      "audio": "Audio/11/09_Chapter 1.mp3",
-      "prompt": "Oh, haha! No, the kite is in the tree! I see it now!"
-    }
-  },
-  {
-    "id": "james-there",
-    "image": "Images/11/3.webp",
-    "audio": "Audio/11/10_Chapter 1.mp3",
-    "retryAudio": "Audio/11/11_Chapter 1.mp3",
-    "prompt": "Let's call our friends! Look, Danny is here. But where is James?",
-    "accepted": [
-      "he is there",
-      "james is there",
-      "there"
-    ],
-    "helpPrompt": "Say: He is there.",
-    "feedback": {
+      "audio": "Audio/11/07_Chapter 1.mp3",
+      "retryAudio": "Audio/11/08_Chapter 1.mp3",
+      "prompt": "Oh no, I want to play, but I lost my kite! Is the kite under the tree?",
+      "accepted": [
+        "no the kite is in the tree",
+        "the kite is in the tree",
+        "in the tree",
+        "no"
+      ],
+      "helpPrompt": "Say: No, the kite is in the tree.",
+      "feedback": {
+        "image": "Images/11/2.webp",
+        "audio": "Audio/11/09_Chapter 1.mp3",
+        "prompt": "Oh, haha! No, the kite is in the tree! I see it now!"
+      }
+    },
+    {
+      "id": "james-there",
       "image": "Images/11/3.webp",
-      "audio": "Audio/11/12_Chapter 1.mp3",
-      "prompt": "He is there! Let's go say hello!"
-    }
-  },
-  {
-    "id": "alarm-clock",
-    "image": "Images/11/4.webp",
-    "audio": "Audio/11/13_Chapter 1.mp3",
-    "retryAudio": "Audio/11/14_Chapter 1.mp3",
-    "prompt": "I need to wake up early tomorrow. Where is the alarm clock?",
-    "accepted": [
-      "the alarm clock is on the fridge",
-      "on the fridge",
-      "alarm clock is on the fridge"
-    ],
-    "helpPrompt": "Say: The alarm clock is on the fridge.",
-    "feedback": {
+      "audio": "Audio/11/10_Chapter 1.mp3",
+      "retryAudio": "Audio/11/11_Chapter 1.mp3",
+      "prompt": "Let's call our friends! Look, Danny is here. But where is James?",
+      "accepted": [
+        "he is there",
+        "james is there",
+        "there"
+      ],
+      "helpPrompt": "Say: He is there.",
+      "feedback": {
+        "image": "Images/11/3.webp",
+        "audio": "Audio/11/12_Chapter 1.mp3",
+        "prompt": "He is there! Let's go say hello!"
+      }
+    },
+    {
+      "id": "alarm-clock",
       "image": "Images/11/4.webp",
-      "audio": "Audio/11/15_Chapter 1.mp3",
-      "prompt": "The alarm clock is on the fridge! Good finding!"
-    }
-  },
-  {
-    "id": "puppy-chair",
-    "image": "Images/11/5.webp",
-    "audio": "Audio/11/16_Chapter 1.mp3",
-    "retryAudio": "Audio/11/17_Chapter 1.mp3",
-    "prompt": "Look at that cute puppy! Is the puppy under the chair?",
-    "accepted": [
-      "no the puppy is on the chair",
-      "the puppy is on the chair",
-      "under the chair",
-      "no"
-    ],
-    "helpPrompt": "Say: No, the puppy is on the chair.",
-    "feedback": {
+      "audio": "Audio/11/13_Chapter 1.mp3",
+      "retryAudio": "Audio/11/14_Chapter 1.mp3",
+      "prompt": "I need to wake up early tomorrow. Where is the alarm clock?",
+      "accepted": [
+        "the alarm clock is on the fridge",
+        "on the fridge",
+        "alarm clock is on the fridge"
+      ],
+      "helpPrompt": "Say: The alarm clock is on the fridge.",
+      "feedback": {
+        "image": "Images/11/4.webp",
+        "audio": "Audio/11/15_Chapter 1.mp3",
+        "prompt": "The alarm clock is on the fridge! Good finding!"
+      }
+    },
+    {
+      "id": "puppy-chair",
       "image": "Images/11/5.webp",
-      "audio": "Audio/11/18_Chapter 1.mp3",
-      "prompt": "Haha, No! The puppy is on the chair! Well done!"
-    }
-  },
-  {
-    "id": "bananas",
-    "image": "Images/11/6.webp",
-    "audio": "Audio/11/19_Chapter 1.mp3",
-    "retryAudio": "Audio/11/20_Chapter 1.mp3",
-    "prompt": "I am hungry! The apples are here. But where are the bananas?",
-    "accepted": [
-      "the bananas are there",
-      "they are there",
-      "there"
-    ],
-    "helpPrompt": "Say: The bananas are there.",
-    "feedback": {
+      "audio": "Audio/11/16_Chapter 1.mp3",
+      "retryAudio": "Audio/11/17_Chapter 1.mp3",
+      "prompt": "Look at that cute puppy! Is the puppy under the chair?",
+      "accepted": [
+        "no the puppy is on the chair",
+        "the puppy is on the chair",
+        "under the chair",
+        "no"
+      ],
+      "helpPrompt": "Say: No, the puppy is on the chair.",
+      "feedback": {
+        "image": "Images/11/5.webp",
+        "audio": "Audio/11/18_Chapter 1.mp3",
+        "prompt": "Haha, No! The puppy is on the chair! Well done!"
+      }
+    },
+    {
+      "id": "bananas",
       "image": "Images/11/6.webp",
-      "audio": "Audio/11/21_Chapter 1.mp3",
-      "prompt": "The bananas are there! Let's eat them!"
-    }
-  },
-  {
-    "id": "clothes-suitcase",
-    "image": "Images/11/7.webp",
-    "audio": "Audio/11/22_Chapter 1.mp3",
-    "retryAudio": "Audio/11/23_Chapter 1.mp3",
-    "prompt": "Last one! Look at all those clothes. Where are the clothes?",
-    "accepted": [
-      "the clothes are in the suitcase",
-      "in the suitcase",
-      "they are in the suitcase",
-      "suitcase"
-    ],
-    "helpPrompt": "Say: The clothes are in the suitcase.",
-    "feedback": {
+      "audio": "Audio/11/19_Chapter 1.mp3",
+      "retryAudio": "Audio/11/20_Chapter 1.mp3",
+      "prompt": "I am hungry! The apples are here. But where are the bananas?",
+      "accepted": [
+        "the bananas are there",
+        "they are there",
+        "there"
+      ],
+      "helpPrompt": "Say: The bananas are there.",
+      "feedback": {
+        "image": "Images/11/6.webp",
+        "audio": "Audio/11/21_Chapter 1.mp3",
+        "prompt": "The bananas are there! Let's eat them!"
+      }
+    },
+    {
+      "id": "clothes-suitcase",
       "image": "Images/11/7.webp",
-      "audio": "Audio/11/24_Chapter 1.mp3",
-      "prompt": "The clothes are in the suitcase! You are a great finder!"
+      "audio": "Audio/11/22_Chapter 1.mp3",
+      "retryAudio": "Audio/11/23_Chapter 1.mp3",
+      "prompt": "Last one! Look at all those clothes. Where are the clothes?",
+      "accepted": [
+        "the clothes are in the suitcase",
+        "in the suitcase",
+        "they are in the suitcase",
+        "suitcase"
+      ],
+      "helpPrompt": "Say: The clothes are in the suitcase.",
+      "feedback": {
+        "image": "Images/11/7.webp",
+        "audio": "Audio/11/24_Chapter 1.mp3",
+        "prompt": "The clothes are in the suitcase! You are a great finder!"
+      }
+    },
+    {
+      "id": "outro",
+      "image": "Images/11/7.webp",
+      "audio": null,
+      "prompt": "You found everything and spoke so well today!",
+      "done": true
     }
-  },
-  {
-    "id": "outro",
-    "image": "Images/11/7.webp",
-    "audio": null,
-    "prompt": "You found everything and spoke so well today!",
-    "done": true
-  }
-]
-  }
+  ]
+}

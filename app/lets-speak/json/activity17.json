@@ -12,7 +12,7 @@
   "scenes": [
     {
       "id": "intro",
-      "image": "Images/1/title.webp",
+      "image": "Images/1/reena.webp",
       "audio": "Audio/17/01_Chapter 1.mp3",
       "prompt": "Hi! I'm Reena! Let's look at some clocks and talk about time! Are you ready?",
       "sceneKind": "title-card",
@@ -20,16 +20,22 @@
     },
     {
       "id": "warmup",
-      "image": "Images/1/title.webp",
+      "image": "Images/1/reena.webp",
       "audio": "Audio/17/02_Chapter 1.mp3",
       "prompt": "Are you ready?",
       "sceneKind": "title-card",
-      "accepted": ["yes", "ready", "sure", "okay", "let's go", "yeah"],
+      "accepted": [
+        "yes",
+        "ready",
+        "sure",
+        "okay",
+        "let's go",
+        "yeah"
+      ],
       "helpPrompt": "Say: Yes.",
       "feedback": {
-        "image": "Images/1/title.webp",
+        "image": "Images/1/reena.webp",
         "audio": "Audio/17/03_Chapter 1.mp3",
-        "sceneKind": "no-card",
         "prompt": "Awesome! Let's look at the first clock!"
       }
     },
@@ -39,7 +45,11 @@
       "audio": "Audio/17/04_Chapter 1.mp3",
       "retryAudio": "Audio/17/05_Chapter 1.mp3",
       "prompt": "Look at this big wall clock. What time is it?",
-      "accepted": ["it is four o'clock", "it's four o'clock", "four o'clock"],
+      "accepted": [
+        "it is four o'clock",
+        "it's four o'clock",
+        "four o'clock"
+      ],
       "helpPrompt": "Say: It is four o'clock.",
       "feedback": {
         "image": "Images/17/1.webp",
@@ -53,7 +63,12 @@
       "audio": "Audio/17/07_Chapter 1.mp3",
       "retryAudio": "Audio/17/08_Chapter 1.mp3",
       "prompt": "Look at this blue clock. What time is it?",
-      "accepted": ["it is quarter past seven", "it's quarter past seven", "quarter past seven", "seven fifteen"],
+      "accepted": [
+        "it is quarter past seven",
+        "it's quarter past seven",
+        "quarter past seven",
+        "seven fifteen"
+      ],
       "helpPrompt": "Say: It is quarter past seven.",
       "feedback": {
         "image": "Images/17/2.webp",
@@ -67,7 +82,12 @@
       "audio": "Audio/17/10_Chapter 1.mp3",
       "retryAudio": "Audio/17/11_Chapter 1.mp3",
       "prompt": "Look at this alarm clock. What time is it?",
-      "accepted": ["it is half past twelve", "it's half past twelve", "half past twelve", "twelve thirty"],
+      "accepted": [
+        "it is half past twelve",
+        "it's half past twelve",
+        "half past twelve",
+        "twelve thirty"
+      ],
       "helpPrompt": "Say: It is half past twelve.",
       "feedback": {
         "image": "Images/17/3.webp",
@@ -81,7 +101,12 @@
       "audio": "Audio/17/13_Chapter 1.mp3",
       "retryAudio": "Audio/17/14_Chapter 1.mp3",
       "prompt": "Look at this yellow clock. What time is it?",
-      "accepted": ["it is quarter to ten", "it's quarter to ten", "quarter to ten", "nine forty five"],
+      "accepted": [
+        "it is quarter to ten",
+        "it's quarter to ten",
+        "quarter to ten",
+        "nine forty five"
+      ],
       "helpPrompt": "Say: It is quarter to ten.",
       "feedback": {
         "image": "Images/17/4.webp",
@@ -95,7 +120,12 @@
       "audio": "Audio/17/16_Chapter 1.mp3",
       "retryAudio": "Audio/17/17_Chapter 1.mp3",
       "prompt": "Look at this pink clock. The hands are on five and twelve! Is it ten o'clock?",
-      "accepted": ["no it is five o'clock", "it is five o'clock", "five o'clock", "no"],
+      "accepted": [
+        "no it is five o'clock",
+        "it is five o'clock",
+        "five o'clock",
+        "no"
+      ],
       "helpPrompt": "Say: No, it is five o'clock.",
       "feedback": {
         "image": "Images/17/5.webp",
@@ -109,7 +139,12 @@
       "audio": "Audio/17/19_Chapter 1.mp3",
       "retryAudio": "Audio/17/20_Chapter 1.mp3",
       "prompt": "Look outside at the bright sun! Is it night?",
-      "accepted": ["no it is morning", "it is morning", "morning", "no"],
+      "accepted": [
+        "no it is morning",
+        "it is morning",
+        "morning",
+        "no"
+      ],
       "helpPrompt": "Say: No, it is morning.",
       "feedback": {
         "image": "Images/17/6.webp",
@@ -123,7 +158,13 @@
       "audio": "Audio/17/22_Chapter 1.mp3",
       "retryAudio": "Audio/17/23_Chapter 1.mp3",
       "prompt": "Last picture! Look at the moon and the stars. Is it morning?",
-      "accepted": ["it is night", "it's night", "night", "no it is night", "no"],
+      "accepted": [
+        "it is night",
+        "it's night",
+        "night",
+        "no it is night",
+        "no"
+      ],
       "helpPrompt": "Say: No, it is night.",
       "feedback": {
         "image": "Images/17/7.webp",

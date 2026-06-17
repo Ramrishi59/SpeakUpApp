@@ -1,169 +1,168 @@
 {
-    "title": "Let's Speak - 9",
-    "presenter": {
-      "id": "manku",
-      "name": "Manku",
-      "avatar": "../Images/dashboard thumbnails/Manku.webp",
-      "fallbackAudioBase": "Audio/fallback/manku/",
-      "outroAudioBase": "Audio/outro/manku/"
+  "title": "Let's Speak - 9",
+  "presenter": {
+    "id": "manku",
+    "name": "Manku",
+    "avatar": "../Images/dashboard thumbnails/Manku.webp",
+    "fallbackAudioBase": "Audio/fallback/manku/",
+    "outroAudioBase": "Audio/outro/manku/"
+  },
+  "fallbackAudios": "fallbacks/manku.json",
+  "outroAudios": "outros/manku.json",
+  "scenes": [
+    {
+      "id": "intro",
+      "image": "Images/1/manku.webp",
+      "audio": "Audio/9/01_Chapter 1.mp3",
+      "prompt": "Hey! Let’s meet people and talk about jobs! Ready to play?",
+      "sceneKind": "title-card",
+      "accepted": [
+        "ready",
+        "yes",
+        "sure",
+        "okay",
+        "let's go",
+        "yeah"
+      ],
+      "helpPrompt": "Say: Ready.",
+      "retryAudio": "Audio/9/02_Chapter 1.mp3",
+      "feedback": {
+        "image": "Images/1/manku.webp",
+        "audio": "Audio/9/03_Chapter 1.mp3",
+        "prompt": "Awesome! Let’s begin!"
+      }
     },
-    "fallbackAudios": "fallbacks/manku.json",
-    "outroAudios": "outros/manku.json",
-"scenes": [
-  {
-    "id": "intro",
-    "image": "Images/1/title.png",
-    "audio": "Audio/9/01_Chapter 1.mp3",
-    "prompt": "Hey! Let’s meet people and talk about jobs! Ready to play?",
-    "sceneKind": "title-card",
-    "accepted": [
-      "ready",
-      "yes",
-      "sure",
-      "okay",
-      "let's go",
-      "yeah"
-    ],
-    "helpPrompt": "Say: Ready.",
-    "retryAudio": "Audio/9/02_Chapter 1.mp3",
-    "feedback": {
-      "image": "Images/1/title.png",
-      "audio": "Audio/9/03_Chapter 1.mp3",
-      "sceneKind": "no-card",
-      "prompt": "Awesome! Let’s begin!"
-    }
-  },
-  {
-    "id": "doctor",
-    "image": "Images/9/1.webp",
-    "audio": "Audio/9/04_Chapter 1.mp3",
-    "retryAudio": "Audio/9/05_Chapter 1.mp3",
-    "prompt": "He helps sick people! Who is he?",
-    "accepted": [
-      "he is a doctor",
-      "doctor"
-    ],
-    "helpPrompt": "Say: He is a doctor.",
-    "feedback": {
+    {
+      "id": "doctor",
       "image": "Images/9/1.webp",
-      "audio": "Audio/9/06_Chapter 1.mp3",
-      "prompt": "He is a doctor! Wonderful talking!"
-    }
-  },
-  {
-    "id": "engineer",
-    "image": "Images/9/2.webp",
-    "audio": "Audio/9/07_Chapter 1.mp3",
-    "retryAudio": "Audio/9/08_Chapter 1.mp3",
-    "prompt": "Look at him. He is building something! Who is he?",
-    "accepted": [
-      "he is an engineer",
-      "engineer",
-      "an engineer"
-    ],
-    "helpPrompt": "Say: He is an engineer.",
-    "feedback": {
+      "audio": "Audio/9/04_Chapter 1.mp3",
+      "retryAudio": "Audio/9/05_Chapter 1.mp3",
+      "prompt": "He helps sick people! Who is he?",
+      "accepted": [
+        "he is a doctor",
+        "doctor"
+      ],
+      "helpPrompt": "Say: He is a doctor.",
+      "feedback": {
+        "image": "Images/9/1.webp",
+        "audio": "Audio/9/06_Chapter 1.mp3",
+        "prompt": "He is a doctor! Wonderful talking!"
+      }
+    },
+    {
+      "id": "engineer",
       "image": "Images/9/2.webp",
-      "audio": "Audio/9/09_Chapter 1.mp3",
-      "prompt": "He is an engineer! Great answer!"
-    }
-  },
-  {
-    "id": "nurse",
-    "image": "Images/9/3.webp",
-    "audio": "Audio/9/10_Chapter 1.mp3",
-    "retryAudio": "Audio/9/11_Chapter 1.mp3",
-    "prompt": "Look carefully. She works in the hospital too. Who is she?",
-    "accepted": [
-      "she is a nurse",
-      "nurse",
-      "a nurse"
-    ],
-    "helpPrompt": "Say: She is a nurse.",
-    "feedback": {
+      "audio": "Audio/9/07_Chapter 1.mp3",
+      "retryAudio": "Audio/9/08_Chapter 1.mp3",
+      "prompt": "Look at him. He is building something! Who is he?",
+      "accepted": [
+        "he is an engineer",
+        "engineer",
+        "an engineer"
+      ],
+      "helpPrompt": "Say: He is an engineer.",
+      "feedback": {
+        "image": "Images/9/2.webp",
+        "audio": "Audio/9/09_Chapter 1.mp3",
+        "prompt": "He is an engineer! Great answer!"
+      }
+    },
+    {
+      "id": "nurse",
       "image": "Images/9/3.webp",
-      "audio": "Audio/9/12_Chapter 1.mp3",
-      "prompt": "She is a nurse! Very nice!"
-    }
-  },
-  {
-    "id": "pilot",
-    "image": "Images/9/4.webp",
-    "audio": "Audio/9/13_Chapter 1.mp3",
-    "retryAudio": "Audio/9/14_Chapter 1.mp3",
-    "prompt": "Wow, he flies airplanes! Who is he?",
-    "accepted": [
-      "he is a pilot",
-      "pilot",
-      "a pilot"
-    ],
-    "helpPrompt": "Say: He is a pilot.",
-    "feedback": {
+      "audio": "Audio/9/10_Chapter 1.mp3",
+      "retryAudio": "Audio/9/11_Chapter 1.mp3",
+      "prompt": "Look carefully. She works in the hospital too. Who is she?",
+      "accepted": [
+        "she is a nurse",
+        "nurse",
+        "a nurse"
+      ],
+      "helpPrompt": "Say: She is a nurse.",
+      "feedback": {
+        "image": "Images/9/3.webp",
+        "audio": "Audio/9/12_Chapter 1.mp3",
+        "prompt": "She is a nurse! Very nice!"
+      }
+    },
+    {
+      "id": "pilot",
       "image": "Images/9/4.webp",
-      "audio": "Audio/9/15_Chapter 1.mp3",
-      "prompt": "He is a pilot! Flying high!"
-    }
-  },
-  {
-    "id": "vet",
-    "image": "Images/9/5.webp",
-    "audio": "Audio/9/16_Chapter 1.mp3",
-    "retryAudio": "Audio/9/17_Chapter 1.mp3",
-    "prompt": "She is examining a cute puppy. Who is Anitha?",
-    "accepted": [
-      "she is a vet",
-      "vet",
-      "a vet"
-    ],
-    "helpPrompt": "Say: She is a vet.",
-    "feedback": {
+      "audio": "Audio/9/13_Chapter 1.mp3",
+      "retryAudio": "Audio/9/14_Chapter 1.mp3",
+      "prompt": "Wow, he flies airplanes! Who is he?",
+      "accepted": [
+        "he is a pilot",
+        "pilot",
+        "a pilot"
+      ],
+      "helpPrompt": "Say: He is a pilot.",
+      "feedback": {
+        "image": "Images/9/4.webp",
+        "audio": "Audio/9/15_Chapter 1.mp3",
+        "prompt": "He is a pilot! Flying high!"
+      }
+    },
+    {
+      "id": "vet",
       "image": "Images/9/5.webp",
-      "audio": "Audio/9/18_Chapter 1.mp3",
-      "prompt": "She is a vet! Nice speaking!"
-    }
-  },
-  {
-    "id": "farmer",
-    "image": "Images/9/6.webp",
-    "audio": "Audio/9/19_Chapter 1.mp3",
-    "retryAudio": "Audio/9/20_Chapter 1.mp3",
-    "prompt": "Look there. He works in the field! Who is he?",
-    "accepted": [
-      "he is a farmer",
-      "farmer",
-      "a farmer"
-    ],
-    "helpPrompt": "Say: He is a farmer.",
-    "feedback": {
+      "audio": "Audio/9/16_Chapter 1.mp3",
+      "retryAudio": "Audio/9/17_Chapter 1.mp3",
+      "prompt": "She is examining a cute puppy. Who is Anitha?",
+      "accepted": [
+        "she is a vet",
+        "vet",
+        "a vet"
+      ],
+      "helpPrompt": "Say: She is a vet.",
+      "feedback": {
+        "image": "Images/9/5.webp",
+        "audio": "Audio/9/18_Chapter 1.mp3",
+        "prompt": "She is a vet! Nice speaking!"
+      }
+    },
+    {
+      "id": "farmer",
       "image": "Images/9/6.webp",
-      "audio": "Audio/9/21_Chapter 1.mp3",
-      "prompt": "He is a farmer! Good talking!"
-    }
-  },
-  {
-    "id": "student",
-    "image": "Images/9/7.webp",
-    "audio": "Audio/9/22_Chapter 1.mp3",
-    "retryAudio": "Audio/9/23_Chapter 1.mp3",
-    "prompt": "Last one! Look at this boy with a backpack. Who is he?",
-    "accepted": [
-      "he is a student",
-      "student",
-      "a student"
-    ],
-    "helpPrompt": "Say: He is a student.",
-    "feedback": {
+      "audio": "Audio/9/19_Chapter 1.mp3",
+      "retryAudio": "Audio/9/20_Chapter 1.mp3",
+      "prompt": "Look there. He works in the field! Who is he?",
+      "accepted": [
+        "he is a farmer",
+        "farmer",
+        "a farmer"
+      ],
+      "helpPrompt": "Say: He is a farmer.",
+      "feedback": {
+        "image": "Images/9/6.webp",
+        "audio": "Audio/9/21_Chapter 1.mp3",
+        "prompt": "He is a farmer! Good talking!"
+      }
+    },
+    {
+      "id": "student",
       "image": "Images/9/7.webp",
-      "audio": "Audio/9/24_Chapter 1.mp3",
-      "prompt": "He is a student! Fantastic speaking!"
+      "audio": "Audio/9/22_Chapter 1.mp3",
+      "retryAudio": "Audio/9/23_Chapter 1.mp3",
+      "prompt": "Last one! Look at this boy with a backpack. Who is he?",
+      "accepted": [
+        "he is a student",
+        "student",
+        "a student"
+      ],
+      "helpPrompt": "Say: He is a student.",
+      "feedback": {
+        "image": "Images/9/7.webp",
+        "audio": "Audio/9/24_Chapter 1.mp3",
+        "prompt": "He is a student! Fantastic speaking!"
+      }
+    },
+    {
+      "id": "outro",
+      "image": "Images/9/7.webp",
+      "audio": null,
+      "prompt": "You did an amazing job talking about jobs today!",
+      "done": true
     }
-  },
-  {
-    "id": "outro",
-    "image": "Images/9/7.webp",
-    "audio": null,
-    "prompt": "You did an amazing job talking about jobs today!",
-    "done": true
-  }
-]
+  ]
 }

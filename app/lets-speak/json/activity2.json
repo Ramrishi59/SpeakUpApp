@@ -12,7 +12,7 @@
   "scenes": [
     {
       "id": "intro",
-      "image": "Images/1/title.png",
+      "image": "Images/1/reena.webp",
       "audio": "Audio/2/01_Chapter 1.mp3",
       "prompt": "Hi! I'm Reena. Let's look and talk!",
       "sceneKind": "title-card",
@@ -20,7 +20,7 @@
     },
     {
       "id": "hi-reena",
-      "image": "Images/1/title.png",
+      "image": "Images/1/reena.webp",
       "audio": null,
       "prompt": "Say, \"Hi Reena!\"",
       "sceneKind": "title-card",
@@ -41,7 +41,6 @@
       "feedback": {
         "image": "Images/2/1.webp",
         "audio": "Audio/2/02_Chapter 1.mp3",
-        "sceneKind": "no-card",
         "prompt": "Fantastic! Let's start."
       }
     },
@@ -51,12 +50,18 @@
       "audio": "Audio/2/03_Chapter 1.mp3",
       "retryAudio": "Audio/2/04_Chapter 1.mp3",
       "prompt": "Look here... What's this?",
-      "accepted": ["it's a cat", "it is a cat", "a cat", "cat", "this is a cat"],
-      "helpPrompt": "Say: it's a cat",
+      "accepted": [
+        "it's a cat",
+        "it is a cat",
+        "a cat",
+        "cat",
+        "this is a cat"
+      ],
+      "helpPrompt": "Say: It's a cat",
       "feedback": {
         "image": "Images/2/1.webp",
         "audio": "Audio/2/05_Chapter 1.mp3",
-        "prompt": "it's a cat - so cute!"
+        "prompt": "It's a cat - so cute!"
       }
     },
     {
@@ -64,7 +69,7 @@
       "image": "Images/2/2.webp",
       "audio": "Audio/2/06_Chapter 1.mp3",
       "retryAudio": "Audio/2/07_Chapter 1.mp3",
-      "prompt": "Look there... what's that?",
+      "prompt": "Look there... What's that?",
       "accepted": [
         "that's a helicopter",
         "that is a helicopter",
@@ -72,11 +77,11 @@
         "a helicopter",
         "helicopter"
       ],
-      "helpPrompt": "Say: that's a helicopter",
+      "helpPrompt": "Say: That's a helicopter",
       "feedback": {
         "image": "Images/2/2.webp",
         "audio": "Audio/2/08_Chapter 1.mp3",
-        "prompt": "that's a helicopter - wow!"
+        "prompt": "That's a helicopter - wow!"
       }
     },
     {
@@ -96,7 +101,7 @@
       "feedback": {
         "image": "Images/2/3.webp",
         "audio": "Audio/2/11_Chapter 1.mp3",
-        "prompt": "it's an umbrella - good!"
+        "prompt": "It's an umbrella - good!"
       }
     },
     {
@@ -104,7 +109,7 @@
       "image": "Images/2/4.webp",
       "audio": "Audio/2/12_Chapter 1.mp3",
       "retryAudio": "Audio/2/13_Chapter 1.mp3",
-      "prompt": "Look far... what's that?",
+      "prompt": "Look far... What's that?",
       "accepted": [
         "that's a tiger",
         "that is a tiger",
@@ -112,11 +117,11 @@
         "a tiger",
         "tiger"
       ],
-      "helpPrompt": "Say: that's a tiger",
+      "helpPrompt": "Say: That's a tiger",
       "feedback": {
         "image": "Images/2/4.webp",
         "audio": "Audio/2/14_Chapter 1.mp3",
-        "prompt": "that's a tiger - careful!"
+        "prompt": "That's a tiger - careful!"
       }
     },
     {
@@ -124,7 +129,7 @@
       "image": "Images/2/5.webp",
       "audio": "Audio/2/15_Chapter 1.mp3",
       "retryAudio": "Audio/2/16_Chapter 1.mp3",
-      "prompt": "Say the full sentence... this is a pencil.",
+      "prompt": "Say the full sentence... This is a pencil.",
       "accepted": [
         "this is a pencil",
         "it's a pencil",
@@ -136,7 +141,7 @@
       "feedback": {
         "image": "Images/2/5.webp",
         "audio": "Audio/2/17_Chapter 1.mp3",
-        "prompt": "this is a pencil - nice and clear!"
+        "prompt": "This is a pencil - nice and clear!"
       }
     },
     {
@@ -144,7 +149,7 @@
       "image": "Images/2/6.webp",
       "audio": "Audio/2/18_Chapter 1.mp3",
       "retryAudio": "Audio/2/19_Chapter 1.mp3",
-      "prompt": "Look there... what's that?",
+      "prompt": "Look there... What's that?",
       "accepted": [
         "that's a bridge",
         "that is a bridge",
@@ -152,11 +157,11 @@
         "a bridge",
         "bridge"
       ],
-      "helpPrompt": "Say: that's a bridge",
+      "helpPrompt": "Say: That's a bridge",
       "feedback": {
         "image": "Images/2/6.webp",
         "audio": "Audio/2/20_Chapter 1.mp3",
-        "prompt": "that's a bridge - very nice!"
+        "prompt": "That's a bridge - very nice!"
       }
     },
     {
@@ -172,11 +177,11 @@
         "egg",
         "this is an egg"
       ],
-      "helpPrompt": "Say: it's an egg",
+      "helpPrompt": "Say: It's an egg",
       "feedback": {
         "image": "Images/2/7.webp",
         "audio": "Audio/2/23_Chapter 1.mp3",
-        "prompt": "it's an egg - yummy!"
+        "prompt": "It's an egg - yummy!"
       }
     },
     {

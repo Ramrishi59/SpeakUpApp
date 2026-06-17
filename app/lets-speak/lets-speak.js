@@ -7,7 +7,7 @@ const activityId = params.get("activity") || "activity1";
 const DATA_URL = `json/${activityId}.json`;
 const DEFAULT_SCENE = {
   id: "load-error",
-  image: "Images/1/title.png",
+  image: null,
   audio: null,
   prompt: "Could not load this activity.",
   sceneKind: "title-card",
@@ -23,7 +23,7 @@ let outroAudioBase = "Audio/outro/";
 let dataLoaded = false;
 
 const els = {
-  activityShell: document.querySelector(".activity-shell"),
+  activityShell: document.getElementById("activityScreen"),
   heroPanel: document.querySelector(".hero-panel"),
   practicePanel: document.querySelector(".practice-panel"),
   avatar: document.querySelector(".manku-avatar"),
@@ -64,7 +64,7 @@ function resolveImageSource(sceneOrImage) {
     ? (sceneOrImage.imageSrc || sceneOrImage.image)
     : sceneOrImage;
 
-  if (!image) return "Images/1/title.png";
+  if (!image) return presenter.id ? `Images/1/${presenter.id}.webp` : "";
   if (typeof image === "number") return `Images/${image}.webp`;
   if (hasPathPrefix(image) || /\.[a-z0-9]+(?:\?|$)/i.test(image)) return image;
   return `Images/${image}.webp`;
@@ -350,9 +350,12 @@ function playAudioSource(src, onDone) {
 
   const playPromise = currentAudio.play();
   if (playPromise && typeof playPromise.catch === "function") {
-    playPromise.catch(() => {
-      finish(250);
-    });
+    playPromise
+      .then(() => console.log("[audio.play()] resolved:", src))
+      .catch((err) => {
+        console.log("[audio.play()] rejected:", src, err);
+        finish(250);
+      });
   }
 }
 
@@ -369,10 +372,12 @@ function playRandomFallbackAudio(onDone) {
     return;
   }
 
+  const fallbackAudioSrc = resolveAudioSource(fallback.audio || fallback.fileName, fallbackAudioBase);
+  console.log("[Fallback audio] path:", fallbackAudioSrc, "| text:", fallback.prompt);
   els.promptText.textContent = fallback.prompt;
   els.sceneImage.alt = fallback.prompt;
   schedulePromptFit();
-  playAudioSource(resolveAudioSource(fallback.audio || fallback.fileName, fallbackAudioBase), onDone);
+  playAudioSource(fallbackAudioSrc, onDone);
 }
 
 function playRandomOutroAudio(onDone) {
@@ -384,6 +389,11 @@ function playRandomOutroAudio(onDone) {
     return;
   }
 
+  if (presenter.id) {
+    els.sceneImage.src = `Images/1/${presenter.id}.webp`;
+    els.sceneImage.dataset.sceneKind = "title-card";
+    els.artCard.dataset.mode = "image";
+  }
   els.promptText.textContent = outro.prompt;
   els.sceneImage.alt = outro.prompt;
   schedulePromptFit();
@@ -658,27 +668,50 @@ if (els.jumpToEndBtn) {
   els.jumpToEndBtn.addEventListener("click", jumpToOutroScene);
 }
 
+const splashScreen = document.getElementById("splashScreen");
+const activityScreen = document.getElementById("activityScreen");
+const splashAudio = document.getElementById("splashAudio");
+const splashStartBtn = document.getElementById("splashStartBtn");
+
+function startActivity() {
+  setState("Loading activity", "ready");
+  els.micBtn.disabled = true;
+  loadActivityData()
+    .catch((error) => {
+      console.error(error);
+      scenes = [DEFAULT_SCENE];
+      fallbackAudios = [];
+      outroAudios = [];
+      fallbackAudioBase = "Audio/fallback/";
+      outroAudioBase = "Audio/outro/";
+      dataLoaded = true;
+    })
+    .then(() => {
+      sceneIndex = 0;
+      applyPresenter();
+      showScene(scenes[0]);
+      setState(SpeechRecognition ? READY_STATUS_TEXT : "Speech recognition unavailable", "ready");
+      els.micBtn.disabled = false;
+    });
+}
+
+splashStartBtn.addEventListener("click", () => {
+  splashStartBtn.disabled = true;
+  let advanced = false;
+  const advance = () => {
+    if (advanced) return;
+    advanced = true;
+    splashScreen.classList.add("hidden");
+    activityScreen.classList.remove("hidden");
+    startActivity();
+  };
+  splashAudio.addEventListener("ended", advance, { once: true });
+  splashAudio.play().catch(() => {
+    window.setTimeout(advance, 300);
+  });
+  window.setTimeout(advance, 6000);
+});
+
 syncAppHeight();
 window.addEventListener("resize", syncAppHeight);
 window.addEventListener("orientationchange", syncAppHeight);
-
-setState("Loading activity", "ready");
-els.micBtn.disabled = true;
-
-loadActivityData()
-  .catch((error) => {
-    console.error(error);
-    scenes = [DEFAULT_SCENE];
-    fallbackAudios = [];
-    outroAudios = [];
-    fallbackAudioBase = "Audio/fallback/";
-    outroAudioBase = "Audio/outro/";
-    dataLoaded = true;
-  })
-  .then(() => {
-    sceneIndex = 0;
-    applyPresenter();
-    showScene(scenes[0]);
-    setState(SpeechRecognition ? READY_STATUS_TEXT : "Speech recognition unavailable", "ready");
-    els.micBtn.disabled = false;
-  });

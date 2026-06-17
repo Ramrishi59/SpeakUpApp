@@ -1,197 +1,184 @@
 {
-    "title": "Let's Speak - 3",
-    "presenter": {
-      "id": "raju",
-      "name": "Raju",
-      "avatar": "../Images/dashboard thumbnails/Raju.webp",
-      "fallbackAudioBase": "Audio/fallback/raju/",
-      "outroAudioBase": "Audio/outro/raju/"
+  "title": "Let's Speak - 3",
+  "presenter": {
+    "id": "raju",
+    "name": "Raju",
+    "avatar": "../Images/dashboard thumbnails/Raju.webp",
+    "fallbackAudioBase": "Audio/fallback/raju/",
+    "outroAudioBase": "Audio/outro/raju/"
+  },
+  "fallbackAudios": "fallbacks/raju.json",
+  "outroAudios": "outros/raju.json",
+  "scenes": [
+    {
+      "id": "intro",
+      "image": "Images/1/raju.webp",
+      "audio": "Audio/3/01_Chapter 1.mp3",
+      "prompt": "Hi! I'm Raju. Let's play and talk!",
+      "sceneKind": "title-card",
+      "next": 1
     },
-  
-    "fallbackAudios": "fallbacks/raju.json",
-  
-    "outroAudios": "outros/raju.json",
-  
-    "scenes": [
-      {
-        "id": "intro",
-        "image": "Images/1/title.png",
-        "audio": "Audio/3/01_Chapter 1.mp3",
-        "prompt": "Hi! I'm Raju. Let's play and talk!",
-        "sceneKind": "title-card",
-        "next": 1
-      },
-  
-      {
-        "id": "warmup",
-        "image": "Images/1/title.png",
-        "audio": "Audio/3/02_Chapter 1.mp3",
-        "prompt": "Can you say, \"Hi Raju!\"",
-        "sceneKind": "title-card",
-        "accepted": [
-          "hi raju",
-          "hi",
-          "hello raju",
-          "hello"
-        ],
-        "helpPrompt": "Say: Hi Raju!",
-        "feedback": {
-          "image": "Images/1/title.png",
-          "audio": "Audio/3/03_Chapter 1.mp3",
-          "sceneKind": "no-card",
-          "prompt": "Hey! Let's play!"
-        }
-      },
-  
-      {
-        "id": "balloon",
-        "image": "Images/3/1.webp",
-        "audio": "Audio/3/04_Chapter 1.mp3",
-        "retryAudio": "Audio/3/05_Chapter 1.mp3",
-        "prompt": "Look! Is this a balloon?",
-        "accepted": [
-          "yes it is",
-          "yes",
-          "it is",
-          "balloon"
-        ],
-        "helpPrompt": "Say: Yes, it is",
-        "feedback": {
-          "image": "Images/3/1.webp",
-          "audio": "Audio/3/06_Chapter 1.mp3",
-          "prompt": "Yes it is. It's a balloon! Great answer!"
-        }
-      },
-  
-      {
-        "id": "mango",
-        "image": "Images/3/2.webp",
-        "audio": "Audio/3/07_Chapter 1.mp3",
-        "retryAudio": "Audio/3/08_Chapter 1.mp3",
-        "prompt": "Is this an orange?",
-        "accepted": [
-          "no it's not it's a mango",
-          "no it's a mango",
-          "it's a mango",
-          "mango",
-          "no"
-        ],
-        "helpPrompt": "Say: No it's not... it's a mango",
-        "feedback": {
-          "image": "Images/3/2.webp",
-          "audio": "Audio/3/09_Chapter 1.mp3",
-          "prompt": "No it's not, it's a mango! Good thinking!"
-        }
-      },
-  
-      {
-        "id": "raincoat",
-        "image": "Images/3/3.webp",
-        "audio": "Audio/3/10_Chapter 1.mp3",
-        "retryAudio": "Audio/3/11_Chapter 1.mp3",
-        "prompt": "Look carefully... is this a raincoat?",
-        "accepted": [
-          "yes it is",
-          "yes",
-          "it is",
-          "raincoat"
-        ],
-        "helpPrompt": "Say: Yes it is",
-        "feedback": {
-          "image": "Images/3/3.webp",
-          "audio": "Audio/3/12_Chapter 1.mp3",
-          "prompt": "Yes it is a raincoat! Nice and clear!"
-        }
-      },
-  
-      {
-        "id": "atlas",
-        "image": "Images/3/4.webp",
-        "audio": "Audio/3/13_Chapter 1.mp3",
-        "retryAudio": "Audio/3/13_Chapter 1.mp3",
-        "prompt": "Is this a globe?",
-        "accepted": [
-          "no it's not it's an atlas",
-          "no it's an atlas",
-          "it's an atlas",
-          "atlas",
-          "no"
-        ],
-        "helpPrompt": "Say: No, it's not. It's an atlas",
-        "feedback": {
-          "image": "Images/3/4.webp",
-          "audio": "Audio/3/14_Chapter 1.mp3",
-          "prompt": "No, it's not. It's an atlas! You got it!"
-        }
-      },
-  
-      {
-        "id": "robot",
-        "image": "Images/3/5.webp",
-        "audio": "Audio/3/15_Chapter 1.mp3",
-        "retryAudio": "Audio/3/16_Chapter 1.mp3",
-        "prompt": "Is this a robot?",
-        "accepted": [
-          "yes it is",
-          "yes",
-          "it is",
-          "robot"
-        ],
-        "helpPrompt": "Say: Yes, it is",
-        "feedback": {
-          "image": "Images/3/5.webp",
-          "audio": "Audio/3/17_Chapter 1.mp3",
-          "prompt": "Yes, it is a robot! Super!"
-        }
-      },
-  
-      {
-        "id": "bat",
-        "image": "Images/3/6.webp",
-        "audio": "Audio/3/18_Chapter 1.mp3",
-        "retryAudio": "Audio/3/19_Chapter 1.mp3",
-        "prompt": "Is this a ball?",
-        "accepted": [
-          "no it's not it's a bat",
-          "no it's a bat",
-          "it's a bat",
-          "bat",
-          "no"
-        ],
-        "helpPrompt": "Say: No, it's not... it's a bat",
-        "feedback": {
-          "image": "Images/3/6.webp",
-          "audio": "Audio/3/20_Chapter 1.mp3",
-          "prompt": "No, it's not. It's a bat! Well spotted!"
-        }
-      },
-  
-      {
-        "id": "doll",
-        "image": "Images/3/7.webp",
-        "audio": "Audio/3/21_Chapter 1.mp3",
-        "retryAudio": "Audio/3/22_Chapter 1.mp3",
-        "prompt": "Is this a doll?",
-        "accepted": [
-          "yes it is",
-          "yes",
-          "it is",
-          "doll"
-        ],
-        "helpPrompt": "Say: Yes, it is",
-        "feedback": {
-          "image": "Images/3/7.webp",
-          "audio": "Audio/3/23_Chapter 1.mp3",
-          "prompt": "Yes it is a doll! Fantastic!"
-        }
-      },
-  
-      {
-        "id": "outro",
-        "image": "Images/3/7.webp",
-        "audio": null,
-        "prompt": "Use random line from Raju outro bank.",
-        "done": true
+    {
+      "id": "warmup",
+      "image": "Images/1/raju.webp",
+      "audio": "Audio/3/02_Chapter 1.mp3",
+      "prompt": "Can you say, \"Hi Raju!\"",
+      "sceneKind": "title-card",
+      "accepted": [
+        "hi raju",
+        "hi",
+        "hello raju",
+        "hello"
+      ],
+      "helpPrompt": "Say: Hi Raju!",
+      "feedback": {
+        "image": "Images/1/raju.webp",
+        "audio": "Audio/3/03_Chapter 1.mp3",
+        "prompt": "Hey! Let's play!"
       }
-    ]
-  }
+    },
+    {
+      "id": "balloon",
+      "image": "Images/3/1.webp",
+      "audio": "Audio/3/04_Chapter 1.mp3",
+      "retryAudio": "Audio/3/05_Chapter 1.mp3",
+      "prompt": "Look! Is this a balloon?",
+      "accepted": [
+        "yes it is",
+        "yes",
+        "it is",
+        "balloon"
+      ],
+      "helpPrompt": "Say: Yes, it is",
+      "feedback": {
+        "image": "Images/3/1.webp",
+        "audio": "Audio/3/06_Chapter 1.mp3",
+        "prompt": "Yes it is. It's a balloon! Great answer!"
+      }
+    },
+    {
+      "id": "mango",
+      "image": "Images/3/2.webp",
+      "audio": "Audio/3/07_Chapter 1.mp3",
+      "retryAudio": "Audio/3/08_Chapter 1.mp3",
+      "prompt": "Is this an orange?",
+      "accepted": [
+        "no it's not it's a mango",
+        "no it's a mango",
+        "it's a mango",
+        "mango",
+        "no"
+      ],
+      "helpPrompt": "Say: No it's not... it's a mango",
+      "feedback": {
+        "image": "Images/3/2.webp",
+        "audio": "Audio/3/09_Chapter 1.mp3",
+        "prompt": "No it's not, it's a mango! Good thinking!"
+      }
+    },
+    {
+      "id": "raincoat",
+      "image": "Images/3/3.webp",
+      "audio": "Audio/3/10_Chapter 1.mp3",
+      "retryAudio": "Audio/3/11_Chapter 1.mp3",
+      "prompt": "Look carefully... Is this a raincoat?",
+      "accepted": [
+        "yes it is",
+        "yes",
+        "it is",
+        "raincoat"
+      ],
+      "helpPrompt": "Say: Yes, it is",
+      "feedback": {
+        "image": "Images/3/3.webp",
+        "audio": "Audio/3/12_Chapter 1.mp3",
+        "prompt": "Yes, it is. It's a raincoat! Nice and clear!"
+      }
+    },
+    {
+      "id": "atlas",
+      "image": "Images/3/4.webp",
+      "audio": "Audio/3/13_Chapter 1.mp3",
+      "retryAudio": "Audio/3/13_Chapter 1.mp3",
+      "prompt": "Is this a globe?",
+      "accepted": [
+        "no it's not it's an atlas",
+        "no it's an atlas",
+        "it's an atlas",
+        "atlas",
+        "no"
+      ],
+      "helpPrompt": "Say: No, it's not. It's an atlas",
+      "feedback": {
+        "image": "Images/3/4.webp",
+        "audio": "Audio/3/14_Chapter 1.mp3",
+        "prompt": "No, it's not. It's an atlas! You got it!"
+      }
+    },
+    {
+      "id": "robot",
+      "image": "Images/3/5.webp",
+      "audio": "Audio/3/15_Chapter 1.mp3",
+      "retryAudio": "Audio/3/16_Chapter 1.mp3",
+      "prompt": "Is this a robot?",
+      "accepted": [
+        "yes it is",
+        "yes",
+        "it is",
+        "robot"
+      ],
+      "helpPrompt": "Say: Yes, it is",
+      "feedback": {
+        "image": "Images/3/5.webp",
+        "audio": "Audio/3/17_Chapter 1.mp3",
+        "prompt": "Yes, it is a robot! Super!"
+      }
+    },
+    {
+      "id": "bat",
+      "image": "Images/3/6.webp",
+      "audio": "Audio/3/18_Chapter 1.mp3",
+      "retryAudio": "Audio/3/19_Chapter 1.mp3",
+      "prompt": "Is this a ball?",
+      "accepted": [
+        "no it's not it's a bat",
+        "no it's a bat",
+        "it's a bat",
+        "bat",
+        "no"
+      ],
+      "helpPrompt": "Say: No, it's not... it's a bat",
+      "feedback": {
+        "image": "Images/3/6.webp",
+        "audio": "Audio/3/20_Chapter 1.mp3",
+        "prompt": "No, it's not. It's a bat! Well spotted!"
+      }
+    },
+    {
+      "id": "doll",
+      "image": "Images/3/7.webp",
+      "audio": "Audio/3/21_Chapter 1.mp3",
+      "retryAudio": "Audio/3/22_Chapter 1.mp3",
+      "prompt": "Is this a doll?",
+      "accepted": [
+        "yes it is",
+        "yes",
+        "it is",
+        "doll"
+      ],
+      "helpPrompt": "Say: Yes, it is",
+      "feedback": {
+        "image": "Images/3/7.webp",
+        "audio": "Audio/3/23_Chapter 1.mp3",
+        "prompt": "Yes it is a doll! Fantastic!"
+      }
+    },
+    {
+      "id": "outro",
+      "image": "Images/3/7.webp",
+      "audio": null,
+      "prompt": "Use random line from Raju outro bank.",
+      "done": true
+    }
+  ]
+}

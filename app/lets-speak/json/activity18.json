@@ -12,7 +12,7 @@
   "scenes": [
     {
       "id": "intro",
-      "image": "Images/1/title.webp",
+      "image": "Images/1/reena.webp",
       "audio": "Audio/18/01_Chapter 1.mp3",
       "prompt": "Hello! It's Reena! I am sitting in the park right now, and everyone is so busy! Let's watch them and talk! Do you want to play?",
       "sceneKind": "title-card",
@@ -20,16 +20,22 @@
     },
     {
       "id": "warmup",
-      "image": "Images/1/title.webp",
+      "image": "Images/1/reena.webp",
       "audio": "Audio/18/02_Chapter 1.mp3",
       "prompt": "Do you want to play?",
       "sceneKind": "title-card",
-      "accepted": ["yes", "ready", "sure", "okay", "let's go", "yeah"],
+      "accepted": [
+        "yes",
+        "ready",
+        "sure",
+        "okay",
+        "let's go",
+        "yeah"
+      ],
       "helpPrompt": "Say: Yes.",
       "feedback": {
-        "image": "Images/1/title.webp",
+        "image": "Images/1/reena.webp",
         "audio": "Audio/18/03_Chapter 1.mp3",
-        "sceneKind": "no-card",
         "prompt": "Awesome! Let's look around!"
       }
     },
@@ -39,7 +45,10 @@
       "audio": "Audio/18/04_Chapter 1.mp3",
       "retryAudio": "Audio/18/05_Chapter 1.mp3",
       "prompt": "Look at that boy near the tree! What is he doing?",
-      "accepted": ["he is jumping", "jumping"],
+      "accepted": [
+        "he is jumping",
+        "jumping"
+      ],
       "helpPrompt": "Say: He is jumping.",
       "feedback": {
         "image": "Images/18/1.webp",
@@ -53,7 +62,11 @@
       "audio": "Audio/18/07_Chapter 1.mp3",
       "retryAudio": "Audio/18/08_Chapter 1.mp3",
       "prompt": "Look up at the sky! The green birds are so beautiful. What are they doing?",
-      "accepted": ["the parrots are flying", "they are flying", "flying"],
+      "accepted": [
+        "the parrots are flying",
+        "they are flying",
+        "flying"
+      ],
       "helpPrompt": "Say: The parrots are flying.",
       "feedback": {
         "image": "Images/18/2.webp",
@@ -67,7 +80,10 @@
       "audio": "Audio/18/10_Chapter 1.mp3",
       "retryAudio": "Audio/18/11_Chapter 1.mp3",
       "prompt": "Oh, look at that girl! She is moving so fast! What is she doing?",
-      "accepted": ["she is running", "running"],
+      "accepted": [
+        "she is running",
+        "running"
+      ],
       "helpPrompt": "Say: She is running.",
       "feedback": {
         "image": "Images/18/3.webp",
@@ -81,7 +97,11 @@
       "audio": "Audio/18/13_Chapter 1.mp3",
       "retryAudio": "Audio/18/14_Chapter 1.mp3",
       "prompt": "Shhh, be quiet! Look under the bench. What is the cat doing?",
-      "accepted": ["the cat is sleeping", "it is sleeping", "sleeping"],
+      "accepted": [
+        "the cat is sleeping",
+        "it is sleeping",
+        "sleeping"
+      ],
       "helpPrompt": "Say: The cat is sleeping.",
       "feedback": {
         "image": "Images/18/4.webp",
@@ -95,7 +115,12 @@
       "audio": "Audio/18/16_Chapter 1.mp3",
       "retryAudio": "Audio/18/17_Chapter 1.mp3",
       "prompt": "Look at those children opening their lunchboxes. Are they drinking?",
-      "accepted": ["no they are eating", "they are eating", "eating", "no"],
+      "accepted": [
+        "no they are eating",
+        "they are eating",
+        "eating",
+        "no"
+      ],
       "helpPrompt": "Say: No, they are eating.",
       "feedback": {
         "image": "Images/18/5.webp",
@@ -109,7 +134,10 @@
       "audio": "Audio/18/19_Chapter 1.mp3",
       "retryAudio": "Audio/18/20_Chapter 1.mp3",
       "prompt": "Look at that boy sitting on the grass. He has a book! What is he doing?",
-      "accepted": ["he is reading", "reading"],
+      "accepted": [
+        "he is reading",
+        "reading"
+      ],
       "helpPrompt": "Say: He is reading.",
       "feedback": {
         "image": "Images/18/6.webp",
@@ -123,7 +151,10 @@
       "audio": "Audio/18/22_Chapter 1.mp3",
       "retryAudio": "Audio/18/23_Chapter 1.mp3",
       "prompt": "Last one! Oh no, listen to that loud noise! Look at the little baby. What is the baby doing?",
-      "accepted": ["the baby is crying", "crying"],
+      "accepted": [
+        "the baby is crying",
+        "crying"
+      ],
       "helpPrompt": "Say: The baby is crying.",
       "feedback": {
         "image": "Images/18/7.webp",

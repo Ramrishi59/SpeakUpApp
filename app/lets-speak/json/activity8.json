@@ -1,172 +1,171 @@
 {
-    "title": "Let's Speak - 8",
-    "presenter": {
-      "id": "reena",
-      "name": "Reena",
-      "avatar": "../Images/dashboard thumbnails/Reena.webp",
-      "fallbackAudioBase": "Audio/fallback/reena/",
-      "outroAudioBase": "Audio/outro/reena/"
+  "title": "Let's Speak - 8",
+  "presenter": {
+    "id": "reena",
+    "name": "Reena",
+    "avatar": "../Images/dashboard thumbnails/Reena.webp",
+    "fallbackAudioBase": "Audio/fallback/reena/",
+    "outroAudioBase": "Audio/outro/reena/"
+  },
+  "fallbackAudios": "fallbacks/reena.json",
+  "outroAudios": "outros/reena.json",
+  "scenes": [
+    {
+      "id": "intro",
+      "image": "Images/1/reena.webp",
+      "audio": "Audio/8/01_Chapter 1.mp3",
+      "prompt": "Hi! I'm Reena. Let’s look at colours and talk together! Shall we start?",
+      "sceneKind": "title-card",
+      "accepted": [
+        "yes",
+        "ready",
+        "sure",
+        "okay",
+        "let's go",
+        "yeah"
+      ],
+      "helpPrompt": "Say: Yes.",
+      "retryAudio": "Audio/8/02_Chapter 1.mp3",
+      "feedback": {
+        "image": "Images/1/reena.webp",
+        "audio": "Audio/8/03_Chapter 1.mp3",
+        "prompt": "Wonderful! Let’s begin!"
+      }
     },
-    "fallbackAudios": "fallbacks/reena.json",
-    "outroAudios": "outros/reena.json",
-    "scenes": [
-  {
-    "id": "intro",
-    "image": "Images/1/title.png",
-    "audio": "Audio/8/01_Chapter 1.mp3",
-    "prompt": "Hi! I'm Reena. Let’s look at colours and talk together! Shall we start?",
-    "sceneKind": "title-card",
-    "accepted": [
-      "yes",
-      "ready",
-      "sure",
-      "okay",
-      "let's go",
-      "yeah"
-    ],
-    "helpPrompt": "Say: Yes.",
-    "retryAudio": "Audio/8/02_Chapter 1.mp3",
-    "feedback": {
-      "image": "Images/1/title.png",
-      "audio": "Audio/8/03_Chapter 1.mp3",
-      "sceneKind": "no-card",
-      "prompt": "Wonderful! Let’s begin!"
-    }
-  },
-  {
-    "id": "pink",
-    "image": "Images/8/1.webp",
-    "audio": "Audio/8/04_Chapter 1.mp3",
-    "retryAudio": "Audio/8/05_Chapter 1.mp3",
-    "prompt": "Look at this! This is my favourite. What colour is this?",
-    "accepted": [
-      "it's pink",
-      "pink",
-      "pink colour",
-      "it is pink"
-    ],
-    "helpPrompt": "Say: It's pink.",
-    "feedback": {
+    {
+      "id": "pink",
       "image": "Images/8/1.webp",
-      "audio": "Audio/8/06_Chapter 1.mp3",
-      "prompt": "It’s pink! Bright and beautiful!"
-    }
-  },
-  {
-    "id": "yellow",
-    "image": "Images/8/2.webp",
-    "audio": "Audio/8/07_Chapter 1.mp3",
-    "retryAudio": "Audio/8/08_Chapter 1.mp3",
-    "prompt": "Look over there. What colour is that?",
-    "accepted": [
-      "that's yellow",
-      "yellow",
-      "it's yellow",
-      "that is yellow"
-    ],
-    "helpPrompt": "Say: That's yellow.",
-    "feedback": {
+      "audio": "Audio/8/04_Chapter 1.mp3",
+      "retryAudio": "Audio/8/05_Chapter 1.mp3",
+      "prompt": "Look at this! This is my favourite. What colour is this?",
+      "accepted": [
+        "it's pink",
+        "pink",
+        "pink colour",
+        "it is pink"
+      ],
+      "helpPrompt": "Say: It's pink.",
+      "feedback": {
+        "image": "Images/8/1.webp",
+        "audio": "Audio/8/06_Chapter 1.mp3",
+        "prompt": "It’s pink! Bright and beautiful!"
+      }
+    },
+    {
+      "id": "yellow",
       "image": "Images/8/2.webp",
-      "audio": "Audio/8/09_Chapter 1.mp3",
-      "prompt": "That’s yellow! Such a lovely colour!"
-    }
-  },
-  {
-    "id": "green-leaf",
-    "image": "Images/8/3.webp",
-    "audio": "Audio/8/10_Chapter 1.mp3",
-    "retryAudio": "Audio/8/11_Chapter 1.mp3",
-    "prompt": "Oh, look at this leaf! Is this pink?",
-    "accepted": [
-      "no it's green",
-      "it's green",
-      "green",
-      "no"
-    ],
-    "helpPrompt": "Say: No, it's green.",
-    "feedback": {
+      "audio": "Audio/8/07_Chapter 1.mp3",
+      "retryAudio": "Audio/8/08_Chapter 1.mp3",
+      "prompt": "Look over there. What colour is that?",
+      "accepted": [
+        "that's yellow",
+        "yellow",
+        "it's yellow",
+        "that is yellow"
+      ],
+      "helpPrompt": "Say: That's yellow.",
+      "feedback": {
+        "image": "Images/8/2.webp",
+        "audio": "Audio/8/09_Chapter 1.mp3",
+        "prompt": "That’s yellow! Such a lovely colour!"
+      }
+    },
+    {
+      "id": "green-leaf",
       "image": "Images/8/3.webp",
-      "audio": "Audio/8/12_Chapter 1.mp3",
-      "prompt": "Fantastic! It’s green! Good answer!"
-    }
-  },
-  {
-    "id": "red-black",
-    "image": "Images/8/4.webp",
-    "audio": "Audio/8/13_Chapter 1.mp3",
-    "retryAudio": "Audio/8/14_Chapter 1.mp3",
-    "prompt": "Look at these two! Are they blue and yellow?",
-    "accepted": [
-      "no they are red and black",
-      "red and black",
-      "no",
-      "they are red and black"
-    ],
-    "helpPrompt": "Say: No, they are red and black.",
-    "feedback": {
+      "audio": "Audio/8/10_Chapter 1.mp3",
+      "retryAudio": "Audio/8/11_Chapter 1.mp3",
+      "prompt": "Oh, look at this leaf! Is this pink?",
+      "accepted": [
+        "no it's green",
+        "it's green",
+        "green",
+        "no"
+      ],
+      "helpPrompt": "Say: No, it's green.",
+      "feedback": {
+        "image": "Images/8/3.webp",
+        "audio": "Audio/8/12_Chapter 1.mp3",
+        "prompt": "Fantastic! It’s green! Good answer!"
+      }
+    },
+    {
+      "id": "red-black",
       "image": "Images/8/4.webp",
-      "audio": "Audio/8/15_Chapter 1.mp3",
-      "prompt": "No, they are red and black! Very nice!"
-    }
-  },
-  {
-    "id": "red-bag",
-    "image": "Images/8/5.webp",
-    "audio": "Audio/8/16_Chapter 1.mp3",
-    "retryAudio": "Audio/8/17_Chapter 1.mp3",
-    "prompt": "You know, this is Raju's backpack. What colour is it?",
-    "accepted": [
-      "it's red",
-      "red",
-      "it is red"
-    ],
-    "helpPrompt": "Say: It's red.",
-    "feedback": {
+      "audio": "Audio/8/13_Chapter 1.mp3",
+      "retryAudio": "Audio/8/14_Chapter 1.mp3",
+      "prompt": "Look at these two! Are they blue and yellow?",
+      "accepted": [
+        "no they are red and black",
+        "red and black",
+        "no",
+        "they are red and black"
+      ],
+      "helpPrompt": "Say: No, they are red and black.",
+      "feedback": {
+        "image": "Images/8/4.webp",
+        "audio": "Audio/8/15_Chapter 1.mp3",
+        "prompt": "No, they are red and black! Very nice!"
+      }
+    },
+    {
+      "id": "red-bag",
       "image": "Images/8/5.webp",
-      "audio": "Audio/8/18_Chapter 1.mp3",
-      "prompt": "It’s red! Great talking!"
-    }
-  },
-  {
-    "id": "green-parrot",
-    "image": "Images/8/6.webp",
-    "audio": "Audio/8/19_Chapter 1.mp3",
-    "retryAudio": "Audio/8/20_Chapter 1.mp3",
-    "prompt": "Wow! a lovely parrot! What colour is this parrot?",
-    "accepted": [
-      "it's green",
-      "green"
-    ],
-    "helpPrompt": "Say: It's green.",
-    "feedback": {
+      "audio": "Audio/8/16_Chapter 1.mp3",
+      "retryAudio": "Audio/8/17_Chapter 1.mp3",
+      "prompt": "You know, this is Raju's backpack. What colour is it?",
+      "accepted": [
+        "it's red",
+        "red",
+        "it is red"
+      ],
+      "helpPrompt": "Say: It's red.",
+      "feedback": {
+        "image": "Images/8/5.webp",
+        "audio": "Audio/8/18_Chapter 1.mp3",
+        "prompt": "It’s red! Great talking!"
+      }
+    },
+    {
+      "id": "green-parrot",
       "image": "Images/8/6.webp",
-      "audio": "Audio/8/21_Chapter 1.mp3",
-      "prompt": "It’s green! What a beautiful parrot!"
-    }
-  },
-  {
-    "id": "yellow-kites",
-    "image": "Images/8/7.webp",
-    "audio": "Audio/8/22_Chapter 1.mp3",
-    "retryAudio": "Audio/8/23_Chapter 1.mp3",
-    "prompt": "Last one! Look far away. What colour are those kites?",
-    "accepted": [
-      "they are yellow",
-      "yellow"
-    ],
-    "helpPrompt": "Say: They are yellow.",
-    "feedback": {
+      "audio": "Audio/8/19_Chapter 1.mp3",
+      "retryAudio": "Audio/8/20_Chapter 1.mp3",
+      "prompt": "Wow! a lovely parrot! What colour is this parrot?",
+      "accepted": [
+        "it's green",
+        "green"
+      ],
+      "helpPrompt": "Say: It's green.",
+      "feedback": {
+        "image": "Images/8/6.webp",
+        "audio": "Audio/8/21_Chapter 1.mp3",
+        "prompt": "It’s green! What a beautiful parrot!"
+      }
+    },
+    {
+      "id": "yellow-kites",
       "image": "Images/8/7.webp",
-      "audio": "Audio/8/24_Chapter 1.mp3",
-      "prompt": "They are yellow! Fantastic speaking!"
+      "audio": "Audio/8/22_Chapter 1.mp3",
+      "retryAudio": "Audio/8/23_Chapter 1.mp3",
+      "prompt": "Last one! Look far away. What colour are those kites?",
+      "accepted": [
+        "they are yellow",
+        "yellow"
+      ],
+      "helpPrompt": "Say: They are yellow.",
+      "feedback": {
+        "image": "Images/8/7.webp",
+        "audio": "Audio/8/24_Chapter 1.mp3",
+        "prompt": "They are yellow! Fantastic speaking!"
+      }
+    },
+    {
+      "id": "outro",
+      "image": "Images/8/7.webp",
+      "audio": null,
+      "prompt": "You did an amazing job talking about colours today!",
+      "done": true
     }
-  },
-  {
-    "id": "outro",
-    "image": "Images/8/7.webp",
-    "audio": null,
-    "prompt": "You did an amazing job talking about colours today!",
-    "done": true
-  }
-]
-  }
+  ]
+}
