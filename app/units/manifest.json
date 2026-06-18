@@ -860,13 +860,6 @@
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     },
     {
-      "thumbnail": "Images/dashboard thumbnails/John.webp",
-      "description": "Fill in the blanks to get the right answer",
-      "route": "blankquiz/activity3.html",
-      "id": "fill",
-      "title": "Fill in the blanks"
-    },
-    {
       "category": "Practice",
       "description": "Practice",
       "title": "Practice Session- Unit 1",

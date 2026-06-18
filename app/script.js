@@ -2,6 +2,8 @@ let dashboardLessons = [];
 let rerenderDashboard = null;
 let dashboardLoadError = "";
 let activeDashboardFilter = "all";
+let categoryScreenActive = true;
+let recommendedAfterData = [];
 let accessCountdownTimerId = null;
 
 const INITIAL_THUMBNAIL_LOAD_COUNT = 6;
@@ -472,6 +474,39 @@ function updateDashboardProgressSummary() {
   if (totalCount) totalCount.textContent = String(getDashboardContentCount());
   completedCount.textContent = String(summary.completed);
   inProgressCount.textContent = String(summary.inProgress);
+}
+
+function getActivityNumber(card) {
+  const m = String(card?.id || '').match(/(\d+)$/);
+  return m ? parseInt(m[1], 10) : null;
+}
+
+function getRecommendedAfterUnit(category, activityNumber) {
+  if (!recommendedAfterData.length || activityNumber == null) return null;
+  const row = recommendedAfterData.find(r => {
+    const range = r[category];
+    return Array.isArray(range) && activityNumber >= range[0] && activityNumber <= range[1];
+  });
+  return row ? row.throughUnit : null;
+}
+
+function getCardSubLabel(card) {
+  const category = getDashboardCategory(card);
+  if (category === 'units') return null;
+  const afterUnit = getRecommendedAfterUnit(category, getActivityNumber(card));
+  return afterUnit != null ? `Best after: Unit ${afterUnit}` : null;
+}
+
+async function loadRecommendedAfterData() {
+  try {
+    const url = new URL('./units/recommended-after.json?v=1', window.location.href);
+    const res = await fetch(url, { cache: 'no-store' });
+    if (!res.ok) throw new Error('Failed to load recommended-after.json');
+    recommendedAfterData = await res.json();
+  } catch (e) {
+    console.warn('Could not load recommended-after.json:', e);
+    recommendedAfterData = [];
+  }
 }
 
 function resolveRoute(card) {
@@ -1143,6 +1178,8 @@ function renderAccountStatus() {
 
   document.getElementById('back-dashboard')?.addEventListener('click', showDashboardScreen);
 
+  // back-to-categories handler is wired in renderCurrentView when the button is shown
+
   document.getElementById('signout-btn')?.addEventListener('click', async () => {
     await window.SUAuth.logout();
     renderAccountStatus();
@@ -1193,7 +1230,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const voiceModeMenu = document.getElementById('voiceModeMenu');
   const closeVoiceModeMenuButton = document.getElementById('closeVoiceModeMenu');
 
-  await loadDashboardLessons();
+  await Promise.all([loadDashboardLessons(), loadRecommendedAfterData()]);
   console.log('E: dashboardLessons after load =', dashboardLessons);
 
   refreshButton?.addEventListener('click', () => {
@@ -1403,10 +1440,13 @@ async function loadDashboardLessons() {
       const thumbnailLoading = shouldLoadThumbnailNow ? 'eager' : 'lazy';
       const thumbnailPriority = shouldLoadThumbnailNow ? 'high' : 'low';
 
+      const subLabel = getCardSubLabel(lesson);
+
       card.innerHTML = `
           <img src="${thumbnailSrc}"${lazyThumbnailAttr} alt="${lesson.title}" class="lesson-thumbnail" width="76" height="116" loading="${thumbnailLoading}" decoding="async" fetchpriority="${thumbnailPriority}">
           <div class="lesson-info">
             <h3>${lesson.title}</h3>
+            ${subLabel ? `<p class="card-sub-label">${subLabel}</p>` : ''}
             <div class="lesson-progress" aria-label="${lesson.title} progress: ${progressDisplay.label}">
               <div class="lesson-progress-meta">
                 <span>Progress</span>
@@ -1506,6 +1546,41 @@ async function loadDashboardLessons() {
     });
   }
 
+  function renderCategoryTiles() {
+    const container = document.getElementById('category-tiles');
+    if (!container) return;
+
+    const CATEGORY_DEFS = [
+      { id: 'units', label: 'Units',             subLabel: "Let's learn" },
+      { id: 'quiz',  label: 'Tap the Right One', subLabel: 'Choose the correct word' },
+      { id: 'order', label: 'Mix and Fix',        subLabel: 'Put sentences in order' },
+      { id: 'voice', label: "Let's Talk",         subLabel: 'Speak and practice' },
+    ];
+
+    container.innerHTML = CATEGORY_DEFS.map(cat => {
+      const cards = dashboardLessons.filter(c => c?.id && c.id !== 'intro' && getDashboardCategory(c) === cat.id);
+      const total = cards.length;
+      const done = cards.filter(c => getLessonProgressState(c.id).isCompleted).length;
+      return `
+        <button type="button" class="category-tile" data-category="${cat.id}">
+          <span class="category-tile-name">${cat.label}</span>
+          <span class="category-tile-sub">${cat.subLabel}</span>
+          <span class="category-tile-count">${done} of ${total} done</span>
+          <span class="category-tile-arrow" aria-hidden="true">&#8250;</span>
+        </button>
+      `;
+    }).join('');
+
+    container.querySelectorAll('.category-tile').forEach(tile => {
+      tile.addEventListener('click', () => {
+        activeDashboardFilter = tile.dataset.category;
+        categoryScreenActive = false;
+        mainContent?.scrollTo(0, 0);
+        renderCurrentView();
+      });
+    });
+  }
+
   function renderContinueCard() {
     const slot = document.getElementById('continue-card-slot');
     if (!slot) return;
@@ -1541,14 +1616,38 @@ async function loadDashboardLessons() {
   }
 
   function renderCurrentView() {
-    updateDashboardProgressSummary();
-    renderDashboardFilters();
-    renderContinueCard();
-    renderLessonCards(getFilteredDashboardLessons());
-    if (searchLabel) {
-      searchLabel.textContent = 'Lessons';
+    const categoryTilesEl = document.getElementById('category-tiles');
+    const backRow = document.getElementById('back-to-categories');
+    const continueSlot = document.getElementById('continue-card-slot');
+
+    if (categoryScreenActive) {
+      if (categoryTilesEl) categoryTilesEl.style.display = '';
+      if (backRow) backRow.classList.add('hidden');
+      if (continueSlot) continueSlot.style.display = 'none';
+      if (lessonsList) lessonsList.innerHTML = '';
+      renderCategoryTiles();
+    } else {
+      if (categoryTilesEl) categoryTilesEl.style.display = 'none';
+      if (backRow) {
+        backRow.classList.remove('hidden');
+        const backBtn = backRow.querySelector('.category-back-btn');
+        if (backBtn) {
+          backBtn.onclick = () => {
+            categoryScreenActive = true;
+            mainContent?.scrollTo(0, 0);
+            renderCurrentView();
+          };
+        }
+      }
+      if (continueSlot) continueSlot.style.display = '';
+      updateDashboardProgressSummary();
+      renderContinueCard();
+      renderLessonCards(getFilteredDashboardLessons());
+      if (searchLabel) {
+        searchLabel.textContent = 'Lessons';
+      }
+      restoreScrollPosition();
     }
-    restoreScrollPosition();
   }
 
   rerenderDashboard = renderCurrentView;
