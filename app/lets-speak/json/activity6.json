@@ -118,7 +118,7 @@
         "yes",
         "parrots"
       ],
-      "helpPrompt": "Say: yes they are",
+      "helpPrompt": "Say: Yes they are",
       "feedback": {
         "image": "Images/6/5.webp",
         "audio": "Audio/6/18_Chapter 1.mp3",

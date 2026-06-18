@@ -116,7 +116,7 @@
         "yes they are",
         "they are boys",
         "boys",
-        "those are boys"
+        "yes"
       ],
       "helpPrompt": "Say: Yes, they are",
       "feedback": {
@@ -130,7 +130,7 @@
       "image": "Images/7/6.webp",
       "audio": "Audio/7/19_Chapter 1.mp3",
       "retryAudio": "Audio/7/20_Chapter 1.mp3",
-      "prompt": "And look at them, reading books. Are they girls?",
+      "prompt": "Look at them, reading books. Are they girls?",
       "accepted": [
         "yes they are girls",
         "girls",
@@ -159,7 +159,7 @@
       "feedback": {
         "image": "Images/7/7.webp",
         "audio": "Audio/7/24_Chapter 1.mp3",
-        "prompt": "They are monkeys! Fantastic talking!"
+        "prompt": "They are monkeys! Fantastic!"
       }
     },
     {

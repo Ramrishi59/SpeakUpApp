@@ -147,17 +147,17 @@
       "image": "Images/15/7.webp",
       "audio": "Audio/15/22_Chapter 1.mp3",
       "retryAudio": "Audio/15/23_Chapter 1.mp3",
-      "prompt": "Last picture! Look at the bags. The first two are big. But look at the last one. What is the last one like?",
+      "prompt": "Last picture! Look at the bags. The green and red are big. But look at the yellow one. What is it like?",
       "accepted": [
-        "the last one is small",
+        "the yellow one is small",
         "it is small",
         "small"
       ],
-      "helpPrompt": "Say: The last one is small.",
+      "helpPrompt": "Say: The yellow one is small.",
       "feedback": {
         "image": "Images/15/7.webp",
         "audio": "Audio/15/24_Chapter 1.mp3",
-        "prompt": "The last one is small! Correct! That is the yellow one. You are so good at this game!"
+        "prompt": "The yellow one is small! Correct!. You are great!"
       }
     },
     {

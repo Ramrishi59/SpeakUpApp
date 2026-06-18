@@ -54,7 +54,7 @@
       "image": "Images/12/2.webp",
       "audio": "Audio/12/07_Chapter 1.mp3",
       "retryAudio": "Audio/12/08_Chapter 1.mp3",
-      "prompt": "I am looking for a snack. Look at that empty plate. Is there a banana?",
+      "prompt": "I am looking for a snack. Look at that plate. Is there a banana?",
       "accepted": [
         "no there isn't",
         "no",
@@ -152,7 +152,7 @@
       "feedback": {
         "image": "Images/12/7.webp",
         "audio": "Audio/12/24_Chapter 1.mp3",
-        "prompt": "Correct! There are three mugs! We did a great job helping today!"
+        "prompt": "Correct! There are three mugs! You did a great job!"
       }
     },
     {

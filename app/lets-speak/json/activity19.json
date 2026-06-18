@@ -90,7 +90,7 @@
       "feedback": {
         "image": "Images/19/1.webp",
         "audio": "Audio/19/13_Chapter 1.mp3",
-        "prompt": "It is red! It is a very nice bag."
+        "prompt": "It's red! It's a very nice bag."
       }
     },
     {
@@ -122,11 +122,11 @@
         "it's raining",
         "raining"
       ],
-      "helpPrompt": "Say: It is raining.",
+      "helpPrompt": "Say: It's raining.",
       "feedback": {
         "image": "Images/19/2.webp",
         "audio": "Audio/19/19_Chapter 1.mp3",
-        "prompt": "It is raining! Everything is getting wet."
+        "prompt": "It's raining! Everything is getting wet."
       }
     },
     {
@@ -140,11 +140,11 @@
         "it's pink",
         "pink"
       ],
-      "helpPrompt": "Say: It is pink.",
+      "helpPrompt": "Say: It's pink.",
       "feedback": {
         "image": "Images/19/2.webp",
         "audio": "Audio/19/22_Chapter 1.mp3",
-        "prompt": "It is pink! It keeps her dry."
+        "prompt": "It's pink! It keeps her dry."
       }
     },
     {

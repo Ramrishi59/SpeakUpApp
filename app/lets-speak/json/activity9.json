@@ -108,7 +108,7 @@
       "image": "Images/9/5.webp",
       "audio": "Audio/9/16_Chapter 1.mp3",
       "retryAudio": "Audio/9/17_Chapter 1.mp3",
-      "prompt": "She is examining a cute puppy. Who is Anitha?",
+      "prompt": "She is examining a cute puppy. Who is she?",
       "accepted": [
         "she is a vet",
         "vet",
@@ -154,7 +154,7 @@
       "feedback": {
         "image": "Images/9/7.webp",
         "audio": "Audio/9/24_Chapter 1.mp3",
-        "prompt": "He is a student! Fantastic speaking!"
+        "prompt": "He is a student! You are wonderful!"
       }
     },
     {

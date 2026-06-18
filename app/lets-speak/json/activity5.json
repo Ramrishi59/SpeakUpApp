@@ -37,17 +37,17 @@
       "image": "Images/5/1.webp",
       "audio": "Audio/5/04_Chapter 1.mp3",
       "retryAudio": "Audio/5/05_Chapter 1.mp3",
-      "prompt": "I am so hungry today. Look near me. What are these?",
+      "prompt": "I'am so hungry today. Look near me. What are these?",
       "accepted": [
-        "these are bananas",
+        "they are bananas",
         "bananas",
-        "these bananas"
+        "they bananas"
       ],
-      "helpPrompt": "Say: These are bananas",
+      "helpPrompt": "Say: They are bananas",
       "feedback": {
         "image": "Images/5/1.webp",
         "audio": "Audio/5/06_Chapter 1.mp3",
-        "prompt": "These are bananas! My favourite snack! Yummy!"
+        "prompt": "They are bananas! My favourite snack! Yummy!"
       }
     },
     {
