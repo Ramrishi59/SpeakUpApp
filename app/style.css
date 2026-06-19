@@ -69,7 +69,7 @@ body {
     padding: 20px 142px 20px 18px;
     overflow: hidden;
     border-radius: 20px;
-    background: var(--mint);
+    background: linear-gradient(135deg, #55cbb3 0%, #43bfa3 100%);
     border: 1px solid rgba(31, 30, 51, 0.08);
     box-shadow: 0 16px 32px rgba(31, 30, 51, 0.14);
 }
@@ -82,8 +82,8 @@ body {
 .dashboard-eyebrow {
     margin: 0 0 4px;
     font-size: 14px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    color: rgba(255,255,255,0.95);
 }
 
 .dashboard-hero h1 {
@@ -106,9 +106,9 @@ body {
 .dashboard-hero-character {
     position: absolute;
     right: 8px;
-    bottom: 12px;
-    width: 132px;
-    height: 132px;
+    bottom: 4px;
+    width: 145px;
+    height: 145px;
     object-fit: contain;
     object-position: center center;
     padding-top: 10px;
@@ -139,13 +139,13 @@ body {
 }
 .hero-ring-bg {
     fill: none;
-    stroke: rgba(255,255,255,0.25);
-    stroke-width: 4;
+    stroke: rgba(255,255,255,0.35);
+    stroke-width: 5.5;
 }
 .hero-ring-fill {
     fill: none;
-    stroke: #ffffff;
-    stroke-width: 4;
+    stroke: #ffe45c;
+    stroke-width: 5.5;
     stroke-linecap: round;
     stroke-dasharray: 113.1;
     stroke-dashoffset: 113.1;
@@ -159,11 +159,12 @@ body {
     font-size: 9px;
     color: rgba(255,255,255,0.8);
     white-space: nowrap;
+    display: none;
 }
 .hero-ring-pct {
     position: absolute;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
     color: #ffffff;
 }
 
