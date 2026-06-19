@@ -1443,7 +1443,9 @@ async function loadDashboardLessons() {
       const subLabel = getCardSubLabel(lesson);
 
       card.innerHTML = `
-          <img src="${thumbnailSrc}"${lazyThumbnailAttr} alt="${lesson.title}" class="lesson-thumbnail" width="76" height="116" loading="${thumbnailLoading}" decoding="async" fetchpriority="${thumbnailPriority}">
+          <div class="lesson-thumb-frame">
+            <img src="${thumbnailSrc}"${lazyThumbnailAttr} alt="${lesson.title}" class="lesson-thumbnail" width="76" height="116" loading="${thumbnailLoading}" decoding="async" fetchpriority="${thumbnailPriority}">
+          </div>
           <div class="lesson-info">
             <h3>${lesson.title}</h3>
             ${subLabel ? `<p class="card-sub-label">${subLabel}</p>` : ''}

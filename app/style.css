@@ -85,6 +85,14 @@ body {
     font-weight: 600;
     color: rgba(255,255,255,0.95);
 }
+.hero-brand-line {
+    margin: 0 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    color: rgba(255, 255, 255, 0.68);
+    text-transform: uppercase;
+}
 
 .dashboard-hero h1 {
     margin: 0;
@@ -530,15 +538,25 @@ body {
     box-shadow: 0 6px 14px rgba(244, 86, 78, 0.3);
 }
 
-.lesson-thumbnail {
+.lesson-thumb-frame {
     flex: 0 0 64px;
-    width: 64px; /* Fixed size for the thumbnail */
+    width: 64px;
     height: 64px;
-    border-radius: 15px; /* Match the card edge on the left side */
-    object-fit: cover; /* Fill the image area without visible gaps */
-    transform: scale(1);
+    border-radius: 16px;
+    background: #fdf8f2;
+    border: 1px solid rgba(31, 30, 51, 0.09);
+    box-shadow: 0 4px 10px rgba(31, 30, 51, 0.10);
     margin-right: 13px;
-    background: #edf6ff;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.lesson-thumbnail {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    object-fit: cover;
+    display: block;
 }
 
 .lesson-info {
@@ -1774,14 +1792,14 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #ffffff;
-    border: 1px solid rgba(11, 94, 69, 0.15);
+    background: #f7faf9;
+    border: 1px solid rgba(11, 94, 69, 0.18);
     border-radius: 999px;
-    padding: 8px 16px;
+    padding: 8px 18px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     color: #0B5E45;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
     cursor: pointer;
     font-family: inherit;
 }
