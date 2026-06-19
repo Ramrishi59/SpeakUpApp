@@ -106,9 +106,9 @@ body {
 .dashboard-hero-character {
     position: absolute;
     right: 8px;
-    bottom: 0;
-    width: 155px;
-    height: 155px;
+    bottom: 12px;
+    width: 132px;
+    height: 132px;
     object-fit: contain;
     object-position: center center;
     padding-top: 10px;
