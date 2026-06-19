@@ -543,9 +543,9 @@ body {
     width: 64px;
     height: 64px;
     border-radius: 16px;
-    background: #fdf8f2;
+    background: #fcfcfc;
     border: 1px solid rgba(31, 30, 51, 0.09);
-    box-shadow: 0 4px 10px rgba(31, 30, 51, 0.10);
+    box-shadow: 0 5px 14px rgba(31, 30, 51, 0.13);
     margin-right: 13px;
     overflow: hidden;
     flex-shrink: 0;

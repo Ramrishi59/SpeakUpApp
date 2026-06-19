@@ -5,53 +5,53 @@
       "title": "Welcome to 'SpeakUp'",
       "route": "",
       "id": "intro",
-      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+      "thumbnail": "Images/dashboard thumbnails/units/1.webp"
     },
     {
       "category": "units",
-      "thumbnail": "Images/unit1/5.webp",
+      "thumbnail": "Images/dashboard thumbnails/units/2.webp",
       "description": "Learn A and An. Just watch, listen and repeat",
       "id": "unit1",
       "title": "Unit 1: A / An"
     },
     {
       "category": "units",
-      "thumbnail": "Images/Unit2/4.webp",
+      "thumbnail": "Images/dashboard thumbnails/units/3.webp",
       "description": "Learn And. Just watch, listen and repeat",
       "id": "unit2",
       "title": "Unit 2: And"
     },
     {
       "category": "units",
-      "thumbnail": "Images/Unit3/6.webp",
+      "thumbnail": "Images/dashboard thumbnails/units/4.webp",
       "description": "This and that?",
       "id": "unit3",
       "title": "Unit 3: This and That"
     },
     {
       "category": "units",
-      "thumbnail": "Images/Unit4/5.webp",
+      "thumbnail": "Images/dashboard thumbnails/units/5.webp",
       "description": "Learn about This and That. Just watch, listen and repeat",
       "id": "unit4",
       "title": "Unit 4: What's this?"
     },
     {
       "category": "units",
-      "thumbnail": "Images/Unit5/4.webp",
+      "thumbnail": "Images/dashboard thumbnails/units/6.webp",
       "description": "What is that?",
       "id": "unit5",
       "title": "Unit 5: What's that?"
     },
     {
       "category": "units",
-      "thumbnail": "Images/Unit6/7.webp",
+      "thumbnail": "Images/dashboard thumbnails/units/7.webp",
       "description": "Is this a globe?",
       "id": "unit6",
       "title": "Unit 6: Is this a globe?"
     },
     {
       "category": "units",
-      "thumbnail": "Images/Unit7/9.webp",
+      "thumbnail": "Images/dashboard thumbnails/units/8.webp",
       "description": "Is that a Zebra?",
       "id": "unit7",
       "title": "Unit 7: Is that a Zebra?"
@@ -141,14 +141,14 @@
     },
     {
       "category": "units",
-      "thumbnail": "Images/Unit8/5.webp",
+      "thumbnail": "Images/dashboard thumbnails/units/9.webp",
       "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
       "id": "unit8",
       "title": "Unit 8: Books, Pencils"
     },
     {
       "category": "units",
-      "thumbnail": "Images/Unit9/6.webp",
+      "thumbnail": "Images/dashboard thumbnails/units/10.webp",
       "description": "Vocabulary set: classroom objects, fruits, animals, and more (plurals).",
       "id": "unit9",
       "title": "Unit 9: These are and Those are"
