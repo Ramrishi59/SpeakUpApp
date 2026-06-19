@@ -69,7 +69,7 @@ body {
     padding: 20px 142px 20px 18px;
     overflow: hidden;
     border-radius: 20px;
-    background: #a9e2d8;
+    background: var(--mint);
     border: 1px solid rgba(31, 30, 51, 0.08);
     box-shadow: 0 16px 32px rgba(31, 30, 51, 0.14);
 }
@@ -80,10 +80,10 @@ body {
 }
 
 .dashboard-eyebrow {
-    margin: 0 0 6px;
-    color: rgba(15, 77, 68, 0.72);
-    font-size: 0.78rem;
-    text-transform: uppercase;
+    margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
 }
 
 .dashboard-hero h1 {
@@ -114,6 +114,55 @@ body {
     border: 3px solid rgba(255, 255, 255, 0.86);
     background: rgba(255, 255, 255, 0.78);
     filter: drop-shadow(0 16px 18px rgba(31, 30, 51, 0.18));
+}
+
+.hero-progress-ring-row {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.hero-ring-wrap {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-ring {
+    width: 56px;
+    height: 56px;
+    transform: rotate(-90deg);
+}
+.hero-ring-bg {
+    fill: none;
+    stroke: rgba(255,255,255,0.25);
+    stroke-width: 4;
+}
+.hero-ring-fill {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 113.1;
+    stroke-dashoffset: 113.1;
+    transition: stroke-dashoffset 0.8s ease;
+}
+.hero-ring-label {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    color: rgba(255,255,255,0.8);
+    white-space: nowrap;
+}
+.hero-ring-pct {
+    position: absolute;
+    font-size: 12px;
+    font-weight: 600;
+    color: #ffffff;
 }
 
 .voice-dashboard .dashboard-hero-character {

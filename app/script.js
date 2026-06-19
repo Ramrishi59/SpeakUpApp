@@ -997,7 +997,7 @@ function renderAccountStatus() {
             </div>
             <div class="card-header">
               <p class="eyebrow">SpeakUp Account</p>
-              <h2 id="status-title">${greeting}, ${displayName}</h2>
+              <h2 id="status-title">${displayName}'s Learning Profile</h2>
               <p class="hero-subtitle">${unlocked ? (license?.trialActive ? 'Your full-access trial is active.' : 'Premium is active.') : 'Lessons are locked until purchase.'}</p>
             </div>
           </div>
@@ -1546,6 +1546,31 @@ async function loadDashboardLessons() {
     });
   }
 
+  function updateHeroDashboard() {
+    const profile = getProfileState();
+    const auth = getLoginState();
+    const displayName = profile?.username
+      || auth?.email?.split('@')[0]
+      || 'Super Learner';
+    const greetingEl = document.getElementById('dashboard-greeting');
+    if (greetingEl) greetingEl.textContent = getTimeGreeting() + ', ' + displayName + '! 👋';
+
+    const totalCompleted = dashboardLessons.filter(
+      lesson => getLessonProgressState(lesson.id).isCompleted
+    ).length;
+    const totalAll = dashboardLessons.length;
+    const pct = totalAll > 0 ? Math.round((totalCompleted / totalAll) * 100) : 0;
+
+    const pctEl = document.getElementById('hero-ring-pct');
+    if (pctEl) pctEl.textContent = pct + '%';
+    const fill = document.getElementById('hero-ring-fill');
+    if (fill) {
+      const circumference = 2 * Math.PI * 18;
+      fill.style.strokeDasharray = circumference;
+      fill.style.strokeDashoffset = circumference - (pct / 100) * circumference;
+    }
+  }
+
   function renderCategoryTiles() {
     const container = document.getElementById('category-tiles');
     if (!container) return;
@@ -1554,7 +1579,7 @@ async function loadDashboardLessons() {
       { id: 'units', label: 'Units',             subLabel: "Let's learn" },
       { id: 'quiz',  label: 'Tap the Right One', subLabel: 'Choose the correct word' },
       { id: 'order', label: 'Mix and Fix',        subLabel: 'Put sentences in order' },
-      { id: 'voice', label: "Let's Talk",         subLabel: 'Speak and practice' },
+      { id: 'voice', label: "Let's Talk",         subLabel: 'Speak with Manku and friends' },
     ];
 
     container.innerHTML = CATEGORY_DEFS.map(cat => {
@@ -1626,6 +1651,7 @@ async function loadDashboardLessons() {
       if (continueSlot) continueSlot.style.display = 'none';
       if (lessonsList) lessonsList.innerHTML = '';
       renderCategoryTiles();
+      updateHeroDashboard();
     } else {
       if (categoryTilesEl) categoryTilesEl.style.display = 'none';
       if (backRow) {

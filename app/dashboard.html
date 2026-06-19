@@ -26,12 +26,23 @@
         <main id="appRoot" class="main-content">
             <div id="dashboard-screen">
                 <section class="dashboard-hero" aria-label="Dashboard overview">
-                    <div class="dashboard-hero-copy">
-                        <p class="dashboard-eyebrow">Rameshvoice SpeakUp</p>
-                        <h1>Speak English step by step</h1>
-                        <p>Look Listen Repeat<br>Speak with Confidence</p>
+                  <div class="dashboard-hero-copy">
+                    <p class="dashboard-eyebrow" id="dashboard-greeting">Hello! 👋</p>
+                    <h1>Speak English<br>Step by Step</h1>
+                    <p>Look • Listen • Repeat<br>Speak with Confidence</p>
+                    <div class="hero-progress-ring-row">
+                      <div class="hero-ring-wrap">
+                        <svg class="hero-ring" viewBox="0 0 44 44" aria-hidden="true">
+                          <circle class="hero-ring-bg" cx="22" cy="22" r="18" />
+                          <circle class="hero-ring-fill" id="hero-ring-fill" cx="22" cy="22" r="18" />
+                        </svg>
+                        <span class="hero-ring-label">Overall Progress</span>
+                        <span class="hero-ring-pct" id="hero-ring-pct">0%</span>
+                      </div>
                     </div>
-                    <img src="Images/dashboard thumbnails/Manku.webp" alt="" class="dashboard-hero-character" aria-hidden="true">
+                  </div>
+                  <img src="Images/dashboard thumbnails/Manku.webp"
+                       alt="" class="dashboard-hero-character" aria-hidden="true">
                 </section>
 
                 <div id="category-tiles"></div>
