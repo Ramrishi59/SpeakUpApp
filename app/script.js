@@ -1576,10 +1576,10 @@ async function loadDashboardLessons() {
     if (!container) return;
 
     const CATEGORY_DEFS = [
-      { id: 'units', label: 'Units',             subLabel: "Let's learn" },
-      { id: 'quiz',  label: 'Tap the Right One', subLabel: 'Choose the correct word' },
-      { id: 'order', label: 'Mix and Fix',        subLabel: 'Put sentences in order' },
-      { id: 'voice', label: "Let's Talk",         subLabel: 'Speak with Manku and friends' },
+      { id: 'units', label: 'Units',             subLabel: "Let's learn",                  img: 'Images/dashboard thumbnails/tile-units.webp', iconBg: '#FFE2A0', imgSize: '64px' },
+      { id: 'quiz',  label: 'Tap the Right One', subLabel: 'Choose the correct word',    img: 'Images/dashboard thumbnails/tile-quiz.webp',  iconBg: '#BCE9D6', imgSize: '64px' },
+      { id: 'order', label: 'Mix and Fix',        subLabel: 'Put sentences in order',     img: 'Images/dashboard thumbnails/tile-order.webp', iconBg: '#BFDFF9', imgSize: '64px' },
+      { id: 'voice', label: "Let's Talk",         subLabel: 'Speak with Manku and friends', img: 'Images/dashboard thumbnails/tile-voice.webp', iconBg: '#FFCBB8', imgSize: '68px' },
     ];
 
     container.innerHTML = CATEGORY_DEFS.map(cat => {
@@ -1588,9 +1588,14 @@ async function loadDashboardLessons() {
       const done = cards.filter(c => getLessonProgressState(c.id).isCompleted).length;
       return `
         <button type="button" class="category-tile" data-category="${cat.id}">
-          <span class="category-tile-name">${cat.label}</span>
-          <span class="category-tile-sub">${cat.subLabel}</span>
-          <span class="category-tile-count">${done} of ${total} done</span>
+          <div class="tile-icon-wrap" style="background:${cat.iconBg}">
+            <img src="${cat.img}" alt="" style="width:${cat.imgSize};height:${cat.imgSize};object-fit:contain;">
+          </div>
+          <div class="category-tile-body">
+            <span class="category-tile-name">${cat.label}</span>
+            <span class="category-tile-sub">${cat.subLabel}</span>
+            <span class="category-tile-count">${done} of ${total} done</span>
+          </div>
           <span class="category-tile-arrow" aria-hidden="true">&#8250;</span>
         </button>
       `;
