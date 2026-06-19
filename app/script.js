@@ -1576,16 +1576,17 @@ async function loadDashboardLessons() {
     if (!container) return;
 
     const CATEGORY_DEFS = [
-      { id: 'units', label: 'Units',             subLabel: "Let's learn",                  img: 'Images/dashboard thumbnails/tile-units.webp', iconBg: '#FFE2A0', imgSize: '64px' },
-      { id: 'quiz',  label: 'Tap the Right One', subLabel: 'Choose the correct word',    img: 'Images/dashboard thumbnails/tile-quiz.webp',  iconBg: '#BCE9D6', imgSize: '64px' },
-      { id: 'order', label: 'Mix and Fix',        subLabel: 'Put sentences in order',     img: 'Images/dashboard thumbnails/tile-order.webp', iconBg: '#BFDFF9', imgSize: '64px' },
-      { id: 'voice', label: "Let's Talk",         subLabel: 'Speak with Manku and friends', img: 'Images/dashboard thumbnails/tile-voice.webp', iconBg: '#FFCBB8', imgSize: '68px' },
+      { id: 'units', label: 'Units',             subLabel: "Let's learn",                  img: 'Images/dashboard thumbnails/tile-units.webp', iconBg: '#FFE2A0', imgSize: '64px', barColor: '#D4900A' },
+      { id: 'quiz',  label: 'Tap the Right One', subLabel: 'Choose the correct word',    img: 'Images/dashboard thumbnails/tile-quiz.webp',  iconBg: '#BCE9D6', imgSize: '64px', barColor: '#1A9B6C' },
+      { id: 'order', label: 'Mix and Fix',        subLabel: 'Put sentences in order',     img: 'Images/dashboard thumbnails/tile-order.webp', iconBg: '#BFDFF9', imgSize: '64px', barColor: '#2E7BC4' },
+      { id: 'voice', label: "Let's Talk",         subLabel: 'Speak with Manku and friends', img: 'Images/dashboard thumbnails/tile-voice.webp', iconBg: '#FFCBB8', imgSize: '68px', barColor: '#C45A3A' },
     ];
 
     container.innerHTML = CATEGORY_DEFS.map(cat => {
       const cards = dashboardLessons.filter(c => c?.id && c.id !== 'intro' && getDashboardCategory(c) === cat.id);
       const total = cards.length;
       const done = cards.filter(c => getLessonProgressState(c.id).isCompleted).length;
+      const pct = total > 0 ? Math.round((done / total) * 100) : 0;
       return `
         <button type="button" class="category-tile" data-category="${cat.id}">
           <div class="tile-icon-wrap" style="background:${cat.iconBg}">
@@ -1595,6 +1596,9 @@ async function loadDashboardLessons() {
             <span class="category-tile-name">${cat.label}</span>
             <span class="category-tile-sub">${cat.subLabel}</span>
             <span class="category-tile-count">${done} of ${total} done</span>
+            <div style="width:100%;height:6px;border-radius:999px;background:rgba(0,0,0,0.10);margin-top:8px;overflow:hidden;">
+              <div style="height:100%;border-radius:999px;background:${cat.barColor};width:${pct}%;transition:width 0.6s ease;"></div>
+            </div>
           </div>
           <span class="category-tile-arrow" aria-hidden="true">&#8250;</span>
         </button>

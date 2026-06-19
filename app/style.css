@@ -1629,7 +1629,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     gap: 14px;
     width: 100%;
     padding: 16px 52px 16px 16px;
@@ -1644,7 +1644,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 2px;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
 }
 
 .category-tile:active {
@@ -1741,6 +1743,20 @@ body {
     justify-content: center;
     flex-shrink: 0;
     overflow: hidden;
+}
+
+.tile-progress-bar-wrap {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.10);
+    margin-top: 8px;
+    overflow: hidden;
+}
+.tile-progress-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.25);
+    transition: width 0.6s ease;
 }
 
 /* ---- Category back button ---- */
