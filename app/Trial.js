@@ -149,6 +149,14 @@ function formatIntroUnitTitle(title) {
   return safeTitle.replace(/:\s*/, ":<br>").replace(/\n/g, "<br>");
 }
 
+function fitTitleToComp(el) {
+  el.style.fontSize = '';
+  const comp = el.closest('.intro-comp');
+  const maxH = comp ? comp.clientHeight * 0.60 : 140;
+  let size = parseFloat(getComputedStyle(el).fontSize);
+  while (el.scrollHeight > maxH && size > 18) { size -= 2; el.style.fontSize = size + 'px'; }
+}
+
 function showOutroFromLegacyItem(item) {
   SpeakUpOutro.render({ image: item.image || "", audio: item.audio || "", text: "" });
   document.body.classList.add('outro-active');
@@ -293,6 +301,7 @@ async function render(i) {
     leaveOutro();
     els.wordScreen.style.display = "grid";
     els.title.innerHTML = isFirstIntroSlide ? formatIntroUnitTitle(currentUnitName) : "";
+    if (isFirstIntroSlide) fitTitleToComp(els.title);
     els.word.textContent = isFirstIntroSlide ? "" : (item.text || "");
     if (isFirstIntroSlide) {
       els.image.removeAttribute("src");

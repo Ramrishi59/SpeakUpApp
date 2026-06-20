@@ -727,11 +727,25 @@ body.first-intro-slide .word-display{
   background: #FCF3D4;
 }
 
-body.first-intro-slide .word-display::before{
+/* intro-comp: transparent in regular slides; becomes the composition anchor on first-intro-slide */
+.intro-comp { display: contents; }
+
+body.first-intro-slide .intro-comp {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: clamp(60px, 10svh, 110px);
+  transform: translateX(-50%);
+  width: min(92vw, 460px);
+  aspect-ratio: 1.5 / 1;
+}
+
+/* Bubble — bleeds past comp edges horizontally, matches original width */
+body.first-intro-slide .intro-comp::before {
   content: "";
   position: absolute;
-  left: 52%;
-  top: 11%;
+  left: 50%;
+  top: 0;
   width: min(160vw, 624px);
   aspect-ratio: 1.5 / 1;
   transform: translateX(-50%);
@@ -740,32 +754,33 @@ body.first-intro-slide .word-display::before{
   z-index: 1;
 }
 
-body.first-intro-slide .word-display::after{
+/* Manku — anchored to lower-right of composition box, not the screen bottom */
+body.first-intro-slide .intro-comp::after {
   content: "";
   position: absolute;
-  right: max(-12px, 1vw);
-  bottom: calc(var(--next-coin-size) * .72 + max(128px, env(safe-area-inset-bottom)));
-  transform: translateY(48px);
-  width: min(68vw, 280px);
+  top: 58%;
+  right: -8%;
+  width: min(60vw, 250px);
   aspect-ratio: 1 / 1.25;
   background: center bottom / contain no-repeat url("Images/repeating_assets/11.webp");
   filter: drop-shadow(0 10px 12px rgba(0, 58, 154, 0.28));
   z-index: 2;
 }
 
-body.first-intro-slide #lessonText{
+/* Title — centered in the composition; slightly smaller clamp to wrap long unit names cleanly */
+body.first-intro-slide #lessonText {
   display: block !important;
   position: absolute;
   left: 50%;
-  top: clamp(148px, 24svh, 230px);
-  width: min(58vw, 400px);
+  top: 48%;
+  width: min(60vw, 320px);
   margin: 0;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   z-index: 3;
   color: #ef1608;
-  font-size: clamp(42px, 8.5vw, 80px);
+  font-size: clamp(36px, 8vw, 68px);
   font-weight: 500;
-  line-height: .98;
+  line-height: 1.1;
   text-align: center;
   text-shadow:
     0 3px 0 #aa0902,
