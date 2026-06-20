@@ -734,7 +734,7 @@ body.first-intro-slide .intro-comp {
   display: block;
   position: absolute;
   left: 50%;
-  top: clamp(60px, 10svh, 110px);
+  top: clamp(10px, 4svh, 55px);
   transform: translateX(-50%);
   width: min(92vw, 460px);
   aspect-ratio: 1.5 / 1;
