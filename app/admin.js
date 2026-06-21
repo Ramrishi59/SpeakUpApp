@@ -30,6 +30,8 @@ let loadedUsers       = [];
 let activeUserFilter  = "all";
 let alertFilterUids   = null;   // null = no filter, Set<uid> = show only these
 let selectedDuration  = null;   // "30" | "90" | "365" | "permanent"
+let cachedPayments    = [];
+let currentMode       = "admin";
 
 // ── Chart registry ─────────────────────────────────────────────────────────
 const charts = {};
@@ -669,11 +671,18 @@ function setSignedInView(user) {
   els.loginPanel?.classList.toggle("hidden", isSignedIn);
   els.adminPanel?.classList.toggle("hidden", !isSignedIn);
   els.signOutButton?.classList.toggle("hidden", !isSignedIn);
+  document.getElementById("modeSwitcher")?.classList.toggle("hidden", !isSignedIn);
   if (els.adminIdentity) {
     els.adminIdentity.textContent = user ? user.email || user.uid : "Not signed in";
   }
   if (!isSignedIn) {
     ["status","activity","lessonBar","unitDonut","revenue"].forEach(destroyChart);
+    currentMode = "admin";
+    document.getElementById("adminView")?.classList.remove("hidden");
+    document.getElementById("parentView")?.classList.add("hidden");
+    document.querySelectorAll(".mode-btn").forEach(b =>
+      b.classList.toggle("active", b.dataset.mode === "admin")
+    );
   }
 }
 
@@ -694,16 +703,25 @@ function renderUserList(users) {
     return;
   }
 
-  els.userList.innerHTML = visible.map(user => `
-    <button type="button" class="user-button ${user.uid === selectedUid ? "active" : ""}" data-uid="${escapeHtml(user.uid)}">
-      <span class="user-topline">
-        <strong>${escapeHtml(user.username || "Unnamed user")}</strong>
-        <span class="online-dot ${user.isOnline ? "is-online" : ""}">${user.isOnline ? "Online" : "Away"}</span>
-      </span>
-      <span class="muted user-meta-line">${escapeHtml(user.email || "No email")}</span>
-      <span class="muted user-meta-line">${escapeHtml(user.activePage || "Last seen")} · ${escapeHtml(formatRelativeTime(user.lastSeenAt))}</span>
-    </button>
-  `).join("");
+  els.userList.innerHTML = visible.map(user => {
+    const name     = user.username || user.email || "?";
+    const initials = name.split(" ").slice(0, 2).map(s => s[0]?.toUpperCase() || "").join("") || "?";
+    return `
+      <button type="button" class="user-button ${user.uid === selectedUid ? "active" : ""}" data-uid="${escapeHtml(user.uid)}">
+        <span class="user-button-inner">
+          <span class="user-avatar" aria-hidden="true">${escapeHtml(initials)}</span>
+          <span class="user-button-text">
+            <span class="user-topline">
+              <strong>${escapeHtml(user.username || "Unnamed user")}</strong>
+              <span class="online-dot ${user.isOnline ? "is-online" : ""}">${user.isOnline ? "Online" : "Away"}</span>
+            </span>
+            <span class="muted user-meta-line">${escapeHtml(user.email || "No email")}</span>
+            <span class="muted user-meta-line">${escapeHtml(user.activePage || "Last seen")} · ${escapeHtml(formatRelativeTime(user.lastSeenAt))}</span>
+          </span>
+        </span>
+      </button>
+    `;
+  }).join("");
 
   els.userList.querySelectorAll(".user-button").forEach(btn => {
     btn.addEventListener("click", () => loadUser(btn.dataset.uid));
@@ -792,8 +810,82 @@ function renderRawProfile(profile) {
   els.rawTab.textContent = JSON.stringify(profile || {}, null, 2);
 }
 
+// ── Skeleton helpers ───────────────────────────────────────────────────────
+function showUserListSkeleton(count = 6) {
+  if (!els.userList) return;
+  els.userList.innerHTML = Array.from({ length: count }, () => `
+    <div class="skel-user-item">
+      <span class="skel skel-circle" style="width:36px;height:36px;flex-shrink:0"></span>
+      <div style="flex:1;display:grid;gap:6px">
+        <span class="skel skel-line" style="width:65%"></span>
+        <span class="skel skel-line" style="width:50%"></span>
+        <span class="skel skel-line" style="width:70%"></span>
+      </div>
+    </div>
+  `).join("");
+}
+
+function showPaymentsSkeleton() {
+  const totals = document.getElementById("paymentTotals");
+  if (totals) {
+    totals.innerHTML = `
+      <div class="payment-totals">
+        ${Array.from({ length: 3 }, () => `
+          <div class="payment-total-card">
+            <div class="skel skel-line" style="width:80px;margin-bottom:10px"></div>
+            <div class="skel" style="display:block;height:26px;width:96px;border-radius:8px;margin-bottom:8px"></div>
+            <div class="skel skel-line" style="width:60px"></div>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+  if (els.paymentsBody) {
+    els.paymentsBody.innerHTML = Array.from({ length: 5 }, () => `
+      <tr>
+        <td>
+          <span class="skel skel-line" style="width:75%;display:block"></span>
+          <span class="skel skel-line" style="width:50%;display:block;margin-top:5px"></span>
+        </td>
+        <td><span class="skel skel-line" style="width:56px;display:block"></span></td>
+        <td><span class="skel skel-badge"></span></td>
+        <td><span class="skel skel-line" style="width:68px;display:block"></span></td>
+        <td><span class="skel skel-line" style="width:96px;display:block"></span></td>
+      </tr>
+    `).join("");
+  }
+}
+
+function showPvSkeleton() {
+  ["pvMonthRevenue","pvFullAccess","pvNeedAttention"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = `<span class="skel" style="display:inline-block;height:.8em;width:88px;border-radius:8px"></span>`;
+  });
+  const tbody = document.getElementById("pvTableBody");
+  if (tbody) {
+    tbody.innerHTML = Array.from({ length: 6 }, () => `
+      <tr>
+        <td>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span class="skel skel-circle" style="width:36px;height:36px;flex-shrink:0"></span>
+            <div style="display:grid;gap:5px">
+              <span class="skel skel-line" style="width:100px;display:block"></span>
+              <span class="skel skel-line" style="width:136px;display:block"></span>
+            </div>
+          </div>
+        </td>
+        <td><span class="skel skel-badge"></span></td>
+        <td><span class="skel skel-line" style="width:52px;display:block"></span></td>
+        <td><span class="skel skel-line" style="width:60px;display:block"></span></td>
+        <td><span class="skel skel-line" style="width:72px;display:block"></span></td>
+      </tr>
+    `).join("");
+  }
+}
+
 // ── Data loading ───────────────────────────────────────────────────────────
 async function searchUsers() {
+  showUserListSkeleton();
   setStatus(els.userSearchStatus, "Loading users…");
   try {
     const payload  = await adminPost("/api/admin/list-users", { query: els.userSearch?.value || "", limit: 500 });
@@ -866,10 +958,12 @@ async function updateAccess(action, reasonOverride = null) {
 }
 
 async function loadPayments() {
+  showPaymentsSkeleton();
   setStatus(els.paymentStatus, "Loading payments…");
   try {
     const payload  = await adminPost("/api/admin/list-payments", { limit: 50 });
     const payments = payload.payments || [];
+    cachedPayments = payments;
 
     renderPaymentTotals(payments);
 
@@ -907,8 +1001,6 @@ function switchTab(tabName) {
   els.progressTab?.classList.toggle("hidden",  tabName !== "progress");
   els.analyticsTab?.classList.toggle("hidden", tabName !== "analytics");
   els.rawTab?.classList.toggle("hidden",       tabName !== "raw");
-  els.paymentsTab?.classList.toggle("hidden",  tabName !== "payments");
-  if (tabName === "payments")  loadPayments();
   if (tabName === "analytics") renderAnalyticsTab(selectedProgress);
 }
 
@@ -1028,6 +1120,23 @@ document.querySelectorAll(".tab").forEach(btn => {
   btn.addEventListener("click", () => switchTab(btn.dataset.tab));
 });
 
+// Mode switching
+document.querySelectorAll(".mode-btn").forEach(btn => {
+  btn.addEventListener("click", () => switchMode(btn.dataset.mode));
+});
+
+// Parent view search
+document.getElementById("pvSearch")?.addEventListener("input", () => {
+  renderPvTable(loadedUsers);
+});
+
+// Parent view refresh
+document.getElementById("pvRefreshBtn")?.addEventListener("click", async () => {
+  cachedPayments = [];
+  await searchUsers();
+  await loadParentView();
+});
+
 // ── Auth state ─────────────────────────────────────────────────────────────
 onAuthStateChanged(auth, async user => {
   setSignedInView(user);
@@ -1036,13 +1145,190 @@ onAuthStateChanged(auth, async user => {
   selectedProgress = null;
   selectedListUser = null;
   alertFilterUids  = null;
+  cachedPayments   = [];
   if (!user) return;
 
   try {
     await getFreshToken();
     await searchUsers();
+    loadPayments();   // load in background — no await
   } catch (error) {
     console.error(error);
     setStatus(els.userSearchStatus, error.message, "error");
   }
 });
+
+// ── Mode Switching ─────────────────────────────────────────────────────────
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById("adminView")?.classList.toggle("hidden",  mode !== "admin");
+  document.getElementById("parentView")?.classList.toggle("hidden", mode !== "parent");
+  document.querySelectorAll(".mode-btn").forEach(b =>
+    b.classList.toggle("active", b.dataset.mode === mode)
+  );
+  if (mode === "parent") loadParentView();
+}
+
+// ── Parent View ────────────────────────────────────────────────────────────
+async function loadParentView() {
+  const pvStatus = document.getElementById("pvStatus");
+  showPvSkeleton();
+  try {
+    if (!cachedPayments.length) {
+      setStatus(pvStatus, "Loading payment data…");
+      const payload  = await adminPost("/api/admin/list-payments", { limit: 200 });
+      cachedPayments = payload.payments || [];
+    }
+    renderParentView(loadedUsers, cachedPayments);
+  } catch (e) {
+    setStatus(pvStatus, e.message, "error");
+  }
+}
+
+function renderParentView(users, payments) {
+  const now        = Date.now();
+  const monthStart = new Date(now);
+  monthStart.setDate(1);
+  monthStart.setHours(0, 0, 0, 0);
+
+  const captured         = payments.filter(p => p.status === "captured" || p.verifiedAt);
+  const thisMonthCaptures = captured.filter(p => p.verifiedAt && new Date(p.verifiedAt) >= monthStart);
+  const monthTotal       = thisMonthCaptures.reduce((s, p) => s + (Number(p.amount) || 0) / 100, 0);
+
+  const fullAccess = users.filter(u => {
+    const licExp = u.licenseExpiresAt ? new Date(u.licenseExpiresAt).getTime() : null;
+    return licExp && licExp > now;
+  }).length;
+
+  const alerts           = computeAlerts(users);
+  const needAttentionSet = new Set();
+  alerts.forEach(a => a.users.forEach(u => needAttentionSet.add(u.uid)));
+
+  const pvMonth = document.getElementById("pvMonthRevenue");
+  const pvMonthSub = document.getElementById("pvMonthSub");
+  const pvFull  = document.getElementById("pvFullAccess");
+  const pvNeed  = document.getElementById("pvNeedAttention");
+
+  if (pvMonth) {
+    pvMonth.textContent = new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(monthTotal);
+  }
+  if (pvMonthSub) {
+    pvMonthSub.textContent = `${thisMonthCaptures.length} payment${thisMonthCaptures.length !== 1 ? "s" : ""} received`;
+  }
+  if (pvFull) animateCount(pvFull, fullAccess);
+  if (pvNeed) {
+    animateCount(pvNeed, needAttentionSet.size);
+    pvNeed.className = "pv-hero-number " + (needAttentionSet.size > 0 ? "warn" : "green");
+  }
+
+  renderPvAttention(alerts);
+  renderPvTable(users);
+  setStatus(document.getElementById("pvStatus"), `${users.length} users loaded`, "success");
+}
+
+function renderPvAttention(alerts) {
+  const container = document.getElementById("pvAttentionItems");
+  if (!container) return;
+
+  if (!alerts.length) {
+    container.innerHTML = `<p class="empty-state">All clear — no users need immediate attention.</p>`;
+    return;
+  }
+
+  container.innerHTML = alerts.map(alert => `
+    <div class="pv-attention-item ${alert.type}">
+      <span style="font-size:20px;line-height:1">${alert.icon}</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-weight:700;font-size:14px">${escapeHtml(alert.title)}</div>
+        <div style="color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(alert.preview)}</div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderPvTable(users) {
+  const tbody = document.getElementById("pvTableBody");
+  if (!tbody) return;
+
+  const q        = (document.getElementById("pvSearch")?.value || "").toLowerCase().trim();
+  const filtered = q
+    ? users.filter(u =>
+        (u.username || "").toLowerCase().includes(q) ||
+        (u.email    || "").toLowerCase().includes(q)
+      )
+    : users;
+
+  if (!filtered.length) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:28px">No users found.</td></tr>`;
+    return;
+  }
+
+  const now = Date.now();
+
+  tbody.innerHTML = filtered.map(user => {
+    const licExp = user.licenseExpiresAt ? new Date(user.licenseExpiresAt).getTime() : null;
+    const triExp = user.trialExpiresAt   ? new Date(user.trialExpiresAt).getTime()   : null;
+
+    let statusCls, statusLabel, expiryText;
+
+    if (licExp && licExp > now) {
+      statusCls   = "full";
+      statusLabel = "Full Access";
+      const days  = Math.round((licExp - now) / 86400000);
+      expiryText  = days > 364 ? "Permanent" : `${days}d left`;
+    } else if (licExp && licExp <= now) {
+      statusCls   = "expired";
+      statusLabel = "Expired";
+      expiryText  = `${Math.round((now - licExp) / 86400000)}d ago`;
+    } else if (triExp && triExp > now) {
+      statusCls   = "trial";
+      statusLabel = "Trial";
+      expiryText  = `${Math.round((triExp - now) / 86400000)}d left`;
+    } else if (triExp && triExp <= now) {
+      statusCls   = "expired";
+      statusLabel = "Trial Ended";
+      expiryText  = `${Math.round((now - triExp) / 86400000)}d ago`;
+    } else {
+      statusCls   = "none";
+      statusLabel = "No Access";
+      expiryText  = "—";
+    }
+
+    const name     = user.username || user.email || "?";
+    const initials = name.split(" ").slice(0, 2).map(s => s[0]?.toUpperCase() || "").join("") || "?";
+
+    return `
+      <tr>
+        <td>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="user-avatar" aria-hidden="true">${escapeHtml(initials)}</div>
+            <div>
+              <div style="font-weight:700">${escapeHtml(user.username || "Unnamed")}</div>
+              <div style="color:var(--muted);font-size:12px">${escapeHtml(user.email || "")}</div>
+            </div>
+          </div>
+        </td>
+        <td><span class="upc-status-badge ${statusCls}">${escapeHtml(statusLabel)}</span></td>
+        <td style="color:var(--muted);font-size:13px">${escapeHtml(expiryText)}</td>
+        <td style="color:var(--muted);font-size:13px">${escapeHtml(formatRelativeTime(user.lastSeenAt))}</td>
+        <td>
+          <button type="button" class="pv-copy-btn" data-email="${escapeHtml(user.email || "")}" title="Copy email address">
+            Copy email
+          </button>
+        </td>
+      </tr>
+    `;
+  }).join("");
+
+  tbody.querySelectorAll(".pv-copy-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const email = btn.dataset.email;
+      if (!email) return;
+      navigator.clipboard.writeText(email).then(() => {
+        btn.textContent = "Copied!";
+        btn.classList.add("copied");
+        setTimeout(() => { btn.textContent = "Copy email"; btn.classList.remove("copied"); }, 1800);
+      });
+    });
+  });
+}
