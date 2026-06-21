@@ -736,30 +736,30 @@ body.first-intro-slide .intro-comp {
   left: 50%;
   top: clamp(10px, 4svh, 55px);
   transform: translateX(-50%);
-  width: min(92vw, 460px);
-  aspect-ratio: 1.5 / 1;
+  width: min(80vw, 340px);
+  aspect-ratio: 1 / 1;
 }
 
-/* Bubble — bleeds past comp edges horizontally, matches original width */
+/* Title card — fills the composition square; image set via --titlecard-url CSS variable */
 body.first-intro-slide .intro-comp::before {
   content: "";
   position: absolute;
-  left: 50%;
+  left: 0;
   top: 0;
-  width: min(160vw, 624px);
-  aspect-ratio: 1.5 / 1;
-  transform: translateX(-50%);
-  background: center / contain no-repeat url("Images/repeating_assets/13.png");
-  filter: drop-shadow(0 8px 10px rgba(0, 58, 154, 0.24));
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  transform: none;
+  background: center / contain no-repeat var(--titlecard-url);
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.18));
   z-index: 1;
 }
 
-/* Manku — anchored to lower-right of composition box, not the screen bottom */
+/* Manku — stands below-right of the title card */
 body.first-intro-slide .intro-comp::after {
   content: "";
   position: absolute;
-  top: 58%;
-  right: -8%;
+  top: 68%;
+  right: -6%;
   width: min(60vw, 250px);
   aspect-ratio: 1 / 1.25;
   background: center bottom / contain no-repeat url("Images/repeating_assets/11.webp");
@@ -767,9 +767,9 @@ body.first-intro-slide .intro-comp::after {
   z-index: 2;
 }
 
-/* Title — centered in the composition; slightly smaller clamp to wrap long unit names cleanly */
+/* Title text hidden — title card image carries all the text */
 body.first-intro-slide #lessonText {
-  display: block !important;
+  display: none !important;
   position: absolute;
   left: 50%;
   top: 48%;
@@ -938,46 +938,5 @@ body.unit-unit5.intro-mascot{
   }
   .gate-start:active{ transform: translateY(1px) scale(.98); }
 
-/* ============================================================
-   TITLE CARD VISUAL TEST — Unit 1, 17, 29 only (temporary)
-   Remove this block once design is confirmed.
-   ============================================================ */
 
-/* Resize composition to match the 1:1 square title cards */
-body.unit-unit1.first-intro-slide .intro-comp,
-body.unit-unit17.first-intro-slide .intro-comp,
-body.unit-unit29.first-intro-slide .intro-comp {
-  width: min(80vw, 340px);
-  aspect-ratio: 1 / 1;
-}
 
-/* Replace bubble image with the matching title card (per unit) */
-body.unit-unit1.first-intro-slide .intro-comp::before {
-  background-image: url("Images/titlecards/unit1.webp");
-  left: 0; width: 100%; aspect-ratio: 1/1; transform: none;
-  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.18));
-}
-body.unit-unit17.first-intro-slide .intro-comp::before {
-  background-image: url("Images/titlecards/unit17.webp");
-  left: 0; width: 100%; aspect-ratio: 1/1; transform: none;
-  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.18));
-}
-body.unit-unit29.first-intro-slide .intro-comp::before {
-  background-image: url("Images/titlecards/unit29.webp");
-  left: 0; width: 100%; aspect-ratio: 1/1; transform: none;
-  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.18));
-}
-
-/* Hide coded title text */
-body.unit-unit1.first-intro-slide #lessonText,
-body.unit-unit17.first-intro-slide #lessonText,
-body.unit-unit29.first-intro-slide #lessonText { display: none !important; }
-
-/* Manku: start at 68% down the card so he stands below-right without covering the title text */
-body.unit-unit1.first-intro-slide .intro-comp::after,
-body.unit-unit17.first-intro-slide .intro-comp::after,
-body.unit-unit29.first-intro-slide .intro-comp::after { top: 68%; right: -6%; }
-
-/* ============================================================ */
-
-  

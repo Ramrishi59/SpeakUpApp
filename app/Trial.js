@@ -470,6 +470,8 @@ async function waitForAuthReady() {
   const unit = await loadUnit(getUnitIdFromUrl());
   document.body.classList.add(`unit-${unit.id}`);
   currentUnitName = unit.name || "";
+  const _tcNum = unit.id.replace(/^unit/, '');
+  document.documentElement.style.setProperty('--titlecard-url', `url("Images/titlecards/${_tcNum}.webp")`);
 
   const titleEl = document.getElementById("unitTitle");
   if (titleEl && unit.name) titleEl.textContent = unit.name;
