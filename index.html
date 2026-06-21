@@ -13,9 +13,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream:       #FCF3D4;
-    --cream-alt:   #FFF4CC;
-    --card:        #FFF8E7;
+    --cream:       #FAF0C0;
+    --cream-alt:   #F0E490;
+    --card:        #FFFEF4;
     --orange:      #FF6B35;
     --orange-dk:   #C94E1C;
     --yellow:      #FFD93D;
@@ -121,22 +121,32 @@
   /* ─── SHARED SECTION STYLES ───────────────────────────── */
   section { padding: 76px 5%; position: relative; }
   .section-tag {
-    font-family: 'Fredoka One', cursive; font-size: 1.05rem;
+    font-family: 'Fredoka One', cursive; font-size: 1.1rem;
     color: var(--orange); letter-spacing: 0.5px;
     margin-bottom: 10px; display: block;
   }
   .section-title {
     font-family: 'Fredoka One', cursive; color: var(--dark);
-    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-size: clamp(2rem, 4vw, 2.8rem);
     line-height: 1.15; margin-bottom: 14px;
   }
   .section-sub {
-    font-size: 1.05rem; color: var(--mid);
-    line-height: 1.75; font-weight: 600;
+    font-size: 1.1rem; color: var(--mid);
+    line-height: 1.7; font-weight: 600;
     margin-bottom: 44px;
   }
   .t-center { text-align: center; }
   .t-center .section-sub { max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  /* ─── MOBILE READABILITY ──────────────────────────────── */
+  @media (max-width: 819px) {
+    section { padding: 64px 5%; }
+    .section-title { font-size: clamp(2.1rem, 7vw, 2.8rem); }
+    .section-sub { font-size: 1.1rem; margin-bottom: 36px; }
+    .step-card p, .reason-card p, .character-card p { font-size: 1rem; line-height: 1.6; }
+    .step-card { padding: 28px 20px; }
+    .reason-card { padding: 24px 20px; }
+  }
 
   /* ─── ANIMATIONS ──────────────────────────────────────── */
   @keyframes bounceIn {
@@ -178,24 +188,33 @@
   }
   .hero-title {
     font-family: 'Fredoka One', cursive;
-    font-size: clamp(2.4rem, 7vw, 4.6rem);
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
     line-height: 1.1; color: var(--dark);
     margin-bottom: 20px;
     animation: slideUp 0.7s ease 0.1s both;
   }
   .hero-title .accent { color: var(--orange); }
   .hero-subtitle {
-    font-size: clamp(1rem, 2vw, 1.18rem);
+    font-size: clamp(1.05rem, 2vw, 1.18rem);
     font-weight: 600; color: var(--mid);
-    max-width: 520px; margin: 0 auto 36px;
+    max-width: 520px; margin: 0 auto 32px;
     line-height: 1.7;
     animation: slideUp 0.7s ease 0.2s both;
   }
   .hero-buttons {
     display: flex; gap: 14px; flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 12px;
+    margin-bottom: 0;
     animation: slideUp 0.7s ease 0.3s both;
+  }
+  .trial-badge {
+    display: inline-block;
+    background: var(--green); color: var(--white);
+    font-weight: 800; font-size: 0.9rem;
+    padding: 8px 20px; border-radius: 50px;
+    margin-top: 16px;
+    box-shadow: 0 3px 0 var(--green-dk);
+    animation: slideUp 0.7s ease 0.38s both;
   }
   .btn-primary {
     background: var(--orange); color: var(--white);
@@ -258,29 +277,29 @@
   }
   .character-card {
     background: var(--card);
-    border-radius: 24px; padding: 28px 18px 22px;
+    border-radius: 24px; padding: 28px 18px 24px;
     text-align: center;
-    border: 3px solid transparent;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border: 3px solid var(--yellow);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.10);
     transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
   }
   .character-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--yellow);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    transform: translateY(-7px);
+    border-color: var(--orange);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.14);
   }
   .character-img {
-    width: 110px; height: 110px;
+    width: 130px; height: 130px;
     border-radius: 50%; object-fit: cover;
-    border: 4px solid var(--yellow);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    margin-bottom: 14px;
+    border: 5px solid var(--yellow);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.14);
+    margin-bottom: 16px;
   }
   .character-card h3 {
     font-family: 'Fredoka One', cursive;
-    color: var(--orange); font-size: 1.2rem; margin-bottom: 6px;
+    color: var(--orange); font-size: 1.25rem; margin-bottom: 6px;
   }
-  .character-card p { color: var(--mid); font-size: 0.9rem; font-weight: 600; line-height: 1.55; }
+  .character-card p { color: var(--mid); font-size: 0.93rem; font-weight: 600; line-height: 1.55; }
 
   /* ─── HOW CHILDREN LEARN ───────────────────────────────── */
   #how { background: var(--cream); }
@@ -293,7 +312,7 @@
     background: var(--card);
     border-radius: 24px; padding: 32px 22px;
     text-align: center;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.09);
     border: 3px solid transparent;
     transition: transform 0.2s, border-color 0.2s;
   }
@@ -363,7 +382,7 @@
     background: var(--card);
     border-radius: 20px; padding: 26px 22px;
     border-left: 5px solid var(--orange);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.09);
     transition: transform 0.2s;
   }
   .reason-card:hover { transform: translateY(-4px); }
@@ -390,7 +409,7 @@
     width: 200px; height: 200px; border-radius: 50%;
     border: 5px solid var(--yellow);
     box-shadow: 6px 6px 0 var(--orange);
-    background: #EDE6CC;
+    background: #DDD4A8;
     display: flex; align-items: center; justify-content: center;
     color: #B09B6A; font-size: 4rem; overflow: hidden;
   }
@@ -421,7 +440,7 @@
     border: 3px solid var(--yellow);
     position: relative;
     transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.10);
   }
   .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
   .pricing-card.featured {
@@ -486,7 +505,7 @@
 
   /* ─── FOOTER ───────────────────────────────────────────── */
   footer {
-    background: #F5E8B0;
+    background: #E8D060;
     color: var(--mid); text-align: center;
     padding: 52px 5% 36px;
     border-top: 3px solid var(--yellow);
@@ -541,13 +560,13 @@
       with Confidence!
     </h1>
     <p class="hero-subtitle">
-      No boring grammar rules. Just fun stories, games, and
-      activities that make children <em>want</em> to speak.
+      No boring rules. Fun stories and games that make children <em>want</em> to speak.
     </p>
     <div class="hero-buttons">
       <button class="btn-primary" type="button" data-install-button>Install App Free</button>
       <a href="#how" class="btn-secondary">See How It Works</a>
     </div>
+    <p class="trial-badge">⏰ 24-Hour Full Access Trial — No card needed</p>
     <p class="install-message" id="install-message" role="status" aria-live="polite"></p>
   </div>
   <div class="hero-visual">
@@ -564,31 +583,28 @@
   <div class="t-center reveal">
     <span class="section-tag">👨‍👩‍👧 The Characters</span>
     <h2 class="section-title">Meet the Speak Up Family</h2>
-    <p class="section-sub">
-      Your child learns English alongside a lovable group of friends —
-      each one with their own story to tell.
-    </p>
+    <p class="section-sub">A lovable group of friends your child learns English alongside.</p>
   </div>
   <div class="family-grid">
     <div class="character-card reveal">
       <img class="character-img" src="app/Images/website-v2-assets/raju.png" alt="Raju">
       <h3>Raju</h3>
-      <p>The curious adventurer who always asks the right questions.</p>
+      <p>Always curious. Always asking the right questions.</p>
     </div>
     <div class="character-card reveal">
       <img class="character-img" src="app/Images/website-v2-assets/reena.png" alt="Reena">
       <h3>Reena</h3>
-      <p>Smart, kind, and always ready with a helpful word.</p>
+      <p>Smart and kind, always ready to help.</p>
     </div>
     <div class="character-card reveal">
       <img class="character-img" src="app/Images/website-v2-assets/ammu_anju.png" alt="Ammu and Anju">
       <h3>Ammu &amp; Anju</h3>
-      <p>Best friends who love to play games and sing songs together.</p>
+      <p>Best friends who love games and songs.</p>
     </div>
     <div class="character-card reveal">
       <img class="character-img" src="app/Images/website-v2-assets/manku.png" alt="Manku the monkey">
       <h3>Manku 🐵</h3>
-      <p>The cheeky little monkey who keeps everyone laughing.</p>
+      <p>The cheeky monkey who keeps everyone laughing.</p>
     </div>
   </div>
 </section>
@@ -598,35 +614,32 @@
   <div class="t-center reveal">
     <span class="section-tag">📖 The Learning Path</span>
     <h2 class="section-title">How Children Learn with Speak Up</h2>
-    <p class="section-sub">
-      Each lesson builds on the last — from listening and reading
-      all the way to speaking with full confidence.
-    </p>
+    <p class="section-sub">Each lesson builds on the last, all the way to confident speaking.</p>
   </div>
   <div class="steps-grid">
     <div class="step-card reveal">
       <div class="step-number">1</div>
       <span class="step-icon">👂</span>
       <h3>Listen &amp; Discover</h3>
-      <p>Children hear natural English spoken by a real voice artist. Words and pictures come together to build understanding.</p>
+      <p>Natural English by a real voice artist. Words and pictures build understanding together.</p>
     </div>
     <div class="step-card reveal">
       <div class="step-number">2</div>
       <span class="step-icon">🎮</span>
       <h3>Play &amp; Practice</h3>
-      <p>Activities like "Tap the Right One" and "Mix &amp; Fix" turn practice into a game children actually want to play again.</p>
+      <p>"Tap the Right One," "Mix &amp; Fix" and more — practice that feels like play.</p>
     </div>
     <div class="step-card reveal">
       <div class="step-number">3</div>
       <span class="step-icon">🗣️</span>
       <h3>Speak Up!</h3>
-      <p>Speaking exercises build real confidence. Kids repeat, respond, and say full sentences out loud — just like a real class.</p>
+      <p>Kids repeat, respond, and say sentences aloud — building real confidence.</p>
     </div>
     <div class="step-card reveal">
       <div class="step-number">4</div>
       <span class="step-icon">🏆</span>
       <h3>Earn &amp; Grow</h3>
-      <p>Stars and badges keep children motivated as they level up unit by unit and track their own progress.</p>
+      <p>Stars and badges keep children motivated unit by unit.</p>
     </div>
   </div>
 </section>
@@ -636,10 +649,7 @@
   <div class="t-center reveal">
     <span class="section-tag">📱 Inside the App</span>
     <h2 class="section-title">See What Your Child Will Experience</h2>
-    <p class="section-sub">
-      Every screen is designed to feel fun, clear, and easy for young learners.
-      Scroll to explore.
-    </p>
+    <p class="section-sub">Fun, clear screens built for young learners. Scroll to explore.</p>
   </div>
   <div class="screenshots-track">
     <div class="screen-frame">
@@ -678,41 +688,38 @@
   <div class="t-center reveal">
     <span class="section-tag">💛 Why Parents Choose It</span>
     <h2 class="section-title">Why Parents Like Speak Up</h2>
-    <p class="section-sub">
-      Trusted by families who want their child to speak English with
-      real confidence — not just pass a test.
-    </p>
+    <p class="section-sub">For families who want real confidence, not just test scores.</p>
   </div>
   <div class="reasons-grid">
     <div class="reason-card reveal">
       <span class="reason-icon">🔇</span>
       <h3>No Ads. Ever.</h3>
-      <p>Completely ad-free. Your child learns without distractions or unexpected content popping up.</p>
+      <p>Completely ad-free. Zero distractions for your child.</p>
     </div>
     <div class="reason-card reveal">
       <span class="reason-icon">📶</span>
       <h3>Works Offline</h3>
-      <p>Lessons work without internet — great for travel, areas with poor signal, or limited data plans.</p>
+      <p>Works without internet — great for travel or limited data.</p>
     </div>
     <div class="reason-card reveal">
       <span class="reason-icon">🎨</span>
       <h3>Rich Visuals</h3>
-      <p>Every word is paired with clear, colourful illustrations that make meaning obvious at a glance.</p>
+      <p>Every word paired with clear, colourful illustrations.</p>
     </div>
     <div class="reason-card reveal">
       <span class="reason-icon">📊</span>
       <h3>Simple Progress Tracking</h3>
-      <p>Parents can see exactly which units their child has completed and how they are doing.</p>
+      <p>See exactly which units your child has finished.</p>
     </div>
     <div class="reason-card reveal">
       <span class="reason-icon">🎤</span>
       <h3>Real Voice, Real English</h3>
-      <p>All audio is recorded by a professional English voice artist — clear, warm, and natural to the ear.</p>
+      <p>Recorded by a professional voice artist — warm and natural.</p>
     </div>
     <div class="reason-card reveal">
       <span class="reason-icon">🧒</span>
       <h3>Made for Ages 5–12</h3>
-      <p>Content, pace, and activities are designed specifically for young learners — not adapted from adult courses.</p>
+      <p>Built for young learners — not adapted from adult courses.</p>
     </div>
   </div>
 </section>
@@ -728,11 +735,9 @@
       <h2 class="section-title">About the Creator</h2>
       <p class="about-bio">
         Speak Up was created by <strong>Ramesh Voice</strong>, a professional
-        English and Malayalam voice artist based in Kerala, India.
-        After years of creating audio content for learners of all ages,
-        Ramesh built Speak Up to give every child in India access to
-        high-quality, natural English — delivered in a way that is fun,
-        effective, and genuinely enjoyable.
+        English and Malayalam voice artist from Kerala, India.
+        Ramesh built Speak Up to give every child access to high-quality,
+        natural English — delivered in a fun and genuinely effective way.
       </p>
     </div>
   </div>
@@ -743,10 +748,7 @@
   <div class="reveal">
     <span class="section-tag">💳 Simple Pricing</span>
     <h2 class="section-title">Start Free. Unlock Everything.</h2>
-    <p class="section-sub">
-      Try the app at no cost with sample lessons.
-      Unlock all 100 lessons and every activity when you are ready.
-    </p>
+    <p class="section-sub">Try free with sample lessons. Unlock all 100 lessons when you're ready.</p>
   </div>
   <div class="pricing-grid">
     <div class="pricing-card reveal">
