@@ -973,10 +973,10 @@ body.unit-unit1.first-intro-slide #lessonText,
 body.unit-unit17.first-intro-slide #lessonText,
 body.unit-unit29.first-intro-slide #lessonText { display: none !important; }
 
-/* Hide CSS Manku — title cards are self-contained; remove these lines if cards don't include Manku */
+/* Manku: start at 68% down the card so he stands below-right without covering the title text */
 body.unit-unit1.first-intro-slide .intro-comp::after,
 body.unit-unit17.first-intro-slide .intro-comp::after,
-body.unit-unit29.first-intro-slide .intro-comp::after { content: none; }
+body.unit-unit29.first-intro-slide .intro-comp::after { top: 68%; right: -6%; }
 
 /* ============================================================ */
 
