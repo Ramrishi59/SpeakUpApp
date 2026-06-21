@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SpeakUp App – Learn English the Fun Way!</title>
+<title>SpeakUp App – Fun English for Kids!</title>
 <link rel="manifest" href="app/manifest.json">
-<meta name="theme-color" content="#007bff">
+<meta name="theme-color" content="#FF6B35">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="SpeakUpApp">
@@ -13,21 +13,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --yellow: #FFD93D;
-    --orange: #FF6B35;
-    --pink: #FF6B9D;
-    --light-pink: #FFB3D1;
-    --purple: #C77DFF;
-    --green: #06D6A0;
-    --blue: #118AB2;
-    --cream: #D0EBFF;
-    --dark: #2D2D2D;
-    --white: #FFFFFF;
+    --cream:       #FCF3D4;
+    --cream-alt:   #FFF4CC;
+    --card:        #FFF8E7;
+    --orange:      #FF6B35;
+    --orange-dk:   #C94E1C;
+    --yellow:      #FFD93D;
+    --yellow-dk:   #C9A800;
+    --pink:        #FF6B9D;
+    --pink-dk:     #C94E7A;
+    --green:       #06D6A0;
+    --green-dk:    #049B76;
+    --purple:      #C77DFF;
+    --blue:        #118AB2;
+    --dark:        #2D2D2D;
+    --mid:         #5A4A38;
+    --white:       #FFFFFF;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'Nunito', sans-serif;
     background: var(--cream);
@@ -35,536 +40,765 @@
     overflow-x: hidden;
   }
 
-  /* ── BLOBS ── */
-  .blob {
-    position: absolute; border-radius: 50%;
-    filter: blur(60px); opacity: 0;
-    pointer-events: none; z-index: 0;
-  }
-
-  /* ── NAV ── */
+  /* ─── NAV ─────────────────────────────────────────────── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 13px 4%; gap: 12px; flex-wrap: wrap;
-    background: rgba(208,235,255,0.92);
-    backdrop-filter: blur(12px);
+    padding: 10px 5%; gap: 12px;
+    background: rgba(252, 243, 212, 0.96);
+    backdrop-filter: blur(14px);
     border-bottom: 3px solid var(--yellow);
   }
   .nav-logo {
-    font-family: 'Fredoka One', cursive; font-size: 1.7rem;
-    color: var(--orange); display: flex; align-items: center;
-    gap: 8px; text-decoration: none; flex-shrink: 0;
+    display: flex; align-items: center;
+    text-decoration: none; flex-shrink: 0;
   }
-  .nav-logo-img {
-    width: 68px;
-    height: 78px;
-    object-fit: contain;
-    margin-left: -10px;
-  }
-  .nav-title-img {
-    width: 202px;
-    height: auto;
-    display: block;
-    margin-left: -12px;
-  }
+  .nav-logo-img { height: 54px; width: auto; object-fit: contain; }
+
   .mobile-menu-toggle {
-    display: flex;
-    width: 44px;
-    height: 44px;
-    border: 1px solid #0056B3;
-    border-radius: 12px;
-    background: var(--white);
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 6px;
+    display: flex; width: 44px; height: 44px;
+    border: 2px solid var(--orange); border-radius: 12px;
+    background: var(--white); cursor: pointer;
+    align-items: center; justify-content: center;
+    flex-direction: column; gap: 5px;
   }
   .mobile-menu-toggle span {
-    width: 22px;
-    height: 3px;
-    border-radius: 999px;
-    background: #0056B3;
-    display: block;
+    width: 20px; height: 3px; border-radius: 999px;
+    background: var(--orange); display: block;
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
   nav.menu-open .mobile-menu-toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   nav.menu-open .mobile-menu-toggle span:nth-child(2) { opacity: 0; }
   nav.menu-open .mobile-menu-toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
   .nav-right {
     display: none;
-    position: absolute;
-    top: 100%;
-    right: 4%;
-    width: min(280px, 92vw);
-    background: rgba(208,235,255,0.98);
-    border: 2px solid var(--yellow);
-    border-radius: 18px;
-    padding: 14px;
-    box-shadow: 0 14px 30px rgba(0,0,0,0.14);
+    position: absolute; top: 100%; right: 5%;
+    width: min(290px, 92vw);
+    background: rgba(252, 243, 212, 0.98);
+    border: 2px solid var(--yellow); border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 14px 32px rgba(0,0,0,0.12);
   }
   nav.menu-open .nav-right { display: block; }
-  nav ul { list-style: none; display: flex; flex-direction: column; gap: 12px; align-items: stretch; }
+  nav ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .nav-right a { display: block; text-align: center; }
-  nav ul a { text-decoration: none; font-weight: 700; color: var(--dark); font-size: 0.93rem; transition: color 0.2s; }
+  nav ul a {
+    text-decoration: none; font-weight: 700; color: var(--dark);
+    font-size: 0.95rem; transition: color 0.2s;
+  }
   nav ul a:hover { color: var(--orange); }
   .nav-cta {
-    background: var(--orange); color: var(--white) !important;
-    padding: 9px 18px; border-radius: 50px;
-    font-weight: 800 !important; box-shadow: 0 4px 0 #c94e1c;
-    transition: transform 0.15s, box-shadow 0.15s !important; white-space: nowrap;
+    background: var(--orange) !important; color: var(--white) !important;
+    padding: 10px 20px; border-radius: 50px;
+    font-weight: 800 !important; box-shadow: 0 4px 0 var(--orange-dk);
+    transition: transform 0.15s, box-shadow 0.15s !important;
   }
-  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #c94e1c !important; color: var(--white) !important; }
-  .nav-cta-pink { background: var(--pink) !important; box-shadow: 0 4px 0 #c94e7a !important; }
-  .nav-cta-pink:hover { box-shadow: 0 6px 0 #c94e7a !important; }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--orange-dk) !important; }
   .nav-install-button {
     width: 100%;
-    background: var(--green);
-    color: var(--white);
-    padding: 9px 18px;
-    border: none;
-    border-radius: 50px;
-    font: 800 0.93rem 'Nunito', sans-serif;
-    box-shadow: 0 4px 0 #049b76;
-    cursor: pointer;
+    background: var(--green); color: var(--white);
+    padding: 10px 20px; border: none; border-radius: 50px;
+    font: 800 0.95rem 'Nunito', sans-serif;
+    box-shadow: 0 4px 0 var(--green-dk); cursor: pointer;
     transition: transform 0.15s, box-shadow 0.15s;
-    white-space: nowrap;
   }
-  .nav-install-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 #049b76;
-  }
-  .nav-install-button[hidden] {
-    display: none;
+  .nav-install-button:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--green-dk); }
+  .nav-install-button[hidden] { display: none; }
+
+  @media (min-width: 820px) {
+    .mobile-menu-toggle { display: none; }
+    .nav-right {
+      display: flex !important; position: static;
+      width: auto; background: none; border: none;
+      border-radius: 0; padding: 0; box-shadow: none;
+    }
+    nav ul { flex-direction: row; gap: 8px; align-items: center; }
+    nav ul a { font-size: 0.88rem; }
+    .nav-install-button { width: auto; padding: 8px 16px; font-size: 0.88rem; }
   }
 
-  /* ── HERO ── */
-  #hero {
-    position: relative; min-height: 100vh;
-    display: flex; align-items: center;
-    background: var(--cream);
-    padding: 130px 5% 80px; overflow: hidden;
+  /* ─── SHARED SECTION STYLES ───────────────────────────── */
+  section { padding: 76px 5%; position: relative; }
+  .section-tag {
+    font-family: 'Fredoka One', cursive; font-size: 1.05rem;
+    color: var(--orange); letter-spacing: 0.5px;
+    margin-bottom: 10px; display: block;
   }
-  #hero .blob-1 { width: 500px; height: 500px; background: var(--yellow); top: -100px; right: -100px; }
-  #hero .blob-2 { width: 350px; height: 350px; background: var(--pink); bottom: 50px; left: -80px; }
-  #hero .blob-3 { width: 250px; height: 250px; background: var(--orange); top: 200px; right: 30%; }
-  .hero-content { position: relative; z-index: 1; max-width: 580px; }
+  .section-title {
+    font-family: 'Fredoka One', cursive; color: var(--dark);
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    line-height: 1.15; margin-bottom: 14px;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--mid);
+    line-height: 1.75; font-weight: 600;
+    margin-bottom: 44px;
+  }
+  .t-center { text-align: center; }
+  .t-center .section-sub { max-width: 560px; margin-left: auto; margin-right: auto; }
+
+  /* ─── ANIMATIONS ──────────────────────────────────────── */
+  @keyframes bounceIn {
+    0%   { transform: scale(0.5); opacity: 0; }
+    70%  { transform: scale(1.08); }
+    100% { transform: scale(1);   opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  @keyframes floatAnim {
+    0%, 100% { transform: translateY(0)    rotate(-1.5deg); }
+    50%       { transform: translateY(-16px) rotate(1.5deg);  }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── HERO ─────────────────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 120px 5% 64px;
+    background: var(--cream);
+  }
+  .hero-text { text-align: center; }
   .hero-badge {
     display: inline-block; background: var(--yellow); color: var(--dark);
-    font-weight: 800; font-size: 0.85rem; padding: 6px 16px;
-    border-radius: 50px; margin-bottom: 20px; border: 2px solid var(--orange);
+    font-weight: 800; font-size: 0.88rem; padding: 6px 18px;
+    border-radius: 50px; margin-bottom: 22px;
+    border: 2px solid var(--orange);
     animation: bounceIn 0.6s ease;
   }
   .hero-title {
     font-family: 'Fredoka One', cursive;
-    font-size: clamp(2.8rem, 6vw, 4.8rem);
-    line-height: 1.1; color: #0056B3; margin-bottom: 20px;
+    font-size: clamp(2.4rem, 7vw, 4.6rem);
+    line-height: 1.1; color: var(--dark);
+    margin-bottom: 20px;
     animation: slideUp 0.7s ease 0.1s both;
   }
-  .hero-title .highlight {
-    color: #FFD700;
-    position: relative;
-    display: inline-block;
-    -webkit-text-stroke: 0.1px #E60000;
-    text-shadow:
-      1px 1px 0 #E60000,
-      2px 2px 0 #E60000,
-      3px 3px 0 #B80000,
-      4px 4px 0 #8F0000,
-      0 0 16px rgba(255,215,0,0.85),
-      0 0 18px rgba(255,215,0,0.55),
-      8px 10px 14px rgba(0,0,0,0.22);
-    transform: translateY(-4px) rotate(-1deg);
-  }
-
+  .hero-title .accent { color: var(--orange); }
   .hero-subtitle {
-    font-size: 1.15rem; font-weight: 600; color: #555;
-    margin-bottom: 36px; line-height: 1.6;
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    font-weight: 600; color: var(--mid);
+    max-width: 520px; margin: 0 auto 36px;
+    line-height: 1.7;
     animation: slideUp 0.7s ease 0.2s both;
   }
-  .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; animation: slideUp 0.7s ease 0.3s both; }
-  .btn-primary {
-    background: var(--orange); color: var(--white); padding: 16px 36px;
-    border-radius: 50px; font-family: 'Fredoka One', cursive; font-size: 1.2rem;
-    text-decoration: none; border: none; cursor: pointer;
-    box-shadow: 0 6px 0 #c94e1c; transition: transform 0.15s, box-shadow 0.15s; display: inline-block;
+  .hero-buttons {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 12px;
+    animation: slideUp 0.7s ease 0.3s both;
   }
-  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 9px 0 #c94e1c; }
+  .btn-primary {
+    background: var(--orange); color: var(--white);
+    padding: 15px 36px; border-radius: 50px;
+    font-family: 'Fredoka One', cursive; font-size: 1.15rem;
+    text-decoration: none; border: none; cursor: pointer;
+    box-shadow: 0 6px 0 var(--orange-dk);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 9px 0 var(--orange-dk); }
   .btn-secondary {
-    background: var(--white); color: var(--orange); padding: 16px 36px;
-    border-radius: 50px; font-family: 'Fredoka One', cursive; font-size: 1.2rem;
+    background: var(--white); color: var(--orange);
+    padding: 15px 36px; border-radius: 50px;
+    font-family: 'Fredoka One', cursive; font-size: 1.15rem;
     text-decoration: none; border: 3px solid var(--orange);
-    cursor: pointer; transition: background 0.15s, color 0.15s; display: inline-block;
+    cursor: pointer; transition: background 0.15s, color 0.15s;
+    display: inline-block;
   }
   .btn-secondary:hover { background: var(--orange); color: var(--white); }
   .install-message {
-    display: none;
-    width: min(100%, 520px);
-    margin-top: 18px;
+    display: none; width: min(100%, 500px);
+    margin: 18px auto 0;
     padding: 14px 16px;
-    border: 2px solid var(--yellow);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.92);
-    color: var(--dark);
-    font-weight: 800;
-    line-height: 1.45;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    border: 2px solid var(--yellow); border-radius: 10px;
+    background: rgba(255,255,255,0.92); color: var(--dark);
+    font-weight: 800; line-height: 1.5;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   }
-  .install-message.visible {
-    display: block;
-  }
-  .hero-image {
-    position: absolute;
-    left: 50%;
-    bottom: 18px;
-    transform: translateX(-50%);
-    z-index: 1;
+  .install-message.visible { display: block; }
+  .hero-visual {
+    display: flex; justify-content: center; align-items: flex-end;
+    animation: slideUp 0.7s ease 0.4s both;
   }
   .hero-mascot {
-    width: clamp(200px, 28vw, 380px);
-    filter: drop-shadow(0 20px 40px rgba(255,107,53,0.3));
-    animation: floatAnim 3s ease-in-out infinite;
+    width: clamp(240px, 52vw, 440px);
+    filter: drop-shadow(0 18px 36px rgba(255,107,53,0.18));
+    animation: floatAnim 3.2s ease-in-out infinite;
   }
 
-
-
-  /* ── SECTION BASE ── */
-  section { padding: 80px 5%; position: relative; }
-  .section-tag {
-    font-family: 'Fredoka One', cursive; font-size: 1.4rem;
-   color: var(--orange); 
-    letter-spacing: 2px; margin-bottom: 12px; display: block;
+  @media (min-width: 820px) {
+    #hero {
+      grid-template-columns: 1fr 1fr;
+      padding-top: 100px;
+      gap: 48px;
+    }
+    .hero-text { text-align: left; }
+    .hero-subtitle { margin-left: 0; }
+    .hero-buttons { justify-content: flex-start; }
+    .install-message { margin-left: 0; }
+    .hero-mascot { width: clamp(280px, 38vw, 480px); }
   }
-  .section-title {
-    font-family: 'Fredoka One', cursive;
-    color: #0056B3;
-    font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; line-height: 1.2;
-  }
-  .section-sub { font-size: 1.1rem; color: #666; max-width: 560px; line-height: 1.7; margin-bottom: 50px; }
 
-  /* ── FEATURES ── */
-  #features { background: var(--cream); }
-  .features-header { text-align: center; }
-  .features-header .section-sub { margin: 0 auto 50px; }
-  .features-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 28px; max-width: 1100px; margin: 0 auto;
+  /* ─── FAMILY ───────────────────────────────────────────── */
+  #family { background: var(--cream-alt); }
+  .family-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px; max-width: 880px; margin: 0 auto;
   }
-  .feature-card {
-    background: var(--cream); border-radius: 24px; padding: 36px 28px;
+  .character-card {
+    background: var(--card);
+    border-radius: 24px; padding: 28px 18px 22px;
+    text-align: center;
     border: 3px solid transparent;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-  
   }
-  .feature-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); border-color: var(--yellow); }
-  .feature-icon { font-size: 3rem; margin-bottom: 18px; display: block; animation: wobble 2s ease-in-out infinite; }
-  .feature-card:nth-child(2) .feature-icon { animation-delay: 0.3s; }
-  .feature-card:nth-child(3) .feature-icon { animation-delay: 0.6s; }
-  .feature-card:nth-child(4) .feature-icon { animation-delay: 0.9s; }
-  .feature-card:nth-child(5) .feature-icon { animation-delay: 1.2s; }
-  .feature-card:nth-child(6) .feature-icon { animation-delay: 1.5s; }
-  .friend-faces {
-    display: grid;
-    grid-template-columns: repeat(4, 64px);
-    gap: 14px;
-    margin-bottom: 18px;
-    margin-top: 18px;
-    width: fit-content;
+  .character-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--yellow);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.1);
   }
-  .friend-face:nth-child(5) { grid-column: 1; }
-  .friend-face {
-    width: 74px;
-    height: 74px;
-    border-radius: 50%;
-    border: 3px solid var(--white);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-    background: linear-gradient(135deg, var(--yellow), var(--pink));
-    display: block;
-    overflow: hidden;
+  .character-img {
+    width: 110px; height: 110px;
+    border-radius: 50%; object-fit: cover;
+    border: 4px solid var(--yellow);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    margin-bottom: 14px;
   }
-  .friend-face img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+  .character-card h3 {
+    font-family: 'Fredoka One', cursive;
+    color: var(--orange); font-size: 1.2rem; margin-bottom: 6px;
   }
-  .feature-card h3 { font-family: 'Fredoka One', cursive; color: #0056B3; font-size: 1.4rem; margin-bottom: 10px; }
-  .feature-card p { color: #000000; line-height: 1.6; font-size: 1.2rem; font-family: 'Trebuchet MS', Verdana, sans-serif; }
-  .fc-yellow { border-top: 5px solid var(--yellow); }
-  .fc-orange { border-top: 5px solid var(--orange); }
-  .fc-pink   { border-top: 5px solid var(--pink); }
-  .fc-green  { border-top: 5px solid var(--green); }
-  .fc-purple { border-top: 5px solid var(--purple); }
-  .fc-blue   { border-top: 5px solid var(--blue); }
+  .character-card p { color: var(--mid); font-size: 0.9rem; font-weight: 600; line-height: 1.55; }
 
-  /* ── ABOUT ── */
-  #about { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; background: var(--cream); }
-  .about-visual { flex: 1; min-width: 280px; display: flex; justify-content: center; }
-  .about-card {
-    background: var(--yellow); border-radius: 32px; padding: 48px 36px;
-    text-align: center; border: 4px solid var(--orange);
-    box-shadow: 8px 8px 0 var(--orange); max-width: 320px;
-  }
-  .about-card .about-card-img {
-    width: 150px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 24px;
-    display: block;
-    margin: 0 auto 16px;
-  }
-  .about-card h3 { font-family: 'Fredoka One', cursive; color: #0056B3; font-size: 1.5rem; }
-  .about-card p { color: #555; margin-top: 8px; font-weight: 600; font-size: 0.95rem; }
-  .about-text { flex: 1; min-width: 280px; }
-  .about-list {
-    list-style: none;
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    max-width: 520px;
-    align-items: stretch;
-    margin-left: 0;
-    transform: translateX(36px);
-  }
-  .about-list li {
+  /* ─── HOW CHILDREN LEARN ───────────────────────────────── */
+  #how { background: var(--cream); }
+  .steps-grid {
     display: grid;
-    grid-template-columns: 26px 1fr;
-    align-items: flex-start;
-    gap: 12px;
-    width: 100%;
-    font-weight: 600;
-    font-size: 1rem;
-    text-align: left;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 22px; max-width: 1000px; margin: 0 auto;
   }
-  .about-list li .check {
-    background: var(--green); color: var(--white); width: 26px; height: 26px;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; margin-left: 2px;
+  .step-card {
+    background: var(--card);
+    border-radius: 24px; padding: 32px 22px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border: 3px solid transparent;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .step-card:hover { transform: translateY(-4px); border-color: var(--orange); }
+  .step-number {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.4rem; color: var(--orange); line-height: 1; margin-bottom: 10px;
+  }
+  .step-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+  .step-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.2rem; color: var(--dark); margin-bottom: 10px;
+  }
+  .step-card p { color: var(--mid); font-size: 0.95rem; line-height: 1.65; font-weight: 600; }
+
+  /* ─── SCREENSHOTS ──────────────────────────────────────── */
+  #screenshots { background: var(--cream-alt); overflow: hidden; }
+  .screenshots-track {
+    display: flex; gap: 18px;
+    overflow-x: auto; padding: 8px 5% 28px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -5%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--yellow) transparent;
+  }
+  .screenshots-track::-webkit-scrollbar { height: 6px; }
+  .screenshots-track::-webkit-scrollbar-track { background: transparent; }
+  .screenshots-track::-webkit-scrollbar-thumb { background: var(--yellow); border-radius: 999px; }
+  .screen-frame {
+    flex: 0 0 auto; width: 195px;
+    scroll-snap-align: start;
+    border-radius: 22px; overflow: hidden;
+    border: 4px solid var(--white);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+    transition: transform 0.2s;
+  }
+  .screen-frame:hover { transform: scale(1.04); }
+  .screen-frame img {
+    width: 100%; height: 350px;
+    object-fit: cover; object-position: top; display: block;
+  }
+  .screen-label {
+    background: var(--card);
+    padding: 10px 12px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 0.9rem; color: var(--orange); text-align: center;
+  }
+  @media (min-width: 820px) {
+    .screenshots-track {
+      justify-content: center;
+      overflow-x: visible; flex-wrap: wrap;
+      padding: 8px 0 28px; margin: 0;
+    }
+    .screen-frame { width: 175px; }
+    .screen-frame img { height: 315px; }
   }
 
-  /* ── PRICING ── */
+  /* ─── WHY PARENTS ──────────────────────────────────────── */
+  #why { background: var(--cream); }
+  .reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px; max-width: 960px; margin: 0 auto;
+  }
+  .reason-card {
+    background: var(--card);
+    border-radius: 20px; padding: 26px 22px;
+    border-left: 5px solid var(--orange);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+  }
+  .reason-card:hover { transform: translateY(-4px); }
+  .reason-card:nth-child(2) { border-left-color: var(--pink); }
+  .reason-card:nth-child(3) { border-left-color: var(--green); }
+  .reason-card:nth-child(4) { border-left-color: var(--purple); }
+  .reason-card:nth-child(5) { border-left-color: var(--yellow-dk); }
+  .reason-card:nth-child(6) { border-left-color: var(--blue); }
+  .reason-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+  .reason-card h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.15rem; color: var(--dark); margin-bottom: 8px;
+  }
+  .reason-card p { color: var(--mid); font-size: 0.93rem; line-height: 1.65; font-weight: 600; }
+
+  /* ─── ABOUT ────────────────────────────────────────────── */
+  #about { background: var(--cream-alt); }
+  .about-inner {
+    display: flex; gap: 56px; align-items: center;
+    flex-wrap: wrap; max-width: 860px; margin: 0 auto;
+  }
+  .about-photo {
+    flex-shrink: 0;
+    width: 200px; height: 200px; border-radius: 50%;
+    border: 5px solid var(--yellow);
+    box-shadow: 6px 6px 0 var(--orange);
+    background: #EDE6CC;
+    display: flex; align-items: center; justify-content: center;
+    color: #B09B6A; font-size: 4rem; overflow: hidden;
+  }
+  .about-text .section-tag { margin-bottom: 6px; }
+  .about-text .section-title { margin-bottom: 12px; }
+  .about-bio {
+    font-size: 1.05rem; color: var(--mid);
+    line-height: 1.78; font-weight: 600; max-width: 500px;
+  }
+  .about-bio strong { color: var(--dark); }
+  @media (max-width: 640px) {
+    .about-inner { flex-direction: column; text-align: center; }
+    .about-photo { margin: 0 auto; }
+    .about-bio { max-width: 100%; }
+  }
+
+  /* ─── PRICING ──────────────────────────────────────────── */
   #pricing { background: var(--cream); text-align: center; }
-  #pricing .section-sub { margin: 0 auto 50px; }
-  .pricing-grid { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; max-width: 960px; margin: 0 auto; }
-  .pricing-card {
-    background: var(--orange); border-radius: 28px; padding: 40px 32px;
-    border: 3px solid #eee; flex: 1; min-width: 240px; max-width: 300px;
-    position: relative; transition: transform 0.2s;
+  #pricing .section-sub { max-width: 520px; margin-left: auto; margin-right: auto; }
+  .pricing-grid {
+    display: flex; justify-content: center; gap: 24px;
+    flex-wrap: wrap; max-width: 780px; margin: 0 auto;
   }
-  .pricing-card:hover { transform: translateY(-8px); }
-  .pricing-card.featured { background: var(--orange); border-color: var(--orange); color: var(--white); box-shadow: 0 20px 60px rgba(255,107,53,0.4); }
+  .pricing-card {
+    background: var(--card);
+    border-radius: 28px; padding: 40px 30px;
+    flex: 1; min-width: 240px; max-width: 320px;
+    border: 3px solid var(--yellow);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  }
+  .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+  .pricing-card.featured {
+    background: var(--orange); border-color: var(--orange);
+    box-shadow: 0 10px 36px rgba(255,107,53,0.32);
+  }
   .popular-badge {
     position: absolute; top: -16px; left: 50%; transform: translateX(-50%);
     background: var(--yellow); color: var(--dark);
     font-family: 'Fredoka One', cursive; font-size: 0.85rem;
-    padding: 4px 18px; border-radius: 50px; border: 2px solid var(--orange); white-space: nowrap;
+    padding: 4px 18px; border-radius: 50px;
+    border: 2px solid var(--orange); white-space: nowrap;
   }
-  .pricing-plan { font-family: 'Fredoka One', cursive; color: #0056B3; font-size: 1.3rem; margin-bottom: 8px; }
-  .pricing-card.featured .pricing-plan { color: #0056B3; }
-  .pricing-price { font-family: 'Fredoka One', cursive; font-size: 3rem; line-height: 1; margin-bottom: 4px; color: #eee; }
-  .pricing-period { font-size: 0.9rem; opacity: 0.7; margin-bottom: 24px; }
-  .pricing-features { list-style: none; text-align: left; margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px; }
-  .pricing-features li { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.95rem; color: white; }
+  .pricing-plan {
+    font-family: 'Fredoka One', cursive; font-size: 1.4rem;
+    color: var(--dark); margin-bottom: 10px;
+  }
+  .pricing-card.featured .pricing-plan { color: var(--white); }
+  .pricing-price {
+    font-family: 'Fredoka One', cursive; font-size: 3.2rem;
+    line-height: 1; margin-bottom: 4px; color: var(--orange);
+  }
+  .pricing-card.featured .pricing-price { color: var(--yellow); }
+  .pricing-period {
+    font-size: 0.9rem; font-weight: 700; color: var(--mid); margin-bottom: 28px;
+  }
+  .pricing-card.featured .pricing-period { color: rgba(255,255,255,0.8); }
+  .pricing-features {
+    list-style: none; text-align: left;
+    margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .pricing-features li {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 0.95rem; color: var(--dark);
+  }
+  .pricing-card.featured .pricing-features li { color: var(--white); }
   .pricing-features li::before {
-    content: '✓'; background: var(--green); color: var(--white);
+    content: '✓';
+    background: var(--green); color: var(--white);
     width: 22px; height: 22px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     font-size: 0.75rem; flex-shrink: 0;
   }
-  .pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.95); }
   .btn-plan {
-    display: block; width: 100%; padding: 14px; border-radius: 50px;
+    display: block; width: 100%; padding: 14px;
+    border-radius: 50px;
     font-family: 'Fredoka One', cursive; font-size: 1.1rem;
-    text-decoration: none; text-align: center; cursor: pointer; border: none;
+    text-decoration: none; text-align: center;
+    cursor: pointer; border: none;
     transition: transform 0.15s, box-shadow 0.15s;
   }
-  .btn-plan-light { background: var(--white); color: var(--orange); box-shadow: 0 4px 0 #c94e1c; }
-  .btn-plan-light:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #c94e1c; }
-  .btn-plan-featured { background: var(--white); color: var(--orange); box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
-  .btn-plan-featured:hover { transform: translateY(-2px); }
-
-  
- 
-  /* ── FOOTER ── */
-  footer { background: var(--cream); color: rgba(45,45,45,0.65); text-align: center; padding: 64px 5% 0px; margin-top: 36px; font-size: 0.9rem; }
-  footer .footer-logo { font-family: 'Fredoka One', cursive; font-size: 1.5rem; color: #0056B3; display: block; margin-bottom: 8px; }
-
-  /* ── ANIMATIONS ── */
-  @keyframes bounceIn { 0%{transform:scale(0.5);opacity:0} 70%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
-  @keyframes slideUp { from{transform:translateY(30px);opacity:0} to{transform:translateY(0);opacity:1} }
-  @keyframes floatAnim { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-18px) rotate(2deg)} }
-  @keyframes wobble { 0%,100%{transform:rotate(0deg)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)} }
-  /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 820px) {
-    nav { justify-content: space-between; flex-wrap: nowrap; }
-    .nav-logo-img { width: 58px; height: 66px; }
-    .nav-title-img { width: 168px; }
-    #hero { flex-direction: column; text-align: center; padding-bottom: 260px; }
-    .hero-image { left: 50%; bottom: 8px; transform: translateX(-50%); }
-    #about { flex-direction: column; text-align: center; }
-    .about-list { margin-left: auto; margin-right: auto; transform: translateX(28px); }
+  .btn-plan-light {
+    background: var(--orange); color: var(--white);
+    box-shadow: 0 4px 0 var(--orange-dk);
   }
+  .btn-plan-light:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--orange-dk); }
+  .btn-plan-featured {
+    background: var(--white); color: var(--orange);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+  }
+  .btn-plan-featured:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(0,0,0,0.2); }
+
+  /* ─── FOOTER ───────────────────────────────────────────── */
+  footer {
+    background: #F5E8B0;
+    color: var(--mid); text-align: center;
+    padding: 52px 5% 36px;
+    border-top: 3px solid var(--yellow);
+  }
+  .footer-logo {
+    font-family: 'Fredoka One', cursive; font-size: 1.6rem;
+    color: var(--orange); display: block; margin-bottom: 14px;
+  }
+  .footer-links {
+    display: flex; gap: 20px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 16px;
+  }
+  .footer-links a {
+    color: var(--mid); text-decoration: none;
+    font-weight: 700; font-size: 0.88rem;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--orange); }
+  footer p { font-size: 0.88rem; line-height: 1.9; font-weight: 600; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ── NAV ─────────────────────────────────────────────────────── -->
 <nav>
   <a href="#" class="nav-logo">
-    <img class="nav-logo-img" src="app/Images/dashboard%20thumbnails/manku2.png" alt="Manku">
-    <img class="nav-title-img" src="app/Images/dashboard%20thumbnails/title.png" alt="SpeakUp App">
+    <img class="nav-logo-img" src="app/Images/website-v2-assets/logo.png" alt="SpeakUp App">
   </a>
   <button class="mobile-menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
   <div class="nav-right">
     <ul>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#about">About</a></li>
+      <li><a href="#family">Characters</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#screenshots">App</a></li>
       <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#about">About</a></li>
       <li><button class="nav-install-button" type="button" data-install-button>Install App</button></li>
-      <li><a href="#contact" class="nav-cta">Get Started 🚀</a></li>
-      <li><a href="app/dashboard.html" target="_blank" class="nav-cta nav-cta-pink">Open App 📱</a></li>
+      <li><a href="app/dashboard.html" target="_blank" class="nav-cta">Open App 📱</a></li>
     </ul>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ── 1. HERO ──────────────────────────────────────────────────── -->
 <section id="hero">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  <div class="hero-content">
-    <div class="hero-badge">🌟 Fun English for Kids!</div>
+  <div class="hero-text">
+    <div class="hero-badge">🌟 Fun English for Kids aged 5–12</div>
     <h1 class="hero-title">
-      Help Your Child <span class="highlight">Speak English </span><br>with Confidence!
+      Help Your Child<br>
+      <span class="accent">Speak English</span><br>
+      with Confidence!
     </h1>
-    <p class="hero-subtitle">No boring rules. Just fun games and activities for kids aged 5 to 12.</p>
+    <p class="hero-subtitle">
+      No boring grammar rules. Just fun stories, games, and
+      activities that make children <em>want</em> to speak.
+    </p>
     <div class="hero-buttons">
-      <button class="btn-primary" type="button" data-install-button>Install App</button>
-      <a href="#features" class="btn-secondary">See How It Works</a>
+      <button class="btn-primary" type="button" data-install-button>Install App Free</button>
+      <a href="#how" class="btn-secondary">See How It Works</a>
     </div>
     <p class="install-message" id="install-message" role="status" aria-live="polite"></p>
   </div>
-  <div class="hero-image">
-    <img class="hero-mascot" src="app/Images/repeating_assets/flyingmanku.png" alt="Flying Manku mascot">
+  <div class="hero-visual">
+    <img
+      class="hero-mascot"
+      src="app/Images/website-v2-assets/raju_reena_manku.png"
+      alt="Raju, Reena and Manku the monkey"
+    >
   </div>
 </section>
 
-
-
-<!-- FEATURES -->
-<section id="features">
-  <div class="features-header reveal">
-    <span class="section-tag">✨ What's Inside</span>
-    <h2 class="section-title">Everything Kids Need to Speak Up!</h2>
-   
+<!-- ── 2. MEET THE SPEAK UP FAMILY ─────────────────────────────── -->
+<section id="family">
+  <div class="t-center reveal">
+    <span class="section-tag">👨‍👩‍👧 The Characters</span>
+    <h2 class="section-title">Meet the Speak Up Family</h2>
+    <p class="section-sub">
+      Your child learns English alongside a lovable group of friends —
+      each one with their own story to tell.
+    </p>
   </div>
-  <div class="features-grid">
-    
-    <div class="feature-card fc-orange reveal">
-      <h3>Meet the Friends.</h3>
-      <p>Learn along with Raju, Reena, Saira, John, Ammu, Anju and their cute monkey friend Manku.</p>
-      <div class="friend-faces" aria-label="Character face placeholders">
-        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Raju.webp" alt="Raju"></span>
-        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Reena.webp" alt="Reena"></span>
-        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/John.webp" alt="John"></span>
-        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Manku.webp" alt="Manku"></span>
-        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Ammu.jpg" alt="Manku"></span>
-        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Anju.jpg" alt="Manku"></span>
-        <span class="friend-face"><img src="app/Images/dashboard%20thumbnails/Saira.webp" alt="Manku"></span>
-      </div>
+  <div class="family-grid">
+    <div class="character-card reveal">
+      <img class="character-img" src="app/Images/website-v2-assets/raju.png" alt="Raju">
+      <h3>Raju</h3>
+      <p>The curious adventurer who always asks the right questions.</p>
     </div>
-    <div class="feature-card fc-yellow reveal">
-      <span class="feature-icon">🎮</span>
-      <h3>Fun Games</h3>
-      <p>Interactive quizzes like "Choose the Right Option" and "Make the sentence"</p>
+    <div class="character-card reveal">
+      <img class="character-img" src="app/Images/website-v2-assets/reena.png" alt="Reena">
+      <h3>Reena</h3>
+      <p>Smart, kind, and always ready with a helpful word.</p>
     </div>
-
-
-    <div class="feature-card fc-purple reveal">
-      <span class="feature-icon">📊</span>
-      <h3>Progress Tracker</h3>
-      <p>Watch your child grow with our simple progress charts.</p>
+    <div class="character-card reveal">
+      <img class="character-img" src="app/Images/website-v2-assets/ammu_anju.png" alt="Ammu and Anju">
+      <h3>Ammu &amp; Anju</h3>
+      <p>Best friends who love to play games and sing songs together.</p>
     </div>
-    <div class="feature-card fc-blue reveal">
-      <span class="feature-icon">🏆</span>
-      <h3>Rewards & Badges</h3>
-      <p>Kids earn stars and badges as they level up — keeping them motivated to learn more and more!</p>
+    <div class="character-card reveal">
+      <img class="character-img" src="app/Images/website-v2-assets/manku.png" alt="Manku the monkey">
+      <h3>Manku 🐵</h3>
+      <p>The cheeky little monkey who keeps everyone laughing.</p>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ── 3. HOW CHILDREN LEARN ────────────────────────────────────── -->
+<section id="how">
+  <div class="t-center reveal">
+    <span class="section-tag">📖 The Learning Path</span>
+    <h2 class="section-title">How Children Learn with Speak Up</h2>
+    <p class="section-sub">
+      Each lesson builds on the last — from listening and reading
+      all the way to speaking with full confidence.
+    </p>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-number">1</div>
+      <span class="step-icon">👂</span>
+      <h3>Listen &amp; Discover</h3>
+      <p>Children hear natural English spoken by a real voice artist. Words and pictures come together to build understanding.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-number">2</div>
+      <span class="step-icon">🎮</span>
+      <h3>Play &amp; Practice</h3>
+      <p>Activities like "Tap the Right One" and "Mix &amp; Fix" turn practice into a game children actually want to play again.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-number">3</div>
+      <span class="step-icon">🗣️</span>
+      <h3>Speak Up!</h3>
+      <p>Speaking exercises build real confidence. Kids repeat, respond, and say full sentences out loud — just like a real class.</p>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-number">4</div>
+      <span class="step-icon">🏆</span>
+      <h3>Earn &amp; Grow</h3>
+      <p>Stars and badges keep children motivated as they level up unit by unit and track their own progress.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. INSIDE THE APP ─────────────────────────────────────────── -->
+<section id="screenshots">
+  <div class="t-center reveal">
+    <span class="section-tag">📱 Inside the App</span>
+    <h2 class="section-title">See What Your Child Will Experience</h2>
+    <p class="section-sub">
+      Every screen is designed to feel fun, clear, and easy for young learners.
+      Scroll to explore.
+    </p>
+  </div>
+  <div class="screenshots-track">
+    <div class="screen-frame">
+      <img src="app/Images/website-v2-assets/dashboard1.jpeg" alt="Home dashboard">
+      <div class="screen-label">Home Dashboard</div>
+    </div>
+    <div class="screen-frame">
+      <img src="app/Images/website-v2-assets/unit1.jpeg" alt="Lesson units">
+      <div class="screen-label">Lesson Units</div>
+    </div>
+    <div class="screen-frame">
+      <img src="app/Images/website-v2-assets/look_listen.jpeg" alt="Look and listen activity">
+      <div class="screen-label">Look &amp; Listen</div>
+    </div>
+    <div class="screen-frame">
+      <img src="app/Images/website-v2-assets/tapthe%20rightone1.jpeg" alt="Tap the right one activity">
+      <div class="screen-label">Tap the Right One</div>
+    </div>
+    <div class="screen-frame">
+      <img src="app/Images/website-v2-assets/mix%20and%20fix1.jpeg" alt="Mix and fix activity">
+      <div class="screen-label">Mix &amp; Fix</div>
+    </div>
+    <div class="screen-frame">
+      <img src="app/Images/website-v2-assets/let%27stalk1.jpeg" alt="Let's talk activity">
+      <div class="screen-label">Let's Talk</div>
+    </div>
+    <div class="screen-frame">
+      <img src="app/Images/website-v2-assets/profile1.jpeg" alt="Progress tracker">
+      <div class="screen-label">Progress Tracker</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. WHY PARENTS LIKE SPEAK UP ─────────────────────────────── -->
+<section id="why">
+  <div class="t-center reveal">
+    <span class="section-tag">💛 Why Parents Choose It</span>
+    <h2 class="section-title">Why Parents Like Speak Up</h2>
+    <p class="section-sub">
+      Trusted by families who want their child to speak English with
+      real confidence — not just pass a test.
+    </p>
+  </div>
+  <div class="reasons-grid">
+    <div class="reason-card reveal">
+      <span class="reason-icon">🔇</span>
+      <h3>No Ads. Ever.</h3>
+      <p>Completely ad-free. Your child learns without distractions or unexpected content popping up.</p>
+    </div>
+    <div class="reason-card reveal">
+      <span class="reason-icon">📶</span>
+      <h3>Works Offline</h3>
+      <p>Lessons work without internet — great for travel, areas with poor signal, or limited data plans.</p>
+    </div>
+    <div class="reason-card reveal">
+      <span class="reason-icon">🎨</span>
+      <h3>Rich Visuals</h3>
+      <p>Every word is paired with clear, colourful illustrations that make meaning obvious at a glance.</p>
+    </div>
+    <div class="reason-card reveal">
+      <span class="reason-icon">📊</span>
+      <h3>Simple Progress Tracking</h3>
+      <p>Parents can see exactly which units their child has completed and how they are doing.</p>
+    </div>
+    <div class="reason-card reveal">
+      <span class="reason-icon">🎤</span>
+      <h3>Real Voice, Real English</h3>
+      <p>All audio is recorded by a professional English voice artist — clear, warm, and natural to the ear.</p>
+    </div>
+    <div class="reason-card reveal">
+      <span class="reason-icon">🧒</span>
+      <h3>Made for Ages 5–12</h3>
+      <p>Content, pace, and activities are designed specifically for young learners — not adapted from adult courses.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. ABOUT THE CREATOR ──────────────────────────────────────── -->
 <section id="about">
-  <div class="about-visual reveal">
-    <div class="about-card">
-      <img class="about-card-img" src="app/Images/dashboard%20thumbnails/about.png" alt="Voice learning">
-      <h3>Made by a Voice Pro</h3>
-      <p>Created by Ramesh Voice, the professional English and Mlayalam voice artist.</p>
+  <div class="about-inner">
+    <div class="about-photo" role="img" aria-label="Creator photo — coming soon">
+      👤
     </div>
-  </div>
-  <div class="about-text reveal">
-    <span class="section-tag">💛 Our Story</span>
-    <h2 class="section-title">Built to Help Kids Speak with Confidence</h2>
- 
-    <ul class="about-list">
-      <li><span class="check">✓</span><span>Safe, ad-free environment for children</span></li>
-      <li><span class="check">✓</span><span>Works offline with no internet needed for lessons</span></li>
-      <li><span class="check">✓</span><span>No boring rules. Just fun games</span></li>
-      <li><span class="check">✓</span><span>Rich images for easy understanding</span></li>
-      <li><span class="check">✓</span><span>Fun activites like games</span></li>
-      <li><span class="check">✓</span><span>Simple progress tracking for families</span></li>
-    </ul>
+    <div class="about-text reveal">
+      <span class="section-tag">🎙️ The Creator</span>
+      <h2 class="section-title">About the Creator</h2>
+      <p class="about-bio">
+        Speak Up was created by <strong>Ramesh Voice</strong>, a professional
+        English and Malayalam voice artist based in Kerala, India.
+        After years of creating audio content for learners of all ages,
+        Ramesh built Speak Up to give every child in India access to
+        high-quality, natural English — delivered in a way that is fun,
+        effective, and genuinely enjoyable.
+      </p>
+    </div>
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- ── 7. PRICING ────────────────────────────────────────────────── -->
 <section id="pricing">
-  <span class="section-tag reveal"></span>
-  <h2 class="section-title reveal"></h2>
-
+  <div class="reveal">
+    <span class="section-tag">💳 Simple Pricing</span>
+    <h2 class="section-title">Start Free. Unlock Everything.</h2>
+    <p class="section-sub">
+      Try the app at no cost with sample lessons.
+      Unlock all 100 lessons and every activity when you are ready.
+    </p>
+  </div>
   <div class="pricing-grid">
     <div class="pricing-card reveal">
       <div class="pricing-plan">🌱 Starter</div>
       <div class="pricing-price">Free</div>
-      <div class="pricing-period"></div>
+      <div class="pricing-period">Forever</div>
       <ul class="pricing-features">
-        <li>Sample lessons and activites</li>
+        <li>Sample lessons from Unit 1</li>
+        <li>Try all activity types</li>
+        <li>Meet the characters</li>
       </ul>
-      <a href="https://ramrishi59.github.io/SpeakUpApp/app/dashboard.html" target="_blank" class="btn-plan btn-plan-light">Start Free Trial</a>
+      <a
+        href="https://ramrishi59.github.io/SpeakUpApp/app/dashboard.html"
+        target="_blank"
+        class="btn-plan btn-plan-light"
+      >Start Free Trial</a>
     </div>
     <div class="pricing-card featured reveal">
-      <div class="popular-badge">⭐ Complete Course</div>
+      <div class="popular-badge">⭐ Best Value</div>
       <div class="pricing-plan">🚀 Explorer</div>
       <div class="pricing-price">₹499</div>
       <div class="pricing-period">For 3 months</div>
       <ul class="pricing-features">
         <li>All 100 lessons</li>
-        <li>All Units and activites</li>
+        <li>All units &amp; activities</li>
+        <li>Progress tracking</li>
+        <li>Stars &amp; badges</li>
       </ul>
-      <a href="https://ramrishi59.github.io/SpeakUpApp/app/dashboard.html" target="_blank" class="btn-plan btn-plan-featured">Buy Now</a>
+      <a
+        href="https://ramrishi59.github.io/SpeakUpApp/app/dashboard.html"
+        target="_blank"
+        class="btn-plan btn-plan-featured"
+      >Buy Now</a>
     </div>
   </div>
 </section>
 
-
-
-<!-- FOOTER -->
+<!-- ── 8. FOOTER ─────────────────────────────────────────────────── -->
 <footer>
+  <span class="footer-logo">SpeakUp App</span>
+  <div class="footer-links">
+    <a href="#family">Characters</a>
+    <a href="#how">How It Works</a>
+    <a href="#screenshots">App</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+  </div>
   <p>© 2025 SpeakUp App. Made with ❤️ in Kerala, India.</p>
-  <p style="margin-top:8px;">English Learning for Kids</p>
+  <p>English Learning for Kids</p>
 </footer>
 
+<!-- ── PWA + INTERACTION SCRIPTS ─────────────────────────────────── -->
 <script>
   const nav = document.querySelector('nav');
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -596,11 +830,13 @@
   const installMessage = document.getElementById('install-message');
 
   function isIosDevice() {
-    return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    return /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   }
 
   function isStandaloneApp() {
-    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    return window.matchMedia('(display-mode: standalone)').matches ||
+      window.navigator.standalone === true;
   }
 
   function showInstallMessage(message) {
@@ -634,19 +870,16 @@
         showInstallMessage('SpeakUpApp is already installed. Open it from your home screen.');
         return;
       }
-
       if (deferredInstallPrompt) {
         deferredInstallPrompt.prompt();
         await deferredInstallPrompt.userChoice;
         deferredInstallPrompt = null;
         return;
       }
-
       if (isIosDevice()) {
         showInstallMessage('On iPhone, tap the Share button in Safari, then choose Add to Home Screen.');
         return;
       }
-
       showInstallMessage('If the install prompt does not appear, open the app menu in your browser and choose Install app or Add to Home screen.');
     });
   });
@@ -655,9 +888,8 @@
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', async () => {
-      const isLocalDev = ["localhost", "127.0.0.1", ""].includes(location.hostname);
+      const isLocalDev = ['localhost', '127.0.0.1', ''].includes(location.hostname);
       if (isLocalDev) return;
-
       try {
         await navigator.serviceWorker.register('app/service-worker.js', { scope: 'app/' });
       } catch (error) {
@@ -666,30 +898,15 @@
     });
   }
 
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
         setTimeout(() => e.target.classList.add('visible'), i * 80);
       }
     });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // Form submit
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    btn.textContent = '✅ Message Sent!';
-    btn.style.background = 'var(--green)';
-    setTimeout(() => {
-      btn.textContent = 'Send Message 🚀';
-      btn.style.background = '';
-      e.target.reset();
-    }, 3000);
-  }
-
-  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const href = a.getAttribute('href');
@@ -700,32 +917,28 @@
     });
   });
 </script>
+
+<!-- ── FIREBASE ───────────────────────────────────────────────────── -->
 <script type="module">
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
-  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+  import { getAuth }        from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+  import { getFirestore }   from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
   const firebaseConfig = {
-    apiKey: "AIzaSyB_xzbqAPsfMzbPDF9NldXnT-OqWXqd17U",
-    authDomain: "speakup-19106.firebaseapp.com",
-    projectId: "speakup-19106",
-    storageBucket: "speakup-19106.firebasestorage.app",
+    apiKey:            "AIzaSyB_xzbqAPsfMzbPDF9NldXnT-OqWXqd17U",
+    authDomain:        "speakup-19106.firebaseapp.com",
+    projectId:         "speakup-19106",
+    storageBucket:     "speakup-19106.firebasestorage.app",
     messagingSenderId: "899411455318",
-    appId: "1:899411455318:web:8c202ae8fb363e5b53baf7"
+    appId:             "1:899411455318:web:8c202ae8fb363e5b53baf7"
   };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+  const app  = initializeApp(firebaseConfig);
   const auth = getAuth(app);
-  const db = getFirestore(app);
+  const db   = getFirestore(app);
 
   window.auth = auth;
-  window.db = db;
+  window.db   = db;
 </script>
 </body>
 </html>
