@@ -127,7 +127,7 @@
     margin-bottom: 10px; display: block;
   }
   .section-title {
-    font-family: 'Fredoka One', cursive; color: var(--dark);
+    font-family: 'Fredoka One', cursive; color: #5C4A3A;
     font-size: clamp(2rem, 4vw, 2.8rem);
     line-height: 1.15; margin-bottom: 14px;
   }
@@ -288,6 +288,13 @@
 
   /* ─── FAMILY ───────────────────────────────────────────── */
   #family { background: var(--cream-alt); }
+  #family .section-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  #family .section-tag img {
+    height: 3.2em; width: auto;
+    mix-blend-mode: multiply;
+  }
   .family-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -316,18 +323,40 @@
   .character-portrait img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center 20%;
+    object-position: center 5%;
     display: block;
-    transform: scale(1.25);
-    transform-origin: center 30%;
+    transform: scale(1.65);
+    transform-origin: center 14%;
     transition: transform 0.3s ease;
   }
-  .character-card:hover .character-portrait img { transform: scale(1.35); }
+  .character-card:hover .character-portrait img { transform: scale(1.78); }
+
+  /* Saira — tall image, pony tails sit at very top of frame */
+  .family-grid .character-card:nth-child(4) .character-portrait img {
+    object-position: center 3%;
+    transform: scale(1.35);
+    transform-origin: center 8%;
+  }
+  .family-grid .character-card:nth-child(4):hover .character-portrait img {
+    transform: scale(1.45);
+    transform-origin: center 8%;
+  }
+
+  /* John — tall image, dense curly hair starts at image top */
+  .family-grid .character-card:nth-child(5) .character-portrait img {
+    object-position: center 4%;
+    transform: scale(1.35);
+    transform-origin: center 10%;
+  }
+  .family-grid .character-card:nth-child(5):hover .character-portrait img {
+    transform: scale(1.45);
+    transform-origin: center 10%;
+  }
   .character-card h3 {
     font-family: 'Fredoka One', cursive;
     color: var(--orange); font-size: 1.25rem; margin-bottom: 6px;
   }
-  .character-card p { color: var(--mid); font-size: 1rem; font-weight: 600; line-height: 1.55; }
+  .character-card p { color: #6B5040; font-size: 1rem; font-weight: 600; line-height: 1.55; }
 
   /* ─── HOW CHILDREN LEARN ───────────────────────────────── */
   #how { background: var(--cream); }
@@ -349,10 +378,23 @@
     font-family: 'Fredoka One', cursive;
     font-size: 2.4rem; color: var(--orange); line-height: 1; margin-bottom: 10px;
   }
-  .step-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+  .step-icon {
+    width: 76px; height: 76px;
+    display: block; margin: 0 auto 16px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  #how .section-tag {
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+  #how .section-tag img {
+    width: 42px; height: 42px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
   .step-card h3 {
     font-family: 'Fredoka One', cursive;
-    font-size: 1.2rem; color: var(--dark); margin-bottom: 10px;
+    font-size: 1.2rem; color: #5C4A3A; margin-bottom: 10px;
   }
   .step-card p { color: var(--mid); font-size: 1rem; line-height: 1.65; font-weight: 600; }
 
@@ -419,10 +461,15 @@
   .reason-card:nth-child(4) { border-left-color: var(--purple); }
   .reason-card:nth-child(5) { border-left-color: var(--yellow-dk); }
   .reason-card:nth-child(6) { border-left-color: var(--blue); }
-  .reason-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+  .reason-icon {
+    width: 72px; height: 72px;
+    display: block; margin-bottom: 16px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
   .reason-card h3 {
     font-family: 'Fredoka One', cursive;
-    font-size: 1.15rem; color: var(--dark); margin-bottom: 8px;
+    font-size: 1.15rem; color: #5C4A3A; margin-bottom: 8px;
   }
   .reason-card p { color: var(--mid); font-size: 1rem; line-height: 1.65; font-weight: 600; }
 
@@ -461,6 +508,26 @@
   /* ─── PRICING ──────────────────────────────────────────── */
   #pricing { background: var(--cream); text-align: center; }
   #pricing .section-sub { max-width: 520px; margin-left: auto; margin-right: auto; }
+  #pricing .section-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  #pricing .section-tag img {
+    width: 42px; height: 42px;
+    object-fit: contain; mix-blend-mode: multiply;
+  }
+  .pricing-plan {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+  }
+  .pricing-plan img {
+    width: 42px; height: 42px; object-fit: contain;
+  }
+  .popular-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .popular-badge img {
+    height: 1.4em; width: auto;
+    object-fit: contain; mix-blend-mode: multiply;
+  }
   .pricing-grid {
     display: flex; justify-content: center; gap: 24px;
     flex-wrap: wrap; max-width: 780px; margin: 0 auto;
@@ -611,7 +678,7 @@
 <!-- ── 2. MEET THE SPEAK UP FAMILY ─────────────────────────────── -->
 <section id="family">
   <div class="t-center reveal">
-    <span class="section-tag">👨‍👩‍👧 The Characters</span>
+    <span class="section-tag"><img src="app/Images/website-v2-assets/characters.png" alt="">The Characters</span>
     <h2 class="section-title">Meet the Speak Up Family</h2>
     <p class="section-sub">Your child speaks and learns alongside this lovable group of friends.</p>
   </div>
@@ -620,7 +687,7 @@
       <div class="character-portrait">
         <img src="app/Images/website-v2-assets/manku.png" alt="Manku the monkey">
       </div>
-      <h3>Manku 🐵</h3>
+      <h3>Manku</h3>
       <p>The cheeky monkey who keeps everyone laughing.</p>
     </div>
     <div class="character-card reveal">
@@ -664,32 +731,32 @@
 <!-- ── 3. HOW CHILDREN LEARN ────────────────────────────────────── -->
 <section id="how">
   <div class="t-center reveal">
-    <span class="section-tag">📖 The Learning Path</span>
+    <span class="section-tag"><img src="app/Images/website-v2-assets/book.png" alt="">The Learning Path</span>
     <h2 class="section-title">How Children Learn with Speak Up</h2>
     <p class="section-sub">Each lesson builds on the last, all the way to confident speaking.</p>
   </div>
   <div class="steps-grid">
     <div class="step-card reveal">
       <div class="step-number">1</div>
-      <span class="step-icon">👂</span>
+      <img class="step-icon" src="app/Images/website-v2-assets/listen.png" alt="">
       <h3>Listen &amp; Discover</h3>
       <p>A real voice artist reads every word. Pictures make the meaning clear straight away.</p>
     </div>
     <div class="step-card reveal">
       <div class="step-number">2</div>
-      <span class="step-icon">🎮</span>
+      <img class="step-icon" src="app/Images/website-v2-assets/game.png" alt="">
       <h3>Play &amp; Practice</h3>
-      <p>"Tap the Right One," "Mix &amp; Fix" and more — practice that feels like play.</p>
+      <p>Play Tap the Right One, Mix &amp; Fix, and more fun activities.</p>
     </div>
     <div class="step-card reveal">
       <div class="step-number">3</div>
-      <span class="step-icon">🗣️</span>
+      <img class="step-icon" src="app/Images/website-v2-assets/speak.png" alt="">
       <h3>Speak Up!</h3>
       <p>Kids say sentences out loud and build real speaking confidence.</p>
     </div>
     <div class="step-card reveal">
       <div class="step-number">4</div>
-      <span class="step-icon">🏆</span>
+      <img class="step-icon" src="app/Images/website-v2-assets/trophy.png" alt="">
       <h3>Earn &amp; Grow</h3>
       <p>Stars and badges keep children motivated unit by unit.</p>
     </div>
@@ -701,7 +768,7 @@
   <div class="t-center reveal">
     <span class="section-tag">📱 Inside the App</span>
     <h2 class="section-title">See What Your Child Will Experience</h2>
-    <p class="section-sub">Fun, clear screens built for young learners. Scroll to explore.</p>
+    <p class="section-sub">Swipe to see real screens from the Speak Up app.</p>
   </div>
   <div class="screenshots-track">
     <div class="screen-frame">
@@ -709,27 +776,35 @@
       <div class="screen-label">Home Dashboard</div>
     </div>
     <div class="screen-frame">
-      <img src="app/Images/website-v2-assets/unit1.jpeg" alt="Lesson units">
+      <img src="app/Images/website-v2-assets/lesson_units2.jpeg" alt="Lesson units">
       <div class="screen-label">Lesson Units</div>
     </div>
     <div class="screen-frame">
-      <img src="app/Images/website-v2-assets/look_listen.jpeg" alt="Look and listen activity">
+      <img src="app/Images/website-v2-assets/look_listen3.jpeg" alt="Look and listen">
       <div class="screen-label">Look &amp; Listen</div>
     </div>
     <div class="screen-frame">
-      <img src="app/Images/website-v2-assets/tapthe%20rightone1.jpeg" alt="Tap the right one activity">
+      <img src="app/Images/website-v2-assets/tap%20the%20right%20one_title4.jpeg" alt="Tap the right one">
       <div class="screen-label">Tap the Right One</div>
     </div>
     <div class="screen-frame">
-      <img src="app/Images/website-v2-assets/mix%20and%20fix1.jpeg" alt="Mix and fix activity">
+      <img src="app/Images/website-v2-assets/tap%20the%20right%20one5.jpeg" alt="Tap the right one activity">
+      <div class="screen-label">Tap the Right One Activity</div>
+    </div>
+    <div class="screen-frame">
+      <img src="app/Images/website-v2-assets/mix%20and%20fix6.jpeg" alt="Mix and fix">
       <div class="screen-label">Mix &amp; Fix</div>
     </div>
     <div class="screen-frame">
-      <img src="app/Images/website-v2-assets/let%27stalk1.jpeg" alt="Let's talk activity">
+      <img src="app/Images/website-v2-assets/mix%20and%20fix7.jpeg" alt="Mix and fix activity">
+      <div class="screen-label">Mix &amp; Fix Activity</div>
+    </div>
+    <div class="screen-frame">
+      <img src="app/Images/website-v2-assets/let%27s%20talk8.jpeg" alt="Let's talk">
       <div class="screen-label">Let's Talk</div>
     </div>
     <div class="screen-frame">
-      <img src="app/Images/website-v2-assets/profile1.jpeg" alt="Progress tracker">
+      <img src="app/Images/website-v2-assets/progress_tracker9.jpeg" alt="Progress tracker">
       <div class="screen-label">Progress Tracker</div>
     </div>
   </div>
@@ -744,32 +819,32 @@
   </div>
   <div class="reasons-grid">
     <div class="reason-card reveal">
-      <span class="reason-icon">🔇</span>
+      <img class="reason-icon" src="app/Images/website-v2-assets/no%20ads1.png" alt="">
       <h3>No Ads. Ever.</h3>
       <p>Completely ad-free. Zero distractions for your child.</p>
     </div>
     <div class="reason-card reveal">
-      <span class="reason-icon">📶</span>
+      <img class="reason-icon" src="app/Images/website-v2-assets/works%20offline2.png" alt="">
       <h3>Works Offline</h3>
       <p>Works without internet — great for travel or limited data.</p>
     </div>
     <div class="reason-card reveal">
-      <span class="reason-icon">🎨</span>
+      <img class="reason-icon" src="app/Images/website-v2-assets/rich%20visuals3.png" alt="">
       <h3>Rich Visuals</h3>
       <p>Every word paired with clear, colourful illustrations.</p>
     </div>
     <div class="reason-card reveal">
-      <span class="reason-icon">📊</span>
+      <img class="reason-icon" src="app/Images/website-v2-assets/simple%20progress4.png" alt="">
       <h3>Simple Progress Tracking</h3>
       <p>See exactly which units your child has finished.</p>
     </div>
     <div class="reason-card reveal">
-      <span class="reason-icon">🎤</span>
+      <img class="reason-icon" src="app/Images/website-v2-assets/microphone5.png" alt="">
       <h3>Real Voice. Real English.</h3>
       <p>Every word recorded by a professional — warm, clear and natural.</p>
     </div>
     <div class="reason-card reveal">
-      <span class="reason-icon">🧒</span>
+      <img class="reason-icon" src="app/Images/website-v2-assets/child%20head6.png" alt="">
       <h3>Made for Ages 5–12</h3>
       <p>Built for young learners — not adapted from adult courses.</p>
     </div>
@@ -798,17 +873,17 @@
 <!-- ── 7. PRICING ────────────────────────────────────────────────── -->
 <section id="pricing">
   <div class="reveal">
-    <span class="section-tag">💳 Simple Pricing</span>
+    <span class="section-tag"><img src="app/Images/website-v2-assets/wallet.png" alt="">Simple Pricing</span>
     <h2 class="section-title">Start Free. Unlock Everything.</h2>
-    <p class="section-sub">Start with a 24-hour full access trial — free. Unlock all 100 lessons for just ₹499 for 3 months.</p>
+    <p class="section-sub">Try all 100 lessons free for 24 hours. Continue for just ₹499 for 3 months.</p>
   </div>
   <div class="pricing-grid">
     <div class="pricing-card reveal">
-      <div class="pricing-plan">🌱 Starter</div>
+      <div class="pricing-plan"><img src="app/Images/website-v2-assets/sprout.png" alt="">Starter</div>
       <div class="pricing-price">Free</div>
-      <div class="pricing-period">Forever</div>
+      <div class="pricing-period">Start Free</div>
       <ul class="pricing-features">
-        <li>24-Hour full access trial</li>
+        <li>24-Hour Full Access to All Lessons</li>
         <li>Sample lessons from Unit 1</li>
         <li>Try all activity types</li>
       </ul>
@@ -819,10 +894,10 @@
       >Start Your Free Trial</a>
     </div>
     <div class="pricing-card featured reveal">
-      <div class="popular-badge">⭐ Best Value</div>
-      <div class="pricing-plan">🚀 Explorer</div>
+      <div class="popular-badge"><img src="app/Images/website-v2-assets/star%20badge.png" alt="">Best Value</div>
+      <div class="pricing-plan"><img src="app/Images/website-v2-assets/rocket.png" alt="">Explorer</div>
       <div class="pricing-price">₹499</div>
-      <div class="pricing-period">For 3 months</div>
+      <div class="pricing-period">Full Access for 3 Months</div>
       <ul class="pricing-features">
         <li>All 100 lessons</li>
         <li>All units &amp; activities</li>
