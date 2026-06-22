@@ -143,9 +143,10 @@
     section { padding: 64px 5%; }
     .section-title { font-size: clamp(2.1rem, 7vw, 2.8rem); }
     .section-sub { font-size: 1.1rem; margin-bottom: 36px; }
-    .step-card p, .reason-card p, .character-card p { font-size: 1rem; line-height: 1.6; }
+    .step-card p, .reason-card p, .character-card p { font-size: 1.05rem; line-height: 1.6; }
     .step-card { padding: 28px 20px; }
     .reason-card { padding: 24px 20px; }
+    .nav-logo-img { height: 62px; }
   }
 
   /* ─── ANIMATIONS ──────────────────────────────────────── */
@@ -246,7 +247,7 @@
   }
   .install-message.visible { display: block; }
   .hero-visual {
-    display: flex; justify-content: center; align-items: flex-end;
+    display: flex; justify-content: center; align-items: center;
     animation: slideUp 0.7s ease 0.4s both;
   }
   .hero-mascot {
@@ -272,8 +273,8 @@
   #family { background: var(--cream-alt); }
   .family-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 24px; max-width: 880px; margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 24px; max-width: 1020px; margin: 0 auto;
   }
   .character-card {
     background: var(--card);
@@ -288,18 +289,28 @@
     border-color: var(--orange);
     box-shadow: 0 14px 36px rgba(0,0,0,0.14);
   }
-  .character-img {
-    width: 130px; height: 130px;
-    border-radius: 50%; object-fit: cover;
+  .character-portrait {
+    width: 140px; height: 140px;
+    border-radius: 50%; overflow: hidden;
     border: 5px solid var(--yellow);
     box-shadow: 0 8px 22px rgba(0,0,0,0.14);
-    margin-bottom: 16px;
+    margin: 0 auto 16px;
   }
+  .character-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    transform: scale(1.25);
+    transform-origin: center 30%;
+    transition: transform 0.3s ease;
+  }
+  .character-card:hover .character-portrait img { transform: scale(1.35); }
   .character-card h3 {
     font-family: 'Fredoka One', cursive;
     color: var(--orange); font-size: 1.25rem; margin-bottom: 6px;
   }
-  .character-card p { color: var(--mid); font-size: 0.93rem; font-weight: 600; line-height: 1.55; }
+  .character-card p { color: var(--mid); font-size: 1rem; font-weight: 600; line-height: 1.55; }
 
   /* ─── HOW CHILDREN LEARN ───────────────────────────────── */
   #how { background: var(--cream); }
@@ -326,7 +337,7 @@
     font-family: 'Fredoka One', cursive;
     font-size: 1.2rem; color: var(--dark); margin-bottom: 10px;
   }
-  .step-card p { color: var(--mid); font-size: 0.95rem; line-height: 1.65; font-weight: 600; }
+  .step-card p { color: var(--mid); font-size: 1rem; line-height: 1.65; font-weight: 600; }
 
   /* ─── SCREENSHOTS ──────────────────────────────────────── */
   #screenshots { background: var(--cream-alt); overflow: hidden; }
@@ -396,7 +407,7 @@
     font-family: 'Fredoka One', cursive;
     font-size: 1.15rem; color: var(--dark); margin-bottom: 8px;
   }
-  .reason-card p { color: var(--mid); font-size: 0.93rem; line-height: 1.65; font-weight: 600; }
+  .reason-card p { color: var(--mid); font-size: 1rem; line-height: 1.65; font-weight: 600; }
 
   /* ─── ABOUT ────────────────────────────────────────────── */
   #about { background: var(--cream-alt); }
@@ -409,9 +420,13 @@
     width: 200px; height: 200px; border-radius: 50%;
     border: 5px solid var(--yellow);
     box-shadow: 6px 6px 0 var(--orange);
-    background: #DDD4A8;
-    display: flex; align-items: center; justify-content: center;
-    color: #B09B6A; font-size: 4rem; overflow: hidden;
+    overflow: hidden;
+  }
+  .about-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    display: block;
   }
   .about-text .section-tag { margin-bottom: 6px; }
   .about-text .section-title { margin-bottom: 12px; }
@@ -560,7 +575,7 @@
       with Confidence!
     </h1>
     <p class="hero-subtitle">
-      No boring rules. Fun stories and games that make children <em>want</em> to speak.
+      Fun activities and a real voice artist — helping your child speak English with confidence.
     </p>
     <div class="hero-buttons">
       <button class="btn-primary" type="button" data-install-button>Install App Free</button>
@@ -583,28 +598,50 @@
   <div class="t-center reveal">
     <span class="section-tag">👨‍👩‍👧 The Characters</span>
     <h2 class="section-title">Meet the Speak Up Family</h2>
-    <p class="section-sub">A lovable group of friends your child learns English alongside.</p>
+    <p class="section-sub">Your child speaks and learns alongside this lovable group of friends.</p>
   </div>
   <div class="family-grid">
     <div class="character-card reveal">
-      <img class="character-img" src="app/Images/website-v2-assets/raju.png" alt="Raju">
+      <div class="character-portrait">
+        <img src="app/Images/website-v2-assets/manku.png" alt="Manku the monkey">
+      </div>
+      <h3>Manku 🐵</h3>
+      <p>The cheeky monkey who keeps everyone laughing.</p>
+    </div>
+    <div class="character-card reveal">
+      <div class="character-portrait">
+        <img src="app/Images/website-v2-assets/raju.png" alt="Raju">
+      </div>
       <h3>Raju</h3>
       <p>Always curious. Always asking the right questions.</p>
     </div>
     <div class="character-card reveal">
-      <img class="character-img" src="app/Images/website-v2-assets/reena.png" alt="Reena">
+      <div class="character-portrait">
+        <img src="app/Images/website-v2-assets/reena.png" alt="Reena">
+      </div>
       <h3>Reena</h3>
       <p>Smart and kind, always ready to help.</p>
     </div>
     <div class="character-card reveal">
-      <img class="character-img" src="app/Images/website-v2-assets/ammu_anju.png" alt="Ammu and Anju">
-      <h3>Ammu &amp; Anju</h3>
-      <p>Best friends who love games and songs.</p>
+      <div class="character-portrait">
+        <img src="app/Images/website-v2-assets/saira.png" alt="Saira">
+      </div>
+      <h3>Saira</h3>
+      <p>Bright and cheerful, she loves to learn new words.</p>
     </div>
     <div class="character-card reveal">
-      <img class="character-img" src="app/Images/website-v2-assets/manku.png" alt="Manku the monkey">
-      <h3>Manku 🐵</h3>
-      <p>The cheeky monkey who keeps everyone laughing.</p>
+      <div class="character-portrait">
+        <img src="app/Images/website-v2-assets/john.png" alt="John">
+      </div>
+      <h3>John</h3>
+      <p>Friendly and fun, always up for an adventure.</p>
+    </div>
+    <div class="character-card reveal">
+      <div class="character-portrait">
+        <img src="app/Images/website-v2-assets/ammu_anju.png" alt="Ammu and Anju">
+      </div>
+      <h3>Ammu &amp; Anju</h3>
+      <p>Best friends who love games and songs.</p>
     </div>
   </div>
 </section>
@@ -621,7 +658,7 @@
       <div class="step-number">1</div>
       <span class="step-icon">👂</span>
       <h3>Listen &amp; Discover</h3>
-      <p>Natural English by a real voice artist. Words and pictures build understanding together.</p>
+      <p>A real voice artist reads every word. Pictures make the meaning clear straight away.</p>
     </div>
     <div class="step-card reveal">
       <div class="step-number">2</div>
@@ -633,7 +670,7 @@
       <div class="step-number">3</div>
       <span class="step-icon">🗣️</span>
       <h3>Speak Up!</h3>
-      <p>Kids repeat, respond, and say sentences aloud — building real confidence.</p>
+      <p>Kids say sentences out loud and build real speaking confidence.</p>
     </div>
     <div class="step-card reveal">
       <div class="step-number">4</div>
@@ -687,7 +724,7 @@
 <section id="why">
   <div class="t-center reveal">
     <span class="section-tag">💛 Why Parents Choose It</span>
-    <h2 class="section-title">Why Parents Like Speak Up</h2>
+    <h2 class="section-title">Why Parents Choose Speak Up</h2>
     <p class="section-sub">For families who want real confidence, not just test scores.</p>
   </div>
   <div class="reasons-grid">
@@ -713,8 +750,8 @@
     </div>
     <div class="reason-card reveal">
       <span class="reason-icon">🎤</span>
-      <h3>Real Voice, Real English</h3>
-      <p>Recorded by a professional voice artist — warm and natural.</p>
+      <h3>Real Voice. Real English.</h3>
+      <p>Every word recorded by a professional — warm, clear and natural.</p>
     </div>
     <div class="reason-card reveal">
       <span class="reason-icon">🧒</span>
@@ -727,17 +764,17 @@
 <!-- ── 6. ABOUT THE CREATOR ──────────────────────────────────────── -->
 <section id="about">
   <div class="about-inner">
-    <div class="about-photo" role="img" aria-label="Creator photo — coming soon">
-      👤
+    <div class="about-photo">
+      <img src="app/Images/website-v2-assets/rameshvoice.png" alt="Ramesh Voice, creator of Speak Up">
     </div>
     <div class="about-text reveal">
       <span class="section-tag">🎙️ The Creator</span>
       <h2 class="section-title">About the Creator</h2>
       <p class="about-bio">
         Speak Up was created by <strong>Ramesh Voice</strong>, a professional
-        English and Malayalam voice artist from Kerala, India.
-        Ramesh built Speak Up to give every child access to high-quality,
-        natural English — delivered in a fun and genuinely effective way.
+        English and Malayalam voice artist from Kerala. With more than
+        30 years of voice experience, he designed Speak Up to help children
+        listen, repeat, practise, and speak English with confidence.
       </p>
     </div>
   </div>
@@ -748,7 +785,7 @@
   <div class="reveal">
     <span class="section-tag">💳 Simple Pricing</span>
     <h2 class="section-title">Start Free. Unlock Everything.</h2>
-    <p class="section-sub">Try free with sample lessons. Unlock all 100 lessons when you're ready.</p>
+    <p class="section-sub">Start with a 24-hour full access trial — free. Unlock all 100 lessons for just ₹499 for 3 months.</p>
   </div>
   <div class="pricing-grid">
     <div class="pricing-card reveal">
@@ -756,15 +793,15 @@
       <div class="pricing-price">Free</div>
       <div class="pricing-period">Forever</div>
       <ul class="pricing-features">
+        <li>24-Hour full access trial</li>
         <li>Sample lessons from Unit 1</li>
         <li>Try all activity types</li>
-        <li>Meet the characters</li>
       </ul>
       <a
         href="https://ramrishi59.github.io/SpeakUpApp/app/dashboard.html"
         target="_blank"
         class="btn-plan btn-plan-light"
-      >Start Free Trial</a>
+      >Start Your Free Trial</a>
     </div>
     <div class="pricing-card featured reveal">
       <div class="popular-badge">⭐ Best Value</div>
