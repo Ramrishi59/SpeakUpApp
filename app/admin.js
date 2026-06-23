@@ -1206,9 +1206,11 @@ document.querySelectorAll(".tab").forEach(btn => {
   btn.addEventListener("click", () => switchTab(btn.dataset.tab));
 });
 
-// Mode switching
-document.querySelectorAll(".mode-btn").forEach(btn => {
-  btn.addEventListener("click", () => switchMode(btn.dataset.mode));
+// Mode switching — event delegation so the listener fires even when buttons
+// were inside a display:none container at registration time.
+document.getElementById("modeSwitcher")?.addEventListener("click", e => {
+  const btn = e.target.closest(".mode-btn");
+  if (btn) switchMode(btn.dataset.mode);
 });
 
 // Parent view search
