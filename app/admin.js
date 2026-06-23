@@ -665,6 +665,76 @@ function renderPaymentTotals(payments) {
   `;
 }
 
+// ── Recent Signups ─────────────────────────────────────────────────────────
+function renderRecentSignups(users) {
+  const el = document.getElementById("recentSignupsList");
+  if (!el) return;
+
+  const sorted = [...users]
+    .filter(u => u.createdAt)
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, 10);
+
+  if (!sorted.length) {
+    el.innerHTML = `<p class="empty-state">No signup data available.</p>`;
+    return;
+  }
+
+  el.innerHTML = `
+    <table class="mini-table">
+      <thead><tr><th>Name</th><th>Email</th><th>Joined</th></tr></thead>
+      <tbody>
+        ${sorted.map(u => {
+          const joined = new Date(u.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+          return `
+            <tr>
+              <td><strong>${escapeHtml(u.username || "Unnamed")}</strong></td>
+              <td style="color:var(--muted);font-size:13px">${escapeHtml(u.email || "—")}</td>
+              <td style="color:var(--muted);font-size:13px;white-space:nowrap">${escapeHtml(joined)}</td>
+            </tr>
+          `;
+        }).join("")}
+      </tbody>
+    </table>
+  `;
+}
+
+// ── Recent Payments ────────────────────────────────────────────────────────
+function renderRecentPayments(payments) {
+  const el = document.getElementById("recentPaymentsList");
+  if (!el) return;
+
+  const top10 = payments.slice(0, 10);
+
+  if (!top10.length) {
+    el.innerHTML = `<p class="empty-state">No payments loaded yet.</p>`;
+    return;
+  }
+
+  el.innerHTML = `
+    <table class="mini-table">
+      <thead><tr><th>User</th><th>Amount</th><th>Date</th><th>Status</th></tr></thead>
+      <tbody>
+        ${top10.map(p => {
+          const name = loadedUsers.find(u => u.uid === p.uid)?.username || p.email || "Unknown";
+          const rawDate = p.verifiedAt || p.createdAt;
+          const date = rawDate ? new Date(rawDate).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "—";
+          const statusClass = p.status === "captured" ? "captured" : p.status === "created" ? "pending" : p.status === "failed" ? "failed" : "unknown";
+          const statusLabel = p.status === "captured" ? "Paid" : p.status === "created" ? "Pending" : p.status === "failed" ? "Failed" : (p.status || "Unknown");
+          return `
+            <tr>
+              <td><strong>${escapeHtml(name)}</strong></td>
+              <td style="font-weight:700">${escapeHtml(formatAmount(p.amount, p.currency))}</td>
+              <td style="color:var(--muted);font-size:13px;white-space:nowrap">${escapeHtml(date)}</td>
+              <td><span class="status-badge ${statusClass}">${escapeHtml(statusLabel)}</span></td>
+            </tr>
+          `;
+        }).join("")}
+      </tbody>
+    </table>
+  `;
+}
+
 // ── View helpers ───────────────────────────────────────────────────────────
 function setSignedInView(user) {
   const isSignedIn = !!user;
@@ -896,6 +966,8 @@ async function searchUsers() {
     updateStatsBar(loadedUsers);
     renderOverviewCharts(loadedUsers);
     renderAlerts(loadedUsers);
+    renderRecentSignups(loadedUsers);
+    renderRecentPayments(cachedPayments);
   } catch (error) {
     console.error(error);
     setStatus(els.userSearchStatus, error.message, "error");
@@ -971,18 +1043,25 @@ async function loadPayments() {
       const statusClass = p.status === "captured" ? "captured" : p.status === "created" ? "pending" : p.status === "failed" ? "failed" : "unknown";
       const statusLabel = p.status === "captured" ? "Paid" : p.status === "created" ? "Pending" : p.status === "failed" ? "Failed" : (p.status || "Unknown");
       const date = p.verifiedAt ? new Date(p.verifiedAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "—";
+      const orderId   = p.razorpayOrderId || p.id || "";
+      const paymentId = p.razorpayPaymentId || "";
+      const hasRef    = orderId || paymentId;
       return `
         <tr>
-          <td>
-            <strong>${escapeHtml(p.email || "No email")}</strong>
-            <br><small style="color:var(--muted)">${escapeHtml(p.uid || "")}</small>
-          </td>
+          <td><strong>${escapeHtml(p.email || "No email")}</strong></td>
           <td style="font-weight:700;font-size:15px">${escapeHtml(formatAmount(p.amount, p.currency))}</td>
           <td><span class="status-badge ${statusClass}">${escapeHtml(statusLabel)}</span></td>
           <td>${escapeHtml(date)}</td>
           <td>
-            <small style="color:var(--muted)">${escapeHtml(p.razorpayOrderId || p.id || "—")}</small>
-            ${p.razorpayPaymentId ? `<br><small style="color:var(--muted)">${escapeHtml(p.razorpayPaymentId)}</small>` : ""}
+            ${hasRef ? `
+              <details>
+                <summary style="font-size:12px">Payment Details</summary>
+                <div style="margin-top:6px;display:grid;gap:3px">
+                  ${orderId   ? `<small style="color:var(--muted)">Order: ${escapeHtml(orderId)}</small>`   : ""}
+                  ${paymentId ? `<small style="color:var(--muted)">Payment: ${escapeHtml(paymentId)}</small>` : ""}
+                </div>
+              </details>
+            ` : `<span style="color:var(--muted);font-size:13px">—</span>`}
           </td>
         </tr>
       `;
@@ -990,6 +1069,7 @@ async function loadPayments() {
 
     setStatus(els.paymentStatus, `${payments.length} payment${payments.length !== 1 ? "s" : ""} loaded.`, "success");
     renderRevenueChart(payments);
+    renderRecentPayments(payments);
   } catch (error) {
     console.error(error);
     setStatus(els.paymentStatus, error.message, "error");
@@ -1000,7 +1080,6 @@ function switchTab(tabName) {
   document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active", b.dataset.tab === tabName));
   els.progressTab?.classList.toggle("hidden",  tabName !== "progress");
   els.analyticsTab?.classList.toggle("hidden", tabName !== "analytics");
-  els.rawTab?.classList.toggle("hidden",       tabName !== "raw");
   if (tabName === "analytics") renderAnalyticsTab(selectedProgress);
 }
 

@@ -846,6 +846,41 @@
     .pv-copy-btn:hover   { border-color: #fdba74; transform: none; box-shadow: none; }
     .pv-copy-btn.copied  { background: var(--ok-soft); border-color: #bbf7d0; color: var(--ok); }
 
+    /* ── Quick View Grid ────────────────────────────────────── */
+    .quick-view-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    /* ── Simple inline table ─────────────────────────────────── */
+    .mini-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .mini-table th { text-align: left; font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; padding: 0 0 10px 0; border-bottom: 1px solid var(--line); }
+    .mini-table td { padding: 10px 0; border-bottom: 1px solid var(--line); vertical-align: middle; }
+    .mini-table tr:last-child td { border-bottom: 0; }
+
+    /* ── Developer section ───────────────────────────────────── */
+    .dev-section {
+      border: 1px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      background: rgba(248,250,252,.7);
+    }
+
+    .dev-section > summary {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ── Access grant highlight ──────────────────────────────── */
+    .grant-access-box {
+      background: linear-gradient(135deg, #fffaf5, #f0fdf4);
+      border: 1px solid #d1fae5;
+      border-radius: 14px;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
     /* ── Responsive ─────────────────────────────────────────── */
     @media (max-width: 960px) {
       header { align-items: flex-start; flex-direction: column; }
@@ -859,6 +894,7 @@
       .payment-totals  { grid-template-columns: 1fr; }
       .pv-hero         { grid-template-columns: 1fr; }
       .pv-hero-number  { font-size: 36px; }
+      .quick-view-grid { grid-template-columns: 1fr; }
     }
 
     /* ── Animated Background Blobs ──────────────────────────── */
@@ -922,7 +958,6 @@
   <header>
     <div class="header-brand">
       <h1>SpeakUp Admin</h1>
-      <div class="header-sub">Protected by Firebase Auth</div>
     </div>
 
     <div id="modeSwitcher" class="mode-switcher hidden">
@@ -940,7 +975,7 @@
     <!-- ── Login ─────────────────────────────────────────────── -->
     <section id="loginPanel" class="panel stack">
       <h2>Admin Sign In</h2>
-      <p class="muted" style="margin:0;font-size:14px">Use an account with the Firebase custom claim <strong>admin: true</strong>.</p>
+      <p class="muted" style="margin:0;font-size:14px">Sign in with your administrator account.</p>
       <label>
         Email
         <input id="loginEmail" type="email" autocomplete="email" placeholder="admin@example.com">
@@ -986,6 +1021,18 @@
           </div>
         </div>
 
+        <!-- Quick View: Recent Signups + Recent Payments -->
+        <div class="quick-view-grid">
+          <section class="panel stack">
+            <h2>Recent Signups</h2>
+            <div id="recentSignupsList"><p class="empty-state">Loading…</p></div>
+          </section>
+          <section class="panel stack">
+            <h2>Recent Payments</h2>
+            <div id="recentPaymentsList"><p class="empty-state">Loading…</p></div>
+          </section>
+        </div>
+
         <!-- Overview Charts -->
         <section id="overviewPanel" class="panel stack">
           <div class="panel-header">
@@ -1024,7 +1071,7 @@
                   <th>Amount</th>
                   <th>Status</th>
                   <th>Date</th>
-                  <th>Reference</th>
+                  <th>Details</th>
                 </tr>
               </thead>
               <tbody id="paymentsBody"></tbody>
@@ -1072,9 +1119,9 @@
               </div>
             </section>
 
-            <!-- Access Controls -->
+            <!-- Manage Access -->
             <section class="panel stack">
-              <h2>Access Controls</h2>
+              <h2>Manage Access</h2>
 
               <div id="revokeConfirm" class="revoke-confirm hidden">
                 <p>Remove access for <strong id="revokeUserName">this user</strong>? They will immediately lose access to all premium content.</p>
@@ -1085,30 +1132,40 @@
               </div>
 
               <div id="accessMainControls" class="stack">
-                <div>
-                  <div class="access-section-label" style="margin-bottom:10px">Give Access — choose a duration</div>
-                  <div class="duration-picker">
-                    <button type="button" class="duration-btn secondary" data-duration="30">1 Month</button>
-                    <button type="button" class="duration-btn secondary" data-duration="90">3 Months</button>
-                    <button type="button" class="duration-btn secondary" data-duration="365">1 Year</button>
-                    <button type="button" class="duration-btn secondary" data-duration="permanent">Permanent</button>
+                <div class="grant-access-box">
+                  <div>
+                    <div class="access-section-label" style="margin-bottom:4px">Grant or extend access</div>
+                    <div style="font-size:13px;color:var(--muted);margin-bottom:12px">After receiving payment, choose how long to give access.</div>
+                    <div class="duration-picker">
+                      <button type="button" class="duration-btn secondary" data-duration="30">1 Month</button>
+                      <button type="button" class="duration-btn secondary" data-duration="90">3 Months</button>
+                      <button type="button" class="duration-btn secondary" data-duration="365">1 Year</button>
+                      <button type="button" class="duration-btn secondary" data-duration="permanent">Permanent</button>
+                    </div>
                   </div>
-                </div>
 
-                <label>
-                  Reason
-                  <select id="accessReasonSelect">
-                    <option value="">Choose a reason (required)…</option>
-                    <option value="Payment received online">Payment received online</option>
-                    <option value="Manual payment received">Manual / cash payment received</option>
-                    <option value="Promotional access">Promotional or complimentary access</option>
-                    <option value="Extending trial period">Extending trial period</option>
-                    <option value="Technical issue compensation">Compensating for a technical issue</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </label>
+                  <label>
+                    How was payment received?
+                    <select id="accessReasonSelect">
+                      <option value="">Select payment method or reason…</option>
+                      <optgroup label="Payment received">
+                        <option value="Razorpay Payment">Razorpay Payment</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                        <option value="UPI Payment">UPI Payment</option>
+                        <option value="Cash Payment">Cash Payment</option>
+                        <option value="School Payment">School Payment</option>
+                      </optgroup>
+                      <optgroup label="Other reasons">
+                        <option value="Promotional Access">Promotional Access</option>
+                        <option value="Trial Extension">Trial Extension</option>
+                        <option value="Technical Issue Compensation">Technical Issue Compensation</option>
+                        <option value="Other">Other</option>
+                      </optgroup>
+                    </select>
+                  </label>
 
-                <button type="button" id="giveAccessBtn">Give Access</button>
+                  <button type="button" id="giveAccessBtn">Give Access</button>
+                </div><!-- end grant-access-box -->
 
                 <details>
                   <summary>Advanced — set a specific date</summary>
@@ -1137,7 +1194,6 @@
               <div class="tabs">
                 <button type="button" class="tab active" data-tab="progress">Progress</button>
                 <button type="button" class="tab" data-tab="analytics">Analytics</button>
-                <button type="button" class="tab" data-tab="raw">Raw Data</button>
               </div>
 
               <div id="progressTab" class="stack"></div>
@@ -1159,11 +1215,16 @@
                 </div>
               </div>
 
-              <pre id="rawTab" class="hidden"></pre>
-
               <!-- Ghost element — keeps JS refs valid, never shown -->
               <div id="paymentsTab" class="hidden"></div>
             </section>
+
+            <!-- Developer Tools (hidden by default, available when needed) -->
+            <details class="dev-section">
+              <summary>Developer Tools</summary>
+              <pre id="rawTab" style="margin-top:10px"></pre>
+            </details>
+
           </div>
         </div>
       </div>
@@ -1230,6 +1291,6 @@
     </section>
   </main>
 
-  <script type="module" src="./admin.js?v=7"></script>
+  <script type="module" src="./admin.js?v=8"></script>
 </body>
 </html>
