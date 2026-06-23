@@ -492,17 +492,28 @@
     object-position: center 15%;
     display: block;
   }
-  .about-text .section-tag { margin-bottom: 6px; }
-  .about-text .section-title { margin-bottom: 12px; }
+  .about-text .section-title { margin-bottom: 12px; font-size: clamp(1.65rem, 3.4vw, 2.3rem); }
   .about-bio {
     font-size: 1.05rem; color: var(--mid);
     line-height: 1.78; font-weight: 600; max-width: 500px;
   }
   .about-bio strong { color: var(--dark); }
+  .about-badges {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 22px;
+  }
+  .about-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--yellow); color: var(--dark);
+    font-weight: 800; font-size: 0.85rem;
+    padding: 7px 16px; border-radius: 50px;
+    border: 2px solid var(--orange);
+  }
   @media (max-width: 640px) {
     .about-inner { flex-direction: column; text-align: center; }
     .about-photo { margin: 0 auto; }
     .about-bio { max-width: 100%; }
+    .about-badges { justify-content: center; }
   }
 
   /* ─── PRICING ──────────────────────────────────────────── */
@@ -976,14 +987,21 @@
       <img src="app/Images/website-v2-assets/rameshvoice.png" alt="Ramesh Voice, creator of Speak Up">
     </div>
     <div class="about-text reveal">
-      <span class="section-tag">🎙️ The Creator</span>
-      <h2 class="section-title">About the Creator</h2>
+      <h2 class="section-title">Meet Mr. Ramesh (Rameshvoice)</h2>
       <p class="about-bio">
-        Speak Up was created by <strong>Ramesh Voice</strong>, a professional
-        English and Malayalam voice artist from Kerala. With more than
-        30 years of voice experience, he designed Speak Up to help children
-        listen, repeat, practise, and speak English with confidence.
+        Speak Up was created by <strong>Mr. Ramesh (Rameshvoice)</strong>, a professional English and Malayalam voice artist from Kerala.
       </p>
+      <p class="about-bio">
+        With more than 30 years of experience in voice-over, language training, translation, and educational content creation, he designed Speak Up to help children listen, repeat, practise, and speak English with confidence.
+      </p>
+      <p class="about-bio">
+        Every lesson, activity, character, and voice in Speak Up has been carefully created to make English learning simple, enjoyable, and engaging for young learners.
+      </p>
+      <div class="about-badges">
+        <span class="about-badge">30+ Years Experience</span>
+        <span class="about-badge">270,000+ YouTube Learners</span>
+        <span class="about-badge">Designed for Children</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1112,8 +1130,8 @@
         <a href="#" role="listitem">Home</a>
         <a href="#pricing" role="listitem">Pricing</a>
         <a href="#pricing" role="listitem">Free Trial</a>
-        <a href="#" role="listitem">Privacy Policy</a>
-        <a href="#" role="listitem">Terms of Use</a>
+        <a href="privacy.html" role="listitem">Privacy Policy</a>
+        <a href="terms.html" role="listitem">Terms of Use</a>
       </div>
     </div>
 
