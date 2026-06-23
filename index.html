@@ -602,28 +602,146 @@
   }
   .btn-plan-featured:hover { transform: translateY(-2px); box-shadow: 0 6px 0 rgba(0,0,0,0.2); }
 
+  /* ─── FAQ ──────────────────────────────────────────────── */
+  #faq { background: var(--cream-alt); }
+  .faq-list {
+    max-width: 680px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 12px;
+    list-style: none;
+  }
+  .faq-item {
+    background: var(--card);
+    border-radius: 18px;
+    border: 2px solid var(--yellow);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .faq-item.open { border-color: var(--orange); }
+  .faq-question {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: 20px 24px;
+    cursor: pointer;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.1rem; color: #5C4A3A;
+    user-select: none;
+  }
+  .faq-icon {
+    font-size: 1.5rem; color: var(--orange);
+    flex-shrink: 0; line-height: 1;
+    transition: transform 0.25s ease;
+  }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-answer {
+    max-height: 0; overflow: hidden;
+    padding: 0 24px;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+  }
+  .faq-item.open .faq-answer { max-height: 200px; padding: 0 24px 20px; }
+  .faq-answer p {
+    font-size: 1rem; color: var(--mid);
+    font-weight: 600; line-height: 1.65;
+  }
+
+  /* ─── FINAL CTA ─────────────────────────────────────────── */
+  #cta-final {
+    background: linear-gradient(160deg, #FFF9D6 0%, var(--yellow) 100%);
+    text-align: center;
+  }
+  #cta-final .section-title {
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    max-width: 640px; margin: 0 auto 20px;
+  }
+  .cta-text {
+    font-size: 1.05rem; color: var(--mid);
+    font-weight: 600; line-height: 1.75;
+    max-width: 540px; margin: 0 auto 8px;
+  }
+  .cta-buttons {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    justify-content: center; margin: 36px 0 32px;
+  }
+  .trust-badges {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 10px 28px;
+  }
+  .trust-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.95rem; font-weight: 700; color: #5C4A3A;
+  }
+  .trust-badge-check {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px;
+    background: var(--green); color: white;
+    border-radius: 50%; font-size: 0.72rem; font-weight: 900;
+    flex-shrink: 0;
+  }
+
   /* ─── FOOTER ───────────────────────────────────────────── */
   footer {
     background: #E8D060;
-    color: var(--mid); text-align: center;
-    padding: 52px 5% 36px;
+    color: var(--mid);
+    padding: 60px 5% 0;
     border-top: 3px solid var(--yellow);
   }
+  .footer-inner {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr;
+    gap: 36px; text-align: center;
+    margin-bottom: 44px;
+  }
+  @media (min-width: 820px) {
+    .footer-inner {
+      grid-template-columns: 1.5fr 1fr 1fr;
+      text-align: left;
+    }
+  }
   .footer-logo {
-    font-family: 'Fredoka One', cursive; font-size: 1.6rem;
-    color: var(--orange); display: block; margin-bottom: 14px;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.9rem; color: var(--orange);
+    display: block; margin-bottom: 10px;
+  }
+  .footer-tagline {
+    font-size: 0.9rem; font-weight: 600;
+    color: var(--mid); line-height: 1.65;
+  }
+  .footer-col-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem; color: #5C4A3A;
+    margin-bottom: 14px;
   }
   .footer-links {
-    display: flex; gap: 20px; justify-content: center;
-    flex-wrap: wrap; margin-bottom: 16px;
+    display: flex; flex-direction: column;
+    gap: 9px; align-items: center;
   }
+  @media (min-width: 820px) { .footer-links { align-items: flex-start; } }
   .footer-links a {
     color: var(--mid); text-decoration: none;
     font-weight: 700; font-size: 0.88rem;
     transition: color 0.2s;
   }
   .footer-links a:hover { color: var(--orange); }
-  footer p { font-size: 0.88rem; line-height: 1.9; font-weight: 600; }
+  .footer-contact-item {
+    font-size: 0.88rem; font-weight: 600;
+    color: var(--mid); line-height: 1.7;
+  }
+  .footer-contact-item a {
+    color: var(--mid); text-decoration: none;
+    font-weight: 700; transition: color 0.2s;
+  }
+  .footer-contact-item a:hover { color: var(--orange); }
+  .footer-bottom {
+    border-top: 2px solid rgba(0,0,0,0.1);
+    padding: 24px 0 32px;
+    text-align: center;
+  }
+  .footer-trust {
+    font-size: 0.88rem; font-weight: 700;
+    color: #5C4A3A; margin-bottom: 6px;
+  }
+  .footer-copy {
+    font-size: 0.82rem; font-weight: 600; color: var(--mid);
+  }
 </style>
 </head>
 <body>
@@ -913,18 +1031,109 @@
   </div>
 </section>
 
-<!-- ── 8. FOOTER ─────────────────────────────────────────────────── -->
-<footer>
-  <span class="footer-logo">SpeakUp App</span>
-  <div class="footer-links">
-    <a href="#family">Characters</a>
-    <a href="#how">How It Works</a>
-    <a href="#screenshots">App</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#about">About</a>
+<!-- ── 8. FAQ ──────────────────────────────────────────────────────── -->
+<section id="faq">
+  <div class="t-center reveal">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-sub">Quick answers for parents.</p>
   </div>
-  <p>© 2025 SpeakUp App. Made with ❤️ in Kerala, India.</p>
-  <p>English Learning for Kids</p>
+  <ul class="faq-list">
+    <li class="faq-item reveal">
+      <div class="faq-question">
+        What age is Speak Up for?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Speak Up is designed for children aged 5–10 years.</p>
+      </div>
+    </li>
+    <li class="faq-item reveal">
+      <div class="faq-question">
+        Can my child try it before subscribing?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Yes. You can explore Speak Up with a free trial before choosing a plan.</p>
+      </div>
+    </li>
+    <li class="faq-item reveal">
+      <div class="faq-question">
+        Does it work offline?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Yes. Many lessons can be used without an internet connection after they are loaded.</p>
+      </div>
+    </li>
+    <li class="faq-item reveal">
+      <div class="faq-question">
+        Are there advertisements?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>No. Speak Up offers a safe and distraction-free learning experience with no ads.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- ── 9. FINAL CTA ──────────────────────────────────────────────── -->
+<section id="cta-final">
+  <div class="reveal">
+    <h2 class="section-title">Ready to Start Your Child's English Journey?</h2>
+    <p class="cta-text">Fun lessons, friendly characters, and interactive activities designed to help children learn English with confidence.</p>
+    <p class="cta-text">Give your child a learning experience they will enjoy every day.</p>
+    <div class="cta-buttons">
+      <button class="btn-primary" type="button" data-install-button>Start Free Trial</button>
+      <a href="#pricing" class="btn-secondary">View Plans</a>
+    </div>
+    <div class="trust-badges">
+      <span class="trust-badge"><span class="trust-badge-check">✓</span>Child-Friendly</span>
+      <span class="trust-badge"><span class="trust-badge-check">✓</span>No Advertisements</span>
+      <span class="trust-badge"><span class="trust-badge-check">✓</span>Works Offline</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── 10. FOOTER ────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+
+    <!-- Brand -->
+    <div>
+      <span class="footer-logo">Speak Up</span>
+      <p class="footer-tagline">Fun, interactive English learning for children aged 5–10.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <p class="footer-col-title">Quick Links</p>
+      <div class="footer-links" role="list">
+        <a href="#" role="listitem">Home</a>
+        <a href="#pricing" role="listitem">Pricing</a>
+        <a href="#pricing" role="listitem">Free Trial</a>
+        <a href="#" role="listitem">Privacy Policy</a>
+        <a href="#" role="listitem">Terms of Use</a>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div>
+      <p class="footer-col-title">Contact</p>
+      <p class="footer-contact-item">
+        <a href="mailto:support@speakupenglish.com">support@speakupenglish.com</a>
+      </p>
+      <p class="footer-contact-item">
+        <a href="https://www.youtube.com/@RameshvoiceEasyEnglish" target="_blank" rel="noopener">Rameshvoice Easy English</a><br>on YouTube
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p class="footer-trust">Created by Ramesh, English Trainer &amp; Voice Artist</p>
+    <p class="footer-copy">© 2026 Speak Up. All rights reserved.</p>
+  </div>
 </footer>
 
 <!-- ── PWA + INTERACTION SCRIPTS ─────────────────────────────────── -->
@@ -1043,6 +1252,14 @@
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
     });
   });
 </script>
