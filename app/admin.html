@@ -49,8 +49,8 @@
       padding: 16px 28px;
       background: rgba(255,252,248,.92);
       border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
+      position: fixed;
+      top: 0; left: 0; right: 0;
       z-index: 20;
       backdrop-filter: blur(20px);
       box-shadow: 0 4px 20px rgba(88,72,61,.07);
@@ -112,7 +112,7 @@
     main {
       width: min(1320px, 100%);
       margin: 0 auto;
-      padding: 28px 24px 48px;
+      padding: 92px 24px 48px;
     }
 
     button, input, select, textarea { font: inherit; }
@@ -675,7 +675,7 @@
     /* ── Access Controls ────────────────────────────────────── */
     .access-section-label { font-size: 11px; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 
-    .duration-picker { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+    .duration-picker { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
 
     .duration-btn {
       padding: 10px 8px;
@@ -884,7 +884,7 @@
     /* ── Responsive ─────────────────────────────────────────── */
     @media (max-width: 960px) {
       header { align-items: flex-start; flex-direction: column; }
-      main   { padding: 16px; }
+      main   { padding: 152px 16px 40px; }
       .grid, .details { grid-template-columns: 1fr; }
       .grid > aside   { position: static; }
       .stats-bar      { grid-template-columns: repeat(2,1fr); }
@@ -918,6 +918,64 @@
       75%  { transform: translate(3%,    -2%   ) scale(1.03); }
       100% { transform: translate(-2%,    1.5% ) scale(.99 ); }
     }
+
+    /* ── Expandable Hero Cards ──────────────────────────────── */
+    .pv-expandable { cursor: pointer; user-select: none; transition: border-color .15s; }
+    .pv-expandable:hover { border-color: #fdba74; }
+    .pv-expandable.open  { border-color: var(--brand); }
+
+    .pv-hero-summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .pv-expand-icon {
+      font-size: 20px;
+      color: var(--muted);
+      transition: transform .25s cubic-bezier(.22,1,.36,1);
+      flex-shrink: 0;
+      margin-top: 8px;
+      line-height: 1;
+    }
+
+    .pv-expandable.open .pv-expand-icon { transform: rotate(90deg); color: var(--brand); }
+
+    .pv-hero-details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .38s cubic-bezier(.22,1,.36,1), opacity .22s;
+      opacity: 0;
+    }
+
+    .pv-expandable.open .pv-hero-details { max-height: 400px; opacity: 1; }
+
+    .pv-detail-list {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 6px;
+      overflow-y: auto;
+      max-height: 300px;
+    }
+
+    .pv-detail-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(0,0,0,.03);
+    }
+
+    .pv-detail-name  { font-weight: 600; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .pv-detail-value { font-weight: 700; flex-shrink: 0; }
+    .pv-detail-meta  { color: var(--muted); font-size: 12px; flex-shrink: 0; }
+    .pv-detail-empty { color: var(--muted); font-size: 13px; padding: 12px; text-align: center; margin: 4px 0 0; }
 
     /* ── Skeleton Shimmer ───────────────────────────────────── */
     @keyframes shimmer {
@@ -1139,8 +1197,13 @@
                     <div class="duration-picker">
                       <button type="button" class="duration-btn secondary" data-duration="30">1 Month</button>
                       <button type="button" class="duration-btn secondary" data-duration="90">3 Months</button>
-                      <button type="button" class="duration-btn secondary" data-duration="365">1 Year</button>
-                      <button type="button" class="duration-btn secondary" data-duration="permanent">Permanent</button>
+                      <button type="button" class="duration-btn secondary" data-duration="custom">Custom Date</button>
+                    </div>
+                    <div id="customDurationPicker" class="hidden" style="margin-top:10px">
+                      <label>
+                        Pick an expiry date
+                        <input id="customExpiry" type="date">
+                      </label>
                     </div>
                   </div>
 
@@ -1166,19 +1229,6 @@
 
                   <button type="button" id="giveAccessBtn">Give Access</button>
                 </div><!-- end grant-access-box -->
-
-                <details>
-                  <summary>Advanced — set a specific date</summary>
-                  <div class="details" style="margin-top:12px">
-                    <label>
-                      Custom expiry date
-                      <input id="customExpiry" type="date">
-                    </label>
-                    <div class="row" style="align-items:end">
-                      <button type="button" data-action="setExpiry">Set this date</button>
-                    </div>
-                  </div>
-                </details>
 
                 <div class="remove-access-row">
                   <button type="button" id="removeAccessBtn" class="danger">Remove Access</button>
@@ -1232,32 +1282,44 @@
       <!-- ════════════════ PARENT VIEW ════════════════ -->
       <div id="parentView" class="stack hidden">
 
-        <!-- Hero Stats -->
+        <!-- Hero Stats (tap to expand) -->
         <div class="pv-hero">
-          <div class="pv-hero-card panel" data-icon="💰">
-            <div class="pv-hero-label">This Month's Revenue</div>
-            <div class="pv-hero-number green" id="pvMonthRevenue">—</div>
-            <div class="pv-hero-sub" id="pvMonthSub">loading payments…</div>
+          <div class="pv-hero-card pv-expandable panel" data-icon="💰" data-expand="revenue" tabindex="0" role="button" aria-expanded="false">
+            <div class="pv-hero-summary">
+              <div>
+                <div class="pv-hero-label">This Month's Revenue</div>
+                <div class="pv-hero-number green" id="pvMonthRevenue">—</div>
+                <div class="pv-hero-sub" id="pvMonthSub">tap to see payments</div>
+              </div>
+              <span class="pv-expand-icon" aria-hidden="true">›</span>
+            </div>
+            <div class="pv-hero-details" id="pvDetails-revenue"></div>
           </div>
-          <div class="pv-hero-card panel" data-icon="✓">
-            <div class="pv-hero-label">Active Subscribers</div>
-            <div class="pv-hero-number blue" id="pvFullAccess">—</div>
-            <div class="pv-hero-sub">with full access right now</div>
+
+          <div class="pv-hero-card pv-expandable panel" data-icon="✓" data-expand="subscribers" tabindex="0" role="button" aria-expanded="false">
+            <div class="pv-hero-summary">
+              <div>
+                <div class="pv-hero-label">Active Subscribers</div>
+                <div class="pv-hero-number blue" id="pvFullAccess">—</div>
+                <div class="pv-hero-sub">tap to see who's active</div>
+              </div>
+              <span class="pv-expand-icon" aria-hidden="true">›</span>
+            </div>
+            <div class="pv-hero-details" id="pvDetails-subscribers"></div>
           </div>
-          <div class="pv-hero-card panel" data-icon="⚠">
-            <div class="pv-hero-label">Needs Attention</div>
-            <div class="pv-hero-number warn" id="pvNeedAttention">—</div>
-            <div class="pv-hero-sub">expiring or expired soon</div>
+
+          <div class="pv-hero-card pv-expandable panel" data-icon="⚠" data-expand="attention" tabindex="0" role="button" aria-expanded="false">
+            <div class="pv-hero-summary">
+              <div>
+                <div class="pv-hero-label">Needs Attention</div>
+                <div class="pv-hero-number warn" id="pvNeedAttention">—</div>
+                <div class="pv-hero-sub">tap to see who needs help</div>
+              </div>
+              <span class="pv-expand-icon" aria-hidden="true">›</span>
+            </div>
+            <div class="pv-hero-details" id="pvDetails-attention"></div>
           </div>
         </div>
-
-        <!-- Needs Attention -->
-        <section class="panel stack">
-          <h2>Needs Attention</h2>
-          <div id="pvAttentionItems">
-            <p class="empty-state">Loading users…</p>
-          </div>
-        </section>
 
         <!-- All Users Table -->
         <section class="panel stack">

@@ -1153,9 +1153,11 @@ document.querySelectorAll(".duration-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     selectedDuration = btn.dataset.duration;
     document.querySelectorAll(".duration-btn").forEach(b => b.classList.toggle("selected", b === btn));
-    const labels   = { "30": "1 Month", "90": "3 Months", "365": "1 Year", "permanent": "Permanent" };
-    const giveBtn  = document.getElementById("giveAccessBtn");
+    const labels  = { "30": "1 Month", "90": "3 Months", "custom": "Custom Date" };
+    const giveBtn = document.getElementById("giveAccessBtn");
     if (giveBtn) giveBtn.textContent = `Give ${labels[selectedDuration] || ""} Access`;
+    // Show inline date picker only for custom
+    document.getElementById("customDurationPicker")?.classList.toggle("hidden", selectedDuration !== "custom");
   });
 });
 
@@ -1165,8 +1167,13 @@ document.getElementById("giveAccessBtn")?.addEventListener("click", () => {
   if (!selectedDuration) { setStatus(els.accessStatus, "Choose a duration above.", "error"); return; }
   const reason = els.accessReasonSelect?.value;
   if (!reason) { setStatus(els.accessStatus, "Choose a reason for giving access.", "error"); return; }
-  const actionMap = { "30": "extend30", "90": "extend90", "365": "extend365", "permanent": "grant" };
-  updateAccess(actionMap[selectedDuration] || "grant", reason);
+  if (selectedDuration === "custom") {
+    if (!els.customExpiry?.value) { setStatus(els.accessStatus, "Pick a custom expiry date first.", "error"); return; }
+    updateAccess("setExpiry", reason);
+  } else {
+    const actionMap = { "30": "extend30", "90": "extend90" };
+    updateAccess(actionMap[selectedDuration] || "extend30", reason);
+  }
 });
 
 // Remove access — show confirm panel
@@ -1300,29 +1307,86 @@ function renderParentView(users, payments) {
     pvNeed.className = "pv-hero-number " + (needAttentionSet.size > 0 ? "warn" : "green");
   }
 
-  renderPvAttention(alerts);
-  renderPvTable(users);
-  setStatus(document.getElementById("pvStatus"), `${users.length} users loaded`, "success");
-}
+  // ── Populate expandable card details ────────────────────────
+  const fmt = n => new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(n);
 
-function renderPvAttention(alerts) {
-  const container = document.getElementById("pvAttentionItems");
-  if (!container) return;
-
-  if (!alerts.length) {
-    container.innerHTML = `<p class="empty-state">All clear — no users need immediate attention.</p>`;
-    return;
+  // Revenue card: this month's payments list
+  const revEl = document.getElementById("pvDetails-revenue");
+  if (revEl) {
+    if (!thisMonthCaptures.length) {
+      revEl.innerHTML = `<p class="pv-detail-empty">No payments received this month yet.</p>`;
+    } else {
+      revEl.innerHTML = `<div class="pv-detail-list">${
+        thisMonthCaptures.map(p => {
+          const date = p.verifiedAt ? new Date(p.verifiedAt).toLocaleDateString("en-IN", { day:"numeric", month:"short" }) : "—";
+          return `<div class="pv-detail-item">
+            <span class="pv-detail-name">${escapeHtml(p.email || "Unknown")}</span>
+            <span class="pv-detail-value">${escapeHtml(fmt((Number(p.amount)||0)/100))}</span>
+            <span class="pv-detail-meta">${escapeHtml(date)}</span>
+          </div>`;
+        }).join("")
+      }</div>`;
+    }
   }
 
-  container.innerHTML = alerts.map(alert => `
-    <div class="pv-attention-item ${alert.type}">
-      <span style="font-size:20px;line-height:1">${alert.icon}</span>
-      <div style="flex:1;min-width:0">
-        <div style="font-weight:700;font-size:14px">${escapeHtml(alert.title)}</div>
-        <div style="color:var(--muted);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(alert.preview)}</div>
-      </div>
-    </div>
-  `).join("");
+  // Active subscribers card: list sorted by soonest expiry
+  const activeUsers = users.filter(u => {
+    const licExp = u.licenseExpiresAt ? new Date(u.licenseExpiresAt).getTime() : null;
+    return licExp && licExp > now;
+  }).sort((a, b) => new Date(a.licenseExpiresAt) - new Date(b.licenseExpiresAt));
+
+  const subEl = document.getElementById("pvDetails-subscribers");
+  if (subEl) {
+    if (!activeUsers.length) {
+      subEl.innerHTML = `<p class="pv-detail-empty">No active subscribers found.</p>`;
+    } else {
+      subEl.innerHTML = `<div class="pv-detail-list">${
+        activeUsers.map(u => {
+          const days = Math.round((new Date(u.licenseExpiresAt).getTime() - now) / 86400000);
+          const expiryText = days > 364 ? "Permanent" : `${days}d left`;
+          return `<div class="pv-detail-item">
+            <span class="pv-detail-name">${escapeHtml(u.username || u.email || "Unknown")}</span>
+            <span class="pv-detail-meta">${escapeHtml(expiryText)}</span>
+          </div>`;
+        }).join("")
+      }</div>`;
+    }
+  }
+
+  // Needs Attention card: grouped alert items
+  const attEl = document.getElementById("pvDetails-attention");
+  if (attEl) {
+    if (!alerts.length) {
+      attEl.innerHTML = `<p class="pv-detail-empty">All clear — no issues found.</p>`;
+    } else {
+      attEl.innerHTML = `<div class="pv-detail-list">${
+        alerts.flatMap(alert =>
+          alert.users.map(u => `<div class="pv-detail-item">
+            <span style="font-size:15px;flex-shrink:0">${alert.icon}</span>
+            <span class="pv-detail-name">${escapeHtml(u.username || u.email || "Unknown")}</span>
+            <span class="pv-detail-meta" style="color:${alert.type==="danger"?"var(--danger)":alert.type==="warn"?"var(--warn)":"#0369a1"}">${escapeHtml(alert.type === "danger" ? "Expired" : alert.type === "warn" ? "Expiring" : "Inactive")}</span>
+          </div>`)
+        ).join("")
+      }</div>`;
+    }
+  }
+
+  // Wire up expand/collapse on hero cards
+  document.querySelectorAll(".pv-expandable").forEach(card => {
+    // Remove any existing listener to avoid duplicates on refresh
+    const newCard = card.cloneNode(true);
+    card.parentNode.replaceChild(newCard, card);
+    newCard.addEventListener("click", () => {
+      const isOpen = newCard.classList.toggle("open");
+      newCard.setAttribute("aria-expanded", String(isOpen));
+    });
+    newCard.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); newCard.click(); }
+    });
+  });
+
+  renderPvTable(users);
+  setStatus(document.getElementById("pvStatus"), `${users.length} users loaded`, "success");
 }
 
 function renderPvTable(users) {
