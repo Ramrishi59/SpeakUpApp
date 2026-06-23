@@ -764,6 +764,13 @@
       "title": "Tap the Right One -29"
     },
     {
+      "thumbnail": "Images/dashboard thumbnails/Manku.webp",
+      "description": "activity",
+      "route": "choosequiz/quiz3.html?activity=activity30",
+      "id": "activity30",
+      "title": "Tap the Right One -30"
+    },
+    {
       "category": "order",
       "description": "activity",
       "title": "Mix and Fix-19",
@@ -809,6 +816,14 @@
       "title": "Mix and Fix-24",
       "route": "order-activity/order.html?activity=activity24",
       "id": "order-activity24",
+      "thumbnail": "Images/dashboard thumbnails/Reena.webp"
+    },
+    {
+      "category": "order",
+      "description": "activity",
+      "title": "Mix and Fix-25",
+      "route": "order-activity/order.html?activity=activity25",
+      "id": "order-activity25",
       "thumbnail": "Images/dashboard thumbnails/Reena.webp"
     },
     {

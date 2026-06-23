@@ -1,0 +1,92 @@
+{
+  "intro": {
+    "image": "Images/activity25/intro.webp",
+    "audio": "Audio/activity25/01_intro.mp3",
+    "alt": "Manku introducing activity 25"
+  },
+  "outro": {
+    "audio": "Audio/activity25/99_outro.mp3"
+  },
+  "items": [
+    {
+      "question": "Make the sentence.",
+      "words": ["It's", "not", "an", "apple."],
+      "audioSentence": "Audio/25/1_Chapter_1.mp3",
+      "audioQuestion": "Audio/activity25/q1.mp3",
+      "audioCorrect": "Audio/activity25/c1.mp3",
+      "audioWrong": "Audio/activity25/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Those", "are", "not", "lions."],
+      "audioSentence": "Audio/25/2_Chapter_1.mp3",
+      "audioQuestion": "Audio/activity25/q2.mp3",
+      "audioCorrect": "Audio/activity25/c2.mp3",
+      "audioWrong": "Audio/activity25/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["There", "aren't", "any", "flowers."],
+      "audioSentence": "Audio/25/3_Chapter_1.mp3",
+      "audioQuestion": "Audio/activity25/q3.mp3",
+      "audioCorrect": "Audio/activity25/c3.mp3",
+      "audioWrong": "Audio/activity25/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Are", "there", "any", "bags?"],
+      "audioSentence": "Audio/25/4_Chapter_1.mp3",
+      "audioQuestion": "Audio/activity25/q4.mp3",
+      "audioCorrect": "Audio/activity25/c4.mp3",
+      "audioWrong": "Audio/activity25/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["I", "can't", "sing", "a", "song."],
+      "audioSentence": "Audio/25/5_Chapter_1.mp3",
+      "audioQuestion": "Audio/activity25/q5.mp3",
+      "audioCorrect": "Audio/activity25/c5.mp3",
+      "audioWrong": "Audio/activity25/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["They", "are", "playing", "cricket."],
+      "audioSentence": "Audio/25/6_Chapter_1.mp3",
+      "audioQuestion": "Audio/activity25/q6.mp3",
+      "audioCorrect": "Audio/activity25/c6.mp3",
+      "audioWrong": "Audio/activity25/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["What", "are", "they", "drinking?"],
+      "audioSentence": "Audio/25/7_Chapter_1.mp3",
+      "audioQuestion": "Audio/activity25/q7.mp3",
+      "audioCorrect": "Audio/activity25/c7.mp3",
+      "audioWrong": "Audio/activity25/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["We", "are", "not", "in", "the", "kitchen."],
+      "audioSentence": "Audio/25/8_Chapter_1.mp3",
+      "audioQuestion": "Audio/activity25/q8.mp3",
+      "audioCorrect": "Audio/activity25/c8.mp3",
+      "audioWrong": "Audio/activity25/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Dad", "is", "cooking", "dinner."],
+      "audioSentence": "Audio/25/9_Chapter_1.mp3",
+      "audioQuestion": "Audio/activity25/q9.mp3",
+      "audioCorrect": "Audio/activity25/c9.mp3",
+      "audioWrong": "Audio/activity25/wrong.mp3"
+    },
+    {
+      "question": "Make the sentence.",
+      "words": ["Is", "she", "riding", "a", "horse?"],
+      "audioSentence": "Audio/25/10_Chapter_1.mp3",
+      "audioQuestion": "Audio/activity25/q10.mp3",
+      "audioCorrect": "Audio/activity25/c10.mp3",
+      "audioWrong": "Audio/activity25/wrong.mp3"
+    }
+  ]
+}

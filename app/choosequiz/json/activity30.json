@@ -1,0 +1,130 @@
+{
+  "intro": {
+    "image": "Images/activity30/1.webp",
+    "audio": null,
+    "alt": "Manku introduces the grammar choose-the-correct-option activity"
+  },
+
+  "items": [
+    {
+      "image": "Images/activity30/1.webp",
+      "choices": [
+        "It's a apple.",
+        "It are an apple.",
+        "It's an apple."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": null,
+      "audioCorrect": "Audio/activity30/1_Chapter_1.mp3",
+      "audioWrong": null
+    },
+    {
+      "image": "Images/activity30/2.webp",
+      "choices": [
+        "That is butterflies",
+        "They are butterflies.",
+        "They are butterfly."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": null,
+      "audioCorrect": "Audio/activity30/2_Chapter_1.mp3",
+      "audioWrong": null
+    },
+    {
+      "image": "Images/activity30/3.webp",
+      "choices": [
+        "Are these carrots?",
+        "Are these carrot?",
+        "Are this carrot?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": null,
+      "audioCorrect": "Audio/activity30/3_Chapter_1.mp3",
+      "audioWrong": null
+    },
+    {
+      "image": "Images/activity30/4.webp",
+      "choices": [
+        "This watch is mine",
+        "These watch is mine",
+        "This watches mine"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": null,
+      "audioCorrect": "Audio/activity30/4_Chapter_1.mp3",
+      "audioWrong": null
+    },
+    {
+      "image": "Images/activity30/5.webp",
+      "choices": [
+        "Is there a car?",
+        "Are there a car?",
+        "Are there any car?"
+      ],
+      "correctIndex": 0,
+      "audioQuestion": null,
+      "audioCorrect": "Audio/activity30/5_Chapter_1.mp3",
+      "audioWrong": null
+    },
+    {
+      "image": "Images/activity30/6.webp",
+      "choices": [
+        "There are three cabbage.",
+        "There are three cabbages.",
+        "There is three cabbages."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": null,
+      "audioCorrect": "Audio/activity30/6_Chapter_1.mp3",
+      "audioWrong": null
+    },
+    {
+      "image": "Images/activity30/7.webp",
+      "choices": [
+        "He is sleeping.",
+        "He is singing.",
+        "He is jumping."
+      ],
+      "correctIndex": 2,
+      "audioQuestion": null,
+      "audioCorrect": "Audio/activity30/7_Chapter_1.mp3",
+      "audioWrong": null
+    },
+    {
+      "image": "Images/activity30/8.webp",
+      "choices": [
+        "It December.",
+        "It's December.",
+        "It's April."
+      ],
+      "correctIndex": 1,
+      "audioQuestion": null,
+      "audioCorrect": "Audio/activity30/8_Chapter_1.mp3",
+      "audioWrong": null
+    },
+    {
+      "image": "Images/activity30/9.webp",
+      "choices": [
+        "Whose bags is these?",
+        "Whose bags are this?",
+        "Whose bags are these?"
+      ],
+      "correctIndex": 2,
+      "audioQuestion": null,
+      "audioCorrect": "Audio/activity30/9_Chapter_1.mp3",
+      "audioWrong": null
+    },
+    {
+      "image": "Images/activity30/10.webp",
+      "choices": [
+        "What is it time?",
+        "What time is it?",
+        "What it is time?"
+      ],
+      "correctIndex": 1,
+      "audioQuestion": null,
+      "audioCorrect": "Audio/activity30/10_Chapter_1.mp3",
+      "audioWrong": null
+    }
+  ]
+}
