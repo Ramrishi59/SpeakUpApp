@@ -532,29 +532,6 @@ function isEntitled() {
   return !!licenseState.fullUnlock;
 }
 
-// Optional admin helper methods for now.
-// Keep them here only if you still need your old script.js not to break.
-async function mockGrantFullUnlock() {
-  if (!auth.currentUser) return;
-  const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
-  await updateDoc(doc(db, "users", auth.currentUser.uid), {
-    fullUnlock: true,
-    licenseExpiresAt: expiresAt
-  });
-  await loadUserProfile(auth.currentUser.uid);
-}
-
-async function mockRevokeUnlock() {
-  if (!auth.currentUser) return;
-  await updateDoc(doc(db, "users", auth.currentUser.uid), {
-    fullUnlock: false,
-    unlockedUnits: [],
-    licenseExpiresAt: null,
-    trialExpiresAt: null
-  });
-  await loadUserProfile(auth.currentUser.uid);
-}
-
 window.SUAuth = {
   ready,
   loginWithEmail,
@@ -571,7 +548,5 @@ window.SUAuth = {
   getLicense,
   getProfile,
   getDebugState,
-  isEntitled,
-  mockGrantFullUnlock,
-  mockRevokeUnlock
+  isEntitled
 };

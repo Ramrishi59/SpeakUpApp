@@ -597,28 +597,10 @@ function updateAccountNavLabel() {
 
 function updateAdminNavLabel() {
   const auth = getLoginState();
-  const adminNavButton = document.querySelector('.bottom-nav .nav-button[data-nav-target="admin"], .bottom-nav .nav-button[data-nav-target="voice-mode"]');
+  const adminNavButton = document.querySelector('.bottom-nav .nav-button[data-nav-target="admin"]');
   if (!adminNavButton) return;
 
-  const labelNode = adminNavButton.querySelector('span');
-  const iconNode = adminNavButton.querySelector('img');
-
-  if (auth.isAdmin === true) {
-    adminNavButton.dataset.navTarget = 'admin';
-    if (labelNode) labelNode.textContent = 'Admin';
-    if (iconNode) {
-      iconNode.src = 'Images/dashboard thumbnails/Manku.webp';
-      iconNode.alt = 'Admin';
-    }
-    return;
-  }
-
-  adminNavButton.dataset.navTarget = 'voice-mode';
-  if (labelNode) labelNode.textContent = 'Voice Mode';
-  if (iconNode) {
-    iconNode.src = 'Images/dashboard thumbnails/mic.webp';
-    iconNode.alt = 'Voice Mode';
-  }
+  adminNavButton.hidden = auth.isAdmin !== true;
 }
 
 function showDashboardScreen() {
@@ -1227,9 +1209,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const searchIcon = document.querySelector('.search-icon');
   const refreshButton = document.querySelector('.refresh-button');
   const mainContent = document.querySelector('.main-content');
-  const voiceModeMenu = document.getElementById('voiceModeMenu');
-  const closeVoiceModeMenuButton = document.getElementById('closeVoiceModeMenu');
-
   await Promise.all([loadDashboardLessons(), loadRecommendedAfterData()]);
   console.log('E: dashboardLessons after load =', dashboardLessons);
 
@@ -1245,30 +1224,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const navButtons = document.querySelectorAll('.bottom-nav .nav-button');
 
-  function openVoiceModeMenu() {
-    if (!voiceModeMenu) return;
-    voiceModeMenu.classList.remove('hidden');
-    closeVoiceModeMenuButton?.focus();
-  }
-
-  function closeVoiceModeMenu() {
-    if (!voiceModeMenu) return;
-    voiceModeMenu.classList.add('hidden');
-  }
-
-  closeVoiceModeMenuButton?.addEventListener('click', closeVoiceModeMenu);
-  voiceModeMenu?.addEventListener('click', (event) => {
-    if (event.target === voiceModeMenu) {
-      closeVoiceModeMenu();
-    }
-  });
-
-  window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && voiceModeMenu && !voiceModeMenu.classList.contains('hidden')) {
-      closeVoiceModeMenu();
-    }
-  });
-  
   // -------------------------------
 // Load dashboard lessons from manifest.json
 // -------------------------------
@@ -1705,8 +1660,6 @@ async function loadDashboardLessons() {
           openAccountScreen();
         } else if (target === 'admin') {
           window.location.href = 'admin.html';
-        } else if (target === 'voice-mode') {
-          openVoiceModeMenu();
         } else {
           alert(`The "${target.charAt(0).toUpperCase() + target.slice(1)}" section is not yet implemented.`);
         }
