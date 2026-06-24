@@ -13,6 +13,10 @@
     --mint: #43c59e;
     --sky: #7bc8ff;
 }
+/* Reinforce the HTML hidden attribute — author display rules (e.g. display:flex on
+   .nav-button) would otherwise override the UA stylesheet's [hidden]{display:none}. */
+[hidden] { display: none !important; }
+
 body {
     font-family: 'Fredoka', 'Arial', sans-serif;
     font-weight: 500;
