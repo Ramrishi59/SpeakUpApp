@@ -1609,6 +1609,18 @@ body {
     color: #8A3B22;
 }
 
+.category-tile--community {
+    background: #EDE7FF;
+    color: #3D2080;
+    border: 1.5px solid #C9B8F5;
+    box-shadow: 0 6px 14px rgba(61, 32, 128, 0.12);
+}
+
+.category-tile--community .category-tile-count {
+    background: #D5C4F7;
+    color: #3D2080;
+}
+
 .category-tile-name {
     font-size: 20px;
     font-weight: 700;

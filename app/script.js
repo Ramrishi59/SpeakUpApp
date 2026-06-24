@@ -1571,6 +1571,27 @@ async function loadDashboardLessons() {
         renderCurrentView();
       });
     });
+
+    // Parent Community card — appended after the loop so the filter click
+    // handler above is not attached to it.
+    const communityCard = document.createElement('button');
+    communityCard.type = 'button';
+    communityCard.className = 'category-tile category-tile--community';
+    communityCard.innerHTML = `
+      <div class="tile-icon-wrap" style="background:#D8CAFF">
+        <span style="font-size:2.2rem;line-height:1" aria-hidden="true">💬</span>
+      </div>
+      <div class="category-tile-body">
+        <span class="category-tile-name">Parent Community</span>
+        <span class="category-tile-sub">Tips, updates and support for parents.</span>
+        <span class="category-tile-count">Coming Soon</span>
+      </div>
+      <span class="category-tile-arrow" aria-hidden="true">&#8250;</span>
+    `;
+    communityCard.addEventListener('click', () => {
+      alert('Parent Community is coming soon!\n\nWe\'ll soon be sharing English tips, app updates and guidance for parents.');
+    });
+    container.appendChild(communityCard);
   }
 
   function renderContinueCard() {
