@@ -12,6 +12,8 @@ import {
 import {
   arrayUnion,
   getFirestore,
+  initializeFirestore,
+  persistentLocalCache,
   doc,
   getDoc,
   setDoc,
@@ -30,7 +32,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
+let db;
+try {
+  db = initializeFirestore(app, { localCache: persistentLocalCache() });
+} catch {
+  // Browser does not support IndexedDB persistence — fall back to in-memory
+  db = getFirestore(app);
+}
 const googleProvider = new GoogleAuthProvider();
 const TRIAL_DURATION_MS = 24 * 60 * 60 * 1000;
 const PRESENCE_HEARTBEAT_MS = 60 * 1000;

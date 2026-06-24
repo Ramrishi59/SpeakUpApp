@@ -500,7 +500,7 @@ function getCardSubLabel(card) {
 async function loadRecommendedAfterData() {
   try {
     const url = new URL('./units/recommended-after.json?v=1', window.location.href);
-    const res = await fetch(url, { cache: 'no-store' });
+    const res = await fetch(url);
     if (!res.ok) throw new Error('Failed to load recommended-after.json');
     recommendedAfterData = await res.json();
   } catch (e) {
@@ -1275,7 +1275,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 async function loadDashboardLessons() {
   try {
     const manifestUrl = new URL('./units/manifest.json?v=9', window.location.href);
-    const res = await fetch(manifestUrl, { cache: 'no-store' });
+    const res = await fetch(manifestUrl);
     if (!res.ok) throw new Error('Failed to load manifest.json');
     const { cards } = await res.json();
 
