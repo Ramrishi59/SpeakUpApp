@@ -348,7 +348,8 @@ async function render(i) {
       };
       els.introVideo.addEventListener('playing', () => setTimeout(tryUnmute, 60), { once:true });
       els.introVideo.onended = async () => {
-        await completeCurrentUnit();
+        const safeguard = new Promise(resolve => setTimeout(resolve, 4000));
+        await Promise.race([completeCurrentUnit(), safeguard]);
         stopAudio();
         stopVideo();
         exitVideoMode();
@@ -398,7 +399,12 @@ function showNext(){
     persistProgress(currentIndex);
   }
   else {
-    completeCurrentUnit().finally(() => {
+    // Race the Firestore write against a timeout so navigation always completes.
+    // With offline persistence, markUnitCompleted returns a pending promise that
+    // never resolves while offline, which would block returning to the dashboard.
+    const done = completeCurrentUnit();
+    const safeguard = new Promise(resolve => setTimeout(resolve, 4000));
+    Promise.race([done, safeguard]).finally(() => {
       location.href = returnUrl;
     });
   }

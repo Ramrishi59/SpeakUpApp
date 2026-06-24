@@ -1357,11 +1357,12 @@ async function loadDashboardLessons() {
       openAccountScreen();
       return;
     }
-    try {
-      await window.SUAuth?.saveProgress?.(id, 0);
-    } catch (error) {
-      console.warn('Could not save initial lesson progress.', error);
-    }
+    // Fire-and-forget: do not await Firestore write before navigating.
+    // With offline persistence, updateDoc returns a pending promise that never
+    // resolves while offline, which would permanently block navigation.
+    window.SUAuth?.saveProgress?.(id, 0)?.catch?.(err =>
+      console.warn('Could not save initial lesson progress.', err)
+    );
     saveLastOpenedLesson(id);
     saveScrollPosition();
     // Use overrides when present, else default resolver

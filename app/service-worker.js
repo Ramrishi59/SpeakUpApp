@@ -128,8 +128,10 @@ async function cacheFirst(request, cacheName) {
  * Falls back to the cached copy when offline. Best for JSON data and HTML
  * where we want fresh content when online.
  *
- * If there is no network and nothing in cache, the returned promise rejects
- * so the calling page receives a normal fetch error it can handle itself.
+ * For page navigations that have no cached entry the function returns a
+ * friendly in-app offline page so the browser never shows "This site can't
+ * be reached". For non-navigation requests (JSON, images, etc.) the promise
+ * rejects so the calling page can handle the error itself.
  */
 async function networkFirst(request, cacheName) {
   try {
@@ -140,11 +142,66 @@ async function networkFirst(request, cacheName) {
     }
     return response;
   } catch {
+    // Exact URL match (includes query string)
     const cached = await caches.match(request);
     if (cached) return cached;
-    // Nothing cached and no network — let the error surface to the page.
+
+    if (request.mode === 'navigate') {
+      // Query-string-ignoring match: Trial.html?unitId=unit3 is served by the
+      // cached Trial.html?unitId=unit1. Trial.js reads unitId from
+      // location.search (the real browser URL), tries to load unit3.json,
+      // fails, and shows showOfflineUnavailable() — the correct in-app message.
+      const fuzzy = await caches.match(request, { ignoreSearch: true });
+      if (fuzzy) return fuzzy;
+
+      // Nothing cached at all — return a self-contained offline page so the
+      // browser never shows its native network-error screen.
+      return offlineNavigationResponse();
+    }
+
+    // Non-navigation (JSON, etc.) — surface the error to the page.
     throw new Error(`offline-not-cached:${request.url}`);
   }
+}
+
+function offlineNavigationResponse() {
+  const dashboardUrl = `${self.registration.scope}dashboard.html`;
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Not Available Offline – Speak Up</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;font-family:Fredoka,Nunito,system-ui,sans-serif;
+       background:#fff7ed;min-height:100svh;display:grid;
+       place-items:center;padding:24px;text-align:center;color:#312015}
+  .card{width:min(420px,100%);background:#fff;border:2px solid #f4c18f;
+        border-radius:18px;padding:32px 28px;
+        box-shadow:0 16px 40px rgba(92,52,18,.14)}
+  .icon{font-size:3rem;margin-bottom:16px}
+  h1{margin:0 0 12px;font-size:clamp(22px,6vw,32px);color:#5c4a3a}
+  p{margin:0 0 28px;font-size:1.05rem;line-height:1.6;color:#5a4a38}
+  a{display:inline-flex;align-items:center;justify-content:center;
+    min-height:48px;padding:0 28px;border-radius:999px;
+    background:#ff7a59;color:#fff;text-decoration:none;
+    font-size:1rem;font-weight:700;box-shadow:0 4px 0 #c94e1c}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">&#x1F4F6;</div>
+    <h1>Not available offline</h1>
+    <p>Open this lesson once while connected to the internet. After that, it will work without a connection.</p>
+    <a href="${dashboardUrl}">Back to Lessons</a>
+  </div>
+</body>
+</html>`;
+  return new Response(html, {
+    status: 200,
+    headers: { 'Content-Type': 'text/html; charset=utf-8' },
+  });
 }
 
 self.addEventListener('message', event => {
