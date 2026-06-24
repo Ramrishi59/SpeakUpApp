@@ -263,7 +263,11 @@ onAuthStateChanged(auth, async (user) => {
       isLoggedIn: true,
       email: user.email || null,
       uid: user.uid,
-      isAdmin: await readAdminClaim(user, true)
+      // Use cached token claim here — no force-refresh. The token is already
+      // current; forceRefresh is only needed at explicit login/signup where it
+      // is already applied. Force-refreshing on every page load adds a network
+      // round-trip that blocks dashboard rendering.
+      isAdmin: await readAdminClaim(user)
     };
     try {
       await loadUserProfileWithRetry(user.uid);

@@ -86,11 +86,13 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // ── Same-origin app shell (HTML, CSS, JS) — network-first ─────────────────
-  // Ensures deployed updates are picked up immediately when online,
-  // while offline users can still load pages they have visited before.
+  // ── Same-origin app shell (HTML, CSS, JS) — stale-while-revalidate ─────────
+  // Serves from cache immediately so repeat visits paint fast, while always
+  // fetching a fresh copy in the background to keep the cache current.
+  // Falls back to the cached copy if offline; shows the offline page for
+  // navigation requests that have never been cached.
   if (url.origin === self.location.origin) {
-    event.respondWith(networkFirst(req, CACHE_SHELL));
+    event.respondWith(staleWhileRevalidate(req, CACHE_SHELL));
     return;
   }
 
@@ -162,6 +164,48 @@ async function networkFirst(request, cacheName) {
     // Non-navigation (JSON, etc.) — surface the error to the page.
     throw new Error(`offline-not-cached:${request.url}`);
   }
+}
+
+/**
+ * Stale-while-revalidate: return a cached copy immediately (fast repeat
+ * visits) and always fetch a fresh copy in the background so the cache
+ * stays current. Best for app shell files (HTML, CSS, JS) where we want
+ * instant loads AND background updates.
+ *
+ * First visit (nothing cached): waits for the network like networkFirst.
+ * Offline with cache: returns the cached copy; background fetch is a no-op.
+ * Offline with no cache: returns the offline page for navigations, throws
+ * for sub-resources (so the page can handle it).
+ */
+async function staleWhileRevalidate(request, cacheName) {
+  const cache = await caches.open(cacheName);
+  const cached = await cache.match(request);
+
+  // Always kick off a background revalidation — never awaited when cache hit.
+  const revalidate = fetch(request)
+    .then(response => {
+      if (response.ok) cache.put(request, response.clone());
+      return response;
+    })
+    .catch(() => null); // network failure during background update is silent
+
+  if (cached) {
+    // Serve the stale copy right away; cache update happens in background.
+    return cached;
+  }
+
+  // No cached copy (first visit) — must wait for the network.
+  const fresh = await revalidate;
+  if (fresh) return fresh;
+
+  // No cache and no network — show offline page for navigations, throw for
+  // sub-resources (scripts, CSS) so the browser handles missing assets.
+  if (request.mode === 'navigate') {
+    const fuzzy = await caches.match(request, { ignoreSearch: true });
+    if (fuzzy) return fuzzy;
+    return offlineNavigationResponse();
+  }
+  throw new Error(`offline-not-cached:${request.url}`);
 }
 
 function offlineNavigationResponse() {
