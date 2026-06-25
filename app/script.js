@@ -1584,12 +1584,12 @@ async function loadDashboardLessons() {
       <div class="category-tile-body">
         <span class="category-tile-name">Parent Community</span>
         <span class="category-tile-sub">Tips, updates and support for parents.</span>
-        <span class="category-tile-count">Coming Soon</span>
+        <span class="category-tile-count">Join on WhatsApp</span>
       </div>
       <span class="category-tile-arrow" aria-hidden="true">&#8250;</span>
     `;
     communityCard.addEventListener('click', () => {
-      alert('Parent Community is coming soon!\n\nWe\'ll soon be sharing English tips, app updates and guidance for parents.');
+      window.open('https://wa.me/916282405919?text=Hi%2C%20I%20would%20like%20to%20join%20the%20Speak%20Up%20Parent%20Community.', '_blank', 'noopener,noreferrer');
     });
     container.appendChild(communityCard);
   }
