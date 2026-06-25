@@ -124,7 +124,7 @@
       ],
       "helpPrompt": "Say: It's raining.",
       "feedback": {
-        "image": "Images/19/2.webp"
+        "image": "Images/19/2.webp",
         "audio": "Audio/19/19_Chapter 1.mp3",
         "prompt": "It's raining! Everything is getting wet."
       }
