@@ -116,30 +116,6 @@ body::after {
   color: #8a5400;
 }
 
-.finish-test-btn {
-  position: fixed;
-  top: 8px;
-  right: 8px;
-  z-index: 60;
-  min-height: 34px;
-  padding: 0 13px;
-  border: 3px solid rgba(255, 255, 255, 0.92);
-  border-radius: 999px;
-  background: linear-gradient(180deg, #fff8dc 0%, #ffe6a3 48%, #f2c765 100%);
-  color: var(--ink);
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 800;
-  box-shadow:
-    0 6px 10px rgba(0, 71, 137, 0.2),
-    inset 0 -4px 0 rgba(198, 138, 42, 0.22);
-}
-
-.finish-test-btn:active {
-  transform: translateY(1px);
-}
-
 /* Layout */
 main#app {
   height: calc(100dvh - var(--header-h));

@@ -33,8 +33,7 @@ const els = {
   statusText: document.getElementById("statusText"),
   heardText: document.getElementById("heardText"),
   micBtn: document.getElementById("micBtn"),
-  replayBtn: document.getElementById("replayBtn"),
-  jumpToEndBtn: document.getElementById("jumpToEndBtn")
+  replayBtn: document.getElementById("replayBtn")
 };
 
 let sceneIndex = 0;
@@ -664,9 +663,6 @@ els.replayBtn.addEventListener("click", () => {
   playCurrentScene();
 });
 
-if (els.jumpToEndBtn) {
-  els.jumpToEndBtn.addEventListener("click", jumpToOutroScene);
-}
 
 const splashScreen = document.getElementById("splashScreen");
 const activityScreen = document.getElementById("activityScreen");
