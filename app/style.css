@@ -871,6 +871,12 @@ body {
     
 }
 
+#account-screen .field-hint {
+    font-size: 0.78em;
+    color: #888;
+    margin-top: -4px;
+}
+
 #account-screen .login-form button {
     color: white;
     background: linear-gradient(135deg, #ff7b5d, #f4564e);

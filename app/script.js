@@ -728,6 +728,7 @@ function renderAccountStatus() {
                 autocomplete="new-password"
                 required
               />
+              <small class="field-hint">Create a password for Speak Up. Minimum 6 characters.</small>
             </div>
 
             <div class="login-form">
