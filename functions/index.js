@@ -11,6 +11,8 @@ admin.initializeApp();
 const razorpayKeySecret = defineSecret("RAZORPAY_KEY_SECRET");
 const db = admin.firestore();
 const PURCHASE_DURATION_MS = 90 * 24 * 60 * 60 * 1000;
+const PREMIUM_PRICE_PAISE  = 49900;   // ₹499.00 — change here to reprice
+const PREMIUM_CURRENCY     = "INR";
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -293,8 +295,8 @@ exports.createOrder = onRequest({ secrets: [razorpayKeySecret] }, async (req, re
   try {
     const decodedToken = await authenticateRequest(req);
     const email = getPaymentEmail(decodedToken);
-    const amount = normalizeAmount(req.body?.amount);
-    const currency = normalizeCurrency(req.body?.currency);
+    const amount   = PREMIUM_PRICE_PAISE;   // fixed server-side; client value ignored
+    const currency = PREMIUM_CURRENCY;      // fixed server-side; client value ignored
     const receipt = normalizeReceipt(req.body?.receipt, decodedToken.uid);
     const plan = String(req.body?.plan || "premium").slice(0, 64);
 
