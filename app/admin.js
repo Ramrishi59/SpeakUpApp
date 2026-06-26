@@ -32,6 +32,7 @@ let alertFilterUids   = null;   // null = no filter, Set<uid> = show only these
 let selectedDuration  = null;   // "30" | "90" | "365" | "permanent"
 let cachedPayments    = [];
 let currentMode       = "admin";
+let pvSelectedUid     = null;
 
 // ── Chart registry ─────────────────────────────────────────────────────────
 const charts = {};
@@ -1410,7 +1411,7 @@ function renderPvTable(users) {
 
   const now = Date.now();
 
-  tbody.innerHTML = filtered.map(user => {
+  tbody.innerHTML = filtered.flatMap(user => {
     const licExp = user.licenseExpiresAt ? new Date(user.licenseExpiresAt).getTime() : null;
     const triExp = user.trialExpiresAt   ? new Date(user.trialExpiresAt).getTime()   : null;
 
@@ -1441,9 +1442,10 @@ function renderPvTable(users) {
 
     const name     = user.username || user.email || "?";
     const initials = name.split(" ").slice(0, 2).map(s => s[0]?.toUpperCase() || "").join("") || "?";
+    const isOpen   = user.uid === pvSelectedUid;
 
-    return `
-      <tr>
+    const mainRow = `
+      <tr class="pv-row${isOpen ? " pv-row-open" : ""}" data-uid="${escapeHtml(user.uid)}">
         <td>
           <div style="display:flex;align-items:center;gap:10px">
             <div class="user-avatar" aria-hidden="true">${escapeHtml(initials)}</div>
@@ -1461,12 +1463,45 @@ function renderPvTable(users) {
             Copy email
           </button>
         </td>
-      </tr>
-    `;
+      </tr>`;
+
+    const panelRow = isOpen ? `
+      <tr>
+        <td colspan="5" style="padding:0">
+          <div style="padding:14px 16px;display:grid;gap:10px;background:var(--brand-soft);border-bottom:1px solid var(--line)">
+            <select id="pvReasonSelect">
+              <option value="">Select payment method or reason…</option>
+              <optgroup label="Payment received">
+                <option value="Razorpay Payment">Razorpay Payment</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="UPI Payment">UPI Payment</option>
+                <option value="Cash Payment">Cash Payment</option>
+                <option value="School Payment">School Payment</option>
+              </optgroup>
+              <optgroup label="Other reasons">
+                <option value="Promotional Access">Promotional Access</option>
+                <option value="Trial Extension">Trial Extension</option>
+                <option value="Technical Issue Compensation">Technical Issue Compensation</option>
+                <option value="Other">Other</option>
+              </optgroup>
+            </select>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button type="button" id="pvGive30Btn">Give 1 Month</button>
+              <button type="button" id="pvGive90Btn">Give 3 Months</button>
+              <button type="button" id="pvRevokeBtn" class="danger">Remove Access</button>
+            </div>
+            <p id="pvAccessStatus" class="status" aria-live="polite"></p>
+          </div>
+        </td>
+      </tr>` : "";
+
+    return [mainRow, panelRow];
   }).join("");
 
+  // Copy buttons — stopPropagation so row-tap handler doesn't fire
   tbody.querySelectorAll(".pv-copy-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
       const email = btn.dataset.email;
       if (!email) return;
       navigator.clipboard.writeText(email).then(() => {
@@ -1475,5 +1510,65 @@ function renderPvTable(users) {
         setTimeout(() => { btn.textContent = "Copy email"; btn.classList.remove("copied"); }, 1800);
       });
     });
+  });
+
+  // Tapping a row opens/closes its action panel
+  tbody.querySelectorAll(".pv-row").forEach(row => {
+    row.addEventListener("click", () => {
+      pvSelectedUid = pvSelectedUid === row.dataset.uid ? null : row.dataset.uid;
+      renderPvTable(users);
+    });
+  });
+
+  if (!pvSelectedUid) return;
+
+  const pvReasonSelect = document.getElementById("pvReasonSelect");
+  const pvAccessStatus = document.getElementById("pvAccessStatus");
+
+  async function pvDoAction(action, reason) {
+    selectedUid      = pvSelectedUid;
+    selectedListUser = loadedUsers.find(u => u.uid === pvSelectedUid) || null;
+    selectedUser     = selectedListUser || {};
+    setStatus(pvAccessStatus, "Saving…");
+    await updateAccess(action, reason);
+    // updateAccess catches internally; read its result via els.accessStatus state
+    if (els.accessStatus?.dataset.state === "error") {
+      setStatus(pvAccessStatus, els.accessStatus.textContent, "error");
+    } else {
+      pvSelectedUid = null;
+      renderParentView(loadedUsers, cachedPayments);
+    }
+  }
+
+  let revokeArmed = false;
+
+  document.getElementById("pvGive30Btn")?.addEventListener("click", e => {
+    e.stopPropagation();
+    const reason = pvReasonSelect?.value?.trim();
+    if (!reason) { setStatus(pvAccessStatus, "Choose a reason first.", "error"); return; }
+    pvDoAction("extend30", reason);
+  });
+
+  document.getElementById("pvGive90Btn")?.addEventListener("click", e => {
+    e.stopPropagation();
+    const reason = pvReasonSelect?.value?.trim();
+    if (!reason) { setStatus(pvAccessStatus, "Choose a reason first.", "error"); return; }
+    pvDoAction("extend90", reason);
+  });
+
+  document.getElementById("pvRevokeBtn")?.addEventListener("click", e => {
+    e.stopPropagation();
+    if (!revokeArmed) {
+      revokeArmed = true;
+      const btn = document.getElementById("pvRevokeBtn");
+      if (btn) btn.textContent = "⚠ Tap again to confirm";
+      setTimeout(() => {
+        revokeArmed = false;
+        const b = document.getElementById("pvRevokeBtn");
+        if (b) b.textContent = "Remove Access";
+      }, 3000);
+      return;
+    }
+    pvDoAction("revoke", "Access removed by admin");
   });
 }
