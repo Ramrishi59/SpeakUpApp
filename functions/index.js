@@ -2,6 +2,7 @@ const crypto = require("crypto");
 
 const admin = require("firebase-admin");
 const { onRequest } = require("firebase-functions/v2/https");
+const { auth } = require("firebase-functions/v1");
 const { defineSecret } = require("firebase-functions/params");
 const logger = require("firebase-functions/logger");
 const Razorpay = require("razorpay");
@@ -10,6 +11,7 @@ admin.initializeApp();
 
 const razorpayKeySecret = defineSecret("RAZORPAY_KEY_SECRET");
 const db = admin.firestore();
+const TRIAL_DURATION_MS  = 24 * 60 * 60 * 1000;
 const PURCHASE_DURATION_MS = 90 * 24 * 60 * 60 * 1000;
 const PREMIUM_PRICE_PAISE  = 49900;   // ₹499.00 — change here to reprice
 const PREMIUM_CURRENCY     = "INR";
@@ -578,4 +580,31 @@ exports.adminListPayments = onRequest(async (req, res) => {
   } catch (error) {
     sendError(res, error);
   }
+});
+
+// Runs server-side after every new Firebase Auth user is created.
+// Writes the 24-hour trial fields that the Firestore client-create rule blocks.
+// Uses the Admin SDK (bypasses security rules). Never sets fullUnlock or licenseExpiresAt.
+exports.initializeUserProfile = auth.user().onCreate(async (user) => {
+  const ref = db.collection("users").doc(user.uid);
+  const snap = await ref.get();
+
+  // Don't shorten or reset a trial that's already been recorded.
+  if (snap.exists && snap.data().trialExpiresAt) {
+    logger.info(`initializeUserProfile: trial already set for ${user.uid}, skipping`);
+    return;
+  }
+
+  // Use the Auth event's own creationTime — not the client clock.
+  const createdAtMs = new Date(user.metadata.creationTime).getTime();
+  const trialStartedAt = new Date(createdAtMs).toISOString();
+  const trialExpiresAt = new Date(createdAtMs + TRIAL_DURATION_MS).toISOString();
+
+  await ref.set({
+    trialStartedAt,
+    trialExpiresAt,
+    role: "user"
+  }, { merge: true });
+
+  logger.info(`initializeUserProfile: trial set for ${user.uid}, expires ${trialExpiresAt}`);
 });
