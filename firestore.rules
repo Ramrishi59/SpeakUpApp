@@ -16,8 +16,8 @@ service cloud.firestore {
 
     function safeUserCreate(uid) {
       return isOwner(uid)
-        && request.resource.data.fullUnlock == false
-        && request.resource.data.role == "user"
+        && request.resource.data.get("fullUnlock", false) == false
+        && request.resource.data.get("role", "user") == "user"
         && request.resource.data.licenseExpiresAt == null
         && request.resource.data.trialExpiresAt == null;
     }
