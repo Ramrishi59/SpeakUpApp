@@ -36,7 +36,8 @@ service cloud.firestore {
         "lastSeenAt",
         "activePath",
         "activePage",
-        "updatedAt"
+        "updatedAt",
+        "createdAt"
       ]);
     }
 

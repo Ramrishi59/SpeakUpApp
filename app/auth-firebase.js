@@ -207,7 +207,7 @@ async function createUserProfile(uid, profileInput) {
     await setDoc(ref, buildNewUserProfile(profileInput));
   } catch (error) {
     console.warn("Full profile write failed; retrying with a minimal profile.", error);
-    await setDoc(ref, buildMinimalUserProfile(profileInput));
+    await setDoc(ref, buildMinimalUserProfile(profileInput), { merge: true });
   }
 }
 
