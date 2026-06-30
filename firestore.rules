@@ -18,8 +18,8 @@ service cloud.firestore {
       return isOwner(uid)
         && request.resource.data.get("fullUnlock", false) == false
         && request.resource.data.get("role", "user") == "user"
-        && request.resource.data.licenseExpiresAt == null
-        && request.resource.data.trialExpiresAt == null;
+        && request.resource.data.get("licenseExpiresAt", null) == null
+        && request.resource.data.get("trialExpiresAt", null) == null;
     }
 
     function safeUserUpdate() {
