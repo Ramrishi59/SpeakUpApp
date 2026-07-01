@@ -1573,7 +1573,7 @@ async function loadDashboardLessons() {
       });
     });
 
-    // Parent Community card — appended after the loop so the filter click
+    // Parent Tips card — appended after the loop so the filter click
     // handler above is not attached to it.
     const communityCard = document.createElement('button');
     communityCard.type = 'button';
@@ -1583,14 +1583,14 @@ async function loadDashboardLessons() {
         <span style="font-size:2.2rem;line-height:1" aria-hidden="true">💬</span>
       </div>
       <div class="category-tile-body">
-        <span class="category-tile-name">Parent Community</span>
-        <span class="category-tile-sub">Tips, updates and support for parents.</span>
-        <span class="category-tile-count">Join on WhatsApp</span>
+        <span class="category-tile-name">Parent Tips</span>
+        <span class="category-tile-sub">Tips and updates for parents</span>
+        <span class="category-tile-count">Message on WhatsApp</span>
       </div>
       <span class="category-tile-arrow" aria-hidden="true">&#8250;</span>
     `;
     communityCard.addEventListener('click', () => {
-      window.open('https://wa.me/916282405919?text=Hi%2C%20I%20would%20like%20to%20join%20the%20Speak%20Up%20Parent%20Community.', '_blank', 'noopener,noreferrer');
+      window.open('https://wa.me/916282405919?text=Hi%2C%20I%20would%20like%20to%20receive%20Speak%20Up%20parent%20tips%20and%20updates.', '_blank', 'noopener,noreferrer');
     });
     container.appendChild(communityCard);
   }
