@@ -148,6 +148,7 @@ html, body{
 /* "Choose a category" heading — scoped to this screen only, distinct
    from the larger intro/outro .screen-message style. */
 #categoryScreen .screen-message{
+  margin-top: 8px;
   font-size: 20px;
   font-weight: 500;
   color: #226238;
@@ -278,15 +279,17 @@ html, body{
 .category-tile.tone-c .category-icon,
 .category-tile.tone-c .category-tile-chevron{ color: #185fa5; }
 
-/* Tone — Quiz cards (purple). Same light-pastel gradient for every quiz
-   card — no per-quiz-group variation. */
+/* Tone — Quiz cards (purple). Same saturated gradient for every quiz
+   card — no per-quiz-group variation. Locked cards still dim via the
+   shared .category-tile:disabled opacity rule, which now reads as a
+   clear grey-out against this more saturated base. */
 .category-tile.tone-quiz{
-  background: linear-gradient(135deg, #ece7fb, #d4c7f5);
+  background: linear-gradient(135deg, #ddd0f7, #bfa8ee);
 }
 .category-tile.tone-quiz .category-tile-title,
-.category-tile.tone-quiz .category-icon{ color: #3c3489; }
+.category-tile.tone-quiz .category-icon{ color: #3c2f8a; }
 .category-tile.tone-quiz .category-tile-subtitle,
-.category-tile.tone-quiz .category-tile-chevron{ color: #534ab7; }
+.category-tile.tone-quiz .category-tile-chevron{ color: #5b4bb0; }
 
 /* Word text */
 .word-text{
