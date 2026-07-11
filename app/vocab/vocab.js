@@ -25,6 +25,13 @@ var currentChapterGroup = null;
 var currentChapterIndex = 0;
 var currentChapterMetas = [];
 
+// Small leading emoji shown before each top-level category's name in the picker.
+var CATEGORY_ICONS = {
+  family: "👨‍👩‍👧",
+  mybody: "🧍",
+  myhome: "🏠"
+};
+
 // Screens
 var categoryScreen = document.getElementById("categoryScreen");
 var chapterListScreen = document.getElementById("chapterListScreen");
@@ -443,7 +450,16 @@ function renderCategoryList(categories) {
   categories.forEach(function (categoryMeta) {
     var btn = document.createElement("button");
     btn.className = "category-card";
-    btn.textContent = categoryMeta.label || categoryMeta.id;
+
+    var icon = CATEGORY_ICONS[categoryMeta.id];
+    if (icon) {
+      var iconSpan = document.createElement("span");
+      iconSpan.className = "category-icon";
+      iconSpan.textContent = icon;
+      btn.appendChild(iconSpan);
+    }
+    btn.appendChild(document.createTextNode(categoryMeta.label || categoryMeta.id));
+
     btn.addEventListener("click", function () {
       if (categoryMeta.type === "chapterGroup") {
         loadChapterGroup(categoryMeta);

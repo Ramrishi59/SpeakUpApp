@@ -38,12 +38,12 @@ html, body{
   align-items: center;
   justify-content: center;
   padding: 24px 0;
-  gap: 16px;
+  gap: 6px;
 }
 
 .back-link{
   align-self: flex-start;
-  margin: 0 auto 4px;
+  margin: 0 auto;
   width: calc(100% - 32px);
   max-width: 420px;
   font-family: var(--font-body);
@@ -78,13 +78,20 @@ html, body{
   display: none !important;
 }
 
-/* Flashcard word image — transparent background so the card shows through */
+/* Flashcard screen card — soft cream instead of plain white */
+#flashcardScreen{
+  background: #fffbf6;
+}
+
+/* Flashcard word image — soft mint-to-cream illustration frame */
 .word-image{
   width: 100%;
-  max-width: 220px;
-  height: 220px;
+  max-width: 280px;
+  height: 280px;
   object-fit: contain;
-  background: transparent;
+  background: linear-gradient(135deg, #e9fff0, #fff2bd);
+  border-radius: 16px;
+  padding: 12px;
 }
 
 /* Intro / Outro screen image (Manku) */
@@ -134,6 +141,12 @@ html, body{
   transform: scale(0.98);
 }
 
+/* Small leading emoji before a category's name */
+.category-icon{
+  font-size: 18px;
+  margin-right: 8px;
+}
+
 /* Locked chapter cards (My Home chapter list) — dimmed and non-interactive */
 .category-card:disabled{
   opacity: 0.5;
@@ -165,12 +178,12 @@ html, body{
   cursor: not-allowed;
 }
 
-/* Word text, large and bold */
+/* Word text */
 .word-text{
   margin: 0;
   font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(28px, 6vw, 36px);
+  font-weight: 500;
+  font-size: 24px;
   color: var(--text);
 }
 
@@ -204,6 +217,18 @@ html, body{
   color: rgba(0, 0, 0, 0.6);
 }
 
+/* Flashcard progress ("2 of 5") as a rounded pill badge, placed above
+   the illustration via flex order (DOM position stays unchanged). */
+#progressText{
+  order: -1;
+  display: inline-block;
+  background: #fff7de;
+  border: 1.5px solid #f6d98b;
+  color: #8a5a00;
+  padding: 6px 18px;
+  border-radius: 999px;
+}
+
 /* Next / Back buttons row */
 .nav-buttons{
   width: 100%;
@@ -215,7 +240,7 @@ html, body{
 .nav-btn{
   flex: 1;
   padding: 12px 0;
-  border-radius: 999px;
+  border-radius: 12px;
   border: 0;
   font-family: var(--font-body);
   font-weight: 700;
@@ -236,6 +261,14 @@ html, body{
 .nav-btn:disabled{
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+/* Disabled Back button reads as flat, clearly-disabled grey instead of
+   a dimmed cream (overrides .nav-btn:disabled's opacity for this case). */
+.back-btn:disabled{
+  background: #e9e7e2;
+  color: #a3a29c;
+  opacity: 1;
 }
 
 /* Quiz answer choices: 2 tiles on top, 3rd tile centered below.
