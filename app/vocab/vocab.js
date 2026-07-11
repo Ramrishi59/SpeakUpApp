@@ -188,17 +188,48 @@ function goNext() {
   var isLastWord = currentIndex === currentCategory.words.length - 1;
 
   if (isLastWord) {
+    // TEMP DEBUG — remove after
+    console.log("[DEBUG] goNext: isLastWord", {
+      currentCategoryId: currentCategory.id,
+      currentIndex: currentIndex,
+      wordsLength: currentCategory.words.length,
+      hasChapterGroup: !!currentChapterGroup,
+      chapterGroupId: currentChapterGroup ? currentChapterGroup.id : null,
+      hasOutro: !!currentCategory.outro,
+      currentChapterIndex: currentChapterIndex,
+      chapterMetasLength: currentChapterMetas.length
+    });
+
     if (currentChapterGroup && !currentCategory.outro) {
+      // TEMP DEBUG — remove after
+      console.log("[DEBUG] goNext: taking MID-GROUP branch (no outro)");
+
       // Mid-group chapter (no outro field): skip the outro screen
       // entirely and go straight into the next chapter's intro.
       markChapterCompleted(currentChapterGroup.id, currentCategory.id);
+
+      // TEMP DEBUG — remove after
+      console.log("[DEBUG] goNext: checking next-chapter condition", {
+        nextIndex: currentChapterIndex + 1,
+        chapterMetasLength: currentChapterMetas.length,
+        willAdvance: currentChapterIndex + 1 < currentChapterMetas.length
+      });
+
       if (currentChapterIndex + 1 < currentChapterMetas.length) {
+        // TEMP DEBUG — remove after
+        console.log("[DEBUG] goNext: calling loadChapterByIndex(" + (currentChapterIndex + 1) + ")");
         loadChapterByIndex(currentChapterIndex + 1);
+      } else {
+        // TEMP DEBUG — remove after
+        console.log("[DEBUG] goNext: NOT advancing — condition failed, nothing happens here");
       }
       return;
     }
 
     if (currentChapterGroup && currentCategory.outro) {
+      // TEMP DEBUG — remove after
+      console.log("[DEBUG] goNext: taking FINAL-CHAPTER branch (has outro)");
+
       // Final chapter of the group: mark the chapter AND the whole group
       // completed. The group-level mark reuses the existing top-level
       // completion tracking, so it plugs straight into the existing
@@ -208,6 +239,9 @@ function goNext() {
       showOutro();
       return;
     }
+
+    // TEMP DEBUG — remove after
+    console.log("[DEBUG] goNext: taking NORMAL CATEGORY branch (Family/My Body)");
 
     // Normal single category (Family / My Body) — unchanged.
     showOutro();
@@ -361,14 +395,25 @@ function loadChapterByIndex(index) {
   currentChapterIndex = index;
   var chapterMeta = currentChapterMetas[index];
 
+  // TEMP DEBUG — remove after
+  console.log("[DEBUG] loadChapterByIndex(" + index + ") chapterMeta:", chapterMeta);
+
   fetch(chapterMeta.file)
-    .then(function (res) { return res.json(); })
+    .then(function (res) {
+      // TEMP DEBUG — remove after
+      console.log("[DEBUG] loadChapterByIndex: fetch response", chapterMeta.file, "status=" + res.status, "ok=" + res.ok);
+      return res.json();
+    })
     .then(function (categoryData) {
+      // TEMP DEBUG — remove after
+      console.log("[DEBUG] loadChapterByIndex: parsed JSON OK", categoryData.id, categoryData.words.length + " words");
       currentCategory = categoryData;
       currentCategory.id = chapterMeta.id;
       showIntro();
     })
     .catch(function (err) {
+      // TEMP DEBUG — remove after
+      console.log("[DEBUG] loadChapterByIndex: CAUGHT ERROR", err);
       console.error("vocab: failed to load " + chapterMeta.file, err);
     });
 }
