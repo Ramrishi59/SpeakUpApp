@@ -29,6 +29,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vocabulary Pack (Prototype)</title>
 
+  <!-- Same Fredoka load as dashboard.html (weight 500 only — NOT "Fredoka One",
+       which is a separate, always-bold font file) so vocab text actually
+       renders in Fredoka instead of silently falling back to Baloo 2/system-ui. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
+
   <!-- This is an isolated prototype page. It is not linked from anywhere
        else in the app and is only reachable by opening this file directly. -->
   <link rel="stylesheet" href="vocab.css?v=1" />
@@ -38,7 +45,12 @@
   <main class="vocab-wrap">
 
     <!-- Link back to categories screen (not wired up yet) -->
-    <a href="#" class="back-link" id="backLink">&larr; Back to categories</a>
+    <a href="#" class="back-link" id="backLink">
+      <svg class="back-link-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span id="backLinkText">Back to categories</span>
+    </a>
 
     <!-- CATEGORY PICKER SCREEN: shown first, before any category is chosen -->
     <section class="vocab-card" id="categoryScreen">

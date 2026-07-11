@@ -56,6 +56,7 @@ var backBtn = document.getElementById("backBtn");
 var nextBtn = document.getElementById("nextBtn");
 var playBtn = document.getElementById("playBtn");
 var backLink = document.getElementById("backLink");
+var backLinkText = document.getElementById("backLinkText");
 
 // Intro / Outro elements
 var introImageEl = document.getElementById("introImage");
@@ -80,10 +81,11 @@ function showScreen(screenToShow) {
 }
 
 // Keep the global back link in sync with the current screen.
+// Only the text span updates \u2014 the SVG chevron icon in vocab.html stays put.
 function updateBackLink(screenToShow) {
-  backLink.textContent = screenToShow === categoryScreen
-    ? "\u2190 Back to Main Menu"
-    : "\u2190 Back to categories";
+  backLinkText.textContent = screenToShow === categoryScreen
+    ? "Back to Main Menu"
+    : "Back to categories";
 }
 
 // Speak a word aloud using the browser's built-in speech feature.
@@ -443,22 +445,59 @@ function buildMixedCategory(categoryEntries, ids) {
   };
 }
 
-// Draw one button per category in the picker screen.
+// Background/text tone cycled across category tiles, in categories.json order.
+// A 4th category (and beyond) wraps back around to tone-a, tone-b, etc.
+var CATEGORY_TONE_CLASSES = ["tone-a", "tone-b", "tone-c"];
+
+// Builds one picker row: icon box (its own element, swappable for an <img>
+// later) + title/subtitle text + trailing chevron. Shared by category and
+// quiz cards so both stay visually identical in structure and sizing.
+function buildTileButton(toneClass, icon, title, subtitle) {
+  var btn = document.createElement("button");
+  btn.className = "category-tile " + toneClass;
+
+  var iconBox = document.createElement("div");
+  iconBox.className = "category-icon-box";
+  var iconSpan = document.createElement("span");
+  iconSpan.className = "category-icon";
+  iconSpan.textContent = icon;
+  iconBox.appendChild(iconSpan);
+  btn.appendChild(iconBox);
+
+  var textWrap = document.createElement("div");
+  textWrap.className = "category-tile-text";
+
+  var titleEl = document.createElement("p");
+  titleEl.className = "category-tile-title";
+  titleEl.textContent = title;
+  textWrap.appendChild(titleEl);
+
+  var subtitleEl = document.createElement("p");
+  subtitleEl.className = "category-tile-subtitle";
+  subtitleEl.textContent = subtitle;
+  textWrap.appendChild(subtitleEl);
+
+  btn.appendChild(textWrap);
+
+  var chevron = document.createElement("span");
+  chevron.className = "category-tile-chevron";
+  chevron.textContent = "›";
+  btn.appendChild(chevron);
+
+  return btn;
+}
+
+// Draw one tile per category in the picker screen.
 function renderCategoryList(categories) {
   categoryListEl.innerHTML = "";
 
-  categories.forEach(function (categoryMeta) {
-    var btn = document.createElement("button");
-    btn.className = "category-card";
+  categories.forEach(function (categoryMeta, index) {
+    var icon = CATEGORY_ICONS[categoryMeta.id] || "❓";
+    var label = categoryMeta.label || categoryMeta.id;
+    var wordCount = categoryMeta.data && categoryMeta.data.words ? categoryMeta.data.words.length : 0;
+    var toneClass = CATEGORY_TONE_CLASSES[index % CATEGORY_TONE_CLASSES.length];
 
-    var icon = CATEGORY_ICONS[categoryMeta.id];
-    if (icon) {
-      var iconSpan = document.createElement("span");
-      iconSpan.className = "category-icon";
-      iconSpan.textContent = icon;
-      btn.appendChild(iconSpan);
-    }
-    btn.appendChild(document.createTextNode(categoryMeta.label || categoryMeta.id));
+    var btn = buildTileButton(toneClass, icon, label, wordCount + " words");
 
     btn.addEventListener("click", function () {
       if (categoryMeta.type === "chapterGroup") {
@@ -501,9 +540,14 @@ function renderQuizGroupCards(categories) {
         var labels = matchedCategories.map(function (categoryMeta) { return categoryMeta.label || categoryMeta.id; });
         var isUnlocked = ids.every(function (id) { return completed.indexOf(id) !== -1; });
 
-        var btn = document.createElement("button");
-        btn.className = isUnlocked ? "quiz-card unlocked" : "quiz-card locked";
-        btn.textContent = "Quiz: " + labels.join(" + ");
+        // One question per word in the merged quiz (matches startVocabQuiz's
+        // chunking in vocab-quiz.js), so this reuses the same word counts
+        // already loaded for the category tiles' "N words" subtitle.
+        var questionCount = matchedCategories.reduce(function (total, categoryMeta) {
+          return total + (categoryMeta.data && categoryMeta.data.words ? categoryMeta.data.words.length : 0);
+        }, 0);
+
+        var btn = buildTileButton("tone-quiz", "❓", "Quiz: " + labels.join(" + "), questionCount + " questions");
 
         if (isUnlocked) {
           btn.addEventListener("click", function () {
