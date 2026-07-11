@@ -99,6 +99,7 @@ html, body{
   box-shadow: none;
   border-radius: 0;
   padding: 0 2px 14px;
+  margin-top: 10px;
 }
 
 /* Screens are shown/hidden by JS; only one is visible at a time */
@@ -188,20 +189,23 @@ html, body{
 /* Category / quiz picker row — icon box + title/subtitle + chevron.
    Background/text colours come from the .tone-* modifier below. */
 .category-tile{
+  position: relative;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 14px;
-  border-radius: 16px;
-  padding: 12px 16px;
-  min-height: 76px;
-  border: 0;
+  border-radius: 18px;
+  padding: 16px 52px 16px 16px;
+  border: 1.5px solid rgba(31, 30, 51, 0.08);
   cursor: pointer;
   text-align: left;
-  font-family: var(--font-body);
+  font-family: inherit;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .category-tile:active{
-  transform: scale(0.98);
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(31, 30, 51, 0.08);
 }
 .category-tile:disabled{
   opacity: 0.5;
@@ -211,17 +215,19 @@ html, body{
 /* Icon box is its own element so it can later be swapped for an <img>
    (real illustration art) without restructuring the card. */
 .category-icon-box{
-  width: 60px;
-  height: 60px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.6);
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.35);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .category-icon-box .category-icon{
-  font-size: 30px;
+  font-size: 2.2rem;
   line-height: 1;
 }
 
@@ -230,66 +236,81 @@ html, body{
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
 }
 
 .category-tile-title{
-  margin: 0;
+  margin: 0 0 3px;
   font-family: var(--font-heading);
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .category-tile-subtitle{
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-size: 13px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.3;
+  opacity: 0.85;
 }
 
 .category-tile-chevron{
-  flex-shrink: 0;
-  font-size: 20px;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.8rem;
+  opacity: 0.7;
   line-height: 1;
 }
 
 /* Tone 1 — Family */
 .category-tile.tone-a{
-  background: linear-gradient(135deg, #fff7de, #ffe9b0);
+  background: #FFD7C9;
+  color: #8A3B22;
+  border-color: #F4B79E;
+  box-shadow: 0 6px 14px rgba(140, 60, 30, 0.16);
 }
-.category-tile.tone-a .category-tile-title{ color: #5a3d00; }
-.category-tile.tone-a .category-tile-subtitle,
-.category-tile.tone-a .category-icon,
-.category-tile.tone-a .category-tile-chevron{ color: #8a5a00; }
+.category-tile.tone-a .category-icon-box{ background: #FFCBB8; }
 
 /* Tone 2 — My Body */
 .category-tile.tone-b{
-  background: linear-gradient(135deg, #e9fff0, #c8f5d6);
+  background: #D8F3E8;
+  color: #0B5E45;
+  border-color: #A9DFC7;
+  box-shadow: 0 6px 14px rgba(20, 100, 70, 0.14);
 }
-.category-tile.tone-b .category-tile-title{ color: #11623a; }
-.category-tile.tone-b .category-tile-subtitle,
-.category-tile.tone-b .category-icon,
-.category-tile.tone-b .category-tile-chevron{ color: #226238; }
+.category-tile.tone-b .category-icon-box{ background: #BCE9D6; }
 
 /* Tone 3 — My Home */
 .category-tile.tone-c{
-  background: linear-gradient(135deg, #e6f1fb, #c3e0f7);
+  background: #DCEEFD;
+  color: #1B4D7A;
+  border-color: #AED3F2;
+  box-shadow: 0 6px 14px rgba(20, 70, 120, 0.14);
 }
-.category-tile.tone-c .category-tile-title{ color: #0c447c; }
-.category-tile.tone-c .category-tile-subtitle,
-.category-tile.tone-c .category-icon,
-.category-tile.tone-c .category-tile-chevron{ color: #185fa5; }
+.category-tile.tone-c .category-icon-box{ background: #BFDFF9; }
 
-/* Tone — Quiz cards (purple). Same saturated gradient for every quiz
-   card — no per-quiz-group variation. Locked cards still dim via the
-   shared .category-tile:disabled opacity rule, which now reads as a
-   clear grey-out against this more saturated base. */
+/* Tone — Quiz cards (purple). Same shade for every quiz card, including
+   disabled/locked cards, so quiz rows stay visually distinct as a group. */
 .category-tile.tone-quiz{
-  background: linear-gradient(135deg, #ddd0f7, #bfa8ee);
+  background: #EDE7FF;
+  color: #3D2080;
+  border-color: #C9B8F5;
+  box-shadow: 0 6px 14px rgba(61, 32, 128, 0.12);
 }
-.category-tile.tone-quiz .category-tile-title,
-.category-tile.tone-quiz .category-icon{ color: #3c2f8a; }
-.category-tile.tone-quiz .category-tile-subtitle,
-.category-tile.tone-quiz .category-tile-chevron{ color: #5b4bb0; }
+.category-tile.tone-quiz .category-icon-box{ background: #D5C4F7; }
+.category-tile.tone-quiz:disabled{
+  opacity: 1;
+}
+.category-tile.tone-quiz:disabled .category-tile-text,
+.category-tile.tone-quiz:disabled .category-icon,
+.category-tile.tone-quiz:disabled .category-tile-chevron{
+  opacity: 0.48;
+}
 
 /* Word text */
 .word-text{
