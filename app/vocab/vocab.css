@@ -19,9 +19,14 @@
   box-sizing: border-box;
 }
 
+/* No min-height:100vh here — the cream background still fills the full
+   viewport regardless (the root element's background paints the whole
+   canvas per spec, not just its own box), but the page's actual height
+   now matches content in normal document flow instead of being forced
+   to a fixed full-viewport shell, which left empty scrollable space
+   below short content (e.g. the flashcard screen). */
 html, body{
   margin: 0;
-  min-height: 100vh;
   background: var(--cream);
   font-family: var(--font-body);
   color: var(--text);
