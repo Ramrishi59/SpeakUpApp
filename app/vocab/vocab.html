@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    TEMPORARY — vocab pack development testing only.
+    /app/service-worker.js is registered with a default scope of /app/
+    (from dashboard.html / quiz3.html), so it unintentionally also
+    controls pages under /app/vocab/, serving them via stale-while-
+    revalidate. That makes local CSS/JS edits appear to "not take effect"
+    until a second reload. This script unregisters any service worker
+    controlling THIS page only, so vocab pack testing always sees the
+    latest files.
+    REVIEW/REMOVE this block before vocab is ever linked into the real
+    dashboard flow — production vocab pages SHOULD eventually share the
+    app's normal service worker caching, with proper CACHE_VERSION bumps,
+    like every other page.
+  -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        registrations.forEach(function (registration) {
+          registration.unregister();
+        });
+      });
+    }
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vocabulary Pack (Prototype)</title>
+
+  <!-- This is an isolated prototype page. It is not linked from anywhere
+       else in the app and is only reachable by opening this file directly. -->
+  <link rel="stylesheet" href="vocab.css?v=1" />
+</head>
+<body>
+
+  <main class="vocab-wrap">
+
+    <!-- Link back to categories screen (not wired up yet) -->
+    <a href="#" class="back-link" id="backLink">&larr; Back to categories</a>
+
+    <!-- CATEGORY PICKER SCREEN: shown first, before any category is chosen -->
+    <section class="vocab-card" id="categoryScreen">
+      <p class="screen-message">Choose a category</p>
+      <!-- One .category-card button per category is inserted here by vocab.js -->
+      <div class="category-list" id="categoryList"></div>
+    </section>
+
+    <!-- CHAPTER LIST SCREEN: shown when a chapterGroup category (e.g. My Home) is chosen -->
+    <section class="vocab-card hidden" id="chapterListScreen">
+      <p class="screen-message">My Home — choose a chapter</p>
+      <div class="category-list" id="chapterListEl"></div>
+      <a href="#" id="chapterBackLink">Back to categories</a>
+    </section>
+
+    <!-- INTRO SCREEN: shown before flashcard 1 of the chosen category -->
+    <section class="vocab-card hidden" id="introScreen">
+      <img class="screen-image" id="introImage" src="" alt="Manku" />
+      <p class="screen-message" id="introMessage">Let's learn some words!</p>
+      <button class="nav-btn next-btn full-width" id="startBtn">Start</button>
+    </section>
+
+    <!-- FLASHCARD SCREEN: one word at a time -->
+    <section class="vocab-card hidden" id="flashcardScreen">
+
+      <img class="word-image" id="wordImage" src="" alt="" />
+
+      <!-- Current word -->
+      <h1 class="word-text" id="wordText">Word</h1>
+
+      <!-- Play/speak button -->
+      <button class="play-btn" id="playBtn" aria-label="Play word">
+        <span class="play-icon">&#9658;</span>
+      </button>
+
+      <!-- Progress indicator, e.g. "1 of 4" -->
+      <p class="progress-text" id="progressText">1 of 4</p>
+
+      <!-- Navigation buttons -->
+      <div class="nav-buttons">
+        <button class="nav-btn back-btn" id="backBtn">Back</button>
+        <button class="nav-btn next-btn" id="nextBtn">Next</button>
+      </div>
+
+    </section>
+
+    <!-- OUTRO SCREEN: shown after the last flashcard -->
+    <section class="vocab-card hidden" id="outroScreen">
+      <img class="screen-image" id="outroImage" src="" alt="Manku" />
+      <p class="screen-message">Well done!</p>
+      <button class="nav-btn back-btn full-width" id="restartBtn">Restart</button>
+    </section>
+
+    <!-- QUIZ SCREEN: one image-choice question at a time -->
+    <section class="vocab-card hidden" id="quizScreen">
+      <p class="progress-text" id="quizProgressText">Quiz 1: 1 of 8</p>
+
+      <button class="play-btn" id="quizReplayBtn" aria-label="Replay question audio">
+        <span class="play-icon">&#9658;</span>
+      </button>
+
+      <!-- Image answer choices are inserted here by vocab-quiz.js -->
+      <div class="quiz-choices" id="quizChoicesWrap"></div>
+    </section>
+
+    <!-- QUIZ SCORE SCREEN: shown after each chunk's last question -->
+    <section class="vocab-card hidden" id="quizScoreScreen">
+      <p class="screen-message" id="quizScoreText">Quiz 1: 0 out of 8!</p>
+      <button class="nav-btn next-btn full-width" id="quizContinueBtn">Next quiz</button>
+    </section>
+
+  </main>
+
+  <!-- Hidden audio players for intro/outro narration; src is set per category by vocab.js -->
+  <audio id="introAudio"></audio>
+  <audio id="outroAudio"></audio>
+
+  <script src="vocab.js?v=1"></script>
+  <script src="vocab-quiz.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+[
+  { "id": "myhome1", "file": "json/myhome1-words.json" },
+  { "id": "myhome2", "file": "json/myhome2-words.json" },
+  { "id": "myhome3", "file": "json/myhome3-words.json" },
+  { "id": "myhome4", "file": "json/myhome4-words.json" },
+  { "id": "myhome5", "file": "json/myhome5-words.json" }
+]

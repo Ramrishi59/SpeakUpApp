@@ -1,0 +1,26 @@
+{
+  "id": "myhome3",
+  "label": "Furniture",
+  "character": "Manku",
+  "imageFolder": "Images/MyHome3",
+  "audioFolder": "Audio/MyHome3",
+  "intro": { "image": "Intro.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "Chair", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Table", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Sofa (Couch)", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Cushion", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Cot", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Bed", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Pillow", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Blanket", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Cupboard (Cabinet)", "image": "9.webp", "audio": "10_Chapter_1.mp3" },
+    { "word": "Wardrobe (Closet)", "image": "10.webp", "audio": "11_Chapter_1.mp3" },
+    { "word": "Shelf", "image": "11.webp", "audio": "12_Chapter_1.mp3" },
+    { "word": "Drawer", "image": "12.webp", "audio": "13_Chapter_1.mp3" },
+    { "word": "Mirror", "image": "13.webp", "audio": "14_Chapter_1.mp3" },
+    { "word": "Dressing Table (Vanity)", "image": "14.webp", "audio": "15_Chapter_1.mp3" },
+    { "word": "Stool", "image": "15.webp", "audio": "16_Chapter_1.mp3" },
+    { "word": "Shoe Rack", "image": "16.webp", "audio": "17_Chapter_1.mp3" }
+  ]
+}

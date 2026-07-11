@@ -1,0 +1,16 @@
+{
+  "id": "family",
+  "label": "Family",
+  "character": "Manku",
+  "imageFolder": "Images/Family",
+  "audioFolder": "Audio/Family",
+  "intro": { "image": "Intro.webp", "audio": "Intro.mp3" },
+  "outro": { "image": "Outro.webp", "audio": "Outro.mp3" },
+  "words": [
+    { "word": "Mother", "image": "1.webp", "audio": "1_Chapter_1.mp3" },
+    { "word": "Father", "image": "2.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Sister", "image": "3.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Brother", "image": "4.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Family", "image": "5.webp", "audio": "5_Chapter_1.mp3" }
+  ]
+}

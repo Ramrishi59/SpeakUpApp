@@ -1,0 +1,28 @@
+{
+  "id": "myhome5",
+  "label": "Household Items",
+  "character": "Manku",
+  "imageFolder": "Images/MyHome5",
+  "audioFolder": "Audio/MyHome5",
+  "intro": { "image": "Intro.webp", "audio": "1_Chapter_1.mp3" },
+  "outro": { "image": "Outro.webp", "audio": "19_Chapter_1.mp3" },
+  "words": [
+    { "word": "Bucket", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Mug", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Broom", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Dustpan", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Mop", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Dustbin (Trash Can)", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Washing Machine", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Laundry Basket", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Clothesline", "image": "9.webp", "audio": "10_Chapter_1.mp3" },
+    { "word": "Cloth Clip (Clothes Peg)", "image": "10.webp", "audio": "11_Chapter_1.mp3" },
+    { "word": "Iron", "image": "11.webp", "audio": "12_Chapter_1.mp3" },
+    { "word": "Ironing Board", "image": "12.webp", "audio": "13_Chapter_1.mp3" },
+    { "word": "Basket", "image": "13.webp", "audio": "14_Chapter_1.mp3" },
+    { "word": "Torch (Flashlight)", "image": "14.webp", "audio": "15_Chapter_1.mp3" },
+    { "word": "Candle", "image": "15.webp", "audio": "16_Chapter_1.mp3" },
+    { "word": "Matchbox", "image": "16.webp", "audio": "17_Chapter_1.mp3" },
+    { "word": "Matchsticks", "image": "17.webp", "audio": "18_Chapter_1.mp3" }
+  ]
+}

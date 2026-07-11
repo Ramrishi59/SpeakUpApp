@@ -1,0 +1,23 @@
+{
+  "id": "myhome1",
+  "label": "House Parts",
+  "character": "Manku",
+  "imageFolder": "Images/MyHome1",
+  "audioFolder": "Audio/MyHome1",
+  "intro": { "image": "Intro.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "House", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Steps", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Living Room", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Dining Room", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Kitchen", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Bedroom", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Bathroom", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Balcony", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Roof", "image": "9.webp", "audio": "10_Chapter_1.mp3" },
+    { "word": "Ceiling", "image": "10.webp", "audio": "11_Chapter_1.mp3" },
+    { "word": "Wall", "image": "11.webp", "audio": "12_Chapter_1.mp3" },
+    { "word": "Floor", "image": "12.webp", "audio": "13_Chapter_1.mp3" },
+    { "word": "Stairs", "image": "13.webp", "audio": "14_Chapter_1.mp3" }
+  ]
+}

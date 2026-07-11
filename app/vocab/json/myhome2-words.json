@@ -1,0 +1,23 @@
+{
+  "id": "myhome2",
+  "label": "Doors & Windows",
+  "character": "Manku",
+  "imageFolder": "Images/MyHome2",
+  "audioFolder": "Audio/MyHome2",
+  "intro": { "image": "Intro.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "Door", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Door frame", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Door Handle", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Key", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Keyhole", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Doorbell", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Window", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Window Sill", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Curtain", "image": "9.webp", "audio": "10_Chapter_1.mp3" },
+    { "word": "Curtain Rod", "image": "10.webp", "audio": "11_Chapter_1.mp3" },
+    { "word": "Hinge", "image": "11.webp", "audio": "12_Chapter_1.mp3" },
+    { "word": "Latch", "image": "12.webp", "audio": "13_Chapter_1.mp3" },
+    { "word": "Doormat", "image": "13.webp", "audio": "14_Chapter_1.mp3" }
+  ]
+}

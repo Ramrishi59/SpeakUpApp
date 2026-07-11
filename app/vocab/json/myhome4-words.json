@@ -1,0 +1,27 @@
+{
+  "id": "myhome4",
+  "label": "Electrical Things",
+  "character": "Manku",
+  "imageFolder": "Images/MyHome4",
+  "audioFolder": "Audio/MyHome4",
+  "intro": { "image": "Intro.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "Ceiling Fan", "image": "1.png", "audio": "2_Chapter_1.mp3" },
+    { "word": "Pedestal fan", "image": "2.png", "audio": "3_Chapter_1.mp3" },
+    { "word": "Bulb / Light Bulb", "image": "3.png", "audio": "4_Chapter_1.mp3" },
+    { "word": "Switch", "image": "4.png", "audio": "5_Chapter_1.mp3" },
+    { "word": "Switchboard (Switch Plate)", "image": "5.png", "audio": "6_Chapter_1.mp3" },
+    { "word": "Socket (Outlet)", "image": "6.png", "audio": "7_Chapter_1.mp3" },
+    { "word": "Plug", "image": "7.png", "audio": "8_Chapter_1.mp3" },
+    { "word": "Cord (Cable)", "image": "8.png", "audio": "9_Chapter_1.mp3" },
+    { "word": "Extension Board (Power Strip)", "image": "9.png", "audio": "10_Chapter_1.mp3" },
+    { "word": "Television", "image": "10.png", "audio": "11_Chapter_1.mp3" },
+    { "word": "Remote Control", "image": "11.png", "audio": "12_Chapter_1.mp3" },
+    { "word": "Mobile Phone (Cell Phone)", "image": "12.png", "audio": "13_Chapter_1.mp3" },
+    { "word": "Charger", "image": "13.png", "audio": "14_Chapter_1.mp3" },
+    { "word": "Laptop", "image": "14.png", "audio": "15_Chapter_1.mp3" },
+    { "word": "Computer", "image": "15.png", "audio": "16_Chapter_1.mp3" },
+    { "word": "Alarm Clock", "image": "16.png", "audio": "17_Chapter_1.mp3" },
+    { "word": "Wall Clock", "image": "17.png", "audio": "18_Chapter_1.mp3" }
+  ]
+}
