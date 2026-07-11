@@ -1,0 +1,4 @@
+[
+  { "groupId": "g1", "categoryIds": ["family", "mybody"] },
+  { "groupId": "g2", "categoryIds": ["myhome"] }
+]

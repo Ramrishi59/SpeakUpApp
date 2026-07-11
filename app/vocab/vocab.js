@@ -10,6 +10,7 @@
    ========================================================= */
 
 var CATEGORIES_URL = "json/categories.json";
+var QUIZ_GROUPS_URL = "json/quizGroups.json";
 
 // The currently loaded category's data (set once a category is picked).
 var currentCategory = null;
@@ -406,8 +407,11 @@ function buildMixedCategory(categoryEntries, ids) {
         word: word.word,
         image: word.image,
         audio: word.audio,
-        imageFolder: entry.data.imageFolder,
-        audioFolder: entry.data.audioFolder
+        // A chapterGroup's words already carry their OWN chapter's folder
+        // (set by loadCategoryList()) — prefer that per-word folder, and
+        // fall back to the entry's single folder for normal categories.
+        imageFolder: word.imageFolder || entry.data.imageFolder,
+        audioFolder: word.audioFolder || entry.data.audioFolder
       });
     });
   });
@@ -444,37 +448,53 @@ function renderCategoryList(categories) {
   renderQuizGroupCards(categories);
 }
 
-// One "Quiz" card per group of 2 consecutive categories (in categories.json
-// order). A group unlocks only once every category in it has been completed
-// (i.e. the user has reached that category's outro screen at least once).
+// One "Quiz" card per group listed in quizGroups.json (manual config —
+// groups can be any size: 1, 2, or more categories). A group unlocks only
+// once every category in it has been completed (i.e. the user has reached
+// that category's outro screen at least once).
 function renderQuizGroupCards(categories) {
   var completed = getCompletedCategories();
-  var groups = [];
 
-  for (var i = 0; i + 1 < categories.length; i += 2) {
-    groups.push([categories[i], categories[i + 1]]);
-  }
+  fetch(QUIZ_GROUPS_URL)
+    .then(function (res) { return res.json(); })
+    .then(function (quizGroups) {
+      quizGroups.forEach(function (quizGroup) {
+        var ids = quizGroup.categoryIds;
+        var matchedCategories = ids.map(function (categoryId) {
+          return categories.filter(function (categoryMeta) { return categoryMeta.id === categoryId; })[0];
+        });
 
-  groups.forEach(function (group) {
-    var ids = group.map(function (categoryMeta) { return categoryMeta.id; });
-    var labels = group.map(function (categoryMeta) { return categoryMeta.label || categoryMeta.id; });
-    var isUnlocked = ids.every(function (id) { return completed.indexOf(id) !== -1; });
+        var hasUnmatched = matchedCategories.some(function (categoryMeta) { return !categoryMeta; });
+        if (hasUnmatched) {
+          console.warn(
+            "vocab: quiz group \"" + quizGroup.groupId + "\" references an unknown category id, skipping",
+            ids
+          );
+          return;
+        }
 
-    var btn = document.createElement("button");
-    btn.className = isUnlocked ? "quiz-card unlocked" : "quiz-card locked";
-    btn.textContent = "Quiz: " + labels.join(" + ");
+        var labels = matchedCategories.map(function (categoryMeta) { return categoryMeta.label || categoryMeta.id; });
+        var isUnlocked = ids.every(function (id) { return completed.indexOf(id) !== -1; });
 
-    if (isUnlocked) {
-      btn.addEventListener("click", function () {
-        var mixedCategory = buildMixedCategory(categories, ids);
-        startVocabQuiz(mixedCategory);
+        var btn = document.createElement("button");
+        btn.className = isUnlocked ? "quiz-card unlocked" : "quiz-card locked";
+        btn.textContent = "Quiz: " + labels.join(" + ");
+
+        if (isUnlocked) {
+          btn.addEventListener("click", function () {
+            var mixedCategory = buildMixedCategory(categories, ids);
+            startVocabQuiz(mixedCategory);
+          });
+        } else {
+          btn.disabled = true;
+        }
+
+        categoryListEl.appendChild(btn);
       });
-    } else {
-      btn.disabled = true;
-    }
-
-    categoryListEl.appendChild(btn);
-  });
+    })
+    .catch(function (err) {
+      console.error("vocab: failed to load " + QUIZ_GROUPS_URL, err);
+    });
 }
 
 // Fetch the category list and render the picker, filling in each
@@ -485,10 +505,46 @@ function loadCategoryList() {
     .then(function (categoryEntries) {
       var labelPromises = categoryEntries.map(function (entry) {
         // chapterGroup entries (e.g. My Home) already carry their own
-        // inline label and have no single word-list file to fetch here —
-        // their chapters are loaded lazily by loadChapterGroup() instead.
+        // inline label from categories.json, but have no single word-list
+        // file — fetch the chapter list, then each chapter's own words
+        // file, and flatten everything into one entry.data.words array so
+        // buildMixedCategory() can quiz the whole group like any other
+        // category. Each word is tagged with its OWN chapter's
+        // imageFolder/audioFolder, since chapters use different folders.
+        // Chapter order is kept as-is here; buildMixedCategory() shuffles
+        // later when the quiz is actually built.
         if (entry.type === "chapterGroup") {
-          return Promise.resolve();
+          return fetch(entry.chaptersFile)
+            .then(function (res) { return res.json(); })
+            .then(function (chapterMetas) {
+              var chapterPromises = chapterMetas.map(function (chapterMeta) {
+                return fetch(chapterMeta.file)
+                  .then(function (res) { return res.json(); })
+                  .then(function (chapterData) {
+                    return chapterData.words.map(function (word) {
+                      return {
+                        word: word.word,
+                        image: word.image,
+                        audio: word.audio,
+                        imageFolder: chapterData.imageFolder,
+                        audioFolder: chapterData.audioFolder
+                      };
+                    });
+                  });
+              });
+
+              return Promise.all(chapterPromises).then(function (wordsPerChapter) {
+                var allWords = [];
+                wordsPerChapter.forEach(function (chapterWords) {
+                  allWords = allWords.concat(chapterWords);
+                });
+
+                entry.data = {
+                  label: entry.label,
+                  words: allWords
+                };
+              });
+            });
         }
 
         return fetch(entry.file)
