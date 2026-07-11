@@ -52,15 +52,18 @@
       <span id="backLinkText">Back to categories</span>
     </a>
 
-    <!-- CATEGORY PICKER SCREEN: shown first, before any category is chosen -->
-    <section class="vocab-card" id="categoryScreen">
+    <!-- CATEGORY PICKER SCREEN: shown first, before any category is chosen.
+         Uses vocab-list-screen (flat, no white card) instead of vocab-card,
+         so the pastel tiles sit directly on the page background like
+         dashboard.html's .lessons-list — see vocab.css for the override. -->
+    <section class="vocab-card vocab-list-screen" id="categoryScreen">
       <p class="screen-message">Choose a category</p>
       <!-- One .category-card button per category is inserted here by vocab.js -->
       <div class="category-list" id="categoryList"></div>
     </section>
 
     <!-- CHAPTER LIST SCREEN: shown when a chapterGroup category (e.g. My Home) is chosen -->
-    <section class="vocab-card hidden" id="chapterListScreen">
+    <section class="vocab-card vocab-list-screen hidden" id="chapterListScreen">
       <p class="screen-message">My Home — choose a chapter</p>
       <div class="category-list" id="chapterListEl"></div>
       <a href="#" id="chapterBackLink">Back to categories</a>

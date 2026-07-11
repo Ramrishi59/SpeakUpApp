@@ -33,10 +33,11 @@ html, body{
    of leaving large empty cream margins.
    Vertically, content anchors near the top (like dashboard.html's
    align-items:flex-start + .main-content{overflow-y:auto}) and scrolls
-   internally instead of being centered in the raw viewport — matters
-   once more categories (e.g. Kitchen) make the list taller than 100vh. */
+   internally instead of being centered in the raw viewport. No
+   min-height:100vh here — height now matches actual content instead of
+   forcing full-viewport height (which left empty space at the bottom
+   on short screens); html,body below still cover the full viewport. */
 .vocab-wrap{
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,6 +82,18 @@ html, body{
   align-items: center;
   gap: 18px;
   text-align: center;
+}
+
+/* Category/chapter picker screens: flat, no white card — the pastel
+   tiles sit directly on the page's own cream background, matching
+   dashboard.html's .lessons-list (no background/shadow/radius, minimal
+   side-inset). Keeps .vocab-card's width/max-width/flex layout as-is,
+   only overriding these three "card" properties + padding. */
+.vocab-list-screen{
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0 2px 14px;
 }
 
 /* Screens are shown/hidden by JS; only one is visible at a time */
