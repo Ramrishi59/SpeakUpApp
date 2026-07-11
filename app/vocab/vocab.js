@@ -237,7 +237,7 @@ function playCurrentWord() {
 // Show the intro screen and autoplay its narration.
 function showIntro() {
   introImageEl.src = categoryImagePath(currentCategory.intro.image);
-  introMessageEl.textContent = "Let's learn some " + currentCategory.label + " words!";
+  introMessageEl.textContent = "";
   introAudio.src = categoryAudioPath(currentCategory.intro.audio);
 
   showScreen(introScreen);
