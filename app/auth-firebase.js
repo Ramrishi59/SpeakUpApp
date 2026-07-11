@@ -532,6 +532,14 @@ function isEntitled() {
   return !!licenseState.fullUnlock;
 }
 
+// Raw profile fullUnlock only — true for a stored purchase/admin grant,
+// false during the automatic 24-hour trial (unlike getLicense().fullUnlock,
+// which is a composite of paid/timed/trial access and is intentionally
+// true during an active trial too).
+function isPaidUnlock() {
+  return currentProfile?.fullUnlock === true;
+}
+
 window.SUAuth = {
   ready,
   loginWithEmail,
@@ -548,5 +556,6 @@ window.SUAuth = {
   getLicense,
   getProfile,
   getDebugState,
-  isEntitled
+  isEntitled,
+  isPaidUnlock
 };

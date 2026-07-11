@@ -1573,6 +1573,49 @@ async function loadDashboardLessons() {
       });
     });
 
+    // Vocab Pack card — built the same way as communityCard below (not
+    // part of CATEGORY_DEFS, doesn't filter lessons). Locked during the
+    // automatic 24-hour trial; unlocked only once the Firestore profile
+    // itself has fullUnlock === true (a real purchase or an admin-granted
+    // access window) — see isPaidUnlock() in auth-firebase.js, which is
+    // deliberately different from getLicense().fullUnlock (true during an
+    // active trial too, which the other 4 tiles intentionally allow).
+    const isVocabUnlocked = window.SUAuth?.isPaidUnlock?.() === true;
+    const vocabCard = document.createElement('button');
+    vocabCard.type = 'button';
+    vocabCard.className = 'category-tile category-tile--vocab';
+    if (!isVocabUnlocked) {
+      // No existing opacity-dimming convention was found for locked lesson
+      // cards elsewhere in this file — only a small red "Locked" badge
+      // (.lesson-badge.locked in style.css). Reusing that badge's color
+      // scheme below, plus a light dim on the tile itself as an additional
+      // visual cue since a card-level lock treatment doesn't exist yet.
+      vocabCard.style.opacity = '0.55';
+    }
+    vocabCard.innerHTML = `
+      <div class="tile-icon-wrap" style="background:#FFE0EC">
+        <span style="font-size:2.2rem;line-height:1" aria-hidden="true">📚</span>
+      </div>
+      <div class="category-tile-body">
+        <span class="category-tile-name">Vocab Pack</span>
+        <span class="category-tile-sub">${isVocabUnlocked ? 'Learn new words with Manku' : 'Unlocks after purchase'}</span>
+        ${isVocabUnlocked ? '' : '<span class="lesson-badge locked" style="position:static;display:inline-flex;margin-top:6px;">Locked</span>'}
+      </div>
+      <span class="category-tile-arrow" aria-hidden="true">&#8250;</span>
+    `;
+    vocabCard.addEventListener('click', () => {
+      if (isVocabUnlocked) {
+        window.location.href = 'vocab/vocab.html';
+      } else {
+        // Same destination access-guard.js's own locked screen links to
+        // ("dashboard.html#login"), and the exact function the bottom-nav
+        // "Log in"/"Profile" button already calls — reused directly here
+        // since we're already on dashboard.html.
+        openAccountScreen();
+      }
+    });
+    container.appendChild(vocabCard);
+
     // Parent Tips card — appended after the loop so the filter click
     // handler above is not attached to it.
     const communityCard = document.createElement('button');
