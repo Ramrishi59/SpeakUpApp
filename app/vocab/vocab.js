@@ -11,6 +11,7 @@
 
 var CATEGORIES_URL = "json/categories.json";
 var QUIZ_GROUPS_URL = "json/quizGroups.json";
+var DASHBOARD_URL = "../dashboard.html";
 
 // The currently loaded category's data (set once a category is picked).
 var currentCategory = null;
@@ -68,6 +69,14 @@ function showScreen(screenToShow) {
   quizScreen.classList.add("hidden");
   quizScoreScreen.classList.add("hidden");
   screenToShow.classList.remove("hidden");
+  updateBackLink(screenToShow);
+}
+
+// Keep the global back link in sync with the current screen.
+function updateBackLink(screenToShow) {
+  backLink.textContent = screenToShow === categoryScreen
+    ? "\u2190 Back to Main Menu"
+    : "\u2190 Back to categories";
 }
 
 // Speak a word aloud using the browser's built-in speech feature.
@@ -572,10 +581,15 @@ playBtn.addEventListener("click", playCurrentWord);
 startBtn.addEventListener("click", startFlashcards);
 restartBtn.addEventListener("click", restartToCategories);
 
-// "Back to categories" is just a placeholder link for now.
 backLink.addEventListener("click", function (event) {
   event.preventDefault();
-  // No destination yet — this will be wired up later.
+  if (!categoryScreen.classList.contains("hidden")) {
+    window.location.href = DASHBOARD_URL;
+    return;
+  }
+
+  currentChapterGroup = null;
+  showScreen(categoryScreen);
 });
 
 // Chapter list's "Back to categories" link: leave the chapter group and
@@ -587,4 +601,5 @@ chapterBackLink.addEventListener("click", function (event) {
 });
 
 // Show the category picker when the page first loads.
+showScreen(categoryScreen);
 loadCategoryList();
