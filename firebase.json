@@ -60,6 +60,10 @@
         "function": "adminUpdateAccess"
       },
       {
+        "source": "/api/admin/reset-device",
+        "function": "adminResetDevice"
+      },
+      {
         "source": "/api/admin/list-payments",
         "function": "adminListPayments"
       },

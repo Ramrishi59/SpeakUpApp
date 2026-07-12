@@ -560,6 +560,57 @@ exports.adminUpdateAccess = onRequest(async (req, res) => {
   }
 });
 
+exports.adminResetDevice = onRequest(async (req, res) => {
+  res.set(CORS_HEADERS);
+  if (!requireAdminPost(req, res)) return;
+
+  try {
+    const adminToken = await authenticateAdminRequest(req);
+    const targetUid = normalizeTargetUid(req.body?.targetUid);
+    const reason = normalizeReason(req.body?.reason);
+    const userRef = db.collection("users").doc(targetUid);
+    const beforeSnap = await userRef.get();
+
+    if (!beforeSnap.exists) {
+      const error = new Error("User profile was not found.");
+      error.status = 404;
+      throw error;
+    }
+
+    const beforeProfile = toPlainData(beforeSnap.data());
+    const now = admin.firestore.FieldValue.serverTimestamp();
+    const auditRef = db.collection("adminAuditLogs").doc();
+    const batch = db.batch();
+
+    batch.set(userRef, {
+      deviceId: null,
+      updatedAt: now
+    }, { merge: true });
+
+    batch.set(auditRef, {
+      adminUid: adminToken.uid,
+      adminEmail: adminToken.email || null,
+      targetUid,
+      action: "resetDevice",
+      reason,
+      before: { deviceId: beforeProfile.deviceId || null },
+      after: { deviceId: null },
+      createdAt: now
+    });
+
+    await batch.commit();
+
+    const afterSnap = await userRef.get();
+    res.json({
+      success: true,
+      uid: targetUid,
+      profile: toPlainData(afterSnap.data())
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
 exports.adminListPayments = onRequest(async (req, res) => {
   res.set(CORS_HEADERS);
   if (!requireAdminPost(req, res)) return;
