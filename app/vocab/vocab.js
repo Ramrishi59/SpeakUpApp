@@ -32,6 +32,16 @@ var CATEGORY_ICONS = {
   myhome: "🏠"
 };
 
+var CHAPTER_ICONS = {
+  myhome: "🏠"
+};
+
+var INTRO_LINES = {
+  family: "Let's learn some new words about Family together. Listen and say them with me!",
+  mybody: "Let's learn some new words about My Body. Look, listen, and say each one!",
+  myhome: "Let's explore words about My Home together. Listen, look, and say each one!"
+};
+
 // Screens
 var categoryScreen = document.getElementById("categoryScreen");
 var chapterListScreen = document.getElementById("chapterListScreen");
@@ -46,7 +56,7 @@ var categoryListEl = document.getElementById("categoryList");
 
 // Chapter list elements (for chapterGroup categories, e.g. My Home)
 var chapterListEl = document.getElementById("chapterListEl");
-var chapterBackLink = document.getElementById("chapterBackLink");
+var chapterListTitle = document.getElementById("chapterListTitle");
 
 // Flashcard elements
 var wordImageEl = document.getElementById("wordImage");
@@ -61,7 +71,10 @@ var backLinkText = document.getElementById("backLinkText");
 // Intro / Outro elements
 var introImageEl = document.getElementById("introImage");
 var introMessageEl = document.getElementById("introMessage");
+var introBadgeEl = document.getElementById("introBadge");
 var outroImageEl = document.getElementById("outroImage");
+var outroBadgeEl = document.getElementById("outroBadge");
+var outroMessageEl = document.getElementById("outroMessage");
 var startBtn = document.getElementById("startBtn");
 var restartBtn = document.getElementById("restartBtn");
 var introAudio = document.getElementById("introAudio");
@@ -115,6 +128,30 @@ function categoryImagePath(filename) {
 }
 function categoryAudioPath(filename) {
   return currentCategory.audioFolder + "/" + filename;
+}
+
+function getActiveToneClass() {
+  if (currentChapterGroup && currentChapterGroup.toneClass) {
+    return currentChapterGroup.toneClass;
+  }
+  return currentCategory && currentCategory.toneClass ? currentCategory.toneClass : "tone-a";
+}
+
+function getActiveCategoryLabel() {
+  if (currentChapterGroup) {
+    return currentChapterGroup.label || currentChapterGroup.id;
+  }
+  return currentCategory && currentCategory.label ? currentCategory.label : "Vocabulary";
+}
+
+function setStageTone(stageEl) {
+  stageEl.classList.remove("tone-a", "tone-b", "tone-c");
+  stageEl.classList.add(getActiveToneClass());
+}
+
+function getIntroLine() {
+  var id = currentChapterGroup ? currentChapterGroup.id : currentCategory.id;
+  return INTRO_LINES[id] || ("Let's learn some new words about " + getActiveCategoryLabel() + " together!");
 }
 
 // Category completion tracking (localStorage)
@@ -256,7 +293,9 @@ function playCurrentWord() {
 // Show the intro screen and autoplay its narration.
 function showIntro() {
   introImageEl.src = categoryImagePath(currentCategory.intro.image);
-  introMessageEl.textContent = "";
+  introBadgeEl.textContent = getActiveCategoryLabel();
+  introMessageEl.textContent = getIntroLine();
+  setStageTone(introScreen);
   introAudio.src = categoryAudioPath(currentCategory.intro.audio);
 
   showScreen(introScreen);
@@ -269,6 +308,9 @@ function showOutro() {
   markCategoryCompleted(currentCategory.id);
 
   outroImageEl.src = categoryImagePath(currentCategory.outro.image);
+  outroBadgeEl.textContent = getActiveCategoryLabel();
+  outroMessageEl.textContent = "Well done!";
+  setStageTone(outroScreen);
   outroAudio.src = categoryAudioPath(currentCategory.outro.audio);
 
   showScreen(outroScreen);
@@ -303,6 +345,7 @@ function loadCategory(categoryMeta) {
     .then(function (categoryData) {
       currentCategory = categoryData;
       currentCategory.id = categoryMeta.id;
+      currentCategory.toneClass = categoryMeta.toneClass;
       showIntro();
     })
     .catch(function (err) {
@@ -322,12 +365,16 @@ function loadChapterGroup(groupMeta) {
           .then(function (res) { return res.json(); })
           .then(function (data) {
             chapterMeta.label = data.label;
+            chapterMeta.wordCount = data.words ? data.words.length : 0;
           });
       });
 
       return Promise.all(labelPromises).then(function () {
         currentChapterMetas = chapterMetas;
         currentChapterGroup = groupMeta;
+        chapterListTitle.textContent = groupMeta.label || groupMeta.id;
+        chapterListTitle.classList.remove("tone-a", "tone-b", "tone-c");
+        chapterListTitle.classList.add(groupMeta.toneClass || "tone-c");
         renderChapterList();
         showScreen(chapterListScreen);
       });
@@ -339,27 +386,22 @@ function loadChapterGroup(groupMeta) {
 
 // Draw one button per chapter in the chapter list screen. A chapter is
 // unlocked if it's the first one, or the previous chapter has been
-// completed. Completed chapters are marked "(done)"; locked ones are
-// disabled and marked "(locked)".
+// completed. Locked ones are disabled and rendered without a chevron.
 function renderChapterList() {
   chapterListEl.innerHTML = "";
 
   var completed = getCompletedChapters(currentChapterGroup.id);
+  var totalChapters = currentChapterMetas.length;
+  var toneClass = currentChapterGroup.toneClass || "tone-c";
+  var icon = CHAPTER_ICONS[currentChapterGroup.id] || CATEGORY_ICONS[currentChapterGroup.id] || "📘";
 
   currentChapterMetas.forEach(function (chapterMeta, index) {
-    var isCompleted = completed.indexOf(chapterMeta.id) !== -1;
     var isUnlocked = index === 0 || completed.indexOf(currentChapterMetas[index - 1].id) !== -1;
 
     var label = chapterMeta.label || chapterMeta.id;
-    if (isCompleted) {
-      label = label + " (done)";
-    } else if (!isUnlocked) {
-      label = label + " (locked)";
-    }
-
-    var btn = document.createElement("button");
-    btn.className = "category-card";
-    btn.textContent = label;
+    var wordCount = chapterMeta.wordCount || 0;
+    var subtitle = "Chapter " + (index + 1) + " of " + totalChapters + " · " + wordCount + " words";
+    var btn = buildTileButton(isUnlocked ? toneClass : "chapter-locked", isUnlocked ? icon : "🔒", label, subtitle);
 
     if (isUnlocked) {
       btn.addEventListener("click", function () {
@@ -367,6 +409,10 @@ function renderChapterList() {
       });
     } else {
       btn.disabled = true;
+      var chevron = btn.querySelector(".category-tile-chevron");
+      if (chevron) {
+        chevron.remove();
+      }
     }
 
     chapterListEl.appendChild(btn);
@@ -384,6 +430,7 @@ function loadChapterByIndex(index) {
     .then(function (categoryData) {
       currentCategory = categoryData;
       currentCategory.id = chapterMeta.id;
+      currentCategory.toneClass = currentChapterGroup ? currentChapterGroup.toneClass : "tone-c";
       showIntro();
     })
     .catch(function (err) {
@@ -496,6 +543,7 @@ function renderCategoryList(categories) {
     var label = categoryMeta.label || categoryMeta.id;
     var wordCount = categoryMeta.data && categoryMeta.data.words ? categoryMeta.data.words.length : 0;
     var toneClass = CATEGORY_TONE_CLASSES[index % CATEGORY_TONE_CLASSES.length];
+    categoryMeta.toneClass = toneClass;
 
     var btn = buildTileButton(toneClass, icon, label, wordCount + " words");
 
@@ -648,14 +696,6 @@ backLink.addEventListener("click", function (event) {
     return;
   }
 
-  currentChapterGroup = null;
-  showScreen(categoryScreen);
-});
-
-// Chapter list's "Back to categories" link: leave the chapter group and
-// return to the main category picker.
-chapterBackLink.addEventListener("click", function (event) {
-  event.preventDefault();
   currentChapterGroup = null;
   showScreen(categoryScreen);
 });

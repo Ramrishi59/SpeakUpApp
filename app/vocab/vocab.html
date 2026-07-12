@@ -38,7 +38,7 @@
 
   <!-- This is an isolated prototype page. It is not linked from anywhere
        else in the app and is only reachable by opening this file directly. -->
-  <link rel="stylesheet" href="vocab.css?v=10" />
+  <link rel="stylesheet" href="vocab.css?v=15" />
 </head>
 <body>
 
@@ -64,16 +64,24 @@
 
     <!-- CHAPTER LIST SCREEN: shown when a chapterGroup category (e.g. My Home) is chosen -->
     <section class="vocab-card vocab-list-screen hidden" id="chapterListScreen">
-      <p class="screen-message">My Home — choose a chapter</p>
+      <div class="chapter-list-header">
+        <h1 class="chapter-list-title" id="chapterListTitle">My Home</h1>
+        <p class="chapter-list-subtitle">Choose a chapter</p>
+      </div>
       <div class="category-list" id="chapterListEl"></div>
-      <a href="#" id="chapterBackLink">Back to categories</a>
     </section>
 
     <!-- INTRO SCREEN: shown before flashcard 1 of the chosen category -->
-    <section class="vocab-card hidden" id="introScreen">
-      <img class="screen-image" id="introImage" src="" alt="Manku" />
-      <p class="screen-message" id="introMessage">Let's learn some words!</p>
-      <button class="nav-btn next-btn full-width" id="startBtn">Start</button>
+    <section class="vocab-card vocab-stage hidden" id="introScreen">
+      <span class="stage-badge" id="introBadge">Family</span>
+      <div class="manku-frame">
+        <img class="screen-image" id="introImage" src="" alt="Manku" />
+      </div>
+      <p class="manku-bubble" id="introMessage">Let's learn some new words together!</p>
+      <button class="nav-btn next-btn full-width stage-action" id="startBtn">
+        <span class="stage-action-icon" aria-hidden="true">&#9658;</span>
+        <span>Start</span>
+      </button>
     </section>
 
     <!-- FLASHCARD SCREEN: one word at a time -->
@@ -101,10 +109,16 @@
     </section>
 
     <!-- OUTRO SCREEN: shown after the last flashcard -->
-    <section class="vocab-card hidden" id="outroScreen">
-      <img class="screen-image" id="outroImage" src="" alt="Manku" />
-      <p class="screen-message">Well done!</p>
-      <button class="nav-btn back-btn full-width" id="restartBtn">Restart</button>
+    <section class="vocab-card vocab-stage hidden" id="outroScreen">
+      <span class="stage-badge" id="outroBadge">Family</span>
+      <div class="manku-frame manku-frame-celebrate">
+        <img class="screen-image" id="outroImage" src="" alt="Manku" />
+      </div>
+      <p class="screen-message stage-message" id="outroMessage">Well done!</p>
+      <button class="nav-btn next-btn full-width stage-action" id="restartBtn">
+        <span class="stage-action-icon" aria-hidden="true">&#8635;</span>
+        <span>Restart</span>
+      </button>
     </section>
 
     <!-- QUIZ SCREEN: one image-choice question at a time -->
@@ -131,7 +145,7 @@
   <audio id="introAudio"></audio>
   <audio id="outroAudio"></audio>
 
-  <script src="vocab.js?v=10"></script>
-  <script src="vocab-quiz.js?v=10"></script>
+  <script src="vocab.js?v=15"></script>
+  <script src="vocab-quiz.js?v=15"></script>
 </body>
 </html>
