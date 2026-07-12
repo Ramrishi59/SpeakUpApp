@@ -335,11 +335,15 @@ function startFlashcards() {
   showScreen(flashcardScreen);
 }
 
-// Restart button on the outro screen: go back to the category picker.
-function restartToCategories() {
-  currentCategory = null;
-  loadCategoryList();
-  showScreen(categoryScreen);
+// Restart button on the outro screen: replay the current learning path.
+function restartCurrentPath() {
+  if (currentChapterGroup) {
+    loadChapterByIndex(0);
+    return;
+  }
+
+  currentIndex = 0;
+  showIntro();
 }
 
 // Fetch a category's word-list JSON, then show its intro screen.
@@ -697,7 +701,7 @@ backBtn.addEventListener("click", goBack);
 nextBtn.addEventListener("click", goNext);
 playBtn.addEventListener("click", playCurrentWord);
 startBtn.addEventListener("click", startFlashcards);
-restartBtn.addEventListener("click", restartToCategories);
+restartBtn.addEventListener("click", restartCurrentPath);
 
 backLink.addEventListener("click", function (event) {
   event.preventDefault();
