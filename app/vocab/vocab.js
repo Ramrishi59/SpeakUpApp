@@ -37,9 +37,19 @@ var CHAPTER_ICONS = {
 };
 
 var INTRO_LINES = {
-  family: "Let's learn some new words about Family together. Listen and say them with me!",
-  mybody: "Let's learn some new words about My Body. Look, listen, and say each one!",
-  myhome: "Let's explore words about My Home together. Listen, look, and say each one!"
+  family: "Hi Friends! Let's learn some Family Words. Look, Listen and Repeat!",
+  mybody: "Hello! Let's learn about our Body Parts. Look, Listen and Repeat.",
+  myhome1: "Hello Friends! This is about our Home. Look, Listen and Repeat.",
+  myhome2: "Hi! Let's continue! Look, Listen and Repeat.",
+  myhome3: "Welcome to the third part of My Home! Look, Listen and Repeat.",
+  myhome4: "Let's Continue My Home Part 4. Look, Listen and Repeat.",
+  myhome5: "Welcome to My Home Part 5. Look, Listen and Repeat."
+};
+
+var OUTRO_LINES = {
+  family: "Wonderful! See you in the next one. Bye!",
+  mybody: "Excellent! Keep practising!",
+  myhome5: "Wonderful! You learned many words about your home today! Bye!"
 };
 
 // Screens
@@ -150,7 +160,7 @@ function setStageTone(stageEl) {
 }
 
 function getIntroLine() {
-  var id = currentChapterGroup ? currentChapterGroup.id : currentCategory.id;
+  var id = currentCategory.id;
   return INTRO_LINES[id] || ("Let's learn some new words about " + getActiveCategoryLabel() + " together!");
 }
 
@@ -309,7 +319,7 @@ function showOutro() {
 
   outroImageEl.src = categoryImagePath(currentCategory.outro.image);
   outroBadgeEl.textContent = getActiveCategoryLabel();
-  outroMessageEl.textContent = "Well done!";
+  outroMessageEl.textContent = OUTRO_LINES[currentCategory.id] || "Well done!";
   setStageTone(outroScreen);
   outroAudio.src = categoryAudioPath(currentCategory.outro.audio);
 
