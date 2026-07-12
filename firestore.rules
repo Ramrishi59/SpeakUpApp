@@ -41,10 +41,17 @@ service cloud.firestore {
       ]);
     }
 
+    function bindDeviceOnce() {
+      return changedKeys().hasOnly(["deviceId"])
+        && resource.data.get("deviceId", null) == null
+        && request.resource.data.deviceId is string
+        && request.resource.data.deviceId.size() > 0;
+    }
+
     match /users/{uid} {
       allow read: if isOwner(uid);
       allow create: if safeUserCreate(uid);
-      allow update: if isOwner(uid) && safeUserUpdate();
+      allow update: if isOwner(uid) && (safeUserUpdate() || bindDeviceOnce());
       allow delete: if false;
     }
 
