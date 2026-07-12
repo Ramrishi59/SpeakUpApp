@@ -4,8 +4,8 @@
   "character": "Manku",
   "imageFolder": "Images/Family",
   "audioFolder": "Audio/Family",
-  "intro": { "image": "Intro.webp", "audio": "Intro.mp3" },
-  "outro": { "image": "Outro.webp", "audio": "Outro.mp3" },
+  "intro": { "image": "Intro-v2.webp", "audio": "Intro.mp3" },
+  "outro": { "image": "Outro-v2.webp", "audio": "Outro.mp3" },
   "words": [
     { "word": "Mother", "image": "1.webp", "audio": "1_Chapter_1.mp3" },
     { "word": "Father", "image": "2.webp", "audio": "2_Chapter_1.mp3" },

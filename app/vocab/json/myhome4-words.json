@@ -4,7 +4,7 @@
   "character": "Manku",
   "imageFolder": "Images/MyHome4",
   "audioFolder": "Audio/MyHome4",
-  "intro": { "image": "Intro.webp", "audio": "1_Chapter_1.mp3" },
+  "intro": { "image": "Intro-v2.webp", "audio": "1_Chapter_1.mp3" },
   "words": [
     { "word": "Ceiling Fan", "image": "1.png", "audio": "2_Chapter_1.mp3" },
     { "word": "Pedestal fan", "image": "2.png", "audio": "3_Chapter_1.mp3" },

@@ -4,8 +4,8 @@
   "character": "Manku",
   "imageFolder": "Images/MyBody",
   "audioFolder": "Audio/MyBody",
-  "intro": { "image": "Intro.webp", "audio": "Intro.mp3" },
-  "outro": { "image": "Outro.webp", "audio": "Outro.mp3" },
+  "intro": { "image": "Intro-v2.webp", "audio": "Intro.mp3" },
+  "outro": { "image": "Outro-v2.webp", "audio": "Outro.mp3" },
   "words": [
     { "word": "Head", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
     { "word": "Hair", "image": "2.webp", "audio": "3_Chapter_1.mp3" },

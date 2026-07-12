@@ -4,7 +4,7 @@
   "character": "Manku",
   "imageFolder": "Images/MyHome2",
   "audioFolder": "Audio/MyHome2",
-  "intro": { "image": "Intro.webp", "audio": "1_Chapter_1.mp3" },
+  "intro": { "image": "Intro-v2.webp", "audio": "1_Chapter_1.mp3" },
   "words": [
     { "word": "Door", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
     { "word": "Door frame", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
