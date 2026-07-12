@@ -595,7 +595,7 @@ function renderQuizGroupCards(categories) {
           return total + (categoryMeta.data && categoryMeta.data.words ? categoryMeta.data.words.length : 0);
         }, 0);
 
-        var btn = buildTileButton("tone-quiz", "❓", "Quiz: " + labels.join(" + "), questionCount + " questions");
+        var btn = buildTileButton("tone-quiz challenge-card", "🏆", "Quiz: " + labels.join(" + "), questionCount + " questions");
 
         if (isUnlocked) {
           btn.addEventListener("click", function () {
