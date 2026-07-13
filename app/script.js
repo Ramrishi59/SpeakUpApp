@@ -619,6 +619,72 @@ function openAccountScreen() {
   renderAccountStatus();
 }
 
+function renderEmailVerificationScreen() {
+  const appRoot = getAppRoot();
+  if (!appRoot) return;
+  let accountScreen = document.getElementById('account-screen');
+  if (!accountScreen) {
+    accountScreen = document.createElement('div');
+    accountScreen.id = 'account-screen';
+    appRoot.appendChild(accountScreen);
+  }
+  const dashboard = document.getElementById('dashboard-screen');
+  if (dashboard) dashboard.style.display = 'none';
+  accountScreen.style.display = 'block';
+
+  const email = (window.SUAuth?.getAuth?.().email) || 'your email';
+  accountScreen.innerHTML = `
+    <section class="account-screen" aria-labelledby="verify-title">
+      <div class="account-card">
+        <div class="account-brand">
+          <img src="Images/dashboard thumbnails/Manku.webp" alt="SpeakUp" />
+          <span>SpeakUp</span>
+        </div>
+        <h2 class="account-title" id="verify-title">Verify your email</h2>
+        <p class="account-subtitle">We sent a verification link to <strong>${email}</strong>. Please open it, then come back and tap "I've verified".</p>
+        <p class="account-subtitle" style="color:#c0392b;font-weight:600;">Can't find the email? Check your Spam or Junk folder.</p>
+        <div class="button-row">
+          <button type="button" class="primary-button" id="verify-continue">I've verified — Continue</button>
+        </div>
+        <div class="button-row">
+          <button type="button" class="secondary-button" id="verify-resend">Resend email</button>
+        </div>
+        <p id="verify-message" class="footer-note" aria-live="polite"></p>
+        <div class="button-row">
+          <button type="button" class="secondary-button" id="verify-signout">Sign out</button>
+        </div>
+      </div>
+    </section>
+  `;
+
+  const vMsg = document.getElementById('verify-message');
+
+  document.getElementById('verify-continue')?.addEventListener('click', async () => {
+    if (vMsg) vMsg.textContent = 'Checking…';
+    const verified = await window.SUAuth.reloadUser();
+    if (verified) {
+      renderAccountStatus();
+    } else if (vMsg) {
+      vMsg.textContent = 'Not verified yet. Please open the link in your email, then try again.';
+    }
+  });
+
+  document.getElementById('verify-resend')?.addEventListener('click', async () => {
+    try {
+      await window.SUAuth.resendVerificationEmail();
+      if (vMsg) vMsg.textContent = 'Verification email sent again. Check your inbox and spam folder.';
+    } catch (error) {
+      if (vMsg) vMsg.textContent = 'Could not resend right now. Please try again in a minute.';
+    }
+  });
+
+  document.getElementById('verify-signout')?.addEventListener('click', async () => {
+    await window.SUAuth.logout();
+    renderAccountStatus();
+    showDashboardScreen();
+  });
+}
+
 function renderAccountStatus() {
   const appRoot = getAppRoot();
   if (!appRoot) return;
@@ -811,6 +877,10 @@ function renderAccountStatus() {
 
     async function finishLogin(profileSynced = true) {
       const updatedAuth = getLoginState();
+      if (updatedAuth.isLoggedIn && window.SUAuth?.isEmailVerified?.() === false) {
+        renderEmailVerificationScreen();
+        return;
+      }
       const accessNow = getAccessState();
       const hasSomeAccess = accessNow.fullUnlock === true;
 
@@ -901,13 +971,8 @@ function renderAccountStatus() {
       }
 
       try {
-        const result = await window.SUAuth.signupWithEmail(username, email, password);
-        renderAccountStatus();
-        if (message) {
-          message.textContent = result?.profileSynced === false
-            ? 'Account created, but profile setup is incomplete. Check Firestore rules.'
-            : 'Account created. Your 24-hour full access trial is active.';
-        }
+        await window.SUAuth.signupWithEmail(username, email, password);
+        renderEmailVerificationScreen();
       } catch (error) {
         console.error(error);
         if (message) message.textContent = getAuthErrorMessage(error, 'Sign up failed. Try a different email.');

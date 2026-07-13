@@ -630,6 +630,17 @@ async function resendVerificationEmail() {
   return true;
 }
 
+async function reloadUser() {
+  const user = auth.currentUser;
+  if (!user) return false;
+  try {
+    await user.reload();
+  } catch (error) {
+    console.warn("Could not reload user.", error);
+  }
+  return auth.currentUser?.emailVerified === true;
+}
+
 function getDeviceBlocked() {
   return deviceBlocked === true;
 }
@@ -654,5 +665,6 @@ window.SUAuth = {
   isPaidUnlock,
   getDeviceBlocked,
   isEmailVerified,
-  resendVerificationEmail
+  resendVerificationEmail,
+  reloadUser
 };
