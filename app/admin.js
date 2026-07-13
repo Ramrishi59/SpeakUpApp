@@ -1490,6 +1490,7 @@ function renderPvTable(users) {
               <button type="button" id="pvGive90Btn">Give 3 Months</button>
               <button type="button" id="pvRevokeBtn" class="danger">Remove Access</button>
               <button type="button" id="pvResetDeviceBtn" class="secondary">Reset Device Lock</button>
+              <button type="button" id="pvVerifyEmailBtn" class="secondary">Mark Email Verified</button>
             </div>
             <p id="pvAccessStatus" class="status" aria-live="polite"></p>
           </div>
@@ -1534,6 +1535,20 @@ function renderPvTable(users) {
         reason: "Device lock reset by admin"
       });
       setStatus(pvAccessStatus, "Device lock reset. User can now log in on a new device.", "success");
+    } catch (error) {
+      console.error(error);
+      setStatus(pvAccessStatus, error.message, "error");
+    }
+  }
+
+  async function pvDoVerifyEmail() {
+    setStatus(pvAccessStatus, "Marking email verified…");
+    try {
+      await adminPost("/api/admin/verify-email", {
+        targetUid: pvSelectedUid,
+        reason: "Email manually verified by admin"
+      });
+      setStatus(pvAccessStatus, "Email marked as verified. User can now log in.", "success");
     } catch (error) {
       console.error(error);
       setStatus(pvAccessStatus, error.message, "error");
@@ -1602,5 +1617,22 @@ function renderPvTable(users) {
       return;
     }
     pvDoResetDevice();
+  });
+
+  let verifyEmailArmed = false;
+  document.getElementById("pvVerifyEmailBtn")?.addEventListener("click", e => {
+    e.stopPropagation();
+    if (!verifyEmailArmed) {
+      verifyEmailArmed = true;
+      const btn = document.getElementById("pvVerifyEmailBtn");
+      if (btn) btn.textContent = "⚠ Tap again to confirm verify";
+      setTimeout(() => {
+        verifyEmailArmed = false;
+        const b = document.getElementById("pvVerifyEmailBtn");
+        if (b) b.textContent = "Mark Email Verified";
+      }, 3000);
+      return;
+    }
+    pvDoVerifyEmail();
   });
 }
