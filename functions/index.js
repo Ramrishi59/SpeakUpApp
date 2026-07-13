@@ -611,6 +611,45 @@ exports.adminResetDevice = onRequest(async (req, res) => {
   }
 });
 
+exports.adminVerifyEmail = onRequest(async (req, res) => {
+  res.set(CORS_HEADERS);
+  if (!requireAdminPost(req, res)) return;
+
+  try {
+    const adminToken = await authenticateAdminRequest(req);
+    const targetUid = normalizeTargetUid(req.body?.targetUid);
+    const reason = normalizeReason(req.body?.reason);
+
+    let beforeVerified = null;
+    try {
+      const beforeUser = await admin.auth().getUser(targetUid);
+      beforeVerified = beforeUser.emailVerified === true;
+    } catch (error) {
+      const notFound = new Error("Auth user was not found.");
+      notFound.status = 404;
+      throw notFound;
+    }
+
+    await admin.auth().updateUser(targetUid, { emailVerified: true });
+
+    const now = admin.firestore.FieldValue.serverTimestamp();
+    await db.collection("adminAuditLogs").doc().set({
+      adminUid: adminToken.uid,
+      adminEmail: adminToken.email || null,
+      targetUid,
+      action: "verifyEmail",
+      reason,
+      before: { emailVerified: beforeVerified },
+      after: { emailVerified: true },
+      createdAt: now
+    });
+
+    res.json({ success: true, uid: targetUid, emailVerified: true });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
 exports.adminListPayments = onRequest(async (req, res) => {
   res.set(CORS_HEADERS);
   if (!requireAdminPost(req, res)) return;

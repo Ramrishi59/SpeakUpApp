@@ -64,6 +64,10 @@
         "function": "adminResetDevice"
       },
       {
+        "source": "/api/admin/verify-email",
+        "function": "adminVerifyEmail"
+      },
+      {
         "source": "/api/admin/list-payments",
         "function": "adminListPayments"
       },
