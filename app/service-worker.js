@@ -1,6 +1,6 @@
 // Bump CACHE_VERSION whenever you deploy lesson content changes
 // that should invalidate cached audio/images for all users.
-const CACHE_VERSION = 'v28';
+const CACHE_VERSION = 'v29';
 const CACHE_LESSONS = `speakup-lessons-${CACHE_VERSION}`;
 const CACHE_SHELL   = `speakup-shell-${CACHE_VERSION}`;
 const CACHE_CDN     = `speakup-cdn-${CACHE_VERSION}`;
