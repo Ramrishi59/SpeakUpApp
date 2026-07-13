@@ -32,6 +32,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+let deviceBlocked = false;
 let db;
 try {
   db = initializeFirestore(app, { localCache: persistentLocalCache() });
@@ -211,6 +212,54 @@ async function createUserProfile(uid, profileInput) {
   }
 }
 
+async function enforceDeviceLock() {
+  // Only paid, non-admin accounts are device-locked. Trial/free users and
+  // admins (Ramu/Nandini) are never bound. Skip if profile failed to load.
+  if (!currentProfile) return;
+  if (isPaidUnlock() !== true) return;
+  if (authState.isAdmin === true) return;
+
+  const STORAGE_KEY = "su_device_id";
+  let localId = null;
+  try {
+    localId = localStorage.getItem(STORAGE_KEY);
+    if (!localId) {
+      localId = (crypto?.randomUUID?.() || String(Date.now()) + Math.random().toString(36).slice(2));
+      localStorage.setItem(STORAGE_KEY, localId);
+    }
+  } catch (error) {
+    // localStorage unavailable (private mode edge case) — do not lock out.
+    console.warn("Device lock: localStorage unavailable, skipping.", error);
+    return;
+  }
+
+  const storedId = currentProfile.deviceId || null;
+
+  if (!storedId) {
+    // First paid device — bind it.
+    try {
+      await updateDoc(doc(db, "users", authState.uid), { deviceId: localId });
+      currentProfile.deviceId = localId;
+    } catch (error) {
+      console.warn("Device lock: could not bind device.", error);
+    }
+    return;
+  }
+
+  if (storedId === localId) {
+    // Correct device — allow.
+    return;
+  }
+
+  // Mismatch — this paid account is bound to a different device. Block.
+  deviceBlocked = true;
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.warn("Device lock: sign-out after block failed.", error);
+  }
+}
+
 async function loadUserProfile(uid) {
   const ref = doc(db, "users", uid);
   const snap = await getDoc(ref);
@@ -271,6 +320,7 @@ onAuthStateChanged(auth, async (user) => {
     };
     try {
       await loadUserProfileWithRetry(user.uid);
+      await enforceDeviceLock();
       startPresenceHeartbeat();
     } catch (error) {
       console.warn("Could not load user profile from Firestore.", error);
@@ -286,6 +336,9 @@ onAuthStateChanged(auth, async (user) => {
     }
   } else {
     stopPresenceHeartbeat();
+    // Note: do NOT reset deviceBlocked here — a block triggers signOut(),
+    // which re-enters this handler with no user; we must keep the flag so the
+    // dashboard can show the block message.
     authState = {
       isLoggedIn: false,
       email: null,
@@ -540,6 +593,10 @@ function isPaidUnlock() {
   return currentProfile?.fullUnlock === true;
 }
 
+function getDeviceBlocked() {
+  return deviceBlocked === true;
+}
+
 window.SUAuth = {
   ready,
   loginWithEmail,
@@ -557,5 +614,6 @@ window.SUAuth = {
   getProfile,
   getDebugState,
   isEntitled,
-  isPaidUnlock
+  isPaidUnlock,
+  getDeviceBlocked
 };
