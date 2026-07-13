@@ -7,6 +7,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   getIdTokenResult,
+  sendEmailVerification,
   signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 import {
@@ -440,6 +441,12 @@ async function signupWithEmail(username, email, password) {
   const cred = await createUserWithEmailAndPassword(auth, email, password);
   const user = cred.user;
 
+  try {
+    await sendEmailVerification(user);
+  } catch (error) {
+    console.warn("Could not send verification email.", error);
+  }
+
   authState = {
     isLoggedIn: true,
     email: user.email || null,
@@ -610,6 +617,19 @@ function isPaidUnlock() {
   return currentProfile?.fullUnlock === true;
 }
 
+function isEmailVerified() {
+  const user = auth.currentUser;
+  if (!user) return false;
+  return user.emailVerified === true;
+}
+
+async function resendVerificationEmail() {
+  const user = auth.currentUser;
+  if (!user) throw new Error("Please sign in first.");
+  await sendEmailVerification(user);
+  return true;
+}
+
 function getDeviceBlocked() {
   return deviceBlocked === true;
 }
@@ -632,5 +652,7 @@ window.SUAuth = {
   getDebugState,
   isEntitled,
   isPaidUnlock,
-  getDeviceBlocked
+  getDeviceBlocked,
+  isEmailVerified,
+  resendVerificationEmail
 };
