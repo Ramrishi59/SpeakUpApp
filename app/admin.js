@@ -1489,6 +1489,7 @@ function renderPvTable(users) {
               <button type="button" id="pvGive30Btn">Give 1 Month</button>
               <button type="button" id="pvGive90Btn">Give 3 Months</button>
               <button type="button" id="pvRevokeBtn" class="danger">Remove Access</button>
+              <button type="button" id="pvResetDeviceBtn" class="secondary">Reset Device Lock</button>
             </div>
             <p id="pvAccessStatus" class="status" aria-live="polite"></p>
           </div>
@@ -1524,6 +1525,20 @@ function renderPvTable(users) {
 
   const pvReasonSelect = document.getElementById("pvReasonSelect");
   const pvAccessStatus = document.getElementById("pvAccessStatus");
+
+  async function pvDoResetDevice() {
+    setStatus(pvAccessStatus, "Resetting device lock…");
+    try {
+      await adminPost("/api/admin/reset-device", {
+        targetUid: pvSelectedUid,
+        reason: "Device lock reset by admin"
+      });
+      setStatus(pvAccessStatus, "Device lock reset. User can now log in on a new device.", "success");
+    } catch (error) {
+      console.error(error);
+      setStatus(pvAccessStatus, error.message, "error");
+    }
+  }
 
   async function pvDoAction(action, reason) {
     selectedUid      = pvSelectedUid;
@@ -1570,5 +1585,22 @@ function renderPvTable(users) {
       return;
     }
     pvDoAction("revoke", "Access removed by admin");
+  });
+
+  let resetDeviceArmed = false;
+  document.getElementById("pvResetDeviceBtn")?.addEventListener("click", e => {
+    e.stopPropagation();
+    if (!resetDeviceArmed) {
+      resetDeviceArmed = true;
+      const btn = document.getElementById("pvResetDeviceBtn");
+      if (btn) btn.textContent = "⚠ Tap again to confirm reset";
+      setTimeout(() => {
+        resetDeviceArmed = false;
+        const b = document.getElementById("pvResetDeviceBtn");
+        if (b) b.textContent = "Reset Device Lock";
+      }, 3000);
+      return;
+    }
+    pvDoResetDevice();
   });
 }
