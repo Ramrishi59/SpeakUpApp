@@ -225,6 +225,9 @@ function showQuizScore() {
   quizContinueBtn.textContent = isLastChunk ? "Back to categories" : "Next quiz";
 
   showScreen(quizScoreScreen);
+
+  if (typeof popConfettiVocab === "function") popConfettiVocab();
+  if (typeof playClapVocab === "function") playClapVocab();
 }
 
 // "Next quiz" / "Back to categories" button on the score screen.

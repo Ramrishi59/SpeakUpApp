@@ -732,10 +732,24 @@ html, body{
   border: none;
   padding: 36px 20px;
   gap: 12px;
+  min-height: calc(100vh - 160px);
+  justify-content: center;
+  animation: quizScoreZoomIn 0.4s ease-out;
+}
+
+@keyframes quizScoreZoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .quiz-score-trophy {
-  font-size: 56px;
+  font-size: 96px;
   line-height: 1;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
