@@ -1,0 +1,20 @@
+{
+  "id": "kitchen1",
+  "label": "Dining Items",
+  "character": "Manku",
+  "imageFolder": "Images/Kitchen1",
+  "audioFolder": "Audio/Kitchen1",
+  "intro": { "image": "Intro-v2.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "Plate", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Bowl", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Cup", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Saucer", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Mug", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Glass", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Spoon", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Fork", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Knife", "image": "9.webp", "audio": "10_Chapter_1.mp3" },
+    { "word": "Salt Shaker", "image": "10.webp", "audio": "11_Chapter_1.mp3" }
+  ]
+}

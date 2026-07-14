@@ -1,0 +1,19 @@
+{
+  "id": "kitchen6",
+  "label": "Cooking Appliances",
+  "character": "Manku",
+  "imageFolder": "Images/Kitchen6",
+  "audioFolder": "Audio/Kitchen6",
+  "intro": { "image": "Intro-v2.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "Induction Cooktop (Induction Stove)", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Sandwich Maker", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Pot Holders (Oven Mitts)", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Dishwasher", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Kitchen Sink", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Food Scale (Kitchen Scale)", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Dish Rack (Dish Drainer)", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Tap (Faucet)", "image": "8.webp", "audio": "9_Chapter_1.mp3" }
+  ],
+  "outro": { "image": "Outro-v2.webp", "audio": "10_Chapter_1.mp3" }
+}

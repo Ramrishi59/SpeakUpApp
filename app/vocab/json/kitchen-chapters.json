@@ -1,0 +1,8 @@
+[
+  { "id": "kitchen1", "file": "json/kitchen1-words.json" },
+  { "id": "kitchen2", "file": "json/kitchen2-words.json" },
+  { "id": "kitchen3", "file": "json/kitchen3-words.json" },
+  { "id": "kitchen4", "file": "json/kitchen4-words.json" },
+  { "id": "kitchen5", "file": "json/kitchen5-words.json" },
+  { "id": "kitchen6", "file": "json/kitchen6-words.json" }
+]

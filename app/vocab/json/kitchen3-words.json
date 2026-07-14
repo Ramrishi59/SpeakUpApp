@@ -1,0 +1,19 @@
+{
+  "id": "kitchen3",
+  "label": "Food Preparation Tools",
+  "character": "Manku",
+  "imageFolder": "Images/Kitchen3",
+  "audioFolder": "Audio/Kitchen3",
+  "intro": { "image": "Intro-v2.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "Rolling Pin", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Garlic Press", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Ice Cream Scoop", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Mortar and Pestle", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Potato Masher", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Basting Brush", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Egg Separator", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Egg Slicer", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Mandoline Slicer", "image": "9.webp", "audio": "10_Chapter_1.mp3" }
+  ]
+}

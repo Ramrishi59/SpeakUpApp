@@ -1,5 +1,6 @@
 [
   { "id": "family", "file": "json/family-words.json" },
   { "id": "mybody", "file": "json/mybody-words.json" },
-  { "id": "myhome", "label": "My Home", "type": "chapterGroup", "chaptersFile": "json/myhome-chapters.json" }
+  { "id": "myhome", "label": "My Home", "type": "chapterGroup", "chaptersFile": "json/myhome-chapters.json" },
+  { "id": "kitchen", "label": "Kitchen", "type": "chapterGroup", "chaptersFile": "json/kitchen-chapters.json" }
 ]

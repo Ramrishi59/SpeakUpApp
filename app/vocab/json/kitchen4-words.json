@@ -1,0 +1,19 @@
+{
+  "id": "kitchen4",
+  "label": "Small Kitchen Appliances",
+  "character": "Manku",
+  "imageFolder": "Images/Kitchen4",
+  "audioFolder": "Audio/Kitchen4",
+  "intro": { "image": "Intro-v2.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "Mixer (Blender)", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Food Processor", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Electric Whisk", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Juicer", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Citrus Squeezer", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Coffee Maker", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Electric Kettle", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Toaster", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Microwave Oven", "image": "9.webp", "audio": "10_Chapter_1.mp3" }
+  ]
+}

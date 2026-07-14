@@ -29,11 +29,13 @@ var currentChapterMetas = [];
 var CATEGORY_ICONS = {
   family: "👨‍👩‍👧",
   mybody: "🧍",
-  myhome: "🏠"
+  myhome: "🏠",
+  kitchen: "🍳"
 };
 
 var CHAPTER_ICONS = {
-  myhome: "🏠"
+  myhome: "🏠",
+  kitchen: "🍳"
 };
 
 var INTRO_LINES = {
@@ -43,13 +45,20 @@ var INTRO_LINES = {
   myhome2: "Hi! Let's continue! Look, Listen and Repeat.",
   myhome3: "Welcome to the third part of My Home! Look, Listen and Repeat.",
   myhome4: "Let's Continue My Home Part 4. Look, Listen and Repeat.",
-  myhome5: "Welcome to My Home Part 5. Look, Listen and Repeat."
+  myhome5: "Welcome to My Home Part 5. Look, Listen and Repeat.",
+  kitchen1: "Hello, little learners! Let's learn kitchen words. Look, listen and repeat!",
+  kitchen2: "Let's learn some more kitchen words. Look, listen and repeat!",
+  kitchen3: "Here are more kitchen words. Look, listen and repeat!",
+  kitchen4: "Let's keep learning kitchen words. Look, listen and repeat!",
+  kitchen5: "Great! Let's learn some more kitchen words. Look, listen and repeat!",
+  kitchen6: "These are the last kitchen words. Look, listen and repeat!"
 };
 
 var OUTRO_LINES = {
   family: "Wonderful! See you in the next one. Bye!",
   mybody: "Excellent! Keep practising!",
-  myhome5: "Wonderful! You learned many words about your home today! Bye!"
+  myhome5: "Wonderful! You learned many words about your home today! Bye!",
+  kitchen6: "Excellent! You learned lots of kitchen words today. See you next time. Bye!"
 };
 
 // Screens

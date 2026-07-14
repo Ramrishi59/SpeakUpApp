@@ -1,0 +1,25 @@
+{
+  "id": "kitchen2",
+  "label": "Hand Tools & Utensils",
+  "character": "Manku",
+  "imageFolder": "Images/Kitchen2",
+  "audioFolder": "Audio/Kitchen2",
+  "intro": { "image": "Intro-v2.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "Meat Cleaver", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Vegetable Peeler", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Grater", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Cheese Grater", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Cutting Board (Chopping Board)", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Sieve", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Strainer", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Whisk", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Colander", "image": "9.webp", "audio": "10_Chapter_1.mp3" },
+    { "word": "Spatula (Turner)", "image": "10.webp", "audio": "11_Chapter_1.mp3" },
+    { "word": "Ladle", "image": "11.webp", "audio": "12_Chapter_1.mp3" },
+    { "word": "Tongs", "image": "12.webp", "audio": "13_Chapter_1.mp3" },
+    { "word": "Slotted Spoon", "image": "13.webp", "audio": "14_Chapter_1.mp3" },
+    { "word": "Slotted Ladle", "image": "14.webp", "audio": "15_Chapter_1.mp3" },
+    { "word": "Measuring Cup", "image": "15.webp", "audio": "16_Chapter_1.mp3" }
+  ]
+}
