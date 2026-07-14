@@ -12,6 +12,32 @@
 var CATEGORIES_URL = "json/categories.json";
 var QUIZ_GROUPS_URL = "json/quizGroups.json";
 var DASHBOARD_URL = "../dashboard.html";
+const CLAP_SFX = "../choosequiz/effects/Clap.mp3";
+const prefersReducedVocab = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+const confettiCanvasVocab = document.getElementById("confettiCanvas");
+const confettiShotVocab = (window.confetti && confettiCanvasVocab)
+  ? window.confetti.create(confettiCanvasVocab, { resize: true, useWorker: true })
+  : null;
+let lastConfettiAtVocab = 0;
+
+function popConfettiVocab() {
+  if (!confettiShotVocab || prefersReducedVocab) return;
+  const now = performance.now();
+  if (now - lastConfettiAtVocab < 500) return;
+  lastConfettiAtVocab = now;
+  confettiShotVocab({
+    particleCount: 600,
+    spread: 70,
+    origin: { x: Math.random() * 0.6 + 0.2, y: 0.3 }
+  });
+}
+
+function playClapVocab() {
+  try {
+    const clap = new Audio(CLAP_SFX);
+    clap.play().catch(() => {});
+  } catch (e) {}
+}
 
 // The currently loaded category's data (set once a category is picked).
 var currentCategory = null;
@@ -344,6 +370,15 @@ function showOutro() {
   showScreen(outroScreen);
   outroAudio.currentTime = 0;
   playAudioWithFallback(outroAudio, null);
+
+  // NEW: celebration effects
+  popConfettiVocab();
+  playClapVocab();
+  const wordCount = currentCategory.words ? currentCategory.words.length : 0;
+  const countEl = document.getElementById("outroWordCount");
+  if (countEl) {
+    countEl.textContent = "You learned " + wordCount + " words today! \u{1F389}";
+  }
 }
 
 // Start button: move from intro to the first flashcard.

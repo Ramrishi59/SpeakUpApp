@@ -38,7 +38,7 @@
 
   <!-- This is an isolated prototype page. It is not linked from anywhere
        else in the app and is only reachable by opening this file directly. -->
-  <link rel="stylesheet" href="vocab.css?v=35" />
+  <link rel="stylesheet" href="vocab.css?v=36" />
 </head>
 <body>
 
@@ -115,6 +115,7 @@
         <img class="screen-image" id="outroImage" src="" alt="Manku" />
       </div>
       <p class="screen-message stage-message" id="outroMessage">Well done!</p>
+      <p class="screen-message stage-message" id="outroWordCount" style="font-size: 0.9em; opacity: 0.85;"></p>
       <button class="nav-btn next-btn full-width stage-action" id="restartBtn">
         <span class="stage-action-icon" aria-hidden="true">&#8635;</span>
         <span>Restart</span>
@@ -145,7 +146,10 @@
   <audio id="introAudio"></audio>
   <audio id="outroAudio"></audio>
 
-  <script src="vocab.js?v=35"></script>
-  <script src="vocab-quiz.js?v=35"></script>
+  <canvas id="confettiCanvas" class="confetti-layer"></canvas>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="vocab.js?v=36"></script>
+  <script src="vocab-quiz.js?v=36"></script>
 </body>
 </html>
