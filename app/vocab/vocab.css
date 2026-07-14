@@ -62,20 +62,22 @@ html, body{
   max-width: 420px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  justify-content: flex-start;
+}
+.back-link span{
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 15px;
   color: var(--teal);
   text-decoration: none;
+  background: rgba(15, 118, 110, 0.1);
+  padding: 8px 18px;
+  border-radius: 999px;
 }
-.back-link:hover{
-  text-decoration: underline;
-}
-.back-link-icon{
-  width: 19px;
-  height: 19px;
-  flex-shrink: 0;
+.back-link:hover span{
+  background: rgba(15, 118, 110, 0.18);
 }
 
 /* Main card — stretches to near-full width on phones (~16px breathing

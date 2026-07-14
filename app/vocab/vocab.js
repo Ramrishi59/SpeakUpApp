@@ -154,7 +154,7 @@ function showScreen(screenToShow) {
 function updateBackLink(screenToShow) {
   backLinkText.textContent = screenToShow === categoryScreen
     ? "Back to Main Menu"
-    : "Back to categories";
+    : "Back to Categories";
 }
 
 // Speak a word aloud using the browser's built-in speech feature.
