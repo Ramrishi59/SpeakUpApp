@@ -726,3 +726,38 @@ html, body{
   pointer-events: none;
   z-index: 40;
 }
+
+.quiz-score-card {
+  background: linear-gradient(160deg, #7C4DFF 0%, #B388FF 100%);
+  border: none;
+  padding: 36px 20px;
+  gap: 12px;
+}
+
+.quiz-score-trophy {
+  font-size: 56px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.quiz-score-label {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(18px, 4.5vw, 22px);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.quiz-score-number {
+  margin: 0 0 8px 0;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(30px, 7vw, 40px);
+  color: var(--white);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.quiz-score-btn {
+  background: var(--white);
+  color: #7C4DFF;
+}

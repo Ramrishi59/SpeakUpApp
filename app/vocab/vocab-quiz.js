@@ -217,8 +217,11 @@ function goToNextQuizQuestion() {
 function showQuizScore() {
   var isLastChunk = quizChunkIndex === quizChunks.length - 1;
 
-  quizScoreTextEl.textContent =
-    "Quiz " + (quizChunkIndex + 1) + ": " + quizScore + " out of " + quizRoundWords.length + "!";
+  var quizScoreLabelEl = document.getElementById("quizScoreLabel");
+  if (quizScoreLabelEl) {
+    quizScoreLabelEl.textContent = "Quiz " + (quizChunkIndex + 1) + " Complete!";
+  }
+  quizScoreTextEl.textContent = quizScore + " out of " + quizRoundWords.length;
   quizContinueBtn.textContent = isLastChunk ? "Back to categories" : "Next quiz";
 
   showScreen(quizScoreScreen);
