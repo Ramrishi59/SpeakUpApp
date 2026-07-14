@@ -222,7 +222,7 @@ function showQuizScore() {
     quizScoreLabelEl.textContent = "Quiz " + (quizChunkIndex + 1) + " Complete!";
   }
   quizScoreTextEl.textContent = quizScore + " out of " + quizRoundWords.length;
-  quizContinueBtn.textContent = isLastChunk ? "Back to categories" : "Next quiz";
+  quizContinueBtn.textContent = isLastChunk ? "Back to Categories" : "Next Quiz";
 
   showScreen(quizScoreScreen);
 
