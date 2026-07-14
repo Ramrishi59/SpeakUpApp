@@ -38,7 +38,7 @@
 
   <!-- This is an isolated prototype page. It is not linked from anywhere
        else in the app and is only reachable by opening this file directly. -->
-  <link rel="stylesheet" href="vocab.css?v=39" />
+  <link rel="stylesheet" href="vocab.css?v=40" />
 </head>
 <body>
 
@@ -135,10 +135,12 @@
 
     <!-- QUIZ SCORE SCREEN: shown after each chunk's last question -->
     <section class="vocab-card quiz-score-card hidden" id="quizScoreScreen">
-      <span class="quiz-score-trophy" aria-hidden="true">🏆</span>
-      <p class="quiz-score-label" id="quizScoreLabel">Quiz 1 Complete!</p>
-      <p class="quiz-score-number" id="quizScoreText">0 out of 8</p>
-      <button class="nav-btn next-btn full-width quiz-score-btn" id="quizContinueBtn">Next quiz</button>
+      <div class="quiz-score-center">
+        <span class="quiz-score-trophy" aria-hidden="true">🏆</span>
+        <p class="quiz-score-label" id="quizScoreLabel">Quiz 1 Complete!</p>
+        <p class="quiz-score-number" id="quizScoreText">0 out of 8</p>
+      </div>
+      <button class="nav-btn next-btn quiz-score-btn" id="quizContinueBtn">Next quiz</button>
     </section>
 
   </main>
@@ -150,7 +152,7 @@
   <canvas id="confettiCanvas" class="confetti-layer"></canvas>
 
   <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script src="vocab.js?v=39"></script>
-  <script src="vocab-quiz.js?v=39"></script>
+  <script src="vocab.js?v=40"></script>
+  <script src="vocab-quiz.js?v=40"></script>
 </body>
 </html>
