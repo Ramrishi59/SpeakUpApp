@@ -8,7 +8,7 @@
    family-quiz.json / mybody-quiz.json are no longer read.
 
    Relies on globals defined in vocab.js (loaded first): showScreen,
-   speakWord, quizScreen, quizScoreScreen, restartToCategories.
+   speakWord, quizScreen, quizScoreScreen, goToCategoryPicker.
    ========================================================= */
 
 var QUIZ_CHUNK_SIZE = 8;
@@ -229,7 +229,7 @@ function onQuizContinue() {
   var isLastChunk = quizChunkIndex === quizChunks.length - 1;
 
   if (isLastChunk) {
-    restartToCategories();
+    goToCategoryPicker();
     return;
   }
 

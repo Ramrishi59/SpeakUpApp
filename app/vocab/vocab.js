@@ -193,6 +193,15 @@ function markCategoryCompleted(categoryId) {
   if (completed.indexOf(categoryId) === -1) {
     completed.push(categoryId);
     localStorage.setItem(COMPLETED_CATEGORIES_KEY, JSON.stringify(completed));
+
+    // A newly-completed category/chapterGroup may unlock a quiz tile.
+    // The category picker's tiles were already built once at page load
+    // (loadCategoryList() only runs there), so without this the newly
+    // unlocked "Quiz" card would stay disabled until the page is fully
+    // reloaded. Re-running it here rebuilds the (currently hidden)
+    // picker DOM in the background, so it's already correct by the time
+    // the user navigates back to it.
+    loadCategoryList();
   }
 }
 
@@ -353,6 +362,17 @@ function restartCurrentPath() {
 
   currentIndex = 0;
   showIntro();
+}
+
+// Quiz score screen's "Back to categories" button (called from
+// vocab-quiz.js): leave the quiz entirely and reload the category
+// picker fresh, so any newly-unlocked quiz tiles reflect the
+// completion state that just changed.
+function goToCategoryPicker() {
+  currentCategory = null;
+  currentChapterGroup = null;
+  loadCategoryList();
+  showScreen(categoryScreen);
 }
 
 // Fetch a category's word-list JSON, then show its intro screen.
