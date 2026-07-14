@@ -14,18 +14,29 @@ var QUIZ_GROUPS_URL = "json/quizGroups.json";
 var DASHBOARD_URL = "../dashboard.html";
 const CLAP_SFX = "../choosequiz/effects/Clap.mp3";
 const prefersReducedVocab = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
-const confettiCanvasVocab = document.getElementById("confettiCanvas");
-const confettiShotVocab = (window.confetti && confettiCanvasVocab)
-  ? window.confetti.create(confettiCanvasVocab, { resize: true, useWorker: true })
-  : null;
+let confettiShotVocab = null;
+let confettiInitTriedVocab = false;
 let lastConfettiAtVocab = 0;
 
+function getConfettiShotVocab() {
+  if (confettiShotVocab) return confettiShotVocab;
+  if (confettiInitTriedVocab && !window.confetti) return null;
+  const canvas = document.getElementById("confettiCanvas");
+  if (window.confetti && canvas) {
+    confettiShotVocab = window.confetti.create(canvas, { resize: true, useWorker: true });
+    confettiInitTriedVocab = true;
+  }
+  return confettiShotVocab;
+}
+
 function popConfettiVocab() {
-  if (!confettiShotVocab || prefersReducedVocab) return;
+  if (prefersReducedVocab) return;
+  const shot = getConfettiShotVocab();
+  if (!shot) return;
   const now = performance.now();
   if (now - lastConfettiAtVocab < 500) return;
   lastConfettiAtVocab = now;
-  confettiShotVocab({
+  shot({
     particleCount: 600,
     spread: 70,
     origin: { x: Math.random() * 0.6 + 0.2, y: 0.3 }
@@ -363,7 +374,6 @@ function showOutro() {
 
   outroImageEl.src = categoryImagePath(currentCategory.outro.image);
   outroBadgeEl.textContent = getActiveCategoryLabel();
-  outroMessageEl.textContent = OUTRO_LINES[currentCategory.id] || "Well done!";
   setStageTone(outroScreen);
   outroAudio.src = categoryAudioPath(currentCategory.outro.audio);
 
@@ -377,7 +387,7 @@ function showOutro() {
   const wordCount = currentCategory.words ? currentCategory.words.length : 0;
   const countEl = document.getElementById("outroWordCount");
   if (countEl) {
-    countEl.textContent = "You learned " + wordCount + " words today! \u{1F389}";
+    countEl.innerHTML = "\u2728 You learned <span style=\"font-size:1.3em;\">" + wordCount + "</span> words today! \u2728";
   }
 }
 
