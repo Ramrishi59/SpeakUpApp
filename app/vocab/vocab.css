@@ -795,3 +795,39 @@ html, body{
   flex: 1;
   justify-content: center;
 }
+
+.word-image {
+  animation-duration: 0.28s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
+.word-image.slide-in-next {
+  animation-name: slideInFromRight;
+}
+
+.word-image.slide-in-back {
+  animation-name: slideInFromLeft;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

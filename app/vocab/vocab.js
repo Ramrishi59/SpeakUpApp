@@ -278,7 +278,8 @@ function markChapterCompleted(groupId, chapterId) {
 }
 
 // Draw the current word onto the page and update button states.
-function renderWord() {
+// direction: "next", "back", or omitted (no animation, e.g. first load).
+function renderWord(direction) {
   var words = currentCategory.words;
   var current = words[currentIndex];
 
@@ -286,6 +287,12 @@ function renderWord() {
   wordImageEl.alt = current.word;
   wordTextEl.textContent = current.word;
   progressTextEl.textContent = (currentIndex + 1) + " of " + words.length;
+
+  wordImageEl.classList.remove("slide-in-next", "slide-in-back");
+  if (direction === "next" || direction === "back") {
+    void wordImageEl.offsetWidth;
+    wordImageEl.classList.add(direction === "next" ? "slide-in-next" : "slide-in-back");
+  }
 
   // Disable "Back" on the first word.
   backBtn.disabled = currentIndex === 0;
@@ -299,7 +306,7 @@ function renderWord() {
 function goBack() {
   if (currentIndex > 0) {
     currentIndex = currentIndex - 1;
-    renderWord();
+    renderWord("back");
   }
 }
 
@@ -335,7 +342,7 @@ function goNext() {
   }
 
   currentIndex = currentIndex + 1;
-  renderWord();
+  renderWord("next");
 }
 
 // Play the current word's audio, or fall back to speech synthesis.
