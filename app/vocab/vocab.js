@@ -391,7 +391,16 @@ function showOutro() {
   // NEW: celebration effects
   popConfettiVocab();
   playClapVocab();
-  const wordCount = currentCategory.words ? currentCategory.words.length : 0;
+  var wordCount;
+  if (currentChapterGroup && currentChapterMetas && currentChapterMetas.length > 0) {
+    // Multi-chapter category: sum the word counts of every chapter in the group.
+    wordCount = currentChapterMetas.reduce(function (sum, meta) {
+      return sum + (meta.wordCount || 0);
+    }, 0);
+  } else {
+    // Single-chapter category (e.g. Family, My Body): just this category's words.
+    wordCount = currentCategory.words ? currentCategory.words.length : 0;
+  }
   const countEl = document.getElementById("outroWordCount");
   if (countEl) {
     countEl.innerHTML = "\u2728 You learned <span style=\"font-size:1.3em;\">" + wordCount + "</span> words today! \u2728";
