@@ -67,7 +67,8 @@ var CATEGORY_ICONS = {
   family: "👨‍👩‍👧",
   mybody: "🧍",
   myhome: "🏠",
-  kitchen: "🍳"
+  kitchen: "🍳",
+  fruitsveg: "🍎"
 };
 
 var CHAPTER_ICONS = {
@@ -88,7 +89,11 @@ var INTRO_LINES = {
   kitchen3: "Here are more kitchen words. Look, listen and repeat!",
   kitchen4: "Let's keep learning kitchen words. Look, listen and repeat!",
   kitchen5: "Great! Let's learn some more kitchen words. Look, listen and repeat!",
-  kitchen6: "These are the last kitchen words. Look, listen and repeat!"
+  kitchen6: "These are the last kitchen words. Look, listen and repeat!",
+  fruitsveg1: "Hello, Friends! Let's learn Fruits and Vegetables.",
+  fruitsveg2: "Let's learn some more fruits and vegetables.",
+  fruitsveg3: "Welcome to Part 3!",
+  fruitsveg4: "These are the last fruits and vegetables."
 };
 
 var OUTRO_LINES = {
@@ -282,17 +287,10 @@ function markChapterCompleted(groupId, chapterId) {
 function renderWord(direction) {
   var words = currentCategory.words;
   var current = words[currentIndex];
+  var newImagePath = categoryImagePath(current.image);
 
-  wordImageEl.src = categoryImagePath(current.image);
-  wordImageEl.alt = current.word;
   wordTextEl.textContent = current.word;
   progressTextEl.textContent = (currentIndex + 1) + " of " + words.length;
-
-  wordImageEl.classList.remove("slide-in-next", "slide-in-back");
-  if (direction === "next" || direction === "back") {
-    void wordImageEl.offsetWidth;
-    wordImageEl.classList.add(direction === "next" ? "slide-in-next" : "slide-in-back");
-  }
 
   // Disable "Back" on the first word.
   backBtn.disabled = currentIndex === 0;
@@ -300,6 +298,25 @@ function renderWord(direction) {
   // On the last word, "Next" becomes "Finish".
   var isLastWord = currentIndex === words.length - 1;
   nextBtn.textContent = isLastWord ? "Finish" : "Next";
+
+  function applyImage() {
+    wordImageEl.src = newImagePath;
+    wordImageEl.alt = current.word;
+    wordImageEl.classList.remove("slide-in-next", "slide-in-back");
+    if (direction === "next" || direction === "back") {
+      void wordImageEl.offsetWidth;
+      wordImageEl.classList.add(direction === "next" ? "slide-in-next" : "slide-in-back");
+    }
+  }
+
+  if (direction === "next" || direction === "back") {
+    var preloadImg = new Image();
+    preloadImg.onload = applyImage;
+    preloadImg.onerror = applyImage;
+    preloadImg.src = newImagePath;
+  } else {
+    applyImage();
+  }
 }
 
 // Move to the previous word (if possible).
