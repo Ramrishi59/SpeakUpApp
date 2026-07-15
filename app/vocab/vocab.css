@@ -63,6 +63,7 @@ html, body{
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  text-decoration: none;
 }
 .back-link span{
   display: inline-flex;
