@@ -70,14 +70,15 @@ html, body{
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 15px;
-  color: var(--teal);
+  color: var(--white);
   text-decoration: none;
-  background: rgba(15, 118, 110, 0.1);
+  background: var(--mint);
   padding: 8px 18px;
-  border-radius: 999px;
+  border-radius: 20px;
 }
 .back-link:hover span{
-  background: rgba(15, 118, 110, 0.18);
+  background: var(--mint);
+  text-decoration: none;
 }
 
 /* Main card — stretches to near-full width on phones (~16px breathing
