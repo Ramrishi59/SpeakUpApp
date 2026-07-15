@@ -1,0 +1,21 @@
+{
+  "id": "fruitsveg4",
+  "label": "Fruits & Vegetables 4",
+  "character": "Manku",
+  "imageFolder": "Images/Fruits&Vegetables4",
+  "audioFolder": "Audio/Fruits&Vegetables4",
+  "intro": { "image": "Intro-v2.webp", "audio": "1_Chapter_1.mp3" },
+  "outro": { "image": "Outro-v2.webp", "audio": "12_Chapter_1.mp3" },
+  "words": [
+    { "word": "Amaranth Leaves (Red Cheera)", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Curry Leaves", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Coriander Leaves", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Mint Leaves", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Spinach (Paalak)", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Cabbage", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Cauliflower", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Lettuce", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Celery", "image": "9.webp", "audio": "10_Chapter_1.mp3" },
+    { "word": "Broccoli", "image": "10.webp", "audio": "11_Chapter_1.mp3" }
+  ]
+}

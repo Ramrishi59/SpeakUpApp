@@ -1,0 +1,6 @@
+[
+  { "id": "fruitsveg1", "file": "json/fruitsveg1-words.json" },
+  { "id": "fruitsveg2", "file": "json/fruitsveg2-words.json" },
+  { "id": "fruitsveg3", "file": "json/fruitsveg3-words.json" },
+  { "id": "fruitsveg4", "file": "json/fruitsveg4-words.json" }
+]

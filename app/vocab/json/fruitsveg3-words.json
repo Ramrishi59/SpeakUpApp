@@ -1,0 +1,30 @@
+{
+  "id": "fruitsveg3",
+  "label": "Fruits & Vegetables 3",
+  "character": "Manku",
+  "imageFolder": "Images/Fruits&Vegetables3",
+  "audioFolder": "Audio/Fruits&Vegetables3",
+  "intro": { "image": "Intro-v2.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "Okra (Ladies' Finger)", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Drumstick", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Cluster Beans (Amarakka)", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Long Beans (Achinga Payar)", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Green Peas", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "French Beans", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Eggplant (Brinjal)", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Tomato", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Green Chilli", "image": "9.webp", "audio": "10_Chapter_1.mp3" },
+    { "word": "Capsicum (Bell Pepper)", "image": "10.webp", "audio": "11_Chapter_1.mp3" },
+    { "word": "Raw Plantain", "image": "11.webp", "audio": "12_Chapter_1.mp3" },
+    { "word": "Sweet Corn", "image": "12.webp", "audio": "13_Chapter_1.mp3" },
+    { "word": "Mushroom", "image": "13.webp", "audio": "14_Chapter_1.mp3" },
+    { "word": "Shallot (Small Onion)", "image": "14.webp", "audio": "15_Chapter_1.mp3" },
+    { "word": "Onion", "image": "15.webp", "audio": "16_Chapter_1.mp3" },
+    { "word": "Garlic", "image": "16.webp", "audio": "17_Chapter_1.mp3" },
+    { "word": "Ginger", "image": "17.webp", "audio": "18_Chapter_1.mp3" },
+    { "word": "Spring Onion", "image": "18.webp", "audio": "19_Chapter_1.mp3" },
+    { "word": "Leek", "image": "19.webp", "audio": "20_Chapter_1.mp3" },
+    { "word": "Curcumin", "image": "20.webp", "audio": "21_Chapter_1.mp3" }
+  ]
+}

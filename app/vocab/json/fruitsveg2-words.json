@@ -1,0 +1,27 @@
+{
+  "id": "fruitsveg2",
+  "label": "Fruits & Vegetables 2",
+  "character": "Manku",
+  "imageFolder": "Images/Fruits&Vegetables2",
+  "audioFolder": "Audio/Fruits&Vegetables2",
+  "intro": { "image": "Intro-v2.webp", "audio": "1_Chapter_1.mp3" },
+  "words": [
+    { "word": "Bitter Gourd", "image": "1.webp", "audio": "2_Chapter_1.mp3" },
+    { "word": "Snake Gourd", "image": "2.webp", "audio": "3_Chapter_1.mp3" },
+    { "word": "Ash Gourd", "image": "3.webp", "audio": "4_Chapter_1.mp3" },
+    { "word": "Pumpkin", "image": "4.webp", "audio": "5_Chapter_1.mp3" },
+    { "word": "Bottle Gourd", "image": "5.webp", "audio": "6_Chapter_1.mp3" },
+    { "word": "Ridge Gourd (Peechinga)", "image": "6.webp", "audio": "7_Chapter_1.mp3" },
+    { "word": "Cucumber", "image": "7.webp", "audio": "8_Chapter_1.mp3" },
+    { "word": "Tapioca", "image": "8.webp", "audio": "9_Chapter_1.mp3" },
+    { "word": "Elephant Foot Yam (Chena)", "image": "9.webp", "audio": "10_Chapter_1.mp3" },
+    { "word": "Purple Yam (Kaachil)", "image": "10.webp", "audio": "11_Chapter_1.mp3" },
+    { "word": "Sweet Potato", "image": "11.webp", "audio": "12_Chapter_1.mp3" },
+    { "word": "Chinese Potato (Koorkka)", "image": "12.webp", "audio": "13_Chapter_1.mp3" },
+    { "word": "Potato", "image": "13.webp", "audio": "14_Chapter_1.mp3" },
+    { "word": "Carrot", "image": "14.webp", "audio": "15_Chapter_1.mp3" },
+    { "word": "Beetroot", "image": "15.webp", "audio": "16_Chapter_1.mp3" },
+    { "word": "Radish", "image": "16.webp", "audio": "17_Chapter_1.mp3" },
+    { "word": "Turnip", "image": "17.webp", "audio": "18_Chapter_1.mp3" }
+  ]
+}
