@@ -68,7 +68,10 @@ var CATEGORY_ICONS = {
   mybody: "🧍",
   myhome: "🏠",
   kitchen: "🍳",
-  fruitsveg: "🍎"
+  fruitsveg: "🍎",
+  animals: "🐘",
+  birds: "🦜",
+  insects: "🐞"
 };
 
 var CHAPTER_ICONS = {
@@ -93,7 +96,10 @@ var INTRO_LINES = {
   fruitsveg1: "Hello, Friends! Let's learn Fruits and Vegetables.",
   fruitsveg2: "Let's learn some more fruits and vegetables.",
   fruitsveg3: "Welcome to Part 3!",
-  fruitsveg4: "These are the last fruits and vegetables."
+  fruitsveg4: "These are the last fruits and vegetables.",
+  animals: "Hello, friends! Let's learn about Animals.",
+  birds: "Hi, Let's learn about birds.",
+  insects: "Let's learn about Insects and Small Creatures."
 };
 
 var OUTRO_LINES = {

@@ -3,5 +3,8 @@
   { "id": "mybody", "file": "json/mybody-words.json" },
   { "id": "myhome", "label": "My Home", "type": "chapterGroup", "chaptersFile": "json/myhome-chapters.json" },
   { "id": "kitchen", "label": "Kitchen", "type": "chapterGroup", "chaptersFile": "json/kitchen-chapters.json" },
-  { "id": "fruitsveg", "label": "Fruits & Vegetables", "type": "chapterGroup", "chaptersFile": "json/fruitsveg-chapters.json" }
+  { "id": "fruitsveg", "label": "Fruits & Vegetables", "type": "chapterGroup", "chaptersFile": "json/fruitsveg-chapters.json" },
+  { "id": "animals", "file": "json/animals-words.json" },
+  { "id": "birds", "file": "json/birds-words.json" },
+  { "id": "insects", "file": "json/insects-words.json" }
 ]

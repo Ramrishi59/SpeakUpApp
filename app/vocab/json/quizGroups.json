@@ -2,5 +2,6 @@
   { "groupId": "g1", "categoryIds": ["family", "mybody"] },
   { "groupId": "g2", "categoryIds": ["myhome"] },
   { "groupId": "g3", "categoryIds": ["kitchen"] },
-  { "groupId": "g4", "categoryIds": ["fruitsveg"] }
+  { "groupId": "g4", "categoryIds": ["fruitsveg"] },
+  { "groupId": "g5", "categoryIds": ["animals", "birds", "insects"] }
 ]
