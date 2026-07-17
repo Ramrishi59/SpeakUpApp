@@ -738,7 +738,7 @@ html, body{
 }
 
 .quiz-score-card {
-  background: linear-gradient(160deg, #7C4DFF 0%, #B388FF 100%);
+  background: linear-gradient(160deg, #9D7BFF 0%, #C9AEFF 100%);
   border: none;
   padding: 32px 20px 28px;
   gap: 10px;
@@ -759,7 +759,7 @@ html, body{
 }
 
 .quiz-score-trophy {
-  font-size: 130px;
+  font-size: 170px;
   line-height: 1;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
