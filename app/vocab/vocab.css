@@ -65,19 +65,24 @@ html, body{
   justify-content: flex-start;
   text-decoration: none;
 }
-.back-link span{
+.back-link-pill{
   display: inline-flex;
   align-items: center;
+  gap: 6px;
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 15px;
   color: var(--white);
   text-decoration: none;
   background: var(--mint);
-  padding: 8px 18px;
+  padding: 8px 20px 8px 14px;
   border-radius: 20px;
 }
-.back-link:hover span{
+.back-link-arrow{
+  font-size: 18px;
+  line-height: 1;
+}
+.back-link:hover .back-link-pill{
   background: var(--mint);
   text-decoration: none;
 }
@@ -351,9 +356,9 @@ html, body{
 .chapter-list-subtitle{
   margin: 5px 0 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(51, 51, 51, 0.58);
+  font-size: 17px;
+  font-weight: 700;
+  color: rgba(51, 51, 51, 0.7);
 }
 
 /* Category picker list */
@@ -452,9 +457,10 @@ html, body{
 .category-tile-subtitle{
   margin: 0;
   font-family: inherit;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 16px;
   line-height: 1.3;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .category-tile-chevron{

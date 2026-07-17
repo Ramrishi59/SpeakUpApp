@@ -38,7 +38,7 @@
 
   <!-- This is an isolated prototype page. It is not linked from anywhere
        else in the app and is only reachable by opening this file directly. -->
-  <link rel="stylesheet" href="vocab.css?v=51" />
+  <link rel="stylesheet" href="vocab.css?v=52" />
 </head>
 <body>
 
@@ -46,7 +46,10 @@
 
     <!-- Link back to categories screen (not wired up yet) -->
     <a href="#" class="back-link" id="backLink">
-      <span id="backLinkText">Back to Categories</span>
+      <span class="back-link-pill">
+        <span class="back-link-arrow" aria-hidden="true">&#8249;</span>
+        <span id="backLinkText">Back to Categories</span>
+      </span>
     </a>
 
     <!-- CATEGORY PICKER SCREEN: shown first, before any category is chosen.
@@ -70,7 +73,7 @@
 
     <!-- INTRO SCREEN: shown before flashcard 1 of the chosen category -->
     <section class="vocab-card vocab-stage hidden" id="introScreen">
-      <span class="stage-badge" id="introBadge">Family</span>
+      <span class="stage-badge" id="introBadge">My Family</span>
       <div class="manku-frame">
         <img class="screen-image" id="introImage" src="" alt="Manku" />
       </div>
@@ -107,7 +110,7 @@
 
     <!-- OUTRO SCREEN: shown after the last flashcard -->
     <section class="vocab-card vocab-stage hidden" id="outroScreen">
-      <span class="stage-badge" id="outroBadge">Family</span>
+      <span class="stage-badge" id="outroBadge">My Family</span>
       <div class="manku-frame manku-frame-celebrate">
         <img class="screen-image" id="outroImage" src="" alt="Manku" />
       </div>
@@ -149,7 +152,7 @@
   <canvas id="confettiCanvas" class="confetti-layer"></canvas>
 
   <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script src="vocab.js?v=51"></script>
-  <script src="vocab-quiz.js?v=51"></script>
+  <script src="vocab.js?v=52"></script>
+  <script src="vocab-quiz.js?v=52"></script>
 </body>
 </html>
