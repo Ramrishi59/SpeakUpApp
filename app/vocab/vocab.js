@@ -665,79 +665,103 @@ function buildTileButton(toneClass, icon, title, subtitle) {
 function renderCategoryList(categories) {
   categoryListEl.innerHTML = "";
 
-  categories.forEach(function (categoryMeta, index) {
-    var icon = CATEGORY_ICONS[categoryMeta.id] || "❓";
-    var label = categoryMeta.label || categoryMeta.id;
-    var wordCount = categoryMeta.data && categoryMeta.data.words ? categoryMeta.data.words.length : 0;
-    var toneClass = CATEGORY_TONE_CLASSES[index % CATEGORY_TONE_CLASSES.length];
-    categoryMeta.toneClass = toneClass;
+  loadQuizGroups().then(function (quizGroups) {
+    var completed = getCompletedCategories();
 
-    var btn = buildTileButton(toneClass, icon, label, wordCount + " words");
+    // Map each category id to the LAST index it appears at, so we know
+    // exactly where each quiz group "completes" in the tile order.
+    var lastIndexById = {};
+    categories.forEach(function (categoryMeta, index) {
+      lastIndexById[categoryMeta.id] = index;
+    });
 
-    btn.addEventListener("click", function () {
-      if (categoryMeta.type === "chapterGroup") {
-        loadChapterGroup(categoryMeta);
-      } else {
-        loadCategory(categoryMeta);
+    // For each category tile index, collect any quiz groups whose last
+    // category is that tile (usually 0 or 1 group per tile).
+    var quizGroupsByTileIndex = {};
+    quizGroups.forEach(function (quizGroup) {
+      var ids = quizGroup.categoryIds;
+      var lastCategoryId = ids[ids.length - 1];
+      var tileIndex = lastIndexById[lastCategoryId];
+      if (tileIndex === undefined) return;
+      if (!quizGroupsByTileIndex[tileIndex]) quizGroupsByTileIndex[tileIndex] = [];
+      quizGroupsByTileIndex[tileIndex].push(quizGroup);
+    });
+
+    categories.forEach(function (categoryMeta, index) {
+      var icon = CATEGORY_ICONS[categoryMeta.id] || "❓";
+      var label = categoryMeta.label || categoryMeta.id;
+      var wordCount = categoryMeta.data && categoryMeta.data.words ? categoryMeta.data.words.length : 0;
+      var toneClass = CATEGORY_TONE_CLASSES[index % CATEGORY_TONE_CLASSES.length];
+      categoryMeta.toneClass = toneClass;
+
+      var btn = buildTileButton(toneClass, icon, label, wordCount + " words");
+
+      btn.addEventListener("click", function () {
+        if (categoryMeta.type === "chapterGroup") {
+          loadChapterGroup(categoryMeta);
+        } else {
+          loadCategory(categoryMeta);
+        }
+      });
+      categoryListEl.appendChild(btn);
+
+      // Insert any quiz card(s) that "complete" right after this tile.
+      var groupsHere = quizGroupsByTileIndex[index];
+      if (groupsHere) {
+        groupsHere.forEach(function (quizGroup) {
+          var quizBtn = buildQuizGroupCard(quizGroup, categories, completed);
+          if (quizBtn) categoryListEl.appendChild(quizBtn);
+        });
       }
     });
-    categoryListEl.appendChild(btn);
   });
-
-  renderQuizGroupCards(categories);
 }
 
-// One "Quiz" card per group listed in quizGroups.json (manual config —
-// groups can be any size: 1, 2, or more categories). A group unlocks only
-// once every category in it has been completed (i.e. the user has reached
-// that category's outro screen at least once).
-function renderQuizGroupCards(categories) {
-  var completed = getCompletedCategories();
+// Build a single quiz card button for one quiz group, or return null if the
+// group references an unknown category (skipped, same as before).
+function buildQuizGroupCard(quizGroup, categories, completed) {
+  var ids = quizGroup.categoryIds;
+  var matchedCategories = ids.map(function (categoryId) {
+    return categories.filter(function (categoryMeta) { return categoryMeta.id === categoryId; })[0];
+  });
 
-  fetch(QUIZ_GROUPS_URL)
+  var hasUnmatched = matchedCategories.some(function (categoryMeta) { return !categoryMeta; });
+  if (hasUnmatched) {
+    console.warn(
+      "vocab: quiz group \"" + quizGroup.groupId + "\" references an unknown category id, skipping",
+      ids
+    );
+    return null;
+  }
+
+  var labels = matchedCategories.map(function (categoryMeta) { return categoryMeta.label || categoryMeta.id; });
+  var isUnlocked = ids.every(function (id) { return completed.indexOf(id) !== -1; });
+
+  var questionCount = matchedCategories.reduce(function (total, categoryMeta) {
+    return total + (categoryMeta.data && categoryMeta.data.words ? categoryMeta.data.words.length : 0);
+  }, 0);
+
+  var btn = buildTileButton("tone-quiz challenge-card", "🏆", "Quiz: " + labels.join(" + "), questionCount + " questions");
+
+  if (isUnlocked) {
+    btn.addEventListener("click", function () {
+      var mixedCategory = buildMixedCategory(categories, ids);
+      startVocabQuiz(mixedCategory);
+    });
+  } else {
+    btn.disabled = true;
+  }
+
+  return btn;
+}
+
+// Fetch quizGroups.json and return it as a promise (does not render anything).
+function loadQuizGroups() {
+  return fetch(QUIZ_GROUPS_URL)
     .then(function (res) { return res.json(); })
-    .then(function (quizGroups) {
-      quizGroups.forEach(function (quizGroup) {
-        var ids = quizGroup.categoryIds;
-        var matchedCategories = ids.map(function (categoryId) {
-          return categories.filter(function (categoryMeta) { return categoryMeta.id === categoryId; })[0];
-        });
-
-        var hasUnmatched = matchedCategories.some(function (categoryMeta) { return !categoryMeta; });
-        if (hasUnmatched) {
-          console.warn(
-            "vocab: quiz group \"" + quizGroup.groupId + "\" references an unknown category id, skipping",
-            ids
-          );
-          return;
-        }
-
-        var labels = matchedCategories.map(function (categoryMeta) { return categoryMeta.label || categoryMeta.id; });
-        var isUnlocked = ids.every(function (id) { return completed.indexOf(id) !== -1; });
-
-        // One question per word in the merged quiz (matches startVocabQuiz's
-        // chunking in vocab-quiz.js), so this reuses the same word counts
-        // already loaded for the category tiles' "N words" subtitle.
-        var questionCount = matchedCategories.reduce(function (total, categoryMeta) {
-          return total + (categoryMeta.data && categoryMeta.data.words ? categoryMeta.data.words.length : 0);
-        }, 0);
-
-        var btn = buildTileButton("tone-quiz challenge-card", "🏆", "Quiz: " + labels.join(" + "), questionCount + " questions");
-
-        if (isUnlocked) {
-          btn.addEventListener("click", function () {
-            var mixedCategory = buildMixedCategory(categories, ids);
-            startVocabQuiz(mixedCategory);
-          });
-        } else {
-          btn.disabled = true;
-        }
-
-        categoryListEl.appendChild(btn);
-      });
-    })
     .catch(function (err) {
       console.error("vocab: failed to load " + QUIZ_GROUPS_URL, err);
+      return [];
     });
 }
 
