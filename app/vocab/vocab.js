@@ -62,21 +62,22 @@ var currentChapterGroup = null;
 var currentChapterIndex = 0;
 var currentChapterMetas = [];
 
-// Small leading emoji shown before each top-level category's name in the picker.
+// Small leading icon shown before each top-level category's name in the picker.
 var CATEGORY_ICONS = {
-  family: "👨‍👩‍👧",
-  mybody: "🧍",
-  myhome: "🏠",
-  kitchen: "🍳",
-  fruitsveg: "🍎",
-  animals: "🐘",
-  birds: "🦜",
-  insects: "🐞"
+  family: "Images/icons/Myfamily.webp",
+  mybody: "Images/icons/Mybody.webp",
+  myhome: "Images/icons/Myhome.webp",
+  kitchen: "Images/icons/Kitchen.webp",
+  fruitsveg: "Images/icons/Fruits&Vegetables.webp",
+  animals: "Images/icons/Animals.webp",
+  birds: "Images/icons/Birds.webp",
+  insects: "Images/icons/Insects&Smallcreatures.webp"
 };
 
 var CHAPTER_ICONS = {
-  myhome: "🏠",
-  kitchen: "🍳"
+  myhome: "Images/icons/Myhome.webp",
+  kitchen: "Images/icons/Kitchen.webp",
+  fruitsveg: "Images/icons/Fruits&Vegetables.webp"
 };
 
 var INTRO_LINES = {
@@ -632,10 +633,21 @@ function buildTileButton(toneClass, icon, title, subtitle) {
 
   var iconBox = document.createElement("div");
   iconBox.className = "category-icon-box";
-  var iconSpan = document.createElement("span");
-  iconSpan.className = "category-icon";
-  iconSpan.textContent = icon;
-  iconBox.appendChild(iconSpan);
+
+  var isImageIcon = typeof icon === "string" && icon.indexOf("Images/icons/") === 0;
+  if (isImageIcon) {
+    var iconImg = document.createElement("img");
+    iconImg.className = "category-icon category-icon-image";
+    iconImg.src = icon;
+    iconImg.alt = "";
+    iconBox.appendChild(iconImg);
+  } else {
+    var iconSpan = document.createElement("span");
+    iconSpan.className = "category-icon";
+    iconSpan.textContent = icon;
+    iconBox.appendChild(iconSpan);
+  }
+
   btn.appendChild(iconBox);
 
   var textWrap = document.createElement("div");
@@ -741,7 +753,7 @@ function buildQuizGroupCard(quizGroup, categories, completed) {
     return total + (categoryMeta.data && categoryMeta.data.words ? categoryMeta.data.words.length : 0);
   }, 0);
 
-  var btn = buildTileButton("tone-quiz challenge-card", "🏆", "Quiz: " + labels.join(" + "), questionCount + " questions");
+  var btn = buildTileButton("tone-quiz challenge-card", "Images/icons/Trophy.webp", "Quiz: " + labels.join(" + "), questionCount + " questions");
 
   if (isUnlocked) {
     btn.addEventListener("click", function () {
