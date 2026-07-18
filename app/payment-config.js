@@ -1,7 +1,7 @@
 window.SUPaymentsConfig = {
   enabled: true,
   keyId: "rzp_live_SeuVdqMO92PST8",
-  amount: 49900,  // display only (paise) — the server sets the real charge
+  amount: 99900,  // display only (paise) — the server sets the real charge
   currency: "INR",
   name: "SpeakUp",
   description: "SpeakUp Premium Access",

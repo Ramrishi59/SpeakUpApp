@@ -12,8 +12,8 @@ admin.initializeApp();
 const razorpayKeySecret = defineSecret("RAZORPAY_KEY_SECRET");
 const db = admin.firestore();
 const TRIAL_DURATION_MS  = 24 * 60 * 60 * 1000;
-const PURCHASE_DURATION_MS = 90 * 24 * 60 * 60 * 1000;
-const PREMIUM_PRICE_PAISE  = 49900;   // ₹499.00 — change here to reprice
+const PURCHASE_DURATION_MS = 180 * 24 * 60 * 60 * 1000;
+const PREMIUM_PRICE_PAISE  = 99900;   // ₹999.00 — change here to reprice
 const PREMIUM_CURRENCY     = "INR";
 
 const CORS_HEADERS = {
@@ -275,7 +275,7 @@ function getAccessAfter(action, before, expiresAtInput) {
   }
 
   const daysByAction = {
-    grant: 90,
+    grant: 180,
     extend30: 30,
     extend90: 90,
     extend365: 365

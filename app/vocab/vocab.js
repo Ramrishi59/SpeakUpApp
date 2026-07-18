@@ -863,6 +863,13 @@ backLink.addEventListener("click", function (event) {
   showScreen(categoryScreen);
 });
 
-// Show the category picker when the page first loads.
-showScreen(categoryScreen);
-loadCategoryList();
+// Show the category picker when the page first loads —
+// but wait for the paid/trial access check first (access-guard.js).
+(async function initVocabAccess() {
+  if (window.SUAccessReady) {
+    const hasAccess = await window.SUAccessReady;
+    if (!hasAccess) return; // access-guard.js already replaced the page with a locked screen
+  }
+  showScreen(categoryScreen);
+  loadCategoryList();
+})();

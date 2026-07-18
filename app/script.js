@@ -1005,7 +1005,7 @@ function renderAccountStatus() {
       ? `
         <div class="premium-box">
           <h3 class="premium-title">Speak Up Premium</h3>
-          <p class="premium-sub">${license?.trialActive ? 'Your 24-hour trial is active.' : 'Every lesson is open on this account.'}</p>
+          <p class="premium-sub">${license?.trialActive ? 'Your 24-hour trial is active. Vocab Pack is not included.' : 'Every lesson is open on this account.'}</p>
           ${expText ? `<div class="price-row"><span class="price-label">${license?.trialActive ? 'Trial ends' : 'Access until'}</span><span class="price-value">${expText}</span></div>` : ''}
           ${license?.licenseExpiresAt ? `<div class="trial-countdown-row"><span>Time remaining</span><strong id="access-countdown" data-expires-at="${license.licenseExpiresAt}">${getTimeRemainingText(license.licenseExpiresAt)}</strong></div>` : ''}
         </div>
