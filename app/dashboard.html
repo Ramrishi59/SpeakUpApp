@@ -122,11 +122,63 @@
               return;
             }
 
-            await navigator.serviceWorker.register('./service-worker.js');
+            const registration = await navigator.serviceWorker.register('./service-worker.js');
+
+            // Keep checking for a newer deployed version while this tab stays open.
+            setInterval(() => registration.update(), 60 * 1000);
+
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              if (!newWorker) return;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'activated') {
+                  showUpdateBanner();
+                }
+              });
+            });
+
+            let refreshed = false;
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+              if (refreshed) return;
+              refreshed = true;
+              showUpdateBanner();
+            });
+
+            showAppVersion(registration);
           } catch (error) {
             console.error('Service Worker registration failed:', error);
           }
         });
+      }
+
+      function showUpdateBanner() {
+        if (document.getElementById('suUpdateBanner')) return;
+        const banner = document.createElement('div');
+        banner.id = 'suUpdateBanner';
+        banner.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 18px;background:#ff7a59;color:#fff;font-family:Fredoka,system-ui,sans-serif;font-weight:700;box-shadow:0 -4px 16px rgba(0,0,0,.15);';
+        banner.innerHTML = '<span>New update available</span>';
+        const btn = document.createElement('button');
+        btn.textContent = 'Tap to refresh';
+        btn.style.cssText = 'background:#fff;color:#ff7a59;border:none;border-radius:999px;padding:8px 18px;font-weight:700;font-family:inherit;cursor:pointer;';
+        btn.addEventListener('click', () => window.location.reload());
+        banner.appendChild(btn);
+        document.body.appendChild(banner);
+      }
+
+      function showAppVersion(registration) {
+        const sw = registration.active;
+        if (!sw) return;
+        const channel = new MessageChannel();
+        channel.port1.onmessage = (event) => {
+          const version = event.data?.version;
+          if (!version) return;
+          const el = document.createElement('p');
+          el.id = 'suAppVersion';
+          el.textContent = version;
+          el.style.cssText = 'text-align:center;font-size:11px;color:#b8a68e;padding:6px 0 14px;';
+          document.body.appendChild(el);
+        };
+        sw.postMessage({ type: 'GET_VERSION' }, [channel.port2]);
       }
     </script>
 </body>
