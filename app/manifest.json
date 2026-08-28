@@ -1,24 +1,37 @@
 {
-  "name": "SpeakUpApp - Learn English",
-  "short_name": "SpeakUpApp",
-  "description": "A fun and interactive English learning app for kids aged 5-10.",
-  "start_url": "./dashboard.html",
-  "scope": "./",
+  "name": "SpeakUp — Spoken English for Kids",
+  "short_name": "SpeakUp",
+  "description": "Interactive spoken English for children aged 5-12, with pictures, audio and activities.",
+  "start_url": "/app/dashboard.html",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#f0f8ff",
-  "theme_color": "#007bff",
+  "orientation": "portrait",
+  "background_color": "#FCF3D4",
+  "theme_color": "#FF6B35",
   "icons": [
     {
-      "src": "Images/Unit1/manku-icon-192.png",
+      "src": "/app/Images/Unit1/manku-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "Images/Unit1/manku-icon-512.png",
+      "src": "/app/Images/Unit1/manku-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/app/Images/Unit1/manku-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/app/Images/Unit1/manku-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
