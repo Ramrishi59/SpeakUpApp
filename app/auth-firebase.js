@@ -42,7 +42,7 @@ try {
   db = getFirestore(app);
 }
 const googleProvider = new GoogleAuthProvider();
-const TRIAL_DURATION_MS = 24 * 60 * 60 * 1000;
+const TRIAL_DURATION_MS = 72 * 60 * 60 * 1000;
 const PRESENCE_HEARTBEAT_MS = 60 * 1000;
 
 let authState = {
@@ -610,7 +610,7 @@ function isEntitled() {
 }
 
 // Raw profile fullUnlock only — true for a stored purchase/admin grant,
-// false during the automatic 24-hour trial (unlike getLicense().fullUnlock,
+// false during the automatic 3-day trial (unlike getLicense().fullUnlock,
 // which is a composite of paid/timed/trial access and is intentionally
 // true during an active trial too).
 function isPaidUnlock() {

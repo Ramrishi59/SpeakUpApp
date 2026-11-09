@@ -997,7 +997,7 @@ function renderAccountStatus() {
     const completedUnitsCount = Array.isArray(profile?.completedUnits) ? profile.completedUnits.length : 0;
     const progressTotal = Math.max(getDashboardContentCount(), completedUnitsCount, 1);
     const progressPercent = Math.min(100, Math.round((completedUnitsCount / progressTotal) * 100));
-    const accessText = unlocked ? (license?.trialActive ? '24-hour trial' : 'Full access') : 'Locked';
+    const accessText = unlocked ? (license?.trialActive ? '3-day trial' : 'Full access') : 'Locked';
     const roleText = license?.role || 'Learner';
     const paymentConfig = getPaymentConfig();
     const premiumPriceText = formatPaymentAmount(paymentConfig.amount, paymentConfig.currency);
@@ -1005,7 +1005,7 @@ function renderAccountStatus() {
       ? `
         <div class="premium-box">
           <h3 class="premium-title">Speak Up Premium</h3>
-          <p class="premium-sub">${license?.trialActive ? 'Your 24-hour trial is active. Vocab Pack is not included.' : 'Every lesson is open on this account.'}</p>
+          <p class="premium-sub">${license?.trialActive ? 'Your 3-day trial is active. Vocab Pack is not included.' : 'Every lesson is open on this account.'}</p>
           ${expText ? `<div class="price-row"><span class="price-label">${license?.trialActive ? 'Trial ends' : 'Access until'}</span><span class="price-value">${expText}</span></div>` : ''}
           ${license?.licenseExpiresAt ? `<div class="trial-countdown-row"><span>Time remaining</span><strong id="access-countdown" data-expires-at="${license.licenseExpiresAt}">${getTimeRemainingText(license.licenseExpiresAt)}</strong></div>` : ''}
         </div>
@@ -1640,7 +1640,7 @@ async function loadDashboardLessons() {
 
     // Vocab Pack card — built the same way as communityCard below (not
     // part of CATEGORY_DEFS, doesn't filter lessons). Locked during the
-    // automatic 24-hour trial; unlocked only once the Firestore profile
+    // automatic 3-day trial; unlocked only once the Firestore profile
     // itself has fullUnlock === true (a real purchase or an admin-granted
     // access window) — see isPaidUnlock() in auth-firebase.js, which is
     // deliberately different from getLicense().fullUnlock (true during an

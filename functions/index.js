@@ -11,7 +11,7 @@ admin.initializeApp();
 
 const razorpayKeySecret = defineSecret("RAZORPAY_KEY_SECRET");
 const db = admin.firestore();
-const TRIAL_DURATION_MS  = 24 * 60 * 60 * 1000;
+const TRIAL_DURATION_MS  = 72 * 60 * 60 * 1000;
 const PURCHASE_DURATION_MS = 180 * 24 * 60 * 60 * 1000;
 const PREMIUM_PRICE_PAISE  = 99900;   // ₹999.00 — change here to reprice
 const PREMIUM_CURRENCY     = "INR";
@@ -673,7 +673,7 @@ exports.adminListPayments = onRequest(async (req, res) => {
 });
 
 // Runs server-side after every new Firebase Auth user is created.
-// Writes the 24-hour trial fields that the Firestore client-create rule blocks.
+// Writes the 3-day trial fields that the Firestore client-create rule blocks.
 // Uses the Admin SDK (bypasses security rules). Never sets fullUnlock or licenseExpiresAt.
 exports.initializeUserProfile = auth.user().onCreate(async (user) => {
   const ref = db.collection("users").doc(user.uid);

@@ -46,7 +46,7 @@ window.SUAccessReady = (async () => {
     renderLockedScreen(
       isTrialBlocked
         ? "The Vocab Pack is part of the paid plan. Your free trial doesn't include it — buy premium to unlock it."
-        : "Your 24-hour trial has ended. Buy premium to keep using SpeakUp."
+        : "Your 3-day trial has ended. Buy premium to keep using SpeakUp."
     );
   }
   return hasAccess;
