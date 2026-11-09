@@ -34,7 +34,7 @@ Fun activities and a real voice artist helping your child speak English step by 
 - See How It Works
 
 **Trial Badge**
-24-Hour Full Access Trial — No Payment Needed
+3-Day Full Access Trial — No Payment Needed
 
 ---
 
@@ -118,22 +118,22 @@ Speak Up was created by **Ramesh Voice**, a professional English and Malayalam v
 
 **Section Tag:** 💳 Simple Pricing
 **Title:** Start Free. Unlock Everything.
-**Sub:** Start with a 24-hour full access trial — free. Unlock all 100 lessons for just ₹499 for 3 months.
+**Sub:** Start with a 3-day full access trial — free. Unlock all 120 lessons for just ₹999 for 6 months.
 
 ### Plan 1 — Starter
 - **Price:** Free
-- **Period:** Forever
+- **Period:** 3 Days
 - **Features:**
-  - 24-Hour full access trial
-  - Sample lessons from Unit 1
-  - Try all activity types
+  - 3-Day full access trial
+  - All Lessons and Activities
+  - Vocab Pack not included
 - **Button:** Start Your Free Trial
 
 ### Plan 2 — Explorer ⭐ Best Value
-- **Price:** ₹499
-- **Period:** For 3 months
+- **Price:** ₹999
+- **Period:** For 6 months
 - **Features:**
-  - All 100 lessons
+  - All 120 lessons
   - All units & activities
   - Progress tracking
   - Stars & badges

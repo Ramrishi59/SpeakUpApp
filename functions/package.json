@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Firebase Functions backend for SpeakUp payments",
   "engines": {
-    "node": "20"
+    "node": "22"
   },
   "main": "index.js",
   "scripts": {
